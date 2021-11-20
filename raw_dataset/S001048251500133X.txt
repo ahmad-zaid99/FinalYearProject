@@ -1,0 +1,2738 @@
+@&#MAIN-TITLE@&#Estimated confidence interval from single blood pressure measurement based on algorithmic fusion
+
+@&#HIGHLIGHTS@&#
+
+
+               
+                  
+                  
+                     
+                        
+                           
+                           The CI of blood pressure estimates from a single measurement is derived.
+
+
+                        
+                        
+                           
+                           The parametric bootstrap technique with multiple regression is used.
+
+
+                        
+                        
+                           
+                           The exactness of SBP and DBP estimation is improved with tighter confidence intervals.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Blood pressure
+
+Oscillometric blood pressure measurement
+
+Confidence interval
+
+Parametric bootstrap
+
+Fusion
+
+Multiple regression
+
+@&#ABSTRACT@&#
+
+
+                  
+                     Background: Current oscillometric blood pressure measurement devices generally provide only single-point estimates for systolic and diastolic blood pressures and rarely provide confidence ranges for these estimates. A novel methodology to obtain confidence intervals (CIs) for systolic blood pressure (SBP) and diastolic blood pressure (DBP) estimates from a single oscillometric blood pressure measurement is presented.
+                  
+                     Methods: The proposed methodology utilizes the multiple regression technique to fuse optimally a set of SBP and DBP estimates obtained through different algorithms. However, the set of SBP and DBP estimates is a small number to determine the CI of each individual subject. To address this issue, the weighted bootstrap approach based on the multiple regression technique was used to generate a pseudo sample set for the SBP and the DBP. In this paper, the multiple regression technique can estimate the best-fitting surface of an efficient function that relates the input sample set as an independent vector to the auscultatory nurse measurement as a dependent vector to estimate regression coefficients. Consequently, the coefficients are assigned to an eight-sample set obtained from the fusion of different algorithms as optimally weighted parameters. CIs are also estimated using the conventional methods on the set of fused SBP and DBP estimates for comparison purposes.
+                  
+                     Results: The proposed method was applied to an experimental dataset of 85 patients. The results indicated that the proposed approach provides better blood pressure estimates than the existing algorithms and, in addition, is able to provide CIs for a single measurement.
+                  
+                     Conclusions: The CIs derived from the proposed scheme are much smaller than those calculated by conventional methods except for the pseudo maximum amplitude-envelope algorithm for both the SBP and the DBP, probably because of the decrease in the standard deviation through the increase in the pseudo measurements using the weighted bootstrap method for each subject. The proposed methodology is likely the only one currently available that can provide CIs for single-sample blood pressure measurements.
+               
+
+@&#INTRODUCTION@&#
+
+To maintain quality of life, the elderly population and patients with chronic conditions are employing self-monitoring using non-invasive medical devices such as automated oscillometric blood pressure devices. Interestingly, there are still no standard protocols for these devices. Most blood pressure devices provide only single-point estimates with no confidence ranges, and the user may not be able to distinguish the statistical variability in the estimates from the intrinsic variability due to the physiological process [1]. As there is no golden standard other than auscultation, there is no method to determine fluctuations in blood pressure and distinguish them from variabilities due to physiological processes. If a confidence interval (CI) is too broad, an alert can recommend discarding the measurement and initiating another measurement. Without the CI, it is difficult to make any meaningful decision based on blood pressure estimates. According to some aggregated statistics, in a home-based monitoring setting, repeated broad CIs can trigger an alarm or alert either the nurses station or the family doctor. Although this is an important aspect of blood pressure estimation, there has not been much research done to develop CIs for the estimates provided by oscillometric devices.
+
+A large number of measurements (more than 30) are required to derive a CI, and traditionally, an asymptotic normal distribution is assumed. As described in [2], for each subject, a large number of measurements are required to determine a CI using the standard Student׳s t (ST)-distribution. It is not feasible to obtain a large number of measurements for each subject using a non-invasive oscillometric blood pressure measurement device, as repeatable conditions for reproducible measurements can never be guaranteed. Hence, it is best to obtain a CI using fewer measurements. However, standard methods of obtaining CIs such as the one presented in [2] cannot be used to obtain CIs for blood pressure measurements in a practical setting. This calls for innovative methods that can obtain CIs from smaller sample set.
+
+Recently, we introduced the use of a non-parametric bootstrap technique to obtain CI estimates of oscillometric blood pressure measurements [3], motivated by [4]. The methodology behind [3] is that the bootstrap technique [5] is carried out to obtain CI estimates using a limited number of measurements (five) in situations where the use of the ST-method turns out to be invalid. However, in reality, one may not even have such a luxury, and often only a single measurement may be feasible. In such a scenario, the following question arises: how can a CI be obtained from the only available measurement? We are fully motivated by the technique of Blachman and Machol [6], which was proposed to determine CIs based on a single observation. However, it may be impossible to know the true CIs because these scheme׳s CIs are too widespread to qualify as meaningful CIs. One interesting point is that there have been no studies in the literature related to obtaining CIs from single oscillometric blood pressure measurements. In this regard, our paper is aimed at devising a solution for the above question. We present a fusion approach to obtain a CI from a single measurement; this procedure consists of the fusion of two different algorithms with the parametric bootstrap method, which is based on multiple linear regression [7]. There has been an interest in the data fusion of physiological signals in recent years. Specifically, the method of Park et al. [8] used a fusion system to decide from which single-channel electrocardiogram (ECG) respiration is derived. Another fusion method was proposed by Nemati et al. [9], who combined information through multiple channels including ECG and photoplethysmogram. More recently, the concept of fusion was adopted in ECG-assisted blood pressure estimation [10]. However, it is impossible to compare those methods directly with our proposed fusion method, since unlike our method, they were not used to find CIs.
+
+This is the first study in the literature that presents an algorithmic fusion-based approach to derive the CI of blood pressure estimates from a single measurement. To obtain a CI from a single measurement, a fusion-based approach that combines the estimates provided by two different existing blood pressure estimation algorithms is proposed. The choice of two different algorithms for blood pressure estimation satisfies the algorithm fusion requirement as discussed in [10,11]. The blood pressure estimates provided by the two algorithms, namely the maximum amplitude (MA) [12] and linear approximation (LA) [13] algorithms, are applied to provide blood pressure estimates that are used with the parametric bootstrap approach [5], to produce the CI means and ranges for the systolic blood pressure (SBP) and diastolic blood pressure (DBP) estimates. Specifically, we have the SBP and DBP values based on the algorithmic fusion approach, which is used to estimate CI for the SBP and the DBP as an input sample set. However, our eight-sample set is small for estimating the CIs of each individual subject. To solve this problem, we use the parametric bootstrap technique [5] with multiple regression [7] to generate a pseudo sample set for the SBP and the DBP. In this paper, the multiple regression technique can estimate the best-fitting surface of an efficient function that relates the input sample set as an independent vector with auscultatory nurse measurements as a dependent vector to estimate the regression coefficients [7]. Therefore, the coefficients are assigned to the eight-sample set obtained from the different algorithmic fusions as optimally weighted parameters.
+
+Two different methods (termed as the oscillometric pulse index (OPI)) for deriving the envelope information, namely the height of each pulse from baseline-to-peak and area under each pulse (AE) [14], and two different techniques for interpolating the envelope, namely the Gaussian (GA) and the Cauchy–Lorentzian (CL) [3], were used in conjunction with the existing blood pressure estimation algorithms to provide a distinct set of estimates for producing CIs using the parametric bootstrap technique with the multiple regression model. Herein, our proposed method is referred to as the weighted bootstrap fusion algorithm (WBFA). The novelty behind this approach lies in simultaneously obtaining the blood pressure measurement through the use of different algorithmic fusion with the parametric bootstrap principle [5]. The proposed fusion method is described in the block diagram in Fig. 1
+                     .
+
+@&#METHODS@&#
+
+BP measurements were acquired from 85 healthy subjects, 37 females and 48 males, aged from 12 to 80years. To the best of our knowledge, none of the volunteer subjects had any history of cardiovascular incidents. Five oscillometric BP sets were obtained from each subject (
+                           5
+                           ×
+                           85
+                           =
+                           425
+                         total measurements; duration range: 31–95s, duration median: 55s) using a wrist- worn UFIT TEN-10 blood pressure monitor (Biosign Technologies Inc. Toronto, Ontario, Canada) in accordance with the recommendations of the American National Standard Institute (ANSI)/Association for the Advancement of Medical Instrumentation (AAMI) SP 10 standard protocol [15]. This research was approved by the local research ethics committee, and informed consent was obtained by all subjects prior to the BP measurements according to the protocol of the institutional research ethics board.
+
+In this study, the UFIT TEN-10 blood pressure device is connected to a computer using a universal serial bus. This device is a personal computer-based user connector, which is used to initiate measurement. Once a BP measurement is obtained, the interface prompts the user to sign in and then process the BP measurement. The processed measurements such as the cuff pressure waveform, the derivative of the cuff pressure waveform, and the SBP and DBP results are transferred to the user׳s computer. Two independent trained observers (nurses) record each cuff pressure waveform using the popular auscultatory device and the value of these two BP measurements is utilized as the reference BP for each subject [3,16].
+
+The two auscultatory nurse readings are averaged to offer one SBP and one DBP reading as the reference measurements. This protocol also complies with the recommendations of the ANSI/AAMI SP 10 standard [15], which requires the average difference to be less than ± 5mmHg with a standard deviation of error of 8mmHg. In this situation, the mean value of BP is a suitable way to provide a single reference value that can be utilized to evaluate the performance of the algorithms. The nurse reference readings of all subjects ranged from 78 to 147mmHg for SBP and from 42 to 99mmHg for DBP. Specifically, the average time spent processing a single measurement was 2.41s (204.6s total for 85 measurements) with a personal computer Intel Core 2 Quad CPU Q8400 @ 2.66GHz); however, this processing time is dependent on the type of processor used. Also, note that all of the processing was done off-line.
+
+Let 
+                           
+                              
+                                 X
+                              
+                              
+                                 1
+                              
+                           
+                           ,
+                           …
+                           
+                              
+                                 X
+                              
+                              
+                                 n
+                              
+                           
+                         be the random SBP and DBP estimates obtained from the oscillometric BP measurements with mean 
+                           μ
+                         and standard deviation σ. The formula based on the ST-distribution can be expressed in the following way [3]: 
+                           
+                              
+                                 Pr
+                                 {
+                                 
+                                    
+                                       
+                                          μ
+                                       
+                                       
+                                          ^
+                                       
+                                    
+                                    −
+                                    
+                                       
+                                          t
+                                       
+                                       
+                                          n
+                                          −
+                                          1
+                                       
+                                       
+                                          α
+                                       
+                                    
+                                    
+                                       
+                                          S
+                                       
+                                       
+                                          
+                                             
+                                                n
+                                             
+                                          
+                                       
+                                    
+                                    <
+                                    μ
+                                    <
+                                    
+                                       
+                                          μ
+                                       
+                                       
+                                          ^
+                                       
+                                    
+                                    +
+                                    
+                                       
+                                          t
+                                       
+                                       
+                                          n
+                                          −
+                                          1
+                                       
+                                       
+                                          α
+                                       
+                                    
+                                    
+                                       
+                                          S
+                                       
+                                       
+                                          
+                                             
+                                                n
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 }
+                                 =
+                                 1
+                                 −
+                                 α
+                              
+                           
+                        The interval about 
+                           
+                              
+                                 μ
+                              
+                              
+                                 ^
+                              
+                           
+                         is given by
+                           
+                              (1)
+                              
+                                 
+                                    
+                                       t
+                                    
+                                    
+                                       α
+                                    
+                                 
+                                 =
+                                 {
+                                 
+                                    
+                                       
+                                          μ
+                                       
+                                       
+                                          ^
+                                       
+                                    
+                                    −
+                                    
+                                       
+                                          t
+                                       
+                                       
+                                          n
+                                          −
+                                          1
+                                       
+                                       
+                                          α
+                                       
+                                    
+                                    
+                                       
+                                          S
+                                       
+                                       
+                                          
+                                             
+                                                n
+                                             
+                                          
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          μ
+                                       
+                                       
+                                          ^
+                                       
+                                    
+                                    +
+                                    
+                                       
+                                          t
+                                       
+                                       
+                                          n
+                                          −
+                                          1
+                                       
+                                       
+                                          α
+                                       
+                                    
+                                    
+                                       
+                                          S
+                                       
+                                       
+                                          
+                                             
+                                                n
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 }
+                              
+                           
+                        where 
+                           
+                              
+                                 t
+                              
+                              
+                                 α
+                              
+                           
+                         is a CI with the probability of (
+                           1
+                           −
+                           α
+                        ) and α denotes the significance level. Note that 
+                           
+                              
+                                 μ
+                              
+                              
+                                 ^
+                              
+                           
+                         and S are the estimated mean and standard deviation, respectively, from the oscillometric blood pressure measurements. For further details, interested readers are referred to [17].
+
+The following steps are used to obtain the SBP and DBP estimates (1) The OMW is extracted from the deflation curve as described in [18,19], as shown in Fig. 2
+                        . (2) The OPI is used to form the envelope based on the obtained blood pressure estimates [18]. It is derived using mathematical criteria such as the height of each pulse from the baseline-to-peak or the AE [14]. One of the two criteria is applied to derive the OPI. (3) The OMW is obtained using one of the model-based smoothing techniques, the GA or the CL [3]. (4) The SBP and DBP estimates are obtained by using one of the two well-known algorithms, the MA [12] or the LA [13], which are selected according to the results of the mean absolute error (MAE), standard deviation of error (SDE), and correlation coefficients (CORRs), which are determined by finding the difference between the estimated blood pressure and the reference blood pressure from a pool of algorithms known in the literature, as shown in Table 1
+                        . The systolic and diastolic ratios needed for the MA and LA algorithms are obtained experimentally as discussed in [20,21].
+
+To fuse the algorithms, SBP and DBP estimates are obtained using the OPI procedure, curve fitting, and estimation algorithms. Of all the combinations, there are eight sets of two estimates obtained using distinct combinations of OPI, curve fitting and estimation algorithms, leading to a set of eight fused SBP and DBP estimates. Specifically, we can show the exemplary procedure for the set 
+                           [
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                                 (
+                                 1
+                                 )
+                              
+                           
+                        , 
+                           
+                              
+                                 χ
+                              
+                              
+                                 d
+                                 (
+                                 1
+                                 )
+                              
+                           
+                           ]
+                         acquired by the (AE, GA, MA) combination algorithm, as shown with the bold arrows in Fig. 1. In addition, Table 1 shows the list of distinct combinations that produce the eight fused estimates. This forms the sample set for determining the CIs of the SBP and DBP estimates from the single oscillometric measurement. Therefore, we have the results of the SBP and DBP using different combinational fused approaches in this stage. These eight combinational results are used to estimate the CI using the SBP and the DBP as an input sample set. However, our eight-sample set is very small to determine the CI of each individual subject. To address this problem, the parametric bootstrap approach is utilized to generate pseudo-sample sets for the SBP and the DBP, as described below.
+
+The basic concept behind the parametric bootstrap technique [5] in this work is to generate a sufficient number of samples for each individual subject. For this, as shown in the sample set of Table 1, assume that a small set, 
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                              
+                           
+                           =
+                           (
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                                 (
+                                 1
+                                 )
+                              
+                           
+                           ,
+                           …
+                           ,
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                                 (
+                                 k
+                                 )
+                              
+                           
+                           )
+                        , is a random sample vector because 
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                                 (
+                                 k
+                                 )
+                              
+                           
+                         has no dependence on any of the previous samples 
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                                 (
+                                 1
+                                 )
+                              
+                           
+                         of each other [22] for the SBP. Thus, we need to estimate a sample mean and a standard deviation 
+                           (
+                           
+                              
+                                 μ
+                              
+                              
+                                 ^
+                              
+                           
+                           ,
+                           
+                              
+                                 σ
+                              
+                              
+                                 ^
+                              
+                           
+                           )
+                         from 
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                              
+                           
+                        . Subsequently, we also consider a weighted parameter of the sample set 
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                              
+                           
+                        , because each sample in the sample set is obtained using a different combination of the algorithms that should be optimally fused to achieve the desired performance. Specifically, the optimally weighted parameters can be efficiently determined using multiple linear regression (MLR) based on the high correlation values between the different combinational algorithms and the auscultatory nurse measurements [7,23].
+
+In this work, the MLR technique can estimate the optimal-fitting model of an efficient function for the relationship between the dependent matrix and the independent vector. Based on the analysis from these results, we can prepare the dependent matrix and the independent vector for the MLR as given by
+                           
+                              (2)
+                              
+                                 
+                                    
+                                       χ
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 ≡
+                                 (
+                                 
+                                    
+                                       χ
+                                    
+                                    
+                                       s
+                                       (
+                                       1
+                                       ,
+                                       1
+                                       )
+                                    
+                                 
+                                 ,
+                                 …
+                                 ,
+                                 
+                                    
+                                       χ
+                                    
+                                    
+                                       s
+                                       (
+                                       k
+                                       ,
+                                       n
+                                       )
+                                    
+                                 
+                                 )
+                              
+                           
+                        where 
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                              
+                           
+                         denotes the estimated SBP matrix obtained using different combinational fusions for the SBP, subscript s denotes the SBP, 
+                           k
+                           (
+                           =
+                           8
+                           )
+                         is the number of different combinational algorithms, and 
+                           n
+                           (
+                           =
+                           85
+                           )
+                         is the numbers of subjects and
+                           
+                              (3)
+                              
+                                 
+                                    
+                                       ξ
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 ≡
+                                 (
+                                 
+                                    
+                                       ξ
+                                    
+                                    
+                                       s
+                                       ,
+                                       1
+                                    
+                                 
+                                 ,
+                                 …
+                                 ,
+                                 
+                                    
+                                       ξ
+                                    
+                                    
+                                       s
+                                       ,
+                                       n
+                                    
+                                 
+                                 )
+                              
+                           
+                        where 
+                           
+                              
+                                 ξ
+                              
+                              
+                                 s
+                              
+                           
+                         denotes the target SBP obtained by the auscultatory nurse measurements. Therefore, we need to analyze how closely the independent matrix 
+                           
+                              
+                                 ξ
+                              
+                              
+                                 s
+                              
+                           
+                         is related to the dependent vector 
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                              
+                           
+                        . Analyzing the two data set (
+                           
+                              
+                                 ξ
+                              
+                              
+                                 s
+                              
+                           
+                         vs. 
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                              
+                           
+                        ) using linear regression, the high CORRs is found as shown in Table 1. As an example, the CORRs [=0.79 (SBP) and 0.74 (DBP)] are acquired for the (AE, GA, MA) combination algorithm as shown in Fig. 3
+                        . For this, the first 85 measurements acquired from 85 subjects are used to estimate a vector of regression coefficients. We then prepare the remaining 340 measurements acquired from the 85 subjects as our test data. 
+                     
+
+Inspired by the above motivation, it is valid to utilize multiple regression as follows [7,24,25]:
+                           
+                              (4)
+                              
+                                 
+                                    
+                                       ξ
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       χ
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 
+                                    
+                                       β
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 +
+                                 ε
+                              
+                           
+                        where 
+                           
+                              
+                                 ξ
+                              
+                              
+                                 s
+                              
+                           
+                         denotes the dependent vector, 
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                              
+                           
+                         denotes the independent matrix, 
+                           
+                              
+                                 β
+                              
+                              
+                                 s
+                              
+                           
+                           =
+                           (
+                           
+                              
+                                 β
+                              
+                              
+                                 0
+                              
+                           
+                           ,
+                           
+                              
+                                 β
+                              
+                              
+                                 1
+                              
+                           
+                           ,
+                           …
+                           ,
+                           
+                              
+                                 β
+                              
+                              
+                                 k
+                              
+                           
+                           )
+                         is a vector of unknown regression coefficients, and 
+                           ε
+                         is an error term.
+
+Also, we represent 
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                                 (
+                                 k
+                                 ,
+                                 n
+                                 )
+                              
+                           
+                         by 
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                              
+                           
+                        , 
+                           
+                              
+                                 ξ
+                              
+                              
+                                 1
+                              
+                           
+                           ,
+                           
+                              
+                                 ξ
+                              
+                              
+                                 2
+                              
+                           
+                           ,
+                           …
+                           ,
+                           
+                              
+                                 ξ
+                              
+                              
+                                 n
+                              
+                           
+                         by 
+                           
+                              
+                                 ξ
+                              
+                              
+                                 s
+                              
+                           
+                        , and 
+                           
+                              
+                                 ϵ
+                              
+                              
+                                 s
+                                 ,
+                                 1
+                              
+                           
+                           ,
+                           
+                              
+                                 ϵ
+                              
+                              
+                                 s
+                                 ,
+                                 2
+                              
+                           
+                           ,
+                           …
+                           ,
+                           
+                              
+                                 ϵ
+                              
+                              
+                                 s
+                                 ,
+                                 n
+                              
+                           
+                         by 
+                           ϵ
+                         as follows:
+                           
+                              (5)
+                              
+                                 
+                                    
+                                       χ
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 =
+                                 [
+                                 
+                                    
+                                       
+                                          
+                                             1
+                                          
+                                          
+                                             
+                                                
+                                                   χ
+                                                
+                                                
+                                                   s
+                                                   (
+                                                   1
+                                                   ,
+                                                   1
+                                                   )
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   χ
+                                                
+                                                
+                                                   s
+                                                   (
+                                                   2
+                                                   ,
+                                                   1
+                                                   )
+                                                
+                                             
+                                          
+                                          
+                                             ⋯
+                                          
+                                          
+                                             
+                                                
+                                                   χ
+                                                
+                                                
+                                                   s
+                                                   (
+                                                   k
+                                                   ,
+                                                   1
+                                                   )
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             1
+                                          
+                                          
+                                             
+                                                
+                                                   χ
+                                                
+                                                
+                                                   s
+                                                   (
+                                                   1
+                                                   ,
+                                                   2
+                                                   )
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   χ
+                                                
+                                                
+                                                   s
+                                                   (
+                                                   2
+                                                   ,
+                                                   2
+                                                   )
+                                                
+                                             
+                                          
+                                          
+                                             ⋯
+                                          
+                                          
+                                             
+                                                
+                                                   χ
+                                                
+                                                
+                                                   s
+                                                   (
+                                                   k
+                                                   ,
+                                                   2
+                                                   )
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             ⋮
+                                          
+                                          
+                                             ⋮
+                                          
+                                          
+                                             ⋮
+                                          
+                                          
+                                             ⋮
+                                          
+                                          
+                                             ⋮
+                                          
+                                       
+                                       
+                                          
+                                             1
+                                          
+                                          
+                                             
+                                                
+                                                   χ
+                                                
+                                                
+                                                   s
+                                                   (
+                                                   1
+                                                   ,
+                                                   n
+                                                   )
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   χ
+                                                
+                                                
+                                                   s
+                                                   (
+                                                   2
+                                                   ,
+                                                   n
+                                                   )
+                                                
+                                             
+                                          
+                                          
+                                             ⋯
+                                          
+                                          
+                                             
+                                                
+                                                   χ
+                                                
+                                                
+                                                   s
+                                                   (
+                                                   k
+                                                   ,
+                                                   n
+                                                   )
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 ]
+                                 
+                                 and
+                                 
+                                 
+                                    
+                                       ξ
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 =
+                                 [
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   ξ
+                                                
+                                                
+                                                   s
+                                                   ,
+                                                   1
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   ξ
+                                                
+                                                
+                                                   s
+                                                   ,
+                                                   2
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             ⋮
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   ξ
+                                                
+                                                
+                                                   s
+                                                   ,
+                                                   n
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 ]
+                              
+                           
+                        
+                        
+                           
+                              (6)
+                              
+                                 
+                                    
+                                       
+                                          
+                                             β
+                                          
+                                          
+                                             ^
+                                          
+                                       
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       arg
+                                       
+                                       min
+                                    
+                                    
+                                       β
+                                       ∈
+                                       R
+                                    
+                                 
+                                 {
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             ξ
+                                          
+                                          
+                                             s
+                                          
+                                       
+                                       −
+                                       
+                                          
+                                             χ
+                                          
+                                          
+                                             s
+                                          
+                                       
+                                       
+                                          
+                                             β
+                                          
+                                          
+                                             s
+                                          
+                                       
+                                       )
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       ξ
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       χ
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 
+                                    
+                                       β
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 )
+                                 }
+                                 =
+                                 0
+                              
+                           
+                        
+                        
+                           
+                              (7)
+                              
+                                 
+                                    
+                                       
+                                          
+                                             β
+                                          
+                                          
+                                             ^
+                                          
+                                       
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             χ
+                                          
+                                          
+                                             s
+                                          
+                                          
+                                             T
+                                          
+                                       
+                                       
+                                          
+                                             χ
+                                          
+                                          
+                                             s
+                                          
+                                       
+                                       )
+                                    
+                                    
+                                       −
+                                       1
+                                    
+                                 
+                                 
+                                    
+                                       χ
+                                    
+                                    
+                                       s
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 
+                                    
+                                       ξ
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 .
+                              
+                           
+                        Therefore, we obtain the estimated regression coefficients 
+                           
+                              
+                                 
+                                    
+                                       β
+                                    
+                                    
+                                       ^
+                                    
+                                 
+                              
+                              
+                                 s
+                              
+                           
+                           (
+                           =
+                           
+                              
+                                 [
+                                 
+                                    
+                                       
+                                          
+                                             β
+                                          
+                                          
+                                             ^
+                                          
+                                       
+                                    
+                                    
+                                       0
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       
+                                          
+                                             β
+                                          
+                                          
+                                             ^
+                                          
+                                       
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ,
+                                 …
+                                 ,
+                                 
+                                    
+                                       
+                                          
+                                             β
+                                          
+                                          
+                                             ^
+                                          
+                                       
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 ]
+                              
+                              
+                                 T
+                              
+                           
+                           )
+                         as the weighted values using the multiple regression model for the optimality of combinational fusion, as shown in Table 2
+                        .
+
+Subsequently, we devise a technique to address the issue of the small sample set using the parametric bootstrap technique [5], which is a computer-intensive approach, in order to improve the accuracy of estimates from a small number of samples in cases where improving the accuracy of conventional techniques is invalid [3,5]. In particular, the parametric bootstrap technique is utilized to create the pseudo-sample set obtained from 
+                           F
+                           (
+                           
+                              
+                                 μ
+                              
+                              
+                                 ^
+                              
+                           
+                           ,
+                           
+                              
+                                 σ
+                              
+                              
+                                 ^
+                              
+                           
+                           |
+                           (
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                                 (
+                                 1
+                                 )
+                              
+                           
+                           ,
+                           …
+                           ,
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                                 (
+                                 k
+                                 )
+                              
+                           
+                           )
+                        , whereas the nonparametric bootstrap technique is used to estimate a parameter without any priori information [5]. As we mentioned previously, 
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                              
+                           
+                           =
+                           (
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                                 (
+                                 1
+                                 )
+                              
+                           
+                           ,
+                           …
+                           ,
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                                 (
+                                 k
+                                 )
+                              
+                           
+                           )
+                         for each subject is obtained using varied combinational fusion, as shown in Table 1. Thus, we can efficiently estimate a mean of the sample set using the multiple regression model for different combinational fusions for each subject as given by
+                           
+                              (8)
+                              
+                                 E
+                                 (
+                                 μ
+                                 |
+                                 
+                                    
+                                       χ
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 )
+                                 ≃
+                                 
+                                    
+                                       μ
+                                    
+                                    
+                                       ^
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       
+                                          
+                                             β
+                                          
+                                          
+                                             ^
+                                          
+                                       
+                                    
+                                    
+                                       0
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       χ
+                                    
+                                    
+                                       s
+                                       (
+                                       1
+                                       )
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          
+                                             β
+                                          
+                                          
+                                             ^
+                                          
+                                       
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       χ
+                                    
+                                    
+                                       s
+                                       (
+                                       2
+                                       )
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          
+                                             β
+                                          
+                                          
+                                             ^
+                                          
+                                       
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 +
+                                 ⋯
+                                 +
+                                 
+                                    
+                                       χ
+                                    
+                                    
+                                       s
+                                       (
+                                       k
+                                       )
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          
+                                             β
+                                          
+                                          
+                                             ^
+                                          
+                                       
+                                    
+                                    
+                                       k
+                                    
+                                 
+                              
+                           
+                        where 
+                           
+                              
+                                 μ
+                              
+                              
+                                 ^
+                              
+                           
+                         is the estimated mean of the sample set using the multiple regression model for each subject and 
+                           
+                              
+                                 β
+                              
+                              
+                                 ^
+                              
+                           
+                           (
+                           =
+                           
+                              
+                                 [
+                                 
+                                    
+                                       
+                                          
+                                             β
+                                          
+                                          
+                                             ^
+                                          
+                                       
+                                    
+                                    
+                                       0
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       
+                                          
+                                             β
+                                          
+                                          
+                                             ^
+                                          
+                                       
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ,
+                                 …
+                                 ,
+                                 
+                                    
+                                       
+                                          
+                                             β
+                                          
+                                          
+                                             ^
+                                          
+                                       
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 ]
+                              
+                              
+                                 T
+                              
+                           
+                           )
+                         denotes the estimator of 
+                           
+                              
+                                 β
+                              
+                              
+                                 ^
+                              
+                           
+                         as optimally weighted parameters, and
+                           
+                              (9)
+                              
+                                 E
+                                 (
+                                 σ
+                                 |
+                                 
+                                    
+                                       χ
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 )
+                                 ≃
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       ^
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       {
+                                       
+                                          
+                                             
+                                                1
+                                             
+                                             
+                                                k
+                                                −
+                                                1
+                                             
+                                          
+                                          
+                                             
+                                                ∑
+                                             
+                                             
+                                                j
+                                                =
+                                                1
+                                             
+                                             
+                                                k
+                                             
+                                          
+                                          
+                                             
+                                                (
+                                                
+                                                   
+                                                      χ
+                                                   
+                                                   
+                                                      s
+                                                      (
+                                                      j
+                                                      )
+                                                   
+                                                
+                                                −
+                                                
+                                                   
+                                                      μ
+                                                   
+                                                   
+                                                      ^
+                                                   
+                                                
+                                                )
+                                             
+                                             
+                                                2
+                                             
+                                          
+                                       
+                                       }
+                                    
+                                 
+                              
+                           
+                        where 
+                           
+                              
+                                 σ
+                              
+                              
+                                 ^
+                              
+                           
+                         denotes the estimated standard deviation of the sample set for each subject.
+
+In the parametric approach, the bootstrap samples based on 
+                           
+                              
+                                 F
+                              
+                              
+                                 
+                                    
+                                       μ
+                                    
+                                    
+                                       ^
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       ^
+                                    
+                                 
+                              
+                           
+                         are computed using the Monte Carlo method [4]. Thus, we generated B samples 
+                           
+                              
+                                 χ
+                              
+                              
+                                 s
+                                 (
+                                 b
+                                 )
+                              
+                              
+                                 ⁎
+                              
+                           
+                         with size k=8 and 
+                           ∀
+                           b
+                           ∈
+                           {
+                           1
+                           ,
+                           …
+                           ,
+                           B
+                           }
+                         from 
+                           
+                              
+                                 F
+                              
+                              
+                                 
+                                    
+                                       μ
+                                    
+                                    
+                                       ^
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       ^
+                                    
+                                 
+                              
+                           
+                         for each subject, as shown in Table 3
+                        .
+
+Note that the same concept is used simultaneously to obtain 
+                           
+                              
+                                 
+                                    
+                                       β
+                                    
+                                    
+                                       ^
+                                    
+                                 
+                              
+                              
+                                 d
+                              
+                           
+                           (
+                           =
+                           
+                              
+                                 [
+                                 
+                                    
+                                       
+                                          
+                                             β
+                                          
+                                          
+                                             ^
+                                          
+                                       
+                                    
+                                    
+                                       0
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       
+                                          
+                                             β
+                                          
+                                          
+                                             ^
+                                          
+                                       
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ,
+                                 …
+                                 ,
+                                 
+                                    
+                                       
+                                          
+                                             β
+                                          
+                                          
+                                             ^
+                                          
+                                       
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 ]
+                              
+                              
+                                 T
+                              
+                           
+                           )
+                         and 
+                           
+                              
+                                 χ
+                              
+                              
+                                 d
+                                 (
+                                 b
+                                 )
+                              
+                              
+                                 ⁎
+                              
+                           
+                         for each individual subject׳s DBP. In this paper, the parametric bootstrap method was used to determine the mean of the CIs and the ranges for the SBP and the DBP.
+
+The desired 
+                           100
+                           ·
+                           (
+                           1
+                           −
+                           α
+                           )
+                           %
+                         CI for the estimates of SBP is given by 
+                           (
+                           
+                              
+                                 
+                                    
+                                       
+                                          μ
+                                       
+                                       
+                                          ^
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          Q
+                                       
+                                       
+                                          1
+                                       
+                                    
+                                 
+                                 
+                                    ⁎
+                                 
+                              
+                              ,
+                              
+                                 
+                                    
+                                       
+                                          μ
+                                       
+                                       
+                                          ^
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          Q
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                 
+                                 
+                                    ⁎
+                                 
+                              
+                           
+                           )
+                        , where Q
+                        1 is the integer part of 
+                           B
+                           α
+                           /
+                           2
+                        , 
+                           
+                              
+                                 Q
+                              
+                              
+                                 2
+                              
+                           
+                           =
+                           B
+                           −
+                           
+                              
+                                 Q
+                              
+                              
+                                 1
+                              
+                           
+                           +
+                           1
+                        , and 
+                           
+                              
+                                 Q
+                              
+                              
+                                 3
+                              
+                           
+                           =
+                           B
+                           /
+                           2
+                         
+                        [3] with 
+                           α
+                           =
+                           0.05
+                         and B=200 [3]. Indeed, we use 
+                           
+                              
+                                 
+                                    
+                                       μ
+                                    
+                                    
+                                       ^
+                                    
+                                 
+                              
+                              
+                                 
+                                    
+                                       Q
+                                    
+                                    
+                                       3
+                                    
+                                 
+                              
+                              
+                                 ⁎
+                              
+                           
+                         for the estimates of the SBP for the individual subject because the median point Q
+                        3 was robust estimates in terms of outliers compared to the mean of 
+                           (
+                           
+                              
+                                 
+                                    
+                                       μ
+                                    
+                                    
+                                       ^
+                                    
+                                 
+                              
+                              
+                                 1
+                              
+                              
+                                 ⁎
+                              
+                           
+                           ≤
+                           ⋯
+                           ≤
+                           
+                              
+                                 
+                                    
+                                       μ
+                                    
+                                    
+                                       ^
+                                    
+                                 
+                              
+                              
+                                 B
+                              
+                              
+                                 ⁎
+                              
+                           
+                           )
+                        . Therefore, the estimates of the SBP and the DBP and the 95% CIs were constructed by taking the 2.5% and 97.5% percentile values from single blood pressure measurement using the proposed WBFA technique.
+
+@&#EXPERIMENTAL RESULTS@&#
+
+The goal of this subsection is to verify the symmetry of the weighted bootstrap distribution for the individual SBPs and DBPs. We used two methods for this; skewness and hypothesis testing. The value of skewness is a measure of symmetry given by
+                           
+                              (10)
+                              
+                                 
+                                    
+                                       s
+                                    
+                                    
+                                       k
+                                    
+                                    
+                                       ⁎
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       B
+                                    
+                                    
+                                       (
+                                       B
+                                       −
+                                       1
+                                       )
+                                       (
+                                       B
+                                       −
+                                       2
+                                       )
+                                    
+                                 
+                                 
+                                    
+                                       ∑
+                                    
+                                    
+                                       b
+                                       =
+                                       1
+                                    
+                                    
+                                       B
+                                    
+                                 
+                                 
+                                    
+                                       {
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            μ
+                                                         
+                                                         
+                                                            ^
+                                                         
+                                                      
+                                                   
+                                                   
+                                                      (
+                                                      b
+                                                      )
+                                                   
+                                                   
+                                                      ⁎
+                                                   
+                                                
+                                                −
+                                                
+                                                   
+                                                      
+                                                         
+                                                            μ
+                                                         
+                                                         
+                                                            ^
+                                                         
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         
+                                                            Q
+                                                         
+                                                         
+                                                            3
+                                                         
+                                                      
+                                                   
+                                                   
+                                                      ⁎
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            s
+                                                         
+                                                         
+                                                            ^
+                                                         
+                                                      
+                                                   
+                                                   
+                                                      ⁎
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       }
+                                    
+                                    
+                                       3
+                                    
+                                 
+                              
+                           
+                        where 
+                           
+                              
+                                 
+                                    
+                                       s
+                                    
+                                    
+                                       ^
+                                    
+                                 
+                              
+                              
+                                 ⁎
+                              
+                           
+                         is the measurement׳s standard deviation obtained from 
+                           (
+                           
+                              
+                                 
+                                    
+                                       μ
+                                    
+                                    
+                                       ^
+                                    
+                                 
+                              
+                              
+                                 (
+                                 1
+                                 )
+                              
+                              
+                                 ⁎
+                              
+                           
+                           ≤
+                           ⋯
+                           ≤
+                           
+                              
+                                 
+                                    
+                                       μ
+                                    
+                                    
+                                       ^
+                                    
+                                 
+                              
+                              
+                                 (
+                                 B
+                                 )
+                              
+                              
+                                 ⁎
+                              
+                           
+                           )
+                        . From the result of the skewness, it is confirmed that our weighted bootstrap distribution was an almost symmetrical distribution for the individual SBPs and DBPs, as shown in the last row of Table 4
+                        .
+
+A significance test is a general step to compare observed measurements with the truth of a hypothesis that we wish to assess. Thus, we can express the results of the significance test as a probability that measures how well the observed measurement and the hypothesis agree [26]. Indeed, the distribution of the weighted bootstrap sample can be confirmed as a normal based on the results of the test, as shown in Fig. 5
+                        . In our approach, the null hypothesis assumes that the distribution of the weighted bootstrap has an approximately normal distribution. In contrast, the alternative hypothesis is that the distribution of the weighted bootstrap does not approximate a normal distribution.
+
+
+                        
+                           
+                              
+                                 H
+                              
+                              
+                                 0
+                              
+                           
+                        : There is no difference between the distribution of the weighted bootstrap samples and normally distributed empirical measurements.
+
+
+                        
+                           
+                              
+                                 H
+                              
+                              
+                                 a
+                              
+                           
+                        : There is a difference between the distribution of the weighted bootstrap samples and normally distributed empirical measurements.
+
+The test statistic [26,27] was calculated based on the weighted bootstrap sample parameters as shown by
+                           
+                              (11)
+                              
+                                 
+                                    
+                                       z
+                                    
+                                    
+                                       ⁎
+                                    
+                                 
+                                 =
+                                 {
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      μ
+                                                   
+                                                   
+                                                      ^
+                                                   
+                                                
+                                             
+                                             
+                                                (
+                                                b
+                                                )
+                                             
+                                             
+                                                ⁎
+                                             
+                                          
+                                          −
+                                          
+                                             
+                                                
+                                                   
+                                                      μ
+                                                   
+                                                   
+                                                      ^
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      Q
+                                                   
+                                                   
+                                                      3
+                                                   
+                                                
+                                             
+                                             
+                                                ⁎
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      s
+                                                   
+                                                   
+                                                      ^
+                                                   
+                                                
+                                             
+                                             
+                                                ⁎
+                                             
+                                          
+                                          
+                                             
+                                                B
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 }
+                              
+                           
+                        In this step, we decided either to reject or not to reject H
+                        0. We accomplished this by finding a p value and comparing it to our significance level 
+                           (
+                           α
+                           =
+                           0.05
+                           )
+                        . Essentially, there was a 95% probability that our weighted bootstrap distribution would have a statistical difference that was real and not due to random probability. The p value is the probability associated with the observed 
+                           
+                              
+                                 z
+                              
+                              
+                                 ⁎
+                              
+                           
+                        . Specifically, a p value that is smaller than the level of significance 
+                           (
+                           α
+                           =
+                           0.05
+                           )
+                         represents an observed measurement that is not adequately normal. In contrast, a p value that is greater than the level of significance associated with the null hypothesis suggests that an observed measurement is sufficiently normal. Therefore, we confirmed that the average 
+                           p
+                           (
+                           =
+                           0.48
+                           )
+                         and 
+                           (
+                           0.49
+                           )
+                         for the SBP and DBP, which were greater than our significance level 
+                           (
+                           α
+                           =
+                           0.05
+                           )
+                        . Thus, we did not reject the null hypothesis. Indeed, we found that 
+                           
+                              
+                                 H
+                              
+                              
+                                 0
+                              
+                           
+                           (
+                           95.3
+                           %=
+                           81
+                           /
+                           85
+                           )
+                         and 
+                           
+                              
+                                 H
+                              
+                              
+                                 0
+                              
+                           
+                           (
+                           96.5
+                           %=
+                           82
+                           /
+                           85
+                           )
+                         were obtained from the weighted bootstrap distribution for the individual SBPs and DBPs, respectively, as shown in Table 4.
+
+In this paper, although five readings per subject were available, only one of the five measurements for each subject was assumed to be available and this value was used to implement the proposed methodology. Table 4 represents the averaged values of the systolic and diastolic blood pressures determined by the nurse, the estimated conventional methods MAA and LA algorithm (LAA), and estimated by the proposed WBFA with multiple regression model for a single measurement, and shows the average standard deviation of error for the remaining 340 measurements with 85 subjects used as our test data. To evaluate the experimental results, the mean error (ME) and SDE were used [15], as shown in Table 5
+                        . The ME and the SDE between the estimated BPs 
+                           (
+                           
+                              
+                                 p
+                              
+                              
+                                 i
+                              
+                           
+                           ,
+                           i
+                           =
+                           1
+                           ,
+                           2
+                           ,
+                           …
+                           ,
+                           n
+                           )
+                         and the auscultatory nurse measurements 
+                           (
+                           
+                              
+                                 r
+                              
+                              
+                                 i
+                              
+                           
+                           ,
+                           i
+                           =
+                           1
+                           ,
+                           2
+                           ,
+                           …
+                           ,
+                           n
+                           )
+                         were computed according to the recommendations of the AAMI protocol [15]. A device can pass the AAMI protocol if its measurements’ error has an ME value of less than 5mmHg with an SDE of less than 8mmHg [15]. We also compared the MAE and SDE of the proposed WBFA to those of the conventional methods. In addition, the root mean square error (RMSE) and SDE of the proposed WBFA were compared to those of the conventional methods. Based on the results of the MAE and the SDE, we calculated the probability of the British Hypertension Society (BHS) protocol [28] as shown in Table 6
+                        . Actually, the average error of the proposed WBFA technique was computed by 
+                           (
+                           
+                              
+                                 e
+                              
+                              
+                                 i
+                              
+                           
+                           =
+                           
+                              
+                                 p
+                              
+                              
+                                 i
+                              
+                           
+                           −
+                           
+                              
+                                 r
+                              
+                              
+                                 i
+                              
+                           
+                           )
+                        . Therefore, the ME, MAE, and RMSE were specifically defined as 
+                           (
+                           
+                              
+                                 
+                                    n
+                                 
+                                 
+                                    −
+                                    1
+                                 
+                              
+                              
+                                 
+                                    ∑
+                                 
+                                 
+                                    i
+                                    =
+                                    1
+                                 
+                                 
+                                    n
+                                 
+                              
+                              
+                                 
+                                    e
+                                 
+                                 
+                                    i
+                                 
+                              
+                           
+                           )
+                        , 
+                           (
+                           
+                              
+                                 
+                                    n
+                                 
+                                 
+                                    −
+                                    1
+                                 
+                              
+                              
+                                 
+                                    ∑
+                                 
+                                 
+                                    i
+                                    =
+                                    1
+                                 
+                                 
+                                    n
+                                 
+                              
+                              |
+                              
+                                 
+                                    e
+                                 
+                                 
+                                    i
+                                 
+                              
+                              |
+                           
+                           )
+                        , and 
+                           
+                              
+                                 (
+                                 
+                                    
+                                       
+                                          n
+                                       
+                                       
+                                          −
+                                          1
+                                       
+                                    
+                                    
+                                       
+                                          ∑
+                                       
+                                       
+                                          i
+                                          =
+                                          1
+                                       
+                                       
+                                          n
+                                       
+                                    
+                                    |
+                                    
+                                       
+                                          e
+                                       
+                                       
+                                          i
+                                       
+                                    
+                                    
+                                       
+                                          |
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                 
+                                 )
+                              
+                           
+                        , respectively. Also, the SDEs of the ME, MAE, and RMSE were easily calculated using the statistical method. We compared the CI results for the SBP and the DBP using the proposed WBFA method with those estimated by conventional methods (PMAE [3]), MAA using ST [3] and the “Guide to the expression of uncertainty in measurement (GUM) [29])”, as shown in Table 7
+                        . The last of these conventional methods was calculated using with five measurements it is not suitable for obtaining the CI from a single measurement. Here, we tried another experiment to verify the effectiveness of the CI of the SBP and DBP using the proposed WBFA method. Indeed, if the nurses average is included in the CIs of the proposed method, it implies a hit. So, we calculated the hit ratio for each subject. In this work, the hit number over 85 subjects is denoted as the hit ratio (HR).
+
+Additionally, the CORRs from linear regression were used to present the correlation between the auscultatory nurse measurements and the proposed WBFA technique, as shown in Fig. 4. Moreover, Bland–Altman plots [30] comparing the performance of the proposed WBFA and the auscultatory nurse measurements (85 subjects with the second measurement) are given in Fig. 6
+                        . We also compared the performance of the conventional MAA with that of the auscultatory nurse measurements (85 subjects with the second measurement) as shown in Fig. 7
+                        .
+
+@&#DISCUSSION@&#
+
+This is the first work to propose the WBFA with multiple regression model to estimate the CIs of the SBP and DBP based on a single oscillometric blood pressure measurement. The degree of accuracy of the estimates obtained with the proposed WBFA with multiple regression was computed in accordance with the AAMI standard protocol by comparing them with those obtained using the auscultatory nurse method and estimating the ME and SDE [15]. Indeed, the SDE is more significant than the ME, because an algorithm may be very inaccurate as the measurements may have small ME with large errors that are equally likely to be positive or negative. As seen in Table 5, the SDEs of the MEs acquired with the proposed WBFA with multiple regression model were shown to be 7.33 and 6.09mmHg for the SBP and the DBP, respectively. These results are more accurate than the results of the MAA (AE, GA, MA) and LAA (AE, CL, LA) combination methods. Note that the MAA (AE, GA, MA) and LAA (AE, CL, LA) procedures represented the best results among the conventional methods, as shown in Table 1. The differences in SDE between the proposed algorithm and the conventional MAA (AE, GA, MA) combinational approach for the SBP and DBP were 1.09 and 1.23mmHg, respectively. Furthermore, the proposed method also performed well compared to the LAA (AE, CL, LA) combinational approach; the SDEs of the SBP and DBP were reduced by 1.14 and 1.18mmHg, respectively.
+
+We also used the objective MAE and SDE to evaluate the proposed WBFA with multiple regression. As seen in Table 5, the proposed algorithm resulted in a lower MAE for the SBP (5.77mmHg) and DBP (4.52mmHg) compared to the conventional MAA and LAA methods. In addition, the SDE obtained with our proposed technique was found to be 4.49mmHg and 4.06mmHg for the SBP and DBP, respectively. The results of the evaluation were also superior to those obtained by the conventional MAA and LAA as shown in Table 5. Furthermore, we evaluated the performance of the proposed method by RMSE and SDE between the estimated results and auscultatory nurse measurements for the SBP and the DBP, and these results were also superior to those obtained with than conventional methods MAA and LAA as shown in Table 5.
+
+The protocol of the BHS with an A-D graded system would give an A to a device if 60% of its error measurements are within 5mmHg, 85% of its error measurements are within 10mmHg, and 95% of it error measurements fall within 15mmHg [28]. The standard BHS protocol has progressively less stringent criteria for the grades of B and C, and assigns a grade of D if a device performs worse than the requirements for the grade C. In Table 6, we present the BHS grading obtained by our proposed algorithm. In this paper, the percentages of the MAEs that were 
+                        ≤
+                        5
+                        
+                        mmHg
+                     , 
+                        ≤
+                        10
+                        
+                        mmHg
+                     , and 
+                        ≤
+                        15
+                        
+                        mmHg
+                      were computed for all 340 measurements. Based on the BHS criteria [28], the proposed WBFA achieved grades of B and A for SBP and DBP, respectively. The readings using the proposed method were 58.33% (
+                        ≤
+                        5
+                        
+                        mmHg
+                     ), 82.14% (
+                        ≤
+                        10
+                        
+                        mmHg
+                     ), and 95.24% (
+                        ≤
+                        15
+                        
+                        mmHg
+                     ) for the SBP in the test scenario and 66.67% (
+                        ≤
+                        5
+                        
+                        mmHg
+                     ), 89.29% (
+                        ≤
+                        10
+                        
+                        mmHg
+                     ), and 97.62% (
+                        ≤
+                        15
+                        
+                        mmHg
+                     ) for the DBP in the test scenario. The probabilities of the BHS protocol are higher than those obtained by the conventional methods MAA and LAA as shown in Table 6.
+
+Additionally, the Bland–Altman methods [30] comparing the proposed WBFA technique and the auscultatory nurse measurements (the second measurements for the 85 subjects) are presented in Fig. 6. The agreement between the conventional MAA (AE,GA,MA) and the auscultatory nurse measurements (85 subjects with the second measurement) was also compared by Bland–Altman plots (Fig. 7). The limits of agreement (see the bold horizontal lines in Figs. 6 and 7) that we utilized are (ME ±2×SDE) for all plots. The bias (see horizontal center lines) for all plots was small (
+                        ≤
+                        ±
+                        0.5
+                        
+                        mmHg
+                     ). These results indicate that the BP estimates acquired by the proposed WBFA technique and the conventional MAA method were in close quantitative agreement with those obtained by the auscultatory nurse measurements without being overly biased to any particular direction. In particular, the vertical spreads of the proposed WBFA technique for the SBP and DBP were narrower than those of the conventional MAA method were as shown in Figs. 6 and 7. The proposed WBFA technique exhibited a definite improvement over the conventional MAA and LAA in oscillometric BP estimation.
+
+The first goal of this paper was to derive the CIs for SBP and DBP estimates when only single blood pressure measurements were available. The CIs derived from the proposed scheme were much smaller than those obtained from the conventional methods (except for the 
+                        
+                           
+                              PMAE
+                           
+                           
+                              NPB
+                           
+                        
+                     ) for both the SBP and the DBP, probably because of the decrease in the standard deviation due to the increase in the pseudo-sample generation based on the WBFA with multiple linear regression method for each subject as shown in Table 7. Although the small sample set may affect the accurate of the bootstrap CI estimate, the SDEs of the CIs obtained from the proposed method for the SBP and DBP were smaller than those of the CIs obtained from the 
+                        
+                           
+                              PMAE
+                           
+                           
+                              NPB
+                           
+                        
+                      method. Interestingly, the CIs of the SBP and DBP from the proposed WBFA technique applied to the second measurement for each subject were similar to those of the SBP and DBP from the proposed WBFA method׳s application to the remaining measurements. Thus, we confirmed that the results of the proposed method were unaffected by repeated measurements. In Table 7, the HR of the PMAE method when compared with the nurses average recorded had a very low probability of 14% (=12/85) and 7% (=6/85) since the PMAE method had very narrow CIs. However, the HR of the proposed WBFA method improved 33% (=28/85) and 32% (=27/85) as shown in Table 7, when compared with the nurses recorded, in SBP and DBP.
+
+In conclusion, a novel methodology to obtain CIs of blood pressure estimates from single measurements was presented. The proposed methodology used combinatorial fusion techniques from a set of two OPIs, curve fitting procedures, and estimation methods to produce estimates for algorithmic fusion. The fused estimates were used to derive CIs (means) and ranges of the SBP and DBP via the WBFA with a multiple linear regression model. The proposed methodology produced tighter CIs when compared to the CI obtained through the ST method. When compared with the conventional MAA and LAA in the literature, the results demonstrated that the proposed technique improved the exactness of SBP and DBP estimation and provided tighter confidence intervals for the estimates. The proposed methodology is probably the only one currently available that can provide CIs for single sample blood pressure measurements.
+
+None declared.
+
+@&#ACKNOWLEDGMENTS@&#
+
+We wish to further thank Biosign Technologies Inc. for providing us with equipment and data. This research was supported by NRF (2014R1A2A1A10049735) and also this research was supported by NRF (14035195). We also thank to two independent trained observers (nurses), who obtained the blood pressure measurement.
+
+@&#REFERENCES@&#
+

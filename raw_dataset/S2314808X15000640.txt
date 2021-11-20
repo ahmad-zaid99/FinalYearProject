@@ -1,0 +1,169 @@
+@&#MAIN-TITLE@&#Facies analysis, glauconite distribution and sequence stratigraphy of the middle Eocene Qarara Formation, El-Minya area, Egypt
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           The studied rocks comprise two principal facies: lower argillaceous and upper carbonate.
+
+
+                        
+                        
+                           
+                           The recorded microfacies were deposited in shallow open marine environment.
+
+
+                        
+                        
+                           
+                           The argillaceous facies represents highstand systems tract.
+
+
+                        
+                        
+                           
+                           The carbonate facies represents transgressive systems tract.
+
+
+                        
+                        
+                           
+                           Two fourth-fifth order sequences were recognized in the Qarara Formation.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Sequence stratigraphy
+
+Middle Eocene
+
+Qarara Formation
+
+Glauconite
+
+Egypt
+
+@&#ABSTRACT@&#
+
+
+                  The Qarara Formation consists mainly of shale at the base and overlain by limestone at the top. The formation is Middle Eocene (Lutetian) in age. Three sections located at the eastern bank of the Nile River in El-Minya Province have been measured, described, and sampled. These sections from north to south are: Gebel Qarara, El-Sheikh Fadl, and Gebel El-Ahmar.
+                  The main microfacies identified in the studied sections are: silty claystone, silty shale, fossiliferous glauconite, glauconitic (green) sand, glauconitic fossiliferous ironstone, glauconitic bioclastic wacke-packstone, glauconitic bioclastic lime-mudstone-wackestone. These microfacies have been deposited in shallow open marine environment.
+                  Collectively the studied rocks contain two principal facies: lower argillaceous facies and upper carbonate facies that separated by glauconitic fossiliferous ironstone bed. The lower argillaceous part represents highstand systems tract (HST), whereas the upper carbonate part represents transgressive systems tract (TST). The glauconitic fossiliferous ironstone bed is recognized as a sequence boundary (SB).
+               
+
+@&#INTRODUCTION@&#
+
+The study area includes five mappable Eocene rock units: the Beni Suef Formation, the Samalut Formation, the Maghagha Formation, the Qarara Formation, and the El Fashn Formation. These five formations are Middle Eocene in age [1–3].
+
+The Eocene succession exposed in the east bank of the Nile River between Maghagha and El-Fashn is similar in gross lithologic characters to the succession developed in the area south of Fayum [4]. In the Fayum area, the formational names Maghagha, Qarara, and El-Fashn are replaced by the Muweilih, Midawara, Sath el Hadid, and Gharaq formations by Iskander [5].
+
+The present studied rock units belong to the Qarara Formation which was described by Bishay [3] and Omara et al. [6] on the basis of its Nummulites sp. content. The Qarara Formation is Late Lutetian in age by Cronin and Khalifa [7] due to the presence of smaller and larger foraminifera. The present study focuses on facies development, distribution of glauconite, and sequence architecture of the Middle Eocene Qarara Formation.
+
+@&#MATERIAL AND METHODS@&#
+
+Three outcrop locations were sampled, measured, and examined in detail (Fig. 1
+                     ). From north to south, these sections are: Gebel Qarara section (Lat. 28° 38′ 49.6″ N, Long. 30° 52′ 40.6″ E), El-Shiekh Fadl section (Lat. 28° 30′ 48.1″ N, Long. 30° 54′ 40.3″ E), and Gebel El Ahmar section (Lat. 28° 28′ 22.6″ N, Long. 30° 57′ 20.7″ E). Sixteen shale samples and seven carbonate ones were collected to represent the Qarara Formation. The collected samples were subjected to various analyses in the laboratory. These include general analyses of sediment texture, petrography, and X-ray Diffraction analysis. Twenty three thin sections were prepared and described under the polarizing microscope. Limestone microfacies were described following the classification of Dunham [9].
+
+Separation of clay fraction and preparation of samples for XRD analysis are normal routine work. Three oriented mounts were prepared for each sample. These typically include: (1) air-dried sample, (2) heating to 550 °C, for kaolinite destruction and dehydration of smectite which potentially hide chlorite peaks, and (3) treatment by ethylene glycol in order to reveal expandable clay minerals [10].
+
+The Middle Eocene rocks are developed at the east bank of the Nile River between Beni Suef and El-Minya Governorates. This area displays a complex variation in lithology and hence has been given formational names as listed in Table 1
+                     .
+
+The term Qarara Formation was used by Bishay [3] for the sequence of Gebel Qarara that forms the northern boundary of the Maghagha district. The Qarara Formation is Middle Eocene (Lutetian) in age and is composed of grey to green shale at its base (Fig. 2A
+                     ) and grading upward to marl and limestone at the top (Fig. 2B).
+
+The Qarara Formation overlies the Maghagha Formation, underlies El-Fashn Formation, and extends to Gebel Merier and Wadi Tarfa in the Egyptian Eastern Desert. Its fossil content comprises Nummulites gizehensis and Globorotalia centralis 
+                     [3]. In outcrop, this formation is represented by mixed shale-limestone successions (Fig. 3
+                     ).
+
+@&#RESULTS AND DISCUSSION@&#
+
+The study of particle sizes in the clayey samples was carried out using the pipette method adopted by Folk [11]. The results are summarized in Table 2
+                         and illustrated in the triangular diagram of Picard [12] (Fig. 4
+                        ). According to the classification of Picard [12], the fine sediments of Gebel El-Ahmar samples fall into clay and silty clay categories, the Sheikh Fadl samples are classified as clay, silty clay, sandy clay and clayey mud categories, whereas the Gebel Qarara samples fall into clay and silty clay categories. Therefore, all the studied clay and silty clay categories could be considered as fissile claystone or shale [13]. The sand fractions of the sandy clay of El-Sheikh Fadl contain high amounts of glauconite pellets, and they are considered as glauconitic sandy clays. The vertical grain size distributions through the studied sections are illustrated in Figs. 5–7
+                        .
+                        
+                     
+
+Clay fraction in the silty claystone microfacies varies between 71.92% and 99.13% with an average of 84.23%. X-ray diffraction analysis indicates that the common minerals are smectite and kaolinite (Fig. 8a
+                              ). The main components of this microfacies are quartz and feldspars that are scattered in a clay matrix. Quartz and feldspar grains are very angular to subangular (Fig. 9A
+                              ). Claystones are internally homogeneous and contain no visible bioturbation. Pyrite is ubiquitous in claystone microfacies and occurs as disseminated anhedral to euhedral crystals and as irregular patches (Fig. 9B).
+
+In silty shale microfacies, clay fraction ranges from 52.23 to 94.56% with an average of 77.88%. Quartz and feldspars vary between 5.45 and 15.14% with an average of 10.29% and are concentrated into discrete quartz laminae (Fig. 9C), while the reminders are abundant in a clay matrix. Most quartz grains are subangular to angular but a few are subrounded (Fig. 9D).
+
+Most clay particles are white (Fig. 9E), whereas some are green. X-ray diffraction indicates that they compose mainly of smectite and kaolinite with traces of illite (Fig. 8b). In quartz-poor silty shale microfacies, clays are uniformly elongate parallel to laminae (Fig. 9F). Fissures in the silty shale microfacies are either later infilled with gypsum (Fig. 10A
+                              ) or hematite (Fig. 10B). Clay pellets are scattered within silty shale microfacies with long axes almost parallel to lamination (Fig. 10C).
+
+Two types of lamination are determined in silty shale microfacies: quartz laminae and clay laminae (Fig. 10D). Quartz laminae are both continuous and discontinuous in approximately equal amounts. Clay laminae on the other hand vary in thickness.
+
+
+                              Interpretation: Shale and claystone in the studied rock unit represent relatively quiet water deposition in a distal setting, likely dominated by suspension fall-out, although some bed load processes and weak currents may have been involved [14].
+
+This microfacies is composed mainly of tightly spaced angular to subangular silt-sized quartz grains intermixed with rounded to subrounded, slightly oxidized glauconite pellets (Fig. 10E). Both quartz and glauconite grains are floated in a clay matrix. Large shell fragments are scattered in a fine clay matrix (Fig. 10F).
+
+
+                              Interpretation: The presence of glauconite is a good indicator of shallow marine settings [15,16]. In addition, the presence of bivalve fragments is an indication of low energy open shallow marine shelf environment [17].
+
+This microfacies is composed of sand-sized, subrounded, yellow to pale green glauconite grains, in addition to quartz grains with a limited distribution. Glauconite and quartz are embedded in a glauconitic clay matrix (Fig. 11A
+                              ). Most of the examined sections of this microfacies are well sorted and few are poorly sorted (Fig. 11B). The majority of the encountered glauconite grains are fractured, whereas some smooth grains are recorded (Fig. 11C).
+
+
+                              Interpretation: Glauconite forms exclusively in marine environments. McRae [18] stated that the accumulation of glauconite in large quantities indicates a low rate of sedimentation with normal marine salinity and weakly reducing environments. Because glauconite is slow to form, it is usually common with a transgression of relative sea level [19].
+
+This microfacies consists of well rounded, well sorted, silt-sized glauconitic grains. Echinoderms, miliolid foraminifera, large gastropods, ostracods, and bryozoans are floated in a hematitic cement (Fig. 11D, E). Glauconite grains exhibit different degree of diagenetic alteration which resulted in the progressive development of iron oxides. Such alteration proceeds either from outer rim of the glauconite grains to the center or from inside to outside, but from outside is the prominent alteration. Fossil moulds are partially or completely replaced by iron oxides (Fig. 11F).
+
+These microfacies are almost recorded in the uppermost parts of the studied sections just overlying the glauconitic fossiliferous ironstone bed. They are glauconitic in both Gebel El-Ahmar and Gebel Qarara sections. Carbonate units are represented by two microfacies: glauconitic bioclastic wacke-packstone and glauconitic bioclastic lime-mudstone-wackestone.
+
+This microfacies is dominated by nummilite shells (Fig. 12A
+                              ) with some miliolid foraminifera, echinoderm fragments, bryozoans of fenestral types and ostracods and well sorted, rounded glauconitic grains. The microfacies is characterized by large-sized nummilites with radial hyaline walls. Nummilites also show a pronounced extinction bands (Fig. 12B) that resulted from radial calcite crystals. The excellent preservation of these nummilite shells (Fig. 12C) indicates that they originally comprised low Mg-calcite [20]. The allochemical components are embedded in a fine-grained micrite matrix. Some cavities show geopetal-like structure (Fig. 12D) where large mosaic calcite crystals occupy parts of the cavity, and the rest is occupied by the original micrite infill.
+
+
+                              Interpretation: This microfacies is similar to SMF 5 and FZ 6 [21,22]. The microfacies is deposited in an agitated shoal environment where large shell fragments were abraded by wave action.
+
+This microfacies is dominated by bryozoans, echinoderm spines, nummulites, miliolid foraminifera that embedded in a micrite matrix (Fig. 12E). Fine sand-sized quartz grains and glauconite pellets are also encountered. Nummulite tests are fewer in number and smaller in size (Fig. 12F) than the previous microfacies. The recrystallization of the dull micrite matrix into microspar with high birefringence is the main diagenetic process that affected this microfacies.
+
+
+                              Interpretation: Low diversity fauna that composed of bivalves are commonly associated with muddy, shallow lagoon environments [17]. This microfacies is equivalent to SMF 9 and FZ 7 [21,22] that suggests deposition in shallow lagoon settings.
+
+Shale and claystone in the studied Qarara Formation were deposited in a quiet water environment. The presence of glauconite represents a condensed setting in an overall calm environment [23,24]. The carbonate microfacies are deposited in inner ramp settings because of the presence of larger foraminifera and bivalves [22].
+
+The application of sequence stratigraphy has led to improve our understanding of how stratigraphic units, facies tracts, and depositional elements relate to each other in time and space [25]. Galloway [26] defined depositional systems as three-dimensional assemblages of process-related facies that record major paleogeomorphic elements. The linkage of contemporaneous depositional systems is forming the subdivision of a sequence [27].
+
+In the studied sections, the recorded sequence boundary is characterized by local subaerial exposure. This sequence boundary has been recorded in the glauconitic fossiliferous ironstone bed between shale and limestone facies (Fig. 13A, B
+                        ). Glauconite in this bed was subjected to extensive oxidation during subaerial exposure, so that colour of the glauconite and the whole bed changed to brownish red (Fig. 13). Some glauconite grains show oxidation from the outer rim to the central part of the grain, whereas others show reverse regime (Fig. 11E, F).
+
+Lowstand systems tract (LST) is not recorded in the studied succession due to absence of coarse-grained sediments and minor subaerial unconformity. Highstand systems tract (HST) is generally characterized by varicoloured shale beds (Fig. 12). These shale beds are deposited in shallow to open marine environment. Relative sea level rises are recognized from the microfacies that comprise the transgressive systems tract (TST). These microfacies are dominated by wackestone-packstone microfacies which overlie the recorded sequence boundary.
+
+Glauconite formation and maturation require prolonged residence at or near the sediment–water interface and hence is a reliable indicator of low sedimentation rate [23]. Thus, occurrence of abundant glauconite reflects marine transgression and associated sediment starvation [16,28]. Recent studies focusing on passive-margin successions have shown that glauconite may be ubiquitous throughout a depositional sequence, but its origins (authigenic vs. detrital), abundance, and maturity vary systematically within and through systems tracts [19,29,30].
+
+Maximum glauconite abundance and maturity are characteristics of the condensed section (CS) and the associated surface of maximum sediment starvation, which occur at the transition between the TST and the highstand systems tract (HST). In passive-margin condensed sections, glauconite is commonly associated with concentrations of fossil debris, phosphatic grains, sulfides, carbonates horizons, and intense bioturbation [23,24,28,31,32]. In the recorded bed, fossil debris are very common with glauconite (Fig. 13B) in addition to the absence of phosphate, sulfides, and carbonates.
+
+According to facies changes in the three studied sections, two sequences were recognized. The recorded sequences are incomplete because the base of the Qarara Formation is not exposed. These sequences range in thickness from 3 to 18 m, so they are fourth to fifth in order [33]. In Gebel Qarara section (Fig. 5), these cycles are characterized by the presence of silty claystone at the base grading upward to silty shale facies, glauconitic fossiliferous ironstone and glauconitic bioclastic lime mudstone-wackestone facies. In El-Sheikh Fadl and Gebel El-Ahmar sections (Figs. 6 and 7), these cycles are represented by silty shale at the base, glauconitic green sand in the middle, and glauconitic bioclastic wacke-packstone at the top.
+
+From these cycles and facies changes, the deposition of the three sections has been affected by initial stages of sea level rise. The Gebel Qarara section was deposited under deeper conditions than El-Sheikh Fadl and Gebel El-Ahmar sections due to the presence of glauconitic bioclastic lime-mudstone-wackestone microfacies. This is in line with the concept of sea transgression during the Eocene period, as Gebel Qarara section lies in the north (i.e. deeper than the other two sections).
+
+@&#CONCLUSIONS@&#
+
+The Middle Eocene Qarara Formation consists of seven microfacies arranged from base to top as follows; silty claystone, silty shale, fossiliferous glauconite, glauconitic (green) sand, glauconitic fossiliferous ironstone, glauconitic bioclastic wacke-packstone, glauconitic bioclastic lime-mudstone-wackestone.
+
+Shale and claystone of the studied Qarara Formation deposited in quiet water settings. The presence of glauconite represents a condensed setting in an overall calm environment. The carbonate microfacies are deposited in inner ramp setting because of presence of the larger foraminifera and bivalve fragments.
+
+The studied rocks comprise two principal facies, lower argillaceous facies and upper carbonate one. They are separated by glauconitic fossiliferous ironstone bed. Two fourth-fifth order sequences were recognized in the studied sections. These sequences range in thickness from 3 to 18 m.
+
+@&#ACKNOWLEDGMENTS@&#
+
+The authors thank Mahmoud Lotfy and Mohamed Youssef, Department of Geology, Mansoura University, for their help during the field work. Authors would like to thank anonymous reviewers for their valuable comments.
+
+@&#REFERENCES@&#
+

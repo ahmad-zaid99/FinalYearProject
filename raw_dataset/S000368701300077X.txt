@@ -1,0 +1,243 @@
+@&#MAIN-TITLE@&#Effects of child restraint system features on installation errors
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           32 Volunteers installed 16 different child restraints using seatbelt or LATCH.
+
+
+                        
+                        
+                           
+                           LATCH connector type and adjustor type and the presence of belt lockoffs affected CRS installation tightness.
+
+
+                        
+                        
+                           
+                           Harness adjustor type affected rate of achieving a snug harness.
+
+
+                        
+                        
+                           
+                           Results indicate that feedback on correct installation would be helpful.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+@&#ABSTRACT@&#
+
+
+               Graphical abstract
+               
+                  
+                     
+                        
+                           
+                        
+                     
+                  
+               
+            
+
+@&#INTRODUCTION@&#
+
+Motor-vehicle crashes are the leading cause of death for children in the U.S. ages 3–18 (Subramanian, 2003). In 2008, 1633 children under the age of 16 died and 220,000 were injured as a result of motor-vehicle crashes in the U.S. (NHTSA, 2009). The use of a child restraint system (CRS) reduces the likelihood of fatality in a towaway crash by 71% for infants and 54% for toddlers, depending primarily on the restraint type and orientation (NHTSA, 2002).
+
+Several studies have documented high rate child restraint systems (CRS) “misuse”, which includes a large range of both safety-critical and minor deviations from manufacturers' instructions and best practices on installation and use (Eby and Kostyniuk, 1999; Decina and Lococo, 2005; Koppel and Charlton, 2009; Lane et al., 2000). Over 20 types of misuse have been identified, with loose vehicle installation and loose restraint harness consistently observed across studies as the most frequent types of misuse. Lane et al. (2000) surveyed the CRS installations for 109 subjects and found that 84% had between 1 and 3 installation errors with an average of 2 errors per installation.
+
+Several studies have identified factors correlated with misuse. Koppel and Charlton (2009) found statistically significant differences in misuse rates between CRS types, with forward-facing (FF) harness restraints having the higher observed level of misuse than rear-facing (RF) seats or belt-positioning boosters. Brown et al. (2010a, 2010b) found higher frequencies of misuse and higher numbers of errors per installation in convertible child restraints compared to those used in a single mode. Eby and Kostyniuk (1999) found that higher levels of misuse were associated with lower educational levels, situations where the driver was not the child's legal guardian, the number of times that the seat was moved/reinstalled into different vehicles, and children who were younger and smaller. Lane et al. (2000) found a trend for less misuse with higher education attainment level and participation in a private insurance program. Tsai and Perel (2009) tested experienced and novice CRS users to determine why CRS installation errors occurred. Both groups made common mistakes, but experienced subjects made the errors less frequently. Brown et al. (2009) examined the amount of physical force required to perform child restraint installations and suggested that the high amounts of exertion needed may contribute to installation error.
+
+Several tactics have been employed to improve child passenger safety (CPS), reduce misuse and increase use of CRS in the US. Since 2000, at least 38 states and the District of Columbia have improved and upgraded their child restraint laws, which has substantially improved the overall CRS usage rate and particularly increased booster seat use (SafeKids Worldwide, 2007; Decina and Lococo, 2005). However, while laws tend to increase usage, they do not necessarily increase correct usage (Brixey et al., 2010). In 1998, the National Highway Traffic Safety Administration (NHTSA) introduced their National Child Passenger Safety certification training program that has established a cadre of specially-trained child seat technicians across the nation to educate parents/caregivers and be advocates for safe travel practices for children. These programs have increased the availability of hands-on CRS instructional opportunities that have been shown to be a more effective educational method than information alone (Lane et al., 2000).
+
+Introduction of the Lower Anchorages and Tethers for CHildren (LATCH) system for securing CRS in vehicles has helped reduce misuse in some instances but has also led to new forms of misuse (Decina and Lococo, 2007). In the US, LATCH consists of a pair of dedicated lower anchors near the vehicle seat bight plus a top-tether anchor located behind the vehicle seatback. Child restraints are now equipped with hardware that usually consists of a LATCH strap (webbing with connectors on either end) that replaces the seatbelt as the primary means of securement and a tether strap that offers a third point of attachment. In situations where top-tether use was required and all the tether hardware was available, only 51% of those surveyed were using the top tether. Loose tethers were observed in 18% of cases and loose LATCH straps (attached to the lower anchorages) were seen in 30% of cases. In 20% of cases, CRS were installed using both LATCH and seatbelt, which is considered to be misuse.
+
+The NHTSA has established an ease-of-use rating system for CRS (NHTSA, 2002, 2006) in an effort to encourage CRS manufacturers to include features that may reduce misuse and enhance usability. The system provides an incentive for CRS manufacturers to improve products, labeling, and instruction manuals with respect to usability. As a result, many of the most difficult-to-use CRS features are no longer produced and designs continue to evolve to improve usability.
+
+Features on CRS products have evolved as manufacturers have responded to the implementation of LATCH and NHTSA Ease-of-Use. This project was conducted to explore how CRS installation errors are affected by features on the most recent CRS systems, while considering subject factors of education and child restraint installation experience. The research questions are:
+                        
+                           •
+                           Do CRS features affect misuse rates?
+
+Do CRS features affect the perceived ease-of-use?
+
+Are CRS ease-of-use ratings correlated with misuse rates?
+
+@&#METHODS@&#
+
+Thirty-two men and women were recruited based on their education level and experience with installing CRS, both of which have been shown in previous research to affect misuse rates (Eby and Kostyniuk, 1999; Lane et al., 2000; Tsai and Perel, 2009). All test protocols were approved by the University of Michigan Human/Behavioral Sciences Institutional Review Board, including the fliers and advertisements used in recruiting. Subjects were classified in the low education group if they had not attended college and in the high education group if they had graduated from college. To be considered experienced with respect to child restraint installation, the subject must have installed more than one type of child restraint in more than one type of vehicle within the last 5 years a total of at least 10 times. Subjects were recruited to obtain a range of ages (18–67), with a mean value of 38 years. Thirty-two subjects grouped into four categories of education/experience allowed consideration of subject factors as well as child restraint features.
+
+Each subject was asked to perform four convertible child restraint installations in a 2006 Pontiac G6 sedan shown in Figs. 1and 2
+                        
+                        . This vehicle was selected because its features were expected to provide a relatively unchallenging environment for installing CRS in the right-rear seating position. Convertible child restraints were selected because they can be used to investigate both rear-facing and forward-facing installations. An 18-month-old CRABI ATD weighing 11kg (25lb) was used to represent a child occupant for all installations. Each CRS was presented to the subject in the “as-delivered” configuration, with the harness, LATCH strap, and recline adjustment set to their original factory settings.
+
+
+                        Table 1
+                         contains a list of the 16 CRS selected for the study. CRS were purchased from retailers in the U.S. in Fall 2009. Descriptions and illustrations of the product features are found in Klinich et al. (2010). Features documented for use as potential predictors of installation error during analysis include:
+                           
+                              •
+                              lower connector type (hook-on or push-on)
+
+LATCH strap adjustor type (single or double)
+
+tether adjustor type
+
+tether attachment (single or dual)
+
+harness shoulder height adjustor
+
+harness tightening mechanism
+
+method of switching LATCH strap from FF to RF
+
+buckle type
+
+recline method
+
+use of a base (yes/no)
+
+FF lockoff style
+
+RF lockoff style
+
+LATCH storage method
+
+tether storage method (hook, pouch, compartment)
+
+chest clip type
+
+label readability (grade level)
+
+instruction manual factors (length, readability, use of color-coding, type of figures, and figure frequency).
+
+The test matrix was constructed to take advantage of within-subject comparisons that provide the maximum information from the number of subjects tested. Since each subject could only install four CRS in the time available, the matrix of CRS models was counterbalanced across subjects and subject groups. The allocation of CRS across subjects was chosen so that each subject was exposed to a range of CRS features. Each subject installed child restraints made by four different manufacturers, used at least one product with a hook-on LATCH connector and at least one product with a push-on LATCH connector, and used at least one product with a rethread harness and at least one product with an alternate style of harness-height adjustment. Each subject performed two forward-facing (FF) installations (one using LATCH and one using seatbelt) and two rear-facing (RF) installations (one using LATCH and one using the seatbelt), with the order of RF and FF installations varied in the test matrix. In addition, all 16 CRS were installed twice (once each direction) within a subject group and 8 times across all subjects. For the first and second installations, the subject could choose whether to install the CRS using LATCH or the vehicle seatbelt. However, for the third and fourth installations, the subject was asked to install the CRS using the method they did not use in the first two installations. Because it was considered likely that subjects would improve their skills and learn installation techniques between the first and last installations, the matrix included counterbalancing the order of trials to account for learning effects. Across the eight subjects in each group, every CRS is tested once in the first two trials and once in the last two trials to account for the possible factor of learning during the test session. In addition, this experiment design remains effective in the event that a subject cannot complete all four trials within the allotted time.
+
+After each installation, the subject filled out a questionnaire describing his or her assessment of the installation and the rating of different CRS features or the instructions/labels. Subjects were also asked whether children of different sizes could use the particular CRS in FF or RF modes. This question assessed whether subjects could interpret the CRS labels and instructions to choose the correct CRS for a child. An investigator, who had previously been certified under NHTSA child passenger safety technician training program, assessed the subject's installation, evaluating 42 factors for each installation as correct or incorrect. Questionnaires and assessment forms are included in Klinich et al. (2010). Harness slack and tether tightness were quantified by pinching the webbing along its length and measuring the height of the loop. To measure the tightness of the CRS installation, the experimenter placed a piece of tape on the vehicle seat cushion at the rearmost point of contact between the CRS structure and the seat cushion. A 178-N normal push force was applied at the belt path and the distance the CRS moved relative to the tape was recorded. The experimenter also evaluated installation tightness with the “1-inch” test, which is the measure of installation tightness taught in the CPS technician class. For this qualitative test, the experimenter grasps the CRS with their non-dominate hand near the belt path and tries to move it. If the CRS moves less than 1 inch (25mm) either side-to-side or front-to-back, it passes the test.
+
+Analyses were conducted using the CRS installation factors as dependent variables and CRS features or label/instruction type as potential predictors. Subject factors (experience, education, gender) were also considered potential predictors. Linear mixed models were used to identify factors significantly associated with CRS installation errors using SAS (PROC MIXED and PROC GLMMIX). These models allow subject and interactions with subject to be estimated as random effects to account for covariance associated with having the same subjects perform multiple installations; they also allow consideration of order. Between-subjects effects were education and experience. All other main effects (CRS features) were within subjects. Two-way interactions between CRS features and installation method (LATCH or seatbelt) were also within subject. This approach allows us to take advantage of the greater power of within-subject comparisons to draw conclusions for all but the between-subjects effects of education and experience. In all analyses, p-values less than 0.05 were considered significant.
+
+@&#RESULTS@&#
+
+
+                     Table 2
+                      summarizes the rate of correct installation for different factors that were assessed, plus the CRS and subject factors associated with each. All factors with p-values less than 0.1 are included in the table.
+
+Subject formal education was only significant for obtaining a tight installation and routing the belts correctly. Prior experience with CRS installation affected the rate of subjects achieving a tight installation and obtaining a snug harness. Only one installation by a subject in the lower education, inexperienced category was assessed as having sufficient CRS tightness. Men were more likely than women to have a snug harness and the correct recline angle.
+
+Subjects did not increase the rate of performing tight installations between the first and fourth trials. The installation direction (FF or RF) also did not affect level of adequate tightening observed, with correct tightness seen in 28% in FF installs and 32% in RF installs. Similarly, seatbelt installations were not statistically different from LATCH installations in tightness quality. The presence of a lockoff improved the rate of tight installations [F(1,111)=3.80, p
+                        =0.0539]. For RF, 50% of installs with lockoffs were sufficiently tight, while only 18% of installs without lockoffs were tight. Among FF installations, 32% of installations with lockoffs passed the 1-inch tightness test, while only 24% of installations without lockoffs did.
+
+When assessing rate of passing the 1-inch installation tightness test in LATCH installations, the type of lower connector on the CRS was significant [F(3,109)=3.16, p
+                        =0.0276], and the type of LATCH strap adjustor was marginally significant [F(3,109)=2.50, p
+                        =0.0635]. However, the correlation among child restraint features means that the effects of connector and adjustor cannot be statistically separated. The three different types of push-button connectors have higher rates of tight installation (35–100%) than hook-type connectors (17%). LATCH straps that tightened automatically had the highest rate of tight installation (67%), while LATCH straps with a single button-release adjustor had the worst (13%). LATCH straps with two button-release adjustors or a single latchplate adjustor were in between with similar rates of tight installations (35–40%). In addition, type of LATCH strap connector and type of LATCH strap adjustor were only significant when all both LATCH and seatbelt installations were considered, and the method of installation (LATCH or seatbelt) was not a significant predictor of CRS tightness. Because the characteristics of the LATCH straps would not be expected to have an effect on CRS installation tightness with the seatbelt, there must be another characteristic of the CRS (such as shapes of the shells) that is also contributing to the ability of subjects to obtain a tight installation using either the LATCH straps or the seatbelt.
+
+Harness shoulder height adjustor type was a significant predictor of harness snugness [F(4,72)=2.58; p
+                        =0.0447]. Fig. 3
+                         shows the percentage of installs with sufficient snugness for five different styles of harness shoulder height adjustor.
+
+Appropriate use was using the tether in FF mode, or using as directed in RF mode. Only three CRS tested in this study require RF tether use according to the manufacturers' instructions. The only predictor of whether the tether was appropriately used was the method of tether storage [F(2,113)=5.95; p
+                        =0.0035]. CRS that store the tether in a visible location on a hook on the CRS had the highest rates of appropriate use (83%) compared to those stored in a pouch (50%) or compartment (63%). When looking at tether use in RF installations, the tether was not used RF in 71% of trials, which complies with the manufacturer instructions for use. In 9% of RF trials, the tether was supposed to be used and was installed correctly. In 10% of RF trials, the tether was supposed to be used but was not. In the last 10% of RF trials, the tether was not supposed to be used but was attached.
+
+In 59% of LATCH installations, LATCH lower connectors were fully attached to the correct anchorage hardware in the vehicle and properly oriented. The most common type of misuse was attaching the connectors upside down. If subjects did not attach the LATCH strap to the correct hardware, they attached them to lower anchorages for other seating positions, the belt webbing, or buckle. Only the method of storing the LATCH strap was associated with correct attachment of the lower anchorages [F(1,24=3.28, p
+                        =0.0826)]. When the out-of-the-box condition had the LATCH strap stowed in its storage position, 67% of subjects correctly attached the LATCH strap when using it to install the CRS. When the LATCH strap was not in its stored position (i.e. some CRS are shipped with the LATCH strap hanging loose), only 45% of subjects correctly attached the LATCH strap.
+
+The subjects were allowed to choose the method of installation (LATCH vs. seatbelt) during the first two trials, and then asked to install using the opposite method in the last two trials. Just over 40% of the first two trials involved LATCH installation. No subject characteristic or CRS features were predictive of which method was used. In four trials, all of which were RF, subjects incorrectly used both the LATCH and seatbelt to install the CRS in four trials.
+
+Overall, 53% of installations had the harness correctly positioned relative to the ATD shoulders, as defined by using the slot closest to the ATD's shoulders and following the at-or-below rule for RF and at-or-above rule for FF. (All manufacturer instructions recommended this practice.) No CRS features were associated with subjects choosing the correct harness slot location. The harness was defined as correctly threaded if it was not twisted or folded and was attached correctly to the harness splitter plate. 83% of experienced subjects and 65% of inexperienced subjects correctly threaded the harness, but the difference was not significant.
+
+In almost all trials (95%), subjects correctly fastened the harness clip, and there were no successful predictors for the cases where they did not. In 98% of trials, the chest clip was correctly threaded on the harness. The harness clip was correctly positioned at armpit level in 53% of trials.
+
+Correct recline was achieved in 91% of FF installs and 66% of RF installs [F(1,34.73)=7.96, p
+                        =0.0078]. Most errors among RF installations resulted in the angle being too upright.
+
+Lower connector rerouting had a significant effect on proper belt-path use [F(1,19)=5.33; p
+                        =0.0324]. For LATCH installations, 78% of LATCH strap were routed correctly for CRS that require rerouting of the LATCH strap through the FF or RF belt path. For CRS where rerouting was not necessary, 96% of LATCH strap were correctly routed. No factors predicted correct belt-path routing for seatbelt installations.
+
+
+                        Fig. 4
+                         shows the distributions of seatbelt installs according to the method used by subjects to lock the seatbelt. For CRS without seatbelt lockoffs, the seatbelt retractor should be switched to locking mode in the test vehicle. For CRS with lockoffs, some require using both the lockoff and switching the retractor, while others specify that only the lockoff should be used. Green bars indicate correct use (lower three bars) and red bars indicate misuse where the seatbelt is not actually locked (top four bars). Blue bars indicate incorrect use, where the subject did not lock the seatbelt as directed, but locked the seatbelt using a different method, which would probably not have negative consequences. In only two trials did subjects use a locking clip. A greater proportion of FF trials involved a misused lockoff (not used) compared to RF trials.
+
+The subject consulted the CRS manual in 92% of trials. (The experimenter did not assess how extensively each subject used the manual.) No subject or CRS factors (including trial) predicted whether the subject did so. Overall, the subjects used the vehicle manual in 21% of trials. The rate of subjects consulting the vehicle manual dropped from 35% in the first trial to 8% in the fourth trial [F(1,114)=6.71, p
+                        =0.0108].
+
+The mean installation time according to subject group is shown in Fig. 5
+                        . Installation time was approximately doubled for inexperienced subjects compared to experienced subjects [F(1,23.7)=7.60; p
+                        =0.0110], but no effect of subject education was observed. The average installation time also varied with the method of installation [F(2,72.8)=4.40; p
+                        =0.0157], with average time of 33min for LATCH installations and 28min for seatbelt installations.
+
+
+                        Table 3
+                         shows the installation error rates of the current, controlled laboratory study compared to results found in field studies. Like most prior studies, insufficient tightness of the CRS installation and insufficient snugness of the harness were among the most frequently observed problems. Field studies indicate up to 20% of installations are performed with both LATCH and seatbelt, while this only occurred 3.5% of the time in the current study. Prior studies also indicated higher misuse rates in RF installations compared to FF installations, but most installation factors that were evaluated did not depend on installation mode. It is possible that the availability of more CRS with RF lockoffs, which have been shown to reduce the rate of loose CRS installations, may have helped reduce the differences in error rate.
+
+Subjects were asked to determine if five hypothetical children would be able to use the CRS tested in the trial RF or FF. Table 4
+                         shows the overall rates of answering each item correctly. Overall, subjects were best at identifying that the largest children should not use the CRS in RF mode. Only 21% of subjects correctly identified that a 4-lb child is too small to use most of the convertibles in the study. Notably, 12% of subjects indicated that a 4-lb infant could use the restraints FF, which would be a serious misuse.
+
+The third RF question had two significant predictors of correct answer, with those who had just completed a RF installation more likely to obtain the correct answer than those who had just completed a FF installation [F(1,103)=4.65, p
+                        =0.0333]. In addition, length of the manual was a predictor, with subjects more likely to obtain the correct answer if the manual was longer [F(1,103)=4.25, p
+                        =0.0418]. The length of the manual was also significantly correlated with the correct answer to the fourth and fifth FF questions, although the fourth question was more likely to be correctly answered with a longer manual [F(1,107)=3.34, p
+                        =0.0704], while the fifth question was more likely to be correctly answered with a shorter manual [F(1,105)=4.12, p
+                        =0.0449]. None of the other questions had predictors associated with the correct responses.
+
+Mean values of subject rating of ease-of-use of the CRS and their own performance installing and using the CRS were calculated for each child restraint and plotted against relevant installation errors to document how subject perception matched performance. In almost every instance, there was no discernible correlation between subject ratings and performance. Because of this, no statistical analysis of these relationships was performed. The few exceptions indicate that the two CRS obtaining the highest rate of correct harness snugness were rated highest by the subjects on how well they secured the child.
+
+@&#DISCUSSION@&#
+
+Subject formal education level and prior experience with CRS installation were the two main factors considered in subject recruitment. Higher level of education was associated with sufficiently tight CRS installation and choosing the correct belt path to use on the CRS. That these two critical CRS installation factors (as opposed to child securement factors) were improved by a subject's education level suggests that the sections of labels and manuals addressing installation of the CRS may be too challenging for subjects who have not attended college, or that subjects were not able to find the relevant section. Prior experience with CRS installation improved levels of achieving sufficiently tight CRS installation and making the harness snug enough around the ATD. However, experience was not a factor when considering most other installation tasks, indicating that experience with installing at least two different child restraints regularly (our definition of experienced) does not translate into improved outcomes when installing four child restraints that have different features.
+
+Prior to the study, it was expected that subjects might improve their installation techniques as they gained experience performing four installations in the same vehicle during a single test session. However, there was no improvement in any installation factor, such as harness snugness or installation tightness, over the course of four trials. The four CRS installed by each subject were from four different manufacturers, and were selected to provide a range of features being examined. Experience with one CRS installation apparently did not help on the subsequent trials. This may be due to the lack of feedback after each installation. The lack of improvement also may have been due in part to the fact each of the four trials used a different method/mode (seatbelt/LATCH, RF/FF) of installation. This was an unexpected benefit of the study, because it allowed a similar assessment of CRS features regardless of the trial number. The only factor that varied with trial was use of the vehicle manual, which decreased from the first through the fourth trial as the subjects continued installations in (and became more familiar with) the vehicle.
+
+The current study identified a few factors for which no predictors of installation characteristics were identified: the initial choice of LATCH or seatbelt to install the first two CRS, whether LATCH anchorages were correctly attached, and proper fastening of the buckle.
+
+In 96% of the trials, the subjects were observed to consult the CRS manual at least briefly. However, the amount of time they spent with the manual and how they used it was not monitored. Subjects were instructed that they could use the CRS manuals and labels, which may have contributed to the high rate of CRS manual use. This finding contrasts with the common perception that few caregivers use CRS manuals.
+
+Another unexpected finding was that the mode or method of installation was not often a significant predictor of installation factors. For example, rates of CRS installation tightness and choosing the correct belt path were similar for LATCH and seatbelt installations, as well as for FF and RF modes. Similar rates of correct recline angle were found in LATCH and seatbelt installations. In the vehicle used during this study, LATCH did not generally result in improved installation.
+
+The unexpected lack of improvement in installation through four trials with different CRS suggests several possibilities. Differences in CRS and installation direction and methods (FF/RF, LATCH/seatbelt) may have reduced the benefit of knowledge gained in previous installations with different CRS. Most importantly, the accurate, timely feedback that is critical to learning was missing. The rate of installation mistakes was high, yet the subjects did not accurately perceive these mistakes and the investigators (by design) did not point them out. The absence of any correlation between subject ease-of-use ratings of CRS features and their performance in terms of correct usage suggests that some type of negative feedback for incorrect usage could be beneficial.
+
+This observation has broad implications for efforts to reduce CRS misuse, because it suggests that efforts that do not provide specific, timely feedback to the installer on critical issues are not likely to be highly successful in reducing the incidence of those errors. Given that loose CRS installation remains the biggest problem in CRS installation, methods to provide feedback for this particular error would likely provide the most benefit. The feedback could come from the CRS itself (integrated angle indicators with red and green regions are an example). One solution to this problem from NHTSA's experience is the car-seat check: certified technicians providing hands-on instruction for caregivers and ensuring proper installation of a particular CRS in a particular vehicle for a particular child.
+
+Other studies of child restraint misuse have also confirmed the benefits of feedback. Parents who participated in car-seat checks had lower rates of errors at a twelve-month follow-up (Duchossois et al., 2008). Child occupants did not have their restraint checked at fitting stations in Australia were 1.8 times more likely to be using their restraint incorrectly (95% CI 1.1–2.8) than children whose restraint had been checked (Brown et al., 2011). Keay et al. (2012) reports that 41% of children participating in intervention programs were using child restraints correctly, compared to 31% of children who did not. Tessier (2010) performed a study of new parents, and found that those receiving hands-on instruction rather than just educational materials were 4 times more likely to correctly use the child restraint.
+
+This testing was conducted in a laboratory setting, using an ATD, selected CRS, and a single vehicle. The subjects were recruited by word of mouth and newspaper ads, and hence are not necessarily representative of potential CRS users.
+
+As noted previously, the use of production child restraints meant that design factors of interest were correlated across restraints, and also correlated with other factors not explicitly studied, such as trim levels. Although the complex experimental design provided useful results with a modest sample size, that modest sample size also means that some features were only available on a single product and other features were correlated with label design and each other. The design focused on decorrelating certain major features as much as possible, but without building a fully reconfigurable seat that can represent all CRS features, it is impossible to test every combination of features in an efficient study. The results suggest some design factors that might be examined more directly in a subsequent study. For example, the influence of LATCH system design on installation tightness could be evaluated by retrofitting a single CRS with multiple systems.
+
+Many subjects experienced high levels of frustration. These levels may have been reduced if the participants installed only one child restraint model in one configuration, which of course is a more realistic condition. The time-consuming nature of the installations (averaging about 30min) meant that the frustration may have become cumulative, leading to less attentive performance (although the rates of successful installation did not change with trial order).
+
+The study also did not examine the potential effect of securing one's own child, rather than a dummy. Parents securing their own children with a single CRS may devote more time to obtaining a good installation. On the other hand, the similarities between misuse rates in the current study and previous field data on misuse suggest that this may not be the case.
+
+The study used only one vehicle for testing. Both the seatbelt and lower anchorages were near the bight (the intersection of the seat cushion and seatback). Results may differ on vehicles where the lower anchorages and seatbelt anchorages have more disparate locations.
+
+Many different types of misuse were evaluated and reported. In this study, gross misuse is not distinguished from moderate or minor misuse, although different types of misuse have the potential to affect CRS effectiveness differently. While there is consensus that loose attachment of the CRS is critical, and proper chest clip height less important, the importance of other misuse (such as obtaining a tight tether) are debatable. In addition, having multiple minor errors in an installation can act together to reduce effectiveness as much as a single major error. Some types of misuse may pose a problem only in severe crashes.
+
+This study showed potential benefit in reducing misuse from belt lockoffs, easier switching of the LATCH strap from RF to FF modes, and characteristics of LATCH strap tightening mechanisms. These are items not currently addressed explicitly in the NHTSA Ease-of-Use program and could be considered in future versions.
+
+Regarding adjustment of the harness slot heights, currently more points are awarded under the NHTSA EOU system to harnesses that do not need to be rethreaded. The data from the current study show that not all alternatives to rethreading are equal. The subjects performed best with system that employed tabs on the harness for readjustment. Moderate performance was achieved with systems that used rethreading, side knobs and rotating lever adjustors while systems that adjusted via side handles created the most problems. The qualities of the best-performing system are that the adjustment mechanism is operated while facing the child, so the harness can be adjusted and assessed simultaneously. The labels are also visible from this viewpoint.
+
+The results concerning LATCH connector type are already essentially covered in the NHTSA EOU rating in a manner consistent with the findings. The current study found that push-button lower LATCH connectors result in better installations that hook-on LATCH connectors. The NHTSA EOU assessment of whether twisting is required to release the lower connector divides products into the same two groups and rates them consistently with the results of this study.
+
+This study identified several features of child restraints that reduced installation error. Storing the tether on a hook rather than a pouch or compartment, having lower connectors that do not require rerouting between rear-facing and forward-facing modes, and providing belt lockoffs on rear-facing restraints were the features with the most significant effect on installation error. Child restraint manufacturers should consider incorporating these features into their products, and programs rating child restraint ease-of-use should evaluate products with these features more highly.
+
+The failure of volunteers to reduce installation error frequency over the course of four installations indicates a need for feedback when caregivers make mistakes. While educational efforts that include hands-on training of caregivers should continue to be provided, the confidence of subjects in their installations despite frequent errors indicates that people who need help often will not seek it out. More research is needed to identify ways of designing feedback into child restraint products.
+
+@&#ACKNOWLEDGMENTS@&#
+
+This work was funded by the National Highway Traffic Safety Administration under cooperative agreement DTNH22-09-R-00286 with collaboration between Virginia Tech Transportation Institute and the University of Michigan.
+
+The authors would like to acknowledge Charles Bradley, Amanda Herrick, Jamie Moore, Nichole Ritchie Orton, and Rachael Hamilton for their contributions to this project.
+
+@&#REFERENCES@&#
+

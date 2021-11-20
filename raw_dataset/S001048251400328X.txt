@@ -1,0 +1,1489 @@
+@&#MAIN-TITLE@&#Real time estimation of generation, extinction and flow of muscle fibre action potentials in high density surface EMG
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           New algorithm to estimate generation, propagation and extinction of muscle fibre action potentials from EMG.
+
+
+                        
+                        
+                           
+                           Application 1: investigation of muscle anatomy (orientation of fibres and position of innervation zone and tendons).
+
+
+                        
+                        
+                           
+                           Application 2: investigation of muscle activity (conduction velocity of the action potentials along the fibres).
+
+
+                        
+                        
+                           
+                           Application 3: selection of optimal locations of the channels from which to extract reliable EMG indexes.
+
+
+                        
+                        
+                           
+                           The method is real time, opening potential applications in prosthesis control and in biofeedback.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Electromyography
+
+Optical flow
+
+Innervation Zone
+
+Tendon
+
+Fibre Direction
+
+Real time
+
+@&#ABSTRACT@&#
+
+
+               Graphical abstract
+               
+                  Muscle fibre contractions is induced by action potentials which are generated at the innervation zone (IZ), propagate along the muscle fibres and extinguish at the tendon endings. Surface EMG reflects this bioelectrical activity of the muscle fibres. This paper proposes an innovative method which fits 2D high density surface EMG to a model describing production and flow, estimating the generation/extinction and propagation of action potentials. Two representative examples of applications are shown in Fig. 1. The method is real time, opening new possible applications: it investigates automatically muscle anatomy and activity, supporting the study of dynamic contractions, the control of prosthesis or the development of a biofeedback; moreover, it can support the automatic selection the optimal locations of the electrodes (far from IZ and tendons) from which EMG indexes can be reliably estimated.
+                        
+                           
+                        
+                     
+                  
+               
+            
+
+@&#INTRODUCTION@&#
+
+Surface electromyogram (EMG) is the potential recorded over the skin surface resulting from the generation, propagation and extinction of action potentials at the neuromuscular junction, along the muscle fibres and at the tendon endings, respectively. High density surface EMG has been proposed to investigate the muscle activity on a wide spatial area with a good selectivity [1] and is finding many applications, e.g. in clinics [2–4], basic physiology [5], ergonomics [6] and sport science [7].
+
+Surface EMG recorded using two dimensional (2D) grids of electrodes may be considered as a set of images, which contain information about generation, propagation and extinction of the action potentials [1]. When neglecting generation and extinction, the propagation of action potentials can be described as a flow. Optical flow algorithms have been introduced to estimate the motion of objects in video-clips from a fixed camera or the relative motion of the observer with respect to the scene. Different applications were proposed, e.g. in machine vision [8], in precipitation forecasting [9,10], in the investigation of moving images within the scenes from a television signal [11], in robotics (to incorporate image processing techniques to the control of navigation, for object detection and tracking, image dominant plane extraction, movement detection and visual odometry [12,13]) and in the control of micro air vehicles [14]. Classical methods can estimate the optical flow from a couple of subsequent images [15–17]. Some multi-frame techniques were also introduced, in order to enhance robustness to noise and to improve the discriminating capabilities of the algorithm [18,19]. A classical technique [15] was applied also to surface EMG [20], to investigate the propagation of the action potentials. The flow was estimated using an iterative algorithm, introducing different pairs of EMG maps in each iteration, spanning about 1s of acquisition. The estimated flow was used to investigate the position of the innervation zone (IZ), even though generation is implicated there.
+
+A model describing also generation and extinction, in addition to propagation, was introduced in [21] to study the dynamics of rainy clouds from radar images. A multi-frame technique was applied (also because of the additional unknowns to be estimated). The method was tested on synthetic signals, showing its feasibility for the accurate estimation of the direction and velocity of the motion of clouds and their generation or depletion. Such a method was adapted here to surface EMG from 2D electrode grids, with the aim of extracting information on muscle anatomy and action potential propagation. Care was devoted to the reduction of the computational cost, in order to extract the information in real time.
+
+The automatic investigation of the anatomy of the muscle fibres under the electrodes is useful per se, but also in order to counteract for possible variations of the fibre orientation or IZ and tendon shift under the electrodes (especially in dynamic conditions). Indeed, the algorithm could be used as a pre-processing step to properly select the channels for applying other methods for information extraction (e.g., for amplitude or spectral content estimation [22]). Moreover, as the method is real time, it could be embedded into a biofeedback.
+
+Estimating EMG generation/extinction and flow is challenging for many reasons. The sampling in space is not so dense as in the case of radar or movie images and the recorded information is reduced by the blurring induced by the volume conductor [23]. Moreover, many physiological or technical sources of noise can be present, including tissue inhomogeneity [24,25], non-parallel muscle fibres [26], fibres going deep in the muscle [27], variations in the thickness of the tissues or other possible sources of inhomogeneity or anisotropy [28,29] or detection problems [30]. Moreover, even the generation and extinction of action potentials do not reflect in a simple appearing or disappearing of a waveform in the recorded EMG, but they involve important shape variations of the potential, which depend on the location of the active fibre [28,29].
+
+In this paper, the method for optical flow and source estimation is presented and tested on simulations of surface EMG from finite length fibres. The parameters of the model (velocity flow and source term) were estimated from EMG maps simulated as recorded from different electrode grids and using a different sampling rate. Examples of applications to muscles with non-parallel fibres are also shown. Potentialities of the method in providing information about the direction of the muscle fibres, the location of generation and extinction sites (IZ and tendon endings) and the velocity of propagation of the action potentials are shown. New potential real time applications are also discussed.
+
+@&#METHODS@&#
+
+Surface EMG maps are modelled by the following equation:
+                           
+                              (1)
+                              
+                                 
+                                    
+                                       ∂
+                                       I
+                                       (
+                                       x
+                                       ,
+                                       y
+                                       ,
+                                       t
+                                       )
+                                    
+                                    
+                                       ∂
+                                       t
+                                    
+                                 
+                                 +
+                                 
+                                    v
+                                    →
+                                 
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 )
+                                 ∇
+                                 I
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 ,
+                                 t
+                                 )
+                                 =
+                                 F
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 )
+                              
+                           
+                        where 
+                           I
+                           (
+                           x
+                           ,
+                           y
+                           ,
+                           t
+                           )
+                         is the EMG image (monopolar detection) as a function of the spatial coordinates 
+                           (
+                           x
+                           ,
+                           y
+                           )
+                         and time 
+                           t
+                        , 
+                           
+                              v
+                              →
+                           
+                           (
+                           x
+                           ,
+                           y
+                           )
+                           =
+                           (
+                           
+                              
+                                 v
+                              
+                              
+                                 x
+                              
+                           
+                           (
+                           x
+                           ,
+                           y
+                           )
+                           ,
+                           
+                           
+                           
+                              
+                                 v
+                              
+                              
+                                 y
+                              
+                           
+                           (
+                           x
+                           ,
+                           y
+                           )
+                           )
+                         is the velocity flow and 
+                           F
+                           (
+                           x
+                           ,
+                           y
+                           )
+                         is the source term (which describes generation if positive, depletion if negative; 
+                        Fig. 1 shows an example of flow and source term computed from interference EMG). The left hand side of Eq. (1) is the time derivative along the path of a propagating object of the image that during its propagation may also vary its amplitude as an effect of the source term 
+                           F
+                           (
+                           x
+                           ,
+                           y
+                           )
+                        . As both space and time variables are sampled, differential operators are estimated with approximation. Velocity flow and source term are assumed to be constant in the considered time window, which is sampled by N EMG images.
+
+It is not possible to solve an optical flow problem from two images, as two unknowns (the two components of the velocity flow) are to be estimated from one equation (aperture problem [17]). In the case of Eq. (1), the number of unknown functions is still greater (also the source term should be estimated). Moreover, the source term could account for any time evolution of the image 
+                           I
+                           (
+                           x
+                           ,
+                           y
+                           ,
+                           t
+                           )
+                         without including any flow 
+                           
+                              v
+                              →
+                           
+                           (
+                           x
+                           ,
+                           y
+                           )
+                        , leading to the trivial solution
+                           
+                              (2)
+                              
+                                 F
+                                 =
+                                 
+                                    
+                                       ∂
+                                       I
+                                    
+                                    
+                                       ∂
+                                       t
+                                    
+                                 
+                                 ,
+                                 
+                                 
+                                    v
+                                    →
+                                 
+                                 =
+                                 0
+                              
+                           
+                        
+                     
+
+This problem is avoided including more than two images. Indeed, both the velocity field and the source term are assumed to be constant in Eq. (1) for all the N frames in the time window under consideration. This imposes that the motion of waveforms in different images is accounted for by the velocity field 
+                           
+                              v
+                              →
+                           
+                           (
+                           x
+                           ,
+                           y
+                           )
+                         and the generation or extinction of objects determine the source term 
+                           F
+                           (
+                           x
+                           ,
+                           y
+                           )
+                        .
+
+The simplifying assumptions of the model and the random noise included in the data impose that Eq. (1) can apply only within some approximations. Thus, it is not expected that the parameters in (1) (i.e. 
+                           
+                              v
+                              →
+                           
+                           (
+                           x
+                           ,
+                           y
+                           )
+                         and 
+                           F
+                           (
+                           x
+                           ,
+                           y
+                           )
+                        ) can be estimated exactly, but only minimizing the error of the data with respect to the model. Given N images, the velocity field 
+                           
+                              v
+                              →
+                           
+                           (
+                           x
+                           ,
+                           y
+                           )
+                         and the source term 
+                           F
+                           (
+                           x
+                           ,
+                           y
+                           )
+                         can be estimated by solving the following mean squares error problem
+                           
+                              (3)
+                              
+                                 
+                                    
+                                       min
+                                    
+                                    
+                                       
+                                          v
+                                          →
+                                       
+                                       ,
+                                       F
+                                    
+                                 
+                                 
+                                    ∑
+                                    
+                                       i
+                                       =
+                                       1
+                                    
+                                    
+                                       N
+                                       −
+                                       1
+                                    
+                                 
+                                 
+                                    
+                                       ∑
+                                       
+                                          j
+                                          =
+                                          i
+                                          +
+                                          1
+                                       
+                                       
+                                          min
+                                          (
+                                          i
+                                          +
+                                          K
+                                          ,
+                                          N
+                                          )
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             ‖
+                                             
+                                                
+                                                   
+                                                      I
+                                                   
+                                                   
+                                                      t
+                                                   
+                                                   
+                                                      i
+                                                      j
+                                                   
+                                                
+                                                +
+                                                
+                                                   v
+                                                   →
+                                                
+                                                ∇
+                                                
+                                                   
+                                                      I
+                                                   
+                                                   
+                                                      i
+                                                      j
+                                                   
+                                                
+                                                −
+                                                F
+                                             
+                                             ‖
+                                          
+                                          2
+                                       
+                                    
+                                 
+                              
+                           
+                        where 
+                           
+                              
+                                 I
+                              
+                              
+                                 t
+                              
+                              
+                                 i
+                                 j
+                              
+                           
+                           =
+                           (
+                           
+                              
+                                 I
+                              
+                              i
+                           
+                           −
+                           
+                              
+                                 I
+                              
+                              j
+                           
+                           )
+                           /
+                           (
+                           i
+                           −
+                           j
+                           )
+                           d
+                           t
+                         is the discrete version of the time derivative, with 
+                           
+                              
+                                 I
+                              
+                              i
+                           
+                         indicating the ith EMG map and 
+                           d
+                           t
+                         being the time sample, and 
+                           ∇
+                           
+                              
+                                 I
+                              
+                              
+                                 i
+                                 j
+                              
+                           
+                         is the gradient of the EMG map (estimated using a finite difference second order approximation
+                           1
+                        
+                        
+                           1
+                           The finite difference approximation of the derivative is obtained expressing it as a linear combination of the potential from neighbouring channels placed along the direction in which the derivation is performed [31]. A Taylor series approximation is considered for each channel and the coefficients of such a linear combination are chosen in order to cancel out terms of lower order. Using three terms, a second order approximation can be obtained as follows: 
+                                 
+                                    
+                                       
+                                          (
+                                          ∂
+                                          u
+                                          /
+                                          ∂
+                                          x
+                                          )
+                                       
+                                       |
+                                    
+                                    
+                                       
+                                          
+                                             x
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                    
+                                 
+                                 ≅
+                                 a
+                                 u
+                                 (
+                                 
+                                    
+                                       x
+                                    
+                                    
+                                       0
+                                    
+                                 
+                                 )
+                                 +
+                                 b
+                                 u
+                                 (
+                                 
+                                    
+                                       x
+                                    
+                                    
+                                       0
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       h
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 )
+                                 +
+                                 c
+                                 u
+                                 (
+                                 
+                                    
+                                       x
+                                    
+                                    
+                                       0
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       h
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 )
+                                 ;
+                                 
+                                 where
+                                 
+                                 a
+                                 =
+                                 −
+                                 (
+                                 
+                                    
+                                       h
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       h
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 )
+                                 /
+                                 
+                                    
+                                       h
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 
+                                    
+                                       h
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 ,
+                                 
+                                 b
+                                 =
+                                 −
+                                 
+                                    
+                                       h
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 /
+                                 
+                                    
+                                       h
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       h
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       h
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 )
+                                 ,
+                                 
+                                 c
+                                 =
+                                 
+                                    
+                                       h
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 /
+                                 
+                                    
+                                       h
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       h
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       h
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 )
+                              . Notice that the sampling is not assumed to be uniform. Specifically, it is not imposed to be centred (thus, using this expression, a second order approximation of the gradient was obtained also for boundary points for which the neighbouring electrodes were both on the same side).
+                        ) at the time sample 
+                           (
+                           i
+                           +
+                           j
+                           )
+                           d
+                           t
+                           /
+                           2
+                         (the mean of the gradients of the two closest maps was used when 
+                           (
+                           i
+                           +
+                           j
+                           )
+                           /
+                           2
+                         was not integer). A number K=3 of consecutive maps were included to define the time and spatial derivatives.
+
+When time evolutions of the velocity field and of the source term are of interest, their estimation can be performed for a set of sliding time windows. Time evolutions are expected to be smooth, as the velocity field and the source term are computed assuming that they are constant for all the N EMG maps in the considered time window.
+
+In optical flow techniques, to avoid the aperture problem, the velocity field is also constrained to be smooth in space [15,16]. This condition can be imposed either locally (requiring the flow to be constant in the neighbouring pixels of the considered one, Lukas–Kanede method [16]) or introducing global constraints of smoothness (Horn–Schunck method [15]). Both multi-image Lukas–Kanede and Horn–Schunck approaches were implemented in [21], to estimate the velocity field and the source from radar images providing information on rainy clouds. As similar performances were obtained, but the Lukas–Kanede approach resulted in a lower computational cost, here only such a method was considered.
+
+Within the Lukas–Kanede framework, for each pixel of the image, the same equation was written for its M neighbours. A Gaussian weighting factor (with standard deviation 
+                           2
+                           
+                              2
+                           
+                         times the inter-electrode distance-IED-in mm) was assigned to such conditions, to give more prominence to the central pixel and lower importance to more distant ones. For each pixel, the flow and the source term were estimated in order to satisfy these multiple conditions optimally in the least squares sense. Specifically, the following linear system was defined:
+                           
+                              (4)
+                              
+                                 A
+                                 X
+                                 =
+                                 b
+                                 
+                                 X
+                                 =
+                                 
+                                    [
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         v
+                                                      
+                                                      
+                                                         x
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         v
+                                                      
+                                                      
+                                                         y
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                F
+                                             
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                              
+                           
+                        with the following definitions of the matrix 
+                           A
+                         and of the vector 
+                           b
+                        
+                        
+                           
+                              (5)
+                              
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   A
+                                                
+                                                
+                                                   s
+                                                
+                                             
+                                             =
+                                             
+                                                [
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               
+                                                                  
+                                                                     w
+                                                                  
+                                                                  
+                                                                     1
+                                                                  
+                                                               
+                                                               
+                                                                  
+                                                                     I
+                                                                  
+                                                                  
+                                                                     x
+                                                                  
+                                                                  
+                                                                     s
+                                                                  
+                                                               
+                                                               (
+                                                               
+                                                                  
+                                                                     p
+                                                                  
+                                                                  
+                                                                     1
+                                                                  
+                                                               
+                                                               )
+                                                            
+                                                         
+                                                         
+                                                            
+                                                               
+                                                                  
+                                                                     w
+                                                                  
+                                                                  
+                                                                     1
+                                                                  
+                                                               
+                                                               
+                                                                  
+                                                                     I
+                                                                  
+                                                                  
+                                                                     y
+                                                                  
+                                                                  
+                                                                     s
+                                                                  
+                                                               
+                                                               (
+                                                               
+                                                                  
+                                                                     p
+                                                                  
+                                                                  
+                                                                     1
+                                                                  
+                                                               
+                                                               )
+                                                            
+                                                         
+                                                         
+                                                            
+                                                               −
+                                                               
+                                                                  
+                                                                     w
+                                                                  
+                                                                  
+                                                                     1
+                                                                  
+                                                               
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         
+                                                            ⋮
+                                                         
+                                                         
+                                                            ⋮
+                                                         
+                                                         
+                                                            ⋮
+                                                         
+                                                      
+                                                      
+                                                         
+                                                            
+                                                               
+                                                                  
+                                                                     w
+                                                                  
+                                                                  
+                                                                     M
+                                                                  
+                                                               
+                                                               
+                                                                  
+                                                                     I
+                                                                  
+                                                                  
+                                                                     x
+                                                                  
+                                                                  
+                                                                     s
+                                                                  
+                                                               
+                                                               (
+                                                               
+                                                                  
+                                                                     p
+                                                                  
+                                                                  
+                                                                     M
+                                                                  
+                                                               
+                                                               )
+                                                            
+                                                         
+                                                         
+                                                            
+                                                               
+                                                                  
+                                                                     w
+                                                                  
+                                                                  
+                                                                     M
+                                                                  
+                                                               
+                                                               
+                                                                  
+                                                                     I
+                                                                  
+                                                                  
+                                                                     y
+                                                                  
+                                                                  
+                                                                     s
+                                                                  
+                                                               
+                                                               (
+                                                               
+                                                                  
+                                                                     p
+                                                                  
+                                                                  
+                                                                     M
+                                                                  
+                                                               
+                                                               )
+                                                            
+                                                         
+                                                         
+                                                            
+                                                               −
+                                                               
+                                                                  
+                                                                     w
+                                                                  
+                                                                  
+                                                                     M
+                                                                  
+                                                               
+                                                            
+                                                         
+                                                      
+                                                   
+                                                
+                                                ]
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             A
+                                             =
+                                             
+                                                [
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               
+                                                                  
+                                                                     A
+                                                                  
+                                                                  
+                                                                     1
+                                                                  
+                                                               
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         
+                                                            ⋮
+                                                         
+                                                      
+                                                      
+                                                         
+                                                            
+                                                               
+                                                                  
+                                                                     A
+                                                                  
+                                                                  
+                                                                     3
+                                                                     (
+                                                                     N
+                                                                     −
+                                                                     2
+                                                                     )
+                                                                  
+                                                               
+                                                            
+                                                         
+                                                      
+                                                   
+                                                
+                                                ]
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   b
+                                                
+                                                
+                                                   s
+                                                
+                                             
+                                             =
+                                             
+                                                [
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               
+                                                                  
+                                                                     w
+                                                                  
+                                                                  
+                                                                     1
+                                                                  
+                                                               
+                                                               
+                                                                  
+                                                                     I
+                                                                  
+                                                                  
+                                                                     t
+                                                                  
+                                                                  
+                                                                     s
+                                                                  
+                                                               
+                                                               (
+                                                               
+                                                                  
+                                                                     p
+                                                                  
+                                                                  
+                                                                     1
+                                                                  
+                                                               
+                                                               )
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         
+                                                            ⋮
+                                                         
+                                                      
+                                                      
+                                                         
+                                                            
+                                                               
+                                                                  
+                                                                     w
+                                                                  
+                                                                  
+                                                                     M
+                                                                  
+                                                               
+                                                               
+                                                                  
+                                                                     I
+                                                                  
+                                                                  
+                                                                     t
+                                                                  
+                                                                  
+                                                                     s
+                                                                  
+                                                               
+                                                               (
+                                                               
+                                                                  
+                                                                     p
+                                                                  
+                                                                  
+                                                                     M
+                                                                  
+                                                               
+                                                               )
+                                                            
+                                                         
+                                                      
+                                                   
+                                                
+                                                ]
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             b
+                                             =
+                                             
+                                                [
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               
+                                                                  
+                                                                     b
+                                                                  
+                                                                  
+                                                                     1
+                                                                  
+                                                               
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         
+                                                            ⋮
+                                                         
+                                                      
+                                                      
+                                                         
+                                                            
+                                                               
+                                                                  
+                                                                     b
+                                                                  
+                                                                  
+                                                                     3
+                                                                     (
+                                                                     N
+                                                                     −
+                                                                     2
+                                                                     )
+                                                                  
+                                                               
+                                                            
+                                                         
+                                                      
+                                                   
+                                                
+                                                ]
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        where 
+                           
+                           
+                              
+                                 p
+                              
+                              
+                                 1
+                              
+                           
+                           
+                           ,
+                           
+                           ..
+                           .
+                           
+                           ,
+                           
+                           
+                              
+                                 p
+                              
+                              
+                                 M
+                              
+                           
+                         is the set of neighbours of the considered pixel, 
+                           
+                           
+                              
+                                 w
+                              
+                              
+                                 1
+                              
+                           
+                           
+                           ,
+                           
+                           ..
+                           .
+                           
+                           ,
+                           
+                           
+                              
+                                 w
+                              
+                              
+                                 M
+                              
+                           
+                         are the weights and 
+                           s
+                         labels each of the 
+                           3
+                           (
+                           N
+                           −
+                           2
+                           )
+                         pairs of maps included in the mean squares error problem (3) (indicated by 
+                           
+                           i
+                           j
+                         in Eq. (3)). In this paper, 13 neighbours of each pixel were considered (M=13 in Eq. (5)). Such neighbouring points were automatically selected before the online application of the algorithm as the closest to the considered channel (including the channel itself): for internal channels (far from the borders of the detection grid of electrodes), the neighbours were distributed as a square centred on the considered channel; for external channels (close to the borders of the detection grid), the neighbours had a non-symmetrical distribution.
+
+The system (4) is over-determined. Thus, the unknown vector 
+                           X
+                         was estimated optimally in the least squares sense by pseudo-inversion
+                           
+                              (6)
+                              
+                                 X
+                                 =
+                                 
+                                    
+                                       A
+                                    
+                                    #
+                                 
+                                 b
+                                 =
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             A
+                                          
+                                          T
+                                       
+                                       A
+                                       )
+                                    
+                                    
+                                       −
+                                       1
+                                    
+                                 
+                                 
+                                    
+                                       A
+                                    
+                                    T
+                                 
+                                 b
+                              
+                           
+                        where 
+                           
+                              
+                                 A
+                              
+                              #
+                           
+                           =
+                           
+                              
+                                 (
+                                 
+                                    
+                                       A
+                                    
+                                    T
+                                 
+                                 A
+                                 )
+                              
+                              
+                                 −
+                                 1
+                              
+                           
+                           
+                              
+                                 A
+                              
+                              T
+                           
+                         is the pseudo-inverse of matrix 
+                           A
+                         defined in (5).
+
+The optical flow and source term can provide information on the anatomy of the investigated muscle and on the propagation of the action potentials along the fibres. Different post-processing techniques could be applied on such an output provided by the algorithm to extract further information of interest. Such methods should be adapted to the problem at hand. Here, different post-processing methods are suggested to estimate conduction velocity (CV), fibre orientation and location of IZ and tendon. Such post-processing techniques are fit to the considered simulations (described in Section 2.4). The aim is not to propose optimal algorithms, but simple ones, providing a few scalar values which reflect the performance of the algorithm.
+
+The flow gives an estimate of muscle fibre CV (the flow 
+                           
+                              v
+                              →
+                           
+                           (
+                           x
+                           ,
+                           y
+                           )
+                         estimated by the algorithm is the velocity of propagation of the recorded map of potential, related to the muscle fibre CV [32]). Such an estimate is reliable only far from the IZ and tendons and from the borders (where edge effects can be present; refer to 
+                        Fig. 2). Thus, the CV was estimated averaging the values obtained from internal channels located half way between the IZ and one tendon (the one covered by the detection grid, see Section 2.4 for a description of the test signals), after estimating their positions (as described below). Also the directions of the muscle fibres were obtained considering the optical flow: the mean angle of the flow was computed for the same channels used for CV estimation (results shown in 
+                        Fig. 3).
+
+In order to locate the IZ and the tendon covered by the electrode grid, the flow and the source term were considered (a representative example of processing is shown in 
+                        Fig. 4). Notice that the residual error of the pseudo-inversion of the system (4) provided information on how the model (1) was fit to the data.
+                           2
+                        
+                        
+                           2
+                           The error in fitting data can be obtained for each channel as 
+                                 E
+                                 =
+                                 A
+                                 X
+                                 −
+                                 b
+                              , where 
+                                 X
+                               is defined in Eq. (6).
+                         In general, the error was minimum for channels recording propagating potentials. Close to the IZ or a tendon, the error was high, as a constant source term was not able to compensate for all the EMG amplitude variations implicated there during an epoch of 50–200ms. Specifically, the generation involves both a positive and a negative contribution, in different time instants. On the other hand, the end of fibre effect is positive when moving toward the IZ (contribution related to the end of fibre component present in monopolar signals [33]) and negative in the other direction (negative contributions of the extinction of the action potentials beyond the fibre ending were documented in the external anal sphincter muscle, using circular arrays of electrodes following the path of the fibres [34,35]). Thus, the source term was used to estimate the position of the tendon covered by the grid of electrodes. Considering that the most external channels provide information which could be not reliable (as they are affected by the entering of waves from the border), they were excluded. The source term from internal channels was interpolated (cubic interpolation) to increase 4 times the resolution. For each line along the y axis (i.e., the direction assumed to be closest to that of the fibres), the locations of maximum and minimum points of the source term were computed and combined by a convex linear combination (with weight 2/3 and 1/3, respectively) obtaining an estimate of the location of the end of the fibres. These locations of the fibre endings (obtained for each line along the y axis) were then interpolated with a line, indicating their distribution under the 2D grid of electrodes. Notice that the simulated fibres had the same length and the potential was available also beyond the tendon. In general situations, if the tendon is long or the potential is not available above it, the proposed method for fibre end location cannot be applied. However, as stated above, this method is here used to test the reliability and consistency of the source term estimated by the proposed algorithm close to the end of the fibres. If the tendon is to be estimated from experimental data, a preliminary investigation of the muscle and tendon is suggested (e.g., by ultrasound scan); then, the flow and source term provided by the algorithm could be related to the location of the tendon in preliminary tests, in order to tune an algorithm adapted to the case at hand.
+
+As mentioned above, the source term was not much informative of the location of the IZ. Thus, the flow vectors were used to estimate IZ location. Indeed, the absolute value of the estimated flow has a local minimum at the IZ. Such a minimum was identified for each array along the y axis (as before, after a cubic interpolation, to improve the resolution), obtaining a set of locations that were interpolated with a line to estimate the distribution of the IZ under the 2D detection grid.
+
+To test the algorithm, interference surface EMGs were simulated. A reference simulator was used as default. The following parameters of the algorithm were chosen on the basis of a fine tuning on the reference simulator: number of neighbouring electrodes (equal to 13, as indicated in Section 2.2), number of subsequent EMG maps to be included to define the time and spatial derivatives (K=3 in Eq. (3), see Section 2.1), weights w
+                        
+                           i
+                         in Eq. (5) (Gaussian function of the distance, see Section 2.2). Then, the algorithm was applied also to other simulations obtained changing some properties from their reference values (sensitivity analysis; 
+                        
+                        
+                        Figs. 5–7). Moreover, two models with non-parallel fibres were also used, for some representative applications (
+                        Fig. 8).
+
+The reference simulator, the simulations for the sensitivity analysis and the models of muscles with non-parallel fibre distribution are described in the following.
+
+A plane layer volume conductor model was used to simulate single fibre action potentials (SFAP) [23], assuming time sampling frequency of 2kHz and muscle fibre CV equal to 4m/s. The geometry of the volume conductor and conductivity of the tissues were the following: skin thickness 1mm, conductivity 2.2×10−2
+                           S/m [36]; fat thickness 3mm, conductivity 4×10−2
+                           S/m [36]; muscle longitudinal conductivity 40×10−2
+                           S/m, transverse conductivity 9×10−2
+                           S/m [37]. Symmetrical muscle fibres (with IZ half way between the tendons) were simulated with semi-length 75mm. Muscle fibres were simulated inside a rectangular cross-section area with 70mm of lateral extension and 10mm of maximal depth.
+
+A 2D grid of 13 parallel linear arrays of 28 circular electrodes (radius 2mm) was considered, centred half way between the IZ and one tendon and with 5mm of IED. Notice that the electrodes covered the regions over the IZ and one of the tendons. Monopolar detection was considered (as indicated in Section 2.1). Indeed, an isotropic detection is needed in order not to affect the shapes of the recorded waveforms in case of a misalignment between the electrode grid and the muscle fibres.
+
+Each SFAP was used to simulate single motor unit (MU) action potentials (MUAP), approximating the smoothing due to the spread of the IZs and tendon endings (8mm) by a time convolution with a Gaussian window function and scaling the waveforms in amplitude and in time to account for MU dimension and CV, respectively [38]. The number of fibres in the MUs was distributed as an exponential function [39], with the largest MU including a number of fibres 20 times greater than that of the smallest one. The distribution of single MU CV was assumed to be Gaussian, with a mean of 4m/s and standard deviation of 0.3m/s. MUs were recruited according to the recruitment threshold excitation function proposed in [39] with range of recruitment thresholds equal to 60%. The discharge statistics were modelled assuming minimum and maximum discharge rates of 8 and 35 pulses per second (pps), a linear relationship (between such minimum and maximum values) between force and discharge rate (0.5pps/% of maximal voluntary contraction, MVC) and a Gaussian distribution of the inter-pulse interval variability (coefficient of variation equal to 0.2). The MUs were recruited from low to high CV [40].
+
+Interference surface EMGs of duration 10s were simulated, with contraction level of 10%, 50% or 80% of MVC in different sets of simulations. The signal was divided into adjacent, not superimposed epochs of duration 200ms which were processed by the algorithm. Different angles were simulated of the fibres with respect to the 13 linear arrays of 28 electrodes included in the 2D grid: 0–25°, with 5° step. The firing pattern was the same for different angles, so that the same but rotated flow and source term were expected to be estimated ideally. A Gaussian noise was added to the interference signal, with 20dB of signal to noise ratio.
+
+Simulations were included to check the sensitivity of the method to some parameters. New tests were performed using again the plane layer model [23], changing a single parameter at a time with respect to the reference simulator (keeping fixed the others) or considering a different sampling rate or epoch duration. Specifically, the following tests were considered:
+                              
+                                 1.
+                                 The same portion of the skin was covered by grids with IED of 7.5mm or 10mm, in order to test the effect of a reduction of the density of the grid of electrodes.
+
+The fat layer thickness was increased to 6mm, increasing the level of smoothing introduced by the volume conductor [23].
+
+The fibre semi-length was reduced to 60mm, in order to increase the superposition of the end of fibre effect on the propagating component [33].
+
+An under-sampled signal was considered with respect to the reference simulator, using a sampling rate of 1kHz.
+
+The effect of different durations of the epoch (between 50 and 200ms) was tested.
+
+Two non-homogeneous, non-space invariant muscle models with non-parallel fibres were considered: the models of triangular [26] and bi-pinnate muscle [41]. The same tissue conductivities were used as for the reference simulator. The current source was simulated using 5 poles discretizing the Rosenfalk phenomenological model (as explained in [26]). The muscles were covered by a fat layer 4mm thick, using the method described in [42]. A 2D grid with the same dimension as for the previous simulations, but with a doubled density (IED 2.5mm, 26×56 electrodes), covered a portion of the active muscles (the projections of the simulated active muscles over the detection grids are indicated in Fig. 8). The range of angles spanned by the active fibres of the simulated triangular muscle was between −20° and +20°. One tendon was at 5mm from the convergence of the fibres, the IZ was 40mm distant from it and the second tendon was 60mm further distant. Symmetric fibres were simulated for the bi-pinnate muscle, with 60mm of semi-length. The pinnation angle was 15°. A maximal depth of 10mm within the muscle was considered, in both cases. Moreover, the same method as for the reference simulator was used to generate interference signals starting from a library of SFAPs.
+
+@&#RESULTS@&#
+
+The algorithm was first tested on simulations obtained using the reference simulator (Section 2.4.1), on which it was tuned. An example of application of the algorithm is shown in Fig. 1. A single short epoch of interference EMG was considered. The algorithm estimated correctly the propagation of the potential and placed source terms close to the IZ and to the tendon covered by the electrode grid: specifically, the generation of the action potential has a non-vanishing contribution over the IZ, its extinction reflects in a positive term before the tendon (over the muscle fibres) and a negative one beyond it.
+
+
+                        Fig. 2 shows the mean flow and source obtained averaging the results of the application of the algorithm to epochs of 200ms of interference signal of duration 10s (reference simulation, see Section 2.4.1). The firing patterns were the same when considering different fibre orientations. Thus, ideally, the optical flow and the source terms should be the same, only rotated, when considering fibres with different orientations. In practice, this is not possible due to truncation effects. The channels far from the borders of the grid provide more reliable information than the channels which are close to the borders, as the latters are influenced by the possible entrance or exit of new waves from the borders. Moreover, their information is averaged with that of nearby channels which are not symmetrically distributed. Notice also that, for channels on the borders, the spatial derivatives of the EMG maps were computed using channels which are not distributed symmetrically around the considered one, decreasing the accuracy of the estimation. However, the flow and source term computed from such channels were never used in the post-processing (i.e., they were not used to estimate CV, fibre orientation or position of IZ and tendons). Thus, the most external channels could be neglected by the algorithm, computing the flow and source only for internal points, where more stable estimates can be obtained. This would also speed up the processing (as the computational cost linearly depends on the number of processed channels).
+
+In Fig. 2, an accurate estimation of the flow is shown for internal channels. Moreover, the source term reflects the position of the IZ and of the tendon covered by the grid.
+
+
+                        Fig. 3 shows the results of many applications of the method (to all adjacent epochs of 200ms out of 3 signals of 10s, each corresponding to a different force level) to the estimation of CV and of the angle of misalignment of the fibres with respect to the columns of the matrix. Only channels between the IZ and a tendon and far from the borders were selected to estimate the CV and the misalignment (see Section 2.3). The modulus of CV (shown in A) is about insensitive to the angle of misalignment. Indeed, varying the angle, the component of CV along the y direction is reduced while that in the x direction is increased (as shown in B). Increasing the force level, larger MUs are recruited, which have relatively larger CV. Thus, the CV estimated from signals corresponding to a higher force level is larger than in the case of a smaller force level (as shown in A). The angle of misalignment is estimated with a good accuracy (with 1–2° of maximal mistake considering the mean estimation and with about 2° of standard deviation considering different epochs, as shown in B).
+
+
+                        Fig. 4 shows an example of estimation of the position of (A) the IZ and (B) the tendon covered by the electrode grid. As shown in Fig. 4A, the modulus of the CV estimated from the flow vectors provided by the algorithm has a sharp valley corresponding to the IZ, from which it can be located. As reported in Fig. 4B, the source term has a large peak corresponding to the tendon endings, from which the position of the tendon can be estimated under the 2D electrode grid. The estimated moduli of CV and sources are about rotated when processing the interference signal recorded by rotated detection grids of electrodes. In Fig. 4C, the estimation errors in IZ and tendon location are shown for epochs from 10s of interference EMG. Notice that the error in IZ location is not sensitive to force level and misalignment. On the other hand, the estimation of the position of the tendon worsens by increasing the force level (a worst case condition is considered in B).
+
+
+                        Fig. 4C1 shows that the error in locating the IZ is higher when the fibre orientation is 5°, than for close lower or higher angles (0° and 10°, respectively). This result is found also for the results discussed below, concerning the sensitivity analysis (Figs. 5–7). In order to interpret this result, consider that, to localize the IZ, the flow estimated on internal channels was used. Thus, the considered channels covered a domain which extended only 50mm in the transversal direction. Considering such an extent of the transversal covering, the maximal shift of IZ (in the y direction) for a misalignment of 5° is equal to about 4.36mm, which is lower than the IED. A similar result is not visible for the error in estimating the location of the tendon (Fig. 4C2), probably because the routine for the location of the tendon provides less accurate estimations (consider the small bias shown in Fig. 4B3).
+
+
+                        Fig. 5 shows the result of the test of the algorithm considering some changes of the parameters with respect to the reference simulator (Section 2.4.2). As indicated in Fig. 5A, using an electrode grid with IED greater than 5mm, large angles are under-estimated and CV is affected by a bias increasing with the angle. Indeed, the detection volume of a channel is quite small, about 1cm, so that, using IED of about 1cm, the signals from different channels have low correlation if the grid has a misalignment (high correlation can be found only for channels which are aligned to the fibres). The estimation of the position of the IZ and tendon is also degraded, but the error is still lower than the IED. As shown in Fig. 5B, if the sampling frequency is reduced to 1kHz, the angle of misalignment and CV are under-estimated of about the 10%. However, the positions of IZ and tendon are as good as in the reference simulation with sampling rate of 2kHz.
+
+
+                        Fig. 6 shows a summary of the results of other additional tests. In Fig. 6A, a larger thickness of the fat layer is considered. The smoothing effect of the volume conductor is larger than in the reference simulations. Moreover, the relative contribution of the non-propagating components is larger [33]. However, the algorithm is still providing accurate estimates of CV, misalignment and IZ/tendon location. Fig. 6B considers shorter muscle fibres. In this case, the end of fibre effect is more superimposed to the propagating component [33]. The estimation of the position of the tendon is degraded and a small positive bias in CV estimation is noticed. However, the misalignment and the position of the IZ are estimated with good accuracy.
+
+
+                        Fig. 7 considers epochs of different durations. The estimates are more scattered when the epoch is shorter. However, the mean estimate is as good as using an epoch of duration 200ms (which is used in the previous Figs. 5 and 6). Fig. 7D shows the processing time as a function of the duration of the processed epoch. A personal computer was used for the processing, with Intel(R) Core i7-2630QM, Quad-Core (only one core was used for the processing), clock frequency of 2GHz, 6GB of RAM and 64 bits operating system. The average cost for processing a single channel is given. This information is enough, as the algorithm is local (different small portions of the data are processed separately from the others), so that the cost of the solution for each channel is the same regardless of the number of them. Consider also that, as the same routine is required for each channel, parallel implementation is feasible: thus, the processing time for a specific implementation could be computed multiplying the time cost for a channel by the number of channels and dividing by the number of processors used. Consider also that a compiled implementation could further reduce the processing time with respect to the one considered here (based on Matlab language). However, even with the present implementation and considering a single core, more than 150 channels can be processed in a time lower than the duration of the processed epoch, so that real time processing is feasible.
+
+
+                        Fig. 8 shows the application of the method to signals simulated using two non-space invariant models (Section 2.4.3). A very high density grid of electrodes was simulated, with IED of 2.5mm. The fan-shape arrangement of the muscle fibres of a triangular muscle can be deduced from the estimated flow in (A). Moreover, the location of the IZ can be easily identified from the flow. Noticeable is also the circular shape of the peak in the source term corresponding to the location of the distal tendon. The tendon close to the point of convergence of the fibres is reflected in the estimated source term by a spiky peak. The source term is pinched over the IZ region.
+
+The bi-pinnate muscle is considered in Fig. 8B. The directions of propagation of the action potentials are clearly reflected in the estimated flow. The central aponeurosis (or pinnation line), in which the simulated fibres converge, and the IZ can be identified from the flow. The source term is symmetrical with respect to the pinnation line and is small close to the IZ. However, it is not able to identify clearly the central aponeurosis, as the extinction of the action potentials of the two bundles of fibres produce positive and negative contributions in opposite regions. The second tendon is close to the border of the simulated detection grid, so that also these fibre endings are not simple to detect from the estimated source term. The shown flows and the source terms, even if obtained after averaging on different epochs, are good representations of what can be obtained from single epochs: indeed, the shown correlation between single epochs and the average is quite high. Notice that the correlation is lower when considering shorter epochs.
+
+@&#DISCUSSION@&#
+
+Surface EMG found many important applications in the study of muscles, both in healthy and pathological conditions [2,3,5]. When using 2D detection grids, surface EMG at a fixed time sample can be interpreted as a frame of a video-clip and image processing techniques can be applied [1,5,6,20,32]. Important properties can be extracted from 2D EMG maps, concerning muscle anatomy (e.g., direction of muscle fibres [20,32], spatial distribution of the IZ [20] and position of the tendons [33]
+                     
+                        3
+                     )
+                        3
+                        Notice that the quoted paper proposes a method which works only for single MUAPs and if the grid is aligned to the fibres, whereas the algorithm proposed here removes these constraints.
+                      and physiology (muscle fibre CV, which is a vector parallel to the fibres [32]
+                     
+                        4
+                     
+                     
+                        4
+                        Notice that the quoted paper proposes a method which works only for single MUAPs, whereas the algorithm proposed here removes such a constraint.
+                     ). This paper proposes a real time algorithm to extract such an information from high density surface EMG.
+
+Investigating the muscle anatomy is useful also to improve the repeatability and reliability of the estimates of EMG indexes. Indeed, the literature suggests to place the electrodes aligned to the fibres, far from IZ and tendons [1,22], after investigating the anatomy of the muscle using a linear array. The automatic detection of the direction of the fibres and the positions of IZ and tendons could overcome the need of this preliminary step (speeding the experimental procedure). Indeed, the best positions of the detection channels could be automatically selected and problems of misalignment between detection arrays and muscle fibres could be counteracted.
+
+This is even more important in dynamic conditions than in the case of isometric contractions. Indeed, in dynamic conditions the optimal regions where to extract indexes cannot be fixed, as the muscle moves under the skin (determining a shift of the IZ
+                        5
+                     
+                     
+                        5
+                        Shifts of IZ were also measured during isometric contractions [43,44], even if at a lesser extent than in dynamic conditions [45].
+                      
+                     [43–45] and tendons [46] and, possibly, a rotation of the fibres with respect to the detection channels). Thus, the selection of the best channels should be continuously updated, adapting to the recorded signal over time, as the relative position of the muscle changes with respect to the detection grid.
+
+The potential utility of an algorithm providing information on muscle anatomy is even greater if it is real time, as in such a case it could be integrated in a biofeedback. For this reason, the design and implementation of the algorithm proposed in this paper was conducted in order to keep low the computational cost. The algorithm can process interference EMG directly, without any preliminary decomposition or pre-processing. It is based on a multi-frame extension of the Lukas–Kanede approach for optical flow estimation, which requires only the pseudo-inversion of small matrices for each processed channel. Moreover, it includes a source term, compensating for shape variations of the propagating potentials and providing information on generation and extinction sites (i.e., the IZ and the tendons, respectively).
+
+The method is here tested on simulations, which indicate its potentiality in providing useful information from experimental signals. If the EMG grid is sufficiently dense, the algorithm provides reliable estimations of fibre direction and CV. Moreover, the estimated flow and source term can be used to compute the position of IZ and tendons. Even if only simple simulations were considered and the methods for IZ and tendon location were fit to such data, it is noticeable that the worst case average errors were about 1mm for IZ and 2mm for the tendon, which are much lower than the IED. Thus, the IZ and the tendon were located in the correct positions, considering the resolution of the electrode grid (even the visual analysis of the data, which is usually considered as the golden standard for IZ or tendon localization from experimental data, cannot get a better result, as the estimations are given with a resolution of 1 IED).
+
+Different electrode grids were simulated, considering IED of 5, 7.5 and 10mm (which are the electrode densities usually considered in the literature [1,3,5,6,20,32]). Reducing the density of the electrode grid, the fibre direction was biased toward an underestimation of the misalignment of the fibres with respect to the detection grid. With IED of 10mm, the algorithm was not able to provide stable and reliable estimates. Indeed, if the channels are so distant, the information they record is quite uncorrelated if a misalignment is present. Thus, the algorithm, in such conditions, cannot identify propagating waveforms. On the other hand, using a higher density of the grid of electrodes, i.e. decreasing the IED under 5mm, the estimates are more and more accurate as the IED becomes smaller. Electrode grids with IED of 2.5mm were proposed in the literature [22,47]. Representative simulations with such a high density of electrodes show that complex fibre distributions (triangular or bi-pinnate) can be investigated. However, there are some limitations to a further increase of the density of the electrodes [48]: to decrease the IED, the contact surface of the electrodes should be reduced with the risk of getting contact problems; using about 100 electrodes (which is in the order of the number of channels available in research EMG acquisition systems), the skin surface covered by a very dense grid (with IED lower than 2.5mm) is quite small. Possibly, advanced spatial and temporal interpolation could be used to increase virtually the density of the electrode grid. However, if the number of channels could be further increased (adding real or virtual channels), the processing time could impose a limitation (even if it is only about 1ms per channel for an epoch of 150ms using a sequential Matlab implementation on an average level PC).
+
+Simulations indicate that the effect of the force level is negligible on the performance of the method. The algorithm is more stable when the processed epoch is longer, but it is sensible to possible variations of the fibre directions within an epoch: for example, in dynamic contractions, a compromise should be chosen, considering the rapidity of the investigated movement and the required precision of the estimates. Epochs of duration between 50 and 150ms are suggested. Such a range of durations is also compatible with real time applications, e.g., control of a prosthesis and biofeedback, for which a large delay should be avoided.
+
+It is worth noticing that in interference EMG many contributions are summed up asynchronously. The velocity field and the source term are computed averaging the information from nearby channels which could record information from different MUs. Thus, it is not expected that the propagation velocity of the action potentials from MUs under specific channels can be estimated precisely. A method based on single detected MUAPs and selecting information from the channels which are closest to the active MU can surely get more accurate estimates of CV [32]. However, the proposed method can provide information about the overall activity of the muscle.
+
+Many applications of the algorithm are proposed for future investigation.
+                        
+                           1.
+                           In basic physiology, the algorithm can be useful to extract information on muscle anatomy, direction of muscle fibres and velocity of propagation of the action potentials. This information could be useful to characterize the muscle activity, or it can be used as a pre-processed input for other algorithms (e.g. for classification or further characterization purposes [49]).
+
+In rehabilitation, the direction of active fibres could be indicated by a biofeedback system, supporting the user to correct a possible erroneous activation of the muscle. Thus, the method could support the development of a device for a quantitative evaluation of a training exercise, whereas currently available rehabilitation methods are usually based only on functional assessments [50].
+
+In the control of a prosthesis [51,52], the information extracted by the method could be useful to improve the estimation of the desired movement (e.g., the IZ or the muscle shift under the electrodes or the change of fibre direction could represent a useful information to identify different commands for the prosthesis; for example, the IZ shift in a biceps brachii under a dynamic contraction is related to the joint angle, which could be estimated and used as a command; as a further example, muscles may change the direction of their fibres with respect to the detection grid during complicated movements
+                                 6
+                              
+                              
+                                 6
+                                 Examples of complex dynamic movements in which muscles, moving under the skin, may change orientation of their fibres with respect to the detection grid are the pronation/supination of the forearm or the rotation of the shoulder.
+                               which could be discriminated using the proposed algorithm).
+
+The study of dynamic contractions could benefit from the proposed method. Indeed, the motion of the IZ [45,53] and the possible rotation of the fibres could be useful for the detection and investigation of movements (e.g., the joint angle could be identified, either by following the motion of the IZ and distal tendon, or comparing flow maps estimated on a test epoch to those computed on training data corresponding to different measured angles). Moreover, the method could compensate for detrimental effects of fibre rotation on CV estimation [54]. Finally, the algorithm could provide automatically information about the location of the optimal channels (far from IZ and tendons [22]) that could be used to compute reliable EMG indexes (e.g., CV, amplitude or spectral content).
+
+Most of the examples of application provided above need or would benefit that the estimation is performed in real time. Even an approximate estimation could be of interest as a pre-processing step before applying other algorithms. For example, to indicate the optimal location for extracting amplitude or spectral EMG indexes, precise estimations of the flow and generation term are not needed (as it is only important to select regions in which potentials propagate). As a further example, in applications like classification or control, it is only important that the estimated patterns (of flow and source) are useful in discriminating different classes or movements; thus, if such a condition is attained, the proposed algorithm could be of interest even in cases in which, due to low electrode density or complicated anatomical configurations, the estimates cannot be directly associated to anatomical or physiological properties of the investigated muscle. Thus, potential applications of the algorithm could be found even in cases in which the model cannot fit accurately the data.
+
+Finally, the promising results provided by the tests in simulation suggest that the proposed algorithm opens important future perspectives, due to its potential applications in processing or pre-processing high density EMG data. Many future experimental studies are suggested. However, the specific applications should consider the limitations of the proposed approach. For example, a model, assuming propagation and localized generation or extinction, is fit to the recorded EMG by the proposed algorithm. There are cases in which the EMG cannot be approximated by such a model: for example, if fibres go deep within the muscle (as in the case of the gastrocnemius [27]) or if the conductivity [55] or the thickness [28] of subcutaneous tissues change in space (in such cases, the source term is expected to be larger where the active fibres are closer to the detection array). Moreover, if anatomical properties are of interest, the density of the detection grid should be high enough to guarantee to resolve the details of possibly complex distributions of the fibres. For example, consider the simulation of triangular and bi-pinnate muscles, which have quite complicated fibre distributions. In such cases, the IED had to be lower than 5mm, otherwise the algorithm did not catch the different orientations of the fibres. Indeed, the algorithm averages information from different channels, which should be close enough to provide consistent information. However, this was not the case for a grid with IED of 5mm covering a portion of a triangular muscle, as each channel was placed over a fibre with different direction (so that, by averaging across nearby channels, the fibre direction was not identified precisely). In the case of the bi-pinnate muscle, the simulated fibres were quite short and were organized into 2 bundles with different directions. Using 13 neighbouring channels, a square region of surface 200mm2 and with diameter of 20mm is covered if the IED is 5mm. Given the simulated anatomy of the muscle, the IZ was only about 15.5mm distant from the pinnation line. Thus, the algorithm, when considering a channel placed over the region in between the pinnation line and one of the two IZs, was averaging information from some channels which were close to the IZ, others which were over the pinnation line and some others which were in between. These channels provided not consistent information which degraded the estimates of the algorithm. Using a smaller IED, data detected from different channels were focused on a smaller area, providing more consistent information, so that the overall estimation was quite satisfactory. In summary, the maximal IED still allowing to get reliable information depends on the dimension of the muscle and on the orientation of its fibres.
+
+@&#CONCLUSIONS@&#
+
+This paper proposes and tests in simulation an innovative method to process high density surface EMG to estimate the generation, extinction and propagation of muscle fibre action potentials. This information could be of great interest to investigate the muscle anatomy, to characterize the muscle activity and to select automatically the channels from which to extract reliable EMG indexes. The proposed algorithm is real time, opening new important potential applications, as in the study of dynamic contractions (where optimal channels for information extraction could be identified as the muscle moves under the skin), in the control of a prosthesis (the information on fibre direction and IZ location could be useful to identify a desired movement) or in the design of a rehabilitation programme based on a biofeedback (indicating to the subject how the muscle is moving under the skin).
+
+The author has no conflict of interest concerning the publication of this work.
+
+@&#REFERENCES@&#
+

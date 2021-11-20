@@ -1,0 +1,939 @@
+@&#MAIN-TITLE@&#Automatic segmentation of vessels from angiogram sequences using adaptive feature transformation
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           We developed an efficient method for automatically segmenting vessels from angiogram sequences.
+
+
+                        
+                        
+                           
+                           The proposed method can extract high-contrast angiograms and segment vessels.
+
+
+                        
+                        
+                           
+                           The proposed method uses two modification factors to improve vesselness response.
+
+
+                        
+                        
+                           
+                           The proposed method is easier to control, and requires less computational time.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Vessel segmentation
+
+X-ray angiograms
+
+Feature transformation
+
+Multiscale Hessian-based
+
+@&#ABSTRACT@&#
+
+
+                  This paper proposes an efficient method for automatically segmenting vessels from angiogram sequences. The method includes two steps: extracting high-contrast angiograms and segmenting vessels. First, we select high-contrast angiograms automatically using vessel intensity distribution. Based on multiscale Hessian-based filtering, we propose an adaptive feature transformation function to improve the vesselness response. This method overcomes numerous problems, which exist in the X-ray angiograms by using the scale factors and transformed intensities. Various scales are established to mitigate variations of the intensity distribution. The transformed intensities are applied to coping with lower contrast and nonuniform intensity distribution. Finally, the connected component labeling method is used to extract the vessels. The proposed method can distinguish between the vessel and the background in a complex background. In our experiments, 20 angiogram sequences are used to evaluate the accuracy of the selected high-contrast angiogram. The accuracy of extracting high-contrast angiograms is 98%. For evaluating the accuracy of the segmentation results, 72 angiograms were selected. The accuracy of the proposed segmentation method is 96.3%. The Kappa value is 81.8%. After inspection by a cardiologist, the experimental results show that the proposed method can automatically and accurately segment vessels.
+               
+
+@&#INTRODUCTION@&#
+
+Cardiovascular disease is one of the major types of heart disease. For diagnosing and treating cardiovascular disease, coronary angiography is a vital evaluation and operation tool. Clinicians may not easily obtain complete vessel structures from 2D X-ray angiograms because of the complex background and noise. Accurate quantitative coronary angiography (QCA) in clinical examinations can assist clinicians in assessing cardiovascular diseases. Moreover, computer-assisted extraction of the vessel structure is a crucial step in 2D coronary angiography. Recently, various image analysis technologies have been proposed for cardiovascular examinations. Vessel segmentation is essential for motion analysis, stenosis detection, and 3D reconstruction. However, vessel segmentation from X-ray angiograms entails difficulties caused by nonuniform intensity distribution, low-contrast angiograms, and various vessel shapes. Additional factors including noise and overlapped organs also exacerbate the problem. Therefore, this paper proposes a method that can accurately segment vessels under such complex conditions.
+
+Several proposed vessel segmentation methods can be classified as tracking-based [1–5], model-based [6–12], and pattern recognition [13–24]. Tracking-based methods entail using local operators to detect vessels. Traditional tracking-based methods cannot work effectively because of bifurcations or vessel crossings. For achieving high accuracy, Gabor filters and circular templates have been proposed. Zhou et al. [3] utilized vessel features to track vessels and identify vascular structures based on probabilistic tracking and fuzzy inferring. However, this method requires higher computational costs for creating new templates because of the variation of vessel widths. Zamani Boroujeni et al. [4] proposed an improved center-line tracing algorithm based on local features in multiscale enhanced angiograms. This method involves employing a scanning scheme based on Hessian-based filtering to detect vessel points and includes a look-ahead distance method for calculating the magnitude of each vessel point. However, the method cannot extract vessel features because of the low contrast and noise. An adaptive geometrical vessel tracking method [5] was proposed, entailing an algorithm that first detects seed points in an enhanced image and then extracts vessel points from the original angiogram based on the geometric features. Vessel points were recursively detected in scanlines, which were adjusted according to the estimated vessel diameters. However, angiograms have shortages such as low contrast, nonuniform intensity distribution, and background noise. Thus, these methods cannot effectively track vessels in complex background conditions.
+
+Model-based methods, such as deformable splines and active contour models, involve using a set of parametric curves to automatically segment vessels. Active contours can be categorized into two categories: edge-based and region-based. Edge-based models use local edge information to stop the evolving curve on the object boundary. Region-based models apply regional statistics information to control curve evolution. Chan and Vese [6] proposed a typical region-based active contour model that involves using a level set method, which requires utilizing image statistics inside and outside the curves to control the evolution. However, region-based active contour methods cannot mitigate nonuniform intensity distribution effectively. Recently, many improved algorithms [7–9] based on region-based active contour model have been proposed for solving this problem. Li et al. [7] defined a local binary fitting (LBF) model, which utilizes local region information as a constraint to contend with nonuniform intensity. Zhang et al. [8] also introduced a local image fitting (LIF) model for segmenting images. However, an LIF model cannot accurately segment vessels, and an LBF model is highly sensitive to the initial location of the active contour. Sun et al. [10] proposed an active contour model, which can segment vessels with nonuniform intensity and solve the initial state of the active contour, using local morphology features. However, model-based methods cannot set parameters appropriately and this may affect computational efficiency.
+
+Pattern recognition methods, such as morphology filters [13–17] and multiscale Hessian-based filtering [18–24], automatically detect objects according to vessel features. The morphology top-hat operator has been used as a preprocessor to improve low contrast [13–14]. However, these methods do not perform well because of complex vessel structures and variations in vessel widths. For obtaining a complete vessel structure, a multiscale morphological operator method was proposed [13]. In previous research, a fuzzy morphological opening was used to segment vessels [15–17], and multiscale morphological operators were used to combine fuzzy morphological filters with a linear structuring element [15].
+
+Multiscale Hessian-based filtering approaches are proposed in the literature. Vessel enhancement is a primary preprocessing procedure based on the Hessian matrix. Frangi et al. presented a multiscale Hessian-based filtering method for describing local vessel structures [18] toward obtaining the second-order local feature of the vessel based on the eigenvalues of the Hessian matrix. In this method, both λ
+                     1 and λ
+                     2 are used to represent the local feature of the vessel; the lower eigenvalue λ
+                     1 represents the vessel direction and the higher eigenvalue λ
+                     2 is perpendicular to the vessel direction. In vessel enhancement, a vesselness measure is defined according to eigenvalue analysis of the multiscale Hessian matrix. By including vessel features, their method can detect different structures such as tubular, plate-like, and blob-like structures. This method has been applied to 2D and 3D medical image analyses such as digital subtraction angiography and magnetic resonance angiography. Other frameworks of vessel enhancement have been proposed in [19,20], involving directional filter bank and multiscale Hessian-based filtering to enhance the shape of the vessel and remove other noise. However, multiscale Hessian-based methods are highly sensitive to noise. Both of the methods proposed in [22,23] combine multiscale Hessian-based filtering with region growing to extract complete vessel structures and contend with intensity variations. However, these methods have limitations, especially when images have noise and a complex background. Hern´andez-Vela et al. [24] proposed a multiscale edgeness measure approach, in which multiscale edges and geodesic paths are combined to customize the graph cuts model to segment vessel structures. However, using this method to mitigate edge noises and bifurcated vessels is difficult. In our study, we adopted multiscale Hessian-based filtering. Because the gray values of a background may be similar to those of the vessel, the performance of the traditional Hessian-based method is limited in X-ray angiograms. This paper proposes an adaptive feature transformation function for detecting vessels based on the eigenvalues of the multiscale Hessian-based filtering. The remainder of this paper is organized as follows: Section 2 presents high-contrast angiogram selection and vessel segmentation. In Section 3, segmentation results and analysis are reported and compared with those of other methods. Finally, Section 4 draws the conclusion of this study.
+
+@&#METHOD@&#
+
+This section describes a method for automatically segmenting vessels from angiogram sequences. The method involves extracting high-contrast angiograms and segmenting vessels from high-contrast angiograms.
+
+Because different tissues within the body have different degrees of X-ray beam attenuation, a contrast agent is used to visualize the vessels. However, angiograms may be affected by the heartbeat and responses to the injected contrast agent over time. During the diagnosis of angiograms, a cardiologist often manually selects clear images to examine the vessels. For increasing the diagnostic accuracy in clinical examination, we propose a method for extracting high-contrast angiograms automatically from an angiogram sequence.
+
+In clinical angiography, the response to the injection of a contrast agent in angiograms can be classified into five stages: (1) contrast agent not injected yet, (2) contrast agent not distributed completely in vessels, (3) contrast agent distributed in vessels, (4) contrast agent attenuated gradually, and (5) all contrast agents attenuated. In each angiogram sequence, frames of third stage, which are considered high-contrast angiograms, are used for medically examining vascular structures. 
+                        Fig. 1 shows the response to an injection of a contrast agent in an angiogram sequence. In our experiments, we selected 21 consecutive frames as high-contrast angiograms, which total approximately two cardiac cycles.
+
+
+                        
+                        Fig. 2 shows an image of the vessel and an intensity distribution of a vessel cross section. The red circles in this figure show abrupt changes on the vessel boundary. Vessel candidates can be detected accordingly from the intensity distribution of the vessel cross section, which is defined as follows: The gray value of two pixel points have large change in a limited width proportional to the vessel width. In our experiments, we used five horizontal and five vertical scan lines to examine the gray value changes among nearby pixels, as shown in 
+                        Fig. 3. Vessel candidates can be detected on each scan line.
+
+The number of vessel candidates can be counted in each frame of an angiogram sequence. However, vessel candidates cannot be detected accurately. The main factors are the leaking of the contrast agent and the overlap of the organ. To avoid the influence of these factors, numbers of vessel candidates in the frame f(i) are smoothed by those of the proximal eight frames, f(i−4)–~f(i+4). After the smoothing process, the angiogram that has the highest number of vessel candidates is selected as optimally high-contrast, and its previous and subsequent 10 frames are selected as the high-contrast angiograms. Accordingly, 21 frames of high-contrast angiograms were used in the following vessel segmentation.
+
+Hessian matrix-based filtering has been widely used in various analyses of medical images. The eigenvalue of the Hessian matrix can be analyzed to detect tubular structures such as vessels. The Hessian matrix is formally defined as the second-order partial derivative of the local intensity in the window centered at each point of a 2D image, which can be formulated as follows:
+                           
+                              (1)
+                              
+                                 H
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 ;
+                                 σ
+                                 )
+                                 =
+                                 
+                                    (
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         I
+                                                      
+                                                      
+                                                         x
+                                                         x
+                                                      
+                                                   
+                                                   (
+                                                   x
+                                                   ,
+                                                   y
+                                                   ;
+                                                   σ
+                                                   )
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         I
+                                                      
+                                                      
+                                                         x
+                                                         y
+                                                      
+                                                   
+                                                   (
+                                                   x
+                                                   ,
+                                                   y
+                                                   ;
+                                                   σ
+                                                   )
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         I
+                                                      
+                                                      
+                                                         y
+                                                         x
+                                                      
+                                                   
+                                                   (
+                                                   x
+                                                   ,
+                                                   y
+                                                   ;
+                                                   σ
+                                                   )
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         I
+                                                      
+                                                      
+                                                         y
+                                                         y
+                                                      
+                                                   
+                                                   (
+                                                   x
+                                                   ,
+                                                   y
+                                                   ;
+                                                   σ
+                                                   )
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 
+                                 ,
+                              
+                           
+                        
+                     
+
+where I
+                        
+                           xx
+                        , I
+                        
+                           xy
+                        , I
+                        
+                           yx
+                         and I
+                        
+                           yy
+                         denote the second-order partial derivatives of image point I(x,y). These derivatives are obtained through the convolution of the second derivatives of the Gaussian filter and can be written as
+                           
+                              (2)
+                              
+                                 
+                                    
+                                       I
+                                    
+                                    
+                                       x
+                                       x
+                                    
+                                 
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 ;
+                                 σ
+                                 )
+                                 =
+                                 
+                                    
+                                       
+                                          
+                                             ∂
+                                          
+                                          2
+                                       
+                                    
+                                    
+                                       ∂
+                                       
+                                          
+                                             x
+                                          
+                                          2
+                                       
+                                    
+                                 
+                                 G
+                                 (
+                                 σ
+                                 )
+                                 ⁎
+                                 I
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 )
+                                 
+                                 ,
+                              
+                           
+                        where G(σ) denotes a Gaussian filter kernel with standard deviation σ and ⁎ denotes a convolution operator. Other second derivatives can be defined similarly. For detecting various widths in vessels, the second-order partial derivatives of the vessel at multiscale are computed.
+
+The Hessian matrix is used to obtain vessel features that have two eigenvalues λ
+                        1 and λ
+                        2 in a 2D image. In our study, a dark vessel structure in a bright background has a high positive eigenvalue λ
+                        2 and a low eigenvalue λ
+                        1. For a vessel structure in a 2D image, the condition can be regarded as |λ
+                        2|>|λ
+                        1| and |λ
+                        1|≈0. We used the higher positive eigenvalue λ
+                        2 as our vessel feature.
+
+
+                        
+                        Fig. 4 shows the rectangular window with the Gaussian kernel centered at the vessel point. Vessel features of various window sizes based on Hessian-based filtering are computed. Because the window of the vessel boundary is sensitive to background intensity distribution, using Hessian-based filtering to adapt to vessel boundary points is difficult. Therefore, vessel boundary features based on the Hessian-based filtering cannot be accurately detected. This study proposes an adaptive feature transformation function that uses two modification factors to improve vesselness response.
+
+The first factor of the transformation function is the scale factor σ. For the widths of various vessels, we computed the local maximum response during the multiscale Hessian-based filtering. Because the vessels are approximately cylindrical and wider vessels have a larger volume of blood and absorb the contrast agent easily, a wider vessel has lower intensity than a narrower one does; that is, a wider vessel has a larger local maximum response than that of a narrower one. As proposed in [25], vein intensity is lower than that of arteries, and wider vessels have more favorable vesselness response. Therefore, different vessel widths yield different vesselness responses. In addition, the intensity distribution of the vessel cross section is approximately a Gaussian shaped curve, as shown in 
+                        Fig. 5. The intensity decreases from the boundary of the vessel to the center. A larger change in intensity yields a clearer feature, but a smaller change yields a weaker one. Therefore, the vessel center has a stronger vesselness response than that of the vessel boundary, and each vessel has a distinct vesselness response. The scale factor σ is used to fit the intensity distribution of each pixel.
+
+The second factor of the transformation function is the transformed intensity. Because the vessel and background have lower contrast and nonuniform intensity, distinguishing between the vessel and the background is difficult. Using the original image intensity to improve vesselness response may induce the vessels to produce weaker vesselness responses. 
+                        Fig. 6(b) and (e) shows the vesselness responses to using the original image intensity and scale factors.
+
+To overcome this problem, an intensity transformation function is proposed for enhancing the vesselness response of each pixel. We reduced the original image intensity obtained using
+                           
+                              (3)
+                              
+                                 
+                                    
+                                       I
+                                    
+                                    
+                                       t
+                                    
+                                 
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 )
+                                 =
+                                 
+                                    {
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   I
+                                                   (
+                                                   x
+                                                   ,
+                                                   y
+                                                   )
+                                                   −
+                                                   
+                                                      
+                                                         T
+                                                      
+                                                      
+                                                         2
+                                                      
+                                                   
+                                                   ,
+                                                
+                                             
+                                             
+                                                
+                                                   i
+                                                   f
+                                                   I
+                                                   (
+                                                   x
+                                                   ,
+                                                   y
+                                                   )
+                                                   <
+                                                   
+                                                      
+                                                         T
+                                                      
+                                                      
+                                                         1
+                                                      
+                                                   
+                                                   ,
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   255
+                                                   ,
+                                                
+                                             
+                                             
+                                                
+                                                   otherwise
+                                                   ,
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        where I(x,y) is a pixel gray value. The parameter T
+                        1 is a global threshold to determine whether I(x,y) is the vessel or not. By setting the parameter T
+                        2 appropriately, as discussed in Section 3.3, the transformed intensity I
+                        
+                           t
+                        (x,y) is obtained using Eq. (3). The transformed intensity I
+                        
+                           t
+                        (x,y) is normalized between 0 and 1. The vesselness responses are shown in Fig. 6(c) and (f). 
+                        Fig. 7 shows local vesselness responses. Vessels have responses that are more favorable and can be easily detected using the transformed intensities and scale factors.
+
+In this paper, the transformed intensity I
+                        
+                           t
+                        (x,y) and scale factor σ are embedded in the adaptive feature transformation function defined as follows:
+                           
+                              (4)
+                              
+                                 T
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 ;
+                                 σ
+                                 )
+                                 =
+                                 
+                                    
+                                       
+                                          
+                                             λ
+                                          
+                                          
+                                             2
+                                          
+                                       
+                                       (
+                                       x
+                                       ,
+                                       y
+                                       ;
+                                       σ
+                                       )
+                                    
+                                    
+                                       σ
+                                       ×
+                                       
+                                          
+                                             I
+                                          
+                                          
+                                             t
+                                          
+                                       
+                                       (
+                                       x
+                                       ,
+                                       y
+                                       )
+                                    
+                                 
+                                 
+                                 ,
+                              
+                           
+                        where I
+                        
+                           t
+                        (x,y) is the transformed intensity computed using Eq. (3), σ is a scale factor and λ
+                        2(x,y,σ) is the eigenvalue of the original image.
+
+The vesselness response function V(x,y;σ) is obtained using:
+                           
+                              (5)
+                              
+                                 V
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 ;
+                                 σ
+                                 )
+                                 =
+                                 
+                                    {
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   1
+                                                   −
+                                                   exp
+                                                   (
+                                                   -
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               T
+                                                            
+                                                            2
+                                                         
+                                                         (
+                                                         x
+                                                         ,
+                                                         y
+                                                         ;
+                                                         σ
+                                                         )
+                                                      
+                                                      c
+                                                   
+                                                   )
+                                                   ,
+                                                
+                                             
+                                             
+                                                
+                                                   i
+                                                   f
+                                                   
+                                                   
+                                                      
+                                                         λ
+                                                      
+                                                      
+                                                         2
+                                                      
+                                                   
+                                                   (
+                                                   x
+                                                   ,
+                                                   y
+                                                   ;
+                                                   σ
+                                                   )
+                                                   >
+                                                   0
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                0
+                                             
+                                             
+                                                
+                                                   overelse
+                                                   ,
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 ,
+                              
+                           
+                        where c is a constant to determine the effect of the contrast enhancement, and V(x,y;σ) is located between 0 and 1.
+
+Thus, feature responses vary according to vessels and backgrounds. Because vessels have different widths, the vesselness response function at various scales is computed to obtain favorable segmentation results for all vessels, and the maximum vesselness response is selected as the vessel candidate. The final maximum vesselness response is obtained using:
+                           
+                              (6)
+                              
+                                 
+                                    
+                                       V
+                                    
+                                    
+                                       c
+                                    
+                                 
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 )
+                                 =
+                                 
+                                    
+                                       max
+                                    
+                                    
+                                       
+                                          
+                                             σ
+                                          
+                                          
+                                             min
+                                          
+                                       
+                                       ≤
+                                       σ
+                                       ≤
+                                       
+                                          
+                                             σ
+                                          
+                                          
+                                             max
+                                          
+                                       
+                                    
+                                 
+                                 (
+                                 V
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 ;
+                                 σ
+                                 )
+                                 )
+                                 ,
+                              
+                           
+                        where σ
+                        
+                           min
+                         and σ
+                        
+                           max
+                         are the minimum and maximum scales, respectively. In our experiments, according to the range of vessel widths, 10 scales were used.
+
+The vessel candidates were thresholded as a vessel map. The map may contain vascular structures and other components such as bones and noise. Because vessels are large, long and connected structures, we removed all components except the largest one. Connected-component analysis was used to detect connected regions in the vessel map. 
+                        Fig. 8(b) shows the vessel candidates obtained using the proposed method. Fig. 8(c) shows the largest connected component as our segmentation result.
+
+
+                        
+                        Fig. 9 shows local vessel intensity analysis. Fig. 9(a) shows the original intensities. Fig. 9(b) shows the original features detected through Hessian-based filtering. Fig. 9(c) shows that the original features are normalized between 0 and 1. Because the background features may be similar to those of the vessel, distinguishing between the vessel and the background is difficult. Fig. 9(d) shows the transformed intensities I
+                        
+                           t
+                        (x,y) in Eq. (3). Fig. 9(e) shows that the transformed intensities are normalized between 0 and 1. By using the transformed intensities I
+                        
+                           t
+                        (x,y) and the scale factors σ, the adaptive feature transformation function at multiscale is computed using Eq. (4). Fig. 9(f) shows the transformed features. Fig. 9(g) shows that the transformed features are normalized between 0 and 1. Thus, the proposed method can enhance vessel features and reduce background features.
+
+@&#EXPERIMENTAL RESULTS@&#
+
+To evaluate the performance of the proposed segmentation method, we used angiograms from a medical center in our experiments. The size of a single X-ray image is 512×512 pixels with 8-bit grayscale.
+
+To verify the performance of the high-contrast angiograms extraction algorithm, we collected 20 angiogram sequences from 20 patients. Each angiogram sequence was manually determined by a cardiologist. Three widely known measures were used to evaluate the performance of the proposed method: sensitivity, specificity, and accuracy. We defined the number of correctly and incorrectly classified high-contrast angiogram as true positive TP and false negative FN, respectively; the number of correctly and incorrectly low-contrast angiogram as true negative TN and false positive FP, respectively.
+
+
+                        
+                        Table 1 shows the performance of the proposed method. The average accuracy of the proposed method was 98.3%; the sensitivity and specificity were 96.2% and 97.7%, respectively. Therefore, the proposed method can reduce the effect of manually processing a high number of frames.
+
+The performance of the proposed adaptive feature transformation method was evaluated by comparing the results of existing methods. 
+                        Fig. 10 shows the vesselness response results. The Hessian-based and Frangi et al. [18] methods can determine only a vessel׳s approximate position, as shown in Fig. 10(b) and (c). However, vesselness responses on the vessel boundary are difficult to detect using the Hessian-based and Frangi et al. methods. Fig. 10(d) shows the vesselness responses to our method. Fig. 10(e) shows the results of different feature responses. The Hessian-based and Frangi et al. methods may not address similar gray values. Our method can obtain superior vesselness responses and differentiate between vessel and background points.
+
+
+                        
+                        
+                        Figs. 11 and 12 show the comparison results of the vesselness responses. The methods of Frangi et al. [18] and Zhou et al. [3] cannot detect complete vessels in complex backgrounds such as those involving nonuniform intensity distribution and low contrast within angiograms. Our method can detect a complete vessel, as shown in Figs. 11(d) and 12(d).
+
+This section explains how to obtain the optimal parameter values, which produce the optimal segmented results. Because Hessian-based filtering is highly sensitive to noise, the vessel boundary cannot be detected accurately. An intensity transformation function is proposed for enhancing vesselness responses. The parameter of T
+                        2 in Eq. (3) was tuned by examining the vesselness responses for different values. 
+                        Fig. 13 shows the local vesselness responses for different values of T
+                        2, for T
+                        2=0, 25, 35, and 45. The highest value of T
+                        2 that can be obtained, the more favorable the vesselness responses are. Moreover, a superior vesselness response can easily detect the vessel boundary. The segmented results of the mentioned conclusions are shown in 
+                        Fig. 14.
+
+As shown in Fig. 14, the highest value T
+                        2=45 enhances vessels, background structures, and noises. To suppress noises and background structures, we selected T
+                        2=35 as the optimal value to obtain optimal segmentation results.
+
+The parameter c in Eq. (5) affects the results of contrast enhancement as shown in 
+                        Fig. 15. The lowest value of c enhances background noise and a highest value c decreases vesselness response. In this study, the value c=256 was selected.
+
+In our study, we collected 20 angiogram sequences covering 2500 frames. Using the high-contrast angiogram extraction algorithm described in Section 2.1, 420 frames from the sequences were selected as high-contrast angiograms. After inspection by a cardiologist, 400 frames clearly showed the vessel structures. From these images, we randomly selected 72 angiograms to verify the performance of the segmentation. We evaluated several vessel segments including the proximal/mid/distal right coronary artery (RCA), the left main (LM), the proximal/mid left circumflex (LCX), and the proximal/mid left anterior descending (LAD), as shown in 
+                        Fig. 16. Vessel segments of each image frame were classified into stenosis and nonstenosis by a cardiologist. If there was no difference in the segmentation results with the ground truth, the segmentation results were labeled as correct.
+
+To compare segmentation performance, the accuracy and the Kappa values were used as measures. We defined the number of correctly and incorrectly segmented stenosed vessels as true positive TP and false negative FN, respectively; the number of correctly and incorrectly segmented nonstenosed vessels as true negative TN and false positive FP, respectively. The measures are calculated using:
+                           
+                              
+                                 
+                                    
+                                       
+                                          s
+                                          e
+                                          n
+                                          s
+                                          i
+                                          t
+                                          i
+                                          v
+                                          i
+                                          t
+                                          y
+                                          =
+                                          
+                                             
+                                                T
+                                                P
+                                             
+                                             
+                                                T
+                                                P
+                                                +
+                                                F
+                                                N
+                                             
+                                          
+                                          ,
+                                       
+                                    
+                                    
+                                       
+                                          s
+                                          p
+                                          e
+                                          c
+                                          i
+                                          f
+                                          i
+                                          c
+                                          i
+                                          t
+                                          y
+                                          =
+                                          
+                                             
+                                                T
+                                                N
+                                             
+                                             
+                                                T
+                                                N
+                                                +
+                                                F
+                                                P
+                                             
+                                          
+                                          ,
+                                       
+                                    
+                                    
+                                       
+                                          A
+                                          C
+                                          C
+                                          =
+                                          
+                                             
+                                                T
+                                                P
+                                                +
+                                                T
+                                                N
+                                             
+                                             
+                                                P
+                                                +
+                                                N
+                                             
+                                          
+                                          =
+                                          
+                                             
+                                                T
+                                                P
+                                                +
+                                                T
+                                                N
+                                             
+                                             
+                                                T
+                                                P
+                                                +
+                                                F
+                                                N
+                                                +
+                                                F
+                                                P
+                                                +
+                                                T
+                                                N
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+The Kappa value [26] can be used to compare the segmentation agreement between the ground truth and segmentation results. The Kappa value has a range of −1 to 1. In general, Kappa value greater than 0.8 is regarded as almost perfect agreement, value between 0.61 and 0.8 is substantial agreement, value between 0.41 and 0.6 is moderate agreement, value between 0.21 and 0.4 is fair agreement and lower than 0.2 is slight agreement. The Kappa value is calculated using:
+                           
+                              
+                                 
+                                    
+                                       
+                                          K
+                                          a
+                                          p
+                                          p
+                                          a
+                                          =
+                                          
+                                             
+                                                P
+                                                (
+                                                A
+                                                )
+                                                −
+                                                P
+                                                (
+                                                E
+                                                )
+                                             
+                                             
+                                                1
+                                                −
+                                                P
+                                                (
+                                                E
+                                                )
+                                             
+                                          
+                                          ,
+                                       
+                                    
+                                    
+                                       
+                                          P
+                                          (
+                                          A
+                                          )
+                                          =
+                                          
+                                             
+                                                T
+                                                P
+                                                +
+                                                T
+                                                N
+                                             
+                                             
+                                                P
+                                                +
+                                                N
+                                             
+                                          
+                                          ,
+                                       
+                                    
+                                    
+                                       
+                                          P
+                                          (
+                                          E
+                                          )
+                                          =
+                                          (
+                                          
+                                             
+                                                T
+                                                P
+                                                +
+                                                F
+                                                P
+                                             
+                                             
+                                                P
+                                                +
+                                                N
+                                             
+                                          
+                                          ×
+                                          
+                                             
+                                                T
+                                                P
+                                                +
+                                                F
+                                                N
+                                             
+                                             
+                                                P
+                                                +
+                                                N
+                                             
+                                          
+                                          )
+                                          +
+                                          (
+                                          
+                                             
+                                                F
+                                                P
+                                                +
+                                                T
+                                                N
+                                             
+                                             
+                                                P
+                                                +
+                                                N
+                                             
+                                          
+                                          ×
+                                          
+                                             
+                                                F
+                                                N
+                                                +
+                                                T
+                                                N
+                                             
+                                             
+                                                P
+                                                +
+                                                N
+                                             
+                                          
+                                          )
+                                          ,
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+We compared the proposed method with three other methods by using the same images. For all methods, a set of different parameter values were chosen to obtain the most favorable segmentation results. 
+                        Fig. 17 shows the segmentation results of using the Hernandez-Vela et al. [24], Zhang et al. [8], Li et al. [7] and the proposed methods, respectively. Clearly, the proposed method outperforms the other methods in extracting vessels and suppressing noise. The results of the different methods in another image are shown in 
+                        Fig. 18. We find that the proposed method yields results that are superior to those of Hernandez-Vela et al. and Li et al., and outperforms the Zhang et al. method in suppressing noise.
+
+
+                        
+                        Table 2 lists the performance levels of the different methods. The accuracy of the proposed method is 96.3%, and the sensitivity and specificity are 96.7% and 96.3%, respectively; the Kappa value is 81.8%. Our method has a high segmentation accuracy.
+
+Our experiments were implemented on an Intel Core i7 3.4GHz with 16GB RAM, and the image size was 512×512 pixels. For all images, the average computational time is listed in Table 4. The CPU time for our method is much less than that of the other methods.
+
+In this section, we compared the segmentation results of the retinal images from different vessel segmentation methods. These methods were evaluated using one publicly available STARE [27] database, which contains 10 normal and 10 pathological retinal images. Each of these 20 images was hand-labeled by two experts. We adopt A. Hoover [27] hand-labeled images as ground truth. In this experiment, we attempted to use only a few images to obtain the optimal values of the parameters. The optimal values of T
+                        2=100 and c=64 were selected. According to retinal vessel structures, we could remove noises and obtain superior segmentation results by controlling the size of the connected-component.
+
+The global measures have been widely used in retinal image. To evaluation of these methods, accuracy, sensitivity, and specificity were used as the global measures. The accuracy is defined as the ratio of correctly classified vessel pixels and nonvessel pixels to the number of pixels in the ground truth. The sensitivity is defined as the ratio of correctly classified vessel pixels to the total number of vessel pixels in the ground truth. The specificity is defined as the ratio of correctly classified nonvessel pixels to the total number of non-vessel pixels in the ground truth.
+
+
+                        
+                        
+                        Figs. 19 and 20 show the segmentation results of the retinal images. Figs. 19(b) and 20(b) show the hand-labeled images from using Hoover [27]. Figs. 19(c)–(f) and 20(c)–(f) show the segmented images from using the Hernandez-Vela et al. [24], Zhang et al. [8], Li et al. [7] and the proposed methods, respectively. The proposed method can detect smaller vessels than the Hernandez-Vela et al. method can, and has fewer false detections than those of Zhang et al. and Li et al. methods. Most of the vessels could not be detected using the Hernandez-Vela et al. method. 
+                        Table 3 shows the performance of different methods on retinal images. The proposed method has higher accuracy than that of the other methods. The experimental results show that the proposed method is more robust to small vessels and noise.
+
+@&#CONCLUSIONS@&#
+
+This study developed an accurate and efficient vessel segmentation method based on multiscale Hessian-based filtering. We extracted high-contrast angiograms automatically and proposed an adaptive feature transformation function. In the function, the transformed intensities and the scale factors are embedded to reduce the effect of nonuniform intensity distributions, low contrast, and background noise. In summary, the proposed method can improve the drawback of Hessian-based filtering and the performance of the segmentation.
+
+Compared with other methods, the proposed method is easier to control, and requires less computational time. The performance evaluation of the segmentation method shows that the proposed method demonstrates higher accuracy than do the other compared methods. According to the assessment of the cardiologist, the proposed method can accurately segment vessels, such as the RCA, LAD, and LCX. In the future, we plan to conduct other studies to analyze vessel structures and construct a quantitative coronary angiography system.
+
+The authors declare that the article entitled “Automatic segmentation of vessels from angiogram sequences using adaptive feature transformation” have no conflicts of interest. It is being declared that the authors have no personal relationships with other people or organizations that could inappropriately influence their work.
+
+@&#ACKNOWLEDGMENT@&#
+
+The research was supported by National Science Council under the Grants NSC102-2221-E320-006.
+
+@&#REFERENCES@&#
+

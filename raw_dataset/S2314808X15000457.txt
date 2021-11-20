@@ -1,0 +1,151 @@
+@&#MAIN-TITLE@&#Phytotoxicity of three Plantago species on germination and seedling growth of hairy beggarticks (Bidens pilosa L.)
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           
+                              Plantago major expressed the highest values of phenolics, tannins and flavonoids.
+
+
+                        
+                        
+                           
+                           
+                              P. lagopus contained high content of alkaloids.
+
+
+                        
+                        
+                           
+                           
+                              P. lagopus showed strong inhibition on the Bidens pilosa weed.
+
+
+                        
+                        
+                           
+                           
+                              P. lagopus could be valorized in managing this noxious weed as an ecofriendly method.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Allelopathy
+
+Bioactive compounds
+
+
+
+
+                     Bidens pilosa
+
+
+
+
+                  
+
+
+
+
+                     Plantago spp
+
+Weeds
+
+@&#ABSTRACT@&#
+
+
+                  
+                     Plantago genus has a wide geographical distribution all over the world. It has been widely used in folk medicine for various purposes, where it is used as anti-inflammatory, antimicrobial and antitumor agent. In this research, total phenols, tannins, saponins, flavonoids and alkaloids were determined in Plantago lagopus, Plantago major and Plantago squarrosa. Furthermore, concentrations of 2.5, 5, 7.5 and 10 mg ml−1 of both alcoholic and aqueous extracts were prepared to study their phytotoxic effect on the germination and seedling growth of the noxious weed Bidens pilosa. P. major expressed the highest values of total phenolics, tannins and flavonoids. However, P. lagopus has the highest content of alkaloids. The germination of B. pilosa was completely inhibited under treatment of P. lagopus and P. major methanolic extracts at 7.5 mg ml−1 and 10 mg ml−1, respectively. However, the allelopathic effect of P. lagopus aqueous extract showed a complete inhibition of B. pilosa germination followed by P. major. The germination inhibition of B. pilosa increased with the increase in the extracts concentration. In addition, both radicle and plumule were strongly inhibited under the same treatment. Our results showed a potent allelopathic effect on B. pilosa that could be valorized in managing this noxious weed as an ecofriendly bio-control method. However, other studies are needed for the identification, characterization of the responsible allelochemicals and for the demonstration of their modes of action.
+               
+
+@&#INTRODUCTION@&#
+
+Due to the high food requirement of the ever-growing population of the world and the oriented productivity of agriculture, the introduction of synthetic herbicides to control noxious weeds was a favorable way below the threshold limit to reduce the yield loss. Besides improving the crop production, a predatory impact on the environment quality and on human health was generated and increased the number of herbicide resistant weeds [1,2]. The weed science society of America defines a weed as any plant that is objectionable or interferes with the activities and welfare of humans [3]. Weed species might vary in their response to the phytotoxicity, it has received attention in numerous publications [4,5]. Weed management research should find out some natural ways of minimizing the dependency on synthetic herbicides which is still in need of an effective and affordable technological solution. Allelopathy represented aproper solution for this problem.
+
+Allelopathy represents a natural phenomenon of a plant emancipation of inhibitory substances that interfere with other plants sharing the same environment. Allelopathy is well-defined as both the plant's inhibitory and stimulatory effects upon the other plant including microorganisms [6]. A simpler meaning of allelopathy is that it is the inhibitory effect of one plant on another due to the release of chemical substances. This meaning is compatible with the famous phrase of Paracelsus “All things are poison and are not poison; only the dose makes a thing not a poison” [7]. Allelochemicals (inhibitors) are defined as plant secondary metabolites that are released into the environment through volatilization, root exudation, leaching from plants or plant residues, and decay of residues. Also, they can be present in various parts of a plant, ranging from the root to stem or seeds [8]. Although we cannot discard the use of synthetic herbicides completely at the present situation, their use can be reduced up to a certain extent by utilizing allelopathic potentiality as an alternative weed management strategy for crop production as well as environmental profits [2].
+
+
+                     Bidens pilosa L. (Asteraceae) is a noxious annual weed native to tropical America. In Africa B. pilosa is recorded in many countries and it is likely to occur in all countries. This genus contains about 280 species worldwide and it is widespread in both field crops and wild areas because of its fast growth, strong invasive nature and its easy adaptation [9]. The enormous genus Plantago of family Plantaginaceae comprises 483 perennial and annual species distributed throughout the world. They have wide ecological amplitude. They are weeds of both arable lands and grasslands [10,11]. The highly diverse genus Plantago has been used as traditional medicinal plant for centuries. It was reported to have biological activities including anti-inflammatory, analgesic, anti-tumoral, anti-spasmodic, hepatoprotective, antiviral, antibacterial, antifungal and anti-ulcerogenic [12,13]. The aim of the present study was to evaluate the allelopathic potential of Plantago lagopus, Plantago major and Plantago squarrosa extracts on the germination and early seedling growth of the noxious weed B. pilosa.
+
+
+                        P. lagopus, P. major and P. squarrosa aerial parts were harvested at a vegetative stage. The plant tissues were clipped 1 cm above the soil, washed with distilled water and left to dry in room temperature (25 °C) in a shaded place for several days until completely dried. The dried samples were ground to pass a 1 mm screen, packed in a polyethylene bag and stored in a refrigerator until use.
+
+Total phenolics, tannins, alkaloids, flavonoids and saponins of P. lagopus, P. major and P. squarrosa samples were determined spectrophotometrically [14–17].
+
+The seeds of B. pilosa were collected from the orchards habitat in El-Sharkia Governorate in Egypt, sterilized by 0.3% sodium hypochlorite, rinsed by distilled water, dried on the filter paper in the laboratory at room temperature for 7 days and packed in a paper bag until use [18,19].
+
+For bioassay tests, aqueous and methanolic stock extracts (10% w/v) were diluted with distilled water to obtain concentrations of 7.5%, 5% and 2.5% (v/v) test extracts. All osmotic concentrations of bioassay solutions were less than 0.1 Mpa and hence not considered a factor affecting germination. The solutions were filtered through double layers of muslin cloth followed by a Whatman No.1 filter paper, the pH values were adjusted to 7 and these were kept in the refrigerator at 4 °C until further use [20].
+
+Two layers of Whatman No. 1 filter paper were placed in 90 mm diameter glass Petri dishes. In each dish, 25 seeds were placed and 10 ml of each plant extract were added in concentrations of 10, 7.5, 5 and 2.5% (v/v). In case of methanolic extract, seeds were placed after alcohol evaporation and then 10 ml of distilled water were added. A check treatment was assigned with distilled water and left at room temperature. Starting from the first day of the experiment, germinated seeds were counted and removed daily. A seed with 2 mm of radicle was considered germinated. Experiment designed was randomized complete block with three replicates and the experiment was repeated twice. The inhibition percentage was calculated.
+
+The seeds of B. pilosa were germinated on filter paper in the dark at room temperature for 2 days. Twenty five germinated seeds were transferred to Petri dishes lined with two layers of Whatman No. 1 filter paper and 10 ml of different extracts were added in concentrations of 10, 7.5, 5 and 2.5% (v/v). In addition a check treatment was assigned with distilled water and left at room temperature. Experiment designed was randomized complete block with three replicates and the experiment was repeated twice. The shoot and root lengths of seedlings were measured on the tenth day and growth inhibition for radicle and plumule lengths was calculated.
+
+All values of phytochemistry and allelopathy experiments are the mean of three replicates ± standard error. Data were subjected to ANOVA and the mean values were separated based on Duncan's test at 0.05 probability level using COSTAT 6.3 program.
+
+@&#RESULTS@&#
+
+The phytochemical constituents of the aerial parts of P. lagopus, P. major and P. squarrosa are presented in Table 1
+                        . P. major attained the highest significant values of phenolics, tannins and flavonoids compared to P. lagopus and P. squarrosa. However, P. lagopus exhibited the highest values of flavonoids and saponins. Tannins, alkaloids and saponins did not show significant variation between P. lagopus and P. major (P ≤ 0.05).
+
+The allelopathic effect of the aqueous and methanolic extracts of P. lagopus, P. major and P. squarrosa on the germination of B. pilosa four days after treatment is illustrated in Fig. 1
+                        . The obtained data revealed that there was a slight significant variation between the three studied Plantago species (P ≤ 0.05); however the degree of inhibition was significantly increased in a concentration-dependent manner.
+
+The aqueous extracts of P. major, P. lagopus and P. squarrosa at 10 mg ml−1 inhibited the germination of B. pilosa by about 72.41%, 62.96% and 62.96%, respectively. On the other hand, the lowest concentration (2.5 mg ml−1) of P. lagopus, P. major and P. squarrosa extracts showed the lowest inhibition percentage of germination (10.34%, 7.41% and 3.70%, respectively). The IC50 values (the concentration of a substance that is required for 50% inhibition of a specific biological or biochemical function) of the germination of B. pilosa were 7.50 mg ml−1, 7.88 mg ml−1 and 7.91 mg ml−1, respectively for P. squarrosa, P. major and P. lagopus extracts (Fig. 1).
+
+On the other hand, P. lagopus methanolic extract showed a complete inhibition of germination at 7.5 mg ml−1, while P. major extract showed a complete inhibition of germination at 10 mg ml−1. P. squarrosa extract showed the highest inhibition percentage (85.19%) at 10 mg ml−1. At the lowest concentration (2.5 mg ml−1), P. lagopus, P. major and P. squarrosa extracts showed the lowest inhibition percentage of germination expressed 17.24%, 14.81% and 7.41%, respectively. The IC50 values of the germination of B. pilosa were 4.32 mg ml−1, 4.52 mg ml−1 and 5.89 mg ml−1, respectively for P. lagopus, P. major and P. squarrosa (Fig. 1).
+
+The allelopathic effect of both aqueous and methanolic extracts on B. pilosa radicle growth after ten days of treatment revealed that there was not any significant variation between the three studied Plantago species (P ≤ 0.05). However, the degree of inhibition significantly increased in a dose-dependent manner (Fig. 2
+                        ).
+
+The aqueous extract of P. lagopus expressed a complete inhibition of radicle growth of B. pilosa at 10 mg ml−1. However, P. major and P. squarrosa extracts showed 90.48% and 87.39%, respectively. At 2.5 mg ml−1, P. lagopus, P. major and P. squarrosa extracts showed the lowest inhibition percentage of radicle growth 42.22%, 32.14% and 34.23%, respectively. The IC50 values for P. lagopus, P. major and P. squarrosa extracts on the radicle development of B. pilosa were 4.18 mg ml−1, 4.85 mg ml−1 and 5.14 mg ml−1, respectively (Fig. 2).
+
+On the other side, the methanolic extracts from P. major, P. lagopus, and P. squarrosa at 10 mg ml−1 inhibited the radicle growth of B. pilosa by 98.10%, 97.93%, and 93.15%, respectively. At the lowest concentration (2.5 mg ml−1), P. lagopus, P. major and P. squarrosa extracts showed the lowest inhibition percentage of radicle growth (93.79%, 92.38% and 75.34%, respectively). The IC50 values of P. lagopus, P. major and P. squarrosa extracts on B. pilosa were 1.82 mg ml−1, 1.97 mg ml−1 and 2.89 mg ml−1, respectively (Fig. 2).
+
+The phytotoxic effect of both methanolic and aqueous extracts from the studied Plantago species on B. pilosa plumule growth revealed slight significant variation between the three studied Plantago species. Nevertheless, there was a highly significant variation (P ≤ 0.05) between the different concentrations (Fig. 3
+                        ).
+
+The aqueous extracts from P. lagopus, P. major and P. squarrosa showed the highest inhibition percentage of B. pilosa plumule growth (88.44%, 69.62% and 49.37%, respectively) at 10 mg ml−1. However, at 2.5 mg ml−1, P. lagopus, P. major and P. squarrosa extracts inhibited the plumule growth by 11.56%, 18.35% and 18.36%, respectively. The IC50 values of the plumule development of B. pilosa were 5.18 mg ml−1, 7.71 mg ml−1 and 10.43 mg ml−1, respectively for P. lagopus, P. major and P. squarrosa extracts (Fig. 3).
+
+However, the methanolic extracts of P. lagopus and P. major completely inhibited B. pilosa plumule growth at 7.5 mg ml−1 and 10 mg ml−1, respectively. However, P. squarrosa extract expressed 93.75% at 10 mg ml−1. On the other hand, the lowest concentration (2.5 mg ml−1) of P. major, P. squarrosa and P. lagopus extracts inhibited the plumule growth by 60.95%, 33.09% and 22.92%, respectively. The IC50 values for P. major, P. lagopus and P. squarrosa extracts were 2.11 mg ml−1, 4.80 mg ml−1 and 4.81 mg ml−1, respectively (Fig. 3).
+
+@&#DISCUSSION@&#
+
+Medicinal plants are used as old as human civilization and continuous efforts of scientists around the world are being made to isolate and characterize novel bioactive compounds from these plants. The present investigation revealed that, P. major is rich in phenolics, tannins and flavonoids compared to that reported by Kobeasy et al. [21]. However, the phenolics of P. lagopus was lower than reported in Turkish ecotype [12]; this could be corroborated to the variation in the habitat, climate and/or genetic pool [22,23]. On the other hand, it attained the highest content of flavonoids and saponins compared to P. major and P. squarrosa.
+
+The allelopathic assay of the present study showed that the germination of B. pilosa was completely inhibited under treatment of P. lagopus and P. major methanolic extracts at 7.5 mg ml−1 and 10 mg ml−1, respectively. In addition, the aqueous extracts of P. major, P. lagopus and P. squarrosa at 10 mg ml−1 inhibited the germination of B. pilosa by about 72.41%, 62.96% and 62.96%, respectively. Moreover the germination inhibition of B. pilosa increased with the increase in the extracts concentration [5,24–26]. Many plant species showed inhibitory effects on B. pilosa germination such as Cajanus cajan, maize roots and rice husks [27], Lantana camara 
+                     [28] and Ipomoea cairica 
+                     [29]. In addition, many identified allelochemicals had inhibitory effects on B. pilosa germination such as eugenol [30] and parthenin [1].
+
+The present results showed that the three studied Plantago species showed higher inhibition percentage on B. pilosa germination than that attained by maize roots, rice husks and C. cajan at 10 mg ml−1 
+                     [27]. Additionally, they are more effective against B. pilosa germination compared to that of I. cairica 
+                     [29]; however the concentration used in the present study was lower than the I. cairica extract. The allelochemicals inhibited germination perhaps by affecting the cell division and elongation process that are very important at this stage or by interfering with oxidative enzymes [31] involved in the mobilization of nutrients necessary for germination [6,24] or by increasing ion leakage by altering membrane permeability [32].
+
+
+                     P. lagopus aqueous extract showed a complete inhibition of B. pilosa radicle growth at 10 mg ml−1; moreover, P. major and P. squarrosa showed the maximum inhibitory effect of B. pilosa radicle growth at the same concentration. The same observation was reported for plumule growth, although B. pilosa radicle is more sensitive to the Plantago extracts than the plumule which could be attributed to the direct contact of radicle to the allelochemicals [24]. Additionally, the inhibition of B. pilosa seedling growth was concentration-dependent. This is similar to the effect of eugenol and parthenin on B. pilosa seedling growth [1,30].
+
+The reduction in the seedling growth of B. pilosa in this study may be attributed to reduction in cell division of the seedlings, altering the ultrastructure of the cells [33]. The reduction of protein and nucleic acids, as well as the alteration of the ion uptake, water balance, phytohormone balance, photosynthesis, respiration and inactivate several enzymes in B. pilosa seedling growth [24,26,34].
+
+The methanolic extract of P. major, P. lagopus, and P. squarrosa inhibited the radicle growth of B. pilosa by 98.10%, 97.93%, and 93.15%, respectively at 10 mg ml−1. On the other hand, P. lagopus and P. major extracts showed a complete inhibition of B. pilosa plumule growth at 7.5 mg ml−1 and 10 mg ml−1, respectively. The radicle growth of B. pilosa was more sensitive than plumule under treatment of the methanolic extracts of the three studied Plantago species. This observation is comparable to other studies [35]. Previous studies have indicated that weed species might vary in their response tolerance to phytotoxicity [4,5].
+
+The allelopathic effect of the studied Plantago species could be attributed to several bioactive compounds that act in a synergistic manner or to compounds which regulate one another such as flavonoid, phenolic acids, saponin, alkaloids and tannins. Plantago species was reported to contain several bioactive secondary metabolites such as vanillic acid, iridoid glycoside (aucubin), caffeic acid derivatives, chlorogenic acid, ferulic acid, p-coumaric acid and triterpenes (oleanolic acid, ursolic acid) [36–38]. Many of these compounds were reported as allelochemicals [24,39].
+
+According to the IC50 values, the methanolic extracts of the three Plantago species were more phytotoxic on the germination of B. pilosa than the aqueous extract. Moreover, the allelopathic effects of the methanolic extracts on the growth of both radicle and plumule were higher than aqueous extracts. This could be attributed to the degree of solubility of the allelochemicals in the studied Plantago species [40]. Methanol has the ability to extract a wide variety of active components compared to water.
+
+@&#CONCLUSION@&#
+
+The germination of B. pilosa was completely inhibited under treatment of P. lagopus and P. major methanolic extracts at 7.5 mg ml−1 and 10 mg ml−1, respectively. Moreover, both radicle and plumule were strongly inhibited under the same treatment. This could be attributed to the high content of bioactive constituents. Therefore, these two species could be possible candidates to be used in managing this noxious weed in an ecofriendly bio-control method. Moreover, further studies are needed to identify and characterize the proper allelochemicals and demonstrate their modes of action.
+
+@&#REFERENCES@&#
+

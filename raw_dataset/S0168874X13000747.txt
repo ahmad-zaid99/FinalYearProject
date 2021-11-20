@@ -1,0 +1,279 @@
+@&#MAIN-TITLE@&#Influence of p-method finite element parameters on predictions of crack front geometry
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           
+                              K is calculated more accurately at free surfaces using smaller extraction radii.
+
+
+                        
+                        
+                           
+                           Corner crack results are dependent on the number of elements along the crack front.
+
+
+                        
+                        
+                           
+                           Predicted crack front geometry depends on the shape of the K profile along the crack front.
+
+
+                        
+                        
+                           
+                           High p-levels do not necessarily compensate for a coarse mesh.
+
+
+                        
+                        
+                           
+                           The energy norm should not be used as the sole indicator of solution convergence.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Finite element
+
+p-method
+
+Stress intensity factor
+
+Crack front
+
+Mesh
+
+Corner crack
+
+@&#ABSTRACT@&#
+
+
+                  The effect of various p-method finite element model parameters on the prediction of planar crack front geometry in three dimensional structures is evaluated. An automatic crack growth method was developed using the commercial software StressCheck coupled with Microsoft Excel. The geometry of the evolving crack front was predicted using iterations of three dimensional finite element models to determine the stress intensity values at discrete points along the crack front and incrementing the crack length locally using the Paris growth law. Modeling parameters such as the global mesh size, p-level, crack tip mesh size, and the extraction radius used for determining the stress intensity factors were all considered. The effect of these parameters on the predicted shape of a growing elliptical crack front was evaluated through a series of simulations of a corner crack emanating from a centered hole in a plate. A single model of a through crack with a straight crack front was also used to compare the effects of the model parameters on a different geometric configuration. This study has shown that the corner crack geometry and the growth series are more sensitive to the number of elements along the crack front and the extraction radius than the through thickness crack. In addition, convergence of the predicted crack front geometry does not guarantee convergence of the distribution of stress intensity factors along the crack front. It was also determined that for the models considered, using a smaller overall mesh size is a more effective way of decreasing discretization error than increasing the p-level.
+               
+
+@&#INTRODUCTION@&#
+
+Finite element modeling has become a tool that is widely used to predict stress intensity factors for crack configurations for which handbook solutions do not exist. For the aircraft industry, predictions of fatigue life at fastener holes, corrosion sites, and within complex solid geometries require detailed models that are able to predict the distribution of stress intensity factors (K) along three dimensional (3D) crack fronts of arbitrary geometry. In most cases, the shape of the crack front is not known and a simplified geometry is often assumed. For instance, the crack front for corner cracks at holes is often assumed to be a quarter circle, but in reality it grows into more of an elliptical shape.
+
+One method often employed for predicting the evolving shape of a crack front uses a series of finite element models to determine the K distribution along the crack front, from which the crack growth increment at individual points are predicted using the Paris growth law [1–4]. Many of these methods use commercial h-method finite element software and employ mapped meshes and manual K extraction techniques. The present study uses the commercial software StressCheck, which is a p-method finite element code. StressCheck is well suited for modeling crack problems as the higher order elements are more capable of capturing the singularity at the crack tip than the standard h-method, eliminating the need for specific crack tip elements. This software also has automatic mesh tools developed specifically for cracks as well as an embedded process for extracting K values. The p-method also allows for estimation of the discretization error of crack models through outputs of the energy norm as the p-level is increased as shown by Prost-Domasky et al. [5]. The methodology used for creating crack models using a p-version finite element code is quite different from the typical h-version, however, studies looking at predicting the shape of an evolving crack front using the p-method are few.
+
+The advanced automesher available in StressCheck, enables a free mesh of geometrically mapped tetrahedrons to be created around a specified crack front with elements concentrated in an orderly pattern around the crack tip. The p-method also allows elements with very large aspect ratios (up to 200:1) to be used, which results in fewer overall elements, particularly in crack models. When an h-method mapped mesh is used for crack simulation, a high number of elements are produced along the crack front because of the requirement of maintaining an aspect ratio close to 1. With the high aspect ratios allowed in the p-method, the number of elements along crack front is independent of radial size around the crack tip and allows for a more optimized mesh to be created. The extraction of K within StressCheck uses the contour integral method, and unlike manual post-processing methods, allows the extractions to occur anywhere along the crack front, at locations independent of the nodal location. Since K can be extracted at an unlimited number of points, local variations in the geometry of a growing crack front can be captured.
+
+In 2D h-method crack models, mesh parameters such as the size of the crack tip region, the number of elements surrounding the crack tip and the number of layers of elements have been shown to influence the predicted K values [6]. For 3D p-method finite element simulations, less is known about the effect of modeling parameters such as the global mesh size, p-level, crack tip ratio, and the extraction radius for K on the prediction of the crack front geometry and stress intensity values. Understanding the effects of these model parameters is imperative in producing simulations that have a balance between accuracy and solution time. This study uses two types of crack configurations to evaluate the influence of these p-method model parameters on predicting K distributions in planar cracks and on evolving crack front geometry in 3D structures; a single model of a through crack with a straight crack front as well as a series of iterative models of a corner crack growing from a centered hole. The growth series is modeled from an initial corner crack until it reaches through thickness, and assumes that the geometry of the crack front is a centered ellipse with an evolving aspect ratio.
+
+The growth model used in this work is based on the method presented by Lin and Smith [1], and aspects of the model procedure such as the crack growth increment, the fitting method used for the crack front and the underlying crack growth method are not examined in this study. While including plasticity induced crack closure and using more complex fitting techniques have been shown to produce more realistic predictions of the crack front geometry [7,8], they are also not considered in this present work.
+
+@&#MATERIAL AND METHODS@&#
+
+Sensitivity studies were performed on two different crack configurations; the first being a through crack in the center of a plate, and the second being a growth series of corner cracks at a centered hole.
+
+As depicted in 
+                        Fig. 1(a), a plate with a length of L=600mm, a width of w=200mm and a thickness of t=2mm with a total crack length of 2c=6mm was used for modeling the through crack case. The crack front was assumed to be a straight crack intersecting the plate surfaces at 90°. A traction of 1000MPa was applied to one end, while the other end was constrained from moving in the lengthwise direction, but was allowed to contract laterally. A Young’s modulus of E=200GPa and a Poisson’s ratio of ν=0.3 were used to represent a generic steel. To reduce the model size, a vertical plane of symmetry was used. Preliminary results showed that inconsistent predictions of the stress intensity factors were produced when extracted along a crack front coinciding with a horizontal plane of symmetry.
+
+The geometry and material for the growth series was defined from the experimental data published by Grandt and Macha [9] as depicted in Fig. 1(b). A plate with a centered hole and an unsymmetrical corner crack was used with the following dimensions: L=14′′, w=7.95′′, t=0.6895′′, and a hole radius of r=0.3695′′ (imperial units were used to maintain consistency with previously published results). Material properties of E=450,000psi, ν=0.365, and the Paris material constant of m=6.095 were used to represent PMMA (polymethylmethacrylate). A traction of 630psi was applied to one end, while the opposite end was fixed in all directions. An ellipse centered at the edge of the hole and the face of the plate was used to represent the crack front, and was characterized by a length of “b” along the bore of the hole and “a” along the front of the plate as defined in Fig. 1(b). Using a centered ellipse does not allow for the development of geometry that will result in an iso-K distribution as expected by Gilchrist and Smith [10], but it enables a direct comparison with simulations performed by Lin and Smith [1]. The centered ellipse is a relatively simple geometry that allows isolation of the parameters of interest, while capturing the change in the aspect ratio of the crack front as the crack grows. The extraction of K using the contour integral method is also simpler for crack fronts that intersect free edges at 90°. The initial crack geometry of a=0.106′′ and b=0.118′′ was determined by a least square fit of a centered ellipse to the experimental data from Grandt and Macha [9], giving an initial aspect ratio of b/a=1.11.
+
+StressCheck allows for an automatic mesh of geometrically mapped tetrahedrons to be created for structures with cracks using a variety of mesh parameters which control the overall mesh size as well as the mesh around the crack tip. For the growth series, the StressCheck automesher enables the mesh to automatically adapt to the changing crack length and geometry of the crack front using one set of mesh inputs, as opposed to other software packages which may require manual manipulation of the mesh or the inclusion of adaptive remeshing techniques. As all mesh parameters are defined in terms of ratios and not physical size, the values are transferable between different geometric configurations to produce a comparable mesh for the sensitivity studies.
+
+Radial layers of elements are created around the crack front to help distribute the numerical errors associated with the singularity at the crack tip. It is recommended that at least two layers of radial elements be used, with the outer layer being 15% of the crack length and the inner layer being 15% of the outer layer [11]. A typical mesh for the through thickness model and for the corner crack model are shown in 
+                        Fig. 2. Any element within the first two radial layers is considered to be part of the crack tip mesh.
+
+In this study, the sensitivity of the predicted results on the mesh definition was determined by varying three different mesh characteristics; the overall mesh size, p-level, and the number of elements along the crack front. The overall mesh size was controlled by two inputs, the global size ratio (mrat) which affects the ratio of the largest to smallest element within the model, and the transition rate (trans) which specifies the difference in size between adjacent elements. The overall mesh is considered to include any elements surrounding the crack tip mesh. The number of elements along the crack front was controlled by the crack tip ratio (ctrat), while p-levels between 1 and 8 define the order of the underlying element formulation of the mesh.
+
+Stress intensity factors can be determined from finite element results using a variety of methods such as the ¼ point displacement method [1], crack opening displacement [3], J-integral or the contour integral method which has been incorporated into StressCheck. Within StressCheck, the K values are automatically calculated at discrete points along the crack front, as outlined in detail in the StressCheck Masterguide [11]. When extracting K along 3D curved crack fronts, the contour integral method is not path independent as it is in 2D, and as a result, the predicted stress intensity factors depend on the extraction radius (ipr) chosen by the user. Results theoretically converge when the extraction radius goes to zero, but because of the singularity contained within the first row of elements, it is recommended that a small radius within the second row of elements be used [11]. The extraction radius is calculated as ipr=α*0.15*c where α must be between 0.15 and 1 for the ipr to fall within the second layer of elements and c is the crack length. A value of α=0.2–0.25 is recommended for most engineering applications [11]. The value of c is taken as 3mm for the through crack models, and c=a for the corner crack configuration.
+
+In this study, the method for propagating the crack front has been adapted from the work by Lin and Smith [1], to take advantage of the embedded functions within StressCheck. One difference between the two methods is that in the current work, the crack is grown at discrete points along the crack front which are independent of the nodal location. This allows for a free mesh to be used instead of a mapped mesh. Spreadsheets created within Excel and linked to StressCheck using COM API were used to control the crack propagation calculations. A summary of the method employed in the current analysis is presented below and illustrated in 
+                        Fig. 3
+                        
+                           
+                              −
+                              A 3D finite element model was automatically generated within StressCheck for a given crack length c
+                                 i, using preset mesh definitions and a crack front geometry fit to a centered ellipse.
+
+The model K values at 9 evenly spaced points along the crack front were automatically extracted using the prescribed extraction radius, and the contour integral method. The K values at the ends of the crack front were not used due to inaccuracies of the extracted values at free surface locations.
+
+The location along the crack front with the maximum stress intensity values (K
+                                 max) was assumed to grow by a prescribed crack increment Δc
+                                 max.
+
+The growth increment of each point along the crack front was determined using Eq. (1), where m is the Paris constant for PMMA of m=6.095.
+                                    
+                                       (1)
+                                       
+                                          Δ
+                                          
+                                             
+                                                c
+                                             
+                                             
+                                                i
+                                             
+                                          
+                                          =
+                                          
+                                             
+                                                (
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               K
+                                                            
+                                                            
+                                                               i
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         
+                                                            
+                                                               K
+                                                            
+                                                            
+                                                               max
+                                                            
+                                                         
+                                                      
+                                                   
+                                                
+                                                )
+                                             
+                                             m
+                                          
+                                          Δ
+                                          
+                                             
+                                                c
+                                             
+                                             
+                                                max
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+
+The growth was directed orthogonal to the crack front and this direction was determined using the slope between the two adjacent points.
+
+The seven new coordinates of the crack front were fit to a centered ellipse using the embedded solver within Excel and a least squares fit.
+
+The process was repeated using the updated crack front geometry, until the crack had grown to through thickness at the back edge of the plate.
+
+The parameters of interest; overall mesh, p-level, crack tip ratio, and extraction radius were varied individually from the baseline model which had the following values for both the through crack and the corner crack models: mrat=0.5, trans=0.02, p-level=5, ctrat=0.08, α=0.2 as outlined in 
+                        Table 1 and shown in 
+                        Fig. 4. Preliminary results showed that a maximum crack growth increment of Δc
+                        max=0.02′′ for the growth series resulted in converged solutions. The through crack models used 242 extraction points to enable the detailed K distribution near the free surfaces to be determined, while the growth models used 9 extraction points as per Schive [12]. The baseline mesh parameters produced 1161 elements for the through crack and 2911 elements for the initial geometry of the corner crack (a=0.106′′ and b=0.118′′). Since the mesh parameters produce elements based on the length of the geometric features, the corner crack model contains more elements because of the smaller features such as the hole and curved crack front. The parameters used for each sensitivity study are summarized in 
+                        Table 2.
+
+@&#RESULTS@&#
+
+The sensitivity of the model parameters was evaluated with respect to the average K value (calculated as the average of the 50 points on either side of the midplane of the plate) for the through thickness crack, and the final aspect ratio of the elliptical crack front (b/a) at through thickness for the growth series. These values are referred to as the characteristic results. For the corner crack, through thickness was defined at a distance of 0.624′′ as opposed to the plate thickness of 0.698′′ due to the inability of a parametric mesh to be produced when the crack front intersects at small distances from the back surface of the plate. Graphs showing convergence curves from finite element analyses are typically plotted against the number of degrees of freedom, but for the studies considered here, predicted results were also plotted against the number of elements in the model or the p-level used. This helps isolate the effects of different model parameters, since different p-levels produce different numbers of degrees of freedom for models with the same numbers of elements. The number of elements for the growth series was determined using the model of the initial corner crack geometry, although subsequent models may contain slightly different numbers of elements due to the increasing crack length.
+
+Simulations were run on a desktop computer with 8GB of RAM and 8×2.66GHz Intel® Xeon® cpus. A single baseline iteration of the corner crack model took 5min 54s to complete with 15% of the time spent building the model and converting the mesh from isoparametric to geometrically mapped elements, 5% of the time extracting the 9 points and 80% of the time solving. The extraction time is dependent upon the number of points required and the extraction radius, where the larger radii require less time to complete. The growth series’ required between 33 and 80 iterations to reach through thickness, as the actual crack increment depended on the elliptical fit to the location of the predicted points, which varied with mesh configuration. The total time to complete the entire growth series from initial geometry to through thickness was between 1 and 7h for all simulations performed in this study.
+
+Convergence curves for the characteristic results are plotted against the number of elements in 
+                        Fig. 5, with both vertical axes representing a 3% spread in results. Solutions are said to converge when the difference between successive characteristic results is less than 0.5%. All sets of models used the same baseline mesh inputs (ctrat=0.08, p-level=5 and α=0.2), with only the overall mesh parameters mrat and trans, being varied. The average K value for the through crack converges with 967 elements, which corresponds to an mrat=0.6 and trans=0.03 or smaller. The final b/a ratio for the growth series converges to a value of 1.56 with 1457 elements for the initial geometry and an mrat=0.8 and trans=0.08 or smaller. The growth series converges with coarser mesh parameters as more overall elements are produced in the corner crack model due to the presence of the hole and the curvature of the crack.
+
+The K distribution along the through thickness crack front is shown in 
+                        Fig. 6, indicating that convergence of the average K value occurs when the overall shape of the K distribution across the crack front becomes consistent. The value of K for a through crack in a plate is determined as K=σ√πc (handbook solution) which at 3071MPa√mm, is 6.3% lower than the converged average K of 3275MPa√mm predicted from the 3D models. It is not unusual to see K values from 3D finite element simulations being 5% higher than the corresponding 2D plane strain solution [13] due to the inability of the 2D models to represent the variations in the stress field through the thickness. The small blips in the K distribution corresponds to element edges and is due to the influence of results at adjacent points when calculating the K value using the contour integral method in 3D.
+
+For the growth series, 
+                        Fig. 7 plots the aspect ratio of the elliptical crack front as it changes with the growth of the crack in the through thickness direction, b. The overall development of the crack front geometry is not consistent until 1457 elements were used which coincides with the mesh required to produce a final b/a ratio that had converged.
+
+
+                        
+                        Fig. 8 shows that the predicted aspect ratio of the ellipse is up to 17% lower than the experimental results published by Grandt and Macha [9] but compare well with finite element predictions by Lin and Smith [1]. 
+                        Fig. 9 illustrates that fitting the crack front to a centered ellipse (as in the current predictions and the results by Lin and Smith [1]) does not capture the high K values near the bore of the hole thus reducing the predicted value of the b/a ratio. Preliminary results using more advanced fitting techniques such as off-centered ellipses have shown the potential to produce more accurate predictions in the shape of the crack front.
+
+The K distribution along the crack front for the initial corner crack geometry is shown in 
+                        Fig. 10. The solution using 2911 elements is predicted to within 9.7% of the empirical equation by Raju and Newman [14] and within 4.8% of the experimentally based solution published by Schive [12]. The empirical equation was accurate to within 5% of the finite element solution on which it was based, which may explain some of the discrepancy with the predicted results near the bore of the hole. Even though the mesh with 1457 elements produced converged predictions of the final b/a ratio as well as the evolution of the elliptical crack front, it did not produce converged predictions of K, being up to 2.5% lower than the converged solution near the plate surface.
+
+In 
+                        Fig. 11 convergence curves for the characteristic results are plotted against p-level, where both sets of models used the same baseline inputs (mrat=0.5, trans=0.02, ctrat=0.08 and α=0.2) with only the p-level being varied. Solutions are said to converge when the difference between successive characteristic results is less than 0.5%. For the through thickness crack, the average stress intensity factor converges at a p-level of 4, and the final b/a ratio for the growth series converges at a p-level of 5 as indicated by the gray circles.
+
+
+                        
+                        Fig. 12 shows that the overall shape of the K distribution along the through thickness crack front is not captured until a p-level of at least 4 was used, which corresponds to the required p-level for convergence of the average K value. For the growth models, 
+                        Fig. 13 shows that the evolution of the b/a ratio of the elliptical crack becomes consistent at p levels of at least 5, which corresponds to the required p-level for convergence of the final b/a ratio.
+
+The energy norm output by StressCheck can also be used as an indication of discretization error and is based on the difference between the exact and approximate values of the potential energy [11]. As seen in 
+                        Fig. 14, the energy norm for the through crack model drops below 2% for the through crack at a p-level of 5 and with 80,184 degrees of freedom. The energy norm for the growth series was determined for the initial geometry, and falls below 2% at a p-level of 6 and 330,132 degrees of freedom. When using the p-method for fracture mechanics problems, an energy norm of 5% is often considered to be acceptable [11].
+
+Convergence curves for the characteristic results are plotted against the number of elements along the crack front in 
+                        Fig. 15. Both sets of models used the same baseline parameters (mrat=0.5, trans=0.02, p-level=5 and α=0.2), with ctrat being varied to achieve different numbers of elements along the crack front. The same values of ctrat did not produce the same number of elements along the crack front for the through thickness and corner cracks. Solutions are said to converge when the difference between successive characteristic results is less than 0.5%. For the through thickness crack, Fig. 15 uses a vertical axis spread of 5%, indicating that the average stress intensity factor is not significantly affected by the number of elements along the crack front. The difference between using one element and 26 elements is 0.05%. 
+                        Fig. 16, however, shows that using only one element along the through crack front does not effectively predict the overall distribution of K.
+
+
+                        
+                        Figs. 15 and 17 indicate that for the growth series, at least 9 elements are required along the corner crack front to produce converged results for the final b/a ratio and consistent results for the evolution of b/a. It is somewhat surprising that even with 6 geometrically mapped elements along the crack front, which in Fig. 2(b) appears to be a satisfactory mesh, the final b/a ratio is predicted to be 7.3% above the converged value.
+
+The characteristic results are plotted against the normalized distance within the second layer of elements in 
+                        Fig. 18, with both sets of models using the same baseline parameters (mrat=0.5, trans=0.02, ctrat=0.08 and p-level=5). Both sets of data use a vertical axis with a 6.7% range. This indicates that the through thickness crack is less sensitive to the extraction radius than the corner crack growth series, producing a 0.8% spread in the average stress intensity factor versus a 5.6% spread in the final b/a ratio. Both sets of predicted results decrease locally near the boundary between the first and second layers of elements.
+
+The overall shape of the K distribution along the through crack front shows large variations with the extraction radius as seen in 
+                        Fig. 19 even though the average K is relatively unaffected. Larger extraction radii accumulate more error and tend to “smooth” out the K distribution curve. In addition, large extraction radii do not capture the surface effects correctly. For the growth series, all integration point radii gave the same overall shape of the evolution of the elliptical crack front curve as depicted in 
+                        Fig. 20. The reason for this is that the shape of the K distribution for the corner crack is captured everywhere except near the free surfaces with all extraction radii, as seen in 
+                        Fig. 21. The smallest extraction radius within the second layer of elements would give the most accurate representation of the K value, but as seen in Figs. 19 and 21, the K distribution becomes less smooth at very small radii. In addition, for curved crack fronts, it may not be possible to extract results using radius values that are very small. A value of α=0.2 provides a balance between capturing the detail in the K distribution, while still maintaining a smooth curve.
+
+@&#DISCUSSION@&#
+
+When using the p-method for finite element modeling, the number of degrees of freedom in a model can be increased by either refining the mesh or increasing the p-level. 
+                        Fig. 22 shows the average stress intensity factor for the through thickness crack where each curve represents a different overall mesh with the number of elements indicated. The curves are produced using increasing p-levels from 3 to 8 which results in different numbers of degrees of freedom. It is clear that a high p-level cannot compensate for a coarse mesh (mrat=1, trans=1), as the model with 785 elements has not converged at a p-level of 8. Coarse models solved using a high p-level may actually have a higher discretization error than a well meshed model using a lower p-level. The circled points indicate that the p-level at which the energy norm for that model falls below 3% (the model with 785 elements did not reach an energy below 2%, as was used in the discussion in Section 3.2). It is also evident that the energy norm alone cannot be used as an indication of convergence of K values, as with 785 elements and an energy norm of 3.0% the K value is still 7.2% below the converged value. These results emphasize the importance of performing mesh convergence studies on the result of interest in order to identify solutions with low discretization error.
+
+For the growth series, 
+                        Fig. 23 shows that when a p-level of 7 is used, that the coarse mesh (mrat=1, trans=1, 1278 elements) produces a final b/a ratio that is within 0.14% of the converged value. This indicates that when predicting the final crack front geometry, that a higher p-level may in fact be able to compensate for a coarse mesh, although the magnitude of the K values remain up to 8.8% lower than the converged values. Higher p-levels, however, do not produce an optimal solution in terms of run time. The mesh of 1278 elements and a p-level of 7 took 7min 49s to run, while a finer mesh of 1457 elements using a p-level of 5 ran in 2min 58s.
+
+Lin and Smith [1] have shown that the final b/a ratio of the elliptical crack front is constant for a given ratio of hole radius to plate thickness (r/t), and is independent of the shape of the initial crack front geometry. This implies that small errors in the shape of the front at small crack lengths have minimal effect on the final b/a ratio, and the final b/a ratio is often better predicted than the intermediate values.
+
+As was the case for the through crack, the energy norm alone should not be used as an indication of convergence of the final b/a ratio for the growth series. Convergence based on the energy norm being below 2% would require a p-level of 6 for the baseline mesh, while basing convergence on the value of interest (0.5% difference in the final b/a ratio) would require a p-level of 5. Using an unnecessary p-level of 6 would double the time for each model iteration from 5min 54s, to 11min 38s.
+
+The final b/a ratio and the evolution of the crack front geometry are highly affected by the overall distribution of K along the crack front, but not the magnitudes of K. As seen in Fig. 10, the coarse mesh has a K distribution that is up to 16.2% lower than the converged solution, but Fig. 7 shows that the maximum difference in the intermediate b/a ratio is only 4.7%. In this study, the crack front is incremented by distances that are proportional to the K value at each point, hence the relative values of K drive the shape of the crack front and not the absolute magnitudes. The largest error in the crack front geometry was generated when 1 element was used along the crack front as 
+                        Fig. 24 shows that the K distribution was not predicted well.
+
+The magnitude of K, however, will be extremely important when predicting the fatigue life as the growth rate is directly dependent on the value of K raised to the power of m. When predicting a fatigue life, a finer overall mesh is required to accurately determine the values of K than is necessary for predicting the crack front geometry.
+
+The stress state through the thickness of the plate changes from plane strain in the middle to plane stress at the free surfaces. In addition, the vertex singularity present where the crack front intersects the free surfaces also affects the stress state, and can be quantified by a value called the singularity exponent (p) based on the vertical deflection behind the crack tip and the location along the front [9]. As the stress state changes from plane strain to plane stress, the stress intensity value decreases as seen in Fig. 16. These surface effects play a large role in how the shape of a crack changes as it grows, and is one of the reasons for the tunneling effect seen in through thickness cracks [8,15] and the lag at the surface in corner cracks. In order to obtain accurate predictions of the shape of a crack front, a sufficient number of extraction points must be used to capture the decrease in the stress intensity factors near the surfaces.
+
+The extraction radius has a significant effect on the shape of the K distribution near the surface as shown in 
+                        Fig. 25 for both the through thickness crack and the initial corner crack of the growth series. Both geometries used 242 extraction points for these plots, and show the same effect of α. This indicates that the surface effects are localized and are independent of the overall stresses. Smaller values of α produce the expected decrease in K at the surface, while higher values of α result in a local rise in K at the surface. The inaccurate results provided by larger values of α are due to the increase in numerical error when using an extraction radius further away from the crack front. Many others have shown that a slight increase near the surface, such as what is seen in Fig. 25 using α=0.4 or α=0.9, is possible for cases where the crack front does not intersect the free surface at 90°, or when a high Poisson’s ratio (0.5) is used with a very thin plate (2mm) [8,15,16]. This highlights the importance of understanding the reason behind the apparent surface effects predicted by the finite element simulations, as they could be a result of erroneous modeling parameters.
+
+For the corner crack, the detail in the surface effects cannot be captured using a centered ellipse, because the shape is not sufficiently flexible to follow the high curvature near the surface. Therefore, the accuracy of the K distribution near the edges has no effect on the predictions of the b/a ratio in the present study. If, however, another technique such as a spline was used to fit the shape of the crack, it would become extremely important to accurately represent the K distribution in this region in order to predict the lag in the crack growth at the surfaces.
+
+When considering the distribution of stress intensity factors across a crack front, the overall mesh parameters and p-level required for convergence are similar for the through thickness or the corner crack. There is a significant difference, however, in the number of elements required along the crack front and the sensitivity of the extraction radius. A straight crack front requires fewer elements than a curved front, and even using as few as 2 elements still provides an accurate K distribution. The curved crack front considered here requires at least 9 elements and the more complex the geometry of the front, the more elements that would be needed. Increasing the value of ctrat, however, has a large effect on the number of elements in the entire model as increasing from 1 to 9 elements locally along the crack front results in an increase in the total number of elements from 957 to 2911. The extraction radius has been shown to have more of an effect for models with more complex geometry as shown in Fig. 19 due to the curvature of the crack front causing the contour integral to be path dependent.
+
+@&#CONCLUSIONS@&#
+
+In this study, the influence of p-method model parameters on the prediction of crack front geometry and on the distribution of stress intensity factors along crack fronts were examined. The following conclusions were drawn from this work:
+                        
+                           −
+                           When predicting stress intensity values, high p-levels producing more degrees of freedom may not necessarily compensate for an overall mesh that is too coarse.
+
+All predicted results for the corner crack were highly dependent on the number of elements along the crack front. Crack fronts with complex geometry such as curvature may require convergence studies to determine the optimal number of elements needed.
+
+As the extraction radius within the second layer of elements surrounding the crack tip is decreased, the overall distribution of K along the crack front, and the surface effects are captured more accurately. The recommended value of α=0.2 provided the most reasonable predictions.
+
+The energy norm should not be used as the sole indicator of solution convergence. Studies on the convergence of the results of interest, such as the crack front geometry, should be performed as well.
+
+For the crack growth method used in this study, the shape of the crack front can be predicted as long as the distribution of K along the crack front is captured correctly. However, fatigue life can only be predicted if the magnitude of the K values is accurate.
+
+For through thickness cracks, convergence of the average K value also indicates converge of the overall K distribution. For the growth series, convergence of the crack front geometry does not guarantee convergence of the magnitude of the stress intensity values, however, the overall distribution of K may still be captured.
+
+@&#ACKNOWLEDGMENTS@&#
+
+Funding for this study has been provided through the Department of National Defence and the AERAC program.
+
+@&#REFERENCES@&#
+

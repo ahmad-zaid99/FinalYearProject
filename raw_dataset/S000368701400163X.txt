@@ -1,0 +1,147 @@
+@&#MAIN-TITLE@&#The relationship between physical load and musculoskeletal complaints among Brazilian dentists
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           We examine musculoskeletal complaints in nine joints of dentists.
+
+
+                        
+                        
+                           
+                           Clearly association between complaints of pain with awkward working positions.
+
+
+                        
+                        
+                           
+                           Complaints of pain do not generate absenteeism or a loss of productivity at work.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Dentistry
+
+Workload
+
+Cumulative trauma disorders
+
+@&#ABSTRACT@&#
+
+
+                  The aim of the present study was to assess the relationship between physical load and musculoskeletal complaints in dentistry and to analyze the prevalence and severity of such complaints in nine anatomical regions using a cross-sectional study of 387 dentists from Natal, Brazil. The highest prevalence of complaints was related to the lower back (58.4%) and the lowest prevalence was found in the elbow (10.3%). In general, symptoms were classified as mild because they did not cause absence due to illness. Pain complaints were associated with the following characteristics: awkward posture at work; prolonged standing or sitting; strenuous position of the upper limbs; excessive tightening of the hands during clinical treatment; and the use of vibrating tools. The results of the present study suggest a high prevalence of musculoskeletal complaints in dentists that are significantly associated with variables related to their physical workload.
+               
+
+@&#INTRODUCTION@&#
+
+Musculoskeletal disorders are among the most important issues of occupational health. The occurrence of these disorders has mainly been investigated through pain complaints. This is especially true among dentists, where the high prevalence of pain in different anatomical regions of the body has been associated with their occupational activity (Hayes et al., 2009). Among the different anatomical regions affected, studies have noted that the lower back, neck, and shoulders exhibit a high prevalence of pain (Leggat et al., 2007; Morse et al., 2010; Lin et al., 2012). The literature has recognized that these complaints, which occur during the practice of dentistry, have considerably contributed to morbidity, while reducing productivity and possibly leading to premature retirement (Crawford et al., 2005; Leggat et al., 2007). Among the most common practices performed by dental professionals, the use of vibratory tools, excessive repetition of movements and the static maintenance of inadequate posture for long periods of time are notable (Morse et al., 2010). These situations involve a high demand for physical strength in this occupational activity.
+
+Within this context, Rolander and Bellner (2001) investigated the high physical work demands and the elevated workload of a group of dentists. The authors observed a high prevalence of musculoskeletal complaints, especially in the neck and shoulders. However, the intensity of pain perception in these regions was low, and there was only a weak correlation between pain and physical workload.
+
+
+                     Alexopoulos et al. (2004) found a strong association between neck and shoulder pain and the physical workload of professional dentists. Therefore, based on the disagreements among previous studies, associations between physical overload and musculoskeletal symptoms among dentists have not been clearly defined. Further studies are required to elucidate this question.
+
+
+                     Jonker et al. (2009) and Åkesson and Balogh, (2012) attempted to establish objective measurements to quantify the physical workload of dentists. They used electromyography and inclinometry to assess the activity of specific muscles during dental appointments. Despite the fact that these methods helped to observe the elevated tension to which these professionals are submitted, an association between physical load and musculoskeletal symptoms was not clearly demonstrated.
+
+In addition, there are no studies to date that have been conducted with Brazilian dentists in an attempt to confirm the association between musculoskeletal symptoms and the physical load of dental work. In one of the most recent studies involving Brazilian dentists, Alexandre et al. (2011) reported that these professionals exhibit an elevated risk of acquiring musculoskeletal disorders, in comparison with other professions, although the same authors did not investigate whether their occupational physical load was associated with this result.
+
+For these reasons, the aim of the present study was to confirm the association between physical load in dentistry and musculoskeletal complaints in dentists working in the city of Natal (Brazil) and to analyze the prevalence and severity of such complaints in nine anatomical regions.
+
+A cross-sectional study was performed with 387 dentists practicing in the city of Natal, State of Rio Grande do Norte (RN), Brazil. The sampling process involved a formal invitation to dentists that were active in the city, with voluntary participation.
+
+According to Medronho et al. (2009), the following elements must be considered when calculating sample size in this type of study: finite population size (1957 dentists registered at the Regional Council of Dentistry of Rio Grande do Norte and active in the municipality of Natal in 2012); lowest estimated prevalence of the outcome (58%) reported in the literature (Santos Filho and Barreto, 2001); tolerable error (5%); and confidence interval (95%). According to these criteria, the random and representative sample size for the present study would be 314 dentists. However, due to the quantity and availability of dental professionals in Natal/RN (387 professionals), this sampling size was not realistic. Furthermore, 47 of these professionals met at least one of the exclusion criteria, which included the following: currently on leave of absence; exercising clinical activity for less than one year; exhibiting some disease of the musculoskeletal system or connective tissue that was diagnosed before the initiation of professional clinical practice.
+
+A self-administered questionnaire that contained initial information on the importance of the work was distributed to the survey subjects. The first part of the questionnaire contained items related to the severity of musculoskeletal complaints in nine anatomical regions using the validated Brazilian version of the Nordic Musculoskeletal Questionnaire (Pinheiro et al., 2002). Fig. 1
+                         displays the nine anatomical regions assessed.
+
+Complaints were scored using the following five-point scale: 0 = No complaints; 1 = Complaints in the 12 preceding months or seven preceding days; 2 = Complaints in the 12 preceding months and seven preceding days; 3 = Complaints in the 12 preceding months or seven preceding days, with leave of absence; 4 = Complaints in the 12 preceding months and seven preceding days with leave of absence. The collected data were categorized as follows for each anatomical region: 0 = No pain; 1–4 = Presence of pain. The severity of complaints could be classified based on the presence of pain. A score of 1 or 2 corresponded to mild complaints, whereas scores of 3 or 4 indicated severe complaints.
+
+With respect to physical workload, five questions about inadequate working posture were addressed. These questions were structured as follows: 1. Does your work regularly involve uncomfortable positions, such as a flexed or twisted torso? 2. Do you spend long periods of time standing or sitting? 3. Do you hold your upper limbs in a strenuous position, such as raising your arms for a long time? 4. Does your work involve excessive pressing force with your hands? 5. Do you use vibratory tools? In accordance with Alexopoulos et al. (2004), a four-point scale was used for the questions related to physical workload. This scale was composed of the following answers: “seldom or never,” “sometimes,” “often,” and “always.” The answers “often” and “always” were classified as having high exposure, whereas “seldom or never” and “sometimes” were classified as having low exposure.
+
+The data were entered into a database using SPSS® version 17.0 software for Windows. After final structuring of the database, initial descriptive analysis of the data was carried out, relative to the dependent variables. The prevalence of musculoskeletal complaints and their severity in each anatomical region was determined.
+
+The relationship between the dependent and independent variables was assessed using the Chi-squared test, with a significance level of 5%. Additionally, the prevalence ratio (PR) was calculated for all relationships. The PR expresses the magnitude of prevalence of the outcome of exposed individuals in relation to non-exposed individuals.
+
+The present study was approved by the Ethics Committee of the Federal University of Rio Grande do Norte under protocol No. 106/10 CEP/UFRN, CAAE – 0121.0.051.000-10. All participants signed an informed statement of consent.
+
+@&#RESULTS@&#
+
+A total of 387 questionnaires were analyzed, all of which were answered by professionals voluntarily participating in the survey. Of these, 47 professionals were excluded from sampling: ten (2.6%) were excluded for having a disease of the musculoskeletal system or connective tissue that was diagnosed prior to the initiation of their professional clinical practice; 14 (3.6%) were excluded because they were active for less than one year in clinical practice; and 23 (5.9%) were excluded for not currently practicing their profession in a clinic.
+
+Of the 340 dentists sampled, 121 (35.6%) were male, and 219 (64.4%) were female. The average age of the subjects was 36.3 years (SD = 9.9) and the average time in clinical practice was 12.2 years (SD = 9.3). The professionals worked on average 7.5 h per day (SD = 2.7).
+
+
+                     Fig. 2
+                      displays the results of the prevalence of musculoskeletal complaints in dentists and their severity. The lower back was the most afflicted anatomical region. In this region, the prevalence of pain corresponded to 58.4%. The least afflicted region was the elbow (10.3%). Interestingly, any region for which there was a complaint was more often classified as mild because none of the injuries led to a leave of absence.
+
+With respect to the relationship between lower back pain and the variables related to physical workload, only the maintenance of the upper limbs in a strenuous position was significantly associated with the presence of pain in this region (p = 0.047) (Table 1
+                     ). Professionals working under high exposure to this variable were 1.27 times (27%) more prone to musculoskeletal complaints in the lower back. Also in relation to lower back pain, an inadequate working position of the torso recorded an association at the limit of significance (p = 0.057).
+
+An inadequate working posture, such as a bent or twisted position of the torso, was significantly related to pain in the neck (p = 0.005), shoulders (p = 0.028), and upper back (p = 0.025) (Table 2
+                     ). Thus, dentists that maintained high exposure to inadequate working postures were 34%, 35%, and 44% more prone to feel pain in the neck, shoulders, and back, respectively. Additionally, prolonged work in a standing or sitting position and the maintenance of limbs in a strenuous position were associated with the presence of pain in the upper back (p = 0.009) and shoulders (p = 0.020), respectively (Table 2). The variables related to physical workload assessed in the present study were significantly associated with at least one of the anatomical regions linked to the upper limbs (Table 3
+                     ).
+
+With respect to anatomical regions linked to the lower limbs, inadequate working posture was significantly associated with the presence of pain in the ankle/feet (p = 0.006). Standing or sitting for long periods of time was significantly associated with pain in the hip/thigh (p = 0.044) (Table 4
+                     ).
+
+@&#DISCUSSION@&#
+
+The results of the present study are in agreement with the literature, which concludes that work-related musculoskeletal complaints represent a major occupational health problem among dentistry personnel (Barbosa et al., 2012; Jacob and Pereira, 2006).
+
+To confirm this importance, Alexandre et al. (2011) compared the prevalence of musculoskeletal complaints among dentists, doctors, lawyers and individuals of the population in general. Back pain was more common among dentists (22.15%), than among doctors (14.07%) and lawyers (12.32%). Additionally, dentists were more likely to be diagnosed with tendonitis than doctors, lawyers and even the general population. Similarly, Barbosa et al. (2012) found that dentists are 1.5 times more likely to submit musculoskeletal complaints than other health professionals in the city of Belo Horizonte, Brazil.
+
+Despite the fact that most of the complaints in the studied sample of dentists were considered to be mild, they can compromise the quality of service provided to the patient due to the high prevalence of pain reported by the professionals. This finding was also demonstrated by Cherniack et al. (2010), who reported that the presence of musculoskeletal symptoms can elevate the level of stress among professionals, thereby affecting their physical and mental health and possibly worsening the quality of the services they provide. This type of issue is likely to receive attention from public health policies to promote assistance programs and improve the quality of life for these professionals.
+
+The four most prevalent anatomical regions with reported pain were the lower back, neck, wrist/hands/fingers and shoulders. Their respective prevalence was 58.4%, 54.3%, 42.8%, and 40.4%. Similarly, these four regions were among the most prevalent in dentists in the city of Belém in the state of Pará – Brazil (Jacob and Pereira, 2006). It is noteworthy that the vast majority of dentists in Natal, Belém do Pará and other Brazilian states typically work in a seated position, similar to foreign dentists (Hayes et al., 2009). However, in contrast to a number of other countries, in Brazil dentists in both the private and public sector do not in general work with dental hygienists. As a result, routine cleaning work and repair tasks are performed by the dentists themselves.
+
+One of the reasons for the high prevalence of pain symptoms in different anatomical regions of dentists is related to specific muscle fatigue generated by awkward static postures during patient care. According to Marklin and Cherney (2005), dentists spend on average 45%, 50% and 12% of their working time with the torso twisted to 30°, the neck flexed to 60° and the shoulder abducted to 90°, respectively. As previously described, dentists in the present study worked on average 7.5 h per day. Considering the high percentage of time that they spend in awkward static postures, this could represent an elevated physical load linked to muscle fatigue.
+
+This fatigue is caused by the compression of blood vessels, which cause muscles to work with an inadequate oxygen supply, thus characterizing a high static overload. This static overload is more pronounced in the lower back because working in a sitting position promotes a higher compressive load in this region. This compressive load is significantly higher in the sitting position than the standing position (Callaghan and McGill, 2001).
+
+Despite the fact that there was no significant association between pain in the lower back and long periods of working in a standing or sitting position in the present study, an association within the significance threshold was found between pain in the lower back and the prolonged maintenance of uncomfortable working positions, such as forward flexion positioning of the torso. According to Marklin and Cherney (2005), this forward flexion position of the torso is very common during patient treatment. According to Movahed et al. (2011), the maintenance of this flexion of the torso can also lead to a deficit in oxygen supply, causing fatigue and musculoskeletal complaints in the lower back.
+
+All nine anatomical regions analyzed were significantly associated with at least one of the variables related to physical workload, with the exception of the knee joint. For this reason, it is important to note that the practice of dentistry itself has led to the musculoskeletal complaints, especially with respect to body burden caused by the maintenance of static and inadequate postures (Marklin and Cherney, 2005).
+
+In dentistry, static overload of the joints linked to the torso is common, and such an overload is a reflection of the type of posture adopted by the dentist during patient treatment. This type of overload can generate fatigue of the erector musculature, notably deep musculature fatigue, which is responsible for the maintenance of static posture. Thus, this fatigue can be the precursor of a first episode of back pain and can often be related to chronic pain (Movahed et al., 2011).
+
+Strengthening the stabilizing muscles has been touted as a means to prevent and rehabilitate several spinal disorders, serving as a protection against fatigue caused by awkward working positions (Akuthota and Nadler, 2004). This issue has been considered among dentists and according to Iordache et al. (2010), a specific kinetic program aimed at relaxing and rebalancing the lumbo-abdomino-pelvic muscles, was necessary to improve spinal disorders.
+
+According to McGill (2002), muscle resistance is more important to stability than strength. Only 10% of maximum muscle contraction is sufficient to maintain stabilization. One of the techniques applied for this purpose is the concept of lumbar segmental stability, which has several denominations in the literature, such as core strengthening, dynamic stabilization and torso neuromuscular training, among others (Akuthota and Nadler, 2004). Training for lumbar segmental stability is characterized by low intensity isometry and synchrony of the deep muscles in the torso. In this way, programs aimed at the resistance of deep muscles are hypothesized to improve the motor control and strength of the torso region, thereby contributing to a reduction in lower back pain (McGill, 2002).
+
+In summary, the theoretical framework that supports segmental stabilization considers that injuries to the lumbar spine, and related pain, are caused by the gradual degeneration of the joints and tissues and that this pain arises from instability in the vertebral segments (Santos et al., 2011). Furthermore, attention must be paid to the elbow and wrist/hand/fingers, where pain was also significantly associated with variables related to physical workload. Among these variables, excessive tightening of the hands was associated with pain in the elbow and wrist/hand/fingers.
+
+According to Puriene et al. (2007), a review of the literature on general dentist health has determined that professionals specializing in preventive treatment in the area of oral health including prophylaxis, prevention of oral diseases, and restoration procedures, known as “dental hygienists,” exhibit a high prevalence of pain in the wrist/hand/fingers and elbow. Such a condition might be linked to excessive tightening of the hands, common in this type of specialty, as well as high exposure to vibratory tools.
+
+In a study performed with Swedish female dentists who claimed to exert excessive tightening of the hands, 64% exhibited pain symptoms in the wrist/hand/fingers in the past 12 months. This prevalence was much higher than female professionals who rarely exert excessive hand tightening during their occupational procedures (27%) (Akesson et al., 1999).
+
+In general, the results of the present study demonstrated that Brazilian dentists exhibit an elevated prevalence of musculoskeletal symptoms in different joints of the body, associated with variables related to their physical workload. Although it was not investigated in the present study, the literature suggests that segmental stabilization could benefit these professionals by possibly reducing the fatigue caused by the great static load (McGill, 2002; Akuthota and Nadler, 2004; Iordache et al., 2010; Santos et al., 2011).
+
+It should be noted that one of the limitations of the present study involved how the sampling was allocated. Although a large number of professionals were interviewed, the non-probabilistic sampling compromised the representativeness of the dentist population in the city of Natal, thereby hindering the generalization of the results for this population. Another limitation of the study relates to the manner in which the questions were put to the professionals. As closed interview questions were used, the results may have been affected, or possibly biased, with a greater number of symptoms reported.
+
+@&#CONCLUSIONS@&#
+
+The results of the present study indicate a high prevalence of musculoskeletal complaints among dentists, especially in the lower back, neck, and wrist. However, most of these complaints did not result in their departure from clinical practice. The anatomical symptoms studied exhibited a significant association with variables related to physical workload and are thus a possible cause of musculoskeletal afflictions in dental professionals. The execution of well-delineated longitudinal studies will be necessary to confirm this hypothesis.
+
+The author(s) declare that they have no competing interests.
+
+We did not have financial support.
+
+FFO Dantas designed the study protocol, managed the data collection, performed the statistical analysis and drafted the manuscript.
+
+KC Lima participated in the design, performed the statistical analysis and coordinated the study.
+
+@&#REFERENCES@&#
+

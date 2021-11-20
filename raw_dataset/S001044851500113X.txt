@@ -1,0 +1,1803 @@
+@&#MAIN-TITLE@&#A Total Order Heuristic-Based Convex Hull Algorithm for Points in the Plane
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           We propose a 2D convex hull algorithm based on comparison operators.
+
+
+                        
+                        
+                           
+                           We propose a 2D convex hull algorithm that outperforms Quickhull.
+
+
+                        
+                        
+                           
+                           We propose a 2D non-convex hull algorithm.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Convex hull
+
+Geometric algorithms
+
+Computational geometry
+
+@&#ABSTRACT@&#
+
+
+                  Computing the convex hull of a set of points is a fundamental operation in many research fields, including geometric computing, computer graphics, computer vision, robotics, and so forth. This problem is particularly challenging when the number of points goes beyond some millions. In this article, we describe a very fast algorithm that copes with millions of points in a short period of time without using any kind of parallel computing. This has been made possible because the algorithm reduces to a sorting problem of the input point set, what dramatically minimizes the geometric computations (e.g., angles, distances, and so forth) that are typical in other algorithms. When compared with popular convex hull algorithms (namely, Graham’s scan, Andrew’s monotone chain, Jarvis’ gift wrapping, Chan’s, and Quickhull), our algorithm is capable of generating the convex hull of a point set in the plane much faster than those five algorithms without penalties in memory space.
+               
+
+@&#INTRODUCTION@&#
+
+The convex hull 
+                     
+                        H
+                        
+                           (
+                           P
+                           )
+                        
+                      of a planar point set 
+                        P
+                      can be defined as the smallest convex polygon that encloses 
+                        P
+                     . Every point of 
+                        P
+                      belonging to the boundary of 
+                        H
+                        
+                           (
+                           P
+                           )
+                        
+                      is called an extreme vertex. The notion of convex hull is considered by many as one of the most fundamental geometric structures we find in computational geometry, computer graphics, robotics, etc.  [1]. In fact, important problems in computational geometry like Delaunay triangulation, Voronoi diagrams, halfsapce intersection, etc. can be reduced to the problem of computing the convex hull of a set of points  [2].
+
+Besides, the problem of finding the convex hull crosses many research domains and applies to an endless number of problems and situations. For example, convex hulls play an important role in computer vision  [3], pattern recognition  [4,5], visual pattern matching  [6], operations research  [7], path planning and obstacle avoidance in robotics  [8,9], astronomy  [10,11], and biology and genetics  [12], just to mention a few of them.
+
+The remainder of the paper is organized as follows. Section  2 overviews the prior work on convex hull algorithms. Section  3 describes the TORCH (Total Order-Based Convex Hull) algorithm step by step. Section  4 carries out the complexity analysis of the TORCH algorithm. Section  5 compares the TORCH algorithm to other well-known convex hull algorithm with reference to both arbitrary and definite sets of points in the plane. Section  6 concludes the paper, with some hints for future work.
+
+@&#RELATED WORK@&#
+
+According to Avis et al.  [13], the convex hull algorithms fall into two categories: graph traversal and incremental. Graham scan  [14], Jarvis march  [15] and monotone chain  [16] are representatives of graph traversal algorithms. In the graph traversal algorithms, the input points work as vertices of a graph whose edges are formed temporarily to check whether two connected edges are convex or not. For example, Graham scan uses the angle between two connected edges to decide about the convexity on the shared vertex.
+
+Incremental algorithms start from an initial convex hull (e.g., a triangle), checking then whether each of the remaining points belongs to the current convex hull or not. If any of these remaining points is outside the current convex hull, then the convex hull is updated accordingly. Quickhull  [17], divide-and-conquer  [1] and incremental  [18] algorithms are some representatives of this category.
+
+The convex algorithm proposed in this article, called total order heuristic-based convex hull (TORCH) algorithm, is in its essence a sorting algorithm, being its geometric computations reduced to a minimum. As a result of such a sorting procedure we immediately obtain an approximate convex hull (i.e., a non-convex hull) that contains all the extreme vertices of convex hull and a few concave vertices. The last stage of the algorithm consists in discarding those concave vertices from the approximate convex hull using the geometric operation CCW that is employed in Andrew’s monotone chain. Our algorithm was designed for serial computing, so that we do not use any GPU resources or other parallel resources in any way. The main contribution of the TORCH algorithm lies in the use of comparison operators to build up the convex hull from the four extremal points. Besides, TORCH outperforms Quickhull, which likely is the fastest amongst the currently known algorithms.
+
+The general idea of the algorithm is that a convex hull is like a 2-dimensional ball (or circle), and as every single 2-dimensional ball it has four turning points or poles, that is, west, east, south and north. The west pole is the leftmost point, the east pole is the rightmost point, the south pole is the bottommost point, and the north pole is the topmost point. This is similar to the computation of the elimination quadrangle of the Quickhull algorithm (cf.  [17]), whose vertices are precisely those poles.
+
+The algorithm proposed in the present article distinguishes from others, including Andrew’s and Quickhull, in the manner how the four hulls between the turning points (or poles) are calculated. In general terms, and after allocating memory for input points, our algorithm consists of the following steps: 
+                        
+                           (1)
+                           Sort the point set in the 
+                                 x
+                              -direction of the domain (Fig. 1
+                              (a)).
+
+Find the leftmost and rightmost points (inside dotted circles) shown in Fig. 1(b).
+
+Find the bottommost and topmost points (inside dotted circles) shown in Fig. 1(c).
+
+Find the four lateral hulls between turning points (Fig. 1(d)).
+
+Construct approximate convex hull (in blue) by merging the four lateral hulls (Fig. 1(e)).
+
+Inflate the approximate convex hull towards the convex hull in black (Fig. 1(f)). This inflating operation is also called here convexification.
+
+Let us then describe these steps of the algorithm in more detail in the following subsections.
+
+After allocating the entire set 
+                           P
+                           =
+                           
+                              
+                                 
+                                    {
+                                    
+                                       
+                                          p
+                                       
+                                       
+                                          i
+                                       
+                                    
+                                    }
+                                 
+                              
+                              
+                                 i
+                                 =
+                                 0
+                                 ,
+                                 …
+                                 ,
+                                 k
+                                 −
+                                 1
+                              
+                           
+                         of input points in a 1-dimensional array, we proceed to their lexicographical sorting in the 
+                           x
+                        -direction, as in Andrew’s algorithm  [16]. This results in a sorted array 
+                           P
+                        . For this purpose, we have adopted the introspective sort (or introsort) algorithm due to Musser  [19], which combines the good parts of the quicksort and heapsort algorithms; in particular we have used the introsort algorithm wrapped in the sort method for arrays of the C++ Standard Template Library (STL).
+
+The west (leftmost) and east (rightmost) points of the original set 
+                           P
+                         are precisely the first and last points of sorted array 
+                           P
+                        . That is, in respect to 
+                           P
+                        , the index of the west point is 
+                           w
+                           =
+                           0
+                        , while the index of the east point is 
+                           e
+                           =
+                           k
+                           −
+                           1
+                        .
+
+We could determine the south (bottommost) and north (topmost) points of 
+                           P
+                         by sorting its points in the 
+                           y
+                        -direction. But, the idea is not to sort again the sorted array 
+                           P
+                         because that procedure would change the indexing order of its elements. Instead, we intend to determine the indices 
+                           s
+                         and 
+                           n
+                         of the south and north points, respectively. Basically, this procedure consists in determining the points with minimum 
+                           y
+                         (south) and maximum 
+                           y
+                         (north).
+
+
+                        
+                           
+                              
+                           
+                        
+                     
+
+
+                        
+                           
+                              
+                           
+                        
+                     
+
+The main novelty of our algorithm lies in the way we construct the four lateral hulls through sequences of minima between turning points (i.e., west pole 
+                           W
+                        , east pole 
+                           E
+                        , south pole 
+                           S
+                         and north pole 
+                           N
+                        ). As shown further ahead, this results in a point elimination procedure that is much faster than the famous quick elimination of the Quickhull algorithm. In fact, unlike the Quickhull algorithm, there is no need for calculating distances and membership geometric operations, which are moderately time-consuming operations. TORCH replaces these time-consuming operations by rather quicker operations, known as comparison operations, 
+                           ≤
+                         and 
+                           ≥
+                        , as shown in Algorithms 1–2. Therefore, TORCH only uses sorting operations (i.e., no geometric operations) in determining the approximate convex hull of a set of points.
+
+Finding the southwest hull 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       SW
+                                    
+                                 
+                              
+                            is a procedure that is described in Algorithm 1. Let us then see how we build up 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       SW
+                                    
+                                 
+                              
+                            from 
+                              W
+                            down to 
+                              S
+                           , where 
+                              W
+                            is the highest minimum and 
+                              S
+                            is the lowest minimum of the sequence of minima in the 
+                              y
+                           -direction downwards. For this purpose, let us also imagine a drop of water falling down from 
+                              W
+                            towards 
+                              S
+                            by iterating through points of 
+                              P
+                           . In order to guarantee that the drop of water keeps descending from 
+                              W
+                            to 
+                              S
+                           , we pick up successive points between 
+                              W
+                            and 
+                              S
+                            in 
+                              P
+                            with decreasing 
+                              y
+                            values. Points that do not satisfy this monotonic criterion 
+                              ≤
+                            (cf. line 5 in Algorithm 1) are discarded straight away. Note that the sequence of minima in the 
+                              y
+                           -direction downwards is obtained by iterating on the 
+                              x
+                           -direction sorted array 
+                              P
+                           , more specifically between the points 
+                              W
+                            and 
+                              S
+                           , whose array indices are 
+                              w
+                              =
+                              0
+                            and 
+                              s
+                           , respectively, as illustrated by the polyline in blue in Fig. 1(d).
+
+We also find the southeast hull 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       SE
+                                    
+                                 
+                              
+                            as a sequence of minima. Nevertheless, the construction of this hull starts at a different input point, more specifically at the east point 
+                              E
+                           , although it also finishes at the south point 
+                              S
+                            of 
+                              P
+                           ; that is, the water now flows from 
+                              E
+                            to 
+                              S
+                           . So, by traversing the 
+                              x
+                           -direction sorted array 
+                              P
+                            backwards from the 
+                              
+                                 (
+                                 k
+                                 −
+                                 1
+                                 )
+                              
+                           -th point down to 
+                              s
+                           th point, we build up 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       SE
+                                    
+                                 
+                              
+                            as the result from collecting successive minima in between (cf. lines 4–9 in Algorithm 2). The southeast hull is the polyline in magenta depicted in Fig. 1(d).
+
+The computation of the northwest hull 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       NW
+                                    
+                                 
+                              
+                            is similar to the one of the southwest hull 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       SW
+                                    
+                                 
+                              
+                           , but upside down. In fact, we find the northwest hull as a sequence of maxima starting at the west point and finishing at the north point of 
+                              P
+                           . Therefore, the water climbs the hill from 
+                              W
+                            to 
+                              N
+                            challenging the gravity. For this, one searches for the sequence of consecutive maxima in the 
+                              y
+                           -direction as one traverses 
+                              P
+                            from the 0-th point (i.e., west point 
+                              W
+                           ) to the 
+                              n
+                           th point (i.e., north point 
+                              N
+                           ). The northwest hull is the polyline in red depicted in Fig. 1(d). Note that the algorithm that determines 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       NW
+                                    
+                                 
+                              
+                            is conceptually identical to the one that finds 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       SW
+                                    
+                                 
+                              
+                           , since we replace the variable min by the variable max, and the operator 
+                              ≤
+                            by 
+                              ≥
+                            in line 5 of Algorithm 1.
+
+Likewise, we can find the northeast hull 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       NE
+                                    
+                                 
+                              
+                            as a sequence of maxima in the 
+                              y
+                           -direction starting at the east point 
+                              E
+                            and finishing at the north point 
+                              N
+                            of 
+                              P
+                           . This means that we have to traverse 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       NE
+                                    
+                                 
+                              
+                            from the end position 
+                              k
+                              −
+                              1
+                            of the east point 
+                              E
+                            up to the position 
+                              n
+                            of the north point 
+                              N
+                           . The northeast hull is the polyline in cyan depicted in Fig. 1(d). Therefore, the algorithm to determine 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       NE
+                                    
+                                 
+                              
+                            is similar to the one that finds 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       SE
+                                    
+                                 
+                              
+                           , with the variable min replaced by the variable max, and the operator 
+                              ≤
+                            replaced by the operator 
+                              ≥
+                            in line 5 of Algorithm 2.
+
+In short, building up the south hulls, 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       SW
+                                    
+                                 
+                              
+                            and 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       SE
+                                    
+                                 
+                              
+                           , reduces to the computation of successive minima in the 
+                              y
+                           -direction downwards, which essentially involves the arithmetic comparison operation 
+                              ≤
+                           . On the other hand, finding the north hulls, 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       NW
+                                    
+                                 
+                              
+                            and 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       NE
+                                    
+                                 
+                              
+                           , involves the computation of successive maxima in respect to increasing 
+                              y
+                            through the arithmetic comparison operation 
+                              ≥
+                           . Summing up, building up the lateral hulls of a point set can be reduced to a sorting procedure because they are totally ordered sets; more specifically, 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       SW
+                                    
+                                 
+                              
+                              =
+                              
+                                 (
+                                 
+                                    
+                                       H
+                                    
+                                    
+                                       
+                                          SW
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       ≤
+                                    
+                                    
+                                       y
+                                    
+                                 
+                                 )
+                              
+                           , 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       SE
+                                    
+                                 
+                              
+                              =
+                              
+                                 (
+                                 
+                                    
+                                       H
+                                    
+                                    
+                                       
+                                          SE
+                                       
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       ≤
+                                    
+                                    
+                                       y
+                                    
+                                 
+                                 )
+                              
+                           , 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       NW
+                                    
+                                 
+                              
+                              =
+                              
+                                 (
+                                 
+                                    
+                                       H
+                                    
+                                    
+                                       
+                                          NW
+                                       
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       ≥
+                                    
+                                    
+                                       y
+                                    
+                                 
+                                 )
+                              
+                           , and 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       NE
+                                    
+                                 
+                              
+                              =
+                              
+                                 (
+                                 
+                                    
+                                       H
+                                    
+                                    
+                                       
+                                          NE
+                                       
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       ≥
+                                    
+                                    
+                                       y
+                                    
+                                 
+                                 )
+                              
+                           , where 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       SW
+                                    
+                                 
+                              
+                           , 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       SE
+                                    
+                                 
+                              
+                           , 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       NW
+                                    
+                                 
+                              
+                            and 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       NE
+                                    
+                                 
+                              
+                            are the corresponding sets of points.
+
+Before proceeding any further, we have to point out that the four lateral hulls 
+                           
+                              
+                                 H
+                              
+                              
+                                 
+                                    SW
+                                 
+                              
+                           
+                        , 
+                           
+                              
+                                 H
+                              
+                              
+                                 
+                                    SE
+                                 
+                              
+                           
+                        , 
+                           
+                              
+                                 H
+                              
+                              
+                                 
+                                    NW
+                                 
+                              
+                           
+                         and 
+                           
+                              
+                                 H
+                              
+                              
+                                 
+                                    NE
+                                 
+                              
+                           
+                         are approximate hulls. So, joining these lateral hulls in a counterclockwise manner results in the approximate convex hull 
+                           A
+                           =
+                           
+                              
+                                 H
+                              
+                              
+                                 
+                                    SW
+                                 
+                              
+                           
+                           ⋈
+                           
+                              
+                                 H
+                              
+                              
+                                 
+                                    SE
+                                 
+                              
+                           
+                           ⋈
+                           
+                              
+                                 H
+                              
+                              
+                                 
+                                    NE
+                                 
+                              
+                           
+                           ⋈
+                           
+                              
+                                 H
+                              
+                              
+                                 
+                                    NW
+                                 
+                              
+                           
+                        , where 
+                           ⋈
+                         is the concatenation operation. Note that 
+                           A
+                         contains the extreme vertices of the final convex hull 
+                           H
+                         and a number of concave boundary points. Fig. 1(e) shows the approximate convex hull 
+                           A
+                         in blue.
+
+The previous steps of the TORCH algorithm only involve sorting operations. The resulting approximate convex hull 
+                           A
+                         encloses the input set of points 
+                           P
+                        . Besides, the boundary of 
+                           A
+                         consists of the convex points of the convex hull 
+                           H
+                         to be calculated, together with a number of concave points. Therefore, we only need to discard those concave points of 
+                           A
+                         to obtain 
+                           H
+                        , a procedure that can be accomplished using the well-known CCW operation due to Andrew  [16]. Intuitively, this amounts to inflate the approximate convex hull 
+                           A
+                         to this way getting the convex hull 
+                           H
+                        . This inflating procedure is detailed in Algorithm 3.
+
+Let 
+                           A
+                           =
+                           
+                              (
+                              
+                                 
+                                    A
+                                 
+                                 
+                                    x
+                                 
+                              
+                              ,
+                              
+                                 
+                                    A
+                                 
+                                 
+                                    y
+                                 
+                              
+                              )
+                           
+                        , 
+                           B
+                           =
+                           
+                              (
+                              
+                                 
+                                    B
+                                 
+                                 
+                                    x
+                                 
+                              
+                              ,
+                              
+                                 
+                                    B
+                                 
+                                 
+                                    y
+                                 
+                              
+                              )
+                           
+                        , and 
+                           C
+                           =
+                           
+                              (
+                              
+                                 
+                                    C
+                                 
+                                 
+                                    x
+                                 
+                              
+                              ,
+                              
+                                 
+                                    C
+                                 
+                                 
+                                    y
+                                 
+                              
+                              )
+                           
+                         three consecutive vertices of the approximate convex hull 
+                           A
+                        . The inflation procedure is based on the following condition: 
+                           
+                              (1)
+                              
+                                 
+                                    
+                                       δ
+                                    
+                                    
+                                       x
+                                    
+                                 
+                                 .
+                                 
+                                    
+                                       Δ
+                                    
+                                    
+                                       y
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       δ
+                                    
+                                    
+                                       y
+                                    
+                                 
+                                 .
+                                 
+                                    
+                                       Δ
+                                    
+                                    
+                                       x
+                                    
+                                 
+                                 ≤
+                                 0
+                              
+                           
+                         where 
+                           
+                              
+                                 δ
+                              
+                              
+                                 x
+                              
+                           
+                           =
+                           
+                              
+                                 B
+                              
+                              
+                                 x
+                              
+                           
+                           −
+                           
+                              
+                                 A
+                              
+                              
+                                 x
+                              
+                           
+                        , 
+                           
+                              
+                                 δ
+                              
+                              
+                                 y
+                              
+                           
+                           =
+                           
+                              
+                                 B
+                              
+                              
+                                 y
+                              
+                           
+                           −
+                           
+                              
+                                 A
+                              
+                              
+                                 y
+                              
+                           
+                        , 
+                           
+                              
+                                 Δ
+                              
+                              
+                                 x
+                              
+                           
+                           =
+                           
+                              
+                                 C
+                              
+                              
+                                 x
+                              
+                           
+                           −
+                           
+                              
+                                 A
+                              
+                              
+                                 x
+                              
+                           
+                        , 
+                           
+                              
+                                 Δ
+                              
+                              
+                                 y
+                              
+                           
+                           =
+                           
+                              
+                                 C
+                              
+                              
+                                 y
+                              
+                           
+                           −
+                           
+                              
+                                 A
+                              
+                              
+                                 y
+                              
+                           
+                        .
+
+The condition (1) features a convexity test (cf. lines 13–18 in Algorithm 3). More specifically, this condition represents the slope variation from the line segment 
+                           
+                              
+                                 A
+                                 B
+                              
+                              ¯
+                           
+                         to the line segment 
+                           
+                              
+                                 B
+                                 C
+                              
+                              ¯
+                           
+                        . This is illustrated in Fig. 2
+                        
+                        , where we observe three distinct cases: 
+                           
+                              •
+                              
+                                 Colinearity. When the segments 
+                                    
+                                       
+                                          A
+                                          B
+                                       
+                                       ¯
+                                    
+                                  and 
+                                    
+                                       
+                                          A
+                                          C
+                                       
+                                       ¯
+                                    
+                                  are colinear, their slopes are identical, that is, 
+                                    
+                                       (2)
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      Δ
+                                                   
+                                                   
+                                                      y
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      Δ
+                                                   
+                                                   
+                                                      x
+                                                   
+                                                
+                                             
+                                          
+                                          =
+                                          
+                                             
+                                                
+                                                   
+                                                      δ
+                                                   
+                                                   
+                                                      y
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      δ
+                                                   
+                                                   
+                                                      x
+                                                   
+                                                
+                                             
+                                          
+                                          .
+                                       
+                                    
+                                  This relation also establishes that the two right triangles with hypotenuses given by 
+                                    
+                                       
+                                          A
+                                          B
+                                       
+                                       ¯
+                                    
+                                  and 
+                                    
+                                       
+                                          A
+                                          C
+                                       
+                                       ¯
+                                    
+                                  are similar.
+
+
+                                 Concavity. When the segments 
+                                    
+                                       
+                                          A
+                                          B
+                                       
+                                       ¯
+                                    
+                                  and 
+                                    
+                                       
+                                          A
+                                          C
+                                       
+                                       ¯
+                                    
+                                  are not colinear and the slope of 
+                                    
+                                       
+                                          A
+                                          C
+                                       
+                                       ¯
+                                    
+                                  is less than the slope of 
+                                    
+                                       
+                                          A
+                                          B
+                                       
+                                       ¯
+                                    
+                                 , that is, 
+                                    
+                                       (3)
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      Δ
+                                                   
+                                                   
+                                                      y
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      Δ
+                                                   
+                                                   
+                                                      x
+                                                   
+                                                
+                                             
+                                          
+                                          <
+                                          
+                                             
+                                                
+                                                   
+                                                      δ
+                                                   
+                                                   
+                                                      y
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      δ
+                                                   
+                                                   
+                                                      x
+                                                   
+                                                
+                                             
+                                          
+                                          .
+                                       
+                                    
+                                 
+                              
+
+
+                                 Convexity. When the segments 
+                                    
+                                       
+                                          A
+                                          B
+                                       
+                                       ¯
+                                    
+                                  and 
+                                    
+                                       
+                                          A
+                                          C
+                                       
+                                       ¯
+                                    
+                                  are not colinear and the slope of 
+                                    
+                                       
+                                          A
+                                          C
+                                       
+                                       ¯
+                                    
+                                  is greater than the slope of 
+                                    
+                                       
+                                          A
+                                          B
+                                       
+                                       ¯
+                                    
+                                 , that is, 
+                                    
+                                       (4)
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      Δ
+                                                   
+                                                   
+                                                      y
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      Δ
+                                                   
+                                                   
+                                                      x
+                                                   
+                                                
+                                             
+                                          
+                                          >
+                                          
+                                             
+                                                
+                                                   
+                                                      δ
+                                                   
+                                                   
+                                                      y
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      δ
+                                                   
+                                                   
+                                                      x
+                                                   
+                                                
+                                             
+                                          
+                                          .
+                                       
+                                    
+                                 
+                              
+
+By combining the conditions (2) and (3) we obtain the condition (1). This condition (1) is algebraically equivalent to counterclockwise (CCW) condition given by the cross product of the two vectors 
+                           
+                              
+                                 A
+                                 B
+                              
+                              
+                                 ⃗
+                              
+                           
+                           =
+                           
+                              (
+                              
+                                 
+                                    δ
+                                 
+                                 
+                                    x
+                                 
+                              
+                              ,
+                              
+                                 
+                                    δ
+                                 
+                                 
+                                    y
+                                 
+                              
+                              )
+                           
+                         and 
+                           
+                              
+                                 A
+                                 C
+                              
+                              
+                                 ⃗
+                              
+                           
+                           =
+                           
+                              (
+                              
+                                 
+                                    Δ
+                                 
+                                 
+                                    x
+                                 
+                              
+                              ,
+                              
+                                 
+                                    Δ
+                                 
+                                 
+                                    y
+                                 
+                              
+                              )
+                           
+                         that is defined by the following 2×2 determinant 
+                           
+                              
+                                 
+                                    |
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   δ
+                                                
+                                                
+                                                   x
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   δ
+                                                
+                                                
+                                                   y
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   Δ
+                                                
+                                                
+                                                   x
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   Δ
+                                                
+                                                
+                                                   y
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    |
+                                 
+                                 ≤
+                                 0
+                                 .
+                              
+                           
+                        
+                     
+
+This counterclockwise test is analogous to sorting two numbers in the sense that either they are in the counterclockwise order or in the opposite order (i.e., clockwise order).
+
+Looking at Algorithm 3, we also observe the inflation process hides the following details: 
+                           
+                              •
+                              The modulo operator in lines 6–8 allows us to iterate on the circular sequence of vertices of the approximate convex hull. This is relevant to consider the ending and beginning elements of 
+                                    A
+                                  as consecutive elements of the sequence.
+
+The variable 
+                                    
+                                       count
+                                    
+                                  is necessary to stop the progression of the first element 
+                                    A
+                                  of the sequence when the previous intermediate element 
+                                    B
+                                  is concave (cf. line 6). This variable 
+                                    
+                                       count
+                                    
+                                  also allows us to backtrack in the sequence when two or more concave vertices are found in a row.
+
+
+                        
+                           
+                              
+                           
+                        
+                     
+
+Let us now proceed to the time complexity analysis of the TORCH algorithm (cf. Section  3). The complexity analysis is done step-by-step as follows:
+                        
+                           •
+                           Step 1 performs a lexicographical sorting using the introsort algorithm, which is known to have time complexity of 
+                                 O
+                                 
+                                    (
+                                    n
+                                    log
+                                    n
+                                    )
+                                 
+                                 [19].
+
+Step 2 performs two accesses to the sorted array 
+                                 P
+                              ; more specifically, it retrieves the first and the last elements of 
+                                 P
+                              , i.e., the west and east points.
+
+Step 3 calculates the south and north poles by scanning 
+                                 P
+                               once; so the time complexity of this step is linear, that is, 
+                                 O
+                                 
+                                    (
+                                    n
+                                    )
+                                 
+                              .
+
+Step 4 calculates each lateral hull using the principle of a drop of water rolling down the hill, which is well-known in the watershed algorithms in image processing  [20]. Note that we examine each point of the sequence only once, so this step has 
+                                 O
+                                 
+                                    (
+                                    n
+                                    )
+                                 
+                               time complexity in finding the subsequences of minima of lateral hulls, discarding at the same time most of the interior points. The worst case happens when the minimum of each lateral sequence is one of its endpoints, reaching then its complexity a maximum of 
+                                 O
+                                 
+                                    (
+                                    3
+                                    n
+                                    /
+                                    2
+                                    )
+                                 
+                              .
+
+Step 5 concatenates the four lateral sequences of minima into a single one counterclockwise. Assuming that these four sequences have the same number 
+                                 h
+                                 /
+                                 4
+                               of vertices on average, that is, 
+                                 h
+                               is the total number of vertices belonging to the approximate convex hull 
+                                 A
+                              , we conclude that appending each vertex of the last three sequences to the first sequence in a row is a procedure with asymptotic linear complexity, that is, its time complexity is 
+                                 O
+                                 
+                                    (
+                                    h
+                                    )
+                                 
+                              , even considering that only 
+                                 3
+                                 h
+                                 /
+                                 4
+                               vertices will be examined on average, not the vertices of the first sequence.
+
+Step 6 tends to examine the vertices of the approximate convex hull 
+                                 A
+                               once (i.e., 
+                                 h
+                              ) because of the single loop for instruction in Algorithm 3. Therefore, its asymptotic time complexity is 
+                                 O
+                                 
+                                    (
+                                    h
+                                    )
+                                 
+                              .
+
+Taking into consideration the previous analysis, we conclude that the TORCH algorithm has 
+                        O
+                        
+                           (
+                           n
+                           log
+                           n
+                           )
+                        
+                      time complexity, though the last two steps take 
+                        O
+                        
+                           (
+                           h
+                           )
+                        
+                     . In terms of storage, the complexity is then 
+                        O
+                        
+                           (
+                           n
+                           +
+                           h
+                           )
+                        
+                        =
+                        O
+                        
+                           (
+                           n
+                           )
+                        
+                     , i.e., it is asymptotically linear.
+
+@&#EXPERIMENTAL RESULTS@&#
+
+The TORCH algorithm was implemented using the C++ programming model. No multi-threading or parallel programming assets (e.g., CUDA by NVIDIA) were used in our implementation. All the experiments were conducted on a MacPro with an 2x2.66 GHz Quand-Core Intel Xeon CPU, 8 GB 1066 MHz of DDR3, running the Mac OS X operating system, version 10.9.3.
+
+For testing, TORCH was compared to five competitor algorithms. The first three are input-sensitive algorithms, and are the following:
+                           
+                              •
+                              
+                                 Graham scan algorithm   [14]. We implemented this algorithm in C++ without computing angles explicitly, as explained at http://www.geeksforgeeks.org/convex-hull-set-2-graham-scan.
+
+
+                                 Andrew’s monotone chain algorithm   [16]. We also coded this algorithm in C++.
+
+
+                                 Quickhull algorithm   [17]. We did not implement this algorithm. Instead, we use its original version taken from http://www.qhull.org.
+
+The time complexity of the aforementioned three algorithms is 
+                           O
+                           
+                              (
+                              n
+                              
+                              log
+                              n
+                              )
+                           
+                        , where 
+                           n
+                         denotes the number of input points. Additionally, we compared TORCH with two output-sensitive algorithms, namely:
+                           
+                              •
+                              
+                                 Jarvis’ gift wrapping algorithm   [15]. The time complexity of this algorithm is 
+                                    O
+                                    
+                                       (
+                                       n
+                                       
+                                       h
+                                       )
+                                    
+                                 , where 
+                                    h
+                                  is the number of extreme points of convex hull 
+                                    H
+                                 . For speed purposes, we also implemented this algorithm in C++ without computing angles explicitly.
+
+
+                                 Chan algorithm   [21]. The time complexity of this algorithm is 
+                                    O
+                                    
+                                       (
+                                       n
+                                       
+                                       log
+                                       h
+                                       )
+                                    
+                                 . As known, this algorithm combines Graham’s algorithm together with Jarvis’ algorithm. The former is applied to each equally-sized subset of a partition of the set of input points, while the latter operates on the extreme points of sub-hulls as a whole. We also coded this algorithm in C++.
+
+In regard to datasets, we carried out a number of experiments using three families of point multisets: random point multisets within quads, random point multisets within circles, and definite point multisets. Each point is herein defined as a pair of floating-point numbers. Recall that, unlike a set, a multiset is a collection that admits duplicates in its elements.
+
+We randomly generated point multisets in the quad domain 
+                           D
+                           =
+                           
+                              [
+                              0.0
+                              ,
+                              0.0
+                              ]
+                           
+                           ×
+                           
+                              [
+                              100.0
+                              ,
+                              100.0
+                              ]
+                           
+                         with an increasing number of points, as shown in Table 1. We started with multisets with 1 million points (
+                           1
+                           ×
+                           
+                              
+                                 10
+                              
+                              
+                                 6
+                              
+                           
+                        ) and finished with 128 million points (
+                           128
+                           ×
+                           
+                              
+                                 10
+                              
+                              
+                                 6
+                              
+                           
+                        ). For each multiset in Table 1, we evaluated the average time for 10 reps (or repetitions), that is, the number of times we run the program for multisets with the same number of points. These point sets are publicly available at http://github.com/mosqueteer/TORCH/quadsets/.
+
+As can be observed, Jarvis’, Graham’s, and Chan’s algorithms are capable of determining the convex hull for 3 million points within the time window of one second, while Andrew’s, Quickhull, and TORCH algorithms calculate the convex hull of 6, 7, and 8 million points, respectively, within the same time window. That is, TORCH outperforms Quickhull (i.e., the fastest algorithm among the others above) with a point speedup of about 1.15×, approximately, for the same time window of one second, i.e., TORCH copes with 1.15 times more points than Quickhull, per time unit. In terms of time performance, TORCH is 1.17× faster than Quickhull, approximately, for the same amount of points. As expected, the convex hull of each point multiset listed in Table 1 consists of a number of extreme points in the interval 
+                           
+                              [
+                              34
+                              ,
+                              53
+                              ]
+                           
+                        , regardless of the algorithm used, what is explained by the massive density of points in the square domain 
+                           D
+                        .
+
+The time results listed in Table 1 are graphically expressed in Fig. 3
+                        . Although the theoretical complexity of the six benchmarking algorithms in Table 1 is not linear (cf. Section  4), we observe from Fig. 3 that their experimental complexity time seems to be linear. Nevertheless, as shown in Fig. 3(b), TORCH is clearly faster than any of the other five benchmarking algorithms listed above.
+
+We also randomly generated point multisets in the circle domain 
+                           D
+                         inscribed in the quad 
+                           
+                              [
+                              0.0
+                              ,
+                              0.0
+                              ]
+                           
+                           ×
+                           
+                              [
+                              100.0
+                              ,
+                              100.0
+                              ]
+                           
+                        , as shown in Table 2
+                        . Basically, we proceeded in the same manner as above, but we used circles, rather than quads, with millions of points. These circular point sets are publicly available at http://github.com/mosqueteer/TORCH/circlesets/.
+
+A brief glance at Table 2 shows that Jarvis’ algorithm is not capable of finding the convex hull for 1 million points within the time window of one second. In contrast, Graham’s, Chan’s, Andrew’s, Quickhull, and TORCH algorithms calculate the convex hull of 3, 3, 6, 6, and 8 million points, respectively, within the same time window. Thus, TORCH performs better than Quickhull with a point speedup of about 1.33×, approximately, for the same time window of one second, i.e., TORCH processes 1.33 times more points than Quickhull, per time unit.
+
+Also, TORCH outperforms Quickhull with a time speedup of about 1.46×, on average, for the same amount of points. Note that the convex hull of each point multiset listed in Table 2 has a number of extreme points in the interval 
+                           
+                              [
+                              340
+                              ,
+                              1732
+                              ]
+                           
+                        , independently of the algorithm used. In general, more input points means more output or extreme points.
+
+By comparing the results shown in Tables 1 and 2, we see that the time performance of Graham’s, Andrew’s, and TORCH algorithms are invariant to the type of point set in practice. Even so, we note that Graham’s and TORCH are slightly faster for circle point sets than for quad point sets; on the contrary, Andrew’s is slightly faster for quads.
+
+In regard to Quickhull, it is clearly sensitive to the shape of the input point set, because its time performance degrades when we use circle point sets rather than quad point sets with the same size. This inferior time performance is more noticeable when one uses Jarvis’ algorithm, as shown in Fig. 4
+                        
+                        , what is explained by the fact that its typical wrapping process is more laborious for round shapes; this problem can be mitigated by previously sorting the points in 
+                           x
+                         direction. Chan’s algorithm also works worse for circle point sets than for quad point sets because it results from the combination of Jarvis’ and Graham’s algorithms.
+
+We also used small point multisets concerning specific 2D objects, as those depicted in Fig. 6, which are publicly available at http://github.com/mosqueteer/TORCH/definitesets/. Each one of these multisets was produced from the projection of the 3D mesh vertices (in OBJ format) onto one of the Cartesian planes (e.g.,  
+                           x
+                           y
+                        -plane defined by 
+                           z
+                           =
+                           0
+                        ). The contours in black represent the convex hulls of such objects. As shown in Fig. 6, these black contours partially overlap the corresponding approximate convex hulls in blue.
+
+The time results for the points sets depicted in Fig. 6 are listed in Table 3, and graphically represented in Fig. 5
+                        .  Let us advance that the number of extreme vertices of each convex hull does not exceed 80 in any case. Besides, after a brief glance at the linear–linear graph and log–log-graph shown in Fig. 5(a) and (b), respectively, we note that TORCH also outperforms the classic algorithms in the computation of the convex hull of any small, definite point set, not matter whether they are input-sensitive or output-sensitive.
+
+@&#CONCLUSIONS@&#
+
+This paper has proposed a sorting-based algorithm to compute the convex hull (and also the approximate convex hull) of a set of points in 
+                        
+                           
+                              R
+                           
+                           
+                              2
+                           
+                        
+                     . This algorithm, named TORCH, outperforms Quickhull. This is important because Quickhull is known as the fastest algorithm we find in the literature. But, more importantly, it is the simplicity of the algorithm, which is essentially due to sorting operations. The only geometric computations done by the algorithm are those concerning the process of convexification (or inflating) of the approximate convex hull 
+                        A
+                      into the convex hull 
+                        H
+                     . TORCH source code (including input point sets) is publicly available at http://github.com/mosqueteer/TORCH/.
+
+In short, the algorithm performs inexpensive sorting operations to find 
+                        A
+                     , and expensive geometric operations to find 
+                        H
+                      from 
+                        A
+                     . The speed of the algorithm is explained by the fact that the number of geometric operations is negligible compared to the number of sorting operations carried out by the algorithm. In the near future, we intend to design an even faster algorithm without using the first step of the algorithm relative to sorting in the 
+                        x
+                      direction. Based on the same leading idea of the algorithm herein described, we can generalize TORCH to higher dimensions, without using the preliminary sorting of the input point set.
+
+@&#ACKNOWLEDGMENTS@&#
+
+The author is very grateful to anonymous reviewers for their valuable questions and suggestions, which contributed to significantly improve the paper. This work was supported by FCT (Fundação para a Ciência e Tecnologia) project UID/EEA/50008/2013.
+
+@&#REFERENCES@&#
+

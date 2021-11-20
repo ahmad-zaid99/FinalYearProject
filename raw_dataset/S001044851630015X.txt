@@ -1,0 +1,2600 @@
+@&#MAIN-TITLE@&#Implicit slicing for functionally tailored additive manufacturing
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           A novel implicitly-defined slicer for additive manufacturing (AM) is developed.
+
+
+                        
+                        
+                           
+                           The implict formulation allows for slicing based on design intent.
+
+
+                        
+                        
+                           
+                           The slicer is intended to produce components with tailored functional properties.
+
+
+                        
+                        
+                           
+                           A large improvement in the mechanical properties of AM components is demonstrated.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Additive manufacturing
+
+Toolpath generation
+
+Implicit slicer
+
+Digital thread
+
+Functionally tailored materials
+
+g-code generator
+
+@&#ABSTRACT@&#
+
+
+                  One crucial component of the additive manufacturing software toolchain is a class of geometric algorithms known as “slicers.” The purpose of the slicer is to compute a parametric toolpath and associated commands, which direct an additive manufacturing system to produce a physical realization of a three-dimensional input model. Existing slicing algorithms operate by application of geometric transformations upon the input geometry in order to produce the toolpath. In this paper we introduce a new implicit slicing algorithm based on the computation of toolpaths derived from the level sets of arbitrary heuristics-based or physics-based fields defined over the input geometry. This enables computationally efficient slicing of arbitrarily complex geometries in a straight forward fashion. Additionally, the calculation of component “infill” (as a process control parameter) is explored due to its crucial effect on functional performance fields of interest such as strain and stress distributions. Several examples of the application of the proposed implicit slicer are presented. Finally, an example demonstrating improved structural performance during physical testing is presented. We conclude with remarks regarding the strengths of the implicit approach relative to existing explicit approaches, and discuss future work required in order to extend the methodology.
+               
+
+@&#INTRODUCTION@&#
+
+Additive manufacturing, also known as layered manufacturing, rapid prototyping, or less formally as 3D printing, is an increasingly important family of fabrication techniques for the production of a wide variety of components. These fabrication techniques are characterized by successive additions of material to a domain, as opposed to the repeated subtractions that are employed by most traditional fabrication technologies  [1]. Recent years have seen a surge of interest in additive manufacturing technology from a broad number of engineering and manufacturing disciplines. This interest is primarily driven by the relative freedom from geometric constraints provided by additive manufacturing methods; geometries that are difficult or impossible to produce by conventional means are often readily achievable. Additionally, the possibility of producing customized, low volume, or otherwise economically infeasible products  [2] has stimulated much interest in the field.
+
+At the present time, a variety of additive manufacturing technologies exist. Common techniques include stereolithography  [3], Fused Deposition Modeling (FDM)  [4], Selective Laser Sintering (SLS)  [5–7], Electron Beam Melting (EBM)  [8], and Direct Metal Deposition (DMD)  [9,10]. The mechanical details of these processes vary considerably, but they share a common software toolchain, known as the “digital thread”. A block diagram of the digital thread concept is shown in Fig. 1
+                     . Because of the highly integrated nature of modern additive manufacturing software packages, the individual components of the digital thread are not always discussed in a distinct fashion. Fig. 1 shows the major components of the digital thread individually.
+
+As Fig. 1 shows, the digital thread is subdivided into three major domains; the design environment, a preprocessing environment, and a manufacturing environment. The digital thread begins in the design environment, and originates from a Computer-Aided Design (CAD) model produced by a designer. The ultimate goal of the additive manufacturing process is to produce this model within acceptable constraints on accuracy, time, cost, and other parameters. Within the design environment, this geometry is converted to a triangular mesh form, typical encoded as a stereolithography (STL) or similar file. It is important to note that this conversion preserves approximate  [11] geometric information regarding the original model only. Any other ancillary information encoded within the original model is lost in this process, although future use of improved model representations  [12] may allow some information to be retained. Moving to the preprocessing stage, the position of the resultant mesh within the build volume of the additive manufacturing process is determined by a layout optimization routine. In practice, a collection of many meshes is packed into the build volume of the machine in order to reduce per-unit production costs, using a method such as that of  [13]. The mesh (or collection of meshes) is then processed by an algorithm known as a “slicer”. The purpose of the slicer is to subdivide the mesh(es) into a series of distinct layers, and to compute the numeric control (NC) commands issued to the additive manufacturing machine in order to produce the distinct toolpaths making up each layer. The build layout and slicer tools are often combined into a single commercial software product, that largely behaves as a “black box”. Once the toolpath has been produced, the motion control software and hardware systems present in the manufacturing environment are used to drive the additive manufacturing machine in order to produce the output object.
+
+The various stages of the additive manufacturing digital thread have been studied and developed for decades, and in many senses have reached a high level of development sophistication  [14]. One important shortcoming of the current state of the art is the aforementioned loss of design information that occurs at the interface between the design environment and the preprocessing environment. This effectively reduces the additive manufacturing process to a purely geometric exercise. While this is acceptable for established uses of additive manufacturing such as the production of “look and feel” prototypes, there is currently a strong push towards the development of additive manufacturing technologies that imbue the components that they produce with functional properties. Examples of functional properties include yield and ultimate strengths, elastic anisotropy constants, residual strains, and thermal or electrical conductivities. Initial efforts documenting such activities can be found in  [15,16].
+
+The primary focus of this paper is on the development of a new type of slicing algorithm. The motivation for this development is to reduce the deficiency of design data in the preprocessing domain, and facilitate ongoing efforts to develop functionally imbued additively manufactured objects. In order to do so, we adopt a fundamentally different approach to the slicing problem. Unlike existing algorithms, that operate on the basis of explicit geometric transforms applied to the input geometry, we employ a novel implicit method based on the computation of level sets of field functions. We explore the use of field functions defined upon these regions in order to re-introduce design intent into the preprocessing environment. In particular, we develop a methodology by which the results of Finite Element Analyses (FEA) may be used to dictate the computation of toolpaths in order to improve functional performance fields of interest, such as strain and stress distributions, generated within additively manufactured components.
+
+In order to provide motivation and context for the present work, Section  2 discusses both the origins and more recent development of slicing algorithms for additive manufacturing. In Section  3, we proceed to define the implicit field based slicer, discussing the mathematical details and their implementation in depth. In Section  4 we demonstrate the results of applying the implicit slicer to an escalating series of test problems. We first demonstrate the ability of the implicit slicer to compute toolpaths equivalent to those produced by explicit slicers on complex geometry. We then demonstrate the use of the slicer to compute toolpaths based on the solution to differential equations defined on the implicit layer regions. Finally, we use the results of FEA to compute toolpaths for a component intended to bear to mechanical loads. Following this, Section  5 presents the results of physical validation tests that demonstrate the use of the implicit slicer to tailor the mechanical responses of a test specimen. In Section  6 we conclude by giving remarks on the steps that must be taken to further develop the implicit slicer into a fully-fledged component of the additive manufacturing digital thread.
+
+@&#BACKGROUND@&#
+
+Slicers are a class of algorithms in the domain of computational geometry that are used to convert input 3D geometry into a series of motion commands (a “toolpath”) for an additive manufacturing machine. The slicer is required to both process the input geometry into a suitable toolpath for additive manufacturing, and export this toolpath as a series of numeric control (NC) commands that are subsequently conveyed to the additive manufacturing hardware. As the second stage of this process depends heavily on the specific additive manufacturing process and device employed, we restrict our discussion to that of toolpath generation. Fig. 2
+                      demonstrates a hypothetical toolpath generated by a slicing algorithm.
+
+The development of modern slicers was preconditioned by prior developments in the field of Computer Numeric Control (CNC) machining. Algorithms for generating cutting toolpaths from various computer-aided design (CAD) geometric representations (e.g. the work of  [17,18]) are closely related to those use for additive manufacturing slicing, and perform many of the same functions. The most direct antecedents of modern slicers are algorithms for computing milling toolpaths for arbitrary-shape pockets  [19,20].
+
+NC toolpath generators, as well as slicers, rely heavily on an approach known as “polygon offsetting”. This is a general computational problem with many applications, which is demonstrated in Fig. 3
+                         and may also be seen in Fig. 2. In both NC machining and additive manufacturing contexts, the intersection of the input polygon model and a plane defines a set of polygons corresponding to the desired production geometry. In NC machining, it is necessary to offset the toolpath from this geometry in order to provide cutting tool clearance. In additive manufacturing it is necessary to define the perimeters or “shells” seen in Fig. 2. The non-convex geometry of Fig. 3 makes it clear that polygon offsetting is a non-trivial task; for instance once the offset distance reaches a certain magnitude the offset polygon becomes subdivided. A great number of approaches have been developed to solve the polygon offsetting problem. Many are based on the use of Voronoi diagrams  [21], such as the works of  [22–25]. Alternative approaches are based on the application of various explicit offset transformations, such as the works of  [26,27]. Research on this topic continues, one recent example is given by  [28].
+
+Beyond the similarities to existing NC toolpath generation, there are several unique aspects of additive manufacturing slicing that render it a distinct research field. A review of early work in this vein may be found in  [29–32]. Various improvements to these early algorithms, generally termed “adaptive” slicing can be found in  [33–38]. Efforts to improve the results of slicing, for instance by eliminating voids in the infill portion of the toolpath, are explored by  [27,39]. Recent research into slicing, for instance the work of  [40,41], has primarily been focused on increasing computational performance. Additionally, some work including  [41,31] has focused on “direct” slicers, that bypass the model triangularization step and convert the input CAD geometry directly into toolpaths. Most recently, image-space approaches to slicing have emerged  [42,43], that operate on point-cloud or volumetric image data in a reverse-engineering context. One such slicer utilizes General-Purpose Graphics Processing Unit (GPGPU) computing  [44]. Additionally, slicers intended to produce objects with spatially-varying stiffness properties have also been developed  [45,46].
+
+Reviewing the available literature, it is apparent that existing approaches may be broadly characterized as explicit transformations applied to input geometry that is usually explicitly defined (although the work of  [42,43] considers implicit input geometry). Fig. 4
+                         illustrates the variable definitions associated with slicing algorithms. We denote the input geometric domain 
+                           Ω
+                           ∈
+                           
+                              
+                                 R
+                              
+                              
+                                 3
+                              
+                           
+                        , and its boundary 
+                           Γ
+                        . A series of slicing planes 
+                           P
+                         are intersected with 
+                           Ω
+                         in order to create planar subdomains 
+                           ω
+                           =
+                           Ω
+                           ∩
+                           P
+                         that are bounded by 
+                           γ
+                        . The subdomains and boundaries associated with the 
+                           i
+                        th slicing plane 
+                           
+                              
+                                 P
+                              
+                              
+                                 i
+                              
+                           
+                         are thus denoted 
+                           
+                              
+                                 ω
+                              
+                              
+                                 i
+                              
+                           
+                         and 
+                           
+                              
+                                 γ
+                              
+                              
+                                 i
+                              
+                           
+                        , respectively. The explicit slicers discussed earlier can be represented by the form 
+                           
+                              (1)
+                              
+                                 g
+                                 =
+                                 
+                                    
+                                       ⨄
+                                    
+                                    
+                                       i
+                                       =
+                                       0
+                                    
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             l
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       ⨄
+                                    
+                                    
+                                       j
+                                       =
+                                       0
+                                    
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             o
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       F
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 
+                                    (
+                                    
+                                       
+                                          γ
+                                       
+                                       
+                                          i
+                                       
+                                    
+                                    )
+                                 
+                              
+                           
+                         where 
+                           g
+                         represents the singleton set containing the output toolpath, and 
+                           
+                              
+                                 F
+                              
+                              
+                                 j
+                              
+                           
+                         are the various geometric transformations applied to the boundary 
+                           
+                              
+                                 γ
+                              
+                              
+                                 i
+                              
+                           
+                         of each layer. The number of layers is 
+                           
+                              
+                                 n
+                              
+                              
+                                 l
+                              
+                           
+                         and the number of transformation operations per layer is 
+                           
+                              
+                                 n
+                              
+                              
+                                 o
+                              
+                           
+                        . To provide a convenient framework for elucidating the similar and dissimilar aspects of explicit and implicit slicers, we introduced the operator 
+                           ⊎
+                         to express a special combination of the union operator for bags (in the set-theoretic context) with an ordering optimization from the time efficiency perspective. That is to say that 
+                           ⊎
+                         orders the results of the 
+                           
+                              
+                                 F
+                              
+                              
+                                 j
+                              
+                           
+                           
+                              (
+                              
+                                 
+                                    γ
+                                 
+                                 
+                                    i
+                                 
+                              
+                              )
+                           
+                         transformations so that 
+                           g
+                         may be produced by the additive manufacturing system in minimal time. This optimization is beyond the scope of the present work, but further information on the topic can be found in  [47].
+
+As seen in Eq. (1), the previously mentioned slicing algorithms typically operate on 
+                           γ
+                         only, due to its direct availability by computing simple triangle-plane intersections. While this is a sensible choice when the purpose of slicing is viewed from a strictly geometric viewpoint, it is problematic from the standpoint of producing components that imbue a functional purpose. The functional responses of interest, for example mechanical stress, are defined as fields over 
+                           Ω
+                         and thus over 
+                           ω
+                        . In order to develop a slicing procedure that incorporates these fields, and thus allows the re-introduction of design intent into the digital thread, we turn towards an implicit method detailed in the next section.
+
+One method by which relevant functional fields may be incorporated into the slicing procedure is by the adoption of an implicit methodology. We consider the formulation 
+                        
+                           (2)
+                           
+                              g
+                              ≡
+                              
+                                 
+                                    ⨄
+                                 
+                                 
+                                    i
+                                    =
+                                    0
+                                 
+                                 
+                                    
+                                       
+                                          n
+                                       
+                                       
+                                          l
+                                       
+                                    
+                                 
+                              
+                              
+                                 
+                                    ⨄
+                                 
+                                 
+                                    j
+                                    =
+                                    0
+                                 
+                                 
+                                    
+                                       
+                                          n
+                                       
+                                       
+                                          o
+                                       
+                                    
+                                 
+                              
+                              
+                                 
+                                    ⨄
+                                 
+                                 
+                                    k
+                                    =
+                                    0
+                                 
+                                 
+                                    
+                                       
+                                          n
+                                       
+                                       
+                                          k
+                                       
+                                    
+                                 
+                              
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    j
+                                 
+                              
+                              
+                                 (
+                                 
+                                    x
+                                 
+                                 )
+                              
+                              =
+                              
+                                 
+                                    c
+                                 
+                                 
+                                    k
+                                 
+                              
+                              ,
+                              
+                              
+                                 x
+                              
+                              ∈
+                              
+                                 
+                                    ω
+                                 
+                                 
+                                    i
+                                 
+                              
+                           
+                        
+                      where 
+                        
+                           
+                              H
+                           
+                           
+                              j
+                           
+                        
+                      are the field functions, 
+                        
+                           x
+                        
+                      is a position vector of a point in the volume 
+                        Ω
+                      defined in 
+                        
+                           
+                              R
+                           
+                           
+                              3
+                           
+                        
+                     , and 
+                        
+                           
+                              c
+                           
+                           
+                              k
+                           
+                        
+                      is a discrete value of the field functions defining the 
+                        k
+                     th level set. Our implementation of this formulation is represented by the multi-step procedure shown in Fig. 5
+                     . The steps outlined in this figure are detailed in the sections below.
+
+In the present work a standard STL file is used for input, due to its widespread use in the additive manufacturing industry. The algorithms presented in the following sections are trivially adaptable to other input types. The only precondition placed on the STL input files is that it must describe a manifold or finite set of manifolds, without gaps or degenerate geometric features.
+
+The input STL file explicitly defines 
+                           Γ
+                         as a set of triangular facets (
+                           F
+                        ), each defined by three vertices in 
+                           
+                              
+                                 R
+                              
+                              
+                                 3
+                              
+                           
+                        , 
+                           
+                              (3)
+                              
+                                 Γ
+                                 =
+                                 
+                                    
+                                       ⋃
+                                    
+                                    
+                                       j
+                                       =
+                                       0
+                                    
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             f
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       F
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       ⋃
+                                    
+                                    
+                                       j
+                                       =
+                                       0
+                                    
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             f
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    {
+                                    
+                                       
+                                          
+                                             v
+                                          
+                                       
+                                       
+                                          j
+                                          1
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          
+                                             v
+                                          
+                                       
+                                       
+                                          j
+                                          2
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          
+                                             v
+                                          
+                                       
+                                       
+                                          j
+                                          3
+                                       
+                                    
+                                    }
+                                 
+                              
+                           
+                         where 
+                           
+                              
+                                 n
+                              
+                              
+                                 f
+                              
+                           
+                         is the number of facets and 
+                           
+                              v
+                           
+                         are the vectors describing the vertex coordinates. Because of the limitations of the STL file format, which does not contain any long range ordering of the facets nor any connectivity information, 
+                           Γ
+                         is known only in a piecewise, discontinuous fashion.
+
+The subdomain boundaries 
+                           
+                              
+                                 γ
+                              
+                              
+                                 i
+                              
+                           
+                         are computed directly from 
+                           Γ
+                        , by sequential intersections with the slicing planes 
+                           
+                              
+                                 P
+                              
+                              
+                                 i
+                              
+                           
+                        , 
+                           
+                              (4)
+                              
+                                 
+                                    
+                                       γ
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 =
+                                 Γ
+                                 ∩
+                                 
+                                    
+                                       P
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       ⋃
+                                    
+                                    
+                                       j
+                                       =
+                                       1
+                                    
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             f
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       P
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 ∩
+                                 
+                                    
+                                       F
+                                    
+                                    
+                                       j
+                                    
+                                 
+                              
+                           
+                         as illustrated in Fig. 6
+                        . The triangle-plane intersection algorithm of  [48] is utilized to compute these intersections. Upon the completion of these intersection tests, 
+                           
+                              
+                                 γ
+                              
+                              
+                                 i
+                              
+                           
+                         is a set of line segments without organization. This renders it difficult to directly reconstruct 
+                           
+                              
+                                 ω
+                              
+                              
+                                 i
+                              
+                           
+                         from 
+                           
+                              
+                                 γ
+                              
+                              
+                                 i
+                              
+                           
+                        , as without further organization 
+                           γ
+                         contains no information regarding the topology of 
+                           ω
+                        . This difficulty is illustrated in Fig. 7
+                        , which shows that some subsets of 
+                           
+                              
+                                 γ
+                              
+                              
+                                 i
+                              
+                           
+                         define outer boundaries of 
+                           
+                              
+                                 ω
+                              
+                              
+                                 i
+                              
+                           
+                        , while others define internal “holes”.
+
+To enable the recovery of 
+                           
+                              
+                                 ω
+                              
+                              
+                                 i
+                              
+                           
+                        , 
+                           
+                              
+                                 γ
+                              
+                              
+                                 i
+                              
+                           
+                         is partitioned into contiguous ordered subsets denoted 
+                           
+                              
+                                 γ
+                              
+                              
+                                 i
+                                 j
+                              
+                           
+                         as shown in Fig. 7. This is trivially equatable to the problem of finding the connected components of a graph. We parse the lines and edges of 
+                           
+                              
+                                 γ
+                              
+                              
+                                 i
+                              
+                           
+                         to an edge-list graph and apply the classical algorithm of  [49], that is based on depth-first searching. While this algorithm operates in linear time on any graph, it is particularly fast in the present application because the graph defined by 
+                           γ
+                         exclusively contains vertices of order two only. At the conclusion of this operation, the 
+                           
+                              
+                                 γ
+                              
+                              
+                                 i
+                                 j
+                              
+                           
+                         are cohesively ordered loops of line segments. From these loops, we proceed to reconstruct the corresponding domain.
+
+Once 
+                           
+                              
+                                 γ
+                              
+                              
+                                 i
+                              
+                           
+                         has been properly organized, the reconstruction of the domain 
+                           
+                              
+                                 ω
+                              
+                              
+                                 i
+                              
+                           
+                         may be achieved using several well-known algorithms. In the present work, we utilize constrained Delaunay triangulation for this purpose. This approach is given in detail in  [50,51], implemented in several high-quality freely available software libraries,  [52,53], and also available in commonly-used computer algebra tools such as Mathematica and Matlab. The result of computing the 
+                           
+                              
+                                 ω
+                              
+                              
+                                 i
+                              
+                           
+                         corresponding to the 
+                           
+                              
+                                 γ
+                              
+                              
+                                 i
+                                 j
+                              
+                           
+                         of Fig. 7 is shown in Fig. 8
+                        . The procedure outlined in this, and the previous, section is repeated for every slicing plane in order to compute all elements of 
+                           ω
+                        . Once this process has been completed, these domains are defined as a set of planar facets 
+                           
+                              
+                                 F
+                              
+                              
+                                 ˆ
+                              
+                           
+                        . These domains are used to bound the implicit field functions and compute the slicer toolpath, as described in the next section.
+
+Once the boundaries and domains for each layer have been defined, the additive manufacturing machine toolpath is determined by the calculation of level sets of implicit functions upon these domains and boundaries. Eq. (2) gives the most general form of this procedure, in practice a decomposed form is used 
+                           
+                              (5)
+                              
+                                 g
+                                 =
+                                 
+                                    
+                                       g
+                                    
+                                    
+                                       
+                                          pr
+                                       
+                                    
+                                 
+                                 ⊎
+                                 
+                                    
+                                       g
+                                    
+                                    
+                                       
+                                          in
+                                       
+                                    
+                                 
+                                 ⊎
+                                 
+                                    
+                                       g
+                                    
+                                    
+                                       
+                                          other
+                                       
+                                    
+                                 
+                                 ⊎
+                                 ⋯
+                              
+                           
+                         where again 
+                           ⊎
+                         indicates an optimized interleaved sequencing of toolpath segments. 
+                           
+                              
+                                 g
+                              
+                              
+                                 
+                                    pr
+                                 
+                              
+                           
+                         and 
+                           
+                              
+                                 g
+                              
+                              
+                                 
+                                    in
+                                 
+                              
+                           
+                         are associated with the perimeter and infill portions of the toolpath, as seen in Fig. 2. The 
+                           
+                              
+                                 g
+                              
+                              
+                                 
+                                    other
+                                 
+                              
+                           
+                         term reflects other toolpath components, such as support material, that are commonly required but often manufacturing technology specific. In the present work, we focus on the perimeter and infill toolpaths. For simplicity, we examine the case where the perimeters and infill are each dictated by one field function 
+                           
+                              
+                                 (6)
+                                 
+                                    
+                                       
+                                          g
+                                       
+                                       
+                                          
+                                             pr
+                                          
+                                       
+                                    
+                                    ≡
+                                    
+                                       
+                                          ⨄
+                                       
+                                       
+                                          i
+                                          =
+                                          0
+                                       
+                                       
+                                          
+                                             
+                                                n
+                                             
+                                             
+                                                l
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          ⨄
+                                       
+                                       
+                                          k
+                                          =
+                                          0
+                                       
+                                       
+                                          
+                                             
+                                                n
+                                             
+                                             
+                                                k
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          H
+                                       
+                                       
+                                          
+                                             pr
+                                          
+                                       
+                                    
+                                    
+                                       (
+                                       
+                                          x
+                                       
+                                       )
+                                    
+                                    =
+                                    
+                                       
+                                          c
+                                       
+                                       
+                                          k
+                                       
+                                    
+                                    ,
+                                    
+                                    
+                                       x
+                                    
+                                    ∈
+                                    
+                                       
+                                          ω
+                                       
+                                       
+                                          i
+                                       
+                                    
+                                 
+                              
+                              
+                                 (7)
+                                 
+                                    
+                                       
+                                          g
+                                       
+                                       
+                                          
+                                             in
+                                          
+                                       
+                                    
+                                    ≡
+                                    
+                                       
+                                          ⨄
+                                       
+                                       
+                                          i
+                                          =
+                                          0
+                                       
+                                       
+                                          
+                                             
+                                                n
+                                             
+                                             
+                                                l
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          ⨄
+                                       
+                                       
+                                          k
+                                          =
+                                          0
+                                       
+                                       
+                                          
+                                             
+                                                n
+                                             
+                                             
+                                                k
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          H
+                                       
+                                       
+                                          
+                                             in
+                                          
+                                       
+                                    
+                                    
+                                       (
+                                       
+                                          x
+                                       
+                                       )
+                                    
+                                    =
+                                    
+                                       
+                                          c
+                                       
+                                       
+                                          k
+                                       
+                                    
+                                    ,
+                                    
+                                    
+                                       x
+                                    
+                                    ∈
+                                    
+                                       
+                                          ω
+                                       
+                                       
+                                          i
+                                       
+                                    
+                                    .
+                                 
+                              
+                           
+                        
+                     
+
+In general, several different fields could be weighted and combined to weigh different design functional objectives in order to produce either 
+                           
+                              
+                                 g
+                              
+                              
+                                 
+                                    pr
+                                 
+                              
+                           
+                         and 
+                           
+                              
+                                 g
+                              
+                              
+                                 
+                                    in
+                                 
+                              
+                           
+                        . In the following sections, we discuss the formulation of these functions, and the associated selection of values for 
+                           
+                              
+                                 c
+                              
+                              
+                                 k
+                              
+                           
+                         in greater detail.
+
+The most fundamental requirement of the slicer is that the output toolpath must replicate the geometry of the input model. Naively interpreted, this suggests that 
+                              
+                                 (8)
+                                 
+                                    
+                                       
+                                          H
+                                       
+                                       
+                                          
+                                             pr
+                                          
+                                       
+                                    
+                                    
+                                       (
+                                       
+                                          x
+                                       
+                                       )
+                                    
+                                    =
+                                    
+                                       
+                                          c
+                                       
+                                       
+                                          0
+                                       
+                                    
+                                    ,
+                                    
+                                    
+                                       x
+                                    
+                                    ∈
+                                    
+                                       
+                                          γ
+                                       
+                                       
+                                          i
+                                       
+                                    
+                                    .
+                                 
+                              
+                            Since the shape of 
+                              γ
+                            must be strongly encoded in 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       pr
+                                    
+                                 
+                              
+                           , the signed distance transform is the most logical selection for this function. With this choice, 
+                              
+                                 (9)
+                                 
+                                    
+                                       
+                                          H
+                                       
+                                       
+                                          
+                                             pr
+                                          
+                                       
+                                    
+                                    
+                                       (
+                                       
+                                          x
+                                       
+                                       )
+                                    
+                                    =
+                                    
+                                       {
+                                       
+                                          
+                                             
+                                                
+                                                min
+                                                
+                                                   ‖
+                                                   
+                                                      x
+                                                   
+                                                   −
+                                                   
+                                                      
+                                                         
+                                                            x
+                                                         
+                                                      
+                                                      
+                                                         γ
+                                                      
+                                                   
+                                                   ‖
+                                                
+                                                ,
+                                                
+                                                   
+                                                      
+                                                         x
+                                                      
+                                                   
+                                                   
+                                                      γ
+                                                   
+                                                
+                                                ∈
+                                                
+                                                   
+                                                      γ
+                                                   
+                                                   
+                                                      i
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   x
+                                                
+                                                ∈
+                                                
+                                                   
+                                                      ω
+                                                   
+                                                   
+                                                      i
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                −
+                                                min
+                                                
+                                                   ‖
+                                                   
+                                                      x
+                                                   
+                                                   −
+                                                   
+                                                      
+                                                         
+                                                            x
+                                                         
+                                                      
+                                                      
+                                                         γ
+                                                      
+                                                   
+                                                   ‖
+                                                
+                                                ,
+                                                
+                                                   
+                                                      
+                                                         x
+                                                      
+                                                   
+                                                   
+                                                      γ
+                                                   
+                                                
+                                                ∈
+                                                
+                                                   
+                                                      γ
+                                                   
+                                                   
+                                                      i
+                                                   
+                                                
+                                             
+                                             
+                                                otherwise .
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                           Fig. 9
+                            illustrates the perimeters generated by this approach when applied to a portion of the domain seen in Fig. 8. Four perimeters are computed, with 
+                              
+                                 
+                                    c
+                                 
+                                 
+                                    k
+                                 
+                              
+                              =
+                              
+                                 {
+                                 0.00
+                                 ,
+                                 0.0175
+                                 ,
+                                 0.035
+                                 ,
+                                 0.0525
+                                 }
+                              
+                           . It is seen that the implicit formulation capably handles cases of vanishing and subdividing inner perimeters; it effectively solves the polygon offsetting problem illustrated in Fig. 3 without the need for handling many special cases. In practice, it may not be desirable to run the outermost perimeter at 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       pr
+                                    
+                                 
+                              
+                              
+                                 (
+                                 
+                                    x
+                                 
+                                 )
+                              
+                              =
+                              0.0
+                           . For instance, in FDM additive manufacturing, the polymer extrusion has a width 
+                              ε
+                           . In this case, a sensible scheme is to choose 
+                              
+                                 
+                                    c
+                                 
+                                 
+                                    k
+                                 
+                              
+                              =
+                              ε
+                              
+                                 {
+                                 1
+                                 /
+                                 2
+                                 ,
+                                 3
+                                 /
+                                 2
+                                 ,
+                                 …
+                                 }
+                              
+                           .
+
+While the form of 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       pr
+                                    
+                                 
+                              
+                            is necessarily dictated by 
+                              γ
+                           , the infill function 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       in
+                                    
+                                 
+                              
+                            is not similarly constrained. This is the principal advantage of the implicit methodology, as the infill may be dictated by an arbitrary field of functional or design interest. Several examples are given in Fig. 10
+                           . Parts (a) and (b) of Fig. 10 show simple closed-form functions that replicate infill strategies commonly employed by existing commercial slicers. Parts (c) and (d) show alternate closed-form selections, that demonstrate the flexibility of the implicit approach. Part (e) shows an infill pattern based on a stochastic pseudo-random number generator, and part (f) shows an infill pattern based on the solution to Poisson’s equation with a Dirichlet boundary condition on 
+                              γ
+                           .
+
+The infill patterns of Fig. 10 are representative of one layer 
+                              
+                                 
+                                    ω
+                                 
+                                 
+                                    i
+                                 
+                              
+                            of the entire toolpath. It is typical to modulate the infill pattern between layers, for instance to rotate the linear infill by 90° between layers. Modulation in this fashion is commonly used to generate infill of a crisscross or honeycomb geometry, in order to reduce the anisotropy of the resulting object. In addition, such modulations could be used to achieve gradations in the functional properties of the printed object. In Fig. 10 it is assumed that the 
+                              
+                                 
+                                    ω
+                                 
+                                 
+                                    i
+                                 
+                              
+                            are parallel to the 
+                              x
+                              y
+                           -plane. In this frame of reference, the modulation would take the form of a functional dependence of 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       in
+                                    
+                                 
+                              
+                            on 
+                              z
+                           .
+
+The only restriction on 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       in
+                                    
+                                 
+                              
+                            is that it must be a function that returns a real-valued result. This opens the possibility of using the infill to couple the performance properties of the additively manufactured component to some field of engineering or design interest. For example, the stress or strain fields computed by FEA could be used as the basis for the infill geometry. This is illustrated in greater detail in Section  4. However, there are several other details of the toolpath generation that must be discussed first.
+
+Due to the widespread use of contour plots in a huge number of computer tools and programs, as well as the usage of level sets in simulation methods such as  [54], algorithms for computing level sets and contours of functions/data are very well developed. Various fast algorithms for the calculation of contours have been developed, e.g.  [55–57], and there have been some recent improvements in such algorithms  [58]. These algorithms are embodied in virtually all modern computer algebra tools, as well as in libraries for most computer programming languages.
+
+Any of the existing algorithms for computing contour plots may be employed to calculate the contours of 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       in
+                                    
+                                 
+                              
+                            in order to produce the corresponding toolpath components. In the present work, the following method is employed. Recalling Section  3.3, the layer domains 
+                              
+                                 
+                                    w
+                                 
+                                 
+                                    i
+                                 
+                              
+                            are each encoded as a set planar facets 
+                              
+                                 
+                                    F
+                                 
+                                 
+                                    ˆ
+                                 
+                              
+                            in 
+                              
+                                 
+                                    R
+                                 
+                                 
+                                    2
+                                 
+                              
+                           . We take 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       in
+                                    
+                                 
+                              
+                            as a transform 
+                              
+                                 (10)
+                                 
+                                    T
+                                    :
+                                    
+                                       
+                                          R
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                    →
+                                    
+                                       
+                                          R
+                                       
+                                       
+                                          3
+                                       
+                                    
+                                    ,
+                                    T
+                                    
+                                       (
+                                       
+                                          x
+                                       
+                                       )
+                                    
+                                    =
+                                    
+                                       (
+                                       
+                                          
+                                             
+                                                x
+                                             
+                                          
+                                          
+                                             x
+                                          
+                                       
+                                       ,
+                                       
+                                          
+                                             
+                                                x
+                                             
+                                          
+                                          
+                                             y
+                                          
+                                       
+                                       ,
+                                       
+                                          
+                                             H
+                                          
+                                          
+                                             
+                                                in
+                                             
+                                          
+                                       
+                                       
+                                          (
+                                          
+                                             
+                                                
+                                                   x
+                                                
+                                             
+                                             
+                                                x
+                                             
+                                          
+                                          ,
+                                          
+                                             
+                                                
+                                                   x
+                                                
+                                             
+                                             
+                                                y
+                                             
+                                          
+                                          )
+                                       
+                                       )
+                                    
+                                    ,
+                                    
+                                    
+                                       x
+                                    
+                                    ∈
+                                    
+                                       
+                                          ω
+                                       
+                                       
+                                          i
+                                       
+                                    
+                                    .
+                                 
+                              
+                            This transform is applied to the vertex coordinates of the facets in 
+                              
+                                 
+                                    ω
+                                 
+                                 
+                                    i
+                                 
+                              
+                           , effectively mapping 
+                              
+                                 
+                                    F
+                                 
+                                 
+                                    ˆ
+                                 
+                              
+                            to 
+                              F
+                           . The routine for intersecting slicing planes with 
+                              F
+                            is employed to compute the contours in 
+                              
+                                 
+                                    R
+                                 
+                                 
+                                    3
+                                 
+                              
+                           , in precisely the same fashion as the original computation of 
+                              
+                                 
+                                    γ
+                                 
+                                 
+                                    i
+                                 
+                              
+                           . The slicing planes are positioned at the values of 
+                              
+                                 
+                                    c
+                                 
+                                 
+                                    k
+                                 
+                              
+                           . The resultant series of line segments are then projected back into the slicing plane via 
+                              
+                                 (11)
+                                 
+                                    T
+                                    :
+                                    
+                                       
+                                          R
+                                       
+                                       
+                                          3
+                                       
+                                    
+                                    →
+                                    
+                                       
+                                          R
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                    ,
+                                    T
+                                    
+                                       (
+                                       
+                                          x
+                                       
+                                       )
+                                    
+                                    =
+                                    
+                                       (
+                                       
+                                          
+                                             
+                                                x
+                                             
+                                          
+                                          
+                                             x
+                                          
+                                       
+                                       ,
+                                       
+                                          
+                                             
+                                                x
+                                             
+                                          
+                                          
+                                             y
+                                          
+                                       
+                                       )
+                                    
+                                    ,
+                                    
+                                    
+                                       x
+                                    
+                                    ∈
+                                    
+                                       
+                                          ω
+                                       
+                                       
+                                          i
+                                       
+                                    
+                                    .
+                                 
+                              
+                            This process is illustrated in Fig. 11
+                           .
+
+Once the perimeter and infill toolpath components have been computed individually for each layer, they must be assembled into a single cohesive NC program. The first stage of this process is to ensure that the infill and perimeter toolpaths for each layer are compatible and do not overlap. This is achieved by pruning the infill contours and discarding any portions of the infill that fall outside of the contracted domain 
+                           
+                              (12)
+                              
+                                 
+                                    
+                                       ω
+                                    
+                                    
+                                       ′
+                                    
+                                 
+                                 =
+                                 
+                                    x
+                                 
+                                 |
+                                 
+                                    
+                                       H
+                                    
+                                    
+                                       
+                                          pr
+                                       
+                                    
+                                 
+                                 
+                                    (
+                                    
+                                       x
+                                    
+                                    )
+                                 
+                                 >
+                                 max
+                                 
+                                    (
+                                    
+                                       
+                                          c
+                                       
+                                       
+                                          k
+                                       
+                                    
+                                    )
+                                 
+                                 +
+                                 ε
+                              
+                           
+                         where 
+                           ε
+                         is a small constant that introduces a minor overlap or clearance between infill and perimeters. This variable accommodates the physics of some additive manufacturing processes; for instance in FDM additive manufacturing it is typical to overlap the infill and perimeters slightly in order to realize improved structural performance. An example showing the infill trimmed to fit the perimeters is given in Fig. 12
+                        , that uses a small positive 
+                           ε
+                        . The sequencing of the contours within each layer is a general combinatorial optimization problem that is constrained by the physics of the additive manufacturing process that is being targeted by the slicer. Large difference in machine movement speed, as well as different times associated with stopping, repositioning, and restarting the deposition of material/energy, dictate that optimal toolpaths for different additive manufacturing technologies will be structured in different fashions. For the purposes of demonstrating the implicit approach in the present work, we use a simple scheme for ordering the toolpath components, as opposed to solving the full optimization problem. For every layer: 
+                           
+                              1.
+                              Begin with the outermost perimeter, traverse it in a clockwise fashion, starting/ending at a randomly selected point.
+
+Select the nearest point on the next perimeter, traverse in clockwise fashion. Repeat for all perimeters.
+
+Select the endpoint of an infill curve that is nearest to the start/end point of the final perimeter. Traverse it to the other endpoint.
+
+Select the endpoint of an untraversed infill curve that is closest to the current endpoint. Traverse this new infill curve. Repeat until all infill curves are traversed.
+
+Many components that are additively manufactured require so-called “support material”. This support material is deposited by the additive manufacturing process outside of the component domain, in order to prevent the sagging or curling of the component itself under gravitational or other forces during the manufacturing process. The proposed implicit methodology may also be used to compute the toolpaths associated with the support material, in a very simple fashion. The support material domain 
+                           
+                              
+                                 ω
+                              
+                              
+                                 
+                                    
+                                       s
+                                    
+                                    
+                                       i
+                                    
+                                 
+                              
+                           
+                         for any layer is defined as the difference between a layer’s region 
+                           
+                              
+                                 ω
+                              
+                              
+                                 i
+                              
+                           
+                         and the union of all layer regions above 
+                           
+                              
+                                 ω
+                              
+                              
+                                 i
+                              
+                           
+                        . The distance transform may be used to compute perimeters for this support region, and any function may be used to compute the support region infill, in a fashion identical to that described previously.
+
+The implicit slicer described in the previous section was implemented in the Mathematica computing system  [59]. A laptop computer with a dual-core processor and 4 GB of memory was used to execute this program and conduct the slicing procedure. Three test geometries were sliced using this implementation and hardware in order to demonstrate the abilities of the implicit slicing methodology.
+
+Generally, the test problems are sequenced in the order demonstrate the implicit slicing methodology in stages. The first test problem concerns the slicing of a large component with high geometric complexity using a uniform infill pattern. The results are compared directly to those produced by an existing explicit slicing algorithm. Following this, the second test problem uses the closed-form solution of the Poisson equation to develop an appropriate infill for a torsionally-loaded gear component. Finally, in the third test problem, the results of a FEA simulation of a component under loading are used to compute the infill structure.
+
+The goal of the first test problem is to apply the implicit slicer to a highly complex input geometry, and to demonstrate that by use of a linear function for 
+                           
+                              
+                                 H
+                              
+                              
+                                 
+                                    in
+                                 
+                              
+                           
+                         toolpaths equivalent to those produced by an explicit slicer are produced. The input geometry selected is that of an automobile engine cylinder head  [60]. The geometry of this model is shown in Fig. 13
+                        . The implicit slicer was applied with a layer thickness 
+                           l
+                           =
+                           0.2
+                           
+                           
+                              mm
+                           
+                        , and 
+                           
+                              
+                                 H
+                              
+                              
+                                 
+                                    in
+                                 
+                              
+                           
+                           
+                              (
+                              
+                                 x
+                              
+                              )
+                           
+                           =
+                           
+                              
+                                 
+                                    x
+                                 
+                              
+                              
+                                 x
+                              
+                           
+                           +
+                           
+                              
+                                 
+                                    x
+                                 
+                              
+                              
+                                 y
+                              
+                           
+                         with 
+                           
+                              
+                                 
+                                    x
+                                 
+                              
+                              
+                                 x
+                              
+                           
+                         and 
+                           
+                              
+                                 
+                                    x
+                                 
+                              
+                              
+                                 y
+                              
+                           
+                         corresponding to the Cartesian coordinates of the slicing planes. The values of 
+                           
+                              
+                                 c
+                              
+                              
+                                 k
+                              
+                           
+                         for the perimeters were 
+                           
+                              {
+                              0
+                              ,
+                              0.3
+                              }
+                           
+                         and the corresponding values for the infill were 
+                           
+                              {
+                              −
+                              50
+                              ,
+                              −
+                              49
+                              ,
+                              …
+                              ,
+                              50
+                              }
+                           
+                        . In order to validate the results produced by the implicit slicer, an existing explicit slicer was applied to the same geometry with equivalent settings. In this case the open-source “Slic3r”  [61] software package was used. It was selected due to its widespread use in FDM additive manufacturing. A comparison of the results produced by the implicit and explicit slicers is shown in Fig. 14
+                        . The particular layer seen in this comparison was chosen as it exhibits the highest topological complexity of the slices. A magnified portion of this comparison is shown in Fig. 15
+                        . From the results seen in Figs. 14 and 15 it is clear that the implicit methodology produces an output that is equivalent to that produced by the explicit slicer. Some minor differences are noted, they are namely that the explicit slicer resorts to concentric shells to fill narrow gaps. Additionally, it can be seen that the explicit slicer is joining the infill segments in an attempt to optimize the toolpath. Examining the implicit output, it is clear that similar provisions could be made. We now turn to a test case where the advantages of the implicit slicer are more clearly seen.
+
+The purpose of the second test problem is to demonstrate the application of the implicit slicer to an engineering-relevant geometry, and to demonstrate the use of relevant physics in the determination of the infill toolpaths. In this case, the input geometry is a spur gear, with a triple-square drive and several slots. This geometry can be seen in Fig. 16
+                        .
+
+The implicit slicer was applied with a layer thickness of 
+                           l
+                           =
+                           0.3
+                           
+                           
+                              mm
+                           
+                        . Since the additively manufactured gears must adequately support torsion loads, the infill pattern is determined by the solution to the Poisson equation 
+                           
+                              
+                                 ∇
+                              
+                              
+                                 2
+                              
+                           
+                           
+                              
+                                 H
+                              
+                              
+                                 
+                                    in
+                                 
+                              
+                           
+                           =
+                           1
+                        , with the boundary condition 
+                           
+                              
+                                 H
+                              
+                              
+                                 
+                                    in
+                                 
+                              
+                           
+                           
+                              (
+                              
+                                 x
+                              
+                              )
+                           
+                           =
+                           0
+                           
+                           ∀
+                           
+                           
+                              x
+                           
+                           ∈
+                           γ
+                        . Here the quantity 
+                           
+                              
+                                 H
+                              
+                              
+                                 
+                                    in
+                                 
+                              
+                           
+                         represents a scaled version of the stress function associated with the elastic torsion problem  [62]. The perimeters were constructed with 
+                           
+                              
+                                 c
+                              
+                              
+                                 k
+                              
+                           
+                           =
+                           
+                              {
+                              0
+                              ,
+                              0.3
+                              }
+                           
+                         and the infill was constructed with 
+                           
+                              
+                                 c
+                              
+                              
+                                 k
+                              
+                           
+                           =
+                           
+                              {
+                              0.1
+                              ,
+                              0.2
+                              ,
+                              …
+                              ,
+                              1.7
+                              }
+                           
+                         The results from the implicit slicer are shown in Fig. 16.
+
+The results of Fig. 16 show that an applicable physical model may be used to generate the infill. The level surfaces of the solution to the Poisson equation were derived by the numerical PDE solver in Mathematica that implements the FEA method  [59]. They produce a semi-concentric infill that conforms to the shape defined by the outer perimeters. It is also seen that the infill is fairly sparse in the vicinity of the central triple-square socket. Due to the high contact forces that may be generated in this region, which the Poisson equation does not capture, the formulation of 
+                           
+                              
+                                 H
+                              
+                              
+                                 
+                                    in
+                                 
+                              
+                           
+                         may require modification or augmentation. In the next section, we incorporate FEA results from solving the structural mechanics problem in order to model designer intents more adequately.
+
+The purpose of the third and final test problem is to demonstrate the applicability of the proposed implicit slicer for the case where the functional tailoring of the slices reflects the incorporation of mechanically defined quantities that may be results of performing FEA analysis to numerically solve the structural mechanics equilibrium PDE, 
+                           ∇
+                           ⋅
+                           σ
+                           =
+                           
+                              0
+                           
+                        , where 
+                           σ
+                         represents the 2nd order stress tensor. The input geometry for this test problem is that of a wrench, as shown in Fig. 17
+                        .
+
+The principle design intent that the toolpath must capture is the use of the wrench to apply torque to an object. In order to capture the distribution of stress in the wrench induced by this use, a simple FEA was conducted. The COMSOL Multiphysics software tool  [63] was used for this purpose. The wrench was meshed with approximately 120,000 tetrahedral elements, and the material properties of A36 steel were used. The parallel faces of the open ends of the wrench were fixed in all six degrees of freedom. A distributed load 
+                           F
+                         of 1 kN was applied to the surface at the opposite end of the wrench as shown in Fig. 17. This loading effectively, applies a combination of torsion and a bending to the wrench and the implicit slicer results will be therefore optimized for this specific functional specification. The finite element mesh, and output stress field, are also shown in Fig. 17.
+
+For this test problem the infill was defined by 
+                           
+                              
+                                 H
+                              
+                              
+                                 
+                                    in
+                                 
+                              
+                           
+                           
+                              (
+                              
+                                 x
+                              
+                              )
+                           
+                           =
+                           
+                              
+                                 σ
+                              
+                              
+                                 
+                                    vm
+                                 
+                              
+                           
+                           
+                              (
+                              
+                                 x
+                              
+                              )
+                           
+                         where 
+                           
+                              
+                                 σ
+                              
+                              
+                                 
+                                    vm
+                                 
+                              
+                           
+                         ​represents the von Mises stress field shown in Fig. 17. The von Mises stress field was selected as the expression of the functional performance of the structure because it captures a representation of the distribution of the distortional strain energy density distribution and its peak values represent the areas of the structure where the mechanical yield limit may be exceeded and therefore initiate yielding. In terms of implementation, 
+                           
+                              
+                                 H
+                              
+                              
+                                 
+                                    in
+                                 
+                              
+                           
+                         is defined by extracting the stress values at the Lagrangian points of the FEA mesh, a linear interpolation of these values is constructed in the Mathematica environment in which the slicer is implemented. The slicer’s layer thickness was set at 0.4 mm, the perimeters were defined by 
+                           
+                              
+                                 c
+                              
+                              
+                                 k
+                              
+                           
+                           =
+                           
+                              {
+                              0
+                              ,
+                              0.4
+                              ,
+                              0.8
+                              }
+                           
+                         and the infill was defined by 
+                           
+                              
+                                 H
+                              
+                              
+                                 
+                                    in
+                                 
+                              
+                           
+                           =
+                           
+                              {
+                              0.375
+                              ,
+                              0.5
+                              ,
+                              …
+                              ,
+                              1.0
+                              ,
+                              1.25
+                              ,
+                              …
+                              ,
+                              6.0
+                              }
+                           
+                           
+                              
+                                 10
+                              
+                              
+                                 8
+                              
+                           
+                           
+                           
+                              Pa
+                           
+                        . The results produced by the implicit slicer are shown in Fig. 18
+                        .
+
+The view of the output toolpath shown in Fig. 18 is restricted to the open end of the wrench, in order to show the critical region associated with the stress concentration seen in Fig. 17. Here it is seen that the implicit slicer produces infill that is denser in the high-stress regions. This demonstrates that the intent of the designer is reflected in the additive manufacturing toolpath produced by the implicit slicer. However, since the FEA results of Fig. 17 presume a homogeneous continuum response, the output toolpaths do not intersect one another. Lacking such interconnection, it is uncertain if the additively manufactured wrench will support the intended loadings adequately. In the next section, we both introduce and validate a methodology that addresses this issue.
+
+The examples given in the previous section demonstrate that the implicit slicing methodology is capable of producing highly non-uniform toolpaths that may be varied to reflect the intended use of the corresponding objects. The purpose of this section is to demonstrate the results of physical experimentation in order to validate this methodology, and demonstrate that the implicit methodology may be used to produce components with significantly improved physical properties and performance. A “dogbone” test specimen intended to support uniaxial tension loads is used for this purpose. The input geometry of the test specimen is shown in Fig. 19
+                     , along with the associated 
+                        γ
+                      and 
+                        ω
+                     . The COMSOL FEA software tool  [63] was used to solve the structural mechanics PDE governing the physics of the system under the influence of a 1 kN tension load to the specimen applied at one end of the specimen while the other one is held fixed. Fig. 20
+                      shows the resulting von-Mises stress distribution (
+                        
+                           
+                              σ
+                           
+                           
+                              
+                                 vm
+                              
+                           
+                        
+                     ). Since the results from the previous section show that using this distribution to directly compute the infill may not produce interconnected toolpaths, an augmented approach is introduced to address this issue.
+
+We first compute a purely rectilinear grid infill–as used in many existing slicers–as 
+                        
+                           (13)
+                           
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       lin
+                                    
+                                 
+                              
+                              
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 ,
+                                 z
+                                 ;
+                                 θ
+                                 )
+                              
+                              =
+                              x
+                              sin
+                              
+                                 (
+                                 θ
+                                 )
+                              
+                              +
+                              y
+                              cos
+                              
+                                 (
+                                 θ
+                                 )
+                              
+                              
+                                 (
+                                 −
+                                 
+                                    
+                                       1
+                                    
+                                    
+                                       
+                                          (
+                                          z
+                                          /
+                                          
+                                             
+                                                l
+                                             
+                                             
+                                                t
+                                             
+                                          
+                                          )
+                                       
+                                       %
+                                       2
+                                    
+                                 
+                                 )
+                              
+                              ,
+                           
+                        
+                      where 
+                        x
+                      and 
+                        y
+                      are the Cartesian coordinates within each slice, 
+                        z
+                      is the Cartesian coordinate normal to the slices, 
+                        
+                           
+                              l
+                           
+                           
+                              t
+                           
+                        
+                      is the layer thickness, and % indicates the arithmetic modulo operator. This function creates a grid of parallel diagonal lines, rotated by 
+                        θ
+                      from the 
+                        x
+                     -axis for each slice’s infill, which flip about the 
+                        y
+                      axis every other layer. The linear infill is subsequently modulated according to the value of 
+                        
+                           
+                              σ
+                           
+                           
+                              
+                                 vm
+                              
+                           
+                        
+                      in order to produce infill that is denser in high-stress regions. As is common in existing slicers, a value of 
+                        θ
+                        =
+                        π
+                        /
+                        4
+                      is used. The infill function thus takes the form 
+                        
+                           (14)
+                           
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       in
+                                    
+                                 
+                              
+                              
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 ,
+                                 z
+                                 )
+                              
+                              =
+                              
+                                 
+                                    σ
+                                 
+                                 
+                                    
+                                       vm
+                                    
+                                 
+                              
+                              
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 ,
+                                 z
+                                 )
+                              
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    
+                                       lin
+                                    
+                                 
+                              
+                              
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 ,
+                                 z
+                                 ;
+                                 π
+                                 /
+                                 4
+                                 )
+                              
+                              k
+                           
+                        
+                      where 
+                        k
+                      is a scalar parameter that controls the relative infill density. A visualization of the field functions 
+                        
+                           
+                              σ
+                           
+                           
+                              
+                                 vm
+                              
+                           
+                        
+                     , 
+                        
+                           
+                              H
+                           
+                           
+                              
+                                 lin
+                              
+                           
+                        
+                     , and 
+                        
+                           
+                              H
+                           
+                           
+                              
+                                 in
+                              
+                           
+                        
+                      is given in Fig. 20.
+
+
+                     Fig. 21
+                      shows the final toolpath design produced by the implicit slicer. Also shown is a physical realization of this toolpath, produced on a consumer fused-deposition modeling (FDM) 3D-printer. In order to provide a comparison, the implicit slicer was also used to produce dogbone test specimens using a different modulation pattern, with 
+                        
+                           
+                              H
+                           
+                           
+                              
+                                 in
+                              
+                           
+                        
+                        
+                           (
+                           x
+                           ,
+                           y
+                           ,
+                           z
+                           )
+                        
+                        =
+                        
+                           
+                              σ
+                           
+                           
+                              
+                                 vm
+                              
+                           
+                        
+                        
+                           (
+                           x
+                           ,
+                           0
+                           ,
+                           0
+                           )
+                        
+                        
+                           
+                              H
+                           
+                           
+                              
+                                 lin
+                              
+                           
+                        
+                        
+                           (
+                           x
+                           ,
+                           y
+                           ,
+                           z
+                           ;
+                           π
+                           /
+                           4
+                           )
+                        
+                        k
+                     . Finally, reference specimens were produced using the unmodulated, uniform infill function 
+                        
+                           
+                              H
+                           
+                           
+                              
+                                 in
+                              
+                           
+                        
+                        =
+                        
+                           
+                              H
+                           
+                           
+                              
+                                 lin
+                              
+                           
+                        
+                     . The density parameter 
+                        k
+                      was tuned so that all three types specimens were of identical mass.
+
+Three replicates of each specimen photographed in Fig. 21 were created. Each was printed sequentially, using an identical set of instructions sent to the additive manufacturing machine so as to minimize differences between replicates. The specimens were gripped and loaded in tension until failure using a small uniaxial test frame. Full-field techniques  [64,65] were used to measure the specimen strains during testing. The experimental apparatus and setup are shown in Fig. 22
+                     .
+
+The results of the testing are shown in Fig. 23
+                     . It is seen that the properties of the specimens featuring stress-modulated infill are markedly different than those of the specimens with conventional linear infill and the same mass. The ultimate failure stress is increased by 45%, and the apparent elastic modulus is increased by more than 100%. These data are given in detail in Table 1
+                     . These results clearly demonstrate that the implicit slicer may be used to alter the properties of an additively manufactured object in order to produce enhanced performance with respect to its intended function. These data confirm that the specimens were produced with negligible differences in mass and required feedstock material, and also show that the printing time is only slightly increased relative to the linear infill pattern. The linear infill specimens produced by the implicit slicer were confirmed to be identical to those produced by open-source explicit slicers, such as  [61]. This gives evidence that the implicit slicing methodology produces improved mechanical performance relative to existing commercial and open-source slicing tools.
+
+It should also be noted that the stress-modulated specimens failed outside the gauge area, typically at or near the grips. This indicates that the ultimate strength of the specimens may be under-represented by the data of Fig. 23. This may imply that additional performance increases may be realized by augmenting the formulation of Eq. (14) with an additional component to compensate for such failure modes. Finally, the selection of 
+                        θ
+                        =
+                        π
+                        /
+                        4
+                      is effectively arbitrary; in the future it will be beneficial to examine in more detail the effects of this parameter as well as potential infill densification in the regions within the grips.
+
+@&#CONCLUSIONS@&#
+
+In this paper we have developed and demonstrated a new strategy for toolpath generation and slicing for additive manufacturing. A review of existing slicing methodologies has shown that prior approaches may be categorized as explicit slicers, as they operate by means of explicit transformations applied upon the input geometry. In contrast to this, the present paper introduces an implicit approach in order to address the loss of non-geometric information in the digital thread, and to better convey the intent of designers throughout the additive manufacturing toolchain. The development and formulation found in Section  3 show that the implicit methodology allows for a straightforward implementation that avoids the complexity associated with traditional polygon offsetting. It also allows great flexibility in the specification of the additive manufacturing toolpath, and for the generation of toolpaths based on physical fields of interest.
+
+The results of Section  4 show that the implicit slicer offers several important advantages. The first test case, on the engine head geometry, demonstrates that the methodology can be applied to generalized, and even very complex components, such as those that are increasingly produced using additive manufacturing systems in practice. The second test problem, with the spur gear geometry, demonstrates that the infill toolpath may be generated based on the solution to a closed-form equation capturing the physics relevant to the original design intent. The final test problem, based on the wrench geometry, demonstrates the use of a common engineering simulation tool to determine the toolpath geometry. The results of a FEA simulation, that captures the explicitly specified intended use of the wrench, are successfully used to compute the infill toolpath geometry. Qualitative examination of this toolpath shows that it too reflects the intended usage of the wrench. In Section  5, a quantitative assessment of the implicit slicer is given. It is shown that significantly improved mechanical properties and component performance may be achieved by use of this methodology to incorporate the results of an external structural mechanics simulation.
+
+In the test cases presented, the toolpaths produced by the implicit slicer do not represent optimal structures. Rather, the purpose of these exercises is to demonstrate the great flexibility offered by the implicit methodology, and the possibility of including relevant physics or multi-physics results into the production of additively manufactured components. This in turn opens the door to the production of components with performance properties that are tailored towards the intended use of the component.
+
+It must also be noted that the present work is exploratory in nature, and that there is a great deal of future work that is required to bring the implicit methodology to the state of maturity exhibited by its explicit counterparts. Our future plans include 
+                        
+                           •
+                           Development of strategies in order to generate production time-optimized toolpaths.
+
+Development of a methodology for producing functionally optimized components. This may require the development of constitutive models of additively manufactured objects which reflect the highly nonuniform and hierarchical nature of these processes.
+
+Expansion of the implicit methodology to include features such as bridge and gap fill routines, thin section detection, and other features present in current explicit slicers. The development of routines for producing “support” or scaffolding material is particularly important.
+
+Exploration of the best methods for automatically determining the contour intervals. For example, it may be necessary to limit the gradient of the infill function in order to avoid over-dense contours, such as those seen in the second test problem. Conversely, it may be desirable to increase the density of the contours in a localized sense in order to satisfy additional performance constraints.
+
+Developing a methodology for either discrete or gradual translations between different fields for different portions of the toolpath. For example, to ensure that the outer surface of the component is solid when a sparse infill pattern is used.
+
+The development of process and machine-specific interpreters to translate the output toolpath into NC codes for a variety of additive manufacturing hardware.
+
+In conjunction with these developments, it will also be necessary to implement the implicit slicer in a computationally efficient framework. For this purpose, a C++ based software package is already under development. This implementation will incorporate improvements such as improved toolpath sequencing in order to reduce the time required for physical manufacturing and compensate for time history effects on functional performance induced by the particular toolpath. Analysis of the computational complexity of the final selection of algorithms will be essential, as will rigorous performance benchmarks against other slicing methodologies.
+
+It should also be noted that the uniaxial tests used for demonstration purposes in the present work are not adequate for fully characterizing the response of additively manufactured objects under realistic real-world loading conditions. Because of the non-homogeneous, anisotropic, and nonlinear behaviors of additively manufactured objects, multiaxial testing of many samples will be required. Towards this end, we will adopt the data-driven characterization strategy of  [66,67], which employs and automated six degree-of-freedom test apparatus.
+
+The present work illustrates many of the advantages of adopting an implicit slicing methodology. Augmented by the future work outlined above, this methodology may significantly improve the state of the additive manufacturing digital thread. By re-introducing design intent into the toolpath generation process, it is likely that the implicit methodology will allow the additive manufacture of complex components that are better suited to their intended purpose. Additionally, it may be possible to achieve important improvements in production time, raw material, and energy consumption that will in turn reduce the cost of additively manufactured structures and components.
+
+@&#ACKNOWLEDGMENTS@&#
+
+The authors acknowledge support for this work by the Office of Naval Research through the Naval Research Laboratory’s core funding, as well as the National Research Council’s Research Associateship Program.
+
+@&#REFERENCES@&#
+

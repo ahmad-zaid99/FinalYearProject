@@ -1,0 +1,734 @@
+@&#MAIN-TITLE@&#Neural network study for standardizing pulse-taking depth by the width of artery
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Pulse-taking depths could be expressed based on the width of the artery (WA).
+
+
+                        
+                        
+                           
+                           Two models for estimating WA were compared; the ANN model was better performance.
+
+
+                        
+                        
+                           
+                           The ANN model had two inputs (SD and CP) and one output, α. (i.e., estimated WA).
+
+
+                        
+                        
+                           
+                           Pulse signals at different depths could be acquired by α value for PDI application.
+
+
+                        
+                        
+                           
+                           The method made the description of pulse-taking depth modernized and scientized.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Pulse-taking depth
+
+Pulse diagnosis instrument (PDI)
+
+Traditional Chinese medicine (TCM)
+
+Three positions and nine indicators (TPNI)
+
+Neural Network
+
+@&#ABSTRACT@&#
+
+
+                  To carry out a pulse diagnosis, a traditional Chinese medicine (TCM) physician presses the patient’s wrist artery at three incremental depths, namely Fu (superficial), Zhong (medium), and Chen (deep). However, the definitions of the three depths are insufficiently clear for use with modern pulse diagnosis instruments (PDIs). In this paper, a quantitative method is proposed to express the pulse-taking depths based on the width of the artery (WA). Furthermore, an index, α, is developed for estimating WA for PDI application. The α value is obtained using an artificial neural network (ANN) model with contact pressure (CP) and sensor displacement (SD) as the inputs. The WA and SD data from an ultrasound instrument and CP and SD data from a PDI were analyzed. The results show that the mean prediction error and the standard deviation (STD) of the ANN model was 1.19% and 0.0467, respectively. Comparing the ANN model with the SD model by statistical method, it showed significant difference and the improvement in the mean prediction error and the STD was 71.62% and 29.78%, respectively. The α value can thus map WA with less individual variation than that of the values estimated directly using the SD model. Pulse signals at different depths thus can be acquired according to α value while using a PDI, providing TCM physicians with more reliable pulse information.
+               
+
+@&#INTRODUCTION@&#
+
+Traditional Chinese medicine (TCM) has been developed for thousands of years. Inspection, listening and smelling, inquiry, and palpation were the four distinctive diagnostic methods in TCM. Pulse diagnosis (PD) was studied in China about two and a half thousand years ago [1]. The skill of PD was mentioned in the “Internal Medicine Classics, Neijing” [2,3]. A TCM physician examined a patient by sensing the pulses on the radial artery [4–6]. The system of pulse examination is called the three positions and nine indicators (TPNI) [7]. As shown in 
+                     Fig. 1, three adjacent positions on the wrist, namely Cun (distal), Guan (middle), and Chi (proximal) are examined. For the nine indicators, the doctor feels the superficial (Fu), medium (Zhong), and deep (Chen) pulses with his three fingers (index, middle, and ring finger), corresponding to the three positions, applying light, moderate, and heavy force on the wrist artery. Then, the vertical and horizontal information of the pulse signal can be obtained.
+
+Some studies have attempted to standardize pulse-taking methods by defining palpation positions, Cun, Guan, and Chi [8], or exploring the differences in pulse signals obtained by simultaneous palpation and pressing with one finger [9]. However, few studies have discussed the pulse-taking depth, which plays an important role in PD. Pulse taking at different depths reveals different pathological features [10]. In other words, identical pulses obtained at different depths have completely different meanings [6,11]. Therefore, the pulse-taking depth should be investigated.
+
+This topic was described in the “Nanjing”, which is an ancient TCM text [2,10,12]. The pressing force was divided into five levels, each of which was quantified using increments of beans. However, this method is insufficiently accurate for pulse taking with modern instruments. It is thus desirable to standardize the pulse-taking procedure for pulse diagnosis instruments (PDIs). The depth or pressing force required for Fu, Zhong, and Chen must be precisely defined to allow the modernization of PD.
+
+Some researchers have attempted to quantize pulse depth. Tai et al. [13] proposed the decision of the level of Chen by using the lab-made wrist blood pressure instrument. The level of Chen was defined as the depth that the radial artery was obstructed. However, this method is difficult to simultaneously utilize with a PDI due to mechanical interference and it does not point out the other two depths (i.e., Fu and Zhong). Using pressure sensors, Yoon et al. [10,14] and Thakker et al. [15] classified and analyzed pulse signals acquired with light to heavy contact pressure (CP). Bae et al. [16] proposed a model for assessing the pulse depth based on sensor displacement (SD) normal to the skin surface. They considered that temperature would affect the accuracy of tactile sensor and inhomogeneous elasticity at the palpation positions would influence the measured signals in the CP model. Yoo et al. [17] proposed a method for pulse wave extraction that incorporates the personal characteristics of the patients. Pulse waves are continuously measured as moving the sensor to press the artery with fixed speed. From the measured pulse wave, they found the local maximum values of the first and last sensed pulses. Then, the values of the slightest and heaviest hold-down pressures were determined and divided into five steps. The method works well for healthy people, but according to TCM theory, certain diseases can cause the pulse floating up or sinking down (for instance, fever would cause the pulse floating up and weak person had the pulse sinking down).
+
+As mentioned, there is no comprehensive method for determining pulse-taking depth for PDI application, making it difficult for modern TCM studies to reach a consensus. The present study thus proposes a method that defines the pulse-taking depth based on a reliable physiological characteristic, the width of the artery (WA). This proposed method defines the initial touching position (WA=0) as the starting point and the artery obstructed position (WA=1) as the ending point. Then, the Fu, Zhong, Chen are defined by the different percentages of WA. That made the pulse-taking depth more universal for the subject whether he or she was sick or not. This is accomplished by merging the advantages of SD and CP using an artificial neural network (ANN). The proposed method is objective and reliable for obtaining pulse data from a PDI.
+
+@&#PROPOSED METHOD@&#
+
+This paper focuses on quantifying the pulse-taking depth based on SD and CP. It is the best to define Fu, Zhong, Chen by WA but WA must be obtained by ultrasound. If SD and CP can be closely related to WA, pulse-taking depth can be quantified by SD and CP without using ultrasound.
+
+In order to estimate WA using a PDI, two experiments were conducted. In the first experiment, an ultrasound instrument was adopted to observe the WA change under increasing SD in a group of subjects. The relationship between WA and SD was thus derived. From experimental analysis, the error of WA estimated with the SD model was obtained. In the second experiment, the identical increasing SD was applied to the same subjects connected to a PDI. The CP data was acquired from the tactile sensor, allowing the WA, SD, and CP data to be analyzed together. An ANN model was adopted for WA evaluation, because it is an ideal modeling technique to build their nonlinear relationships. The ANN model had three layers: an input layer with two factors, SD and CP; an output layer that gives the index α, representing the estimated WA; and one hidden layer. The initial number of neurons in the hidden layer was set to three and if the performance was not good enough then the number would be adjusted until the value of absolute mean error and STD was less than 0.025 and 0.055 separately. The mean square error (MSE) between α and the real WA is used with threshold set at 0.005. The optimization method for finding the weights and biases was the Levenberg–Marquardt back propagation algorithm, which involves performing computations backward through the network. A tan-sigmoid transfer function was used in the hidden layer and a pure linear transfer function was used in the output layer.
+
+In order to minimize variations resulting from age, gender, and health conditions, the subjects were all males who had no diseases. The subjects were asked not to take any medications for 3 days before the experiments, and to abstain from consuming any alcoholic or caffeinated beverages 24h before the experiments. Detailed information on the participants is given in 
+                        Table 1.
+
+Two experiments were conducted for WA estimation. The first one used an ultrasound apparatus to determine the relationship between WA and SD. The second one used a PDI to determine the relationship between WA, SD, and CP. In both experiments, each pulse data was acquired twice and a repeated experiment was taken again until two consecutive samples were approximate if the acquired data variation was larger than 10% evaluated by:
+                           
+                              (1)
+                              
+                                 
+                                    
+                                       mean
+                                       (
+                                       
+                                          
+                                             CP
+                                          
+                                          
+                                             i
+                                             +
+                                             1
+                                          
+                                       
+                                       )
+                                       −
+                                       mean
+                                       (
+                                       
+                                          
+                                             CP
+                                          
+                                          
+                                             i
+                                          
+                                       
+                                       )
+                                    
+                                    
+                                       mean
+                                       (
+                                       
+                                          
+                                             CP
+                                          
+                                          
+                                             i
+                                          
+                                       
+                                       )
+                                    
+                                 
+                                 ×
+                                 100
+                                 %
+                                 
+                                 i
+                                 =
+                                 1
+                                 ,
+                                 2
+                                 ,
+                                 3
+                                 ,
+                                 …
+                              
+                           
+                        where, mean(CP) was the average of 12 sensing elements on a sensor and i was the nth measurement.
+
+Furthermore, Cun, Guan and Chi’s locations were marked in the beginning of the experiment. Guan position was near prominent bone; Cun and Chi were 15mm distal and proximal from Guan respectively. The measurement positions of both experiments used the same marks against the measurement error. The SD data was recorded by the z-axis mechanism and motor’s encoder in ultrasound and PDI’s experiment separately.
+
+In this experiment, a measurement system that comprised an ultrasound apparatus (iU22, Phillips) and a z-axis movable mechanism was used, as shown in 
+                           Fig. 2. The experimental procedure was as follows. First, the subject comfortably put their hand on a wrist holder [18,19] and an ultrasound probe, which was mounted on the z-axis movable mechanism, was moved down to touch the subject’s skin at the palpation position. Then, the WA data and the z-axis position were recorded as the starting point. The WA was measured by ultrasound machine and SD was recorded by the length tick on the z-axis movable mechanism. Next, the probe was moved downward 0.5mm and the SD and WA data were again recorded. This process was repeated until the artery was completely closed. The flow chart shown in 
+                           Fig. 3(a) describes the operation. This procedure was applied for the Cun, Guan, and Chi positions on both hands.
+
+For this experiment, the PDI [20–24] shown in 
+                           Fig. 4 was used. There are three pressure sensors on the robotic fingers. They can sense the three positions (Cun, Guan, and Chi) simultaneously or individually. In this paper, Cun, Guan, and Chi were measured separately. Three z-axis motors can individually move the sensors up and down a given distance. For the tactile sensor (PPS, USA), the area is 10mm×7.5mm, the full scale range is 300mmHg, the sensitivity is 0.5mmHg, and the temperature range is 20 to 100°C.
+
+The SD and CP data were obtained using the PDI as following steps. First, the subject put their hand on the wrist holder and one tactile sensor touched the skin at the palpation position. Then, the CP and SD data were recorded simultaneously through the tactile sensor and encoder respectively. The z-axis motor moved downward in 0.5mm steps and the CP and SD data were recorded repeatedly. Once the SD reached the displacement which can obstruct the wrist artery determined in the previous experiment, the process finished. A flow chart of this procedure is shown in Fig. 3(b). This procedure was applied for the Cun, Guan, and Chi positions on both hands.
+
+The data were preprocessed before analysis. First of all, a wavelet algorithm was adopted to correct baseline wander and remove high-frequency noise for preprocessing CP signals [25]. Next, the average CP value of the array sensor was used to simplify the calculation. In addition, outliers caused by motion artifact during data acquisition were excluded using the irregular pulse detection rule [26]. It was judged as an outlier if one point of data series was 25% deviation from the average. Moreover, the maximum values of WA, CP and SD for each subject were quite different, so they were normalized by their maximum values. Finally, a linear interpolation is adopted for the purpose of increasing the training number.
+
+@&#RESULTS@&#
+
+The relationship between WA and SD was determined from the ultrasound experiment. The results of data analysis for the Cun position are shown in 
+                     Fig. 5 (Guan and Chi are in the similar linear form due to normalization, so they are skipped here). The first and last measuring points are quite different for everyone, so it must be normalized for fair comparison. The normalized value for WA means the level of artery obstruction, so the values 0 and 1 for WA indicate fully open and fully obstructed artery, respectively. The values 0 and 1 for SD are the initial and final positions of the z-axis actuator. The SD model was equivalent to the ideal mapping line (i.e., diagonal line). This figure shows that the variance of the SD model was very large.
+
+The Fu, Zhong, and Chen depths were assumed to be at 15%, 45%, and 75% of full WA for each subject, respectively (discussed later). Their mean error (mean of the errors relative to the ideal mapping line) and standard deviation (STD) were calculated. The errors of WA estimated by the SD model at each palpation position are listed in the first column of 
+                     Table 2.
+
+The error analysis revealed that taking pulse signals at the WA estimated using the SD model was difficult due to the large individual differences. In addition, there seemed to be a slightly complementary relationship in which most SD data and CP data were located below and above the diagonal line separately as shown in 
+                     Figs. 5 and 6. Therefore, the SD model should be compensated using the CP data. A nonlinear model based on ANN is thus proposed to explore this relationship.
+
+The ANN model has one input layer with two inputs (normalized SD and normalized CP), one hidden layer, and one output layer, α (i.e., estimated WA). To avoid over-correction, only 10% to 90% of normalized SD and normalized CP would be used as the input to derive the 10% to 90% of estimated WA. The reason was that SD and CP were normalized by fixing the first and last points, so the points 10% near the fixed points were forcedly close to the diagonal line. Therefore, these points did not need to be converged by the model again. In addition, various numbers of hidden neurons were tested, with the results of STD analysis listed in 
+                     Table 3. The STD decreased gradually when the number of hidden neurons increased from 3 and it reached the local minimum value when the number of hidden neurons was 12. Therefore, 12 neurons in the hidden layer were used in the ANN model. The model, shown in 
+                     Fig. 7, can be expressed as:
+                        
+                           (2)
+                           
+                              
+                                 
+                                    
+                                       y
+                                       =
+                                       tansig
+                                       
+                                          (
+                                          
+                                             I
+                                             W
+                                             ×
+                                             p
+                                             +
+                                             
+                                                
+                                                   b
+                                                
+                                                
+                                                   1
+                                                
+                                             
+                                          
+                                          )
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       α
+                                       =
+                                       purelin
+                                       
+                                          (
+                                          
+                                             L
+                                             W
+                                             ×
+                                             y
+                                             +
+                                             
+                                                
+                                                   b
+                                                
+                                                
+                                                   2
+                                                
+                                             
+                                          
+                                          )
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     where IW and LW are the input and layer weight matrices, p is the input data set (SD and CP), b
+                     1 and b
+                     2 are biases, and α is the output. The results of training are:
+                        
+                           
+                              
+                                 
+                                    
+                                       I
+                                       W
+                                       =
+                                       
+                                          [
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         22.3621
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         −
+                                                         16.4280
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         2.8732
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         −
+                                                         4.9609
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         2.1605
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         −
+                                                         4.0978
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         0.6825
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         5.4224
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         −
+                                                         23.7779
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         31.8487
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         −
+                                                         30.9274
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         32.0061
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         16.2858
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         −
+                                                         0.4996
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         7.9398
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         −
+                                                         15.5463
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         −
+                                                         6.6814
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         13.0081
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         11.0525
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         −
+                                                         8.4293
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         4.3302
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         −
+                                                         16.2943
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         1.7499
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         −
+                                                         2.2889
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          ]
+                                       
+                                       ,
+                                       
+                                       
+                                          
+                                             b
+                                          
+                                          
+                                             1
+                                          
+                                       
+                                       =
+                                       
+                                          [
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         −
+                                                         5.7549
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         −
+                                                         0.7811
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         −
+                                                         0.5596
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         1.5749
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         16.8303
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         12.6526
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         −
+                                                         2.6049
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         −
+                                                         10.2740
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         8.6837
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         −
+                                                         2.3751
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         −
+                                                         10.7983
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         1.6763
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          ]
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       L
+                                       W
+                                       =
+                                       
+                                          [
+                                          
+                                             
+                                                
+                                                   
+                                                      −
+                                                      0.2909
+                                                      
+                                                      5.1228
+                                                      
+                                                      −
+                                                      5.6510
+                                                      
+                                                      0.3317
+                                                      
+                                                      −
+                                                      0.2452
+                                                      
+                                                      0.2203
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      0.0292
+                                                      …
+                                                      
+                                                      −
+                                                      4.9734
+                                                      
+                                                      −
+                                                      5.8441
+                                                      
+                                                      0.3316
+                                                      
+                                                      −
+                                                      0.2310
+                                                      
+                                                      0.9084
+                                                      ]
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          
+                                             b
+                                          
+                                          
+                                             2
+                                          
+                                       
+                                       =
+                                       0.0029
+                                    
+                                 
+                              
+                           
+                        
+                     
+                  
+
+
+                     
+                     Fig. 8 shows the pulse data obtained at the Cun position processed using the ANN model. The error analysis results are listed in the second column of Table 2. The paired t-test was adopted to check the statistical differences between two models and it was shown significant difference (p=0.037<0.05 for mean error, p=0.003<0.05 for STD). The root mean square (rms) values of the mean errors for the SD and ANN models were 4.2% and 1.19%, respectively. The mean values of STD for the SD and ANN models were 0.0665 and 0.0467, respectively. The improvement of the mean error was calculated as:
+                        
+                           (3)
+                           
+                              
+                                 
+                                    rms
+                                    (
+                                    
+                                       
+                                          I
+                                       
+                                       
+                                          ME
+                                       
+                                    
+                                    )
+                                    −
+                                    rms
+                                    (
+                                    I
+                                    
+                                       
+                                          I
+                                       
+                                       
+                                          ME
+                                       
+                                    
+                                    )
+                                 
+                                 
+                                    rms
+                                    (
+                                    
+                                       
+                                          I
+                                       
+                                       
+                                          ME
+                                       
+                                    
+                                    )
+                                 
+                              
+                              ×
+                              100
+                              %
+                           
+                        
+                     where I
+                     ME and II
+                     ME are the mean errors of the SD and ANN models, respectively. Similarly, the improvement of STD was calculated as
+                        
+                           (4)
+                           
+                              
+                                 
+                                    mean
+                                    (
+                                    
+                                       
+                                          I
+                                       
+                                       
+                                          STD
+                                       
+                                    
+                                    )
+                                    −
+                                    mean
+                                    (
+                                    I
+                                    
+                                       
+                                          I
+                                       
+                                       
+                                          STD
+                                       
+                                    
+                                    )
+                                 
+                                 
+                                    mean
+                                    (
+                                    
+                                       
+                                          I
+                                       
+                                       
+                                          STD
+                                       
+                                    
+                                    )
+                                 
+                              
+                              ×
+                              100
+                              %
+                           
+                        
+                     where I
+                     STD and II
+                     STD are the STD values of the SD and ANN models, respectively. The improvement in the mean error was 71.62% and that in the STD was 29.78%. In addition, the correlation coefficients were calculated and the results were 0.965 in Cun, 0.977 in Guan and 0.966 in Chi. Thus, the approximator provided more reliable WA results than those provided by the SD model.
+
+@&#DISCUSSION@&#
+
+This is a preliminary study on quantifying the pulse-taking depths of Fu, Zhong, and Chen. There are some assumptions made in this paper that need to be discussed.
+
+First, there are slight differences in WA at a given position (Cun, Guan, or Chi) between left and right hands due to physiological characteristics. However, in order to make the proposed method more adaptive, it was assumed that both hands could be represented using one model. The experimental results showed that the three ANN models indeed had the capability of estimating WA at the Cun, Guan, and Chi positions.
+
+Second, there were very large individual differences when estimating WA with the SD model. This is due to this model ignoring elasticity. Thus, CP was adopted as the second input for the ANN model to compensate for the bias in the SD model.
+
+Third, the WA values of Fu, Zhong, and Chen were assumed to be 15%, 45%, and 75% of the full WA, respectively. This assumption (Fu-Zhong:Zhong-Chen=1:1) was consistent with the description of pulse-taking method in Neijing [10]. However, the exact WA values of Fu, Zhong, and Chen still need be discussed in future work.
+
+Finally, there were some sources of experimental errors that need to be discussed. To begin with, the motion artifact was unavoidable and the pulsation was usually smaller than the tremble. Therefore, excluding outlier data series was necessary. As a result, only one of 48 data series is outlier which is acquired at the Guan position of the left hand of subject number 5. Then, because the two experiments were conducted using different instruments, there was a systematic error. It was assumed that the determined depth obtained from ultrasound experiments could obstruct the radial artery in the PDI’s experiment. As a result, the pulse signals became very small (less than 3% with respect to the maximum signal’s strength) when applying determined SD in the PDI’s experiment. Furthermore, the results shown in Table 2 reveal that the proposed model was better than the SD model in estimating WA, except for Guan position in mean error analysis and Fu-Cun in STD analysis. The goal of the proposed model was to estimate WA with low individual differences. Reducing STD was more important than lowering the mean error because the latter can use a constant to compensate for the offset. Finally, the STD values at Fu-Cun were almost no differences which may result from measuring error.
+
+In further study, the proposed method can be applied to measure a subject’s pulse signal as following steps:
+                        
+                           Step 1: Getting the boundary values of SD and CP. In order to normalize SD and CP data, it is necessary to record the SD and CP values at the starting and ending position where the artery was fully open and fully obstructed with the PDI. The starting point is where the robotic finger slightly touches the subject’s skin without deforming the wrist artery. The ending position is where the robotic finger obstructs the artery and it could be determined by the pulsation disappeared or not.
+
+Step 2: Taking pulse at the user-defined WA. The three ANN models for Cun, Guan, and Chi positions can be digitized in a computer and then α can be displayed to indicate the estimated WA in real time by processing the current SD and CP data. The operator can thus control the robotic finger movement to reach the desired WA and get meaningful pulse signals.
+
+@&#CONCLUSION@&#
+
+This study quantified the TCM pulse-taking depth based on a physiological characteristic (WA). The proposed method allows depths to be determined according to individual characteristics, rather than being fixed, for PDI application.
+
+When WA was estimated using the PDI and the SD model, large individual differences were found due to differences in physiological characteristics. An ANN model with two inputs, SD and CP, was thus adopted. Compared with the SD model, the mean error and STD were greatly improved using the ANN model. Thus, the proposed method can be applied to take pulses at specified depth (WA) with fewer errors. It makes the description of pulse-taking depth modernized and scientized. More accurate WA values of Fu, Zhong, and Chen will be derived with the help of clinical TCM physicians in future studies.
+
+None declared.
+
+This work was supported by the Department of Life sciences, Ministry of Science and Technology in Taiwan under the grant number MOST 103-2321-B-006-035.
+
+@&#ACKNOWLEDGMENTS@&#
+
+The authors acknowledge the support by the Center of Advanced Biomedical System in National Cheng Kung University (NCKU), NCKU Top University Program in Taiwan, Center of Medical Science and Technology in National Sun Yat-sen University, and Dr. Yu-Feng Chung at the Department of Electrical Engineering, National Taichung Industrial High School in Taiwan.
+
+@&#REFERENCES@&#
+

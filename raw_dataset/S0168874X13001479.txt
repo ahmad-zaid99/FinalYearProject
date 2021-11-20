@@ -1,0 +1,2172 @@
+@&#MAIN-TITLE@&#Approximation of the effective moduli of particulate composite with the fixed grid finite element method
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           The fixed grid finite element method is introduced to approximate the effective moduli of particulate composite.
+
+
+                        
+                        
+                           
+                           A simple scheme is proposed to calculate the volume fraction of the constituents in every element.
+
+
+                        
+                        
+                           
+                           The validity of the method is verified for composites both with soft conclusions and with hard conclusions.
+
+
+                        
+                        
+                           
+                           The availability of the method for composite with multiple irregular inclusions is presented.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Particulate composite
+
+Effective moduli
+
+Fixed grid finite element method
+
+Anisotropy
+
+@&#ABSTRACT@&#
+
+
+                  The fixed grid finite element method is introduced to approximate the effective moduli of particulate composite. The difficulty of domain discretization induced by the inclusions is avoided in the fixed grid finite element method, as the discretization is independent of the inclusions. The elastic properties of every finite element are approximated by a weighted function, and the volume fractions of the constituents in the element are taken as the weights. A simple scheme is proposed to approximate the volume fractions in every element. The validities of the fixed grid finite element method are verified, by comparing the effective moduli obtained from the fixed grid finite element method with those obtained from finite element method. The anisotropy of particulate composite is discussed with the fixed grid finite element, and the applicability of the fixed grid finite element method for composite with multiple irregular inclusions is illustrated.
+               
+
+@&#INTRODUCTION@&#
+
+Particulate composite like the polymer matrix composite, metal matrix composite, and ceramic composite has vast application. Particulate composite is reinforced with regular or irregular particle inclusions, which have different phases from the matrix. Two-phase composite can be categorized into three kinds in terms of the inclusion-to-matrix modulus ratio [1]: (1) composites with high inclusion-to-matrix modulus ratio larger than 20; (2) composites with low inclusion-to-matrix modulus ratio ranging from 1 to 5; and (3) composite with inclusion-to-matrix modulus ratio smaller than 1.0. Particulate composite has the advantage of blending the properties of individual materials [2]. However, the determination of the effective moduli of particulate composite is a challenging issue as the coexistence of multiple phases in it. Great efforts have been made in the past few decades to predict the effective moduli of particulate composite with a variety of analytical and numerical methods.
+
+Based on the pioneering work by Eshelby [3] on the elastic stress field of a composite with a single inclusion when it is subjected to far-field stresses, some analytical solutions are proposed to calculate the effective moduli of particulate composite. The analytical methods single out themselves by considering the interaction between the inclusions with their unique ways, while the dilute solution is an exception as it ignores the interaction between the inclusions [4]. In the self-consistent method (SC) [5,6], the interaction between the inclusions is considered by assuming that inclusions are inserted into the equivalent medium rather than the matrix. In the direct derivative method (IDD) [7] and the Mori–Tanaka method (MT) [8,9], the original far-field traction applied on the surface of the composite is replaced with a new one to consider the interaction between the inclusions. The differential method [10] assumes that inclusion is gradually inserted into the medium with known equivalent elastic modulus. The generalized self-consistent method (GSC) [11] assumes that the inclusion and the matrix are bounded by the infinite equivalent medium to consider the interactions between the inclusions. There are some disadvantages for the analytical methods. Generally, these analytical methods require the explicit solution of eigen strain [3] for inclusions, which can be achieved only for some regular inclusions. In addition, most of the analytical methods have limited ability to study the anisotropy of particulate composite.
+
+The finite element method [12-23], as well as the boundary element method [24-27], is an important alternative tool to calculate the effective moduli of particulate composite. The challenging problem for finite element method is mesh generation, especially when the representative volume element (RVE) is 3D and the inclusions in it are irregular and multi-shaped. This is due to the requirement of fitted mesh, which means that the interface between the phases in the RVE should be perfectly represented by the boundaries of the elements. A variety of measures have been tried to deal with the problem. These measures include the application of digital image technique where each pixel and voxel represents a 2-D and 3-D finite element, respectively [12,19,28], unified application of state-of-art software packages [16,21], and the combination of extended finite element techniques with level set method [15,20]. However, mesh generation for particulate composite with arbitrary inclusion shapes is still not an easy task [15], as the requirement of the fitted mesh is too strict. Recently, an iterative finite element method [29] is proposed to approximate the effective moduli of particulate composite. Although the method avoids the difficulty of domain discretization, it is only applicable to the case with the inclusion-to-matrix modulus ratio lower than 2.
+
+The fundamental character of particulate composite is that it is multi-phased. In recent years, the technique of fixed grid finite element method (FGFEM) [30] has been successfully applied to tackle multi-phased problems. The applications include fluid–structure interaction [31], phase transformation [32], heat conduction [33], and unconfined seepage [34,35]. Garcia extends the method into elasticity problems [36], followed by the application for shape optimization [37], and the dynamic analysis of structures with holes [38,39].
+
+In this paper, a numerical scheme based on FGFEM is introduced to approximate the effective moduli of particulate composite. The difficulty of domain discretization is avoided in FGFEM, as RVE is discretized with finite elements independently and the inclusions are not involved in the discretization. Unlike the iterative finite element method [29], this method can be applied to composite with much high inclusion-to-matrix modulus ratio. The rest of this paper is organized as follows. In Section 2, the theoretical basis to calculate the effective moduli of particulate composite is introduced for self-completeness. In Section 3, the concept of FGFEM, as well as the proposed numerical scheme, is introduced. The verification and some application of FGFEM along with some discussion are supplied in Section 4. Some conclusions are made in Section 5.
+
+Set the RVE of a particulate composite as shown in 
+                     Fig. 1 applied with a traction 
+                        
+                           
+                              σ
+                           
+                           0
+                        
+                        ⋅
+                        n
+                      on its surface, of which 
+                        n
+                      is the unit outward normal on the surface. With the assumption of no bound slip on the constituent interface in the RVE, the strain energy of the RVE is
+                        
+                           (1)
+                           
+                              U
+                              =
+                              
+                                 1
+                                 2
+                              
+                              
+                                 
+                                    σ
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                                 
+                                    0
+                                 
+                              
+                              
+                                 
+                                    
+                                       C
+                                       ¯
+                                    
+                                 
+                                 
+                                    i
+                                    j
+                                    m
+                                    n
+                                 
+                              
+                              
+                                 
+                                    σ
+                                 
+                                 
+                                    m
+                                    n
+                                 
+                                 
+                                    0
+                                 
+                              
+                              V
+                           
+                        
+                     of which 
+                        U
+                      is the strain energy, 
+                        
+                           
+                              σ
+                           
+                           
+                              i
+                              j
+                           
+                           
+                              0
+                           
+                        
+                      is a component of 
+                        
+                           
+                              σ
+                           
+                           0
+                        
+                     , 
+                        
+                           
+                              
+                                 C
+                                 ¯
+                              
+                           
+                           
+                              i
+                              j
+                              m
+                              n
+                           
+                        
+                      is a component of the effective compliance stiffness tensor of the RVE, and V is the volume of the RVE. The summation convention is used for repeated indices in this section.
+
+Alternatively, we have
+                        
+                           (2)
+                           
+                              U
+                              =
+                              
+                                 1
+                                 2
+                              
+                              
+                                 ∫
+                                 V
+                              
+                              
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       i
+                                       j
+                                    
+                                 
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       i
+                                       j
+                                    
+                                 
+                                 d
+                                 v
+                              
+                           
+                        
+                     where 
+                        
+                           
+                              σ
+                           
+                           
+                              i
+                              j
+                           
+                        
+                      is a component of the stress tensor in the RVE, and 
+                        
+                           
+                              ε
+                           
+                           
+                              i
+                              j
+                           
+                        
+                      is a component of the strain. Due to the symmetry of 
+                        
+                           
+                              ε
+                           
+                           
+                              i
+                              j
+                           
+                        
+                      and 
+                        
+                           
+                              σ
+                           
+                           
+                              i
+                              j
+                           
+                        
+                     , Eq. (2) is recast into
+                        
+                           (3)
+                           
+                              U
+                              =
+                              
+                                 1
+                                 2
+                              
+                              
+                                 ∫
+                                 V
+                              
+                              
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             σ
+                                          
+                                          
+                                             i
+                                             j
+                                          
+                                       
+                                       
+                                          
+                                             u
+                                          
+                                          
+                                             i
+                                          
+                                       
+                                       )
+                                    
+                                    
+                                       ,
+                                       j
+                                    
+                                 
+                                 d
+                                 v
+                              
+                              −
+                              
+                                 1
+                                 2
+                              
+                              
+                                 ∫
+                                 V
+                              
+                              
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       i
+                                       j
+                                       ,
+                                       j
+                                    
+                                 
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 d
+                                 v
+                              
+                           
+                        
+                     where 
+                        
+                           
+                              u
+                           
+                           
+                              i
+                           
+                        
+                      is a displacement component.
+
+According to the equilibrium condition, i.e., 
+                        
+                           
+                              σ
+                           
+                           
+                              i
+                              j
+                              ,
+                              j
+                           
+                        
+                        =
+                        0
+                     , and the divergence theorem, Eq. (3) is simplified into
+                        
+                           (4)
+                           
+                              U
+                              =
+                              
+                                 1
+                                 2
+                              
+                              
+                                 ∫
+                                 s
+                              
+                              
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       i
+                                       j
+                                    
+                                 
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 d
+                                 s
+                              
+                           
+                        
+                     where s is the surface area of RVE. Obviously, 
+                        
+                           
+                              σ
+                           
+                           
+                              i
+                              j
+                           
+                        
+                        
+                           
+                              n
+                           
+                           
+                              j
+                           
+                        
+                      equals 
+                        
+                           
+                              σ
+                           
+                           
+                              i
+                              j
+                           
+                           
+                              0
+                           
+                        
+                        
+                           
+                              n
+                           
+                           
+                              j
+                           
+                        
+                      on the RVE surface. Therefore, Eq. (4) is rewritten into
+                        
+                           (5)
+                           
+                              U
+                              =
+                              
+                                 1
+                                 2
+                              
+                              
+                                 
+                                    σ
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                                 
+                                    0
+                                 
+                              
+                              
+                                 ∫
+                                 s
+                              
+                              
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 d
+                                 s
+                              
+                           
+                        
+                     Based on the divergence theorem, Eq. (5) is rewritten into
+                        
+                           (6)
+                           
+                              U
+                              =
+                              
+                                 1
+                                 2
+                              
+                              
+                                 
+                                    σ
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                                 
+                                    0
+                                 
+                              
+                              
+                                 ∫
+                                 V
+                              
+                              
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       i
+                                       j
+                                    
+                                 
+                                 d
+                                 V
+                                 =
+                              
+                              
+                                 1
+                                 2
+                              
+                              
+                                 
+                                    σ
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                                 
+                                    0
+                                 
+                              
+                              
+                                 
+                                    
+                                       ε
+                                       ¯
+                                    
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                              
+                              V
+                           
+                        
+                     where 
+                        
+                           
+                              
+                                 ε
+                                 ¯
+                              
+                           
+                           
+                              i
+                              j
+                           
+                        
+                      is the average strain in RVE.
+
+It is seen in Eqs. (1) and (6) that the essence of determining 
+                        
+                           
+                              
+                                 C
+                                 ¯
+                              
+                           
+                           
+                              i
+                              j
+                              m
+                              n
+                           
+                        
+                      is to determine the relationship between 
+                        
+                           
+                              
+                                 ε
+                                 ¯
+                              
+                           
+                           
+                              i
+                              j
+                           
+                        
+                      and 
+                        
+                           
+                              σ
+                           
+                           
+                              m
+                              n
+                           
+                           
+                              0
+                           
+                        
+                     . By setting 
+                        
+                           
+                              
+                                 ε
+                                 ¯
+                              
+                           
+                           
+                              i
+                              j
+                           
+                        
+                        =
+                        
+                           
+                              
+                                 C
+                              
+                              '
+                           
+                           
+                              i
+                              j
+                              m
+                              n
+                           
+                        
+                        
+                           
+                              σ
+                           
+                           
+                              m
+                              n
+                           
+                           
+                              0
+                           
+                        
+                     , we have
+                        
+                           (7)
+                           
+                              
+                                 
+                                    
+                                       C
+                                       ¯
+                                    
+                                 
+                                 
+                                    i
+                                    j
+                                    m
+                                    n
+                                 
+                              
+                              =
+                              (
+                              
+                                 
+                                    C
+                                 
+                                 
+                                    i
+                                    j
+                                    m
+                                    n
+                                 
+                                 
+                                    ′
+                                 
+                              
+                              +
+                              
+                                 
+                                    C
+                                 
+                                 
+                                    m
+                                    n
+                                    i
+                                    j
+                                 
+                                 
+                                    ′
+                                 
+                              
+                              )
+                              /
+                              2
+                           
+                        
+                     Therefore, the effective compliance moduli of the composite can be determined based on the relationship between the applied traction and the average strain in the composite. Similarly, a displacement field can be applied on the RVE surface to determine the effective stiffness moduli of the composite.
+
+In FGFEM, the analysis domain of interest is enclosed by a smallest bounding box as shown in 
+                     Fig. 2. Unlike the traditional finite element method that discretizes the analysis domain regularly or irregularly for fitted mesh, FGFEM discretizes the bounding box with regular finite elements resulting in non-fitted mesh. Therefore, the elements in the bounding box as shown in Fig. 2 are classified into three types [36]: (a) the inside elements which are completely enclosed by the physical domain; (b) the outside elements which completely lay out of the physical domain, and (c) the boundary elements which cover the boundary of the physical domain.
+
+For a particulate composite, its RVE coincides with the bounding box, and it also has three type of elements: (a) the inclusion elements which have a single inclusion phase; (b) the matrix elements which only have matrix phase; and (c) the hybrid elements which have at least two phases.
+
+In FGFEM, the conventional stiffness matrix is used to construct the FGFEM equations [36]. This yields
+                        
+                           (8)
+                           
+                              [
+                              
+                                 
+                                    k
+                                 
+                                 e
+                              
+                              ]
+                              =
+                              
+                                 ∫
+                                 
+                                    
+                                       
+                                          Ω
+                                       
+                                       
+                                          e
+                                       
+                                    
+                                 
+                              
+                              
+                                 
+                                    
+                                       [
+                                       B
+                                       ]
+                                    
+                                    T
+                                 
+                                 [
+                                 D
+                                 ]
+                                 [
+                                 B
+                                 ]
+                                 d
+                                 x
+                              
+                           
+                        
+                     where 
+                        [
+                        
+                           
+                              k
+                           
+                           e
+                        
+                        ]
+                      is the element stiffness matrix, 
+                        
+                           
+                              Ω
+                           
+                           
+                              e
+                           
+                        
+                      is the element domain, 
+                        [
+                        B
+                        ]
+                      is the strain matrix, and 
+                        [
+                        D
+                        ]
+                      is the constitutive matrix.
+
+It is seen in Eq. (8) that the key issue for FGGEM is on how to determine the constitutive matrix for every hybrid element. By the assumption of consistent strain over the element, it yields
+                        
+                           (9)
+                           
+                              [
+                              
+                                 
+                                    k
+                                 
+                                 
+                                    H
+                                 
+                                 
+                                    e
+                                 
+                              
+                              ]
+                              =
+                              
+                                 ∑
+                                 
+                                    i
+                                    =
+                                    1
+                                 
+                                 m
+                              
+                              
+                                 
+                                    ∫
+                                    
+                                       
+                                          
+                                             Ω
+                                          
+                                          
+                                             e
+                                          
+                                          
+                                             i
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          [
+                                          B
+                                          ]
+                                       
+                                       T
+                                    
+                                    [
+                                    
+                                       
+                                          D
+                                       
+                                       
+                                          i
+                                       
+                                    
+                                    ]
+                                    [
+                                    B
+                                    ]
+                                    d
+                                    x
+                                 
+                              
+                           
+                        
+                     where 
+                        [
+                        
+                           
+                              k
+                           
+                           
+                              H
+                           
+                           
+                              e
+                           
+                        
+                        ]
+                      is the element stiffness matrix of a hybrid element, m is the number of constituents in the hybrid element, 
+                        
+                           
+                              Ω
+                           
+                           
+                              e
+                           
+                           
+                              i
+                           
+                        
+                      is the domain of the i-th constituent in the hybrid element, and 
+                        [
+                        
+                           
+                              D
+                           
+                           
+                              i
+                           
+                        
+                        ]
+                      is the constitutive matrix of the i-th constituent. Eq. (9) is approximated in the following way [36].
+                        
+                           (10)
+                           
+                              [
+                              
+                                 
+                                    k
+                                 
+                                 
+                                    H
+                                 
+                                 
+                                    e
+                                 
+                              
+                              ]
+                              ≈
+                              
+                                 ∑
+                                 
+                                    i
+                                    =
+                                    1
+                                 
+                                 m
+                              
+                              
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 
+                                    ∫
+                                    
+                                       
+                                          
+                                             Ω
+                                          
+                                          
+                                             e
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          [
+                                          B
+                                          ]
+                                       
+                                       T
+                                    
+                                    [
+                                    
+                                       
+                                          D
+                                       
+                                       
+                                          i
+                                       
+                                    
+                                    ]
+                                    [
+                                    B
+                                    ]
+                                    d
+                                    x
+                                 
+                              
+                           
+                        
+                     where 
+                        
+                           
+                              c
+                           
+                           
+                              i
+                           
+                        
+                      is the area/volume fraction of the i-th constituent in the hybrid element. Therefore, the stiffness matrix for all types of elements are uniformly expressed as
+                        
+                           (11)
+                           
+                              [
+                              
+                                 
+                                    k
+                                 
+                                 e
+                              
+                              ]
+                              =
+                              
+                                 ∫
+                                 
+                                    
+                                       
+                                          Ω
+                                       
+                                       
+                                          e
+                                       
+                                    
+                                 
+                              
+                              
+                                 
+                                    
+                                       [
+                                       B
+                                       ]
+                                    
+                                    T
+                                 
+                                 
+                                    (
+                                    
+                                       
+                                          ∑
+                                          
+                                             i
+                                             =
+                                             1
+                                          
+                                          m
+                                       
+                                       
+                                          
+                                             
+                                                c
+                                             
+                                             
+                                                i
+                                             
+                                          
+                                          
+                                             
+                                                [
+                                                D
+                                                ]
+                                             
+                                             
+                                                i
+                                             
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 [
+                                 B
+                                 ]
+                                 d
+                                 x
+                              
+                           
+                        
+                     It is seen in Eq. (11) that 
+                        
+                           
+                              c
+                           
+                           
+                              i
+                           
+                        
+                      is treated as a weighted function.
+
+The topology between the inclusions and the finite elements needs to be explicitly expressed for accurate c
+                     
+                        i
+                      in each finite element. This is hard to be accomplished when the inclusions are irregular. A scheme is proposed to calculate c
+                     
+                        i
+                      approximately, with a 2D case taken as an example for the introduction for convenience. For a hybrid element as shown in 
+                     Fig. 3, it is divided into sub-elements regularly. The sub-elements are categorized into two groups. The sub-elements in the first group are completely enclosed by a single constituent and denoted as 
+                        
+                           e
+                           ¯
+                        
+                      in Fig. 3(a), the sub-elements in the second group have at least two constituents and denoted as 
+                        
+                           e
+                           ˜
+                        
+                      in Fig. 3(a). The sub-elements in the second group are subdivided as shown in Fig. 3(b). The subdivision procedure is repeated until the following condition is satisfied
+                        
+                           (12)
+                           
+                              1
+                              −
+                              
+                                 
+                                    ∑
+                                    
+                                       
+                                          
+                                             S
+                                          
+                                          
+                                             
+                                                e
+                                                ¯
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          S
+                                       
+                                       
+                                          e
+                                       
+                                    
+                                 
+                              
+                              <
+                              
+                                 
+                                    ε
+                                 
+                                 
+                                    c
+                                 
+                              
+                           
+                        
+                     where 
+                        
+                           
+                              S
+                           
+                           
+                              
+                                 e
+                                 ¯
+                              
+                           
+                        
+                      is the area of all 
+                        
+                           e
+                           ¯
+                        
+                     -type sub-elements in the element, 
+                        
+                           
+                              S
+                           
+                           
+                              e
+                           
+                        
+                      is the area of the hybrid element, and 
+                        
+                           
+                              ε
+                           
+                           
+                              c
+                           
+                        
+                      is the specified tolerance and it is taken as 0.04 in this paper. When the subdivision is finished, the area of each constituent in the hybrid elements can be approximated based on the assumption that every 
+                        
+                           e
+                           ¯
+                        
+                     -type sub-element is homogeneous and its property is represented by the property of the constituent in its center. The calculation of 
+                        
+                           
+                              c
+                           
+                           
+                              i
+                           
+                        
+                      can be approximated with the area of all sub-elements in the finite element. The advantage of the approximation method is that it is not necessary to get the exact intersection between finite elements and inclusions.
+
+It is easy to see that the precision of FGFEM is dependent on the mesh density. The reason is that the area/volume of the hybrid elements decreases with increasing mesh density, accompanied by the increasing precision. An index is introduced to measure the effect of mesh density for 3D composite
+                        
+                           (13)
+                           
+                              
+                                 
+                                    c
+                                 
+                                 
+                                    e
+                                 
+                              
+                              =
+                              (
+                              
+                                 
+                                    V
+                                 
+                                 
+                                    I
+                                 
+                              
+                              +
+                              
+                                 
+                                    V
+                                 
+                                 
+                                    M
+                                 
+                              
+                              )
+                              /
+                              V
+                           
+                        
+                     where c
+                     
+                        e
+                      is defined as the effective volume ratio, V
+                     
+                        I
+                      is the summation of the volume of all inclusion elements, V
+                     
+                        M
+                      is the summation of the volume of all matrix elements, and V is the RVE volume.
+
+@&#RESULTS AND DISCUSSION@&#
+
+There are three examples in this section. These three examples have a unit cube as their RVE, while they have different inclusions. The unit cube is divided into 8 identical cells as shown in 
+                     Fig. 4(a). The matrix and the inclusions in the three examples are isotropic. The first two examples are used for the verification of FGFEM by comparing the results obtained from FGFEM with those obtained from FEM with fitted mesh. The last example is used to show the applicability of FGFEM for composites with multiple irregular inclusions. The elements of FGFEM and FEM have the same characteristics size for the comparison. The relative errors of FGFEM are defined as
+                        
+                           (14)
+                           
+                              
+                                 
+                                    e
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                              
+                              =
+                              |
+                              (
+                              
+                                 
+                                    S
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                              
+                              −
+                              
+                                 
+                                    S
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                                 
+                                    f
+                                 
+                              
+                              )
+                              /
+                              
+                                 
+                                    S
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                                 
+                                    f
+                                 
+                              
+                              |
+                              ×
+                              100
+                              %
+                              
+                              (
+                              i
+                              ,
+                              j
+                              =
+                              1
+                              ,
+                              6
+                              )
+                           
+                        
+                     where e
+                     
+                        ij
+                      is the relative error of each component of the compliance matrix, 
+                        
+                           
+                              S
+                           
+                           
+                              i
+                              j
+                           
+                        
+                      is a component of the effective compliance matrix calculated by FGFEM, and 
+                        
+                           
+                              S
+                           
+                           
+                              i
+                              j
+                           
+                           
+                              f
+                           
+                        
+                      is a component of the effective compliance matrix calculated by FEM. The relative errors of the effective bulk modulus and shear modulus, i.e., e
+                     
+                        K
+                      and e
+                     
+                        G
+                     , are defined in a similar way.
+
+All the numerical simulations in the three examples were carried out by a program developed by the authors. These simulations were run on a personal computer, and the maximum consumption of the physical memory among the simulations was roughly 610MB. Although the RVE in the three examples have identical structures to those in reference [29], they cover the cases with high inclusion-to-matrix modulus ratio here, and these cases cannot be investigated in reference [29].
+
+The composite has 8 identical spheres as shown in Fig. 4(a) in this example, and the centers of the eight spheres coincide with the centers of the 8 cells of the RVE. The inclusion volume fraction c, ranging from 0 to 0.4, is altered by changing the radius of the non-overlapping eight spheres simultaneously. The matrix and inclusions have the same Poisson's ratio, which equals 0.25. Two cases were considered in this example. In the first case, the inclusion-to-matrix modulus ratio is 1.0e−5 to approximate composites with void inclusions, while in the second case the inclusion-to-matrix modulus is 20. A variety of characteristics element sizes for the tetra finite elements of FGFEM and FEM are used in this example. The finite elements of FGFEM in a cell where the characteristics element size equals 0.0125 are shown in Fig. 4(b).
+
+A numerical hydrostatic loading and a numerical shear loading were applied to calculate the effective bulk modulus and the effective shear modulus of the composite, respectively. The normalized effective bulk modulus and shear modulus, as calculated by different numerical and analytical methods, are shown in 
+                        
+                        Figs. 5 and 6 for composites with soft inclusions and for composites with hard inclusions, respectively. Here the characteristic element sizes of FGFEM and FEM equal 0.0125. It is seen in Figs. 5 and 6 that when the inclusion volume fraction is very low (c<0.1), the existing well-known analytical methods predict the bulk modulus and shear modulus of the composite very well. The reason is that when c is low, the interaction between the inclusions is not very strong and no large errors occur if the two-phase media is treated as the case of a dilute suspension [40]. When c is larger than 0.15, none of the existing well-known analytical method can well predict the bulk modulus and shear modulus simultaneously, neither for the composite with soft inclusions nor for the composites with hard inclusions.
+
+It is also seen in Figs. 5 and 6 that for the case of hard inclusion, when c is not larger than 0.35, the results obtained from FGFEM have good agreement with those obtained from FEM; for the case of soft inclusion, the results obtained from FGFEM have excellent agreement with those obtained from FEM over the full range of c 
+                        
+                           (
+                           0
+                           ≤
+                           c
+                           ≤
+                           0.4
+                           )
+                        . The validity of FGFEM can be verified by the analysis of the relative errors in 
+                        Fig. 7. It is seen in Fig. 7 that the maximum relative error of FGFEM for the cases of soft inclusions is less that 1%, and the maximum relative error of FGFEM for the cases of hard inclusions is less than 9%. The relative errors in Fig. 7 result from the numerical analysis with the characteristics element size equal to 0.0125.
+
+For composites with c equal to 0.4, the relationships between the characteristics element size and the relative errors, as well as the relationship between the characteristics element size and c
+                        
+                           e
+                        , are shown in 
+                        Fig. 8. It is seen in Fig. 8 that the increasing mesh density resulting from the decreasing characteristics element size leads to the increase of effective volume ratio. For composite with hard inclusions, the precision of FGFEM can be effectively improved by reducing the characteristics element size and increasing the mesh density. For composite with soft inclusions, the relative errors of FGFEM are low and are not sensitive to the characteristics element size.
+
+There are four cases in this example. In these four cases, each RVE has eight identical inclusions in total located in its eight cells. The center of each inclusion has the same z coordinate with the center of its enclosing cell. The inclusions in case (a) are circular cylinders, the inclusions in case (b) are cubes, the inclusions in case (c) and case (d) are triangular prisms. The x–y cross sections of the inclusions in the four cases are shown in 
+                        Fig. 9. The cylinders, cubes, and prisms are arrayed with their longitudinal axis parallel to z-axis. The heights of the inclusions equal their own characteristic sizes b as shown in Fig. 9. The solid circles in the cross sections as shown in Fig. 9 have the same x and y coordinates with the center of their enclosing cells. The inclusions and matrix in each case have the same Poisson's ratio equal to 0.2, and the inclusion-to-matrix modulus ratio is 20. The inclusion volume fraction in the each case is 0.3. The characteristics element sizes of FGFEM and FEM are 0.0125.
+
+The normalized diagonal components of the effective compliance matrix calculated by FGFEM and their relative errors in the four cases are listed in 
+                        Table 1. The maximum relative error in Table 1 is 7.78%, and the average relative error is 4.35%. This means that the diagonal components of the compliance matrix obtained from FGFEM are acceptable.
+
+The 21 components of the effective compliance 
+                           
+                              
+                                 S
+                              
+                              
+                                 i
+                                 j
+                              
+                           
+                        (i, j=1--6) in case (d) are listed in Eq. (15), and the corresponding 21 components of 
+                           
+                              
+                                 S
+                              
+                              
+                                 i
+                                 j
+                              
+                              
+                                 f
+                              
+                           
+                         are listed in Eq. (16). It is assumed that 
+                           
+                              
+                                 S
+                              
+                              
+                                 i
+                                 j
+                              
+                           
+                        (
+                           
+                              
+                                 S
+                              
+                              
+                                 i
+                                 j
+                              
+                              
+                                 f
+                              
+                           
+                        ) equals zero if its absolute ratio to 
+                           
+                              
+                                 S
+                              
+                              
+                                 11
+                              
+                              
+                                 f
+                              
+                           
+                         is lower than 1.0e−4.
+                           
+                              (15)
+                              
+                                 S
+                                 =
+                                 
+                                    
+                                       S
+                                    
+                                    
+                                       11
+                                    
+                                    
+                                       f
+                                    
+                                 
+                                 
+                                    [
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   0.9534
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.2017
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.1145
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0007
+                                                
+                                             
+                                             
+                                                
+                                                   0.0
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0179
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   −
+                                                   0.2017
+                                                
+                                             
+                                             
+                                                
+                                                   0.9595
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.1137
+                                                
+                                             
+                                             
+                                                
+                                                   0.0016
+                                                
+                                             
+                                             
+                                                
+                                                   0.0
+                                                
+                                             
+                                             
+                                                
+                                                   0.0059
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   −
+                                                   0.1145
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.1137
+                                                
+                                             
+                                             
+                                                
+                                                   0.6386
+                                                
+                                             
+                                             
+                                                
+                                                   0.0015
+                                                
+                                             
+                                             
+                                                
+                                                   0.0
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0003
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   −
+                                                   0.0007
+                                                
+                                             
+                                             
+                                                
+                                                   0.0016
+                                                
+                                             
+                                             
+                                                
+                                                   0.0015
+                                                
+                                             
+                                             
+                                                
+                                                   2.3313
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0030
+                                                
+                                             
+                                             
+                                                
+                                                   0.0
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   0.0
+                                                
+                                             
+                                             
+                                                
+                                                   0.0
+                                                
+                                             
+                                             
+                                                
+                                                   0.0
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0030
+                                                
+                                             
+                                             
+                                                
+                                                   2.3536
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0020
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   −
+                                                   0.0179
+                                                
+                                             
+                                             
+                                                
+                                                   0.0059
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0003
+                                                
+                                             
+                                             
+                                                
+                                                   0.0000
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0020
+                                                
+                                             
+                                             
+                                                
+                                                   2.5985
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                              
+                           
+                        
+                        
+                           
+                              (16)
+                              
+                                 
+                                    
+                                       S
+                                    
+                                    f
+                                 
+                                 =
+                                 
+                                    
+                                       S
+                                    
+                                    
+                                       11
+                                    
+                                    
+                                       f
+                                    
+                                 
+                                 
+                                    [
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   1.0000
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.2123
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.1190
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0007
+                                                
+                                             
+                                             
+                                                
+                                                   0.0
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0178
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   −
+                                                   0.2123
+                                                
+                                             
+                                             
+                                                
+                                                   1.0068
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.1178
+                                                
+                                             
+                                             
+                                                
+                                                   0.0016
+                                                
+                                             
+                                             
+                                                
+                                                   0.0
+                                                
+                                             
+                                             
+                                                
+                                                   0.0064
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   −
+                                                   0.1190
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.1178
+                                                
+                                             
+                                             
+                                                
+                                                   0.6716
+                                                
+                                             
+                                             
+                                                
+                                                   0.0012
+                                                
+                                             
+                                             
+                                                
+                                                   0.0
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0003
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   −
+                                                   0.0007
+                                                
+                                             
+                                             
+                                                
+                                                   0.0016
+                                                
+                                             
+                                             
+                                                
+                                                   0.0012
+                                                
+                                             
+                                             
+                                                
+                                                   2.4525
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0029
+                                                
+                                             
+                                             
+                                                
+                                                   0.0
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   0.0
+                                                
+                                             
+                                             
+                                                
+                                                   0.0
+                                                
+                                             
+                                             
+                                                
+                                                   0.0
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0029
+                                                
+                                             
+                                             
+                                                
+                                                   2.4734
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0020
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   −
+                                                   0.0178
+                                                
+                                             
+                                             
+                                                
+                                                   0.0064
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0003
+                                                
+                                             
+                                             
+                                                
+                                                   0.0
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0020
+                                                
+                                             
+                                             
+                                                
+                                                   2.6937
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                              
+                           
+                        It is seen in Eqs. (15) and (16) that the non-diagonal components of 
+                           S
+                         have nice agreement with their corresponding components of 
+                           
+                              
+                                 S
+                              
+                              f
+                           
+                        . This nice agreement is also found in the other three cases. Hence, the effective compliance matrices of the four cases can be successfully approximated by FGFEM. The validity of FGFEM is further verified.
+
+It is seen in Table 1 that except in case (b) where the composite has cubic geometric symmetry [41], the composites exhibit noticeable anisotropy in the other three cases. Although the inclusion volume fractions in the four cases are the same, their effective compliance moduli are distinctively different. This means that the shape of inclusion has great effect on the effective moduli of particulate composite. Although the RVE structures in the four cases are different from each other, the finite elements of FGFEM are the same. The difficulties of domain discretization in the four cases are circumvented by applying FGFEM.
+
+Apart from the regular sphere inclusion located in the center of the RVE as shown in 
+                        Fig. 10, there are eight irregular inclusions in the RVE in this example. The radius of the sphere equals 0.155. The inclusion volume fraction is 0.265, and the effective volume ratio is 0.947. The inclusion-to-matrix modulus ratio in this example equals 20, and the inclusions and matrix have the same Poisson's ratio equal to 0.3. The characteristics element size of FGFEM is 0.0125.
+
+The 21 components of the effective compliance moduli calculated by FGFEM are shown in
+                           
+                              (17)
+                              
+                                 S
+                                 =
+                                 
+                                    1
+                                    
+                                       
+                                          
+                                             E
+                                          
+                                          
+                                             M
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    [
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   0.5740
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.1471
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.1029
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0011
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0010
+                                                
+                                             
+                                             
+                                                
+                                                   0.0038
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   −
+                                                   0.1471
+                                                
+                                             
+                                             
+                                                
+                                                   0.5598
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.1007
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0006
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0027
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0008
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   −
+                                                   0.1029
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.1007
+                                                
+                                             
+                                             
+                                                
+                                                   0.4554
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0017
+                                                
+                                             
+                                             
+                                                
+                                                   0.0050
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0006
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   −
+                                                   0.0011
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0006
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0017
+                                                
+                                             
+                                             
+                                                
+                                                   1.4584
+                                                
+                                             
+                                             
+                                                
+                                                   0.0033
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0027
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   −
+                                                   0.0010
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0027
+                                                
+                                             
+                                             
+                                                
+                                                   0.0050
+                                                
+                                             
+                                             
+                                                
+                                                   0.0033
+                                                
+                                             
+                                             
+                                                
+                                                   1.4817
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0072
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   0.0038
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0008
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0006
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0027
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   0.0072
+                                                
+                                             
+                                             
+                                                
+                                                   1.5107
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                              
+                           
+                        It is seen in Eq. (17) that the shear stress induced by normal deformation and the normal stress induced by shear deformation are marginal. This phenomenon is also observed when composite has soft inclusions [29,40]. The overall behavior of the composite is anisotropic.
+
+@&#CONCLUSION@&#
+
+In this paper, FGFEM is introduced to approximate the effective moduli of particulate composite. The difficulty of domain discretization caused by inclusion is avoided in FGFEM. The validity of FGFEM is verified by comparing its results with those from FEM. For composite with soft inclusions, the effective moduli obtained from FGFEM have excellent agreement with those obtained from FEM, and they are not sensitive to the mesh density and have low relative errors. For composite with hard inclusions, the precision of FGFEM can be effectively improved by increasing the mesh density. With the inclusion volume fraction up to 0.4 and the inclusion-to-matrix modulus ratio up to 20, the composite can still get reliable effective moduli from FGFEM run on a desktop, of which the maximum relative error is less than 9%. The applicability of FGFEM for composite with multiple irregular inclusions is demonstrated. Applications of FGFEM show that the shape of inclusion can affect the anisotropy of composite to a large content.
+
+@&#ACKNOWLEDGMENT@&#
+
+The financial support from the National Science Foundation of China through Grant no. 50709014 is acknowledged.
+
+@&#REFERENCES@&#
+

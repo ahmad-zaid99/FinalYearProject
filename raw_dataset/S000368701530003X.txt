@@ -1,0 +1,1120 @@
+@&#MAIN-TITLE@&#A systematic review of mixed methods research on human factors and ergonomics in health care
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Mixed methods research is increasingly used in healthcare HFE research.
+
+
+                        
+                        
+                           
+                           About two-thirds of mixed methods studies on healthcare HFE use the convergent parallel design.
+
+
+                        
+                        
+                           
+                           A large variety of methods is used to collect qualitative and quantitative data.
+
+
+                        
+                        
+                           
+                           The most frequent combination of qualitative and quantitative data collection involved interview and survey respectively.
+
+
+                        
+                        
+                           
+                           Formal mixed methods research approaches should be used in healthcare HFE research.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Mixed methods research
+
+Health care
+
+Systematic review
+
+Qualitative and quantitative data
+
+@&#ABSTRACT@&#
+
+
+                  This systematic literature review provides information on the use of mixed methods research in human factors and ergonomics (HFE) research in health care. Using the PRISMA methodology, we searched four databases (PubMed, PsycInfo, Web of Science, and Engineering Village) for studies that met the following inclusion criteria: (1) field study in health care, (2) mixing of qualitative and quantitative data, (3) HFE issues, and (4) empirical evidence. Using an iterative and collaborative process supported by a structured data collection form, the six authors identified a total of 58 studies that primarily address HFE issues in health information technology (e.g., usability) and in the work of healthcare workers. About two-thirds of the mixed methods studies used the convergent parallel study design where quantitative and qualitative data were collected simultaneously. A variety of methods were used for collecting data, including interview, survey and observation. The most frequent combination involved interview for qualitative data and survey for quantitative data. The use of mixed methods in healthcare HFE research has increased over time. However, increasing attention should be paid to the formal literature on mixed methods research to enhance the depth and breadth of this research.
+               
+
+@&#INTRODUCTION@&#
+
+Since the publication of the US Institute of Medicine report on “To Err is Human” (Kohn et al., 1999), human factors and ergonomics (HFE) research in healthcare quality and patient safety has significantly increased (Carayon, 2010; Carayon et al., 2013; Gurses et al., 2012; Hignett et al., 2013) and is beginning to demonstrate impact on important care processes and patient outcomes (Russ et al., 2014; Xie and Carayon, 2015). HFE research on occupational safety and health of healthcare workers has a longer tradition (Hignett, 1996; Nelson et al., 2006; Owen and Garg, 1994; Smith et al., 1979). We believe that HFE research in general, and more specifically in health care, could be even more relevant and impactful if field research with multiple and mixed methods is used. This paper describes the results of a systematic literature review of mixed methods research in healthcare HFE. We propose recommendations for further extending the use of formal mixed methods approaches in HFE research, in particular in health care.
+
+Numerous research communities are now recognizing the value of mixed methods research. For instance, the US National Institute for Health has published a document on “Best practices for mixed methods research in the health sciences” (Creswell et al., 2011). After reviewing 19 definitions of mixed methods research, Johnson et al. (2007) proposed the following definition:
+                           “Mixed methods research is the type of research in which a researcher or team of researchers combines elements of qualitative and quantitative research approaches (e.g., use of qualitative and quantitative viewpoints, data collection, analysis, inference techniques) for the broad purposes of breadth and depth of understanding and corroboration.” (p. 123)
+                        
+                     
+
+This definition highlights the combination (or mixing) of different approaches at various stages of the research process. In this definition, the terms of qualitative and quantitative are applied to various areas, such as research viewpoints, data collection and inference; this can be confusing. For instance, interview is sometimes described as qualitative research. However, is the use of closed questions with specific response categories in an interview qualitative or quantitative research? In this example, the interview data collection method is used to collect quantitative data (i.e. responses to closed questions) that can be used in a statistical analysis. While describing different levels in science, such as ontology, epistemology, methodology, method and data, Åsberg et al. (2011) argue that the terms of qualitative and quantitative should be used to describe data, which is what we do in this paper. This avoids the ambiguity that can occur when calling interview a qualitative method that can actually produce quantitative data. Please note that this applies to many other data collection methods. For instance, observation can be used to collect quantitative data such as time spent on tasks as well as qualitative data such as rich description of workflow.
+
+Quantitative data involve numbers and categories and are typically analyzed with the means of statistical methods, whereas qualitative data involve a description with text. In this paper, we use the term of mixed methods research as one that collects and mixes qualitative and quantitative data. This allows us to examine how a single type of data collection (e.g., survey, interview) can be used to collect both qualitative and quantitative data. Mixing involves qualitative and quantitative data that are collected with various methods, such as observation, interview, focus group, survey, and archival methods. Mixing of qualitative and quantitative data can occur at the stages of design, data collection, data analysis and interpretation (Creswell and Plano Clark, 2011). Various taxonomies of mixed methods designs have been proposed; in this paper, we use the well-known taxonomy of Creswell and colleagues (Creswell, 2009; Creswell and Plano Clark, 2011) (see Table 4).
+
+We distinguish between the type of data (qualitative or quantitative data) and the nature of data (objective or subjective). The degree to which data are objective or subjective has been conceptualized as a continuum in which perceptual and emotional processes get involved in the measurement process (Carayon and Hoonakker, 2001). Relatively more objective data are produced when perceptual and emotional processes have little involvement and influence on measurement, whereas relatively more subjective data are produced when perceptual and emotional processes are important part of the measurement process. For instance, a question such as “How often did you think of quitting your job in the past week: (1) never, (2) once or twice in the past week, (3) three to four times in the past week, and (4) five or more times in the past week” is relatively more objective than the following question: “How happy or unhappy have you been with your job in the past week: (1) completely unhappy, (2) somewhat unhappy, (3) neither unhappy nor happy, (4) somewhat happy, and (5) completely happy”. Qualitative and quantitative data have different degrees of objectivity or subjectivity depending on the actual measurement process. In this literature review, we focus on mixing of qualitative and quantitative data, not on the objective or subjective nature of the data.
+
+Problems experienced and observed in health care tend to be complex, varied and uncertain, and, therefore, difficult to address. For instance, whereas patient safety has been identified as a major problem, little progress has been made and reported (Pronovost and Wachter, 2014; Vincent et al., 2008; Wachter, 2010). There has been increasing recognition that systems approaches, such as those provided by HFE (Carayon, Hundt, Karsh, et al., 2006; Carayon et al., 2014), can help in improving difficult healthcare quality problems such as patient safety (Kaplan et al., 2013). The HFE systems research needed to help understand and solve often-complex healthcare problems should use multiple methods and approaches. This can be done with mixed methods research.
+
+The complexity of healthcare work systems calls for HFE research that assesses work situations and problems in their context (Carayon, 2006; Dekker, 2012). This type of HFE research is typically conducted in the field (Wilson, 2014) and should use multiple data sources and data collection methods to assess the numerous facets of the work situation and their outcomes. The use of mixed methods research, therefore, allows for a broad and deep assessment of HFE issues involved in the healthcare delivery problem under study. For instance, quantitative data may help to assess the severity or causes of a problem such as the extent to which workload contributes to patient safety. This could be done with the use of a survey that measures perceived workload and self-reported patient safety problems, or with the use of observation that quantifies workload and captures errors made during patient care at different workload levels. Whereas this quantitative information is useful to understand the problem, the use of qualitative data can deepen the assessment of the problem by evaluating the reasons why and how workload may affect patient safety. This combination of quantitative and qualitative data can not only deepen our understanding of the relationship between workload and patient safety, but also provide specific guidance for work system or process redesign that can improve patient safety.
+
+There has been growing epistemological emphasis in HFE on the need to embrace and use a greater variety of research approaches, such as qualitative research (Hignett and Wilson, 2004). This has generated important discussion about the type of research and research paradigms needed for expanding the depth, breadth and impact of HFE (Dul et al., 2012a; Nathanael and Marmaras, 2012). Our paper contributes to this discussion by proposing that HFE research pay more attention to mixed methods research. The use of mixed methods research fits with the so-called “pragmatism” research paradigm or worldview (Robson, 2011; Tashakkori and Teddlie, 2003). A pragmatic researcher uses “whatever philosophical or methodological approach works best for the particular research problem at issue” (Robson, 2011, p. 28). An HFE researcher is likely to be a pragmatic researcher as s/he tackles real and practical work system design problems that are influenced by the context (Dul et al., 2012b; Wilson, 2000, 2014). Mixed methods research fits with HFE pragmatic research as it advocates the use of multiple research methods and approaches and the mixing of qualitative and quantitative data.
+
+HFE researchers have begun to recognize the value of formal mixed methods research as described by various experts (Creswell, 2009; Creswell and Plano Clark, 2011; Tashakkori and Teddlie, 2003, 2010). Healthcare HFE research conducted at the University of Wisconsin–Madison, USA, has used multiple data collection methods and then merged and combined quantitative and qualitative data in various ways. For instance, in a study of workload among ICU (Intensive Care Unit) nurses, we began the research by conducting in-depth semi-structured interviews with 15 nurses in a single ICU (Gurses and Carayon, 2009). Results of this qualitative data collection identified a range of performance obstacles and facilitators experienced by ICU nurses that could contribute to workload. This information was used to develop a survey that was subsequently administered to 272 ICU nurses to quantify the frequency of work system obstacles and their impact on ICU nurses' workload, quality of working life (fatigue, overall stress) and perceived quality and safety of care (Gurses and Carayon, 2007; Gurses et al., 2009). This is an example of a sequential exploratory design.
+
+In another study, we used multiple data collection methods (i.e. work sampling study, survey and interviews) to evaluate the implementation and impact of an Electronic Health Record (EHR) technology in a primary care clinic (Carayon et al., 2009). The quantitative data produced by the work sampling method assessed changes in time spent on various activities by different groups of clinic workers (i.e. physicians, clinical staff and office staff). The quantitative survey data complemented this analysis by examining changes in worker perceptions after the EHR implementation. For instance, we observed increased time spent on computer with the work sampling data collection; that fits with the survey data analysis on perception of increased dependency on computers. In addition, the survey data allowed us to assess the impact of the increase in computer use on clinic staff, such as increased self-reported back pain. The qualitative data collected through interviews provided useful information about the context and implementation of the EHR technology. Without this information, the results of the quantitative data analysis can be challenging to interpret and generalize. This study is an example of a convergent parallel design.
+
+The use of mixed methods to collect qualitative and quantitative data has allowed us to develop more relevant measures of work system obstacles and facilitators (ICU nursing study) (Gurses and Carayon, 2009), and to assess a technology from the viewpoint of different stakeholders (study of EHR implementation) (Carayon et al., 2009). The main benefits of mixed methods research for healthcare HFE are, therefore, to deepen and widen our understanding and interpretation of complex healthcare delivery problems.
+
+There is a growing use of mixed methods research in HFE; however, there may be ‘missed opportunities’ if the formal knowledge about mixed methods research is not recognized and used. Formal knowledge about mixed methods research is available in several books (Creswell, 2009; Creswell and Plano Clark, 2011; Tashakkori and Teddlie, 2010), as well as the Journal of Mixed Methods Research. The objective of this systematic literature review is to describe mixed methods research studies on HFE in health care. We assess published mixed methods studies in healthcare HFE for any trends and identify opportunities to use the emerging and formal body of knowledge on mixed methods.
+
+@&#METHODS@&#
+
+This systematic review follows the PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses) methodology (Liberati et al., 2009; Moher et al., 2009). PRISMA is a well-accepted methodology for conducting and reporting systematic reviews in health sciences. We also apply the four quality criteria for mixed methods research defined by Creswell and Plano Clark (2011):
+                        
+                           (1)
+                           Collection of both quantitative and qualitative data, and mixing of the two sources of data. This was an inclusion criterion for selecting studies. We also evaluated the stages at which data were mixed.
+
+Use of rigorous procedures for data collection and analysis methods. We included only peer-reviewed published studies; this was used as a proxy indicator for rigor in data collection and analysis. We recognize that this is a limited assessment of the scientific rigor of studies. However, at this time, there is no commonly accepted methodology for evaluating the scientific rigor of mixed methods research.
+
+Use of a mixed methods research design. We categorized each study in one of the 6 mixed methods study designs described by Creswell (2009) (see Table 4).
+
+Use of terminology consistent with that used in the mixed methods literature. We evaluated whether studies formally recognized their study design as a mixed methods design. A study formally recognized mixed methods if the following terms were used: mixed methods, triangulation, multiple methods, and words “qualitative” and “quantitative” used in the same sentence.
+
+The literature review was limited to peer-reviewed journal papers written in English. A study was included if it met all four inclusion criteria:
+                           
+                              •
+                              The study was a field study conducted in health care; therefore, it included healthcare workers and professionals, or dealt with healthcare delivery issues.
+
+The study mixed qualitative and quantitative data.
+
+The study addressed HFE issues.
+
+The study provided empirical evidence.
+
+
+                        Fig. 1
+                         shows the flow diagram of study search and selection. We conducted the search from 1956 (establishment of the International Ergonomics Association) to December 2013 in four databases: PubMed, PsycInfo, Web of Science, and Engineering Village. In addition, we searched the journal of Cognition, Technology and Work, i.e. a major HFE journal that was indexed recently. With the use of various keywords (see Table 1
+                        ), our search strategy identified studies that address the four inclusion criteria listed above. Keywords from different areas were combined using the Boolean operator “AND”, and keywords within each area were combined using the Boolean operator “OR”.
+
+After removing duplicates, a total of 158 papers were identified. The screening was then conducted in two stages. During the first stage, the title and abstract of each paper were reviewed, and a total of 75 papers were excluded. During the second stage, we retrieved full-text articles for the remaining 83 papers. A total of 25 papers were then excluded. A total of 58 studies were included in the systematic review reported in this paper.
+
+A data collection form was created to extract the following data from each study:
+                           
+                              •
+                              Author(s)
+
+Year of publication
+
+Title
+
+Journal
+
+Study setting
+
+Study objective
+
+Formal recognition of using mixed methods research design [Yes/No].
+
+Mixed methods research design (Creswell, 2009): convergent parallel, sequential exploratory, sequential explanatory, embedded, transformative and multiphase (see Table 4).
+
+Stage of mixing (Creswell and Plano Clark, 2011): design, data collection, data analysis and interpretation (see Table 5).
+
+Qualitative data
+
+Quantitative data
+
+HFE focus.
+
+Each of the six authors independently reviewed 3 or 4 studies and extracted the relevant data from each study using the data collection form. The authors then met and discussed any questions regarding the data collection. This helped to further clarify the inclusion criteria and therefore, to refine study search and selection. We also developed and used a coding book for the data extraction process, which is available by request from the first author. The six authors then reviewed the same 4 studies, met to discuss the coding for the 4 studies and achieved consensus on the final data for the 4 studies. In the final step, the six authors reviewed the remaining studies. Each study was reviewed by two authors, which allowed us to assess inter-rater reliability for six items of the data extraction table: formal recognition [Yes/No]; type of mixed methods design (6 categories); and mixing at the stages of interpretation [Yes/No], data analysis [Yes/No], data collection [Yes/No] and design [Yes/No]. The corresponding agreement rates were 86%, 84%, 100%, 80%, 88% and 92%. In the end, every study was reviewed by at least two researchers. If there was disagreement about the data extraction on a specific study, the researchers discussed their data and involved other researchers if necessary. This consensus process ensured that all six authors agreed on the data collection.
+
+@&#RESULTS@&#
+
+Data on the 58 studies included in this systematic review of mixed methods research in healthcare HFE are presented in the Appendix. The 58 studies were published in 44 separate journals, with the International Journal of Medical Informatics (IJMI) and Cognition, Technology & Work having the largest number of studies (5 or 9% each) (see Table 2
+                        ). Sixteen papers (27%) were published in 9 health informatics journals, such as IJMI. Twelve studies (21%) were published in 6 HFE journals, i.e. Ergonomics, Applied Ergonomics, Human Factors, Cognition Technology & Work, International Journal of Human-Computer Interaction, and Behavior & Information Technology. Eight studies (14%) were published in 7 nursing journals, such as Journal of Nursing Administration and Nursing Research. The rest of the studies (22 or 38%) were published in 22 various other journals.
+
+
+                        Fig. 2
+                         shows the increasing number of mixed methods studies in healthcare HFE over time. Until 2010, the number of mixed methods studies slowly increased; in 2011 a jump occurred with 8 studies, followed by 10 mixed methods studies in 2012 and 6 mixed methods studies in 2013.
+
+The samples in the studies were categorized as involving (1) healthcare workers, (2) patients and (3) family members (or caregivers). The majority of studies (50 or 86%) involved various types of healthcare workers, such as nurses in rehabilitation facilities (Yassi et al., 2004) or hospitals (Battisto et al., 2009; Capuano et al., 2004); this confirms the occupational focus of HFE research in health care. Twenty studies (34%) involved patients and three studies (5%) involved families. Studies could involve several groups, such as 9 studies with both patients and healthcare workers and 3 studies with patients, family and healthcare workers. For instance, Dolan et al. (2013) evaluated a decision dashboard for analgesic treatment options for knee osteoarthritis from the viewpoint of patients and healthcare workers using interview, survey and observation.
+
+We also examined the study setting, i.e. which organizational setting did the participants come from. Eight studies (14%) did not recruit participants from healthcare settings; participants were recruited from the general population (e.g., flyer, website), associations or some other mechanism. This included a study of work system factors contributing to adverse drug events through a mixed data analysis of patient complaints to the Finnish national health authority (Jylhä et al., 2011). The rest of the studies took place primarily in inpatient settings (20 studies or 34%) or outpatient settings (20 studies or 34%), whereas five studies (9%) involved both inpatient and outpatient settings. A few studies were conducted in long-term care (2 studies), emergency medical services (2 studies), and home care (1 study).
+
+We performed a qualitative content analysis of the HFE focus of the 58 studies and identified 7 categories (see Table 3
+                        ). Half of the studies focused on examining HFE aspects (e.g., usability) of health information technologies such as EHR (Electronic Health Record) technology (Carayon et al., 2009; Hollin et al., 2012). The next major category includes studies about the work of nurses, physicians and other healthcare workers (e.g., optometrist, home care worker) (20%). For example, Battisto et al. (2009) used multiple methods to describe the work of nurses in medical-surgical hospital units. About 46 h of observation provided information on the frequency of nurses' activities, their location and any information about task errors. This data collection was performed with 10 nurses in 4 medical-surgical units during the day shift. Qualitative data were obtained from 1-h interviews with 12 nurses. The analysis of the quantitative (observation) and qualitative (interview) data provided information on the frequency, location and nature of environmental problems experienced by inpatient nurses.
+
+
+                        Creswell and Plano Clark (2011) indicate that a mixed methods study should use the formal terminology of the mixed methods research domain. Our data show that 76% of the studies formally recognized using mixed methods research.
+
+Most of the 58 studies (39 or 67%) used the convergent parallel design (see Table 4
+                        ). Several convergent parallel studies collected qualitative and quantitative data to evaluate the usability and usefulness of technologies, such as point-of-care resources for clinicians (Chan and Stieda, 2011), a clinical decision support to screen mental health problems in primary care (Farrell et al., 2009) and a website for cancer patients (Milne et al., 2012). An example of a convergent parallel design involved a wide range of qualitative and quantitative data collection methods (e.g., interview, email messages, survey, log files) to identify the factors that either facilitated or hindered the use of a web-based application to support self-care of diabetes patients (Nijland et al., 2011). For instance, the log data analysis showed a decline in usage over time, which was explained by poor usability of the web application as identified in the analysis of email messages.
+
+Fifteen studies (26%) used one of the two sequential designs: either the sequential explanatory design (5 studies or 9%) or the sequential exploratory design (10 studies or 17%). In a sequential explanatory design, Singh et al. (2012) first quantified diagnostic errors in the review of EHR records and then conducted interviews with primary care physicians to elicit cognitive decision making processes. The combination of quantitative and qualitative data was important to develop a deep understanding of the complex problem of diagnostic errors. Studies with sequential exploratory design often involved preliminary qualitative data collection with interview or focus group, followed by a survey. Examples include a study of manual handling risks for bariatric patients and their caregivers (Hignett and Griffiths, 2009) and a study of hazards in surgery (Christian et al., 2006).
+
+Two studies used the embedded design. Chin et al. (2011) conducted primarily a grounded theory study of mothers’ perceptions of teamwork and safety of maternity clinical handovers, and added a small collection of quantitative data using medical chart review. The other study with an embedded design examined use and usability of tools for primary care asthma management and focused primarily on quantitative data obtained from medical charts with a small supplementary set of qualitative data collected via focus groups with patients and clinical staff (Yawn et al., 2008). Two studies with multiphase design described the design and development of patient-centered computer-based support system for patients with schizophrenia (Valimaki et al., 2008) and examined communication and coordination in the scheduling of operating rooms (Xiao et al., 2008).
+
+Mixed methods studies can involve mixing of qualitative and quantitative data at any stages of the research process (see Table 5
+                        ). A small number of studies (4 or 7%) mixed qualitative and quantitative methods at the study design stage; this included three studies with a convergent parallel design, and one study with an embedded design (see Table 4). One of the studies with a convergent parallel design was conducted by Wolf and colleagues (2006) and integrated the mixing of qualitative and quantitative data in their study design: the goal was to assess nursing work from various viewpoints (i.e. nursing and human factors engineering) using the same method (i.e. observation). Two observers, one with a human factors background and one with a nursing background, simultaneously observed nurses. The human factors observer collected quantitative data (e.g., time spent on various activities, location of activities), whereas the nursing observer collected qualitative data (e.g., stage in the nursing care process). At the analysis stage, qualitative and quantitative data were presented in the form of cognitive pathways that highlighted a range of HFE issues in nursing work, such as cognitive stacking as a strategy to deal with high workload.
+
+Twenty-seven studies (47%) involved mixing at the data collection stage. Many of these studies used the same data collection instrument to collect both qualitative and quantitative data. For instance, Stewart et al. (2010) evaluated a toolkit to be used by parents and other caregivers of children with special needs, and used a questionnaire with open-ended and closed questions that respectively produced qualitative and quantitative data on the implementation, usability and usefulness of the toolkit. This allowed not only a quantitative evaluation of the usability of the toolkit, but also helped to understand the reasons why the toolkit was usable or not usable.
+
+Twenty studies (34%) merged results of qualitative and quantitative data analyses. One method of mixing at the data analysis stage involved qualitative data that were quantified and further analyzed with a statistical analysis. This method was applied in a study of factors contributing to adverse drug events (Jylhä et al., 2011), in a usability evaluation of a mobile EHR (Wu et al., 2008), and in a cognitive work analysis of nurses and physicians (C. M. Johnson and Turley (2006)). All 58 studies combined the qualitative and quantitative data analyses in their discussion and conclusion (see Table 5).
+
+In agreement with Åsberg et al. (2011), we use the terms of qualitative and quantitative to describe data, not methods. Therefore, the same data collection method can be used to produce both qualitative and quantitative data as shown in Table 6
+                        . We used information on data collection methods available in the published papers and associated sources cited in the papers. We did not systematically evaluate the quality of data collection methods. The most frequently used methods to collect qualitative data are interview, survey, observation, think-aloud and focus group. For quantitative data, the most frequently used methods are survey, observation, archival methods and log/usage data. Observation was almost equally used to produce qualitative or quantitative data. For instance, several studies used observation to quantify physical ergonomic risk factors (Hignett and Crumpton, 2007; Jones and Hignett, 2007; Yassi et al., 2004). Other studies used observation to produce rich qualitative description of workflow, such as inpatient nursing workflow (Lopez et al., 2010) and use of telehealth system by surgeons and patients and their families (Stevenson et al., 2010). In addition, in 10 studies, qualitative data were quantified. The study by Kastner et al. (2010) reported the largest number of data collection methods in a convergent parallel study: a total of 9 methods (3 producing qualitative data and 6 producing quantitative data) were used in a series of three usability evaluations.
+
+Because of our interest in mixed methods, we examined combination of methods for collecting qualitative and quantitative data. The most frequent combination mixed interview and survey data collection, representing qualitative and quantitative data respectively (25 studies or 43%). Several studies used the same method for collecting both qualitative and quantitative data. Thirteen studies (22%) used survey, 5 studies (9%) interview, 2 studies observation, and 1 study video analysis to collect both types of data. Surveys and interview guides could contain both open-ended and closed questions that produce qualitative and quantitative data respectively.
+
+@&#DISCUSSION@&#
+
+In a systematic review of the literature on HFE in healthcare research, we identified a total of 58 studies published between 2002 and 2013. We observed an increasing number of mixed methods studies that addressed HFE in health care (see Fig. 2). This trend may represent a greater level of awareness and acceptance of various research approaches among HFE researchers. About two-thirds of the studies used a convergent parallel design in which both qualitative and quantitative data are collected simultaneously and then combined at the stages of analysis and interpretation. The next commonly used mixed methods study design was a sequential design with either qualitative or quantitative data collected first, then followed by the collection of the other type of data; about a quarter of the 58 studies used a sequential design. The 58 studies used a wide range of data collection methods, including interview, survey, observation, think-aloud, focus group, archival methods, and log/usage data. In many instances, the same method (e.g., survey, interview, observation) was used to collect both qualitative and quantitative data. Ten studies quantified the qualitative data. This literature review describes a rather large body of HFE research in health care that relies on mixed methods.
+
+Given the increasing formalization of mixed methods research (see, for example, books by Creswell, Plano Clark, Tashakkori and Teddlie, and the recent Journal on Mixed Methods Research), it is important that HFE research uses this knowledge. About three-quarters of the 58 studies included in the systematic review formally recognized the use of mixed methods research as they used one of the following terms: mixed methods, triangulation, multiple methods, and words “qualitative” and “quantitative” used in the same sentence. According to Creswell and Plano Clark (2011), a mixed methods study should use the formal terminology of the mixed methods research domain. Our definition and coding of formal recognition are less strict than the recommendation of Creswell and Plano Clark, as we included studies that discuss the use of mixed or multiple methods without using the formal taxonomy of mixed methods study design (see Table 4) or describing the stage of data mixing (see Table 5). Future HFE in healthcare research should pay attention to the growing body on mixed methods research, as this will enrich the type of study design to be used. For instance, it is interesting to note that only 5 studies used the sequential explanatory design in which quantitative data are followed by collection and analysis of qualitative data. The quantitative research tradition of HFE may actually hamper progress if researchers are not taking advantage of other types of research and data that can help at the analysis and interpretation stages. Researchers should recognize the benefit of adding qualitative data collection after completion of quantitative data analysis in order to further understand and interpret the results of the quantitative data analysis. For instance, Rochais et al. (2013) quantified problems experienced by nurses in using medication cart with a survey. These results were further expanded upon in 7 nursing focus groups. The additional qualitative (focus group) data collection helped the researchers to better understand the reasons for problems reported by nurses in the survey.
+
+Another opportunity for healthcare HFE research is to expand the mixing of qualitative and quantitative data at the analysis stage. About one-third of the 58 studies included in the systematic review used some form of interactive strategy for mixing qualitative and quantitative data analyses. An example of mixing at the analysis stage is quantification of qualitative data followed by statistical analyses. Mixing at the analysis stage can also involve relating qualitative and quantitative data in a matrix that supports comparison between different study groups. This was done by Xiao et al. (2008) in a study on surgical delays in which quantitative data (actual delays) and qualitative data (text on reasons for delay) were combined in a matrix. Researchers should continue to investigate how the two strands of qualitative and quantitative data can be analyzed together.
+
+Mixing during data collection typically occurs when the results of qualitative data analysis are used to design the next phase of quantitative data collection; this is the case for sequential exploratory design. For instance, qualitative data may be collected via interview or focus group and then analyzed to help design a survey that produces quantitative data. Mixing during data collection also occurs when the results of quantitative data analysis inform the collection of qualitative data analysis; this is the case for sequential explanatory design. The third frequent case of mixing during data collection occurs with the convergent parallel design when a study uses the same data collection method to collect both qualitative and quantitative data. This occurred in the studies that we reviewed, especially with survey (13 studies) or interview (5 studies).
+
+For future research, it is important to enhance the quality of mixed methods research in healthcare HFE; therefore, we need well-defined criteria to evaluate the quality of mixed methods research. However, as indicated earlier, at this point in time, there are no agreed-upon criteria for assessing the scientific rigor of mixed methods research. In addition to assessing the quality of each separate strand of qualitative and quantitative data, it is important to assess the mixing of the qualitative and quantitative data and the inferences that researchers draw from the mixing (Tashakkori and Teddlie, 2003, 2010). As we wait for guidance from mixed methods research experts regarding quality evaluation, HFE researchers should pay particular attention to the description of mixing and the inferences that are drawn when mixing data. For instance, in a sequential exploratory design, clear information is needed to describe what qualitative data are used (or not used) and how these data help to define the next strand of quantitative data collection.
+
+The 58 mixed methods studies were published in a variety of scientific journals. Most of these studies were actually published in non-HFE journals, in particular journals dedicated to health information technology and nursing. This demonstrates the outreach of HFE and its applications and relevance for multiple domains. Publishing mixed methods research can, however, be challenging given the volume of data to present. Sometimes researchers choose to publish their qualitative and quantitative data separately; this is unfortunate, as it does not allow for mixing of data and the rich interpretation and conclusions that can result from mixing.
+
+The systematic literature review was probably limited because we searched for papers published in scientific journals. It is possible that mixed methods studies were published in separate pieces, such as a conference paper that describes results of an initial qualitative data collection and analysis, and a journal publication that reports the results of the follow-up quantitative data analysis. This type of mixed methods research would not have been captured by our literature search; however, because our focus is on mixing of data, we looked specifically for journal publications that report the mixing. Our literature search identified only two multiphase studies. Studies with a multiphase study design combined sequential and concurrent collection and analysis of qualitative and quantitative data over a period of time. Such major research program is often not described in journal publications; pieces of the research program may be described in separate journal publications. But the ‘whole story’ is rarely described, or if it is described, it is more likely to be published in a report, a book or a book chapter. Therefore, a limitation of our literature review is the under-estimation of mixed methods research with a multiphase design.
+
+@&#CONCLUSION@&#
+
+Healthcare HFE research has been increasingly using mixed methods research with a variety of data collection methods. This research could further take advantage of the emerging knowledge and formalization of mixed methods research, especially with regard to mixing at the stages of data analysis. We encourage HFE researchers who study complex healthcare quality problems to expand their use of mixed methods research. This requires that HFE researchers develop expertise in both qualitative and quantitative strands of research, as well as mixed methods research. HFE training programs should expand their content on research methods to include mixed methods research. We are encouraged by the large and increasing use of mixed methods research in HFE healthcare research; the use of mixed methods should be fostered in other domains of HFE application.
+
+@&#ACKNOWLEDGMENTS@&#
+
+This research was partially supported by the Clinical and Translational Science Award (CTSA) program, through the NIH National Center for Advancing Translational Sciences (NCATS), grant UL1TR000427. The content is solely the responsibility of the authors and does not necessarily represent the official views of the NIH.
+
+
+                     
+                        
+                           
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                                 
+                                    Authors
+                                    Title
+                                    Journal
+                                    Study setting
+                                    Study objective
+                                    Formal recognition of mixed methods design
+                                    Mixed methods research design
+                                    Stage of mixing
+                                    Qualitative data
+                                    Quantitative data
+                                    HFE focus
+                                 
+                              
+                              
+                                 
+                                    
+                                       Aguilera and Muñoz (2011)
+                                    
+                                    Text messaging as an adjunct to CBT in low-income populations: A usability and feasibility pilot study
+                                    Professional Psychology: Research and Practice
+                                    12 patients enrolled in cognitive-behavior therapy at a primary care outpatient clinic at San Francisco general hospital
+                                    To conduct a usability/feasibility pilot study of an SMS [text-messaging] intervention for CBT [cognitive–behavioral therapy] in mental health care.
+                                    No
+                                    Convergent Parallel
+                                    InterpretationData Collection
+                                    Open-ended questions in a survey of 12 patients about feedback on the text messages they received during the intervention.
+                                    Two surveys of the 12 patients: 1) Closed questions on the feedback survey; 2) Patient Health Questionnaire–9 (PHQ-9) to assess depression symptoms
+                                    Evaluation of usability of an SMS intervention for CBT in mental health care
+                                 
+                                 
+                                    
+                                       Andersen and Westgaard (2013)
+                                    
+                                    Understanding significant processes during work environment interventions to alleviate time pressure and associated sick leave of home care workers – a case study
+                                    BMC Health Services Research
+                                    6 home care units in a municipality in Norway with 138 respondents participating in surveys (response rate 76.2%) and 17 informants participating in interviews
+                                    “To identify critical factors in the interaction between work environment interventions and independent rationalization measures in order to understand a potential negative interfering effect from concurrent rationalizations on a comprehensive work environment intervention.” (p. 1)
+                                    Yes
+                                    Convergent Parallel
+                                    InterpretationData Collection
+                                    1) Open-ended questions of a survey on significant positive and challenging changes affecting the work situation with 138 respondents; 2) 17 in-depth semi-structured interviews with nurses about work environment, work tasks, and perceived changes in last years; 3) Interviews with representatives of the municipal secretariat and unit leaders about significant events and changes
+                                    1) 129 items in a survey regarding perceived changes in working conditions and evaluation of the success of local work environment interventions; 2) Municipal records of sick leave statistics
+                                    Assessment of work environment interventions (merger-rationalization) and impact on time pressure and physical stress-exertion from the perspective of home care workers
+                                 
+                                 
+                                    
+                                       Battisto et al. (2009)
+                                    
+                                    Using a task analysis to describe nursing work in acute care patient environments
+                                    Journal of Nursing Administration
+                                    Nurses from general medical-surgical units in a large 588-bed community-based medical center located in the southeast region of the US
+                                    To answer the following 4 questions: 1) What are the activities that nurses typically carry out in an acute care patient room? 2) What are the frequencies of these activities? 3) Where do these activities typically occur? and 4) What environmental problems are encountered while performing these activities?
+                                    Yes
+                                    Explanatory Sequential
+                                    InterpretationData Analysis
+                                    Structured interviews of 12 nurses (phone or in person) to understand their nursing activities, sequence of steps for each activity, the problems they encounter and how they solve those problems.
+                                    1) Observation of 10 nurses during the day shift (7 am–7 pm) to capture data on nursing activities focusing on frequency of nursing activities, frequency of equipment used, frequency of visits to different locations and frequency of problems encountered; 2) Interviews: frequency of nursing activities, frequency of visits to different locations and frequency of problems encountered
+                                    Task analysis of nursing work in a hospital
+                                 
+                                 
+                                    
+                                       Capuano et al. (2004)
+                                    
+                                    Work flow analysis: Eliminating non-value-added work
+                                    Journal of Nursing Administration
+                                    Healthcare workers at Lehigh Valley Hospital
+                                    “To evaluate the impact of implemented work environment changes on nursing and support staff roles.” (p. 246)
+                                    Yes
+                                    Convergent Parallel
+                                    Interpretation
+                                    1) Four 2-h focus groups with staff from each role on the unit to validate observations, identify ideal workflow, understand staff perspective of the work and who makes decisions, identify barriers and brainstorm to eliminate barriers; 2) Two-hour focus group with observers to discuss their experience conducting observations
+                                    1) 7488 observations using the work sampling process conducted by 10 advanced practice nurses for 12 days on all shifts for baseline; 2) 1031 post-implementation observations with similar distribution across days and shifts by 2 observers; 3) Data on hospital turnover, patient satisfaction, employee satisfaction and quality indicators before and after the implementation
+                                    Impact of eliminating non-value-added work on nursing work
+                                 
+                                 
+                                    
+                                       Carayon et al. (2006)
+                                    
+                                    Patient safety in outpatient surgery: The viewpoint of the healthcare providers
+                                    Ergonomics
+                                    79 healthcare providers from 5 outpatient surgery centers in Madison, WI, in the US
+                                    “To understand the viewpoint of healthcare providers with regard to patient safety in outpatient surgery settings.” (p. 470)
+                                    Yes
+                                    Convergent Parallel
+                                    Interpretation
+                                    Survey with open-ended questions on quality of care and patient safety at six specific stages of the outpatient surgery process from the work-up to patient follow-up at home
+                                    1) Survey assessing staff perceptions of the following: (a) characteristics of the work system; (b) patient safety climate; (c) quality of working life; (d) perceived quality and safety of care; 2) Quantification of open-ended questions of the survey
+                                    Healthcare providers' perceptions of patient safety in outpatient surgery centers
+                                 
+                                 
+                                    
+                                       Carayon et al. (2009)
+                                    
+                                    Implementation of an electronic health records system in a small clinic: The viewpoint of clinic staff
+                                    Behavior and Information Technology
+                                    25 clinic employees from a family medicine residency clinic at University of Wisconsin
+                                    To evaluate “the organizational aspects of the EHR implementation process and the human factors issues resulting from the EHR implementation.” (p. 6)
+                                    Yes
+                                    Convergent Parallel
+                                    InterpretationDesign
+                                    Interviews of 4 key personnel involved in EHR implementation project at both pre- and post-EHR implementation
+                                    1) Pre- and post-EHR implementation survey on job characteristics, quality of working life, technology characteristics, self-rated performance (21/25 completed at pre and 20/25 at post); 2) Pre- and post-EHR implementation work sampling (27 clinic employees at pre and 26 at post).
+                                    Evaluation of EHR implementation from the viewpoints of primary care clinic staff and the implementation team
+                                 
+                                 
+                                    
+                                       Chan and Stieda (2011)
+                                    
+                                    Evaluation of three point-of-care healthcare databases: BMJ Point-of-Care, Clin-eguide and Nursing Reference Centre
+                                    Health Information and Libraries Journal
+                                    19 clinicians, 7 administrators, 6 nurses recruited from Alberta's two largest health regions (hospitals and family medicine clinics)
+                                    “To evaluate potential end-users response to the content, interface, and usability of three point-of-care databases: BMJ Point of Care and Clin-eguide, and Nursing Reference Centre (NRC), in order to inform collection decisions at the University of Calgary Health Sciences Library.” (pp. 51 – 53)
+                                    Yes
+                                    Convergent Parallel
+                                    Interpretation
+                                    A web-based survey with 17 questions designed to gather quantitative and qualitative data on ease of use, content, recommendation for purchase and training preferences; open-ended questions used to collect qualitative data
+                                    A web-based survey with 17 questions designed to gather quantitative and qualitative data; questions with Likert scale responses used to collect quantitative data
+                                    Evaluation of usability and usefulness of three point-of-care resources
+                                 
+                                 
+                                    
+                                       Chin et al. (2011)
+                                    
+                                    Patients' perceptions of safety and quality of maternity clinical handover
+                                    BMC Pregnancy Childbirth
+                                    30 women aged 18 and over who gave birth at an Australian tertiary maternity hospital in 2007
+                                    To investigate “postnatal patients' perceptions of maternity handover and factors that affect the quality and safety of this process. It is hoped that such information will be able to inform future handover improvements from a patient's perspective.” (p. 2)
+                                    Yes
+                                    Embedded
+                                    Interpretation
+                                    Interviews on awareness of maternity handover, perceptions of content and setting of handover, perceptions on what is safe practice and suggestions for improvement
+                                    1) Quantitative medical record analysis of demographic and clinical data from patient medical records; 2) quantification of interview data
+                                    Postnatal patient perceptions of handover, e.g., teamwork, communication and team situation awareness
+                                 
+                                 
+                                    
+                                       Christian et al. (2006)
+                                    
+                                    A prospective study of patient safety in the operating room
+                                    Surgery
+                                    10 surgery cases at a major academic institution
+                                    “To better understand the operating room as a system and to identify system features that influence patient safety.” (p. 159)
+                                    No
+                                    Exploratory Sequential
+                                    InterpretationData AnalysisData Collection
+                                    Observation notes on 10 surgical cases were coded to identify safety-compromising events and system factors that could influence case progression and patient safety.
+                                    1) Frequency with which the identified system factors occurred across cases; 2) Impact score ranging from −2 to 2 assigned to each coded observation to reflect whether the factor had a positive, neutral or negative effect on case progress and outcome
+                                    Evaluation of work system and patient safety in operating rooms
+                                 
+                                 
+                                    
+                                       Cunningham et al. (2008)
+                                    
+                                    Managing low back pain: Knowledge and attitudes of hospital managers
+                                    Occupational Medicine
+                                    92 line managers (30 of 120 consultant hospital doctors, 30 of 56 nursing managers, and 32 heads of department) at an Irish University Hospital
+                                    “To identify hospital line managers' knowledge, attitudes and beliefs regarding LBP [low back pain] and its management; the difficulties encountered in managing the worker with LBP; and the organizational needs in relation to managing LBP at work.” (p. 282)
+                                    No
+                                    Convergent Parallel
+                                    InterpretationData Collection
+                                    Open-ended questions in a survey on managers' knowledge, difficulties, and perceived barriers to return to work and organizational support needed in relation to managing LBP at work.
+                                    Closed questions in a survey generated from the evidence-based LBP guidelines for the management of LBP in the workplace
+                                    Hospital managers' attitudes and perceptions of LBP management
+                                 
+                                 
+                                    
+                                       Dolan et al. (2013)
+                                    
+                                    Development and initial evaluation of a treatment decision dashboard
+                                    BMC Medical Informatics and Decision Making
+                                    Nursing and secretarial staff working at a general internal medicine resident/faculty teaching practice affiliated with Unity Health System in Rochester, NY; patients from the same practice, Unity Hospital Department of Medicine; support staff, and volunteers responding to a notice about the study posted on the University of Rochester Medical Center clinical trials website
+                                    “To determine if the interactive decision dashboard format can be successfully adapted to create a clinically realistic and feasible patient decision aid prototype suitable for further refinement and evaluation” (p. 2)
+                                    Yes
+                                    Convergent Parallel
+                                    Interpretation
+                                    Open-ended questions exploring aspects of the participants' experiences using the dashboard for the task of picking their preferred arthritis pain medication and to compare the dashboard with the conventionally formatted AHRQ booklet
+                                    1) Observation data: time the participants spent using the dashboard before choosing a preferred drug, which drug they chose, and whether they used three optional features included in the dashboard; 2) Survey data: mechanical ease of use (4 items), cognitive ease of use (7 items), emotional difficulty (3 items), and decision-aiding effectiveness (7 items); 3) Survey data: informed subscale (3 items), values clarity subscale (3 items), and uncertainty subscale (3 items); 4) health-related literacy and numeracy measured by the Rapid Estimate of Adult Literacy in Medicine (REALM), the subjective numeracy scale, and the Newest Vital Sign
+                                    Usability of a clinical decision dashboard
+                                 
+                                 
+                                    
+                                       Fairbanks et al. (2007)
+                                    
+                                    Usability study of two common defibrillators reveals hazards
+                                    Annals of Emergency Medicine
+                                    14 emergency medical services (EMS) providers from the local EMS community conducted usability testing at the Monroe County Public Safety Training Facility's Crime Scene Simulator
+                                    “To evaluate and compare the usability of 2 commonly used manual monitor-defibrillators and to identify user-interface-related hazards that may lead to adverse events.” (p. 425)
+                                    Yes
+                                    Convergent Parallel
+                                    InterpretationData Collection
+                                    1) Observation notes; 2) Think-aloud comments during the tasks; 3) Follow-up questions during interviews; 4) Post-device use questionnaire with open-ended questions on device use.
+                                    1) Questionnaire collecting ratings on task difficulty; 2) Post-device use questionnaire on device use ratings; 3) A final questionnaire to compare perceptions on devices
+                                    Usability evaluation of defibrillators and identification of safety hazards
+                                 
+                                 
+                                    
+                                       Farrell et al. (2009)
+                                    
+                                    Electronic screening for mental health in rural primary care: Implementation
+                                    Issues in Mental Health Nursing
+                                    20 patients visiting primary care at a general internal medicine clinic at the University of Virginia Primary Care Clinic
+                                    “1) To explore the perceptions of consumers and providers concerning the intervention of eScreening (Phase I), 2) to test a newly-developed eScreen tool (Phase II), and 3) to explore consumers' responses to implementation of the eScreening (Phase III).” (p. 165)
+                                    No
+                                    Convergent Parallel
+                                    InterpretationData Collection
+                                    The eScreening Evaluation Interview Form with open-ended questions (e.g. likes, dislikes and suggestions for improvement)
+                                    1) The Patient Health Questionnaire-9: a 9-item questionnaire taken from the original PRIME-MD diagnosis of depression; 2) The alcohol use screening instrument: four nominal level questions with yes/no responses; 3) The eScreening Evaluation Interview Form: questions about accuracy of information, ease of use, difficulties with the computer, anxiety or frustration, usefulness of eScreen, and concerns about privacy.
+                                    Perceptions of usability and usefulness of an IT system designed for mental health screening in rural primary care
+                                 
+                                 
+                                    
+                                       Fritz et al. (2012)
+                                    
+                                    Qualitative and quantitative evaluation of EHR-integrated mobile patient questionnaires regarding usability and cost-efficiency
+                                    International Journal of Medical Informatics
+                                    Patients and staff members of the Competence Centre for the Diagnosis and Treatment of Chronic Pruritus (CCP) of the University Hospital Münster
+                                    “To assess the web-based application for patient questionnaires as a method of collecting patient reported outcomes in a single source approach.” (p. 304)
+                                    Yes
+                                    Convergent Parallel
+                                    Interpretation
+                                    1) Observation data on workflow; 2) Interviews with patients and staff on their perceptions about the mobile patient survey
+                                    1) Usability evaluation using the 10-item system usability scale with 7 additional questions assessing patient impressions on completion time, patient outcome, use of computers and the preference of mobile patient surveys in a hospital; 2) Observation of the patients who completed the paper-based forms in the outpatient clinic; 3) Log files to collect completion time of the patient surveys; 4) Cost of administering surveys (materials, maintenance, personnel) collected from hospital administrative office.
+                                    Evaluation of usability and usefulness of EHR-integrated mobile patient questionnaires
+                                 
+                                 
+                                    
+                                       Hignett and Crumpton (2007)
+                                    
+                                    Competency-based training for patient handling
+                                    Applied Ergonomics
+                                    60 back care advisors from 16 healthcare organizations including acute and primary care settings in the UK
+                                    “To investigate whether different levels of safety culture, based on competency-based training, resulted in different behavior (physical and cognitive) for patient handling tasks.” (p. 7)
+                                    Yes
+                                    Convergent Parallel
+                                    InterpretationData Analysis
+                                    1) Think-aloud while performing simulated patient handling tasks; 2) Post task interviews to understand nurses' decision making
+                                    1) Document retrieval (compiled from policies, training records, assessments, emails and meeting records) using a question set (with a scoring system) to assess the organizational compliance with the Royal College of Nursing competencies; 2) Observation of body postures to assess (using a scoring system) risks associated with patient handling tasks
+                                    Safety culture in patient handling
+                                 
+                                 
+                                    
+                                       Hignett and Griffiths (2009)
+                                    
+                                    Risk factors for moving and handling bariatric patients
+                                    Nursing Standard
+                                    Healthcare workers recruited from members of National Back Exchange (NBE) and the National Ambulance Risk and Safety Forum (NARSF) in different cities in the UK
+                                    “To identify and explore the manual handling risks for patients and caregivers using bariatric patient pathways in health and social care.” (p. 40)
+                                    Yes
+                                    Exploratory Sequential
+                                    InterpretationData Collection
+                                    Four focus groups to understand major manual handling risks with 25 participants from NBE Special Interest Group on Bariatrics and the NARSF: 17 back care advisers/manual handling coordinators, 4 health and safety advisers and 4 clinical staff
+                                    Two surveys about policies and procedures for handling bariatric patients developed from the focus group analysis: 1) for the emergency department (distributed to 71 NARSF members); 2) for primary care (distributed to all 1289 members of the NBE)
+                                    Manual handling risks for patients and caregivers using bariatric patient pathways in health and social care
+                                 
+                                 
+                                    
+                                       Hollin et al. (2012)
+                                    
+                                    How will we know if it's working? A multi-faceted approach to measuring usability of a specialty-specific electronic medical record
+                                    Health Informatics Journal
+                                    5 HIV clinics in 5 different cities with varying levels of system usage, location and size
+                                    To assess usability of an EMR (electronic medical records) developed specifically for treating the HIV/AIDS patient population and to provide design recommendations to software developers
+                                    Yes
+                                    Convergent Parallel
+                                    Interpretation
+                                    43 in-depth interviews on demographics-background, likes, dislikes, value-add to workflow, preferences, thoughts for redesign, etc.
+                                    1) Paper software usability survey with 57 questions; 2) Online general software usability questionnaire -Computer System Usability Questionnaire
+                                    Usability evaluation of an EMR developed for treating the HIV/AIDS patient population
+                                 
+                                 
+                                    
+                                       Hsiao et al. (2011)
+                                    
+                                    Secure web messaging in a pediatric chronic care clinic: A slow takeoff of “kids' airmail”
+                                    Pediatrics
+                                    Pediatric Respiratory Medicine Clinic at the Yale–New Haven Children's Hospital and Yale School of Medicine
+                                    To evaluate the impact of a secure electronic messaging system implemented for a pediatric subspecialty clinic. The aims were to 1) determine availability and interest in using the Internet to communicate with health care providers, 2) describe the usage and content of secure messages sent to clinicians, 3) qualitatively evaluate the impact of secure messaging between patients and providers, and 4) describe the process of implementation
+                                    No
+                                    Convergent Parallel
+                                    Interpretation
+                                    1) Open-ended interviews with 28 patients and their guardians on attitudes toward and impact of secure messaging system (7 pre-implementation and 21 post-implementation); 2) Description of the process of implementation via notes logged by implementers/researchers
+                                    A pre-implementation survey of 127 patients regarding Internet usage; quantitative tracking of usage and messages
+                                    Evaluation of the use of a secure electronic messaging system implemented for a pediatric subspecialty clinic
+                                 
+                                 
+                                    
+                                       Johnson and Turley (2006)
+                                    
+                                    The significance of cognitive modeling in building healthcare interfaces
+                                    International Journal of Medical Informatics
+                                    24 nurses and 24 physicians working in gastrointestinal or internal medicine recruited through advertisements as well as formal and informal presentations
+                                    To examine cognitive tasks of nurses and physicians and to compare their comprehension of clinical information
+                                    No
+                                    Exploratory Sequential
+                                    InterpretationData Analysis
+                                    Each participant randomized to review either the gastroenteritis or pancreatitis case first, then reviewed the other case. A total of 96 case reviewed. Think-aloud by participants while reviewing the cases, and once finished summary of case out-loud.
+                                    Summaries transcribed and separated into individual sentences, which were then divided into idea units or propositions. Data were coded as propositions (e.g., recall, inference) and as conceptual codes (e.g., tremor, alcohol). ANOVAs conducted to compare nurses and physicians.
+                                    Cognitive task analysis of physician and nurse understanding of clinical information about simulated cases of gastroenteritis or pancreatitis
+                                 
+                                 
+                                    
+                                       Jones and Hignett (2007)
+                                    
+                                    Safe access/egress systems for emergency ambulances
+                                    Emergency Medical Journal
+                                    3 ambulance services
+                                    “To comparatively evaluate the three most widely used ambulance stretcher loading systems; easI-loader, ramp/winch and tail lift to identify a preferred system based on safety and usability evidence.” (p. 845)
+                                    Yes
+                                    Convergent Parallel
+                                    Interpretation
+                                    1) 378 h of observation; 2) Interviews on incidents; 3) Additional interviews on everyday problems experienced with systems: 31 paramedics and ambulance technicians.
+                                    1) National survey of 134 people from ambulance services and manufacturers; 2) Laboratory study on postural analysis (observation using REBA methodology).
+                                    Safety and usability of ambulance stretcher loading systems
+                                 
+                                 
+                                    
+                                       Jylhä et al. (2011)
+                                    
+                                    Preventable adverse drug events and their causes and contributing factors: The analysis of register data
+                                    International Journal for Quality in Health Care
+                                    Patient complaints and official statements about adverse drug events (ADEs) from the National Supervisory Authority for Welfare and Health (Valvira)
+                                    To identify contributing factors of adverse drug events (ADEs)
+                                    Yes
+                                    Exploratory Sequential
+                                    InterpretationData AnalysisData Collection
+                                    A total of 57 patient complaints and statements about causes of injuries or deaths that involved 67 ADEs
+                                    Quantification of qualitative data to describe characteristics and frequencies of the 67 ADEs
+                                    Factors contributing to ADEs, such as poor communication and information flow
+                                 
+                                 
+                                    
+                                       Kastner et al. (2010)
+                                    
+                                    Usability evaluation of a clinical decision support tool for osteoporosis disease management
+                                    Implementation Science
+                                    Usability study 1: 11 full-time family physicians and general internal medicine specialists in the greater Toronto area Usability studies 2 and 3: 19 patients from the patient population of one family physician at the St. Michael's Family Practice Unit
+                                    “To conduct a usability evaluation of the three components of the osteoporosis tool to assess how well the prototype meets functional goals (features, format, and interface) and usability needs (outcome impact goals and end users' requirements and information needs) and to determine end users' perceptions of the facilitators and barriers to using the prototype at the point of care.” (p. 2)
+                                    Yes
+                                    Convergent Parallel
+                                    Interpretation
+                                    Usability Study 1: Interview about the usefulness of the Best Practice Recommendation Prompt (Best PROMPT) sheet and barriers to using it at point of care; Usability Study 2: Interview about format, interface, features, content and likes/dislikes about the Risk Assessment Questionnaire (RAQ); Usability Study 3: Interview to understand participants' behavior towards the COPE sheet
+                                    Usability Study 1: 1) Survey on format, readability, and understandability of the Best-PROMPT sheet; 2) Survey to assess usability (10-item System Usability Scale); Usability Study 2: 1) Completion time for the RAQ; 2) Observation of critical incidents and their impact on interaction with the system Usability Study 3: 1) Completion time for COPE sheet; 2) Interview on readability, understandability, and format of the COPE sheet
+                                    Manual handling risks for patients and caregivers using bariatric patient pathways in health and social care
+                                 
+                                 
+                                    
+                                       Lai et al. (2009)
+                                    
+                                    Evaluation of a remote training approach for teaching seniors to use a telehealth system
+                                    International Journal of Medical Informatics
+                                    10 patients recruited from the IDEATel project living near Columbia University Medical Center
+                                    “To understand effective methods for establishing computer-mediated remote training with an older adult home telemedicine population; to quantify the effectiveness of computer-mediated remote training; and to determine participants' satisfaction with remote training using REPETE [REmote Patient Education in a Telemedicine Environment].” (p. 734)
+                                    Yes
+                                    Convergent Parallel
+                                    Interpretation
+                                    Video recordings of training sessions analyzed using: 1) Cognitive task analysis of myIDEATel patient portal website to understand all the tasks participants need to perform; 2) Conversation analysis to understand communication between trainer and patient
+                                    1) Pre/post-training evaluation of web skill competency using by researchers to rate patients' task performance; 2) Satisfaction survey with 5 questions to assess comfort with computers and 7 questions to assess user satisfaction with training
+                                    Evaluation of a remote training approach for teaching seniors to use a telehealth system
+                                 
+                                 
+                                    
+                                       Linder et al. (2006)
+                                    
+                                    Decision support for acute problems: The role of the standardized patient in usability testing
+                                    Journal of Biomedical Informatics
+                                    8 attending physicians from various Partners HealthCare-affiliated primary care and urgent care sites
+                                    “To evaluate the Acute Respiratory Infection (ARI) Smart Form, collect feedback about the effects of specific design decisions on user performance and satisfaction, and also provide insight into user expectations.” (p. 649)
+                                    Yes
+                                    Convergent Parallel
+                                    InterpretationData Collection
+                                    1) Think-aloud as participants used the system and during the standardized patient scenario; 2) Debriefing session at end of each scenario and test session about interface problems and suggestions for improvement
+                                    1) Successful task completion rate; 2) Survey after each scenario with questions on ease of use, time and support information; 3) Survey after completing all 3 scenarios with questions on overall impressions of ARI smart form.
+                                    Usability evaluation of Acute Respiratory Infection smart form (decision support)
+                                 
+                                 
+                                    
+                                       Long et al. (2013)
+                                    
+                                    What do clinical optometrists like about their job?
+                                    Clinical and Experimental Optometry
+                                    60 optometrists who participated in an online survey conducted in 2008 of Australian optometrists and who positively responded to an invitation to be interviewed
+                                    “To explore what optometrists in practice find satisfying with their work and what they find stressful.” (p. 460)
+                                    Yes
+                                    Convergent Parallel
+                                    InterpretationData AnalysisData Collection
+                                    30-min semi-structured interviews with 60 optometrists about job satisfaction and perceived job stress
+                                    Quantification of interview data; e.g., stressful work (yes/no), comparison of demographics and self-report of job factors
+                                    Work-related factors contributing to job satisfaction and job stress of optometrists
+                                 
+                                 
+                                    
+                                       Lopez et al. (2010)
+                                    
+                                    Cognitive work analysis to evaluate the problem of patient falls in an inpatient setting
+                                    Journal of American Medical Informatics Association
+                                    Nurses and unit clerks of a general neurological unit at an academic medical center on the east coast in the US
+                                    “To identify constraints in work processes and the work environment (physical, organizational systems and culture, individual, and technical) imposed on acute care nurses that may increase the likelihood of patient falls, and to identify workarounds employed by nurses to deal with these constraints.” (p. 314)
+                                    Yes
+                                    Convergent Parallel
+                                    InterpretationData Analysis
+                                    1) Three focus groups with RNs, NAs and unit clerks; 2) Three 30-min interviews with the nursing manager to gather information on expected work processes and tools; 3) Two field observations (4.5 h each) of RNs, NAs and unit clerks during normal work routines. Observations were conducted separately by nurses and cognitive engineers; focus was on workflow, communication, physical environment, equipment and nursing documentation.
+                                    1) Four time-motion studies measuring the time nurses spend performing tasks over a 4-h period; 2) The Hospital Survey on Patient Culture to obtain participants' perception on patient safety related issues; 3) Nursing Knowledge of Fall Prevention Subscale to identify factors that increase patient fall risk; 4) The NASA-TLX workload survey to measure participants' perception of workload
+                                    Evaluation of inpatient nurses' work factors that contribute to inpatient falls (using cognitive work analysis)
+                                 
+                                 
+                                    
+                                       Mackenzie et al. (2004)
+                                    
+                                    Video task analysis in high performance teams
+                                    Cognition, Technology and Work
+                                    48 video records of airway management of anesthesia care providers in a trauma center
+                                    “To illustrate how video task analysis methodology can be used in the medical domain, what lessons were learned by using video as research data and how video can be analyzed for cognitive function.” (p. 140)
+                                    Yes
+                                    Exploratory Sequential
+                                    InterpretationData AnalysisData Collection
+                                    1) Interviews with 12 anesthesia providers to produce a list of airway management tasks; 2) Think-aloud; 3) IAQ (Intubation analysis questionnaire) to analyze 48 videos of airway management and produce qualitative data on errors, inefficiencies, problem with equipment, etc.
+                                    1) Interviews with 12 anesthesia providers to score the importance of airway management tasks in different situations (elective, semi-emergency, emergency intubations). 2) Analysis of video recordings by anesthesia providers (2.7 providers per video) with support of the IAQ to produce data on: duration of various activities, number of activities performed or omitted, equipment used, and occurrence of performance deficiencies or incidents
+                                    Task analysis of airway management for trauma patients
+                                 
+                                 
+                                    
+                                       Martikainen et al. (2012)
+                                    
+                                    Physicians' experiences of participation in healthcare IT development in Finland: Willing but not able
+                                    International Journal of Medical Informatics
+                                    3929 physicians in Finland who were actively engaged with clinical work in any healthcare sectors
+                                    “To learn 1) about the kind of experiences that physicians have with participation in healthcare IT development, 2) whether physicians are interested in participating in IT development activities, and if so, how, and 3) the visions that physicians have regarding future IT systems.” (p. 98)
+                                    Yes
+                                    Convergent Parallel
+                                    InterpretationData Collection
+                                    1) Questionnaire with two open-ended questions about physician ideas about future health IT; 2) General comments about the survey and its content
+                                    Questionnaire assessing physician experiences in giving IT use-related feedback and opinions on the software providers' development activities and their interest in system development.
+                                    Physician participation in health IT development
+                                 
+                                 
+                                    
+                                       Miller and Xiao (2007)
+                                    
+                                    Multi-level strategies to achieve resilience for an organization operating at capacity: A case study at a trauma centre
+                                    Cognition, Technology and Work
+                                    6 participants (1 medical director, 2 schedulers, 3 charge nurses) in a surgical unit (SU) of a trauma hospital
+                                    “To identify the adaptive strategies hospital staff uses to respond to high demand pressures.” (p. 52)
+                                    No
+                                    Exploratory Sequential
+                                    InterpretationData Analysis
+                                    1) Two Interviews with the SU medical director about his/her role and way of decision making; 2) Interviews with 2 schedulers (from anesthetic nursing staff) about their role and way of decision making; 3) Interviews and observations with three 3 charge nurses (one each for morning, afternoon and night shifts)
+                                    Qualitative data were quantified and analyzed using statistical methods.
+                                    Assessment of adaptive strategies used by hospital staff use to respond to high demand pressures in a surgical unit of a trauma hospital
+                                 
+                                 
+                                    
+                                       Milne et al. (2012)
+                                    
+                                    Trialling a patient-led cancer care website in an acute cancer care setting
+                                    Journal of Research in Nursing
+                                    9 cancer patients receiving chemotherapy at a specialist cancer center
+                                    “1) To test the feasibility, functionality and usability of the CanCare web platform in a sample of people undergoing cancer treatment. 2) To ascertain if CanCare could enhance the relationship and communication between patients, family and friends, and health professionals.” (p. 540)
+                                    Yes
+                                    Convergent Parallel
+                                    Interpretation
+                                    1) Interviews conducted twice, at the beginning (about cancer management, reason for interest in CanCare and expectations from CanCare) and at the end of the study (experience with CanCare and its usefulness); 2) Think-aloud with patients to find barriers to use and areas for improvement; 3) Web-based survey (usability and usefulness) of patients at start and end of study. One caregiver also completed the survey at the end of the study.
+                                    1) Medical information from the patient's medical record and surveys; 2) Web-based surveys (usability and usefulness) of patients at start and end of study. One caregiver also completed the survey at the end of the study; 3) Usage data including the time of day website was used, usage of different features, average time spent and average number of logins per week
+                                    Usability and usefulness of website for cancer patients
+                                 
+                                 
+                                    
+                                       Montague (2010)
+                                    
+                                    Patient source of learning about health technologies and ratings of trust in technologies used in their care
+                                    Ergonomics
+                                    Participants included mothers recruited through flyers in a hospital or invited to participate after giving birth
+                                    “To examine patients' source of learning about technologies used in their care and how the source related to their trust in the technology was used.” (p. 1303)
+                                    No
+                                    Exploratory Sequential
+                                    InterpretationData Analysis
+                                    Interviews (phone and in person) with 25 patients (mothers recently given birth) to understand how they learn about technology used in their care and how did this learning affect their trust the technology.
+                                    Qualitative data were quantified and analyzed using statistical methods.
+                                    Patients' (mothers who had recently given birth) source of learning about health technologies and trust in technologies used in their care
+                                 
+                                 
+                                    
+                                       Nijland et al. (2011)
+                                    
+                                    Factors influencing the use of a web-based application for supporting the self-care of patients with type 2 diabetes: A longitudinal study
+                                    Journal of Medical Internet Research
+                                    50 patients from 3 primary healthcare practices in Netherlands
+                                    “To explore the factors that influenced the initial and long-term use of a Web based application for supporting the self-care of patients with type 2 diabetes. A mixed-methods research design was applied to trace the usage over time (log files), along with the reasons for non-usage (usability tests, interviews, and content analysis of email messages), and to identify user profiles (survey).” (p. 2)
+                                    Yes
+                                    Convergent Parallel
+                                    InterpretationData Analysis
+                                    1) Interviews with nurses (n = 226) asking about reasons for nonparticipation; 2) Email messages (n = 323) between nurses and patients; 3) Think-aloud (n = 20): to study patient experience with the Web application; 4) Email questions one year after initial use (n = 20) to ask about reasons for discontinuing use
+                                    1) Survey (n = 50) to identify user profile; 2) Log files (n = 50) to trace usage over time
+                                    Evaluation of the use of a web-based application by nurses and patients for supporting self-care of patients with Type 2 diabetes
+                                 
+                                 
+                                    
+                                       Nilsson et al. (2012)
+                                    
+                                    Lateral epicondylalgia. A quantitative and qualitative analysis of interdisciplinary cooperation and treatment choice in the Swedish health care system
+                                    Scandinavian Journal of Caring Science
+                                    391 health providers working in primary health care or private care settings and at hospitals in the county of Halland in South-western Sweden
+                                    “To describe health care professionals' treatment choices, their cooperation with other professionals and their perceptions of potential risks regarding treatments of acute lateral epicondylalgia (LE).” (p. 28)
+                                    Yes
+                                    Convergent Parallel
+                                    InterpretationData Collection
+                                    Survey with three open-ended questions about participants' perception of potential treatment risks and pros and cons of cooperation
+                                    Survey with 18 questions about providers' experience, whether provider's lateral epicondylalgia (LE) patients were rehabilitated and if there was any multidisciplinary cooperation
+                                    Healthcare provider treatment choices and cooperation regarding treatments of acute lateral epicondylalgia
+                                 
+                                 
+                                    
+                                       Patterson et al. (2005)
+                                    
+                                    Identifying barriers to the effective use of clinical reminders: Bootstrapping multiple methods
+                                    Journal of Biomedical Informatics
+                                    Study 1: 28 providers and 32 patients at VHA outpatient clinics Study 2: 261 participants at a national meeting in Georgia with representatives from 104 VHA medical facilities
+                                    “To describe how multiple methods were used within and across two studies were used to opportunistically triangulate, or ‘‘bootstrap,’’ an understanding of barriers to the effective use of clinical reminders in the Veteran's Health Administration (VHA).” (p. 190)
+                                    Yes
+                                    Convergent Parallel
+                                    InterpretationData AnalysisData Collection
+                                    1) Observation and interview about HIV clinical reminders (28 providers and 32 patients); 2) Open-ended questions in survey of 261 participants at a national informatics meeting regarding barriers and facilitators to use of clinical reminders in the VHA
+                                    Closed questions on barriers and facilitators to use of clinical reminders in the VHA in survey of 261 participants at a national informatics meeting from 104 of 142 VHA medical facilities
+                                    Barriers and facilitators to use of clinical reminders
+                                 
+                                 
+                                    
+                                       Qadri et al. (2009)
+                                    
+                                    Personal digital assistants as point-of-care tools in long-term care facilities: A pilot study
+                                    Educational Gerontology
+                                    25 nurses from 3 different-sized nursing homes in Miami, Florida
+                                    “To assess the feasibility, usability, and utility of two point-of-care tools especially prepared with information relevant for dementia care by staff nurses in a small, a medium-sized, and a large nursing home in Florida.” (p. 294)
+                                    Yes
+                                    Convergent Parallel
+                                    InterpretationData CollectionDesign
+                                    1) Interviews with nurses to understand their experience and perceptions of use of the PDA and its content; 2) Three focus groups with 14 nurses on usability and usefulness of the tool; 3) Interviews of the 8 nurses who could not attend the focus groups
+                                    1) Pre-intervention survey on previous knowledge and tools; 2) Post-intervention survey on participants' learning experiences, perceptions of usability and usefulness
+                                    Evaluation of feasibility, usability and usefulness of two point-of-care tools especially prepared with information relevant for dementia; to be used by nurses in nursing homes
+                                 
+                                 
+                                    
+                                       Rochais et al. (2013)
+                                    
+                                    Nursing perception of the impact of medication carts on patient safety and ergonomics in a teaching health care center
+                                    Journal of Pharmacy Practice
+                                    University Health Center with 500 beds in Quebec, Canada
+                                    “The primary objective of this study was to evaluate how nursing staff felt about the impact of medication carts on the safe delivery of health care and workplace ergonomics. The secondary objective was to identify the main issues involved in the use of the technology with a view toward improving user satisfaction and medication-use system risk management.” (p. 132)
+                                    Yes
+                                    Explanatory Sequential
+                                    InterpretationData AnalysisData Collection
+                                    Focus group with 7 nurses in different hospital units
+                                    Survey of 195 nurses with 33 questions on impact of medication cart on care delivery and workplace ergonomics; response rate of 40%
+                                    Nursing satisfaction with medication carts and their perception of usability, usefulness and safety
+                                 
+                                 
+                                    
+                                       Shih et al. (2013)
+                                    
+                                    Evaluation of an online orientation program for new healthcare employees
+                                    CIN-Computers Informatics Nursing
+                                    A medical center in the northern Taiwan with more than 900 beds
+                                    “To identify factors related to online learning outcomes and to offer references for designing better orientation programs.” (p. 344)“The research questions were as follows: (1) What is the acceptance level of online orientation programs among new healthcare employees? (2) What are the factors affecting online learning outcomes? (3) What are the learning experiences that result from an online orientation program among new healthcare employees?” (p. 345)
+                                    Yes
+                                    Convergent Parallel
+                                    Interpretation
+                                    Interviews with 13 of 154 healthcare employees to explore their learning experience
+                                    1) Survey of 154 new healthcare employees (78% response rate) with 28 questions on perceived usefulness, perceived ease of use, learner satisfaction and continuance intention; 2) Post-test scores of the 154 employees obtained following the online orientation to assess their learning
+                                    Healthcare employees' (nurse, physician, other) acceptance, satisfaction, perceived usability and usefulness of an online orientation program
+                                 
+                                 
+                                    
+                                       Singh et al. (2012)
+                                    
+                                    Exploring situational awareness in diagnostic errors in primary care
+                                    BMJ Quality and Safety
+                                    Primary care providers (PCPs) of two integrated health systems in the US that used EHR
+                                    “To facilitate the understanding of diagnostic errors in real-world primary care settings that use electronic health records (EHRs), this study explored the use of the situational awareness (SA) framework from aviation human factors research.” (p. 30)
+                                    Yes
+                                    Explanatory Sequential
+                                    InterpretationData Collection
+                                    Interviews (15–60 min) of 26 PCPs; EHR available to help PCPs remember the cases; PCPs were asked about each case and decisions that they made.
+                                    Review of EHR to identify diagnostic errors using a pre-tested instrument
+                                    Situation awareness of primary care physicians' diagnostic errors
+                                 
+                                 
+                                    
+                                       Stacey et al. (2005)
+                                    
+                                    Barriers and facilitators influencing call center nurses' decision support for callers facing values-sensitive decisions: A mixed methods study
+                                    Worldviews on Evidence-Based Nursing
+                                    Call center nurses in a Canadian province wide health call center (BCNurseline)
+                                    “To identify the barriers and facilitators influencing the provision of decision support by call center nurses to callers facing values-sensitive health decisions at a Canadian province-wide health call center.” (p. 184)
+                                    Yes
+                                    Exploratory Sequential
+                                    InterpretationData Collection
+                                    Interviews and focus groups to explore barriers and facilitators to nurses providing decision support. 1) Interview with 1 nurse educator, 1 nurse supervisor, 1 administrator, and 1 provincial ministry of health official; 2) Focus groups: 3 frontline nurses in first focus group, and 4 other nurses in second focus group; 3) Survey with open-ended questions on patients' barriers in receiving decision support and nurses' barriers in providing decision support
+                                    1) Survey of all 108 registered nurses at the call center to validate results of the qualitative data and determine the magnitude of barriers and facilitators; 2) Simulated phone calls (n = 38) to get an estimate of call length and nurses' provision of decision support
+                                    Assessment of barriers and facilitators influencing the provision of decision support by call center nurses to callers facing values-sensitive health decisions
+                                 
+                                 
+                                    
+                                       Stevenson et al. (2010)
+                                    
+                                    Human-centered evaluation for broadband tertiary outpatient telehealth: A case study
+                                    International Journal of Human–Computer Interaction
+                                    44 surgeons, patients/families and clinical staff who assisted at the tertiary outpatient telehealth node at the Royal Children's Hospital in Melbourne, Australia
+                                    “To present a pilot trial of a broadband telehealth system for tertiary outpatient consultations and use it as a case study to explore issues that arise in designing and evaluating broadband telehealth at a tertiary level of health care.” (p. 506)
+                                    Yes
+                                    Convergent Parallel
+                                    Interpretation
+                                    1) Observational data (video and audio) during the consultations to understand how participants use the telehealth system; 2) Audio and video recording of physicians' training sessions; 3) Exit interviews with clinicians after each clinic; 4) Exit interview with patients/families after each consultation
+                                    1) Brief survey completed by clinicians after each patient; 2) Exit interviews with clinicians after each clinic; 3) Exit interviews with patients/families after each consultation
+                                    Evaluation of usability and usefulness of a telehealth system for outpatient consultation
+                                 
+                                 
+                                    
+                                       Stewart et al. (2010)
+                                    
+                                    Evaluation of the Australian adaptation of the Keeping It Together (KIT-Australia) information package with carers of children with special needs
+                                    Australian Occupational Therapy Journal
+                                    18 carers of children at the Royal Children's Hospital (RCH) in Melbourne, Victoria
+                                    “To evaluate the KIT [‘Keeping It Together’]-Australian Adaptation (KIT-Australia) to determine if it met its purpose of providing carers of children with special needs with strategies to access resources, organize information and communicate with others about their child. The study also aimed to determine whether additional changes were required to increase the KIT-Australia's utility.” (p. 268)
+                                    Yes
+                                    Convergent Parallel
+                                    InterpretationData Collection
+                                    Evaluation survey with 18 participants about their use of KIT-Australia and suggestions for improvement
+                                    1) A self-report demographic survey prior to using the KIT-Australia; 2) Evaluation survey with 18 participants about their use of KIT-Australia and suggestions for improvement
+                                    Evaluation of usability and user needs of the Australian adaptation of the Keeping It Together (KIT-Australia) information package by carers of children with special needs
+                                 
+                                 
+                                    
+                                       Strayer et al. (2012)
+                                    
+                                    Evaluation of a screening and counseling tool for alcohol misuse: A Virginia Practice Support and Research Network (VaPSRN) trial
+                                    Journal of the American Board of Family Medicine
+                                    16 clinicians recruited from 10 family medicine practices and community-based practices in Virginia
+                                    “To establish the feasibility and technical merit of the Alcohol Misuse Intervention Tool (AMIT) prototype.” (p. 2)
+                                    Yes
+                                    Convergent Parallel
+                                    Interpretation
+                                    16 participants completed a post-trial interview (45–60 min) about their use and satisfaction with the tool
+                                    1) 11 participants completed pre-post surveys (34 pre-post items, with 4 additional items on usability in the post-survey); 2) Usage data collected by the tool itself (usage logs)
+                                    Evaluation of usability and satisfaction of an electronic screening and counseling tool for alcohol misuse
+                                 
+                                 
+                                    
+                                       Trafton et al. (2010)
+                                    
+                                    Evaluation of the acceptability and usability of a decision support system to encourage safe and effective use of opioid therapy for chronic, noncancer pain by primary care providers
+                                    Pain Medicine
+                                    Simulation-based testing: 4 VA clinicians in phase 1, 4 different clinicians plus 1 clinician from phase 1 in phase 2;In-clinic testing: a group of volunteer clinicians in the primary care clinics at the VA Palo Alto Health Care System
+                                    To develop, evaluate and redesign a computerized clinical decision support system (CDSS) to encourage safe and effective use of opioid therapy for chronic, non-cancer pain
+                                    Yes
+                                    Convergent Parallel
+                                    Interpretation
+                                    1) Simulation study: think-aloud, observation and interview to understand participants' experience with CDSS; 2) Interviews (during the in-clinic study) using e-mail, telephone or in person to get clinicians' feedback; 3) Center for Health Care Evaluation survey with open ended questions.
+                                    1) Simulation study: two surveys (the System Usability Scale and the Center for Health Care Evaluation adapted provider satisfaction survey) to evaluate usability and satisfaction; 2) In-clinic study: observation of 35 provider visits to capture clinical workflow, length of visits, use of computer, technical problems with the system and clinicians' interaction with EMR and CDSS; 3) Log files of number of displays presented and mouse-clicks on the CDSS
+                                    Evaluation of acceptability and usability of a CDSS for safe and effective use of opioid therapy for chronic, noncancer pain by primary care providers
+                                 
+                                 
+                                    
+                                       Usher (2011)
+                                    
+                                    A health website recommendation from Gold Coast general practitioners to their patients: A mixed method approach
+                                    Health Education Journal
+                                    General practitioners (GP) at Queensland's Gold Coast (Australia)
+                                    “To identify health website recommendation by Gold Coast (Australia) general practitioners (GPs) to their patients.” (p. 117)
+                                    Yes
+                                    Explanatory Sequential
+                                    InterpretationData Collection
+                                    Interviews (30–40 min) of 15 GPs with interest to be interviewed indicated in the survey
+                                    Survey mailed to 250 GPs (61% of practicing GPs) randomly selected from online telephone directory. Surveys asked GPs whether they recommend a website to their patients and what are their reasons/issues for recommending or not recommending.
+                                    Evaluation of usability of health websites by primary care physicians
+                                 
+                                 
+                                    
+                                       Valimaki et al. (2008)
+                                    
+                                    Design and development process of patient-centered computer-based support system for patients with schizophrenia spectrum psychosis
+                                    Informatics for Health and Social Care
+                                    Patients, families and healthcare workers at psychiatric hospitals in Finland
+                                    “To describe the design and development process of a patient-centered computer based support system for patients with schizophrenia spectrum psychoses.” (p. 115)
+                                    Yes
+                                    Multiphase
+                                    InterpretationData Collection
+                                    User Needs Phase: 1) Interviews with 51 patients to understand information needs, preferred information access method and issues related to information supply; 2) Interviews with 50 relatives to understand information needs, preferred method of receiving information and issues related to information supply; 3) User Evaluation Phase: usability survey for nursing staff with written feedback; 4) Development of Prototype Phase: 10 focus groups
+                                    User Needs phase: 1) Surveys for administrative personnel to ensure the need for a patient portal; 2) Surveys of patients' satisfaction with their care; 3) Evaluation of Prototype Phase: survey on usability of the portal; 4) User Evaluation Phase: usability survey of nursing staff
+                                    User needs assessment and usability evaluation of computer-based support system for patients with schizophrenia spectrum psychosis
+                                 
+                                 
+                                    
+                                       van der Krieke et al. (2012)
+                                    
+                                    Usability evaluation of a web-based support system for people with a schizophrenia diagnosis
+                                    Journal of Medical Internet Research
+                                    15 patients that use the web-based support system from four mental health care organizations in Netherlands and 4 Information and Communication Technology (ICT) experts
+                                    “To provide a brief overview of the web-based system and to report on its usability from the perspective of service users with schizophrenia.” (p. 3)
+                                    No
+                                    Convergent Parallel
+                                    Interpretation
+                                    1) Heuristic evaluation results; 2) Observation notes of user performance through the scenarios during user testing
+                                    1) End user survey with 5 questions to examine user experience with computer and internet use; 2) Survey with 13 statements to examine user satisfaction with web application including layout, structure, user-friendliness and content.
+                                    Usability evaluation of web-based support system for people with a schizophrenia diagnosis
+                                 
+                                 
+                                    
+                                       Van Schaik et al. (2002)
+                                    
+                                    Clinical acceptance of a low-cost portable system for postural assessment
+                                    Behavior and Information Technology
+                                    49 physiotherapists from a local NHS trust and the University of Teesside
+                                    “1) To assess the technology acceptance model (Davis 1993) for the new system, and 2) to derive user requirements with user involvement early in the development process.” (p. 47)
+                                    Yes
+                                    Convergent Parallel
+                                    InterpretationData AnalysisData Collection
+                                    Survey (distributed to 49 participants) with open-ended questions about advantages and disadvantages of the system, barriers and facilitators of using the system.
+                                    1) Survey of 49 participants to measure technology acceptance; 2) Frequency of categories from qualitative data
+                                    Evaluation of acceptance of a portable postural assessment system used by clinicians
+                                 
+                                 
+                                    
+                                       Vashitz et al. (2011)
+                                    
+                                    Making sense of diseases in medication reconciliation
+                                    Cognition, Technology and Work
+                                    24 clinicians in anesthesiology and critical care
+                                    To understand the cognitive process of medication reconciliation, demonstrate how cognition can be investigated in medicine, and describe some of the variability in individual MR (medication reconciliation) strategies
+                                    No
+                                    Exploratory Sequential
+                                    InterpretationData AnalysisData Collection
+                                    In a simulation experiment, a fictional patient's diagnoses and medications were printed on paper cards. Participants were asked to arrange the cards to simulate the medication reconciliation cognitive process. 1) Think-aloud was used and 2) post-experiment interview was conducted.
+                                    Cards with diseases and medications are sorted by participants using a specific patient scenario. Special arrangement of each card is recorded by its rectangular coordinates (x,y). Statistical analysis of cards' coordinates was conducted to investigate whether cards fit a linear pattern and whether cards are sorted in a similar order.
+                                    Assessment of anesthesiologists and critical care physicians' work of medication reconciliation
+                                 
+                                 
+                                    
+                                       Vashitz et al. (2013)
+                                    
+                                    How do clinicians reconcile conditions and medications? The cognitive context of medication reconciliation
+                                    Cognition, Technology and Work
+                                    24 clinicians from department of anesthesiology and critical care
+                                    To explore how the ordering patterns previously observed in medical conditions are reflected in the arrangement of medications and to describe the relationship between conditions and medications and the way the relationship might help define medication conciliation in practice.
+                                    No
+                                    Exploratory Sequential
+                                    InterpretationData AnalysisData Collection
+                                    In a simulation experiment, a fictional patient's diagnoses and medications were printed on paper cards. Participants were asked to arrange the cards to simulate the medication reconciliation cognitive process. 1) Think-aloud was used and 2) post-experiment interview was conducted.
+                                    Cards with diseases and medications are sorted by participants using a specific patient scenario. Special arrangement of each card is recorded by its rectangular coordinates (x,y). Statistical analysis of cards' coordinates was conducted to investigate the clustering conditions and medications relations.
+                                    Impact of context (e.g., medication orders) on physician work involved in medication reconciliation
+                                 
+                                 
+                                    
+                                       Voss et al. (2008)
+                                    
+                                    Changing conversations: Teaching safety and quality in residency training
+                                    Academic Medicine
+                                    Internal medicine residents at the University of Virginia
+                                    To develop and evaluate a curriculum in quality and patient safety for internal medicine residents at the University of Virginia; curriculum includes human factors and systems thinking.
+                                    No
+                                    Convergent Parallel
+                                    Interpretation
+                                    One-hour interviews with 13 residents in 2005 and 14 residents in 2006 to describe adverse event investigations
+                                    1) Results of 38 s-year residents' patient safety projects for academic years 2004–2005 and 2005–2006: total of 27 investigations of 11 near misses and 16 adverse events; 2) Residents' evaluations (survey) of Patient Safety and Quality Improvement Seminars between 2003 and 2005
+                                    Evaluation of internal medicine residents curriculum that includes HFE and systems thinking
+                                 
+                                 
+                                    
+                                       Wade et al. (2012)
+                                    
+                                    Home videophones improve direct observation in tuberculosis treatment: A mixed methods evaluation
+                                    PLoS ONE
+                                    Patients and clinicians at the Royal District Nursing Service of South Australia (RDNS SA), a community nursing service
+                                    “To evaluate the clinical and cost-effectiveness of a telehealth service delivering direct observation, compared to an in-person drive-around service: 1) to compare the effectiveness of in-person versus home videophone direct observation as measured by the proportion of missed observations in each group, 2) to determine the cost-effectiveness of home videophone observations under a range of conditions, and 3) to determine the acceptability, usability and sustainability of the home videophone service by interviewing patients and providers.” (pp. 1 – 2)
+                                    Yes
+                                    Convergent Parallel
+                                    Interpretation
+                                    1) Interviews with clinicians delivering TB services at the chest clinic, clinical staff and managers associated with the videophone service at RDNS SA, and current RDNS SA patients who received videophone observation for at least one month; 2) Text from case notes (when relevant to service delivery problems)
+                                    Assessing the effectiveness of in-person versus home videophone observation by calculating the ratio between the number of missed observation and the number of occasions on which the patients were expected to take their medication
+                                    Evaluation of acceptability, usability and sustainability of home videophone service for tuberculosis treatment
+                                 
+                                 
+                                    
+                                       Wolf et al. (2006)
+                                    
+                                    Describing nurses' work: Combining quantitative and qualitative analysis
+                                    Human Factors
+                                    7 nurses on inpatient nursing units at a large, urban, acute care hospital
+                                    “To evaluate the work flow and work organization of nurses on inpatient medical units using both quantitative and qualitative techniques.” (p. 6)
+                                    Yes
+                                    Convergent Parallel
+                                    InterpretationData AnalysisData CollectionDesign
+                                    Observation by nurse researcher focusing on nursing decision making and tasks involved in patient management.
+                                    Time study of nurses' physical activities (time notations of 1-min increments); link analysis (location of activities); timelines were created as a data analysis output.
+                                    Evaluation of inpatient nursing work
+                                 
+                                 
+                                    
+                                       Wu et al. (2008)
+                                    
+                                    Usability of a mobile electronic medical record prototype: A verbal protocol analysis
+                                    Informatics for Health and Social Care
+                                    9 general internists and family physicians in Toronto recruited from a list of all practicing family physicians and internists
+                                    To evaluate a mobile electronic medical records prototype, i.e. “to determine if clinicians would use a mobile electronic medical record, if they could use it in realistic clinical scenarios and what issues that would arise in its use.” (p. 140)
+                                    No
+                                    Convergent Parallel
+                                    InterpretationData Analysis
+                                    One-hour Usability Sessions: 3 scenarios given to each participant. Participants were asked questions about the device and asked to think aloud while using the device.
+                                    1) Survey to collect data on computer expertise of participants (6 questions about use of computers);2) Quantification of video recorded activities.
+                                    Usability evaluation of mobile EMR prototype by primary care physicians
+                                 
+                                 
+                                    
+                                       Xiao et al. (2008)
+                                    
+                                    Opportunities and challenges in improving surgical work flow
+                                    Cognition, Technology and Work
+                                    Study 1: 4 operating room (OR) suites at 3 hospitals;Study 2: one of the busiest trauma centers in the US, which has a dedicated 6-OR surgical suite;Study 3: a large teaching hospital with 19 ORs
+                                    “To examine communication activities on the larger scale of an OR [operation room] suite, and the coordination that takes place to orchestrate multiple surgical teams in different ORs for procedures carried out on a given day in the OR suite.” (p. 314)
+                                    No
+                                    Multiphase
+                                    InterpretationData Analysis
+                                    Study 2: 1) observations: 10 observers with different backgrounds conducted more than 200 h of observation over 5 years; 2) interviews and 3) photos at various times of a day from early morning to late evening. Study 3: 4) free-text entries and comments on communication problems reported in a web-based reporting system
+                                    Study 1: 1) observation on communication between charge nurses and OR nurses, anesthesiologists, surgeons, OR technicians, equipment mangers and clerks (e.g., purpose, duration, mode, recipient) during the busiest OR time over a period of 17 days. Study 3: 2) start and scheduled times of surgery from a web-based reporting system to analyze delay time
+                                    Communication and coordination in a surgery suite, in particular regarding scheduling of surgeries
+                                 
+                                 
+                                    
+                                       Yassi et al. (2004)
+                                    
+                                    Factors associated with staff injuries in intermediate care facilities in British Columbia, Canada
+                                    Nursing Research
+                                    4 representative intermediate care facilities with high staff injury rates and 4 facilities with comparable low staff injury rates selected from Workers' Compensation Board (WCB) databases
+                                    “To identify work organization, psychosocial, and biomechanical factors associated with staff injuries in intermediate care facilities, to pinpoint management practices that may contribute to lower staff injuries, and to generate a provisional conceptual framework of work organization characteristics.” (p. 87)
+                                    Yes
+                                    Convergent Parallel
+                                    InterpretationData Analysis
+                                    1) Tow-hour interviews with the administrator and/or the director of care and/or the assistant director of care, one or two registered nurses, and one or two Hospital Employees' Union (HEU) representatives from either the Joint Health and Safety Committee or the union local; 2) Three-hour focus groups at each facility with care aides and LPNs
+                                    1) Time loss injury data obtained from personnel records and WCB databases; 2) Ergonomic study with 4 care aides and LPNs at each facility to measure muscle activity in lower back and neck and shoulder region; 3) Telephone survey with 310 care aides and LPNs to collect information about organizational culture and climate
+                                    Organizational, psychosocial and biomechanical work factors associated with work-related injuries
+                                 
+                                 
+                                    
+                                       Yawn et al. (2008)
+                                    
+                                    Introduction of Asthma APGAR tools improve asthma management in primary care practices
+                                    Journal of Asthma and Allergy
+                                    Patients, parents, and healthcare providers from 24 primary care practices in the US
+                                    “To assess the feasibility and impact of the Asthma APGAR tools to enhance implementation of asthma guideline-compatible management in primary care practices.” (p. 1)
+                                    Yes
+                                    Embedded
+                                    InterpretationDesign
+                                    Two focus groups (one with 71 patients and parents and one with 72 healthcare professionals) at each of 7 primary care sites. Focus group content: readability of the asthma tool, ease of use and perceived relevance and value of the tool for the patient's asthma care
+                                    Quantitative data from medical record review including all Asthma APGAR elements and information on documentation of inhaler technique, asthma education or a non-acute asthma visit. Medical records of 840 patients were reviewed before implementation and 851 patients after implementation of Asthma APGAR.
+                                    Usability and usefulness of asthma AGPAR tools from the viewpoints of healthcare professionals and patients/parents, as well as using medical record data (adherence to guidelines).
+                                 
+                                 
+                                    
+                                       Yeung et al. (2012)
+                                    
+                                    Examining nursing vital signs documentation workflow: Barriers and opportunities in general internal medicine units
+                                    Journal of Clinical Nursing
+                                    24 registered nurses in 5 general internal medicine in-patient units at 3 tertiary-care hospitals in Toronto, Ontario
+                                    To characterize the nursing practices of vital signs collection and documentation in a general internal medicine environment to inform strategies for improving workflow design
+                                    Yes
+                                    Convergent Parallel
+                                    InterpretationData Collection
+                                    Observation of 24 registered nurses to understand their workflow including vital sign collection and documentation
+                                    Time-motion study of 24 registered nurses used to measure duration and time between clinical activities.
+                                    Evaluation of nursing work of vital signs collection and documentation in a general internal medicine environment
+                                 
+                                 
+                                    
+                                       Zheng et al. (2005)
+                                    
+                                    Understanding technology adoption in clinical care: Clinician adoption behavior of a point-of-care reminder system
+                                    International Journal of Medical Informatics
+                                    Residents at an ambulatory primary care clinic of an urban teaching hospital
+                                    “To assess medical residents' acceptance and adoption of a clinical reminder system for chronic disease and preventive care management and to use expressed preferences for system attributes and functionality as a basis for system reengineering.” (p. 535)
+                                    Yes
+                                    Explanatory Sequential
+                                    InterpretationData Collection
+                                    1) Interviews with 16 residents who used the reminder system during the evaluation period; 2) Two surveys on system usability and user satisfaction at the end of the evaluation period; 3) Filed bug reports and text notes that were stored in the system along with other types of data; 4) Random on-site observations to understand clinicians' use of the system and the effect it had on interactions with patients
+                                    Usage data from login to logout (e.g. which patient records were accessed, what data was entered, if reminders were generated, what actions taken on reminders) when 41 internal medicine residents used the reminder system for 4500 patients
+                                    Evaluation of medical residents' acceptance and adoption of a clinical reminder system for chronic disease and preventive care management
+                                 
+                              
+                           
+                        
+                     
+                  
+
+@&#REFERENCES@&#
+

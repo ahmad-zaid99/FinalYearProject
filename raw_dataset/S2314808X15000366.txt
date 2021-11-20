@@ -1,0 +1,2947 @@
+@&#MAIN-TITLE@&#A note on soliton solutions of fractional hybrid lattice equations
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           A methodology is developed for soliton solution of DDE.
+
+
+                        
+                        
+                           
+                           The hybrid lattice equation with fractional order derivative is consider and found solution.
+
+
+                        
+                        
+                           
+                           Frequency amplitude formula and chain rule for fractional derivative are utilized.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Soliton
+
+Differential-difference
+
+Hybrid lattice
+
+@&#ABSTRACT@&#
+
+
+                  This study is designed to propose a solitary-solution formulation method by applying transformation and ancient Chinese algorithm. This method is projected to obtain closed-form solution of fractional differential-difference equations (FDDEs). A closed-form solution of hybrid lattice is used to demonstrate the rationality and the large potential of the proposed method in finding the solutions of FDDEs. This method is very effective in obtaining the exact solutions of nonlinear FDDEs and it can be extended to obtain the solution of nonlinear FDDEs in mathematical physics. Comparison has been made with previous work.
+               
+
+@&#INTRODUCTION@&#
+
+The concept of differential-difference equations (DDEs) [1] has been motivated because of their numerous applications in different areas of physics [2,3] and engineering [4]. An important contribution of DDEs is perceived in modeling complex physical phenomenon such as current flow in electrical networks and vibrations of particle in lattices. In many nonlinear studies, DDEs have gained much attention ever since the work of Fermi et al. [5] in 1960s. Various conventional methods to acquire the solutions of nonlinear differential-difference equations (NDDEs) were presented in the theory of lattice-soliton [6,7], for instance, the bilinear form, symmetries [8], and some closed-form analytical solutions of several lattices in polynomial function of tanh 
+                     [9]. A little attention was also devoted to obtain the closed-form solutions of NDDEs by using the symbolic computation. Baldwin et al. [10] have proposed the tanh-approach to solve NDDEs. Discrete nonlinear lattices have gained a significant attention in numerous branches of science. A considerable literature has grown up around the theme of nonlinear lattice differential equations (NLDEs) becase of their use in physical and mathematical models of enormous real-world phenomena. Existing research recognizes the critical role played by discrete solitons in physical systems on very large scale, for example, biophysical systems, atomic chains with on-site cubic nonlinearities, electrical lattices, molecular crystals and recently in arrays of coupled nonlinear optical wave guides. Fractional order derivatives have also been the subject to describe several physical phenomena [11,12] such as diffusion processes, damping laws, rheology, and many other.
+
+In this study, the fractional order transformation is used to transform the fractional differential-difference equation into ordinary differential-difference equation and then analyzed by frequency amplitude formulation [13–15]. It should be noted that the generalized hybrid lattice equation may be converted into discrete mKdV lattice and modified Volterra lattice equation for some particular cases. The proposed methodology allows us to precisely solve FDDEs with the support of symbolic computation.
+
+The Riemann–Liouville derivative of order 
+                        α
+                      is defined, for a function 
+                        
+                           H
+                           
+                              (
+                              x
+                              )
+                           
+                        
+                     , by
+                        
+                           (1)
+                           
+                              
+                                 
+                                    D
+                                    x
+                                    α
+                                 
+                                 H
+                                 
+                                    (
+                                    x
+                                    )
+                                 
+                                 =
+                                 
+                                    1
+                                    
+                                       Γ
+                                       
+                                          (
+                                          
+                                             −
+                                             α
+                                          
+                                          )
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       ∫
+                                       0
+                                       x
+                                    
+                                    
+                                       
+                                          
+                                             
+                                                (
+                                                
+                                                   x
+                                                   −
+                                                   η
+                                                
+                                                )
+                                             
+                                          
+                                          
+                                             −
+                                             α
+                                             −
+                                             1
+                                          
+                                       
+                                       
+                                          [
+                                          
+                                             H
+                                             
+                                                (
+                                                η
+                                                )
+                                             
+                                             −
+                                             H
+                                             
+                                                (
+                                                0
+                                                )
+                                             
+                                          
+                                          ]
+                                       
+                                       d
+                                       η
+                                    
+                                 
+                                 
+                                 f
+                                 o
+                                 r
+                                 
+                                 α
+                                 <
+                                 0
+                                 ,
+                              
+                           
+                        
+                     
+                     
+                        
+                           (2)
+                           
+                              
+                                 
+                                    D
+                                    x
+                                    α
+                                 
+                                 H
+                                 
+                                    (
+                                    x
+                                    )
+                                 
+                                 =
+                                 
+                                    1
+                                    
+                                       Γ
+                                       
+                                          (
+                                          
+                                             1
+                                             −
+                                             α
+                                          
+                                          )
+                                       
+                                    
+                                 
+                                 
+                                    d
+                                    
+                                       d
+                                       x
+                                    
+                                 
+                                 
+                                    
+                                       ∫
+                                       0
+                                       x
+                                    
+                                    
+                                       
+                                          
+                                             
+                                                (
+                                                
+                                                   x
+                                                   −
+                                                   η
+                                                
+                                                )
+                                             
+                                          
+                                          
+                                             −
+                                             α
+                                          
+                                       
+                                       
+                                          [
+                                          
+                                             H
+                                             
+                                                (
+                                                η
+                                                )
+                                             
+                                             −
+                                             H
+                                             
+                                                (
+                                                0
+                                                )
+                                             
+                                          
+                                          ]
+                                       
+                                       d
+                                       η
+                                    
+                                 
+                                 
+                                 f
+                                 o
+                                 r
+                                 
+                                 0
+                                 <
+                                 α
+                                 <
+                                 1
+                                 ,
+                              
+                           
+                        
+                     
+                     
+                        
+                           (3)
+                           
+                              
+                                 
+                                    D
+                                    x
+                                    α
+                                 
+                                 H
+                                 
+                                    (
+                                    x
+                                    )
+                                 
+                                 =
+                                 
+                                    
+                                       
+                                          (
+                                          
+                                             
+                                                H
+                                                
+                                                   
+                                                      (
+                                                      n
+                                                      )
+                                                   
+                                                
+                                             
+                                             
+                                                (
+                                                x
+                                                )
+                                             
+                                          
+                                          )
+                                       
+                                    
+                                    
+                                       
+                                          (
+                                          
+                                             α
+                                             −
+                                             n
+                                          
+                                          )
+                                       
+                                    
+                                 
+                                 
+                                 f
+                                 o
+                                 r
+                                 
+                                 n
+                                 ≤
+                                 α
+                                 ≤
+                                 n
+                                 +
+                                 1
+                                 ,
+                                 
+                                 n
+                                 ≥
+                                 1
+                                 ,
+                              
+                           
+                        
+                     where 
+                        
+                           H
+                           :
+                           R
+                           →
+                           R
+                        
+                      is a continuous function.
+
+Using the properties of the Riemann Liouville derivative from [12], we have
+                        
+                           (4)
+                           
+                              
+                                 
+                                    D
+                                    x
+                                    α
+                                 
+                                 
+                                    x
+                                    β
+                                 
+                                 =
+                                 
+                                    
+                                       Γ
+                                       
+                                          (
+                                          
+                                             1
+                                             +
+                                             β
+                                          
+                                          )
+                                       
+                                    
+                                    
+                                       Γ
+                                       
+                                          (
+                                          
+                                             1
+                                             +
+                                             β
+                                             −
+                                             α
+                                          
+                                          )
+                                       
+                                    
+                                 
+                                 
+                                    x
+                                    
+                                       β
+                                       −
+                                       α
+                                    
+                                 
+                                 ,
+                                 
+                                 β
+                                 >
+                                 0,
+                              
+                           
+                        
+                     
+                     
+                        
+                           (5)
+                           
+                              
+                                 
+                                    d
+                                    α
+                                 
+                                 x
+                                 
+                                    (
+                                    t
+                                    )
+                                 
+                                 =
+                                 Γ
+                                 
+                                    (
+                                    
+                                       α
+                                       +
+                                       1
+                                    
+                                    )
+                                 
+                                 d
+                                 x
+                                 
+                                    (
+                                    t
+                                    )
+                                 
+                              
+                           
+                        
+                     
+                  
+
+In this section, a method is described to solve NDDEs directly. Let's suppose the FDDE in the form:
+                        
+                           (6)
+                           
+                              
+                                 
+                                    
+                                       
+                                          d
+                                          α
+                                       
+                                       
+                                          u
+                                          n
+                                       
+                                       
+                                          (
+                                          t
+                                          )
+                                       
+                                    
+                                    
+                                       d
+                                       
+                                          t
+                                          α
+                                       
+                                    
+                                 
+                                 =
+                                 F
+                                 
+                                    (
+                                    
+                                       
+                                          u
+                                          
+                                             n
+                                             −
+                                             1
+                                          
+                                       
+                                       ,
+                                       
+                                          u
+                                          n
+                                       
+                                       ,
+                                       
+                                          u
+                                          
+                                             n
+                                             +
+                                             1
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 ,
+                                 
+                                 t
+                                 >
+                                 0,
+                                 
+                                 0
+                                 <
+                                 α
+                                 ≤
+                                 1
+                              
+                           
+                        
+                     where 
+                        
+                           
+                              u
+                              n
+                           
+                        
+                      is a dependent variable, and t is a continuous variable, and 
+                        
+                           n
+                           ∈
+                           Z
+                        
+                     .
+
+The main steps of this method are précised as follows:
+                        
+                           
+                              Step 1. Consider the FDDE as in Eq. (6)
+                           
+
+
+                              Step 2. To find the exact solution of Eq. (6), introduce the variable transformation
+
+Hence, Eq. (6) by using Eq. (5), can be written as:
+                        
+                           (8)
+                           
+                              
+                                 
+                                    
+                                       d
+                                       
+                                          u
+                                          n
+                                       
+                                    
+                                    
+                                       d
+                                       η
+                                    
+                                 
+                                 =
+                                 
+                                    1
+                                    
+                                       Γ
+                                       
+                                          (
+                                          
+                                             α
+                                             +
+                                             1
+                                          
+                                          )
+                                       
+                                    
+                                 
+                                 F
+                                 
+                                    (
+                                    
+                                       
+                                          u
+                                          
+                                             n
+                                             −
+                                             1
+                                          
+                                       
+                                       ,
+                                       
+                                          u
+                                          n
+                                       
+                                       ,
+                                       
+                                          u
+                                          
+                                             n
+                                             +
+                                             1
+                                          
+                                       
+                                    
+                                    )
+                                 
+                              
+                           
+                        
+                     
+                     
+                        
+                           
+                              Step 3. Using the ancient Chinese algorithm (frequency amplitude formulation) initially applied to nonlinear oscillators in 2006 [16]; two test functions are selected in the forms:
+
+The test functions are selected in a fashion:
+                        
+                           (11)
+                           
+                              
+                                 
+                                    u
+                                    
+                                       n
+                                       ,
+                                       1
+                                    
+                                 
+                                 
+                                    (
+                                    
+                                       n
+                                       ,
+                                       η
+                                    
+                                    )
+                                 
+                                 =
+                                 
+                                    A
+                                    
+                                       
+                                          e
+                                          
+                                             
+                                                ξ
+                                                n
+                                             
+                                             +
+                                             
+                                                ω
+                                                1
+                                             
+                                             η
+                                          
+                                       
+                                       +
+                                       
+                                          e
+                                          
+                                             −
+                                             
+                                                (
+                                                
+                                                   
+                                                      ξ
+                                                      n
+                                                   
+                                                   +
+                                                   
+                                                      ω
+                                                      1
+                                                   
+                                                   η
+                                                
+                                                )
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    ω
+                                    1
+                                 
+                                 =
+                                 1
+                                 ,
+                              
+                           
+                        
+                     
+                     
+                        
+                           (12)
+                           
+                              
+                                 
+                                    u
+                                    
+                                       n
+                                       ,
+                                       2
+                                    
+                                 
+                                 
+                                    (
+                                    
+                                       n
+                                       ,
+                                       η
+                                    
+                                    )
+                                 
+                                 =
+                                 
+                                    A
+                                    
+                                       
+                                          e
+                                          
+                                             
+                                                ξ
+                                                n
+                                             
+                                             +
+                                             
+                                                ω
+                                                2
+                                             
+                                             η
+                                          
+                                       
+                                       +
+                                       
+                                          e
+                                          
+                                             −
+                                             
+                                                (
+                                                
+                                                   
+                                                      ξ
+                                                      n
+                                                   
+                                                   +
+                                                   
+                                                      ω
+                                                      2
+                                                   
+                                                   η
+                                                
+                                                )
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    ω
+                                    2
+                                 
+                                 =
+                                 ω
+                                 .
+                              
+                           
+                        
+                     
+                  
+
+Which should be compatible for 
+                        
+                           
+                              u
+                              n
+                           
+                           ,
+                           
+                              u
+                              
+                                 n
+                                 −
+                                 1
+                              
+                           
+                        
+                      and 
+                        
+                           
+                              u
+                              
+                                 n
+                                 +
+                                 1
+                              
+                           
+                        
+                     ; Eqs. (11) and (12) are now given as:
+                        
+                           (13)
+                           
+                              
+                                 
+                                    u
+                                    
+                                       n
+                                       −
+                                       1,1
+                                    
+                                 
+                                 
+                                    (
+                                    
+                                       n
+                                       ,
+                                       η
+                                    
+                                    )
+                                 
+                                 =
+                                 
+                                    A
+                                    
+                                       
+                                          e
+                                          
+                                             
+                                                ξ
+                                                n
+                                             
+                                             −
+                                             h
+                                             +
+                                             η
+                                          
+                                       
+                                       +
+                                       
+                                          e
+                                          
+                                             −
+                                             
+                                                (
+                                                
+                                                   
+                                                      ξ
+                                                      n
+                                                   
+                                                   −
+                                                   h
+                                                   +
+                                                   η
+                                                
+                                                )
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+                     
+                        
+                           (14)
+                           
+                              
+                                 
+                                    u
+                                    
+                                       n
+                                       +
+                                       1,1
+                                    
+                                 
+                                 
+                                    (
+                                    
+                                       n
+                                       ,
+                                       η
+                                    
+                                    )
+                                 
+                                 =
+                                 
+                                    A
+                                    
+                                       
+                                          e
+                                          
+                                             
+                                                ξ
+                                                n
+                                             
+                                             +
+                                             h
+                                             +
+                                             η
+                                          
+                                       
+                                       +
+                                       
+                                          e
+                                          
+                                             −
+                                             
+                                                (
+                                                
+                                                   
+                                                      ξ
+                                                      n
+                                                   
+                                                   +
+                                                   h
+                                                   +
+                                                   η
+                                                
+                                                )
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+                     
+                        
+                           (15)
+                           
+                              
+                                 
+                                    u
+                                    
+                                       n
+                                       −
+                                       1,2
+                                    
+                                 
+                                 
+                                    (
+                                    
+                                       n
+                                       ,
+                                       η
+                                    
+                                    )
+                                 
+                                 =
+                                 
+                                    A
+                                    
+                                       
+                                          e
+                                          
+                                             
+                                                ξ
+                                                n
+                                             
+                                             −
+                                             h
+                                             +
+                                             ω
+                                             η
+                                          
+                                       
+                                       +
+                                       
+                                          e
+                                          
+                                             −
+                                             
+                                                (
+                                                
+                                                   
+                                                      ξ
+                                                      n
+                                                   
+                                                   −
+                                                   h
+                                                   +
+                                                   ω
+                                                   η
+                                                
+                                                )
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+                     
+                        
+                           (16)
+                           
+                              
+                                 
+                                    u
+                                    
+                                       n
+                                       +
+                                       1,2
+                                    
+                                 
+                                 
+                                    (
+                                    
+                                       n
+                                       ,
+                                       η
+                                    
+                                    )
+                                 
+                                 =
+                                 
+                                    A
+                                    
+                                       
+                                          e
+                                          
+                                             
+                                                ξ
+                                                n
+                                             
+                                             +
+                                             h
+                                             +
+                                             ω
+                                             η
+                                          
+                                       
+                                       +
+                                       
+                                          e
+                                          
+                                             −
+                                             
+                                                (
+                                                
+                                                   
+                                                      ξ
+                                                      n
+                                                   
+                                                   +
+                                                   h
+                                                   +
+                                                   ω
+                                                   η
+                                                
+                                                )
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     where 
+                        h
+                      is small increment in 
+                        
+                           
+                              ξ
+                              n
+                           
+                        
+                     .
+                        
+                           
+                              Step 4. Define residual function
+
+On utilizing Eq. (11)–(16) into Eq. (8), the residual functions 
+                        
+                           
+                              
+                                 
+                                    R
+                                    ˜
+                                 
+                              
+                              1
+                           
+                        
+                      and 
+                        
+                           
+                              
+                                 
+                                    R
+                                    ˜
+                                 
+                              
+                              2
+                           
+                        
+                      can be achieved as:
+                        
+                           (18)
+                           
+                              
+                                 
+                                    
+                                       
+                                          R
+                                          ˜
+                                       
+                                    
+                                    1
+                                 
+                                 
+                                    (
+                                    η
+                                    )
+                                 
+                                 =
+                                 
+                                    
+                                       d
+                                       
+                                          u
+                                          
+                                             n
+                                             ,
+                                             1
+                                          
+                                       
+                                    
+                                    
+                                       d
+                                       η
+                                    
+                                 
+                                 −
+                                 
+                                    1
+                                    
+                                       Γ
+                                       
+                                          (
+                                          
+                                             α
+                                             +
+                                             1
+                                          
+                                          )
+                                       
+                                    
+                                 
+                                 F
+                                 
+                                    (
+                                    
+                                       
+                                          u
+                                          
+                                             n
+                                             −
+                                             1,1
+                                          
+                                       
+                                       ,
+                                       
+                                          u
+                                          
+                                             n
+                                             ,
+                                             1
+                                          
+                                       
+                                       ,
+                                       
+                                          u
+                                          
+                                             n
+                                             +
+                                             1,1
+                                          
+                                       
+                                    
+                                    )
+                                 
+                              
+                           
+                        
+                     
+                     
+                        
+                           (19)
+                           
+                              
+                                 
+                                    
+                                       
+                                          R
+                                          ˜
+                                       
+                                    
+                                    2
+                                 
+                                 
+                                    (
+                                    η
+                                    )
+                                 
+                                 =
+                                 
+                                    
+                                       d
+                                       
+                                          u
+                                          
+                                             n
+                                             ,
+                                             2
+                                          
+                                       
+                                    
+                                    
+                                       d
+                                       η
+                                    
+                                 
+                                 −
+                                 
+                                    1
+                                    
+                                       Γ
+                                       
+                                          (
+                                          
+                                             α
+                                             +
+                                             1
+                                          
+                                          )
+                                       
+                                    
+                                 
+                                 G
+                                 
+                                    (
+                                    
+                                       
+                                          u
+                                          
+                                             n
+                                             −
+                                             1,2
+                                          
+                                       
+                                       ,
+                                       
+                                          u
+                                          
+                                             n
+                                             ,
+                                             2
+                                          
+                                       
+                                       ,
+                                       
+                                          u
+                                          
+                                             n
+                                             +
+                                             1,2
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 ,
+                              
+                           
+                        
+                     
+                     
+                        
+                           
+                              Step 5. Using frequency amplitude formulation the frequency of the nonlinear oscillator 
+                                 ω
+                               is assumed to be as follows:
+
+
+                              Step 6. Equating each coefficient 
+                                 
+                                    
+                                       e
+                                       
+                                          
+                                             ξ
+                                             n
+                                          
+                                       
+                                    
+                                    ,
+                                    
+                                       e
+                                       
+                                          2
+                                          
+                                             ξ
+                                             n
+                                          
+                                       
+                                    
+                                    ,
+                                    
+                                       e
+                                       
+                                          3
+                                          
+                                             ξ
+                                             n
+                                          
+                                       
+                                    
+                                    ,
+                                    .
+                                    
+                                    .
+                                    
+                                    .
+                                 
+                               of the exponential equation to zero gives a set of algebraic equations for 
+                                 
+                                    ω
+                                    ,
+                                    A
+                                 
+                              .
+
+
+                              Step 7. The exact solutions for Eq. (6) can be obtained by substituting the obtained results into Eq. (11) and (12) with 
+                                 
+                                    η
+                                    
+                                    =
+                                    
+                                    
+                                       t
+                                       α
+                                    
+                                 
+                              , by solving the algebraic equations found in step 6.
+
+The well-known hybrid lattice equation with fractional order derivative can be written as
+                        
+                           (21)
+                           
+                              
+                                 
+                                    
+                                       
+                                          d
+                                          α
+                                       
+                                       
+                                          u
+                                          n
+                                       
+                                    
+                                    
+                                       d
+                                       
+                                          t
+                                          α
+                                       
+                                    
+                                 
+                                 =
+                                 
+                                    (
+                                    
+                                       λ
+                                       +
+                                       β
+                                       
+                                          u
+                                          n
+                                       
+                                       +
+                                       γ
+                                       
+                                          u
+                                          n
+                                          2
+                                       
+                                    
+                                    )
+                                 
+                                 
+                                    (
+                                    
+                                       
+                                          u
+                                          
+                                             n
+                                             −
+                                             1
+                                          
+                                       
+                                       −
+                                       
+                                          u
+                                          
+                                             n
+                                             +
+                                             1
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 ,
+                              
+                           
+                        
+                     where 
+                        
+                           λ
+                           ,
+                           β
+                           ,
+                           γ
+                           ≠
+                           0
+                        
+                      are constants.
+
+On utilizing the transformation 
+                        
+                           η
+                           =
+                           
+                              t
+                              α
+                           
+                        
+                      in Eq. (21) yields
+                        
+                           (22)
+                           
+                              
+                                 
+                                    
+                                       d
+                                       
+                                          u
+                                          n
+                                       
+                                    
+                                    
+                                       d
+                                       η
+                                    
+                                 
+                                 =
+                                 
+                                    1
+                                    
+                                       Γ
+                                       
+                                          (
+                                          
+                                             α
+                                             +
+                                             1
+                                          
+                                          )
+                                       
+                                    
+                                 
+                                 
+                                    (
+                                    
+                                       λ
+                                       +
+                                       β
+                                       
+                                          u
+                                          n
+                                       
+                                       +
+                                       γ
+                                       
+                                          u
+                                          n
+                                          2
+                                       
+                                    
+                                    )
+                                 
+                                 
+                                    (
+                                    
+                                       
+                                          u
+                                          
+                                             n
+                                             −
+                                             1
+                                          
+                                       
+                                       −
+                                       
+                                          u
+                                          
+                                             n
+                                             +
+                                             1
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 ,
+                              
+                           
+                        
+                     
+                  
+
+On following the steps 2–5 as mentioned in the previous section, with the help of a symbolic computer software Mathematica 8, Eq. (22) can be transformed as:
+                        
+                           (23)
+                           
+                              
+                                 −
+                                 
+                                    
+                                       A
+                                       
+                                          (
+                                          
+                                             −
+                                             
+                                                e
+                                                
+                                                   −
+                                                   ξ
+                                                
+                                             
+                                             ω
+                                             +
+                                             
+                                                e
+                                                ξ
+                                             
+                                             ω
+                                          
+                                          )
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             
+                                                (
+                                                
+                                                   
+                                                      e
+                                                      
+                                                         −
+                                                         ξ
+                                                      
+                                                   
+                                                   +
+                                                   
+                                                      e
+                                                      ξ
+                                                   
+                                                
+                                                )
+                                             
+                                          
+                                          2
+                                       
+                                    
+                                 
+                                 −
+                                 
+                                    ω
+                                    2
+                                 
+                                 
+                                    (
+                                    
+                                       
+                                          
+                                             A
+                                             
+                                                (
+                                                
+                                                   −
+                                                   
+                                                      e
+                                                      
+                                                         −
+                                                         ξ
+                                                      
+                                                   
+                                                   +
+                                                   
+                                                      e
+                                                      ξ
+                                                   
+                                                
+                                                )
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      (
+                                                      
+                                                         
+                                                            e
+                                                            
+                                                               −
+                                                               ξ
+                                                            
+                                                         
+                                                         +
+                                                         
+                                                            e
+                                                            ξ
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                
+                                                2
+                                             
+                                          
+                                       
+                                       −
+                                       
+                                          
+                                             A
+                                             
+                                                (
+                                                
+                                                   −
+                                                   
+                                                      e
+                                                      
+                                                         −
+                                                         ξ
+                                                      
+                                                   
+                                                   ω
+                                                   +
+                                                   
+                                                      e
+                                                      ξ
+                                                   
+                                                   ω
+                                                
+                                                )
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      (
+                                                      
+                                                         
+                                                            e
+                                                            
+                                                               −
+                                                               ξ
+                                                            
+                                                         
+                                                         +
+                                                         
+                                                            e
+                                                            ξ
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                
+                                                2
+                                             
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 −
+                                 
+                                    ω
+                                    2
+                                 
+                                 
+                                    (
+                                    
+                                       −
+                                       
+                                          
+                                             A
+                                             
+                                                (
+                                                
+                                                   −
+                                                   
+                                                      e
+                                                      
+                                                         −
+                                                         ξ
+                                                      
+                                                   
+                                                   +
+                                                   
+                                                      e
+                                                      ξ
+                                                   
+                                                
+                                                )
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      (
+                                                      
+                                                         
+                                                            e
+                                                            
+                                                               −
+                                                               ξ
+                                                            
+                                                         
+                                                         +
+                                                         
+                                                            e
+                                                            ξ
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                
+                                                2
+                                             
+                                          
+                                       
+                                       −
+                                       
+                                          
+                                             
+                                                (
+                                                
+                                                   
+                                                      (
+                                                      
+                                                         
+                                                            A
+                                                            
+                                                               
+                                                                  e
+                                                                  
+                                                                     h
+                                                                     −
+                                                                     ξ
+                                                                  
+                                                               
+                                                               +
+                                                               
+                                                                  e
+                                                                  
+                                                                     −
+                                                                     h
+                                                                     +
+                                                                     ξ
+                                                                  
+                                                               
+                                                            
+                                                         
+                                                         −
+                                                         
+                                                            A
+                                                            
+                                                               
+                                                                  e
+                                                                  
+                                                                     h
+                                                                     +
+                                                                     ξ
+                                                                  
+                                                               
+                                                               +
+                                                               
+                                                                  e
+                                                                  
+                                                                     −
+                                                                     h
+                                                                     −
+                                                                     ξ
+                                                                  
+                                                               
+                                                            
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                   
+                                                      (
+                                                      
+                                                         λ
+                                                         +
+                                                         
+                                                            
+                                                               A
+                                                               β
+                                                            
+                                                            
+                                                               
+                                                                  e
+                                                                  
+                                                                     −
+                                                                     ξ
+                                                                  
+                                                               
+                                                               +
+                                                               
+                                                                  e
+                                                                  ξ
+                                                               
+                                                            
+                                                         
+                                                         +
+                                                         
+                                                            
+                                                               
+                                                                  A
+                                                                  2
+                                                               
+                                                               γ
+                                                            
+                                                            
+                                                               
+                                                                  
+                                                                     
+                                                                        (
+                                                                        
+                                                                           
+                                                                              e
+                                                                              
+                                                                                 −
+                                                                                 ξ
+                                                                              
+                                                                           
+                                                                           +
+                                                                           
+                                                                              e
+                                                                              ξ
+                                                                           
+                                                                        
+                                                                        )
+                                                                     
+                                                                  
+                                                                  2
+                                                               
+                                                            
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                
+                                                )
+                                             
+                                          
+                                          
+                                             Γ
+                                             
+                                                (
+                                                α
+                                                +
+                                                1
+                                                )
+                                             
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 −
+                                 
+                                    
+                                       
+                                          (
+                                          
+                                             
+                                                A
+                                                
+                                                   
+                                                      e
+                                                      
+                                                         h
+                                                         −
+                                                         ξ
+                                                      
+                                                   
+                                                   +
+                                                   
+                                                      e
+                                                      
+                                                         −
+                                                         h
+                                                         +
+                                                         ξ
+                                                      
+                                                   
+                                                
+                                             
+                                             −
+                                             
+                                                A
+                                                
+                                                   
+                                                      e
+                                                      
+                                                         h
+                                                         +
+                                                         ξ
+                                                      
+                                                   
+                                                   +
+                                                   
+                                                      e
+                                                      
+                                                         −
+                                                         h
+                                                         −
+                                                         ξ
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          )
+                                       
+                                       
+                                          (
+                                          
+                                             λ
+                                             +
+                                             
+                                                
+                                                   A
+                                                   β
+                                                
+                                                
+                                                   
+                                                      (
+                                                      
+                                                         
+                                                            e
+                                                            
+                                                               −
+                                                               ξ
+                                                            
+                                                         
+                                                         +
+                                                         
+                                                            e
+                                                            ξ
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                
+                                             
+                                             +
+                                             
+                                                
+                                                   
+                                                      A
+                                                      2
+                                                   
+                                                   γ
+                                                
+                                                
+                                                   
+                                                      
+                                                         
+                                                            (
+                                                            
+                                                               
+                                                                  e
+                                                                  
+                                                                     −
+                                                                     ξ
+                                                                  
+                                                               
+                                                               +
+                                                               
+                                                                  e
+                                                                  ξ
+                                                               
+                                                            
+                                                            )
+                                                         
+                                                      
+                                                      2
+                                                   
+                                                
+                                             
+                                          
+                                          )
+                                       
+                                    
+                                    
+                                       Γ
+                                       
+                                          (
+                                          
+                                             α
+                                             +
+                                             1
+                                          
+                                          )
+                                       
+                                    
+                                 
+                                 =
+                                 0
+                              
+                           
+                        
+                     
+                  
+
+Considering 
+                        
+                           s
+                           =
+                           
+                              e
+                              ξ
+                           
+                        
+                      yields
+                        
+                           (24)
+                           
+                              
+                                 
+                                    
+                                       −
+                                       
+                                          (
+                                          
+                                             A
+                                             
+                                                e
+                                                
+                                                   −
+                                                   h
+                                                
+                                             
+                                             
+                                                (
+                                                
+                                                   −
+                                                   1
+                                                   +
+                                                   
+                                                      ω
+                                                      2
+                                                   
+                                                
+                                                )
+                                             
+                                             
+                                                (
+                                                
+                                                   −
+                                                   λ
+                                                   +
+                                                   
+                                                      e
+                                                      
+                                                         2
+                                                         h
+                                                      
+                                                   
+                                                   λ
+                                                   +
+                                                   
+                                                      e
+                                                      h
+                                                   
+                                                   ω
+                                                   Γ
+                                                   
+                                                      (
+                                                      
+                                                         α
+                                                         +
+                                                         1
+                                                      
+                                                      )
+                                                   
+                                                
+                                                )
+                                             
+                                             s
+                                          
+                                          )
+                                       
+                                    
+                                    
+                                       Γ
+                                       
+                                          (
+                                          
+                                             α
+                                             +
+                                             1
+                                          
+                                          )
+                                       
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       
+                                          A
+                                          2
+                                       
+                                       
+                                          e
+                                          
+                                             −
+                                             h
+                                          
+                                       
+                                       
+                                          (
+                                          
+                                             −
+                                             1
+                                             +
+                                             
+                                                e
+                                                
+                                                   2
+                                                   h
+                                                
+                                             
+                                          
+                                          )
+                                       
+                                       
+                                          (
+                                          
+                                             −
+                                             1
+                                             +
+                                             
+                                                ω
+                                                2
+                                             
+                                          
+                                          )
+                                       
+                                       β
+                                       
+                                          s
+                                          2
+                                       
+                                    
+                                    
+                                       Γ
+                                       
+                                          (
+                                          
+                                             α
+                                             +
+                                             1
+                                          
+                                          )
+                                       
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       
+                                          (
+                                          
+                                             A
+                                             
+                                                e
+                                                
+                                                   −
+                                                   3
+                                                   h
+                                                
+                                             
+                                             
+                                                (
+                                                
+                                                   −
+                                                   1
+                                                   +
+                                                   
+                                                      ω
+                                                      2
+                                                   
+                                                
+                                                )
+                                             
+                                             
+                                                (
+                                                
+                                                   −
+                                                   λ
+                                                   +
+                                                   
+                                                      e
+                                                      
+                                                         6
+                                                         h
+                                                      
+                                                   
+                                                   λ
+                                                   +
+                                                   
+                                                      A
+                                                      2
+                                                   
+                                                   
+                                                      e
+                                                      
+                                                         2
+                                                         h
+                                                      
+                                                   
+                                                   γ
+                                                   −
+                                                   
+                                                      A
+                                                      2
+                                                   
+                                                   
+                                                      e
+                                                      
+                                                         4
+                                                         h
+                                                      
+                                                   
+                                                   γ
+                                                   +
+                                                   3
+                                                   
+                                                      e
+                                                      
+                                                         3
+                                                         h
+                                                      
+                                                   
+                                                   ω
+                                                   Γ
+                                                   
+                                                      (
+                                                      
+                                                         α
+                                                         +
+                                                         1
+                                                      
+                                                      )
+                                                   
+                                                
+                                                )
+                                             
+                                             
+                                                s
+                                                3
+                                             
+                                          
+                                          )
+                                       
+                                    
+                                    
+                                       Γ
+                                       
+                                          (
+                                          
+                                             α
+                                             +
+                                             1
+                                          
+                                          )
+                                       
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       
+                                          A
+                                          2
+                                       
+                                       
+                                          e
+                                          
+                                             −
+                                             3
+                                             h
+                                          
+                                       
+                                       
+                                          (
+                                          
+                                             −
+                                             1
+                                             +
+                                             
+                                                e
+                                                
+                                                   2
+                                                   h
+                                                
+                                             
+                                          
+                                          )
+                                       
+                                       
+                                          
+                                             
+                                                (
+                                                
+                                                   1
+                                                   +
+                                                   
+                                                      e
+                                                      
+                                                         2
+                                                         h
+                                                      
+                                                   
+                                                
+                                                )
+                                             
+                                          
+                                          2
+                                       
+                                       
+                                          (
+                                          
+                                             −
+                                             1
+                                             +
+                                             
+                                                ω
+                                                2
+                                             
+                                          
+                                          )
+                                       
+                                       β
+                                       
+                                          s
+                                          4
+                                       
+                                    
+                                    
+                                       Γ
+                                       
+                                          (
+                                          
+                                             α
+                                             +
+                                             1
+                                          
+                                          )
+                                       
+                                    
+                                 
+                                 +
+                                 ...
+                                 =
+                                 0
+                              
+                           
+                        
+                     
+                  
+
+Now, setting the coefficients of 
+                        
+                           
+                              s
+                              i
+                           
+                        
+                      to be zero give
+                        
+                           (25)
+                           
+                              
+                                 
+                                    
+                                       
+                                          s
+                                          1
+                                       
+                                       :
+                                       
+                                       
+                                          
+                                             −
+                                             A
+                                             
+                                                e
+                                                
+                                                   −
+                                                   h
+                                                
+                                             
+                                             
+                                                (
+                                                
+                                                   −
+                                                   1
+                                                   +
+                                                   
+                                                      ω
+                                                      2
+                                                   
+                                                
+                                                )
+                                             
+                                             
+                                                (
+                                                
+                                                   −
+                                                   λ
+                                                   +
+                                                   
+                                                      e
+                                                      
+                                                         2
+                                                         h
+                                                      
+                                                   
+                                                   λ
+                                                   +
+                                                   
+                                                      e
+                                                      h
+                                                   
+                                                   ω
+                                                   Γ
+                                                   
+                                                      (
+                                                      
+                                                         α
+                                                         +
+                                                         1
+                                                      
+                                                      )
+                                                   
+                                                
+                                                )
+                                             
+                                          
+                                          
+                                             Γ
+                                             
+                                                (
+                                                
+                                                   α
+                                                   +
+                                                   1
+                                                
+                                                )
+                                             
+                                          
+                                       
+                                       =
+                                       0
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          s
+                                          2
+                                       
+                                       :
+                                       
+                                       
+                                          
+                                             −
+                                             
+                                                A
+                                                2
+                                             
+                                             
+                                                e
+                                                
+                                                   −
+                                                   h
+                                                
+                                             
+                                             
+                                                (
+                                                
+                                                   −
+                                                   1
+                                                   +
+                                                   
+                                                      e
+                                                      
+                                                         2
+                                                         h
+                                                      
+                                                   
+                                                
+                                                )
+                                             
+                                             
+                                                (
+                                                
+                                                   −
+                                                   1
+                                                   +
+                                                   
+                                                      ω
+                                                      2
+                                                   
+                                                
+                                                )
+                                             
+                                             β
+                                          
+                                          
+                                             Γ
+                                             
+                                                (
+                                                
+                                                   α
+                                                   +
+                                                   1
+                                                
+                                                )
+                                             
+                                          
+                                       
+                                       =
+                                       0
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          s
+                                          3
+                                       
+                                       :
+                                       
+                                       
+                                          
+                                             A
+                                             
+                                                e
+                                                
+                                                   −
+                                                   3
+                                                   h
+                                                
+                                             
+                                             
+                                                (
+                                                
+                                                   −
+                                                   1
+                                                   +
+                                                   
+                                                      ω
+                                                      2
+                                                   
+                                                
+                                                )
+                                             
+                                             
+                                                (
+                                                
+                                                   −
+                                                   λ
+                                                   +
+                                                   
+                                                      e
+                                                      
+                                                         6
+                                                         h
+                                                      
+                                                   
+                                                   λ
+                                                   +
+                                                   
+                                                      A
+                                                      2
+                                                   
+                                                   
+                                                      e
+                                                      
+                                                         2
+                                                         h
+                                                      
+                                                   
+                                                   γ
+                                                   −
+                                                   
+                                                      A
+                                                      2
+                                                   
+                                                   
+                                                      e
+                                                      
+                                                         4
+                                                         h
+                                                      
+                                                   
+                                                   γ
+                                                   +
+                                                   3
+                                                   
+                                                      e
+                                                      
+                                                         3
+                                                         h
+                                                      
+                                                   
+                                                   ω
+                                                   Γ
+                                                   
+                                                      (
+                                                      
+                                                         α
+                                                         +
+                                                         1
+                                                      
+                                                      )
+                                                   
+                                                
+                                                )
+                                             
+                                          
+                                          
+                                             Γ
+                                             
+                                                (
+                                                
+                                                   α
+                                                   +
+                                                   1
+                                                
+                                                )
+                                             
+                                          
+                                       
+                                       =
+                                       0
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          s
+                                          4
+                                       
+                                       :
+                                       
+                                       
+                                          
+                                             
+                                                A
+                                                2
+                                             
+                                             
+                                                e
+                                                
+                                                   −
+                                                   3
+                                                   h
+                                                
+                                             
+                                             
+                                                (
+                                                
+                                                   −
+                                                   1
+                                                   +
+                                                   
+                                                      e
+                                                      
+                                                         2
+                                                         h
+                                                      
+                                                   
+                                                
+                                                )
+                                             
+                                             
+                                                
+                                                   
+                                                      (
+                                                      
+                                                         1
+                                                         +
+                                                         
+                                                            e
+                                                            
+                                                               2
+                                                               h
+                                                            
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                
+                                                2
+                                             
+                                             
+                                                (
+                                                
+                                                   −
+                                                   1
+                                                   +
+                                                   
+                                                      ω
+                                                      2
+                                                   
+                                                
+                                                )
+                                             
+                                             β
+                                          
+                                          
+                                             Γ
+                                             
+                                                (
+                                                
+                                                   α
+                                                   +
+                                                   1
+                                                
+                                                )
+                                             
+                                          
+                                       
+                                       =
+                                       0
+                                    
+                                 
+                              
+                           
+                        
+                     
+                  
+
+Now solving set of Eq. (25) simultaneously gives
+                        
+                           (26)
+                           
+                              
+                                 ω
+                                 =
+                                 
+                                    
+                                       −
+                                       2
+                                       λ
+                                       
+                                       sinh
+                                       
+                                          (
+                                          h
+                                          )
+                                       
+                                    
+                                    
+                                       Γ
+                                       
+                                          (
+                                          
+                                             α
+                                             +
+                                             1
+                                          
+                                          )
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+                     
+                        
+                           (27)
+                           
+                              
+                                 A
+                                 =
+                                 2
+                                 
+                                    
+                                       
+                                          λ
+                                          γ
+                                       
+                                    
+                                 
+                                 sinh
+                                 
+                                    (
+                                    h
+                                    )
+                                 
+                              
+                           
+                        
+                     
+                  
+
+Therefore, the required soliton-solution is
+                        
+                           (28)
+                           
+                              
+                                 
+                                    u
+                                    n
+                                 
+                                 =
+                                 
+                                    
+                                       
+                                          λ
+                                          γ
+                                       
+                                    
+                                 
+                                 sinh
+                                 
+                                    (
+                                    h
+                                    )
+                                 
+                                 
+                                 sec
+                                 
+                                 h
+                                 
+                                    {
+                                    
+                                       
+                                          ξ
+                                          n
+                                       
+                                       +
+                                       
+                                          (
+                                          
+                                             
+                                                
+                                                   −
+                                                   2
+                                                   λ
+                                                   
+                                                   sinh
+                                                   
+                                                      (
+                                                      h
+                                                      )
+                                                   
+                                                
+                                                
+                                                   Γ
+                                                   
+                                                      (
+                                                      
+                                                         α
+                                                         +
+                                                         1
+                                                      
+                                                      )
+                                                   
+                                                
+                                             
+                                          
+                                          )
+                                       
+                                       
+                                          t
+                                          α
+                                       
+                                    
+                                    }
+                                 
+                              
+                           
+                        
+                     
+                  
+
+@&#CONCLUSION@&#
+
+This study has proposed a method to find the solitary wave solution for nonlinear fractional order DDEs. The soliton-solution is proposed for fractional order DDE by a transformation and the Chinese algorithm. The closed-form solutions of has been obtained. It should be noted that the soliton solution of discrete mKdV lattice and modified Volterra lattice can be found by using particular values of 
+                        
+                           α
+                           ,
+                           
+                           λ
+                           ,
+                           
+                           β
+                           
+                        
+                      and 
+                        γ
+                     . This study also reveals that the symbolic computation software plays a vital role in finding the excact solution of DDEs. Moreover, this method may also be applicable for a system of DDEs and partial DDEs with fractional order derivatives. This method is the generalization of [17] and the solution can obtained for 
+                        
+                           
+                           0
+                           <
+                           α
+                           ≤
+                           1
+                        
+                     .
+
+@&#REFERENCES@&#
+

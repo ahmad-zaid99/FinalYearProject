@@ -1,0 +1,3035 @@
+@&#MAIN-TITLE@&#Traveling wave solutions of generalized Zakharov–Kuznetsov–Benjamin–Bona–Mahony and simplified modified form of Camassa–Holm equation exp(–φ(η)) – Expansion method
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Exp(–φ(η))-expansion method
+
+
+                        
+                        
+                           
+                           Nonlinear evolution equation
+
+
+                        
+                        
+                           
+                           Generalized Zakharov–Kuznetsov–Benjamin–Bona–Mahony equation
+
+
+                        
+                        
+                           
+                           Simplified Modified form of Camassa–Holm equation
+
+
+                        
+                        
+                           
+                           Traveling wave solutions
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Exp(–φ(η))-expansion method
+
+Nonlinear evolution equation
+
+Generalized Zakharov–Kuznetsov–Benjamin–Bona–Mahony equation
+
+Simplified Modified form of Camassa–Holm equation
+
+Traveling wave solutions
+
+@&#ABSTRACT@&#
+
+
+                  In this article, we established abundant traveling wave solutions for nonlinear evolution equations. The exp(–φ(η))-expansion method is used to construct traveling wave solutions for the generalized Zakharov–Kuznetsov–Benjamin–Bona–Mahony equation and Simplified Modified form of Camassa–Holm equation. The traveling wave solutions are expressed in terms of the hyperbolic functions, the trigonometric functions and the rational functions. The proposed solutions are found to be important for the explanation of some practical physical problems in mathematical physics and engineering.
+               
+
+@&#INTRODUCTION@&#
+
+It is well known that seeking exact solutions [1–53] for nonlinear evolution equations (NLEES) plays an important role in mathematical physics. For instance, nonlinear evolution equations (NEEs) are widely used as models to describe complex physical phenomena in various fields of sciences, especially in fluid mechanics, solid-state physics, plasma physics, plasma waves and biology. One of the basic physical problems for those models is to obtain their travelling wave solutions. In particular, various methods have been utilized to explore different kinds of solutions of physical models described by nonlinear partial differential equations (NPDEs). In the past few decades or so, many effective methods have been presented, which contain the inverse scattering transform method, the Backlund transformation [1], bilinear transformation, the tanh-sech method [2], the extended tanh method, the pseudo-spectral method [3,8–10,14,15], trial function and the sine-cosine method [4,5], Hirota method [6], tanh-coth method [2,7,11,13], the exponential function method [16–24], the (G′/G)-expansion method [25–29], the homogeneous balance method [30,31], F-expansion method [33–35] and the Jacobi elliptic function expansion method [36–38] and so on. In a subsequent work, Ma et al. [39] developed the complexiton solutions for Toda lattice equation through the Casoratian formulation and hence obtained a set of coupled conditions which guaranteed Casorati determinants to be the solution of Toda Lattice which consequently produced complexiton solutions. Moreover, Ma and You [40] used variation of parameters for solving the involved non-homogeneous partial differential equations and obtained solution formulas helpful in constructing the existing solutions coupled with a number of other new solutions including rational solutions, solitons, positions, negatons, breathers, complexions and interaction solutions of the KdV equations. It is needed to be highlighted that the basic spirit of the exp-function method which is the conversion of nonlinear partial differential equations into integrable ordinary differential equations was explicitly presented and minutely analyzed in 1996 by Ma and Fuchssteiner [41]. In fact, the exp-function method is restricted to produce rational solutions in the form of transformed variables and such solutions can be obtained easily by making use of other techniques including Wronskian and Casoratian [41–43]. Recently, Ma, Wu and He [44] presented a much more general idea to yield exact solutions to nonlinear wave equations by searching for the so-called Frobenius transformations. Some recently developed methods, such as, the modified simple equation [45–49], the enhanced Exp(–φ(ξ))-expansion method [50,51], the Enhanced (G′/G)-Expansion method [52,53], etc. which provide useful exact solutions to NLEEs have been discussed.
+
+The objective of this article is to apply the exp(–φ(η))-expansion method to construct the exact solutions for nonlinear evolution equations in mathematical physics via generalized Zakharov–Kuznetsov–Benjamin–Bona–Mahony equation and Simplified Modified form of Camassa–Holm equation. The subject matter of this method is that the traveling wave solutions of a nonlinear evolution equation can be expressed by a polynomial in exp(–φ(η)), where φ(η) satisfies the ordinary differential equation (ODE):
+                        
+                           (1)
+                           
+                              
+                                 
+                                    (
+                                    
+                                       
+                                          φ
+                                          ′
+                                       
+                                       
+                                          (
+                                          η
+                                          )
+                                       
+                                    
+                                    )
+                                 
+                                 =
+                                 exp
+                                 
+                                    (
+                                    
+                                       −
+                                       φ
+                                       
+                                          (
+                                          η
+                                          )
+                                       
+                                    
+                                    )
+                                 
+                                 +
+                                 μ
+                                 exp
+                                 
+                                    (
+                                    
+                                       −
+                                       φ
+                                       
+                                          (
+                                          η
+                                          )
+                                       
+                                    
+                                    )
+                                 
+                                 +
+                                 λ
+                              
+                           
+                        
+                     
+                  
+
+Where η = x − Vt.
+
+Now we explain the exp(–φ(η))-expansion method for finding traveling wave solutions of nonlinear evolution equations. Let us consider the general nonlinear partial differential equation of the form.
+                        
+                           (2)
+                           
+                              
+                                 P
+                                 
+                                    (
+                                    
+                                       u
+                                       ,
+                                        
+                                       
+                                          u
+                                          t
+                                       
+                                       ​
+                                       ,
+                                        
+                                       
+                                          u
+                                          x
+                                       
+                                       ​
+                                       ,
+                                        
+                                       
+                                          u
+                                          
+                                             t
+                                             t
+                                          
+                                       
+                                       ​
+                                       ,
+                                        
+                                       
+                                          u
+                                          
+                                             x
+                                             x
+                                          
+                                       
+                                       ​
+                                       ,
+                                        
+                                       
+                                          u
+                                          
+                                             x
+                                             x
+                                             x
+                                          
+                                       
+                                       ​
+                                       ,
+                                        
+                                       …
+                                    
+                                    )
+                                 
+                                 ,
+                              
+                           
+                        
+                     where 
+                        
+                           u
+                           =
+                           u
+                           
+                              (
+                              
+                                 x
+                                 ,
+                                  
+                                 t
+                              
+                              )
+                           
+                        
+                      is an unknown function, P is a polynomial in 
+                        
+                           u
+                           
+                              (
+                              
+                                 x
+                                 ,
+                                  
+                                 t
+                              
+                              )
+                           
+                        
+                      and its various partial derivatives, in which the highest order derivatives and nonlinear terms are involved. In order to solve Eq. (2) by using the exp(–φ(η))-expansion method we have to follow the following steps.
+
+
+                     Step 1. Combining the real variables x and t by a compound variable η we assume
+                        
+                           (3)
+                           
+                              
+                                 u
+                                 
+                                    (
+                                    
+                                       x
+                                       ,
+                                        
+                                       t
+                                    
+                                    )
+                                 
+                                 =
+                                 u
+                                 
+                                    (
+                                    η
+                                    )
+                                 
+                                 ,
+                                  
+                                 η
+                                 =
+                                 x
+                                 −
+                                 V
+                                 t
+                              
+                           
+                        
+                     where V is the speed of the traveling wave. Using the traveling wave variable (3), Eq. (2) is reduced to the following ODE for 
+                        
+                           u
+                           =
+                           u
+                           
+                              (
+                              η
+                              )
+                           
+                        
+                     
+                     
+                        
+                           (4)
+                           
+                              
+                                 Q
+                                 
+                                    (
+                                    
+                                       u
+                                       ,
+                                        
+                                       
+                                          u
+                                          ′
+                                       
+                                       ,
+                                        
+                                       
+                                          u
+                                          ″
+                                       
+                                       ,
+                                        
+                                       
+                                          u
+                                          ‴
+                                       
+                                       ,
+                                        
+                                       
+                                          
+                                             u
+                                             ‴
+                                          
+                                          ′
+                                       
+                                       ,
+                                        
+                                       …
+                                    
+                                    )
+                                 
+                                 =
+                                 0
+                                 ,
+                              
+                           
+                        
+                     where Q is a function of 
+                        
+                           u
+                           
+                              (
+                              η
+                              )
+                           
+                        
+                      and its derivatives, prime denotes derivative with respect to η.
+
+
+                     Step 2. Suppose the solution of (4) can be expressed by a polynomial in exp(–φ(η)) as follows
+                        
+                           (5)
+                           
+                              
+                                 u
+                                 
+                                    (
+                                    η
+                                    )
+                                 
+                                 =
+                                 
+                                    a
+                                    n
+                                 
+                                  
+                                 
+                                    
+                                       
+                                          (
+                                          
+                                             exp
+                                             
+                                                (
+                                                
+                                                   −
+                                                   φ
+                                                   
+                                                      (
+                                                      η
+                                                      )
+                                                   
+                                                
+                                                )
+                                             
+                                          
+                                          )
+                                       
+                                    
+                                    n
+                                 
+                                 +
+                                 
+                                    a
+                                    
+                                       n
+                                       −
+                                       1
+                                    
+                                 
+                                  
+                                 
+                                    
+                                       
+                                          (
+                                          
+                                             exp
+                                             
+                                                (
+                                                
+                                                   −
+                                                   φ
+                                                   
+                                                      (
+                                                      η
+                                                      )
+                                                   
+                                                
+                                                )
+                                             
+                                          
+                                          )
+                                       
+                                    
+                                    
+                                       n
+                                       −
+                                       1
+                                    
+                                 
+                                 +
+                                 ⋯
+                                 ,
+                              
+                           
+                        
+                     where 
+                        
+                           
+                              a
+                              n
+                           
+                           ​
+                           ,
+                            
+                           
+                              a
+                              
+                                 n
+                                 −
+                                 1
+                              
+                           
+                           ​
+                           ,
+                            
+                           ⋯
+                        
+                      and V are constants to determined later such that an
+                      ≠ 0 and 
+                        
+                           φ
+                           
+                              (
+                              η
+                              )
+                           
+                        
+                      satisfies Eq. (1).
+
+
+                     Step 3. By using the homogenous principal, we can evaluate the value of positive integer n between the highest order linear terms and nonlinear terms of the highest order in Eq. (4). Our solutions now depend on the parameters involved in Eq. (1).
+                        Case 1
+                        
+                           λ
+                           2
+                            − 4µ > 0 and µ ≠ 0,
+                              
+                                 (6)
+                                 
+                                    
+                                       φ
+                                       
+                                          (
+                                          η
+                                          )
+                                       
+                                       =
+                                       ln
+                                       
+                                          {
+                                          
+                                             
+                                                1
+                                                
+                                                   2
+                                                   μ
+                                                
+                                             
+                                             
+                                                (
+                                                
+                                                   −
+                                                    
+                                                   
+                                                      
+                                                         
+                                                            λ
+                                                            2
+                                                         
+                                                         −
+                                                         4
+                                                         μ
+                                                      
+                                                   
+                                                   tanh
+                                                   
+                                                      (
+                                                      
+                                                         
+                                                            
+                                                               
+                                                                  
+                                                                     
+                                                                        λ
+                                                                        2
+                                                                     
+                                                                     −
+                                                                     4
+                                                                     μ
+                                                                  
+                                                               
+                                                            
+                                                            2
+                                                         
+                                                         
+                                                            (
+                                                            
+                                                               η
+                                                               +
+                                                               
+                                                                  c
+                                                                  1
+                                                               
+                                                            
+                                                            )
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                   −
+                                                   λ
+                                                
+                                                )
+                                             
+                                          
+                                          }
+                                       
+                                       ,
+                                    
+                                 
+                              
+                           where c
+                           1 is a constant of integration.
+
+
+                           λ
+                           2
+                            − 4µ < 0 and µ ≠ 0,
+                              
+                                 (7)
+                                 
+                                    
+                                       φ
+                                       
+                                          (
+                                          η
+                                          )
+                                       
+                                       =
+                                       ln
+                                       
+                                          {
+                                          
+                                             
+                                                1
+                                                
+                                                   2
+                                                   μ
+                                                
+                                             
+                                             
+                                                (
+                                                
+                                                   −
+                                                   λ
+                                                   +
+                                                    
+                                                   
+                                                      
+                                                         −
+                                                         
+                                                            λ
+                                                            2
+                                                         
+                                                         +
+                                                         4
+                                                         μ
+                                                      
+                                                   
+                                                   tan
+                                                   
+                                                      (
+                                                      
+                                                         
+                                                            
+                                                               
+                                                                  
+                                                                     −
+                                                                     
+                                                                        λ
+                                                                        2
+                                                                     
+                                                                     +
+                                                                     4
+                                                                     μ
+                                                                  
+                                                               
+                                                            
+                                                            2
+                                                         
+                                                         
+                                                            (
+                                                            
+                                                               η
+                                                               +
+                                                               
+                                                                  c
+                                                                  1
+                                                               
+                                                            
+                                                            )
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                
+                                                )
+                                             
+                                          
+                                          }
+                                       
+                                    
+                                 
+                              
+                           
+                        
+
+
+                           µ = 0 and λ ≠ 0,
+                              
+                                 (8)
+                                 
+                                    
+                                       φ
+                                       
+                                          (
+                                          η
+                                          )
+                                       
+                                       =
+                                       −
+                                       ln
+                                       
+                                          {
+                                          
+                                             
+                                                λ
+                                                
+                                                   exp
+                                                   
+                                                      (
+                                                      
+                                                         λ
+                                                         
+                                                            (
+                                                            
+                                                               η
+                                                               +
+                                                               
+                                                                  c
+                                                                  1
+                                                               
+                                                            
+                                                            )
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                   −
+                                                   1
+                                                
+                                             
+                                          
+                                          }
+                                       
+                                    
+                                 
+                              
+                           
+                        
+
+
+                           
+                              
+                                 
+                                    λ
+                                    2
+                                 
+                                 −
+                                 4
+                                 μ
+                                 =
+                                 0
+                                 ,
+                                  
+                                 λ
+                                 ≠
+                                 0
+                              
+                           , and µ ≠ 0,
+                              
+                                 (9)
+                                 
+                                    
+                                       φ
+                                       
+                                          (
+                                          η
+                                          )
+                                       
+                                       =
+                                       ln
+                                       
+                                          {
+                                          
+                                             
+                                                
+                                                   2
+                                                   
+                                                      (
+                                                      
+                                                         λ
+                                                         
+                                                            (
+                                                            
+                                                               η
+                                                               +
+                                                               
+                                                                  c
+                                                                  1
+                                                               
+                                                            
+                                                            )
+                                                         
+                                                         +
+                                                         2
+                                                      
+                                                      )
+                                                   
+                                                
+                                                
+                                                   
+                                                      (
+                                                      
+                                                         
+                                                            λ
+                                                            2
+                                                         
+                                                          
+                                                         
+                                                            (
+                                                            
+                                                               η
+                                                               +
+                                                               
+                                                                  c
+                                                                  1
+                                                               
+                                                            
+                                                            )
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                
+                                             
+                                          
+                                          }
+                                       
+                                    
+                                 
+                              
+                           
+                        
+
+
+                           λ = 0, and µ = 0,
+                              
+                                 (10)
+                                 
+                                    
+                                       φ
+                                       
+                                          (
+                                          ξ
+                                          )
+                                       
+                                       =
+                                       ln
+                                       
+                                          (
+                                          
+                                             η
+                                             +
+                                             
+                                                c
+                                                1
+                                             
+                                          
+                                          )
+                                       
+                                    
+                                 
+                              
+                           
+                        
+
+
+                     Step 4. Substitute Eq. (5) into Eq. (4) and using Eq. (1), the left hand side is converted into a polynomial in 
+                        
+                           exp
+                           
+                              (
+                              
+                                 −
+                                 φ
+                                 
+                                    (
+                                    η
+                                    )
+                                 
+                              
+                              )
+                           
+                        
+                     . Equating each coefficient of this polynomial to zero, we obtain a set of algebraic equations for 
+                        
+                           
+                              a
+                              n
+                           
+                           ​
+                           ,
+                            
+                           ⋯
+                            
+                           V
+                           ,
+                            
+                           λ
+                           ,
+                            
+                           μ
+                        
+                     .
+
+
+                     Step 5. Eventually, solving the algebraic system of equations obtained in Step 4 by the use of Maple or Mathematica, we obtain the values of the constants 
+                        
+                           
+                              a
+                              n
+                           
+                           ​
+                           ,
+                            
+                           ⋯
+                            
+                           ,
+                            
+                           V
+                           ,
+                            
+                           λ
+                        
+                      and µ. Substituting 
+                        
+                           
+                              a
+                              n
+                           
+                           ​
+                           ,
+                            
+                           ⋯
+                            
+                           ,
+                            
+                           V
+                        
+                      and the general solution of Eq. (1) into solution of Eq. (5), we obtain some valuable traveling wave solutions of Eq. (2).
+
+Let us consider the generalized Zakharov–Kuznetsov–Benjamin–Bona–Mahony equation.
+                           
+                              (11)
+                              
+                                 
+                                    
+                                       u
+                                       t
+                                    
+                                    +
+                                    
+                                       u
+                                       x
+                                    
+                                    +
+                                    a
+                                    
+                                       
+                                          
+                                             (
+                                             
+                                                
+                                                   u
+                                                   3
+                                                
+                                             
+                                             )
+                                          
+                                       
+                                       x
+                                    
+                                    +
+                                    b
+                                    
+                                       
+                                          
+                                             (
+                                             
+                                                
+                                                   u
+                                                   
+                                                      xt
+                                                   
+                                                
+                                                +
+                                                
+                                                   u
+                                                   
+                                                      yy
+                                                   
+                                                
+                                             
+                                             )
+                                          
+                                       
+                                       x
+                                    
+                                    =
+                                    0
+                                    ,
+                                 
+                              
+                           
+                        where a and b are some nonzero parameters. We utilize the traveling wave variable 
+                           
+                               
+                              u
+                              
+                                 (
+                                 
+                                    x
+                                    ,
+                                     
+                                    t
+                                 
+                                 )
+                              
+                              =
+                              u
+                              
+                                 (
+                                 η
+                                 )
+                              
+                           
+                        , 
+                           
+                              η
+                              =
+                              x
+                              +
+                              y
+                              −
+                              V
+                              t
+                           
+                        , we can convert Eq. (11) into an ordinary differential equation.
+                           
+                              (12)
+                              
+                                 
+                                    −
+                                    V
+                                    
+                                       u
+                                       ′
+                                    
+                                    +
+                                    
+                                       u
+                                       ′
+                                    
+                                    +
+                                    3
+                                    
+                                       
+                                          au
+                                       
+                                       2
+                                    
+                                    
+                                       u
+                                       ′
+                                    
+                                    −
+                                    b
+                                    
+                                       u
+                                       3
+                                    
+                                    V
+                                    +
+                                    b
+                                    
+                                       u
+                                       ‴
+                                    
+                                    =
+                                    0
+                                    ,
+                                 
+                              
+                           
+                        where the prime denotes the derivative with respect to η. Now integrating Eq. (12) we have,
+                           
+                              (13)
+                              
+                                 
+                                    −
+                                    V
+                                    u
+                                    +
+                                    u
+                                    −
+                                    b
+                                    V
+                                    
+                                       u
+                                       ″
+                                    
+                                    +
+                                    a
+                                    
+                                       u
+                                       3
+                                    
+                                    +
+                                    b
+                                    
+                                       u
+                                       ″
+                                    
+                                    +
+                                    C
+                                    =
+                                    0
+                                    ,
+                                 
+                              
+                           
+                        
+                     
+
+Balancing the u'' and u
+                        2 by using homogenous principal, we have
+                           
+                              
+                                 
+                                    3
+                                    M
+                                    =
+                                    M
+                                    +
+                                    2
+                                    ,
+                                 
+                              
+                           
+                        
+                        
+                           
+                              
+                                 
+                                    M
+                                    =
+                                    1
+                                    .
+                                 
+                              
+                           
+                        
+                     
+
+Then the trial solution of Eq. (12) can be expressed as follows,
+                           
+                              (14)
+                              
+                                 
+                                    u
+                                    
+                                       (
+                                       η
+                                       )
+                                    
+                                    =
+                                    
+                                       α
+                                       1
+                                    
+                                     
+                                    
+                                       (
+                                       
+                                          exp
+                                          
+                                             (
+                                             
+                                                −
+                                                φ
+                                                
+                                                   (
+                                                   η
+                                                   )
+                                                
+                                             
+                                             )
+                                          
+                                       
+                                       )
+                                    
+                                    +
+                                    
+                                       α
+                                       0
+                                    
+                                    ​
+                                    ,
+                                 
+                              
+                           
+                        where α
+                        1 ≠ 0 and α
+                        0 is a constant to determined, while λ, µ are arbitrary constants.
+
+Substituting 
+                           
+                              u
+                              ,
+                               
+                              
+                                 u
+                                 ′
+                              
+                              ,
+                               
+                              
+                                 u
+                                 ″
+                              
+                              ,
+                               
+                              
+                                 u
+                                 2
+                              
+                           
+                         into Eq. (13) and then equating the coefficients of 
+                           
+                              e
+                              x
+                              p
+                              
+                                 (
+                                 
+                                    −
+                                    φ
+                                    
+                                       (
+                                       η
+                                       )
+                                    
+                                 
+                                 )
+                              
+                           
+                         to zero, we get
+                           
+                              (15)
+                              
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   a
+                                                   0
+                                                
+                                                +
+                                                b
+                                                
+                                                   a
+                                                   1
+                                                
+                                                μ
+                                                λ
+                                                +
+                                                C
+                                                −
+                                                b
+                                                V
+                                                
+                                                   a
+                                                   1
+                                                
+                                                μ
+                                                λ
+                                                 
+                                                +
+                                                a
+                                                
+                                                   a
+                                                   0
+                                                   3
+                                                
+                                                −
+                                                V
+                                                
+                                                   a
+                                                   0
+                                                
+                                                =
+                                                0
+                                                ,
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   a
+                                                   1
+                                                
+                                                −
+                                                b
+                                                V
+                                                
+                                                   a
+                                                   1
+                                                
+                                                
+                                                   λ
+                                                   2
+                                                
+                                                +
+                                                2
+                                                b
+                                                
+                                                   a
+                                                   1
+                                                
+                                                μ
+                                                −
+                                                2
+                                                b
+                                                V
+                                                
+                                                   a
+                                                   1
+                                                
+                                                μ
+                                                +
+                                                3
+                                                a
+                                                
+                                                   a
+                                                   1
+                                                
+                                                
+                                                   a
+                                                   0
+                                                   2
+                                                
+                                                +
+                                                b
+                                                
+                                                   a
+                                                   1
+                                                
+                                                
+                                                   λ
+                                                   2
+                                                
+                                                 
+                                                −
+                                                V
+                                                
+                                                   a
+                                                   1
+                                                
+                                                =
+                                                0
+                                                ,
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                3
+                                                a
+                                                
+                                                   a
+                                                   0
+                                                
+                                                
+                                                   a
+                                                   1
+                                                   2
+                                                
+                                                +
+                                                3
+                                                b
+                                                
+                                                   a
+                                                   1
+                                                
+                                                λ
+                                                −
+                                                3
+                                                b
+                                                V
+                                                
+                                                   a
+                                                   1
+                                                
+                                                λ
+                                                =
+                                                0
+                                                ,
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                a
+                                                
+                                                   a
+                                                   1
+                                                   3
+                                                
+                                                +
+                                                2
+                                                b
+                                                
+                                                   a
+                                                   1
+                                                
+                                                −
+                                                2
+                                                b
+                                                V
+                                                
+                                                   a
+                                                   1
+                                                
+                                                =
+                                                0
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+Solving the set of algebraic equations, we obtain the following solution.
+                           
+                              
+                                 
+                                    
+                                       {
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      C
+                                                      =
+                                                      0
+                                                      ,
+                                                       
+                                                      λ
+                                                      =
+                                                      
+                                                         1
+                                                         
+                                                            a
+                                                            b
+                                                            
+                                                               (
+                                                               
+                                                                  V
+                                                                  −
+                                                                  1
+                                                               
+                                                               )
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         (
+                                                         
+                                                            
+                                                               2
+                                                            
+                                                            
+                                                               
+                                                                  a
+                                                                  b
+                                                                  
+                                                                     (
+                                                                     
+                                                                        V
+                                                                        −
+                                                                        1
+                                                                     
+                                                                     )
+                                                                  
+                                                               
+                                                            
+                                                            
+                                                               
+                                                                  a
+                                                                  
+                                                                     (
+                                                                     
+                                                                        2
+                                                                        b
+                                                                        V
+                                                                        μ
+                                                                        +
+                                                                        V
+                                                                        −
+                                                                        1
+                                                                        −
+                                                                        2
+                                                                        b
+                                                                        μ
+                                                                     
+                                                                     )
+                                                                  
+                                                               
+                                                            
+                                                         
+                                                      
+                                                      ,
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         a
+                                                         1
+                                                      
+                                                      =
+                                                      
+                                                         
+                                                            
+                                                               2
+                                                            
+                                                            
+                                                               
+                                                                  a
+                                                                  b
+                                                                  
+                                                                     (
+                                                                     
+                                                                        V
+                                                                        −
+                                                                        1
+                                                                     
+                                                                     )
+                                                                  
+                                                               
+                                                            
+                                                         
+                                                         a
+                                                      
+                                                      ,
+                                                      
+                                                          a
+                                                         0
+                                                      
+                                                      =
+                                                      
+                                                         
+                                                            
+                                                               
+                                                                  a
+                                                                  
+                                                                     (
+                                                                     
+                                                                        2
+                                                                        b
+                                                                        V
+                                                                        μ
+                                                                        +
+                                                                        V
+                                                                        −
+                                                                        1
+                                                                        −
+                                                                        2
+                                                                        b
+                                                                        μ
+                                                                     
+                                                                     )
+                                                                  
+                                                               
+                                                            
+                                                         
+                                                         a
+                                                      
+                                                      ,
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        where λ and µ are arbitrary constants. Now substituting the values into Eq. (14), we obtain
+                           
+                              (16)
+                              
+                                 
+                                    u
+                                    =
+                                    
+                                       
+                                          2
+                                          μ
+                                          +
+                                          1
+                                       
+                                    
+                                    +
+                                    
+                                       2
+                                    
+                                    
+                                       e
+                                       
+                                          −
+                                          φ
+                                          
+                                             (
+                                             η
+                                             )
+                                          
+                                       
+                                    
+                                    ​
+                                    ,
+                                 
+                              
+                           
+                        where 
+                           
+                              η
+                              =
+                              x
+                              +
+                              y
+                              −
+                              V
+                              t
+                           
+                        . Now substituting Eq. (6) to Eq. (10) into Eq. (16) respectively, we get the following five traveling wave solutions of generalized Zakharov–Kuznetsov–Benjamin–Bona–Mahony equation.
+                           Case 1
+                           When λ
+                              2
+                               − 4µ > 0 and µ ≠ 0, we obtain the hyperbolic function traveling wave solution.
+                                 
+                                    
+                                       
+                                          
+                                             u
+                                             1
+                                          
+                                           
+                                          
+                                             (
+                                             η
+                                             )
+                                          
+                                          =
+                                          
+                                             
+                                                2
+                                                μ
+                                                +
+                                                1
+                                             
+                                          
+                                          +
+                                          
+                                             
+                                                2
+                                                
+                                                   2
+                                                
+                                                μ
+                                             
+                                             
+                                                
+                                                   (
+                                                   
+                                                      −
+                                                      
+                                                         
+                                                            
+                                                               λ
+                                                               2
+                                                            
+                                                            −
+                                                            4
+                                                            μ
+                                                         
+                                                      
+                                                      tanh
+                                                      
+                                                         (
+                                                         
+                                                            
+                                                               
+                                                                  
+                                                                     
+                                                                        
+                                                                           λ
+                                                                           2
+                                                                        
+                                                                        −
+                                                                        4
+                                                                        μ
+                                                                     
+                                                                  
+                                                               
+                                                               2
+                                                            
+                                                            
+                                                               (
+                                                               
+                                                                  η
+                                                                  +
+                                                                  
+                                                                     c
+                                                                     1
+                                                                  
+                                                               
+                                                               )
+                                                            
+                                                         
+                                                         )
+                                                      
+                                                      −
+                                                      λ
+                                                   
+                                                   )
+                                                
+                                             
+                                          
+                                          ,
+                                       
+                                    
+                                 
+                              where η = x + y − Vt and where c
+                              1 is an arbitrary constant.
+
+When λ
+                              2
+                               − 4µ < 0 and µ ≠ 0, we obtain trigonometric solution.
+                                 
+                                    
+                                       
+                                          
+                                             u
+                                             2
+                                          
+                                           
+                                          
+                                             (
+                                             η
+                                             )
+                                          
+                                          =
+                                          
+                                             
+                                                2
+                                                μ
+                                                +
+                                                1
+                                             
+                                          
+                                          +
+                                          
+                                             
+                                                2
+                                                
+                                                   2
+                                                
+                                                μ
+                                             
+                                             
+                                                
+                                                   (
+                                                   
+                                                       
+                                                      
+                                                         
+                                                            −
+                                                            
+                                                               λ
+                                                               2
+                                                            
+                                                            +
+                                                            4
+                                                            μ
+                                                         
+                                                      
+                                                      tanh
+                                                      
+                                                         (
+                                                         
+                                                            
+                                                               
+                                                                  
+                                                                     
+                                                                        −
+                                                                        
+                                                                           λ
+                                                                           2
+                                                                        
+                                                                        +
+                                                                        4
+                                                                        μ
+                                                                     
+                                                                  
+                                                               
+                                                               2
+                                                            
+                                                            
+                                                               (
+                                                               
+                                                                  η
+                                                                  +
+                                                                  
+                                                                     c
+                                                                     1
+                                                                  
+                                                               
+                                                               )
+                                                            
+                                                         
+                                                         )
+                                                      
+                                                      −
+                                                      λ
+                                                   
+                                                   )
+                                                
+                                             
+                                          
+                                          ,
+                                       
+                                    
+                                 
+                              where η = x + y − Vt and where c
+                              1 is an arbitrary constant.
+
+When µ = 0 and λ ≠ 0, we obtain exponential solution.
+                                 
+                                    
+                                       
+                                          
+                                             u
+                                             3
+                                          
+                                           
+                                          
+                                             (
+                                             η
+                                             )
+                                          
+                                          =
+                                          
+                                             
+                                                2
+                                                μ
+                                                +
+                                                1
+                                             
+                                          
+                                          +
+                                          
+                                             
+                                                
+                                                   2
+                                                
+                                                λ
+                                             
+                                             
+                                                
+                                                   (
+                                                   
+                                                      exp
+                                                      
+                                                         
+                                                            
+                                                               (
+                                                               
+                                                                  η
+                                                                  +
+                                                                  
+                                                                     c
+                                                                     1
+                                                                  
+                                                               
+                                                               )
+                                                            
+                                                         
+                                                         λ
+                                                      
+                                                      −
+                                                      1
+                                                   
+                                                   )
+                                                
+                                             
+                                          
+                                          ,
+                                       
+                                    
+                                 
+                              where η = x + y − Vt and where c
+                              1 is an arbitrary constant.
+
+When 
+                                 
+                                    
+                                       λ
+                                       2
+                                    
+                                    −
+                                    4
+                                    μ
+                                    =
+                                    0
+                                    ,
+                                     
+                                    λ
+                                    ≠
+                                    0
+                                 
+                               and µ ≠ 0, we obtain rational function solution.
+                                 
+                                    
+                                       
+                                          
+                                             u
+                                             4
+                                          
+                                           
+                                          
+                                             (
+                                             η
+                                             )
+                                          
+                                          =
+                                          
+                                             
+                                                2
+                                                μ
+                                                +
+                                                1
+                                             
+                                          
+                                          +
+                                          
+                                             
+                                                
+                                                   2
+                                                
+                                                 
+                                                
+                                                   (
+                                                   
+                                                      η
+                                                      +
+                                                      
+                                                         c
+                                                         1
+                                                      
+                                                   
+                                                   )
+                                                
+                                                 
+                                                
+                                                   λ
+                                                   2
+                                                
+                                             
+                                             
+                                                
+                                                   (
+                                                   
+                                                      2
+                                                      
+                                                         
+                                                            
+                                                               (
+                                                               
+                                                                  η
+                                                                  +
+                                                                  
+                                                                     c
+                                                                     1
+                                                                  
+                                                               
+                                                               )
+                                                            
+                                                         
+                                                         λ
+                                                      
+                                                      +
+                                                      2
+                                                   
+                                                   )
+                                                
+                                             
+                                          
+                                          ,
+                                       
+                                    
+                                 
+                              where η = x + y − Vt and where c
+                              1 is an arbitrary constant.
+
+When λ = 0, and µ = 0, we obtain rational function solution.
+                                 
+                                    
+                                       
+                                          
+                                             u
+                                             5
+                                          
+                                           
+                                          
+                                             (
+                                             η
+                                             )
+                                          
+                                          =
+                                          
+                                             
+                                                2
+                                                μ
+                                                +
+                                                1
+                                             
+                                          
+                                          +
+                                          
+                                             
+                                                
+                                                   2
+                                                
+                                             
+                                             
+                                                
+                                                   (
+                                                   
+                                                      η
+                                                      +
+                                                      
+                                                         c
+                                                         1
+                                                      
+                                                   
+                                                   )
+                                                
+                                             
+                                          
+                                          ,
+                                       
+                                    
+                                 
+                              where η = x + y − Vt and where c
+                              1 is an arbitrary constant.
+
+
+                        Graphical representation of the solutions:
+                     
+
+The graphical illustrations of the solutions are given below in the figures with the aid of Maple (Figs. 1–5
+                        ).
+                        
+                        
+                        
+                     
+
+Let us consider Simplified Modified form of Camassa–Holm equation.
+                           
+                              (17)
+                              
+                                 
+                                    
+                                       u
+                                       t
+                                    
+                                    +
+                                    2
+                                    β
+                                    
+                                       u
+                                       x
+                                    
+                                    −
+                                    
+                                       u
+                                       
+                                          x
+                                          x
+                                          t
+                                       
+                                    
+                                    +
+                                    δ
+                                    
+                                       u
+                                       2
+                                    
+                                    
+                                       u
+                                       x
+                                    
+                                    =
+                                    0
+                                    ,
+                                 
+                              
+                           
+                        where β and δ are some nonzero parameters.
+
+We utilize the traveling wave variable
+                           
+                              u
+                              
+                                 (
+                                 
+                                    x
+                                    ,
+                                     
+                                    t
+                                 
+                                 )
+                              
+                              =
+                              u
+                              
+                                 (
+                                 η
+                                 )
+                              
+                           
+                        , η = x − Vt, we can convert Eq. (17) into an ordinary differential equation.
+                           
+                              (18)
+                              
+                                 
+                                    −
+                                    V
+                                    
+                                       u
+                                       ′
+                                    
+                                    +
+                                    2
+                                    β
+                                    
+                                       u
+                                       ′
+                                    
+                                    +
+                                    V
+                                    
+                                       u
+                                       ‴
+                                    
+                                    +
+                                    δ
+                                    
+                                       u
+                                       2
+                                    
+                                    
+                                       u
+                                       ′
+                                    
+                                    =
+                                    0
+                                    ,
+                                 
+                              
+                           
+                        where the prime denotes the derivative with respect to η.
+
+Now integrating Eq. (18) we have,
+                           
+                              (19)
+                              
+                                 
+                                    −
+                                    V
+                                    u
+                                    +
+                                    2
+                                    β
+                                    u
+                                    +
+                                    
+                                       u
+                                       ″
+                                    
+                                    V
+                                    +
+                                    
+                                       1
+                                       3
+                                    
+                                    δ
+                                    
+                                       u
+                                       3
+                                    
+                                    +
+                                    C
+                                    =
+                                    0
+                                    ,
+                                 
+                              
+                           
+                        
+                     
+
+Balancing the u' and u
+                        2 by using homogenous principal, we have
+                           
+                              
+                                 
+                                    3
+                                    M
+                                    =
+                                    M
+                                    +
+                                    2
+                                    ,
+                                 
+                              
+                           
+                        
+                        
+                           
+                              
+                                 
+                                    M
+                                    =
+                                    1
+                                    .
+                                 
+                              
+                           
+                        
+                     
+
+Then the trial solution of Eq. (18) can be expressed as follows,
+                           
+                              (20)
+                              
+                                 
+                                    u
+                                    
+                                       (
+                                       η
+                                       )
+                                    
+                                    =
+                                    
+                                       α
+                                       1
+                                    
+                                     
+                                    
+                                       (
+                                       
+                                          exp
+                                          
+                                             (
+                                             
+                                                −
+                                                φ
+                                                
+                                                   (
+                                                   η
+                                                   )
+                                                
+                                             
+                                             )
+                                          
+                                       
+                                       )
+                                    
+                                    +
+                                    
+                                       α
+                                       0
+                                    
+                                    ​
+                                    ,
+                                 
+                              
+                           
+                        where α
+                        1 ≠ 0, α
+                        0 is a constant to determined, while λ, µ are arbitrary constants.
+
+Substituting 
+                           
+                              u
+                              ,
+                               
+                              
+                                 u
+                                 ′
+                              
+                              ,
+                               
+                              
+                                 u
+                                 ″
+                              
+                              ,
+                               
+                              
+                                 u
+                                 2
+                              
+                           
+                         into Eq. (19) and then equating the coefficients of 
+                           
+                              e
+                              x
+                              p
+                              
+                                 (
+                                 
+                                    −
+                                    φ
+                                    
+                                       (
+                                       η
+                                       )
+                                    
+                                 
+                                 )
+                              
+                           
+                         to zero, we get
+                           
+                              (21)
+                              
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   1
+                                                   3
+                                                
+                                                δ
+                                                
+                                                   a
+                                                   0
+                                                   3
+                                                
+                                                +
+                                                2
+                                                
+                                                   a
+                                                   0
+                                                
+                                                β
+                                                +
+                                                C
+                                                +
+                                                V
+                                                
+                                                   a
+                                                   1
+                                                
+                                                μ
+                                                λ
+                                                −
+                                                V
+                                                
+                                                   a
+                                                   0
+                                                
+                                                =
+                                                0
+                                                ,
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                2
+                                                V
+                                                
+                                                   a
+                                                   1
+                                                
+                                                μ
+                                                +
+                                                δ
+                                                
+                                                   a
+                                                   0
+                                                   2
+                                                
+                                                
+                                                   a
+                                                   1
+                                                
+                                                +
+                                                2
+                                                
+                                                   a
+                                                   1
+                                                
+                                                β
+                                                +
+                                                C
+                                                +
+                                                V
+                                                
+                                                   a
+                                                   1
+                                                
+                                                
+                                                   λ
+                                                   2
+                                                
+                                                −
+                                                V
+                                                
+                                                   a
+                                                   1
+                                                
+                                                =
+                                                0
+                                                ,
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                δ
+                                                
+                                                   a
+                                                   0
+                                                
+                                                
+                                                   a
+                                                   1
+                                                   2
+                                                
+                                                +
+                                                3
+                                                V
+                                                
+                                                   a
+                                                   1
+                                                
+                                                λ
+                                                =
+                                                0
+                                                ,
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   1
+                                                   3
+                                                
+                                                δ
+                                                
+                                                   a
+                                                   1
+                                                   3
+                                                
+                                                +
+                                                2
+                                                V
+                                                
+                                                   a
+                                                   1
+                                                
+                                                =
+                                                0
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+Solving the set of algebraic equations, we obtain the following solution.
+                           
+                              
+                                 
+                                    
+                                       {
+                                       
+                                          λ
+                                          =
+                                          
+                                             1
+                                             3
+                                          
+                                          
+                                             
+                                                
+                                                   a
+                                                   0
+                                                
+                                                
+                                                   
+                                                      −
+                                                      6
+                                                      δ
+                                                      V
+                                                   
+                                                
+                                             
+                                             V
+                                          
+                                          ,
+                                           
+                                          μ
+                                          =
+                                          
+                                             1
+                                             6
+                                          
+                                          
+                                             
+                                                3
+                                                V
+                                                −
+                                                6
+                                                β
+                                                −
+                                                δ
+                                                
+                                                   a
+                                                   0
+                                                   2
+                                                
+                                             
+                                             V
+                                          
+                                          ,
+                                          
+                                              a
+                                             1
+                                          
+                                          =
+                                          −
+                                          
+                                             
+                                                
+                                                   
+                                                      −
+                                                      6
+                                                      δ
+                                                      V
+                                                   
+                                                
+                                             
+                                             δ
+                                          
+                                          ,
+                                           
+                                          C
+                                          =
+                                          0
+                                       
+                                    
+                                    ,
+                                 
+                              
+                           
+                        where λ and µ are arbitrary constants.
+
+Now substituting the values into Eq. (20), we obtain,
+                           
+                              (22)
+                              
+                                 
+                                    u
+                                    =
+                                    −
+                                    
+                                       
+                                          −
+                                          δ
+                                          
+                                             a
+                                             0
+                                          
+                                          +
+                                           
+                                          
+                                             6
+                                          
+                                          
+                                             
+                                                –
+                                                δ
+                                                V
+                                             
+                                          
+                                          
+                                             e
+                                             
+                                                −
+                                                φ
+                                                
+                                                   (
+                                                   η
+                                                   )
+                                                
+                                             
+                                          
+                                       
+                                       δ
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+Where η = x − Vt.
+
+Now substituting Eq. (6) to Eq. (10) into Eq. (22) respectively, we get the following five traveling wave solutions of the Simplified Modified form of Camassa–Holm equation.
+                           Case 1
+                           When λ
+                              2
+                               − 4µ > 0 and µ ≠ 0, we obtain the hyperbolic function traveling wave solution.
+                                 
+                                    
+                                       
+                                          
+                                             u
+                                             1
+                                          
+                                           
+                                          
+                                             (
+                                             η
+                                             )
+                                          
+                                          =
+                                          
+                                             a
+                                             0
+                                          
+                                          −
+                                          
+                                             
+                                                2
+                                                
+                                                   6
+                                                
+                                                μ
+                                             
+                                             
+                                                
+                                                   (
+                                                   
+                                                      −
+                                                      
+                                                         
+                                                            
+                                                               λ
+                                                               2
+                                                            
+                                                            −
+                                                            4
+                                                            μ
+                                                         
+                                                      
+                                                      tanh
+                                                      
+                                                         (
+                                                         
+                                                            
+                                                               
+                                                                  
+                                                                     
+                                                                        
+                                                                           λ
+                                                                           2
+                                                                        
+                                                                        −
+                                                                        4
+                                                                        μ
+                                                                     
+                                                                  
+                                                               
+                                                               2
+                                                            
+                                                            
+                                                               (
+                                                               
+                                                                  η
+                                                                  +
+                                                                  
+                                                                     c
+                                                                     1
+                                                                  
+                                                               
+                                                               )
+                                                            
+                                                         
+                                                         )
+                                                      
+                                                      −
+                                                      λ
+                                                   
+                                                   )
+                                                
+                                             
+                                          
+                                          ,
+                                       
+                                    
+                                 
+                              where η = x − Vt and where c
+                              1 is an arbitrary constant.
+
+When λ
+                              2
+                               − 4µ < 0 and µ ≠ 0, we obtain trigonometric solution.
+                                 
+                                    
+                                       
+                                          
+                                             u
+                                             2
+                                          
+                                           
+                                          
+                                             (
+                                             η
+                                             )
+                                          
+                                          =
+                                          
+                                             a
+                                             0
+                                          
+                                          −
+                                          
+                                             
+                                                2
+                                                
+                                                   6
+                                                
+                                                μ
+                                             
+                                             
+                                                
+                                                   (
+                                                   
+                                                      +
+                                                      
+                                                         
+                                                            −
+                                                            
+                                                               λ
+                                                               2
+                                                            
+                                                            +
+                                                            4
+                                                            μ
+                                                         
+                                                      
+                                                      tan
+                                                      
+                                                         (
+                                                         
+                                                            
+                                                               
+                                                                  
+                                                                     
+                                                                        −
+                                                                        
+                                                                           λ
+                                                                           2
+                                                                        
+                                                                        +
+                                                                        4
+                                                                        μ
+                                                                     
+                                                                  
+                                                               
+                                                               2
+                                                            
+                                                            
+                                                               (
+                                                               
+                                                                  η
+                                                                  +
+                                                                  
+                                                                     c
+                                                                     1
+                                                                  
+                                                               
+                                                               )
+                                                            
+                                                         
+                                                         )
+                                                      
+                                                      −
+                                                      λ
+                                                   
+                                                   )
+                                                
+                                             
+                                          
+                                          ,
+                                       
+                                    
+                                 
+                              where η = x − Vt and where c
+                              1 is an arbitrary constant.
+
+When µ = 0 and λ ≠ 0, we obtain exponential solution.
+                                 
+                                    
+                                       
+                                          
+                                             u
+                                             3
+                                          
+                                           
+                                          
+                                             (
+                                             η
+                                             )
+                                          
+                                          =
+                                          
+                                             a
+                                             0
+                                          
+                                          −
+                                          
+                                             
+                                                
+                                                   6
+                                                
+                                                λ
+                                             
+                                             
+                                                e
+                                                x
+                                                p
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               (
+                                                               
+                                                                  η
+                                                                  +
+                                                                  
+                                                                     c
+                                                                     1
+                                                                  
+                                                               
+                                                               )
+                                                            
+                                                         
+                                                         λ
+                                                      
+                                                      −
+                                                      1
+                                                   
+                                                   )
+                                                
+                                             
+                                          
+                                          ,
+                                       
+                                    
+                                 
+                              where η = x − Vt and where c
+                              1 is an arbitrary constant.
+
+When 
+                                 
+                                    
+                                       λ
+                                       2
+                                    
+                                    −
+                                    4
+                                    μ
+                                    =
+                                    0
+                                    ,
+                                     
+                                    λ
+                                    ≠
+                                    0
+                                 
+                              , and µ ≠ 0, we obtain rational function solution.
+                                 
+                                    
+                                       
+                                          
+                                             u
+                                             4
+                                          
+                                           
+                                          
+                                             (
+                                             η
+                                             )
+                                          
+                                          =
+                                          
+                                             a
+                                             0
+                                          
+                                          −
+                                          
+                                             
+                                                
+                                                   6
+                                                
+                                                
+                                                   (
+                                                   
+                                                      η
+                                                      +
+                                                      
+                                                         c
+                                                         1
+                                                      
+                                                   
+                                                   )
+                                                
+                                                
+                                                   λ
+                                                   2
+                                                
+                                             
+                                             
+                                                
+                                                   (
+                                                   
+                                                      2
+                                                      
+                                                         
+                                                            
+                                                               (
+                                                               
+                                                                  η
+                                                                  +
+                                                                  
+                                                                     c
+                                                                     1
+                                                                  
+                                                               
+                                                               )
+                                                            
+                                                         
+                                                         λ
+                                                      
+                                                      +
+                                                      2
+                                                   
+                                                   )
+                                                
+                                             
+                                          
+                                          ,
+                                       
+                                    
+                                 
+                              where η = x − Vt and where c
+                              1 is an arbitrary constant.
+
+when λ = 0, and µ = 0, we obtain rational function solution.
+                                 
+                                    
+                                       
+                                          
+                                             u
+                                             5
+                                          
+                                           
+                                          
+                                             (
+                                             η
+                                             )
+                                          
+                                          =
+                                          
+                                             a
+                                             0
+                                          
+                                          −
+                                          
+                                             
+                                                
+                                                   6
+                                                
+                                             
+                                             
+                                                
+                                                   (
+                                                   
+                                                      η
+                                                      +
+                                                      
+                                                         c
+                                                         1
+                                                      
+                                                   
+                                                   )
+                                                
+                                             
+                                          
+                                          ,
+                                       
+                                    
+                                 
+                              where η = x − Vt and where c
+                              1 is an arbitrary constant.
+
+
+                        Graphical representation of the solutions:
+                     
+
+The graphical illustrations of the solutions are given below in the figures with the aid of Maple (Figs. 6–10
+                        ).
+                        
+                        
+                        
+                     
+
+
+                        Conclusions: The 
+                           
+                              exp
+                              
+                                 (
+                                 
+                                    −
+                                    φ
+                                    
+                                       (
+                                       η
+                                       )
+                                    
+                                 
+                                 )
+                              
+                           
+                        -expansion method is very important in finding the exact solutions of nonlinear evolution equations. In this article, we have successfully formulated the exact and traveling wave solutions to the generalized Zakharov–Kuznetsov–Benjamin–Bona–Mahony equation and Simplified Modified form of Camassa–Holm equation. The wave solutions are obtained through the hyperbolic, trigonometric, exponential and rational functions. The calculation procedure is simple, direct and constructive. This study shows that the method is quite efficient and much effective for finding exact solutions of nonlinear evolution equations (NLEEs). Also, we observe that the method is straightforward and can be applied to many other nonlinear evolution equations.
+
+@&#REFERENCES@&#
+

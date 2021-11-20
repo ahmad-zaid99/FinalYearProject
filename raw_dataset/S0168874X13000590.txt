@@ -1,0 +1,3657 @@
+@&#MAIN-TITLE@&#Finite element analysis over tangled simplicial meshes: Theory and implementation
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           A new theory is proposed for finite element analysis over a tangled mesh.
+
+
+                        
+                        
+                           
+                           The theory rests on cell decomposition and cell shape functions.
+
+
+                        
+                        
+                           
+                           The theory extends continuous Galerkin formulation to a tangled mesh.
+
+
+                        
+                        
+                           
+                           Numerical results are provided to validate the proposed theory.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Tangled
+
+Inverted
+
+Morphing
+
+@&#ABSTRACT@&#
+
+
+                  In modern finite element analysis (FEA), a mesh is said to be ‘tangled’ if it contains one or more inverted elements. Tangling can occur, for example, during mesh optimization and mesh morphing. Modern finite element theory and commercial FEA packages are not designed to handle tangled meshes, i.e., they can lead to erroneous results. Researchers and practitioners therefore unanimously recommend untangling prior to analysis.
+                  In this paper, a new mathematical framework for FEA over tangled meshes is proposed. Specifically, by defining a cell decomposition of a tangled mesh, and an associated set of cell shape functions, it is shown that FEA can be successfully carried out over tangled meshes. The cell shape functions are constructed through an oriented linear combination of the classic element shape functions. Numerical examples illustrate the correctness of the proposed framework. Potential applications of the proposed framework are also illustrated.
+               
+
+@&#INTRODUCTION@&#
+
+In modern finite element analysis (FEA), the underlying mesh is required to satisfy numerous topological and geometrical properties [1–3]. For example, the mesh must: (1) be connected, (2) conform to the boundary, (3) be of ‘good quality’, and (4) not contain inverted elements, etc. In this paper, the primarily focus is on the last constraint.
+
+
+                     
+                     Fig. 1 illustrates an unacceptable mesh with one inverted element. In a later Section, we shall establish that the presence of an inverted element necessarily implies that the mesh must contain overlapping elements, i.e., the mesh must be tangled.
+
+Modern finite element theory and commercial FEA packages are not designed to handle tangled meshes, i.e., they can lead to erroneous results. This is confirmed later in this paper through a simple experiment using the commercial package ANSYS [4]. Researchers and practitioners therefore unanimously recommend untangling the mesh prior to analysis. For example, to quote [5]: “Because tangled meshes generate physically invalid solutions, it is imperative that such meshes [be] untangled”, and to quote [6]: “Since constitutive models for real materials are meaningful only for uninverted material, standard finite element simulation algorithms fail as soon as a single tetrahedron inverts …”
+
+Unfortunately, untangling is as difficult as mesh generation and optimization [7]. Indeed, as pointed in [6], none of these untangling methods are guaranteed to work, and “failure to untangle a single tetrahedron forces the simulation to fail for most real world constitutive model”. Therefore, a new extension to FEA is proposed in this paper; this extension provides the necessary framework for handling tangled meshes.
+
+The remainder of the paper is organized as follows. In Section 2, a brief literature review reveals the practical challenges posed by tangled meshes. Then, in Section 3, the mathematical ambiguity posed by tangled meshes is identified and isolated. Then, the notions of the cell decomposition and the cell shape function are introduced to resolve the ambiguity. Finally, a critical theorem for handling tangled meshes is established. In Section 4, a practical implementation for FEA over tangled meshes is discussed. This is followed by numerical experiments in Section 5. Conclusions and future work are addressed in Section 6.
+
+@&#LITERATURE REVIEW@&#
+
+Tangling of finite element meshes can occur today during:
+                        
+                           •
+                           
+                              
+                                 Mesh generation: Mesh generators are generally adept at constructing high quality non-tangled meshes of complex geometries. Yet, for example, during all-hex meshing, tangling can inadvertently occur, resulting in a mesh failure [8]. The user must then attempt a remesh with a different set of mesh parameters.
+
+
+                              
+                                 Mesh optimization
+                              
+                              : Similarly, mesh optimizers, in an attempt to improve mesh quality, can inadvertently introduce tangling [9–12]. Further, classic notions of mesh quality are inappropriate in the presence of tangles [9,12–14]. Therefore, the mesh is first untangled [15], and then optimized [9]. More recently, research efforts have focused on improving the quality of meshes while untangling [5,7,12].
+
+
+                              
+                                 Mesh morphing:
+                               When the underlying geometry is modified, it may be advantageous to morph, i.e., stretch and transform, an existing mesh rather than remesh [16]. Various mesh morphing techniques exist today [16]. Unfortunately, all mesh morphing methods, especially the simple and efficient ones, can lead to tangled meshes [16].
+
+
+                              
+                                 Mesh deformation
+                              
+                              : Last, but not the least, in large-scale deformation, excessive node movement can result in tangling [17], and remeshing can result in a significant loss in accuracy [18]. The concept of invertible finite elements was developed in [6,19] specifically to address this problem. In [6,19], the authors propose a numerical strategy of modifying the constitutive model in the presence of inverted elements. While this method leads to visually correct results and is a practical solution to large-deformation computer-graphics problems, the theoretical basis is not fully established. Indeed, the authors state: “We heuristically assume that each element is as uninverted as possible, …” In [20], the concept of invertible finite element was further extended to provide a smooth extension of arbitrary isotropic hyper-elastic energy. Once again, heuristics were used to achieve numerical efficiency; to quote [20]: “In fact, we provide a heuristic that prevents the need for the costly SVD whenever the material is in this uninverted region.” In contrast, the method proposed in this paper does not entail heuristics.
+
+Thus, the inability of modern FEA to handle tangled meshes has put a severe burden on the user and FEA related technologies. In passing, we note that the s-FEM framework was proposed in [21] for handling overlapping elements, but s-FEM does not apply to a tangled mesh containing inverted elements. On the other hand, a preliminary FEA framework for handling tangled meshes (with inverted elements) was proposed in [22]. In this paper, this preliminary framework is formalized through a sharper theory, and is accompanied by a robust and efficient implementation.
+
+The objective of this Section is to identify the specific problem posed by tangled meshes.
+
+As a vehicle for discussion, consider the Poisson problem [1]:
+                           
+                              (3.1)
+                              
+                                 
+                                    
+                                       
+                                          Find
+                                          
+                                          u
+                                          ∈
+                                          
+                                             
+                                                H
+                                             
+                                             
+                                                0
+                                             
+                                             
+                                                1
+                                             
+                                          
+                                          (
+                                          Ω
+                                          )
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             ∫
+                                             Ω
+                                          
+                                          
+                                             (
+                                             ∇
+                                             v
+                                             )
+                                             
+                                                
+                                             
+                                             (
+                                             ∇
+                                             u
+                                             )
+                                             d
+                                             Ω
+                                          
+                                          =
+                                          
+                                             ∫
+                                             Ω
+                                          
+                                          
+                                             v
+                                             f
+                                             d
+                                             Ω
+                                          
+                                          +
+                                          
+                                             ∫
+                                             
+                                                
+                                                   
+                                                      Γ
+                                                   
+                                                   
+                                                      N
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             v
+                                             q
+                                             d
+                                             Γ
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          ∀
+                                          v
+                                          ∈
+                                          
+                                             
+                                                H
+                                             
+                                             
+                                                0
+                                             
+                                             
+                                                1
+                                             
+                                          
+                                          (
+                                          Ω
+                                          )
+                                       
+                                    
+                                 
+                              
+                           
+                        where 
+                           Ω
+                           ⊂
+                           
+                              
+                                 ℜ
+                              
+                              n
+                           
+                           ,
+                           n
+                           =
+                           1
+                           ,
+                           2
+                           ,
+                           3
+                         is a domain with a smooth boundary; see 
+                        Fig. 2 for an illustrative example.
+
+In the classic finite element analysis (FEA) of the above problem, a finite element mesh is first constructed over the domain [1]; see 
+                        Fig. 3a. By construction of the mesh, the elements are positively-oriented, non-overlapping and form a quasi-disjoint decomposition. Specifically, given an interior node (see Fig. 3b), let 
+                           ω
+                         be the union of all elements 
+                           
+                              
+                                 E
+                              
+                              
+                                 1
+                              
+                           
+                           ,
+                           
+                              
+                                 E
+                              
+                              
+                                 2
+                              
+                           
+                           ,
+                           ..
+                           .
+                         attached to the node. By construction of the finite element mesh [23]:
+                           
+                              (3.2)
+                              
+                                 ω
+                                 =
+                                 
+                                    ∪
+                                    i
+                                 
+                                 
+                                    
+                                       
+                                          E
+                                       
+                                       
+                                          i
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 ∩
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 =
+                                 ∅
+                                 ,
+                                 i
+                                 ≠
+                                 j
+                              
+                           
+                        
+                     
+
+In modern FEA, to satisfy the ‘continuity’ requirement of 
+                           u
+                           ,
+                           v
+                           ∈
+                           
+                              
+                                 H
+                              
+                              
+                                 0
+                              
+                              
+                                 1
+                              
+                           
+                           (
+                           Ω
+                           )
+                         in Eq. (3.1), the function space is defined as follows. Over each element 
+                           
+                              
+                                 E
+                              
+                              
+                                 i
+                              
+                           
+                         surrounding a node, element shape functions 
+                           
+                              
+                                 N
+                              
+                              
+                                 i
+                              
+                           
+                         are defined such that: (1) 
+                           
+                              
+                                 N
+                              
+                              
+                                 i
+                              
+                           
+                         takes a value of 1 at that node, (2) 
+                           
+                              
+                                 N
+                              
+                              
+                                 i
+                              
+                           
+                         goes to zero at all other nodes of that element, and (3) neighboring shape functions 
+                           
+                              
+                                 N
+                              
+                              
+                                 i
+                              
+                           
+                         and 
+                           
+                              
+                                 N
+                              
+                              
+                                 j
+                              
+                           
+                         are continuous across element boundaries. A typical element shape function is illustrated in 
+                        Fig. 4.
+
+Due to the quasi-disjoint decomposition, the element shape functions 
+                           
+                              
+                                 N
+                              
+                              
+                                 1
+                              
+                           
+                           ,
+                           
+                              
+                                 N
+                              
+                              
+                                 2
+                              
+                           
+                           ,
+                           ..
+                           .
+                         can be ‘stitched’ together into single hat function 
+                           ϕ
+                         over the region 
+                           ω
+                        ; see 
+                        Fig. 5. From this construction, it can be shown that (page 41 of [24]):
+                           
+                              (3.3)
+                              
+                                 ϕ
+                                 ∈
+                                 
+                                    
+                                       H
+                                    
+                                    
+                                       0
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 (
+                                 ω
+                                 )
+                              
+                           
+                        
+                     
+
+In other words, 
+                           ϕ
+                         is sufficiently smooth and goes to zero on the boundary of the region surrounding the node identified. Further, 
+                           ϕ
+                         can be trivially extended to zero over the remainder of the mesh. This process is repeated for each node 
+                           i
+                         to yield hat functions 
+                           
+                              
+                                 ϕ
+                              
+                              
+                                 (
+                                 i
+                                 )
+                              
+                           
+                        .
+
+Finally, one seeks an approximate solution of the form:
+                           
+                              (3.4)
+                              
+                                 u
+                                 =
+                                 
+                                    
+                                       ∑
+                                       i
+                                    
+                                    
+                                       
+                                          
+                                             
+                                                u
+                                                ^
+                                             
+                                          
+                                          
+                                             (
+                                             i
+                                             )
+                                          
+                                       
+                                       
+                                          
+                                             ϕ
+                                          
+                                          
+                                             (
+                                             i
+                                             )
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        where 
+                           
+                              
+                                 
+                                    u
+                                    ^
+                                 
+                              
+                              
+                                 (
+                                 i
+                                 )
+                              
+                           
+                         is the degree of freedom associated with node 
+                           i
+                        . Due to Eq. (3.3), it can be shown that [25], [24]:
+                           
+                              (3.5)
+                              
+                                 u
+                                 ∈
+                                 
+                                    
+                                       H
+                                    
+                                    
+                                       0
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 (
+                                 Ω
+                                 )
+                              
+                           
+                        
+                     
+
+Unfortunately, the above process breaks down in a tangled mesh. To identify the underlying reason, a few definitions are essential. To begin with, the orientation of simplicial elements is defined here as follows.
+                           Definition 1
+                           In 2D, a triangle element defined by three points 
+                                 a
+                                 b
+                                 c
+                               (in that order) is positively/negatively oriented if the interior of the element lies to the left/right of the oriented segment 
+                                 a
+                                 b
+                              , or equivalently 
+                                 b
+                                 c
+                               or 
+                                 c
+                                 a
+                              . □
+
+In 3D, a tetrahedral element defined by four points 
+                                 a
+                                 b
+                                 c
+                                 d
+                               (in that order) is positively/negatively oriented if the interior of the element lies to the left/right of the oriented plane 
+                                 a
+                                 b
+                                 c
+                              . □
+
+One can show that if a simplicial element is positively/negatively oriented as defined above, then the determinant of its Jacobian is positive/negative [5].
+                           Definition 3
+                           Let the orientation of a simplicial element be denoted by 
+                                 
+                                    
+                                       Θ
+                                    
+                                    
+                                       k
+                                    
+                                 
+                              , where 
+                                 
+                                    
+                                       Θ
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 =
+                                 ±
+                                 1
+                              . □
+
+Finally, a tangled mesh is defined in this paper as follows.
+                           Definition 4
+                           A connected and topologically valid finite element mesh is tangled if it contains elements of opposite orientation. □
+
+An example of a tangled mesh is illustrated in 
+                        Fig. 6a. Given a connected and topologically valid finite element mesh that is acceptable by modern FEA, it is assumed that the tangled mesh is obtained through a pure node movement, i.e., the topology is not modified. Fig. 6b illustrates a node attached to an inverted element.
+
+One can now establish the following result.
+                           Lemma
+                           In a tangled mesh, there must exist a pair of neighboring overlapping elements.
+
+In a tangled mesh, consider any element with a negative orientation and one of its neighbors with a positive orientation (such a pair must exist in a connected tangled mesh). In 2-D, let the two neighboring triangles be defined by 
+                                 a
+                                 b
+                                 c
+                               (the positive element) and 
+                                 b
+                                 a
+                                 
+                                    c
+                                    ′
+                                 
+                               (the negative element). By definition, the interior of 
+                                 a
+                                 b
+                                 c
+                               lies to the left of 
+                                 a
+                                 b
+                              , and the interior of 
+                                 b
+                                 a
+                                 
+                                    c
+                                    ′
+                                 
+                               lies to the right of 
+                                 b
+                                 a
+                              , i.e., to the left of 
+                                 a
+                                 b
+                              . Thus there are points that belong to both elements, i.e., the two elements overlap. Similar arguments hold in 3-D. □
+
+The above lemma implies that there are points within a mesh that belong to multiple elements, the hat function 
+                           ϕ
+                         is ill-defined/ambiguous at such points; see Fig. 6b.
+
+The ambiguity of 
+                           ϕ
+                         can be resolved in multiple ways. For example, 
+                           ϕ
+                         at an overlapping point can be defined as: (1) the maximum of all element shape function values at that point, or (2) the sum/average of these values, and so on. However, in addition to resolving the ambiguity, Eq. (3.3) must also be satisfied; the next Section discusses the proposed methodology.
+
+In this Section, the focus is on defining the hat-function 
+                           ϕ
+                         at each node of a tangled mesh such that it is unambiguous, and it satisfies the continuity requirement of Eq. (3.3). Once this is done, the finite element framework for tangled meshes can be easily established.
+
+As in the previous Section, the focus is on a single node within a mesh and the set of elements attached to it. These elements are allowed to tangle in an arbitrary manner. We retain the previous definition of 
+                           ω
+                         as the (set) union of all elements attached to the given node (see Eq. (3.2)). However, since a point within 
+                           ω
+                         can belong to multiple elements, we define an index associated with each point within 
+                           ω
+                         as:
+                           
+                              (3.6)
+                              
+                                 I
+                                 (
+                                 p
+                                 )
+                                 =
+                                 {
+                                 k
+                                 |
+                                 p
+                                 ∈
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 }
+                              
+                           
+                        i.e., the index associated with a point within a mesh is the (integer) set of all elements containing that point. Note that, in a non-tangled mesh, the index of every point is a unique element number. However, in a tangled mesh, all permutations and combinations are possible. Further, points may share the same index, leading to the notion of a cell.
+                           Definition 5
+                           A cell is the set of all points with identical index 
+                                 I
+                              . □
+
+For example, 
+                        Fig. 7 illustrates seven distinct cells within 
+                           ω
+                        . Observe that a cell need not be convex, or even connected.
+
+
+                        
+                        Fig. 8 illustrates the indices associated with the cell decomposition.
+
+Henceforth, cells will be denoted by 
+                           
+                              
+                                 C
+                              
+                              
+                                 α
+                              
+                           
+                           ,
+                           
+                              
+                                 C
+                              
+                              
+                                 β
+                              
+                           
+                           ,
+                           ..
+                           .
+                        . Since cells are associated with a unique index, we have:
+                           
+                              (3.7)
+                              
+                                 
+                                    
+                                       
+                                          ω
+                                          =
+                                          
+                                             ∪
+                                             α
+                                          
+                                          
+                                             
+                                                
+                                                   C
+                                                
+                                                
+                                                   α
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             
+                                                C
+                                             
+                                             
+                                                α
+                                             
+                                          
+                                          ∩
+                                          
+                                             
+                                                C
+                                             
+                                             
+                                                β
+                                             
+                                          
+                                          =
+                                          ∅
+                                          ,
+                                          α
+                                          ≠
+                                          β
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+In other words, the cells induce a quasi-disjoint decomposition of 
+                           ω
+                        .
+
+Just as an element shape function 
+                           
+                              
+                                 N
+                              
+                              
+                                 i
+                              
+                           
+                         is defined over each element 
+                           
+                              
+                                 E
+                              
+                              
+                                 i
+                              
+                           
+                         in a non-tangled mesh, a cell shape function 
+                        
+                           
+                              
+                                 S
+                              
+                              
+                                 α
+                              
+                           
+                         is defined here over each cell 
+                           
+                              
+                                 C
+                              
+                              
+                                 α
+                              
+                           
+                         as:
+                           
+                              (3.8)
+                              
+                                 
+                                    
+                                       S
+                                    
+                                    
+                                       α
+                                    
+                                 
+                                 (
+                                 ⋅
+                                 )
+                                 =
+                                 
+                                    
+                                       ∑
+                                       
+                                          k
+                                          ∈
+                                          
+                                             
+                                                I
+                                             
+                                             
+                                                α
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             Θ
+                                          
+                                          
+                                             k
+                                          
+                                       
+                                       
+                                          
+                                             N
+                                          
+                                          
+                                             k
+                                          
+                                       
+                                    
+                                 
+                                 (
+                                 ⋅
+                                 )
+                              
+                           
+                        where 
+                           
+                              
+                                 Θ
+                              
+                              
+                                 k
+                              
+                           
+                         is the orientation of the element 
+                           
+                              
+                                 E
+                              
+                              
+                                 k
+                              
+                           
+                        . These cell shape functions form the basis of the proposed finite element framework. Indeed, the most critical theorem in establishing the proposed framework for tangled meshes is stated and proven next.
+                           Theorem:
+                           
+                              The cell shape functions defined via Eq. 
+                              (3.8) 
+                              over the cell decomposition of Eq. 
+                              (3.7) 
+                              satisfy the following properties: (1) they are continuous across cell boundaries, and (2) they vanish on the boundary of 
+                              
+                                 ω
+                              .
+
+Consider the first part of the proof. Let 
+                                 
+                                    
+                                       C
+                                    
+                                    
+                                       α
+                                    
+                                 
+                                 
+                                 and
+                                 
+                                 
+                                    
+                                       C
+                                    
+                                    
+                                       β
+                                    
+                                 
+                               be two neighboring cells, with indices 
+                                 
+                                    
+                                       I
+                                    
+                                    
+                                       α
+                                    
+                                 
+                                 
+                                 and
+                                 
+                                 
+                                    
+                                       I
+                                    
+                                    
+                                       β
+                                    
+                                 
+                              . It must be proven that the cell shape functions 
+                                 
+                                    
+                                       S
+                                    
+                                    
+                                       α
+                                    
+                                 
+                                 (
+                                 ⋅
+                                 )
+                               and 
+                                 
+                                    
+                                       S
+                                    
+                                    
+                                       β
+                                    
+                                 
+                                 (
+                                 ⋅
+                                 )
+                               are continuous across the common boundary. To this end, consider the difference between the two functions 
+                                 
+                                    
+                                       S
+                                    
+                                    
+                                       α
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       S
+                                    
+                                    
+                                       β
+                                    
+                                 
+                              ; one can group the terms into three categories:
+
+The first term contains the contribution from every element 
+                           k
+                         that belongs to both 
+                           
+                              
+                                 I
+                              
+                              
+                                 α
+                              
+                           
+                           
+                           and
+                           
+                           
+                              
+                                 I
+                              
+                              
+                                 β
+                              
+                           
+                        . For every such element, 
+                           
+                              
+                                 N
+                              
+                              
+                                 k
+                              
+                           
+                         is continuous across the common boundary, therefore the first term vanishes on the boundary, independent of the orientation 
+                           
+                              
+                                 Θ
+                              
+                              
+                                 k
+                              
+                           
+                        . Next consider an element 
+                           k
+                         in the second term, i.e., the element is in 
+                           
+                              
+                                 I
+                              
+                              
+                                 α
+                              
+                           
+                         but not in 
+                           
+                              
+                                 I
+                              
+                              
+                                 β
+                              
+                           
+                        . This implies that in crossing from 
+                           
+                              
+                                 C
+                              
+                              
+                                 α
+                              
+                           
+                         to 
+                           
+                              
+                                 C
+                              
+                              
+                                 β
+                              
+                           
+                        , we must exit element 
+                           
+                              
+                                 E
+                              
+                              
+                                 k
+                              
+                           
+                        . Observe that exiting 
+                           
+                              
+                                 E
+                              
+                              
+                                 k
+                              
+                           
+                         can only occur in two ways: (1) simultaneously exit 
+                           ω
+                        , or (2) enter a neighboring element 
+                           
+                              
+                                 E
+                              
+                              
+                                 j
+                              
+                           
+                        . In the first case, 
+                           
+                              
+                                 N
+                              
+                              
+                                 k
+                              
+                           
+                         is necessarily zero at the boundary of point of 
+                           ω
+                        . Therefore, all such contributions vanish from the second term. In the second case of exiting 
+                           
+                              
+                                 E
+                              
+                              
+                                 k
+                              
+                           
+                         and entering one of its neighbors 
+                           
+                              
+                                 E
+                              
+                              
+                                 j
+                              
+                           
+                        , there are again two cases: (2a) 
+                           
+                              
+                                 E
+                              
+                              
+                                 k
+                              
+                           
+                         and 
+                           
+                              
+                                 E
+                              
+                              
+                                 j
+                              
+                           
+                         are of the same orientation, and (2b) 
+                           
+                              
+                                 E
+                              
+                              
+                                 k
+                              
+                           
+                         and 
+                           
+                              
+                                 E
+                              
+                              
+                                 j
+                              
+                           
+                         are of opposite orientation. If the elements are of the same orientation, then 
+                           
+                              
+                                 E
+                              
+                              
+                                 j
+                              
+                           
+                         must belong to 
+                           
+                              
+                                 C
+                              
+                              
+                                 β
+                              
+                           
+                        , and 
+                           
+                              
+                                 Θ
+                              
+                              
+                                 k
+                              
+                           
+                           
+                              
+                                 N
+                              
+                              
+                                 k
+                              
+                           
+                           =
+                           
+                              
+                                 Θ
+                              
+                              
+                                 j
+                              
+                           
+                           
+                              
+                                 N
+                              
+                              
+                                 j
+                              
+                           
+                        . Therefore these contributions vanish from the 2nd term. Finally, if 
+                           
+                              
+                                 E
+                              
+                              
+                                 k
+                              
+                           
+                         and 
+                           
+                              
+                                 E
+                              
+                              
+                                 j
+                              
+                           
+                         are of opposite orientation, then 
+                           
+                              
+                                 E
+                              
+                              
+                                 j
+                              
+                           
+                         must also belong to 
+                           
+                              
+                                 C
+                              
+                              
+                                 α
+                              
+                           
+                        , therefore 
+                           
+                              
+                                 Θ
+                              
+                              
+                                 k
+                              
+                           
+                           
+                              
+                                 N
+                              
+                              
+                                 k
+                              
+                           
+                           +
+                           
+                              
+                                 Θ
+                              
+                              
+                                 j
+                              
+                           
+                           
+                              
+                                 N
+                              
+                              
+                                 j
+                              
+                           
+                           =
+                           
+                              
+                                 Θ
+                              
+                              
+                                 k
+                              
+                           
+                           
+                              
+                                 N
+                              
+                              
+                                 k
+                              
+                           
+                           −
+                           
+                              
+                                 Θ
+                              
+                              
+                                 k
+                              
+                           
+                           
+                              
+                                 N
+                              
+                              
+                                 j
+                              
+                           
+                        , which also vanishes since the two element functions are continuous at that point. Through a similar argument, the third term of Eq. (3.9) also vanishes. Thus 
+                           
+                              
+                                 S
+                              
+                              
+                                 α
+                              
+                           
+                           (
+                           ⋅
+                           )
+                         and 
+                           
+                              
+                                 S
+                              
+                              
+                                 β
+                              
+                           
+                           (
+                           ⋅
+                           )
+                         are continuous across the common boundary.
+
+Now consider the second part of the proof where it must be shown that if 
+                           
+                              
+                                 C
+                              
+                              
+                                 α
+                              
+                           
+                         intersects the boundary of 
+                           ω
+                        , then 
+                           
+                              
+                                 S
+                              
+                              
+                                 α
+                              
+                           
+                         is necessarily zero on the boundary. Observe that the boundary of any 
+                           
+                              
+                                 C
+                              
+                              
+                                 α
+                              
+                           
+                         must is also the boundary of at least one element 
+                           
+                              
+                                 E
+                              
+                              
+                                 k
+                              
+                           
+                        . Since we are exiting 
+                           
+                              
+                                 C
+                              
+                              
+                                 α
+                              
+                           
+                        , we must also be exiting the element 
+                           
+                              
+                                 E
+                              
+                              
+                                 k
+                              
+                           
+                        . Once again, exiting 
+                           
+                              
+                                 E
+                              
+                              
+                                 k
+                              
+                           
+                         can only occur in two ways: (1) simultaneously exit 
+                           ω
+                        , or (2) enter a neighboring element 
+                           
+                              
+                                 E
+                              
+                              
+                                 j
+                              
+                           
+                        . In the first case, 
+                           
+                              
+                                 N
+                              
+                              
+                                 k
+                              
+                           
+                         is necessarily zero at the boundary of point of 
+                           ω
+                        . In the second case 
+                           
+                              
+                                 E
+                              
+                              
+                                 k
+                              
+                           
+                         and 
+                           
+                              
+                                 E
+                              
+                              
+                                 j
+                              
+                           
+                         must necessarily be of opposite orientation (since we are also exiting 
+                           ω
+                        ). As before, the contributions from both elements cancel out at such boundary points, and therefore, 
+                           
+                              
+                                 S
+                              
+                              
+                                 α
+                              
+                           
+                         vanishes.
+
+Finally, exactly as in classic FEA [24], due to the quasi-disjoint decomposition and continuity, the cell shape functions 
+                           
+                              
+                                 S
+                              
+                              
+                                 α
+                              
+                           
+                         can be stitched together to define 
+                           ϕ
+                         at a node, and therefore Eq. (3.3) holds true.
+
+The previous section introduced the concept of cells and cell shape functions for establishing the proposed FEA framework. However, cells are unnecessary in a practical implementation of FEA over a tangled mesh. In other words, there is no need to explicitly compute the cell decomposition; the underlying reason is as follows.
+
+Upon stitching the cell shape functions 
+                           
+                              
+                                 C
+                              
+                              
+                                 α
+                              
+                           
+                        , an equivalent definition for the nodal shape functions is simply given by:
+                           
+                              (3.10)
+                              
+                                 ϕ
+                                 (
+                                 p
+                                 )
+                                 =
+                                 
+                                    
+                                       ∑
+                                       
+                                          k
+                                          |
+                                          p
+                                          ∈
+                                          
+                                             
+                                                E
+                                             
+                                             
+                                                k
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             Θ
+                                          
+                                          
+                                             k
+                                          
+                                       
+                                       
+                                          
+                                             N
+                                          
+                                          
+                                             k
+                                          
+                                       
+                                    
+                                 
+                                 (
+                                 p
+                                 )
+                              
+                           
+                        
+                     
+
+In other words, the hat function at any point is simply the oriented linear combination of all element shape functions of elements attached to that node, containing that point. Observe that when the elements are not tangled this recovers the classic definition. Generalizing this to an arbitrary node 
+                           i
+                         yields:
+                           
+                              (3.11)
+                              
+                                 
+                                    
+                                       ϕ
+                                    
+                                    
+                                       (
+                                       i
+                                       )
+                                    
+                                 
+                                 (
+                                 p
+                                 )
+                                 =
+                                 
+                                    
+                                       ∑
+                                       
+                                          k
+                                          |
+                                          p
+                                          ∈
+                                          
+                                             
+                                                E
+                                             
+                                             
+                                                k
+                                             
+                                          
+                                          ,
+                                          
+                                             
+                                                E
+                                             
+                                             
+                                                k
+                                             
+                                          
+                                          ∈
+                                          
+                                             
+                                                κ
+                                             
+                                             
+                                                (
+                                                i
+                                                )
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             Θ
+                                          
+                                          
+                                             k
+                                          
+                                       
+                                       
+                                          
+                                             N
+                                          
+                                          
+                                             k
+                                          
+                                          
+                                             (
+                                             i
+                                             )
+                                          
+                                       
+                                       (
+                                       p
+                                       )
+                                    
+                                 
+                              
+                           
+                        where 
+                           
+                              
+                                 κ
+                              
+                              
+                                 (
+                                 i
+                                 )
+                              
+                           
+                         is the set of all element attached to node 
+                           i
+                        . These 
+                           
+                              
+                                 ϕ
+                              
+                              
+                                 (
+                                 i
+                                 )
+                              
+                           
+                         are now combined to construct approximate solutions:
+                           
+                              (3.12)
+                              
+                                 u
+                                 (
+                                 ⋅
+                                 )
+                                 =
+                                 
+                                    
+                                       ∑
+                                       i
+                                    
+                                    
+                                       
+                                          
+                                             
+                                                u
+                                                ^
+                                             
+                                          
+                                          
+                                             (
+                                             i
+                                             )
+                                          
+                                       
+                                       
+                                          
+                                             ϕ
+                                          
+                                          
+                                             (
+                                             i
+                                             )
+                                          
+                                       
+                                       (
+                                       ⋅
+                                       )
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+Regrouping terms yields:
+                           
+                              (3.13)
+                              
+                                 u
+                                 (
+                                 p
+                                 )
+                                 =
+                                 
+                                    
+                                       ∑
+                                       
+                                          k
+                                          |
+                                          p
+                                          ∈
+                                          
+                                             
+                                                E
+                                             
+                                             
+                                                k
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             Θ
+                                          
+                                          
+                                             k
+                                          
+                                       
+                                       
+                                          
+                                             ∑
+                                             
+                                                i
+                                                |
+                                                
+                                                   
+                                                      E
+                                                   
+                                                   
+                                                      k
+                                                   
+                                                
+                                                ∈
+                                                
+                                                   
+                                                      κ
+                                                   
+                                                   
+                                                      (
+                                                      i
+                                                      )
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      u
+                                                      ^
+                                                   
+                                                
+                                                
+                                                   (
+                                                   i
+                                                   )
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             N
+                                          
+                                          
+                                             k
+                                          
+                                          
+                                             (
+                                             i
+                                             )
+                                          
+                                       
+                                       (
+                                       p
+                                       )
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+Observe that the inner summation is the description of the field over one element, and is identical to that used in classic finite element. Indeed, for a given element, one can define 
+                           
+                              
+                                 ℕ
+                              
+                              
+                                 k
+                              
+                           
+                           (
+                           p
+                           )
+                         as the collection of element shape functions over all nodes attached to the element:
+                           
+                              (3.14)
+                              
+                                 
+                                    
+                                       ℕ
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 (
+                                 p
+                                 )
+                                 =
+                                 {
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   N
+                                                
+                                                
+                                                   k
+                                                
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         i
+                                                      
+                                                      
+                                                         1
+                                                      
+                                                   
+                                                   )
+                                                
+                                             
+                                             (
+                                             p
+                                             )
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   N
+                                                
+                                                
+                                                   k
+                                                
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         i
+                                                      
+                                                      
+                                                         2
+                                                      
+                                                   
+                                                   )
+                                                
+                                             
+                                             (
+                                             p
+                                             )
+                                          
+                                       
+                                       
+                                          
+                                             ..
+                                             .
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   N
+                                                
+                                                
+                                                   k
+                                                
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         i
+                                                      
+                                                      
+                                                         m
+                                                      
+                                                   
+                                                   )
+                                                
+                                             
+                                             (
+                                             p
+                                             )
+                                          
+                                       
+                                    
+                                 
+                                 }
+                              
+                           
+                        
+                     
+
+Further, one can define the unknown degrees of freedom associated with all nodes attached to an element as:
+                           
+                              (3.15)
+                              
+                                 
+                                    
+                                       
+                                          u
+                                          ^
+                                       
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 =
+                                 {
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      u
+                                                      ^
+                                                   
+                                                
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         i
+                                                      
+                                                      
+                                                         1
+                                                      
+                                                   
+                                                   )
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      u
+                                                      ^
+                                                   
+                                                
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         i
+                                                      
+                                                      
+                                                         2
+                                                      
+                                                   
+                                                   )
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             ..
+                                             .
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      u
+                                                      ^
+                                                   
+                                                
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         i
+                                                      
+                                                      
+                                                         m
+                                                      
+                                                   
+                                                   )
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 }
+                              
+                           
+                        
+                     
+
+This leads to the approximation:
+                           
+                              (3.16)
+                              
+                                 u
+                                 (
+                                 p
+                                 )
+                                 =
+                                 
+                                    
+                                       ∑
+                                       
+                                          k
+                                          |
+                                          p
+                                          ∈
+                                          
+                                             
+                                                E
+                                             
+                                             
+                                                k
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             Θ
+                                          
+                                          
+                                             k
+                                          
+                                       
+                                       
+                                          
+                                             ℕ
+                                          
+                                          
+                                             k
+                                          
+                                       
+                                       (
+                                       p
+                                       )
+                                       
+                                          
+                                             
+                                                u
+                                                ^
+                                             
+                                          
+                                          
+                                             k
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+Upon substituting Eq. (3.16) into Eq. (3.1), and eliminating the auxiliary degrees of freedom the following is obtained:
+                           
+                              (3.17)
+                              
+                                 
+                                    [
+                                    
+                                       
+                                          ∫
+                                          Ω
+                                       
+                                       
+                                          
+                                             
+                                                (
+                                                
+                                                   ∇
+                                                   
+                                                      
+                                                         ∑
+                                                         j
+                                                      
+                                                      
+                                                         
+                                                            
+                                                               Θ
+                                                            
+                                                            
+                                                               j
+                                                            
+                                                         
+                                                         
+                                                            
+                                                               ℕ
+                                                            
+                                                            
+                                                               j
+                                                            
+                                                         
+                                                      
+                                                   
+                                                
+                                                )
+                                             
+                                             T
+                                          
+                                          
+                                             
+                                          
+                                          
+                                             (
+                                             
+                                                ∇
+                                                
+                                                   
+                                                      ∑
+                                                      k
+                                                   
+                                                   
+                                                      
+                                                         
+                                                            Θ
+                                                         
+                                                         
+                                                            k
+                                                         
+                                                      
+                                                      
+                                                         
+                                                            ℕ
+                                                         
+                                                         
+                                                            k
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                             )
+                                          
+                                          d
+                                          Ω
+                                       
+                                    
+                                    ]
+                                 
+                                 
+                                    u
+                                    ^
+                                 
+                                 =
+                                 
+                                    ∫
+                                    Ω
+                                 
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             ∑
+                                             j
+                                          
+                                          
+                                             
+                                                
+                                                   Θ
+                                                
+                                                
+                                                   j
+                                                
+                                             
+                                             
+                                                
+                                                   ℕ
+                                                
+                                                
+                                                   j
+                                                
+                                             
+                                          
+                                       
+                                       )
+                                    
+                                    f
+                                    d
+                                    Ω
+                                 
+                              
+                           
+                        
+                     
+
+The left-hand side of Eq. (3.17) can be regrouped as:
+                           
+                              (3.18)
+                              
+                                 
+                                    
+                                       ∑
+                                       j
+                                    
+                                    
+                                       
+                                          ∫
+                                          Ω
+                                       
+                                       
+                                          
+                                             
+                                                Θ
+                                             
+                                             
+                                                j
+                                             
+                                             
+                                                2
+                                             
+                                          
+                                          ∇
+                                          
+                                             
+                                                ℕ
+                                             
+                                             
+                                                j
+                                             
+                                             
+                                                T
+                                             
+                                          
+                                          
+                                             
+                                          
+                                          ∇
+                                          
+                                             
+                                                ℕ
+                                             
+                                             
+                                                j
+                                             
+                                          
+                                       
+                                       d
+                                       Ω
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       ∑
+                                       j
+                                    
+                                    
+                                       
+                                          ∑
+                                          
+                                             k
+                                             ≠
+                                             j
+                                          
+                                       
+                                       
+                                          
+                                             ∫
+                                             Ω
+                                          
+                                          
+                                             
+                                                
+                                                   Θ
+                                                
+                                                
+                                                   j
+                                                
+                                             
+                                             
+                                                
+                                                   Θ
+                                                
+                                                
+                                                   k
+                                                
+                                             
+                                             ∇
+                                             
+                                                
+                                                   ℕ
+                                                
+                                                
+                                                   j
+                                                
+                                                
+                                                   T
+                                                
+                                             
+                                             
+                                                
+                                             
+                                             ∇
+                                             
+                                                
+                                                   ℕ
+                                                
+                                                
+                                                   k
+                                                
+                                             
+                                             d
+                                             Ω
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+Since 
+                           
+                              
+                                 ℕ
+                              
+                              
+                                 k
+                              
+                           
+                           (
+                           p
+                           )
+                         is zero outside of element 
+                           k
+                        , the integration in Expression (3.18) can be restricted to the element itself. In addition, since 
+                           
+                              
+                                 Θ
+                              
+                              
+                                 j
+                              
+                           
+                           =
+                           ±
+                           1
+                        ,
+                           
+                              
+                                 Θ
+                              
+                              
+                                 j
+                              
+                              
+                                 2
+                              
+                           
+                           =
+                           1
+                        . Therefore Expression (3.18) simplifies to:
+                           
+                              (3.19)
+                              
+                                 
+                                    
+                                       ∑
+                                       j
+                                    
+                                    
+                                       
+                                          ∫
+                                          
+                                             
+                                                
+                                                   E
+                                                
+                                                
+                                                   j
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          ∇
+                                          
+                                             
+                                                ℕ
+                                             
+                                             
+                                                j
+                                             
+                                             
+                                                T
+                                             
+                                          
+                                          
+                                             
+                                          
+                                          ∇
+                                          
+                                             
+                                                ℕ
+                                             
+                                             
+                                                j
+                                             
+                                          
+                                       
+                                       d
+                                       Ω
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       ∑
+                                       j
+                                    
+                                    
+                                       
+                                          ∑
+                                          
+                                             k
+                                             ≠
+                                             j
+                                          
+                                       
+                                       
+                                          
+                                             ∫
+                                             
+                                                
+                                                   
+                                                      E
+                                                   
+                                                   
+                                                      j
+                                                   
+                                                
+                                                ∩
+                                                
+                                                   
+                                                      E
+                                                   
+                                                   
+                                                      k
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   Θ
+                                                
+                                                
+                                                   j
+                                                
+                                             
+                                             
+                                                
+                                                   Θ
+                                                
+                                                
+                                                   k
+                                                
+                                             
+                                             ∇
+                                             
+                                                
+                                                   ℕ
+                                                
+                                                
+                                                   j
+                                                
+                                                
+                                                   T
+                                                
+                                             
+                                             
+                                                
+                                             
+                                             ∇
+                                             
+                                                
+                                                   ℕ
+                                                
+                                                
+                                                   k
+                                                
+                                             
+                                             d
+                                             Ω
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+The first term of Expression (3.19) corresponds to the stiffness matrix in classic FEA. The second term, on the other hand, captures the coupling between overlapping elements. Observe that, while there may be many overlapping elements that contain the same point, only two elements need to be considered at a time.
+
+In summary, to solve the Poisson equation via finite element over a tangled mesh, the following terms must be computed (the summation is interpreted in the usual sense of finite element assembly):
+                           
+                              (3.20)
+                              
+                                 
+                                    
+                                       K
+                                    
+                                    
+                                       c
+                                       l
+                                       a
+                                       s
+                                       s
+                                       i
+                                       c
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       ∑
+                                       j
+                                    
+                                    
+                                       
+                                          ∫
+                                          
+                                             
+                                                
+                                                   E
+                                                
+                                                
+                                                   j
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          ∇
+                                          
+                                             
+                                                ℕ
+                                             
+                                             
+                                                j
+                                             
+                                             
+                                                T
+                                             
+                                          
+                                          
+                                             
+                                          
+                                          ∇
+                                          
+                                             
+                                                ℕ
+                                             
+                                             
+                                                j
+                                             
+                                          
+                                          d
+                                          Ω
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       K
+                                    
+                                    
+                                       o
+                                       v
+                                       e
+                                       r
+                                       l
+                                       a
+                                       p
+                                       p
+                                       i
+                                       n
+                                       g
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       ∑
+                                       j
+                                    
+                                    
+                                       
+                                          ∑
+                                          
+                                             k
+                                             ≠
+                                             j
+                                          
+                                       
+                                       
+                                          
+                                             ∫
+                                             
+                                                
+                                                   
+                                                      E
+                                                   
+                                                   
+                                                      j
+                                                   
+                                                
+                                                ∩
+                                                
+                                                   
+                                                      E
+                                                   
+                                                   
+                                                      k
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   Θ
+                                                
+                                                
+                                                   j
+                                                
+                                             
+                                             
+                                                
+                                                   Θ
+                                                
+                                                
+                                                   k
+                                                
+                                             
+                                             ∇
+                                             
+                                                
+                                                   ℕ
+                                                
+                                                
+                                                   j
+                                                
+                                                
+                                                   T
+                                                
+                                             
+                                             
+                                                
+                                             
+                                             ∇
+                                             
+                                                
+                                                   ℕ
+                                                
+                                                
+                                                   k
+                                                
+                                             
+                                             d
+                                             Ω
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       f
+                                    
+                                    
+                                       o
+                                       r
+                                       i
+                                       e
+                                       n
+                                       t
+                                       e
+                                       d
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       ∑
+                                       j
+                                    
+                                    
+                                       
+                                          ∫
+                                          
+                                             
+                                                
+                                                   E
+                                                
+                                                
+                                                   j
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                Θ
+                                             
+                                             
+                                                j
+                                             
+                                          
+                                          
+                                             
+                                                ℕ
+                                             
+                                             
+                                                j
+                                             
+                                             
+                                                T
+                                             
+                                          
+                                          f
+                                          d
+                                          Ω
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+Finally, the following linear system of equations must be solved:
+                           
+                              (3.21)
+                              
+                                 (
+                                 
+                                    
+                                       K
+                                    
+                                    
+                                       c
+                                       l
+                                       a
+                                       s
+                                       s
+                                       i
+                                       c
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       K
+                                    
+                                    
+                                       o
+                                       v
+                                       e
+                                       r
+                                       l
+                                       a
+                                       p
+                                       p
+                                       i
+                                       n
+                                       g
+                                    
+                                 
+                                 )
+                                 
+                                    u
+                                    ^
+                                 
+                                 =
+                                 
+                                    
+                                       f
+                                    
+                                    
+                                       o
+                                       r
+                                       i
+                                       e
+                                       n
+                                       t
+                                       e
+                                       d
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+Observe that if there are no overlaps, then 
+                           
+                              
+                                 K
+                              
+                              
+                                 o
+                                 v
+                                 e
+                                 r
+                                 l
+                                 a
+                                 p
+                                 p
+                                 i
+                                 n
+                                 g
+                              
+                           
+                         is identically zero. In addition, in a non-tangled mesh, all elements are necessarily positively oriented (see Lemma of previous Section), and therefore 
+                           
+                              
+                                 f
+                              
+                              
+                                 o
+                                 r
+                                 i
+                                 e
+                                 n
+                                 t
+                                 e
+                                 d
+                              
+                           
+                         reduces to 
+                           
+                              
+                                 f
+                              
+                              
+                                 c
+                                 l
+                                 a
+                                 s
+                                 s
+                                 i
+                                 c
+                              
+                           
+                        , i.e., classic FEA is exactly recovered.
+
+While the above finite element implementation targets the 2-D Poisson equation, the implementation is easily generalized to other elliptic equations. Numerical examples later illustrate the validity the method for a variety of field problems in 2-D and 3-D.
+
+@&#IMPLEMENTATION@&#
+
+In this Section, the implementation of the proposed framework is discussed in further detail.
+
+The proposed methodology requires integrating over regions that are common to two elements; see Eq. (3.20). Therefore, the first step is to identify elements that overlap. A naïve 
+                           O
+                           (
+                           
+                              
+                                 n
+                              
+                              2
+                           
+                           )
+                         implementation entails checking all elements against all other elements. A more efficient strategy relies on the earlier Lemma that states that “neighboring elements with opposite orientations will overlap”. This serves as the basis of the following proposed algorithm:
+                           
+                              1.
+                              Seed a stack with all pairs of neighboring elements with opposite orientation (each such pair must necessarily overlap).
+
+While the stack is not empty:
+                                    
+                                       a.
+                                       Pop the top of the stack. This yields the element pair (e1, e2).
+
+If this pair has been processed already, continue to step a.
+
+If the elements do not overlap, continue to step a.
+
+(Else) Record the overlap.
+
+For all neighbors en of e1, add (en, e2) to stack.
+
+For all neighbors en of e2, add (en, e1) to stack.
+
+The computationally expensive part of the above algorithm is step c, i.e., determining if two elements overlap. For simplicial elements, this amounts to convex polytope/convex polytope intersection [26].
+
+In order to establish the correctness of the above algorithm, the following assumption is essential.
+                           Assumption
+                           If two elements overlap, there exists a neighbor of one of the elements that the other element overlaps, i.e., if 
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 ∩
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 ≠
+                                 ∅
+                              , then 
+                                 ∃
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 ∈
+                                 N
+                                 (
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 )
+                              : 
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 ∩
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 ≠
+                                 ∅
+                               or 
+                                 ∃
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 ∈
+                                 N
+                                 (
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 )
+                              : 
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 ∩
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 ≠
+                                 ∅
+                              .
+
+In other words, the scenario in 
+                        Fig. 9a is acceptable, while that of Fig. 9b where two elements exactly overlap is disallowed.
+
+Given this assumption, the following theorem on the correctness of the above algorithm can be established.
+                           Theorem
+                           In a tangled mesh, all overlapping element pairs are detected via the above algorithm.
+
+Assume the contrary, i.e., assume that there exists an overlapping pair 
+                                 (
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 )
+                               that was never inserted into the stack; in other words the algorithm failed to identify this pair. Now, let 
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       k
+                                    
+                                 
+                               be a neighbor of 
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       i
+                                    
+                                 
+                              . From the assumption above, 
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 ∩
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 ≠
+                                 ∅
+                              . Further, from steps 2e and 2f of the above algorithm it follows that the pair 
+                                 (
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 )
+                               must have gone undetected too, i.e., could not have been part of the stack. This argument holds ad infinitum leading to a conclusion that no element pair that is topologically connected to the pair 
+                                 (
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 )
+                               could have been in the stack. This is not possible since step 1 of the above algorithm seeds the stack with all pairs of elements that are neighbors and of opposite orientation. Thus, by contradiction, the pair 
+                                 (
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 )
+                               will be detected by the above algorithm. ■
+
+In the case that two elements exactly overlap, i.e., when the above assumption is violated, such element pairs can also be seeded onto the stack. Since the elements must overlap exactly, this detection is trivial, and is not discussed here.
+
+Next consider the algorithmic complexity. Let 
+                           m
+                         be the number of neighbors; 
+                           m
+                           =
+                           3
+                         for a triangle mesh, 
+                           m
+                           =
+                           4
+                         or a tetrahedral mesh. Let 
+                           n
+                         be the number of overlapping element pairs in a tangled mesh. For each overlapping element pair, steps 2e and 2f of the above algorithm will push at most 
+                           2
+                           m
+                         additional element pairs onto the stack. Further step 2b ensures that an element pair is only processed once. Therefore, the total number of element pairs that get pushed to the stack, and thus checked for overlap, is at most 
+                           2
+                           m
+                           n
+                        , which is linear with respect to 
+                           n
+                        .
+
+Recall that performing FEA over a tangled mesh requires computing the terms in Eq. (3.20). First, 
+                           
+                              
+                                 K
+                              
+                              
+                                 c
+                                 l
+                                 a
+                                 s
+                                 s
+                                 i
+                                 c
+                              
+                           
+                         is computed exactly as in classic FEA [1]. Next, 
+                           
+                              
+                                 f
+                              
+                              
+                                 o
+                                 r
+                                 i
+                                 e
+                                 n
+                                 t
+                                 e
+                                 d
+                              
+                           
+                         is computed as in classic FEA with one modification: the orientation of the element is accounted for by multiplying the force components for each element by its orientation (
+                           ±
+                           1
+                        ) before assembling it into the global 
+                           
+                              
+                                 f
+                              
+                              
+                                 o
+                                 r
+                                 i
+                                 e
+                                 n
+                                 t
+                                 e
+                                 d
+                              
+                           
+                         term.
+
+To compute 
+                           
+                              
+                                 K
+                              
+                              
+                                 o
+                                 v
+                                 e
+                                 r
+                                 l
+                                 a
+                                 p
+                                 p
+                                 i
+                                 n
+                                 g
+                              
+                           
+                        , the overlapping regions is computed (see previous Section and 
+                        Fig. 10a). In order to perform the integration, the overlapping region is subsequently triangulated, see Fig. 10b.
+
+Now, as in classic FEA, numeric integration is performed over the Gauss points of the newly formed triangles. To compute 
+                           ∇
+                           
+                              
+                                 ℕ
+                              
+                              
+                                 j
+                              
+                           
+                         and 
+                           ∇
+                           
+                              
+                                 ℕ
+                              
+                              
+                                 k
+                              
+                           
+                         at the Gauss points, the Gauss points from the parametric element are mapped to the physical (x, y) space, and then the parametric coordinates of the parent elements E
+                        
+                           j
+                        , E
+                        
+                           k
+                         that correspond to the (x, y) location are determined. The gradients 
+                           ∇
+                           
+                              
+                                 ℕ
+                              
+                              
+                                 j
+                              
+                           
+                         and 
+                           ∇
+                           
+                              
+                                 ℕ
+                              
+                              
+                                 k
+                              
+                           
+                         are computed at the respective parametric coordinates. As with 
+                           
+                              
+                                 f
+                              
+                              
+                                 o
+                                 r
+                                 i
+                                 e
+                                 n
+                                 t
+                                 e
+                                 d
+                              
+                           
+                        , before adding the local stiffness matrix to the global 
+                           
+                              
+                                 K
+                              
+                              
+                                 o
+                                 v
+                                 e
+                                 r
+                                 l
+                                 a
+                                 p
+                                 p
+                                 i
+                                 n
+                                 g
+                              
+                           
+                         matrix, the orientation of the parent elements are accounted for as in Eq. (3.20).
+
+In the proposed method, the condition number of the overall stiffness matrix changes when the contribution due to the overlapping elements is added. In all examples considered, the condition number never grew more than a factor of three. However, additional investigation is required. Further, it is possible that untangling is a better choice in some scenarios. A distinct advantage of the proposed method is that it guarantees finite-termination (unlike untangling).
+
+The proposed theory is now illustrated through numeric examples. In particular, the first few examples are ‘validity tests’ [1,25,27] over tangled meshes. (We refer to these as validity tests rather than patch tests, since the concept of patch-tests is not established for inverted elements.) These tests are designed in this paper to identify incorrect theory/implementation by determining whether the finite elements can capture, to within machine precision, a field within the space of the finite element basis functions. In particular, ANSYS 13 [4] is compared against the proposed methodology. After these tests, the focus turns to a specific application of tangling, namely mesh morphing.
+
+Consider a thermal conduction problem over a unit square with a thermal conductivity of 1. The left edge is set to a temperature of 0, a thermal flux of 1 is applied on the right edge, and the top and bottom edges are insulated; see 
+                        Fig. 11. The exact solution to this problem is 
+                           u
+                           (
+                           x
+                           ,
+                           y
+                           )
+                           =
+                           x
+                        .
+
+The problem is solved over two meshes with linear element shape functions: (1) a regular valid mesh of 
+                        Figs. 12a, and (2) a tangled mesh of Fig. 12b that is constructed by flipping the x-location of the internal nodes in Fig. 12a about the 
+                           x
+                           =
+                           0.5
+                         line. Since the solution falls within the finite element space, the exact solution should be recovered to within machine precision (even though the triangles are of poor quality).
+
+
+                        
+                        Table 1 illustrates the solution for the two meshes at the location 
+                           (
+                           1
+                           ,
+                           0
+                           )
+                        , as produced by ANSYS and the proposed methodology. As expected, with a valid mesh, the exact solution of 1.0 is recovered via ANSYS 13 [4] and the proposed methodology (to within machine precision). However, when the mesh is tangled, ANSYS results in a 1.2% error. Increasing the size of the inverted element leads to errors as large as 10%. On the other hand, the proposed theory yields the exact solution even in the case of the tangled mesh.
+
+Next consider triangulating a unit square, see 
+                        Fig. 13a, and then randomizing the location of the interior nodes to produce the tangled mesh shown in Fig. 13b. A (random) linear field 
+                           u
+                           (
+                           x
+                           ,
+                           y
+                           )
+                           =
+                           0.323
+                           x
+                           −
+                           0.651
+                           y
+                           +
+                           0.998
+                         was chosen as the exact solution to a Poisson problem; Dirichlet conditions, Neumann conditions, and body forces were computed from this field, and applied on the tangled mesh as follows: Neumann conditions are applied at the bottom, right, and top boundaries, and Dirichlet conditions are applied to the left boundary. The objective is to recover the exact solution using linear elements. Similarly a random quadratic field was chosen as the exact solution, and the objective was to recover the exact solution using quadratic elements.
+
+The results are summarized in 
+                        Table 2 where normalized errors over all nodal values (defined as 
+                           a
+                           b
+                           s
+                           (
+                           |
+                           |
+                           u
+                           −
+                           
+                              
+                                 u
+                              
+                              
+                                 E
+                                 x
+                                 a
+                                 c
+                                 t
+                              
+                           
+                           |
+                           |
+                           )
+                           /
+                           |
+                           |
+                           
+                              
+                                 u
+                              
+                              
+                                 E
+                                 x
+                                 a
+                                 c
+                                 t
+                              
+                           
+                           |
+                           |
+                        ) from classic FEA and the proposed theory are summarized. Observe that, once again, the classic FEA fails the test in that it leads to erroneous results. On the other hand, the proposed method leads to results that are within machine precision accuracy. (It is to be noted that when in the numerical solution of linear system of equations, machine precision errors are inevitable, even for well-conditioned matrices [28]).
+
+As a second test consider repeating the previous example but for plane stress. Specifically, two random linear displacement fields:
+                           
+                              (5.1)
+                              
+                                 
+                                    
+                                       
+                                          u
+                                          (
+                                          x
+                                          ,
+                                          y
+                                          )
+                                          =
+                                          −
+                                          0.358
+                                          +
+                                          0.562
+                                          x
+                                          +
+                                          0.906
+                                          y
+                                       
+                                    
+                                    
+                                       
+                                          v
+                                          (
+                                          x
+                                          ,
+                                          y
+                                          )
+                                          =
+                                          0.233
+                                          −
+                                          0.359
+                                          x
+                                          −
+                                          0.670
+                                          y
+                                       
+                                    
+                                 
+                              
+                           
+                        were chosen. The boundary conditions corresponding to the above fields were applied on the square geometry as in the previous example, i.e., Dirichlet boundary conditions on the left edge, and Neumann (traction) boundary conditions on the remaining edges. The two meshes are identical to the previous example. Random quadratic fields were also chosen.
+
+Normalized errors in solutions from classic FEA and the proposed theory are summarized in 
+                        Table 3. As with the previous example, classic FEA fails the test for the tangled mesh, while the proposed theory achieves machine precision accuracy.
+
+Similar 3-D tests were also performed on a unit cube, where the interior nodal positions were randomized. The mesh consists of 69 tetrahedra, 29 vertices, and upon tangling, 553 overlapping regions were detected. A portion of the mesh before and after tangling is shown in 
+                        Fig. 14b and c, respectively; these are all the elements that have a face on the bottom or back of the unit cube.
+
+Random linear and quadratic fields are chosen as the exact solution to a Poisson problem, and an elasticity problem. Surface tractions are applied to five of the six faces and Dirichlet conditions are applied to the remaining face. Normalized errors in solutions from classic FEA and the proposed theory are summarized in 
+                        
+                        Tables 4 and 5 for the Poisson problem and elasticity problem, respectively.
+
+Next, the proposed methodology is tested for convergence. Specifically, a function outside the span of the finite elements is chosen as the exact solution to a 2-D Poisson problem:
+                           
+                              (5.2)
+                              
+                                 u
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 )
+                                 =
+                                 
+                                    
+                                       e
+                                    
+                                    
+                                       π
+                                       x
+                                    
+                                 
+                                 cos
+                                 (
+                                 π
+                                 y
+                                 )
+                              
+                           
+                        
+                     
+
+The domain is a unit square with boundary conditions, etc. computed from the specified field as follows: Neumann conditions are applied at the bottom, right, and top boundaries, while Dirichlet conditions are applied to the left boundary.
+
+The mechanism for introducing tangling is as follows. First, an initial non-tangled mesh is created within the unit square as in 
+                        Fig. 15a. Then, nodes that lie within a circle of radius 0.25 are mirrored about the center as illustrated in Fig. 15b. However, in the process of tangling, high-aspect ratio elements are inevitably introduced. Therefore, the nodes outside the circle are dragged towards the center of the domain according to the following heuristic rule:
+                           
+                              (5.3)
+                              
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                d
+                                             
+                                             
+                                                i
+                                             
+                                          
+                                          ←
+                                          
+                                             ‖
+                                             
+                                                (
+                                                0.5
+                                                ,
+                                                0.5
+                                                )
+                                                −
+                                                
+                                                   
+                                                      p
+                                                   
+                                                   
+                                                      i
+                                                   
+                                                
+                                             
+                                             ‖
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             
+                                                p
+                                             
+                                             
+                                                i
+                                             
+                                          
+                                          ←
+                                          
+                                             
+                                                p
+                                             
+                                             
+                                                i
+                                             
+                                          
+                                          +
+                                          1.9
+                                          h
+                                          
+                                             
+                                                e
+                                             
+                                             
+                                                −
+                                                10
+                                                (
+                                                0.25
+                                                −
+                                                
+                                                   
+                                                      d
+                                                   
+                                                   
+                                                      i
+                                                   
+                                                
+                                                )
+                                             
+                                          
+                                          (
+                                          (
+                                          0.5
+                                          ,
+                                          0.5
+                                          )
+                                          −
+                                          
+                                             
+                                                p
+                                             
+                                             
+                                                i
+                                             
+                                          
+                                          )
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+An example of this tangling is illustrated in Fig. 15c.
+
+The Poisson problem is then solved over both the non-tangled and tangled meshes, and the error in strain energy is computed for each case. In addition, this test is performed for both linear and quadratic shape functions. The results of the error in strain energy as a function of the number of degrees of freedom (as the mesh is refined) for all four cases are summarized in 
+                        Fig. 16.
+
+In 
+                        Table 6 the convergence rates of all four cases are summarized. Observe that the rate of convergence for the tangled mesh is, for all practical purposes, equal to the non-tangled case.
+
+As a specific application of the proposed methodology, considered here is the problem of mesh morphing with tangling. In finite element analysis (FEA), when the underlying geometry is modified, an existing mesh can be morphed to conform to the new geometry, a process referred to as mesh morphing. An advantage of mesh morphing over remeshing is that there is a one-to-one correspondence between mesh nodes before and after morphing. Consequently, operations such as finite difference computations are less error-prone [16].
+
+Typical mesh morphing techniques include simplex-linear, simplex-natural neighbor, weighted-residual, FEMWARP, and LBWARP [16]. The simplex-linear mesh morphing technique was chosen for the examples in this paper. As an example of how this technique works, consider the initial mesh illustrated in 
+                        Fig. 17.
+
+The larger hole is now displaced, and the mesh is morphed to conform to the new geometry, as shown in 
+                        Fig. 18. Observe that the quality of the mesh has deteriorated. Furthermore, close inspection reveals that some of the elements overlap; i.e., the mesh is tangled. This is typical of mesh morphing; the quality and the degree of tangling can vary significantly depending on the morphing technique [16]. To improve mesh quality, an edge flipping technique is used to result in 
+                        Fig. 19; however, tangling remains.
+
+In 
+                        Fig. 20, the number of overlaps (due to tangling) is summarized after: (1) morphing and (2) quality improvement (edge flipping). Observe that edge flipping can increase or decrease the number of overlaps.
+
+To illustrate the effectiveness of the proposed method, the geometry is remeshed (not tangled) for comparison. The specific quantity of interest is the maximum von Mises stress. 
+                        Fig. 21 shows that the proposed methodology over the tangled mesh is consistent with a full remesh.
+
+In this final example, 3-D mesh morphing is considered. The bearing block shown in 
+                        Fig. 22a is morphed so as to increase the diameter of the bearing surface (center hole) from 63.5mm to 72mm; see Fig. 22b. Also shown in the two figures are the boundary conditions; two of the mounting holes are fixed, while the third mounting hole has a force in the y and z direction.
+
+The technique used to morph the mesh is similar to that used earlier in 2-D example where an explicit equation was used to morph the mesh. The initial untangled mesh is shown in 
+                        Fig. 23a. After morphing, the overlapping regions of the tangled mesh are illustrated in Fig. 23b.
+
+The quantity of interest is the maximum displacement. 
+                        Table 7 lists this quantity for the initial configuration, the morphed, tangled configuration, and a remeshed configuration (all quantities are in mm). Not only is the trend correct, increasing the diameter of the hole increases the displacement, but the displacement of the tangled mesh closely matches that of the remeshed solution.
+
+In this paper an extension to the underlying mathematics of the classic finite element formulation is proposed. This extension allows FEA to be used in conjunction with tangled meshes that were previously considered unacceptable. In addition, it is shown that the proposed methodology can be easily incorporated into classic FEA with minor modifications. Numeric experiments illustrate the correctness of the proposed methodology; this is in contrast to commercial implementations of FEA.
+
+While only simplicial elements were considered, the extension to non-simplicial elements, e.g. quadrilateral and hexahedral elements, is currently being investigated. From a tangling perspective, the most critical difference between simplicial and non-simplicial elements is that non-simplicial elements can also suffer from implicit tangling in that an element can overlap with itself.
+
+While the theory, in principle, extends to non-linear problems, further investigation and experiments are required. An investigation into the impact of tangling on the condition number of the underlying linear system is also required. Finally, and perhaps most critically, an investigation into the cost/benefit analysis of untangling versus solving over a tangled mesh is required.
+
+@&#REFERENCES@&#
+

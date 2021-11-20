@@ -1,0 +1,99 @@
+@&#MAIN-TITLE@&#Ultrastructural studies on the nuclear elements in differentiating and degenerative ciliated olfactory neuron of Pseudapocryptes lanceolatus (Gobiidae: Oxudercinae)
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Neurogenesis and degeneration of ciliated olfactory sensory receptor neuron in Pseudapocryptes lanceolatus has been studied.
+
+
+                        
+                        
+                           
+                           The progenitor basal cell proliferates to form electron lucent basal cell which differentiates into ciliated sensory receptor neuron.
+
+
+                        
+                        
+                           
+                           The nuclear elements show notable features of gradual condensation in various differentiating, mature and degenerating stages.
+
+
+                        
+                        
+                           
+                           Condensation of chromatin granules (10 nm–20 nm to 15 nm–30 nm) in differentiating, mature and degenerating sensory neurons are marked under EM.
+
+
+                        
+                        
+                           
+                           We strongly recommend that the chromatin condensation is a prime subcellular indicator of neural aging of olfactory sensory receptor cell.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+
+
+
+                     P. lanceolatus
+
+
+
+
+                  
+
+Olfactory
+
+Neurogenesis
+
+Sensory
+
+Chromatin
+
+@&#ABSTRACT@&#
+
+
+                  The cellular event of neurogenesis and neural degeneration of ciliated sensory receptor neuron within the adult olfactory neuroepithelial system has been studied in Pseudapocryptes lanceolatus (Bloch and Schneider, 1801) under light microscope (LM), fluorescence microscope and transmission electron microscope (TEM: Morgagni 268D) respectively. The unilamellar olfactory apparatuses of P. lanceolatus were dissected and fixed in 2.5% glutaraldehyde and 4% paraformaldehyde in 0.1 M phosphate buffer (pH 7.2–7.4) at 4 °C for microscopical studies. The LM study indicates that the progenitor basal cell proliferates to form electron lucent basal cell which differentiates into ciliated sensory receptor neuron within the olfactory neuroepithelium. Investigation under fluorescence microscope using Acridine Orange revealed that the nuclear elements in differentiating stages of electron lucent basal cell, mature and degenerating sensory receptor cell show notable features of gradual condensation. TEM study indicates the subsequent condensation of chromatin granules (diameter ranging from 10 nm–20 nm to 15 nm–30 nm) in various differentiating stages of electron lucent basal cell. The mature ciliated sensory receptor cell possesses chromatinized nucleus with large accumulation of chromatin granules (diameter: 20 nm–30 nm) at the peripheral nucleoplasm whereas degenerating sensory receptor cell possesses fragmented chromatin fibers. Therefore, these distinctive features of chromatin condensation are assumed to be a prime subcellular indicator of neural aging of olfactory sensory receptor cell.
+               
+
+@&#INTRODUCTION@&#
+
+Olfaction is a primitive type of chemosensory modality that is involved in the detection and discrimination of various chemical cues from the external environment through sensory receptor cells [1,2]. The ciliated sensory receptor cell (a bipolar neuron) is regarded as the primary neuron and predominantly found within the olfactory neuroepithelium [3]. This type of cell is specialized for the recognition of various chemical stimuli from the external environment and evolutionarily conserved across the vertebrate phyla [4–7]. The neurogenesis of olfactory sensory neuron in both postnatal development and adult stage is a very unique phenomenon in vertebrate olfactory neuroepithelium (including teleosts) [8]. The primary olfactory sensory receptor cell has a definite life span and successively shows neural apoptosis at the end [9,10]. The basal cell may proliferate and differentiate into new primary sensory neurons within the olfactory neuroepithelium [11,12]. This cellular event is also regarded as cellular dynamics in adult olfactory neuroepithelium [13]. A diagrammatic model of this cellular event was proposed by Sulz and Bacigalupo [14] but the subcellular organelle based cytological details of neurogenesis, neural differentiation, neural degeneration, etc. are still not characterized. Recently, Armelin-Correa et al. [15] have described the subdivision of nucleus in lieu of gene expression of odorant receptors (OR) in olfactory sensory receptor cell. The structural changes in nuclear elements are responsible for variable rate of transcription in various stages of differentiation during olfactory neurogenesis and neural degeneration [16,17]. Therefore, it would be more worthwhile to explore the cytological details as well as possible qualitative variation in nuclear elements within the various differentiating stages of olfactory neurogenesis and neural degeneration. Pseudapocryptes lanceolatus (Bloch and Schneider, 1801) is a teleostean: gobiid. This species possesses unilamellar olfactory apparatuses externally lined by olfactory neuroepithelium and populated with sensory receptor cell, supporting cell and basal cell [18–20]. The functional proliferation of basal cell within the olfactory neuroepithelium is evident in different age groups of P. lanceolatus 
+                     [21]. The present study is focused on the unexplored fine structural characterization of nuclear elements at different stages of neural differentiation and degeneration within the adult olfactory neuroepithelium of P. lanceolatus to correlate the subcellular aspect of neurogenesis and neural degeneration.
+
+
+                     P. lanceolatus is a common mudskipper of Gangetic Bengal. There are no known threats recorded in the IUCN Red List Category P. lanceolatus (i.e., ‘Least Concern’) [website: http://www.iucnredlist.org/details/169496/0]. For electron microscopical study, the fresh, adult (having total body length of 150 mm to 200 mm) specimens of P. lanceolatus were directly collected from the clear stretches of Hooghly River at Barrackpore (North 24 Parganas, West Bengal, India, 22° 46 N, 88°20 E) and Tribeni (Hooghly, West Bengal, India, 22°59 N, 88°23 E) during the breeding season (i.e., June 2012–August 2012); brought to the laboratory for acclimatization with the physical conditions [temperature: 20 °C–25 °C, humidity: >40%, time: 24 hours, etc.]. The specimens were anesthetized by using MS – 222 (dose: 100 mg/L–200 mg/L) for microscopical studies. The olfactory apparatuses of P. lanceolatus were dissected out from the anterodorsal side of the head and fixed in 2.5% glutaraldehyde in 0.1 M phosphate buffer (pH 7.2–7.4) at 4 °C for 2 hours. After primary fixation, the olfactory tissues were rinsed in the same buffer and then fixed in 1% osmium tetroxide in 0.1 M phosphate buffer (pH 7.2–7.4) for 1 hour at 27 °C. The olfactory tissues were then rinsed in the same buffer and dehydrated in chilled acetone. The tissues were embedded in Araldite CY212 (TAAB, UK) and resin polymerized for 48 hours at 60 °C. Transverse sections of the olfactory lamella (thickness: 1 µm) were cut with ultramicrotome (Leica ultracut UC6), stained with 1% toluidine blue and examined under light microscope (Leitz DM RBE). For fluorescence microscopical study, the olfactory apparatuses of P. lanceolatus were separately fixed in 4% paraformaldehyde in 0.1 (M) phosphate buffer (pH 7.3) at 4 °C for 2 hours. The fixed tissues were then washed in the same buffer (3 changes at 30 minutes of interval) and cryoprotected in 15%–30% sucrose solution in 0.1 (M) phosphate buffer for 24 hours at 4 °C. The frozen sections (thickness: 15–20 µm) were cut by using a cryostat (Leica CM 1850; Leica Biosystems Nussloch GmbH, Germany) and carefully placed on gelatin coated slides. The sections were incubated with Acridine Orange (AO) solution (6 µg/mL) in 0.1 M phosphate buffer (pH 7.3) at 4 °C for 15 minutes to 30 minutes and subsequently washed in the same buffer (3 changes), mounted on glass slides (equal volume of glycerol and buffer is used as mounting medium) and examined under fluorescence microscope [Leica DM 3000; Leica Microsystems] at an excitement of 460 nm to 580 nm. The acquired images were analyzed by Microscope Imaging Software [Leica Application Suite Advanced Fluorescence (LAS AF)]. For transmission electron microscopical (TEM) studies, the resin polymerized olfactory lamellae of P. lanceolatus were cut (thickness: 70 nm–80 nm) by using ultramicrotome (Leica Ultracut – UCT), collected on copper grids and stained with uranyl acetate and lead citrate respectively. The sections were examined under Morgagni 268D transmission electron microscope (Fei Electron Optics, Eindhoven, The Netherlands) operated at 80 kV. Digital images were analyzed at by using iTEM software (soft imaging system, Münster, Germany) attached to the microscope.
+
+@&#RESULTS@&#
+
+The olfactory apparatus of P. lanceolatus is unilamellar in nature and externally lined by pseudostratified neuroepithelium that mainly includes sensory receptor cell, supporting cell and basal cell (Fig. 1
+                     ). These cellular components are resting on the basal lamina. The ciliated sensory receptor cells are mostly observed throughout the olfactory neuroepithelium of P. lanceolatus (Fig. 1). The proliferating and differentiating stages of basal cells are sequentially located just above the layer of basal cell in olfactory neuroepithelium and shows gradual morphological changes in nuclear structure (Figs. 1 and 2
+                     ). The nuclear elements at different stages of proliferating, differentiating basal cells, mature ciliated sensory receptor cell and degenerating ciliated sensory receptor cells are distinctly noted under fluorescence and transmission electron microscope (TEM) respectively. Chromatin fibers with double stranded DNA (dsDNA) are highlighted (green fluorescence) within the nucleoplasm of successive stages differentiation (Fig. 3a–i
+                     ). The qualitative changes in the nuclear elements (i.e., horizontal cleavage of chromatin fibers and condensation pattern of double stranded DNA) are characterized in several stages of proliferating and differentiating basal cells (Fig. 3b–f). Features of chromatin condensation among the mature ciliated sensory receptor cells are also comparable under fluorescence microscope (Fig. 3g, h). The fragmented chromatin fibers are marked within the degenerating ciliated sensory receptor cell (Fig. 3i). The transmission electron micrographs show a spherical nucleus in basal cells that possesses large euchromatin materials which are emanating from the border of heterochromatin (Fig. 4a
+                     ). Large clusters of chromatin granules (diameter: 10 nm–20 nm) are observed within the nucleoplasm and condensed near the inner nuclear membrane by forming dense heterochromatin materials (Fig. 4a). There are two types of progeny basal cells including electron lucent and electron dense basal cells, identified just above the layer of dividing basal cells (Fig. 4b–d). The differentiating stages of electron lucent basal cell show much variation in their morphology and condensation of chromatin materials within the nucleus (Fig. 5
+                     ). In the early stage of electron lucent basal cell, the nucleus is round in shape and filled with less condensed, minute fibers of euchromatin materials. Chromatin granules (diameter: 10 nm–20 nm) are uniformly distributed throughout the nucleoplasm. The diameter of differentiating electron lucent basal cell is also gradually increased at the various successive stages of differentiation (Fig. 5). The early mature stage of ciliated sensory receptor cell possesses less granulated, chromatinized nucleus at the central part of the perikaryon (Fig. 5). The peripheral part of the nucleoplasm in mature ciliated sensory receptor cell shows large accumulation of chromatin granules (diameter: 20 nm–30 nm) (Fig. 6a and b
+                     ). The degenerating sensory receptor cells are also distinctly marked at the different depths of the adult olfactory neuroepithelium of P. lanceolatus (Fig. 7a
+                     ). The perikaryon of degenerating sensory receptor cell is roughly irregular in shape. The plasma membrane shows several blebs, projecting outwards. The nucleoplasm is less compact and shows fragmented chromatin fibers (Fig. 7b). The chromatin granules (diameter: 20 nm–30 nm) are comparatively less in number than mature sensory receptor cell and loosely distributed at the adjacent area of inner nuclear membrane (Fig. 7c).
+
+@&#DISCUSSION@&#
+
+The event of neurogenesis in an olfactory chemosensory system significantly differs among the invertebrate and vertebrates due to the variable anatomical organization of their peripheral nervous systems [22]. The cellular proliferation within the olfactory neuroepithelium is an essential cytological process for the continuous turnover of new olfactory sensory receptor cells that originate from progenitor basal cells throughout the life span of vertebrates [8,23–26]. These cells divide several times and their progeny differentiate into mature sensory receptor cells [27]. The cell division of progenitors may be followed by specification and differentiation into post mitotic neuron which is regarded as a major cellular event during neurogenesis within the olfactory neuroepithelium [28]. The basal cell is residing at a fixed position near the basal lamina [29] and divides to form an electron lucent and electron dense basal cell within the olfactory neuroepithelium of P. lanceolatus. The electron lucent basal cell (i.e., the progeny of basal cell) may differentiate and transform into immature olfactory sensory receptor cell. In olfactory neuroepithelium, variation in cellular morphology (i.e., polygonal basal cell to egg-shaped perikaryon of sensory receptor cell) and ultrastructural features of changing nuclear structure are the most distinguishing features, noted within the different stages of olfactory sensory receptor neurons in P. lanceolatus. Chromatin structure in the interphase cell nucleus is usually organized into ‘repressive’ heterochromatin (i.e., silent) domains separated from ‘permissive’ euchromatin (i.e., active) regions of genome which is evident under microscopical studies [30]. The distribution of euchromatin at the central and heterochromatin near the inner nuclear envelop indicates an important feature for specific gene expression [31]. The function of heterochromatin formation is multifaceted [32]. This ‘repressed’ chromatin state is important for nuclear processes such as chromosome condensation during mitosis [33,34]. During differentiation, the chromatin structure shows dramatic variation in the organization of nuclear chromatin structures [35]. The average diameter of first level of chromatin fiber is 10 nm which is subsequently built-up from DNA wrapped around the nucleosomes, folded and condensed by several factors (like protein–DNA and protein–protein interactions including individual nucleosomes, the linker histone H1 as well as other proteins) into a 30 nm chromatin fiber and higher-ordered chromatin structures [34]. The gradual condensation of chromatin structure in various differentiating stages from electron lucent basal cell to sensory receptor cell probably represents the qualitative maturation as well as aging of the cell [36]. The degenerating sensory receptor cells are also distinctly identified through the presence of fragmented chromatin fibers within the nucleus. Therefore, the condensation of chromatin materials may be a prime cytological indicator to recognize various stages of cellular differentiation within the olfactory neuroepithelium of P. lanceolatus. Finally, inter- and intragenic interaction over a large genomic configuration may be responsible in controlling specific gene expression as well as differentiation of new cellular components [37]. An extensive study is under progress to explore genome based molecular aspects of development and differentiation of various olfactory sensory receptor cells having different phenotypical expressions (i.e., ciliated sensory receptor cell, microvillus sensory receptor cell and crypt cell) within the adult olfactory neuroepithelium of P. lanceolatus.
+
+@&#ACKNOWLEDGEMENTS@&#
+
+We are thankful to Prof. R. Chakrabarti, the Hon'ble Vice Chancellor, Vidyasagar University, India and Prof. T. Cremer, Ludwig Maximilians University (LMU), Germany for their motivation and necessary advice.
+
+@&#REFERENCES@&#
+

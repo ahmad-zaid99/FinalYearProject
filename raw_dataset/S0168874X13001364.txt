@@ -1,0 +1,1975 @@
+@&#MAIN-TITLE@&#Thermo-mechanical modeling and simulation of microstructure evolution in multi-pass H-shape rolling
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           A set of mechanism‐based unified constitutive equations was developed.
+
+
+                        
+                        
+                           
+                           Procedure for the multi‐pass rolling simulation was developed and a Scheduled 9‐pass H‐shape rough rolling process was carried out.
+
+
+                        
+                        
+                           
+                           A numerical orthogonal experiment was designed to investigate the effects of rolling parameters on the microstructure evolution.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Multi-pass hot rolling
+
+H-shape
+
+Numerical simulation
+
+Austenite grain evolution
+
+Numerical orthogonal experiment
+
+@&#ABSTRACT@&#
+
+
+                  A set of mechanism-based constitutive equations was developed to model the effects of microstructure evolution on elastic–plastic flow of Q235 steel. This set of equations is implemented into the finite element (FE) solver ABAQUS for multi-pass shape rolling process simulation. The procedure for multi-pass rolling simulation was developed, a scheduled multi-pass rough rolling process of H-shape steel was carried out and the accuracy of the equations was validated by comparisons between the calculated mill load and measured ones. A numerical orthogonal experiment was designed to investigate the effects of rolling parameters on the microstructure evolution.
+               
+
+@&#INTRODUCTION@&#
+
+In the last few decades, numerous different models were developed to describe the phenomena that characterize the material response to deformation. According to the length scale of the phenomena they describe, the models are classified as atomic-scale, mesoscale, and macroscopic scale models [1]. The first two types are mainly used in scientific researches for requirements of specialized scientific and computational knowledge. In practical industrial process design and simulation the macroscopic scale models are most commonly used. However, if the microstructure evolution that controls the material response to deformation is not taken into account, the macroscopic scale models will become inaccurate outside their validation space.
+
+Quality assurance requires materials to be processed with known microstructure; only thermal-mechanical simulation of metal behavior during hot deformation is not sufficient to meet the needs of the process designer on roll pass design, and microstructure evolution should also be taken into account. Since the application of a fully three-dimensional simulation leads to very long computation time, different numerical procedures to simulate multi-pass rolling were developed in the last 10 years. Bontcheva and Petzov [2] presented an axi-symmetric approach for numerical simulation of die forging using the finite element code MARC. Liu and Lin [3] developed a set of mechanism-based unified viscoplastic constitutive equations and numerical procedures to simulate multi-pass rolling with a two-dimensional finite element method. Glowacki [4] presented a generalized plane-strain (GPS) approach for fast simulation of multi-pass shape rolling. Bontcheva and Petrov [5] presented an approach for predicting the final microstructure and main mechanical properties of thermo-mechanically strengthened non-alloy steel and their further improving, using computer simulation by means of a finite element method (FEM). Lin and Dean [6] introduce their techniques for the development of functions of physical variables and coupling of the variables within viscoplastic material models to form a set of unified constitutive equations. They also predicted the mechanical properties of the products. Phaniraj et al. [7] studied the evolution of microstructure through the thickness of the strip in a hot strip mill. They found that the microstructure evolution reported by Hodgson as well as by Sellars led to similar values of rolling loads. In order to include work softening due to dynamic phase transformations as well as the effect of temperature and strain rate variation on flow stress, a mathematical model was developed and verified by Serajzadeh and Karimi Taheri [8]. In order to investigate the effect of deformation mode on constitutive relation, hot torsion and compression tests of AISI 4140 steel were conducted, and a modified constitutive equation was presented by Kim et al. [9].
+
+The main aim of the present work is to present an approach for FEM simulation of multi-pass H-shape hot rolling. Based on the models developed by Hodgson [10] and Sellers [11], a flow stress constitutive equation for Q235 steel was developed and implemented into the FE solver procedure to carry out simulation of a scheduled multi-pass rough rolling process of H-shape steel. The rolling loads as well as the austenite grain evolution were predicted. Furthermore, a numerical orthogonal design experiment was carried out to study the effects of rolling parameters on the microstructure evolution.
+
+The main chemical composition of Q235 steel is given in 
+                        Table 1.
+
+
+                        
+                        Fig. 1 gives a schematic drawing of hot stock section along rolling direction in one pass of hot rolling at a specific time. The stock is divided into three zones marked as A, B and C. In zone A, the stock has a homogeneous austenite grain distribution which is obtained by preheating process for the first pass or an inhomogeneous distribution of austenite grain size developed at the past rolling passes. In zone B, the microstructure in the section will undergo dynamic recovery, dynamic recrystallization, or dynamic recrystallization with subsequent meta-dynamic recrystallization if the volume fraction of dynamic recrystallization R
+                        
+                           d
+                         reaches the value of 0.99. In zone C, the microstructure will undergo static recrystallization, continued meta-dynamic recrystallization and grain growth depending on the specific rolling conditions. The zone mark and austenite grain evolution flow chart with lot of details are shown in Fig. 1.
+
+
+                        
+                        Fig. 2(a) shows a schematic drawing of material resistance stress σ
+                        
+                           d
+                         versus the full strain ε
+                        
+                           T
+                         (elastic plus plastic), where σ
+                        0 is the initial yield stress when full strain reaches ε
+                        0, and the corresponding plastic strain is 0.2% marked as ε
+                        0.2% in the figure. The deformation in the elastic zone, shown in Fig. 2(a), is assumed to be elastic with Young’s modulus E=σ
+                        0/(ε
+                        0
+                        −0.002). A schematic drawing of equivalent resistance stress σ
+                        
+                           y
+                         versus equivalent plastic strain 
+                           
+                              
+                                 ε
+                              
+                              
+                                 p
+                              
+                              
+                                 e
+                                 q
+                              
+                           
+                         with the value recalculated from Fig. 2(a) is shown in Fig. 2(b), where σ
+                        
+                           p
+                         is the peak flow stress, ε
+                        
+                           pk
+                         is the peak plastic strain, ε
+                        
+                           cr
+                         is the critical strain for judging whether the dynamic recrystallization has been started or not, and σ
+                        
+                           s
+                         is the steady flow stress under specific deformation conditions.
+
+In the presented work, σ
+                        
+                           y
+                         is defined as
+                           
+                              (1a)
+                              
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       y
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       p
+                                    
+                                    
+                                       e
+                                       q
+                                    
+                                 
+                                 ,
+                                 T
+                                 )
+                                 =
+                                 A
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             ε
+                                          
+                                          
+                                             p
+                                          
+                                          
+                                             e
+                                             q
+                                          
+                                       
+                                       )
+                                    
+                                    n
+                                 
+                                 ,
+                                 
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       0.2
+                                       %
+                                    
+                                 
+                                 ≤
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       p
+                                    
+                                    
+                                       e
+                                       q
+                                    
+                                 
+                                 ≤
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       c
+                                       r
+                                    
+                                 
+                              
+                           
+                        
+                        
+                           
+                              (1b)
+                              
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       y
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       p
+                                    
+                                    
+                                       e
+                                       q
+                                    
+                                 
+                                 ,
+                                 T
+                                 )
+                                 =
+                                 A
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             ε
+                                          
+                                          
+                                             p
+                                          
+                                          
+                                             e
+                                             q
+                                          
+                                       
+                                       )
+                                    
+                                    n
+                                 
+                                 (
+                                 1
+                                 −
+                                 
+                                    
+                                       R
+                                    
+                                    
+                                       d
+                                    
+                                 
+                                 )
+                                 +
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 
+                                    
+                                       R
+                                    
+                                    
+                                       d
+                                    
+                                 
+                                 ,
+                                 
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       p
+                                    
+                                    
+                                       e
+                                       q
+                                    
+                                 
+                                 >
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       c
+                                       r
+                                    
+                                 
+                              
+                           
+                        where A and n are the material dependent constants and R
+                        
+                           d
+                         is the volume fraction of dynamic recrystallization. The Zener–Hollomon parameter is adopted to represent the rate-dependent hardening behavior of the material. The calculated flow stress curves of Q235 steel at temperatures 900°C and 1300°C with the strain rate of 1, 6, and 15s
+                           −1 are shown in 
+                        Fig. 3.
+
+It is known that the composition of carbon–manganese steels does not affect the recrystallization kinetics significantly. So the microstructure models developed by Hodgson and Sellers were assumed to be applicable for Q235 steel. The parameters determined for Q235 steel are listed in 
+                        Table 2. The equations and constants marked with “*” were developed in the presented work. The equations were implemented into the FE solver ABAQUS/Explicit through the user defined subroutine VUMAT.
+
+Although the plastic strain during hot forming processes is much larger than the elastic strain, the elastic–plastic model was still used in the presented work. Based on the von Mises yield condition and the associated material flow rule, the isotropic-hardening yield function of the Q235 steel is defined as
+                           
+                              (2)
+                              
+                                 F
+                                 (
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       i
+                                       k
+                                    
+                                 
+                                 ,
+                                 κ
+                                 )
+                                 =
+                                 f
+                                 −
+                                 κ
+                                 =
+                                 
+                                    1
+                                    2
+                                 
+                                 
+                                    
+                                       S
+                                    
+                                    
+                                       i
+                                       k
+                                    
+                                 
+                                 
+                                    
+                                       S
+                                    
+                                    
+                                       i
+                                       k
+                                    
+                                 
+                                 −
+                                 
+                                    1
+                                    3
+                                 
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       y
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       p
+                                    
+                                    
+                                       e
+                                       q
+                                    
+                                 
+                                 ,
+                                 T
+                                 )
+                                 =
+                                 0
+                              
+                           
+                        
+                     
+
+The differential form is expressed as
+                           
+                              (3)
+                              
+                                 
+                                    
+                                       ∂
+                                       f
+                                    
+                                    
+                                       ∂
+                                       
+                                          
+                                             σ
+                                          
+                                          
+                                             i
+                                             k
+                                          
+                                       
+                                    
+                                 
+                                 d
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       i
+                                       k
+                                    
+                                 
+                                 −
+                                 
+                                    2
+                                    3
+                                 
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       y
+                                    
+                                 
+                                 
+                                    
+                                       ∂
+                                       
+                                          
+                                             σ
+                                          
+                                          
+                                             y
+                                          
+                                       
+                                    
+                                    
+                                       ∂
+                                       
+                                          
+                                             ε
+                                          
+                                          
+                                             p
+                                          
+                                          
+                                             e
+                                             q
+                                          
+                                       
+                                    
+                                 
+                                 d
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       p
+                                    
+                                    
+                                       e
+                                       q
+                                    
+                                 
+                                 −
+                                 
+                                    2
+                                    3
+                                 
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       y
+                                    
+                                 
+                                 
+                                    
+                                       ∂
+                                       
+                                          
+                                             σ
+                                          
+                                          
+                                             y
+                                          
+                                       
+                                    
+                                    
+                                       ∂
+                                       T
+                                    
+                                 
+                                 d
+                                 T
+                                 =
+                                 0
+                              
+                           
+                        where 
+                           ∂
+                           f
+                           /
+                           ∂
+                           
+                              
+                                 σ
+                              
+                              
+                                 i
+                                 k
+                              
+                           
+                           =
+                           
+                              
+                                 S
+                              
+                              
+                                 i
+                                 k
+                              
+                           
+                         is the stress deviator tensor, 
+                           d
+                           
+                              
+                                 ε
+                              
+                              
+                                 p
+                              
+                              
+                                 e
+                                 q
+                              
+                           
+                           =
+                           
+                              
+                                 (
+                                 2
+                                 /
+                                 3
+                                 d
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       i
+                                       k
+                                    
+                                    
+                                       p
+                                    
+                                 
+                                 :
+                                 d
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       i
+                                       k
+                                    
+                                    
+                                       p
+                                    
+                                 
+                                 )
+                              
+                              
+                                 1
+                                 /
+                                 2
+                              
+                           
+                         is the equivalent plastic strain increment, and 
+                           d
+                           
+                              
+                                 ε
+                              
+                              
+                                 i
+                                 k
+                              
+                              
+                                 p
+                              
+                           
+                         is assumed to be 
+                           d
+                           λ
+                           
+                              
+                                 S
+                              
+                              
+                                 i
+                                 k
+                              
+                           
+                        , so it is further expressed as
+                           
+                              (4)
+                              
+                                 d
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       p
+                                    
+                                    
+                                       e
+                                       q
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             2
+                                             3
+                                          
+                                          d
+                                          λ
+                                          
+                                             
+                                                S
+                                             
+                                             
+                                                i
+                                                k
+                                             
+                                          
+                                          :
+                                          d
+                                          λ
+                                          
+                                             
+                                                S
+                                             
+                                             
+                                                i
+                                                k
+                                             
+                                          
+                                       
+                                       )
+                                    
+                                    
+                                       
+                                          1
+                                          2
+                                       
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             2
+                                             3
+                                          
+                                          d
+                                          λ
+                                          
+                                          d
+                                          λ
+                                          
+                                             
+                                                S
+                                             
+                                             
+                                                i
+                                                k
+                                             
+                                          
+                                          :
+                                          
+                                             
+                                                S
+                                             
+                                             
+                                                i
+                                                k
+                                             
+                                          
+                                       
+                                       )
+                                    
+                                    
+                                       
+                                          1
+                                          2
+                                       
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             2
+                                             3
+                                          
+                                          d
+                                          λ
+                                          
+                                          d
+                                          λ
+                                          
+                                             2
+                                             3
+                                          
+                                          
+                                             
+                                                σ
+                                             
+                                             
+                                                y
+                                             
+                                             
+                                                2
+                                             
+                                          
+                                       
+                                       )
+                                    
+                                    
+                                       
+                                          1
+                                          2
+                                       
+                                    
+                                 
+                                 =
+                                 
+                                    2
+                                    3
+                                 
+                                 d
+                                 λ
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       y
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+The total strain increment is defined as 
+                           d
+                           
+                              
+                                 ε
+                              
+                              
+                                 j
+                                 l
+                              
+                           
+                           =
+                           d
+                           
+                              
+                                 ε
+                              
+                              
+                                 j
+                                 l
+                              
+                              
+                                 e
+                              
+                           
+                           +
+                           d
+                           
+                              
+                                 ε
+                              
+                              
+                                 j
+                                 l
+                              
+                              
+                                 p
+                              
+                           
+                           +
+                           d
+                           
+                              
+                                 ε
+                              
+                              
+                                 j
+                                 l
+                              
+                              
+                                 T
+                              
+                           
+                        , where 
+                           d
+                           
+                              
+                                 ε
+                              
+                              
+                                 j
+                                 l
+                              
+                              
+                                 T
+                              
+                           
+                           =
+                           α
+                           d
+                           T
+                           
+                              
+                                 δ
+                              
+                              
+                                 j
+                                 l
+                              
+                           
+                         is the temperature strain increment (
+                           α
+                         is thermal expansion coefficient), 
+                           d
+                           
+                              
+                                 ε
+                              
+                              
+                                 j
+                                 l
+                              
+                              
+                                 p
+                              
+                           
+                         is the plastic strain increment, and 
+                           d
+                           
+                              
+                                 ε
+                              
+                              
+                                 j
+                                 l
+                              
+                              
+                                 e
+                              
+                           
+                         is the elastic strain increment and can be expressed as
+                           
+                              (5)
+                              
+                                 d
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       j
+                                       l
+                                    
+                                    
+                                       e
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       C
+                                    
+                                    
+                                       i
+                                       k
+                                       j
+                                       l
+                                    
+                                    
+                                       e
+                                    
+                                 
+                                 d
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       i
+                                       k
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       ∂
+                                       
+                                          
+                                             C
+                                          
+                                          
+                                             i
+                                             k
+                                             j
+                                             l
+                                          
+                                          
+                                             e
+                                          
+                                       
+                                    
+                                    
+                                       ∂
+                                       T
+                                    
+                                 
+                                 d
+                                 T
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       i
+                                       k
+                                    
+                                 
+                                 =
+                                 d
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       j
+                                       l
+                                    
+                                    
+                                       e
+                                       ′
+                                    
+                                 
+                                 +
+                                 d
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       j
+                                       l
+                                    
+                                    
+                                       T
+                                       ′
+                                    
+                                 
+                              
+                           
+                        where the flexible tensor 
+                           
+                              
+                                 C
+                              
+                              
+                                 i
+                                 k
+                                 j
+                                 l
+                              
+                              
+                                 e
+                              
+                           
+                           =
+                           
+                              
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       i
+                                       k
+                                       j
+                                       l
+                                    
+                                    
+                                       e
+                                    
+                                 
+                              
+                              
+                                 −
+                                 1
+                              
+                           
+                         is considered to be a function of temperature. So the stress increment tensor 
+                           d
+                           
+                              
+                                 σ
+                              
+                              
+                                 i
+                                 k
+                              
+                           
+                         can be expressed as
+                           
+                              (6)
+                              
+                                 d
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       i
+                                       k
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       i
+                                       k
+                                       j
+                                       l
+                                    
+                                    
+                                       e
+                                    
+                                 
+                                 (
+                                 d
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       j
+                                       l
+                                    
+                                 
+                                 −
+                                 d
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       j
+                                       l
+                                    
+                                    
+                                       p
+                                    
+                                 
+                                 −
+                                 d
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       j
+                                       l
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 −
+                                 d
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       j
+                                       l
+                                    
+                                    
+                                       T
+                                       ′
+                                    
+                                 
+                                 )
+                                 =
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       i
+                                       k
+                                       j
+                                       l
+                                    
+                                    
+                                       e
+                                    
+                                 
+                                 d
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       j
+                                       l
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       ∂
+                                       f
+                                    
+                                    
+                                       ∂
+                                       
+                                          
+                                             σ
+                                          
+                                          
+                                             j
+                                             l
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       i
+                                       k
+                                       j
+                                       l
+                                    
+                                    
+                                       e
+                                    
+                                 
+                                 d
+                                 λ
+                                 −
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       i
+                                       k
+                                       j
+                                       l
+                                    
+                                    
+                                       e
+                                    
+                                 
+                                 d
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       j
+                                       l
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       i
+                                       k
+                                       j
+                                       l
+                                    
+                                    
+                                       e
+                                    
+                                 
+                                 d
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       j
+                                       l
+                                    
+                                    
+                                       T
+                                       ′
+                                    
+                                 
+                              
+                           
+                        where
+                           
+                              (7)
+                              
+                                 d
+                                 λ
+                                 =
+                                 
+                                    
+                                       
+                                          
+                                             S
+                                          
+                                          
+                                             i
+                                             k
+                                          
+                                       
+                                       (
+                                       d
+                                       
+                                          
+                                             ε
+                                          
+                                          
+                                             j
+                                             l
+                                          
+                                       
+                                       −
+                                       d
+                                       
+                                          
+                                             ε
+                                          
+                                          
+                                             j
+                                             l
+                                          
+                                          
+                                             T
+                                          
+                                       
+                                       −
+                                       d
+                                       
+                                          
+                                             ε
+                                          
+                                          
+                                             j
+                                             l
+                                          
+                                          
+                                             T
+                                             ′
+                                          
+                                       
+                                       )
+                                    
+                                    
+                                       (
+                                       2
+                                       
+                                          
+                                             σ
+                                          
+                                          
+                                             y
+                                          
+                                          
+                                             2
+                                          
+                                       
+                                       /
+                                       9
+                                       
+                                          
+                                             G
+                                          
+                                          2
+                                       
+                                       )
+                                       (
+                                       3
+                                       G
+                                       +
+                                       
+                                          
+                                             E
+                                          
+                                          p
+                                       
+                                       )
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       (
+                                       ∂
+                                       
+                                          
+                                             σ
+                                          
+                                          
+                                             y
+                                          
+                                       
+                                       /
+                                       ∂
+                                       T
+                                       )
+                                       d
+                                       T
+                                    
+                                    
+                                       (
+                                       2
+                                       /
+                                       3
+                                       )
+                                       
+                                          
+                                             σ
+                                          
+                                          
+                                             y
+                                          
+                                       
+                                       (
+                                       3
+                                       G
+                                       +
+                                       
+                                          
+                                             E
+                                          
+                                          p
+                                       
+                                       )
+                                    
+                                 
+                              
+                           
+                        where 
+                           
+                              
+                                 E
+                              
+                              p
+                           
+                           =
+                           ∂
+                           
+                              
+                                 σ
+                              
+                              
+                                 y
+                              
+                           
+                           /
+                           ∂
+                           
+                              
+                                 
+                                    ε
+                                 
+                                 
+                                    p
+                                 
+                              
+                              
+                                 e
+                                 q
+                              
+                           
+                         is the plastic modulus defined as the slow rate of the equivalent resistance stress cure, and G is the shear elastic modulus of the material.
+
+Finally, the increment constitutive equation can be given as
+                           
+                              (8)
+                              
+                                 d
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       i
+                                       k
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       i
+                                       k
+                                       j
+                                       l
+                                    
+                                    
+                                       e
+                                    
+                                 
+                                 d
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       j
+                                       l
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       i
+                                       k
+                                       j
+                                       l
+                                    
+                                    
+                                       e
+                                       p
+                                    
+                                 
+                                 d
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       j
+                                       l
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       i
+                                       k
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 d
+                                 T
+                              
+                           
+                        where 
+                           
+                              
+                                 D
+                              
+                              
+                                 i
+                                 k
+                                 j
+                                 l
+                              
+                              
+                                 e
+                              
+                           
+                         is the elastic matrix, 
+                           
+                              
+                                 D
+                              
+                              
+                                 i
+                                 k
+                                 j
+                                 l
+                              
+                              
+                                 e
+                                 p
+                              
+                           
+                         is the equivalent elastic–plastic strain matrix, and 
+                           
+                              
+                                 D
+                              
+                              
+                                 i
+                                 k
+                                 j
+                                 l
+                              
+                              
+                                 T
+                              
+                           
+                         is the temperature matrix
+                           
+                              (9)
+                              
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       i
+                                       k
+                                       j
+                                       l
+                                    
+                                    
+                                       e
+                                    
+                                 
+                                 =
+                                 2
+                                 G
+                                 
+                                    
+                                       δ
+                                    
+                                    
+                                       i
+                                       k
+                                    
+                                 
+                                 
+                                    
+                                       δ
+                                    
+                                    
+                                       j
+                                       l
+                                    
+                                 
+                                 +
+                                 λ
+                                 
+                                    
+                                       δ
+                                    
+                                    
+                                       i
+                                       k
+                                    
+                                 
+                                 
+                                    
+                                       δ
+                                    
+                                    
+                                       j
+                                       l
+                                    
+                                 
+                              
+                           
+                        
+                        
+                           
+                              (10)
+                              
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       i
+                                       k
+                                       j
+                                       l
+                                    
+                                    
+                                       e
+                                       p
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       
+                                          
+                                             S
+                                          
+                                          
+                                             i
+                                             k
+                                          
+                                       
+                                       
+                                          
+                                             S
+                                          
+                                          
+                                             j
+                                             l
+                                          
+                                       
+                                    
+                                    
+                                       (
+                                       
+                                          
+                                             σ
+                                          
+                                          
+                                             y
+                                          
+                                          
+                                             2
+                                          
+                                       
+                                       /
+                                       9
+                                       
+                                          
+                                             G
+                                          
+                                          2
+                                       
+                                       )
+                                       (
+                                       3
+                                       G
+                                       +
+                                       
+                                          
+                                             E
+                                          
+                                          p
+                                       
+                                       )
+                                    
+                                 
+                              
+                           
+                        
+                        
+                           
+                              (11)
+                              
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       i
+                                       k
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       
+                                          
+                                             S
+                                          
+                                          
+                                             i
+                                             k
+                                          
+                                       
+                                       
+                                          
+                                             S
+                                          
+                                          
+                                             j
+                                             l
+                                          
+                                       
+                                       (
+                                       α
+                                       
+                                          
+                                             δ
+                                          
+                                          
+                                             j
+                                             l
+                                          
+                                       
+                                       −
+                                       ∂
+                                       
+                                          
+                                             C
+                                          
+                                          
+                                             i
+                                             k
+                                             j
+                                             l
+                                          
+                                          
+                                             T
+                                          
+                                       
+                                       /
+                                       ∂
+                                       T
+                                       )
+                                       
+                                          
+                                             σ
+                                          
+                                          
+                                             i
+                                             k
+                                          
+                                       
+                                       −
+                                       (
+                                       1
+                                       /
+                                       3
+                                       G
+                                       )
+                                       
+                                          
+                                             S
+                                          
+                                          
+                                             i
+                                             k
+                                          
+                                       
+                                       (
+                                       ∂
+                                       
+                                          
+                                             σ
+                                          
+                                          
+                                             y
+                                          
+                                       
+                                       /
+                                       ∂
+                                       T
+                                       )
+                                    
+                                    
+                                       (
+                                       
+                                          
+                                             σ
+                                          
+                                          
+                                             y
+                                          
+                                          
+                                             2
+                                          
+                                       
+                                       /
+                                       9
+                                       
+                                          
+                                             G
+                                          
+                                          2
+                                       
+                                       )
+                                       (
+                                       3
+                                       G
+                                       +
+                                       
+                                          
+                                             E
+                                          
+                                          p
+                                       
+                                       )
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+
+                           
+                           Fig. 4 shows a schematic drawing that illustrates the processing steps.
+
+The whole rough rolling process used in industry for H-shape steel production can be generally described by the following three steps. Firstly, the stock is preheated in a walking beam furnace for a scheduled time. Secondly, the stock is conveyed to a device with predesigned descaling sprays to remove iron oxide scale layers from hot stock surfaces. Then it undergoes scheduled multi-pass hot deformation on a reversing mill.
+
+We consider the rough rolling process for the production of H200×200×8/12, a typical size of H-shape steel commonly used in construction sites. The stock has an 240×375mm2 cross-section and is 5000mm in length. Nine roll passes shaped by four different gauges with specific gaps were applied to the reversing rough rolling process.
+
+The model consists of two rollers and a half-symmetry deformable stock (taking advantage of symmetry). Coulomb friction with a varying friction coefficient is assumed between the rollers and the stock. The friction coefficient f is defined as
+                              
+                                 (12)
+                                 
+                                    f
+                                    =
+                                    1.05
+                                    −
+                                    5
+                                    ×
+                                    
+                                       
+                                          10
+                                       
+                                       
+                                          −
+                                          4
+                                       
+                                    
+                                    T
+                                    −
+                                    5.6
+                                    ×
+                                    
+                                       
+                                          10
+                                       
+                                       
+                                          −
+                                          2
+                                       
+                                    
+                                    v
+                                 
+                              
+                           where T (°C) is the current temperature of the stock and v (m/s) is the rolling velocity. The equation was implemented into the ABAQUS/Explicit solver through the user defined subroutine VFRIC.
+
+Both rollers in the model are assumed to be rigid and are modeled as an analytical rigid surface. All degrees of freedom are constrained on the roller except rotation about the z-axis, where a scheduled angular velocity value listed in 
+                           Table 3 is defined. The deformable stock is meshed with C3D8RT elements and for each analysis case the stock is given an initial velocity listed in Table 3 in the x-direction to initiate contact.
+
+A schematic model of the reversing rough rolling is shown in 
+                           Fig. 5, and a general geometry without dimensions of the gauge is given in 
+                           Fig. 6. The first two passes are rolled in gauge 1 with different rolling parameters; the next four passes are rolled in gauge 2, two passes in gauge 3, and one pass in gauge 4. The rolling schedules are given in detail in Table 3. Considering the symmetries of the geometry and forming conditions only half of the stock was modeled and simulated in the ABAQUS solver for time saving.
+
+The heat transfer coefficient between the rollers and the stock, listed in 
+                           Table 4 and implemented into the ABAQUS/Explicit solver through the user defined subroutine VFILM, was assumed to be dependent on the minimum gap distance between the contact surfaces of the roller and the stock.
+
+The complete roughing rolling process including all nine rolling passes was simulated using the input parameters shown in 
+                           Table 5.
+
+Multi-pass rolling of H-shape steel involves very large deformations, so it is very important to maintain the mesh quality to avoid the decrease of solution accuracy. A procedure for the multi-pass rolling simulation was developed and is shown in 
+                           Fig. 7.
+
+The main steps of the procedure are given below
+                              
+                                 1.
+                                 The microstructure evolution models were implemented into the Abaqus/Explicit solver and three-dimensional (3D) simulation of hot rolling of H-shape steel was performed until the specific steady state criteria were matched.
+
+A set of elements was created automatically by the Abaqus/Explicit at the end of step 1.
+
+In order to perform a two-dimensional (2D) simulation of the thermal process and microstructure evolution during the inter-pass time, a set of nodes on the front face of the elements was created by a programmed python script file. An input file for the Abaqus/Implicit solver was also created automatically by defining the temperature and the solution dependent variables (SDV) as initial conditions. Simulation was performed for the inter-pass time.
+
+The out profile line of the 2D elements was constructed by the programmed python script file and re-meshed manually. Nodes temperature was mapped using the sub-modeling methods presented by Abaqus/Implicit.
+
+In order to perform a 3D simulation of the next rolling pass, 3D elements were created along the vertical direction of the 2D elements by a specific defined programmed python script file, and the nodes temperature and solution dependent variables were also mapped automatically. 3D simulation was performed until the specific steady state criteria were reached and then step 2 was performed to move on with the FE procedures.
+
+In order to investigate the influences of preheating temperature, descaling treatment, rolling velocity and inter-pass times on the evolution of austenite grain size, an orthogonal experiment by means of numerical simulation was carried out. Three levels were set for each factor with the effect of decaling treatment represented by holding times measured as soon as the stock leaves the walking beam furnace until it comes into contact with the rollers. The design of the numerical orthogonal experiments is shown in 
+                        Table 6.
+
+@&#RESULTS AND DISCUSSIONS@&#
+
+
+                     
+                     Fig. 8 shows the calculated austenite grain size distribution in the stock at the last roughing rolling process. SDV1 is a solution dependent variable that stands for grain size in the presented work. It shows that an initially homogenous austenite grain size gradually becomes inhomogeneous at the end. But at the web of the stock the austenite grain sizes are much more refined and homogenous than those in the flange. So in the following finishing rolling process the main aim of the schedule designer is to refine the austenite grain in the flange. It is difficult to fulfill this aim only by their operational experience, and it is very expensive to carry out these experiments because of very high machinery costs and loss of production. Therefore, numerical simulations should be adopted for the design and development of new H-shape products.
+
+In 
+                     Fig. 9, the results of calculated temperature distribution in the stock at the last roughing rolling pass are presented. It also shows that an initially homogenous temperature gradually becomes inhomogeneous at the end.
+
+The predicted distributions of dynamic recrystallization fraction at the last rough rolling process are shown in 
+                     Fig. 10. SDV6 is also a solution dependent variable that stands for dynamic recrystallization fraction in the presented work. It shows that the maximum dynamic recrystallization occurs in the biggest deformation region of the stock.
+
+
+                     
+                     Fig. 11 shows the evolution of minimum average austenite grain size in the stock during the rolling passes. It can be seen that the minimum average austenite grain changes from the initial size of about 300–60μm after the last rolling pass.
+
+In 
+                     Fig. 12, the comparison between calculated and measured values of mill load during the industrial rough rolling process of H-shape is presented. The similarity in measured and calculated values shows a good predictive ability of the constitutive models for the Q235 steel developed in this presented work.
+
+The evolutions of average austenite grain size in ODE are shown in 
+                     
+                     Tables 7 and 8 summarizes the statistical analysis of the effect of different factors. The K value for each level of a parameter is the sum of the three values shown in Table 6, the range value R for each factor is the difference between the maximal and minimal value of the three levels, and 
+                        R
+                      is the arithmetic mean of the values of R. Based on the results of range analysis, the significance sequence of all the investigated influencing factors is lined as follows: preheating temperature, rolling velocity, holding time (descaling treatment), and inter-pass time.
+
+@&#CONCLUSIONS@&#
+
+The set of unified constitutive equations presented here enables predicting distribution of temperature and microstructure evolution of the material during and after the hot deformation, which are very helpful for engineers working on roll pass design. Scheduled multi-pass rough rolling processes of H-shape steel as well as numerical orthogonal design experiments were simulated and the following conclusions could be drawn:
+                        
+                           1.
+                           By using the developed materials model and the FE procedures, the microstructure evolution during rolling process can be taken into account in the period of rolling schedule design, reducing the cost of expensive industrial tests.
+
+The lower the preheating temperature, the smaller the minimal value of average austenite grain size obtained.
+
+Despite variations of the other factors, the slower the rolling velocity the faster the minimal value of average austenite grain size obtained in such deformation conditions.
+
+@&#ACKNOWLEDGMENTS@&#
+
+The investigations presented in this paper were supported by the Primitive Research Fund for excellent young and middle-aged scientists of Shandong Province under Grant no. BS2011ZZ020 and applied basic research programs for YOUTHS of Qingdao under Grant no. 13-1-4-257-JCH. Part of the investigations was supported by Fundamental Research Funds for the Central Universities under Grant no. 12CX04062A and the National Science Fund of PR China under Grant no. 51205414. The supports are greatly acknowledged.
+
+@&#REFERENCES@&#
+

@@ -1,0 +1,1789 @@
+@&#MAIN-TITLE@&#Computational diagnosis and risk evaluation for canine lymphoma
+
+@&#HIGHLIGHTS@&#
+
+
+               
+                  
+                  
+                     
+                        
+                           
+                           Acute phase proteins, C-Reactive Protein and Haptoglobin, are used for the canine lymphoma blood test.
+
+
+                        
+                        
+                           
+                           This test can be used for diagnostics, screening, and for remission monitoring.
+
+
+                        
+                        
+                           
+                           We compare various decision trees, KNN (and advanced KNN) and algorithms for probability density evaluation.
+
+
+                        
+                        
+                           
+                           For the differential diagnosis the best solution gives the sensitivity 83.5% and specificity 77%.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Cancer diagnosis
+
+Data analysis
+
+Classification
+
+Risk evaluation
+
+Decision tree
+
+Advanced KNN
+
+Radial basis functions
+
+@&#ABSTRACT@&#
+
+
+                  The canine lymphoma blood test detects the levels of two biomarkers, the acute phase proteins (C-Reactive Protein and Haptoglobin). This test can be used for diagnostics, for screening, and for remission monitoring as well. We analyze clinical data, test various machine learning methods and select the best approach to these oblems. Three families of methods, decision trees, kNN (including advanced and adaptive kNN) and probability density evaluation with radial basis functions, are used for classification and risk estimation. Several pre-processing approaches were implemented and compared. The best of them are used to create the diagnostic system. For the differential diagnosis the best solution gives the sensitivity and specificity of 83.5% and 77%, respectively (using three input features, CRP, Haptoglobin and standard clinical symptom). For the screening task, the decision tree method provides the best result, with sensitivity and specificity of 81.4% and 
+                        >
+                        99
+                        %
+                     , respectively (using the same input features). If the clinical symptoms (Lymphadenopathy) are considered as unknown then a decision tree with CRP and Hapt only provides sensitivity 69% and specificity 83.5%. The lymphoma risk evaluation problem is formulated and solved. The best models are selected as the system for computational lymphoma diagnosis and evaluation of the risk of lymphoma as well. These methods are implemented into a special web-accessed software and are applied to the problem of monitoring dogs with lymphoma after treatment. It detects recurrence of lymphoma up to two months prior to the appearance of clinical signs. The risk map visualization provides a friendly tool for exploratory data analysis.
+               
+
+@&#INTRODUCTION@&#
+
+Approximately 20% of all canine tumors are lymphoma [81]. The typical age of a dog with lymphoma is 6–9 years although dogs of any age can be affected. The biggest problem with cancer treatment in dogs or humans is the earlier diagnostics. Routine screening can improve cancer care by helping pick up tumors that might otherwise be missed.
+
+The minimally invasive tests are needed for screening and differential diagnosis as precursors to histological analysis. It is also necessary to monitor the late effects of treatment, to identify or explain trends and to watch the lymphoma return. The modern development of veterinary biomarker technology aims to answer these challenges. In the discovery of cancer biomarkers the veterinary medicine follows human oncology with some delay. The controversies, potentials biases, and other concern related to the clinical application of biomarker assays for cancer screening are discussed in [32]. There is increasing interest in the study of prognostic and diagnostic biomarker proteins for canine lymphoma [58].
+
+Identification of several biomarkers for canine lymphoma has been reported during the last decade:
+                           
+                              •
+                              The proteomic evaluation of lymph nodes from dogs with B-cell lymphoma (11 cases) was compared to those from unaffected controls (13 cases). The expression of prolidase (proline dipeptidase), triosephosphate isomerase and glutathione S-transferase was decreased in the samples from the lymphoma cases and the expression of macrophage capping protein was increased [52].
+
+The surface-enhanced laser desorption-ionization time-of-flight mass spectrometry (SELDI-TOF-MS) was used to identify biomarker proteins for B-cell lymphoma in canine serum. 29 dogs with B-cell lymphoma and 87 control dogs were involved in the study. Several biomarker protein peaks in canine serum were identified, and a classification tree was built on the basis of 3 biomarker protein peaks. It was reported that with 10-fold cross-validation of the sample set, the best individual serum biomarker peak had 75% sensitivity and 86% specificity and the classification tree had 97% sensitivity and 91% specificity for the classification of B-cell lymphoma [21].
+
+A commercially available canine lymphoma screening test was developed by PetScreen Ltd [69]. Serum samples were collected from 87 dogs with malignant lymphoma and 92 control cases and subjected to ion exchange chromatography and SELDI-TOF-MS analysis. Nineteen serum protein peaks differed significantly 
+                                    (
+                                    p
+                                    <
+                                    0.05
+                                    )
+                                  between the two groups based on normalized ion intensities. From these 19 peaks, two differentiating biomarkers emerged with a positive predictive value (PPV) of 82%. These biomarkers were used in a clinical study of 96 dogs suspected of having malignant lymphoma. A specificity of 91% and sensitivity of 75% was determined, with a PPV of 80% and negative predictive value (NPV) of 88%. Later on, these peaks were identified as two acute phase proteins: Haptoglobin (Hapt) and C-Reactive Protein (CRP) [2].
+
+Some qualitative alterations were identified in dogs with lymphoma in the proteomic study [5]; 21 dogs included in the study had high grade lymphoma confirmed cytologically (16 cases) or histologically (five cases). The increased concentrations of haptoglobin in the sera of dogs with lymphoma could account for increased levels of α 2 globulins, α 2 macroglobulin, α-anti-chymotrypsin and inter-α-trypsin inhibitor, which were identified concurrently.
+
+Vascular endothelial growth factor (VEGF), metalloproteinase (MMP) 2 and 9 transforming growth factor beta (TGF-β) were tested in 37 dogs with lymphoma, 13 of which were also monitored during chemotherapy. Ten healthy dogs served as control. Lymphoma dogs showed higher activity of MMP-9 
+                                    (
+                                    p
+                                    <
+                                    0.01
+                                    )
+                                  and VEGF 
+                                    (
+                                    p
+                                    <
+                                    0.05
+                                    )
+                                 , and lower TGF-β than controls, and a positive correlation between act-MMP-9 and VEGF 
+                                    (
+                                    p
+                                    <
+                                    0.001
+                                    )
+                                 . During chemotherapy, activity MMP-9 and VEGF decreased in B-cell lymphomas 
+                                    (
+                                    p
+                                    <
+                                    0.01
+                                    )
+                                 , suggesting a possible predictive role in this group of dogs [3].
+
+For use in clinics, the biomarkers should be identified and validated in preclinical settings and then validated and standardized using real clinical samples [59]. Intensive search of biomarkers requires standardization of this technology [51]. Proteins discovered in the research phase may not necessarily be the best diagnostic or therapeutic biomarkers. Therefore, after identification of a biomarker (Phase 1), the clinical assays are necessary to investigate if the biomarker can truly distinguish between disease versus control subjects (Phase 2). Then special retrospective and prospective research is needed for sensitivity and specificity analysis (Phases 3 and 4). Finally, the cancer control phase is needed (Phase 5) to “evaluate role of biomarker for screening and detection of cancer in large population” [51]. Discovery and identification of a promising biomarker does not mean that it will successfully go through the whole standardized procedure of testing and evaluation.
+
+Acute phase proteins are now understood to be an integral part of the acute phase response which is the cornerstone of innate immunity [17]. They have been shown to be valuable biomarkers as increases can occur with inflammation, infection, neoplasia, stress, and trauma. All animals have acute phase proteins, but the major proteins of this type differ by species. Acute phase proteins have been well documented in laboratory, companion, and large animals. After standardized assays, these biomarkers are available for use in all fields of veterinary medicine as well as basic and clinical research [17].
+
+Acute phase proteins, including alpha 1-acid glycoprotein [63,30,77], C-Reactive Protein (CRP) [55,57,69,2], and Haptoglobin (Hapt) [57,69,2], have been evaluated as tumor markers. Nevertheless, as is mentioned in review [32], it is still necessary to prove that these biomarkers are clinically useful in cancer diagnosis. Some authors even suggest that the non-specific serum biomarkers indicate inflammatory response rather than cancer [38].
+
+In our research we evaluate the role of two biomarkers, CRP and Hapt, for screening and detection of lymphoma, for differential diagnosis of lymphoma and for monitoring of lymphoma return after treatment. Our research is based on the PetScreen Canine Lymphoma Blood Test (cLBT). This is advanced technology to detect lymphoma biomarkers present in a patient׳s serum [2]. The cLBT evaluates the concentration of two acute phase proteins: Hapt and CRP. High levels of these biomarkers indicate a high likelihood that the patient has lymphoma. The cLBT provides a minimally invasive alternative to a fine needle aspirate as a precursor to histological diagnosis of the disease. The cLBT should be used for differential diagnosis when a patient is suspected of having lymphoma by showing classical symptoms such as generalized lymphadenopathy, PU/PD and lethargy (we call all such cases the clinically suspected ones). It may be also useful in the monitoring of lymphoma return. In summary, the test provides:
+                           
+                              •
+                              A simple blood test requiring only 2ml of blood taken as part of existing biochemistry/haematology work up. Results are available the same day.
+
+A minimally invasive procedure.
+
+An alternative to taking an FNA sample and the associated risks of failing to retrieve sufficient lymphoid cells or encountering poor preservation of the cells.
+
+A monitoring tool to assess treatment progression and to detect recurrence.
+
+Some of our previous results of canine lymphoma diagnosis are announced in [2,56].
+
+The description of the database and statement of the problems are represented in Section 2. Two cohorts are isolated in the database and two problems are formulated: (i) differential diagnostic in clinically suspected cases and (ii) screening. The isolation of the clinically suspected cohort is necessary for formulation of the problem of differential diagnostics and selection of the appropriate methods. The healthy cohort and formulation of the screening problem demands the use of a prior probability of lymphoma and forbids the use of class weights as a parameter to select the best solution. This means that the weights of classes are determined by the prior probability. Both problems (differential diagnostics and screening) are formulated as problems of probabilistic risk evaluation [10]. Usual classifiers provide a decision rule and give the answer in the form “Yes” or “No” (cancer or not cancer, for example). We almost never can be sure that this “Yes” or “No” answer is correct. Therefore the evaluation of probability may be more useful than just a binary answer. If we evaluate the posterior probability of lymphoma under given values of features then we can take the decision about the next step of medical investigation or treatment. Probabilistic risk evaluation supports decision making and allows to evaluate the consequences of the decisions (risk management [10]).
+
+
+                        Section 3 presents a brief review of the data mining methods employed in biomarker cancer diagnosis. We introduce the methods used in our work for the analysis of canine lymphoma. The detailed description of these methods is given in Appendix. Three used methods are described:
+                           
+                              •
+                              
+                                 Decision trees with three different impure-based criteria: information gain, Gini gain and DKM [70].
+
+
+                                 K nearest neighbors method (KNN). Three versions of KNN methods are used: KNN with Euclidean distance [16], KNN with Fisher׳s distance transformation, and the advanced adaptive KNN [31]. All the three methods use statistical kernels to weight an influence of each of the k nearest neighbors to evaluate the risk of lymphoma. The KNN method with Fisher׳s distance transformation is much less known. We use the geometrical complexity [89] for comparison of different KNN methods.
+
+
+                                 Probability density function estimation (PDFE) [72]. We use PDFE for direct evaluation of the lymphoma risk.
+
+The decision trees and KNN classifiers are also used for evaluation of probability. The way back from the probability estimate to classification rule is simple, just define the threshold. The criterion of selection of the best classifier is the maximum sum of sensitivity and specificity or the furthest from the “completely random guess” classifier. We also compare performance of this selection criterion with some other criteria: the relative information gain (RIG) from the classifier output to the target attribute, accuracy, precision, and F-score.
+
+We use classical methods, and the main building blocks of the algorithms are well known. Nevertheless, some particular combinations of methods may be new, for example, combination of discriminant analysis with Advanced KNN (see Appendix). We have tested automatically thousands of combinations, and the best combination for each task has been selected.
+
+
+                        Section 4 contains the description of the best solutions obtained for differential diagnostic and screening problems. All features are analyzed from the point of view of their usability for the lymphoma diagnostic and risk evaluation. We present the case study for both problems: for the diagnostics problem we have tested 25,600,000 variants of the KNN method, 5,184,400 variants of decision tree algorithms and 3480 variants of the PDFE method; for the screening task we have tested 51,200 variants of KNN and advanced KNN parameters, 10,368 variants of decision trees and 3480 variants of PDFE. The versions differ by impurity criteria, kernel functions, number of nearest neighbors, weights and other parameters. The best results are implemented in web-accessed software for the diagnosis of canine lymphoma (implemented in Java 6).
+
+The obtained results provide the creation of a more reliable diagnostic, screening and monitoring system for canine lymphoma. The first application of the developed system shows that the risk of lymphoma (cLBT score) defined after lymphoma treatment allows prediction of time before relapse of lymphoma. If after treatment of lymphoma the cLBT is performed regularly, it detects recurrence up to two months prior to the appearance of physical signs.
+
+The original database contains 303 records (dogs) with four categorical input features: Sex, Lymphadenopathy, Neutered and Breed and three real valued features: Age and concentrations of two acute phase proteins: Haptoglobin (Hapt) and C-Reactive Protein (CRP). A part of serum samples was collected by PetScreen from dogs undergoing differential diagnosis for lymphoma and also collected at veterinary practices in the USA [2,69]. Another source is the Pet Blood Bank which stores the blood of healthy dogs. Lymphoma positive serum samples were confirmed either by excisional biopsy or fine needle aspirate and non-lymphoma serum samples were confirmed to be free of lymphoma at a minimum of 6 months after the sample was taken [2,69].
+
+Breed may be important for lymphoma diagnosis. For example, the boxer, bulldog and bull mastiff breeds have a high incidence of lymphoma [65]. The relatively small number of records in our database has limited our ability to detect breeds with an elevated risk. We exclude this feature because there are 54 different breeds in 204 records (less than four records of each breed) and 99 missed values. This amount of known data for a categorical feature with 54 different values is not sufficient for diagnosis without clustering of breeds (numerosity reduction is needed). The well-developed imputation methods [73] also cannot be applied directly without numerosity reduction because of insufficient information.
+
+The target feature Lymphoma is binary: “Positive” for a dog with lymphoma and “Negative” for a dog without lymphoma. Three attributes contain missed values: Sex contains 96 (35%); Neutered contains 107 (38%); Age contains 101 (36%).
+
+
+                        Isolating of two cohorts. The database analysis shows that the samples are heterogeneous: two different cohorts of data can be distinguished in the database. There were two different sources of data: dogs undergoing differential diagnosis for lymphoma and the Pet Blood Bank (the blood of healthy dogs) [2].
+
+The existence of two so different sources of data entails the presence of two different cohorts of patients in the database. The first cohort is entitled “clinically suspected” and contains records collected by PetScreen from dogs undergoing differential diagnosis. All dogs in this cohort have been referred for differential diagnosis by veterinary practitioners. The vets decide that these dogs are clinically suspected on the base of one or more clinical symptoms. It is not possible to find a posteriori these symptoms for each instance and we have to introduce a new synthetic attribute: “clinically suspected”. The cohort of clinically suspected instances should be considered separately for differential diagnosis purposes and we propose to treat each case referred to the differential diagnosis as a clinically suspected one. The second cohort is entitled “healthy” and contains records obtained from healthy dogs courtesy of the Pet Blood Bank.
+
+The additional confirmation of existence of two cohorts is the differences in statistics of the attributes for these cohorts. In accordance with expert estimations, the prior probability of lymphoma is located between 2% and 5% in the canine population. The number of records of patients with lymphoma is 97 or 32% of all the records in the database. All these cases have been clinically suspected and form 42% of the clinically suspected cases. This imbalance entails the usage of specific methods to solve screening tasks. The “clinically suspected” feature was added to the database to identify the two cohorts. The values of feature “clinically suspected” were defined by using additional information from veterinary cards.
+
+The existence of the two cohorts allows us to formulate two different problems: the problem of differential diagnosis and the problem of screening.
+
+
+                        Differential diagnosis. The problem of differential diagnostic can be formulated as a problem of lymphoma diagnosis for patients with some clinical symptoms of lymphoma. To solve this task we use the clinically suspected samples. A diagnostic problem is a usual classification problem and all classification methods can be used. We use three types of classification methods: KNN, decision tree and the method based on probability distribution function estimation. Each of these methods is described in Section 3. The first two methods have an auxiliary parameter “weight” of the positive class 
+                           
+                              
+                                 w
+                              
+                              
+                                 p
+                              
+                           
+                        .
+
+
+                        Screening. The problem of screening can be formulated as a problem of evaluation of lymphoma risk for any dog. The sample for this problem includes all the database records. The experts׳ estimation of prior probability of lymphoma is between 2% and 5% however the fraction of patients with lymphoma records in the database is 32%. To compensate for this imbalance all methods take into account the prior probability of lymphoma and the weights of classes are defined by prior probability.
+
+@&#METHODS@&#
+
+Extraction diagnostic biomarkers for cancer, their validation and testing for clinical use is considered now as a data analysis challenge [34,74]. The classical methods of supervised classification are widely used to meet this challenge: linear and quadratic discriminant analysis [6,8,48,82], decision trees [1,9,33,50,60,62,66,75,80,88], logistic regression [4,8,41,42], k nearest neighbors (KNN) approach [33,66,82,83] and naïve Bayes model for probability density function estimation [8,64]. Artificial neural networks are used for the identification of cancer biomarkers and cancer prediction as a flexible tool for supervised learning [7,33,44,66,79,80,43]. During the last decade, applications of support vector machines [29,46,66,82], and ensemble learning (random forests, committees of decision trees, boosting methods) [15,45,46,61,85,87] have been intensively developed.
+
+Most of the works combine and compare several methods, for example, discriminant analysis, KNN and support vector machines [82], decision trees, KNN, and artificial neural networks [33], discriminate analysis, random forest, and support vector machine [61], decision trees, bagging, random forests, extra trees, boosting, KNN, and support vector machines [23], linear discriminant analysis, quadratic discriminant analysis, KNN, bagging, boosting classification trees, and random forest [85].
+
+Supervised classification and regression methods are combined with dimensionality reduction methods such as linear and non-linear principal component analysis [8,24,35,40,67,80] or moment-based approach [76]. Several hybrid systems are developed with combinations of supervised classification and unsupervised clustering [8,86].
+
+The classical decision trees or KNN approach (or both) usually serve as bases for comparison when evaluating supervising classification. It is necessary to stress that there are many versions of algorithm even for a single decision tree or KNN. In this paper, we systematically test many versions of these basic algorithms on the problem of canine lymphoma differential diagnosis and screening.
+
+We use three types of classification methods to evaluate the risk of lymphoma for the problems of differential diagnosis and screening: decision tree, KNN and PDFE. Each of these titles covers many different algorithm. Detailed description of these families of algorithms used is presented in Appendix. We aim to select the best one for the given problem. Simultaneously the best subset of input attributes should be selected.
+
+Totally we have tested 10,368 trees for the screening problem. For the task of differential diagnostic we vary the weight of class of patients with lymphoma from 0.1 to 50. For the differential diagnostic problem 5,184,400 variants of decision trees have been tested.
+
+We have tested 51,200 sets of parameter values for the screening. For the differential diagnostic, we vary the weight of class of patients with lymphoma from 0.1 to 50; 25,600,000 variants of KNN method have been tested.
+
+We have tested 3840 variants of PDFE for each problem.
+
+The CRP and Hapt features are the concentrations of the two proteins. It is well-known that in many chemical applications the logarithm of concentration (the chemical potential) is more informative and useful then the concentration itself [84]. Therefore, we test all the methods for concentrations of CRP and Hapt (in the “natural” units of concentration) and for logarithms of the concentrations (in the logarithmic coordinates). All real valued features are divided by their standard deviation. If CRP and Hapt are used in logarithmic transformed form then initially we perform logarithmic transformation and then divide by the standard deviation of the logarithmic transformed feature. For the KNN and PDFE all the binary input features are coded by 0 and 1.
+
+For feature evaluation and selection we calculate the Relative Information Gain (RIG) [70] which is the natural tool to estimate the importance of input features for the categorical target feature. For this purpose, real data have been binned (organized into groups).
+
+We use two types of weights: prior weights of classes and weight of positive class. Really, we use the weights of instances instead of weights of classes. For the differential diagnosis and screening problems both types of weights are defined for different reasons: for the screening problem we have the prior probability of lymphoma for the whole dog population; for the differential diagnosis problem we have no prior probability but can use the auxiliary weight of the positive class to search for the best classifier. We use the following notations: p is the prior probability of lymphoma, 
+                           
+                              
+                                 N
+                              
+                              
+                                 L
+                              
+                           
+                         is the number of patients with lymphoma, 
+                           
+                              
+                                 N
+                              
+                              
+                                 CS
+                              
+                           
+                         is the number of all clinically suspected patients and 
+                           
+                              
+                                 N
+                              
+                              
+                                 H
+                              
+                           
+                         is the number of healthy patient.
+
+For the screening problem the weight of the class of patients with lymphoma is equal to p. The weight of one patient with lymphoma is equal to 
+                           
+                              
+                                 w
+                              
+                              
+                                 L
+                              
+                           
+                           =
+                           p
+                           /
+                           
+                              
+                                 N
+                              
+                              
+                                 L
+                              
+                           
+                        . In fact, this is the weight of any record of the clinically suspected cohort. The total probability must be equal to 1. This means that the sum of weights of all records must be equal to 1. Therefore, the weight of each record of a healthy patient is 
+                           
+                              
+                                 w
+                              
+                              
+                                 H
+                              
+                           
+                           =
+                           (
+                           1
+                           −
+                           
+                              
+                                 w
+                              
+                              
+                                 L
+                              
+                           
+                           
+                              
+                                 N
+                              
+                              
+                                 CS
+                              
+                           
+                           )
+                           /
+                           
+                              
+                                 N
+                              
+                              
+                                 H
+                              
+                           
+                        . For the screening problem the auxiliary weight of the positive class cannot be used (is equal to 1).
+
+For the differential diagnosis problem there is no prior probability. The auxiliary weight of positive class may be any positive number.
+
+To work with imbalanced dataset we employ two data simulation methods for over-sampling of the minority class.
+
+The first approach (“Rectangular”) uses the random generation of N new instances for each given sample from the minority class by formulas
+                           
+                              (1)
+                              
+                                 
+                                    
+                                       x
+                                    
+                                    
+                                       new
+                                    
+                                 
+                                 =
+                                 x
+                                 +
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       x
+                                    
+                                 
+                                 
+                                    
+                                       Wr
+                                    
+                                    
+                                       x
+                                    
+                                 
+                              
+                           
+                        where σ
+                        
+                           x
+                         is the standard deviations, r
+                        
+                           x
+                         is a random variable uniformly distributed in interval (−1,1), W is the average Euclidean distance from the given sample to k nearest neighbors of the same class. (The Euclidean distance is calculated in the plane of dimensionless variables normalized to unite variance.)
+
+The second approach is synthetic minority over-sampling technique (SMOT) [12]. It also uses the random generation of N new instances for each given sample from the minority class. For a given k, we find k nearest neighbors of the given sample of the same class. Each new instance is randomly situated on the straight line interval which links the given sample with a randomly selected nearest neighbor (from k neighbors found).
+
+We have many algorithms (variants of algorithm parameters) and we need to select the best algorithm. In this study we have considered two possible approaches: (i) use of the test set and (ii) Leave One Out Cross Validation (LOOCV). The preference for using test set is the speed: for each algorithm one model construction is sufficient. The model construction means the forming of the decision tree, or identifying k nearest neighbors, and computing the inverse covariance matrix for PDFE. LOOCV is more expensive: the number of model constructions is equal to the number of instances. Nevertheless, for a relatively small sample exclusion of a sufficiently large test set from learning may lead to the strong scattering of the evaluation result. We split the database into training set (80%) and test set (20%) 100 times independently and find large variance of the estimated sensitivity and specificity. The values vary from 30% to 100%, and the best version of the algorithm cannot be defined unambiguously. Therefore, we use LOOCV for evaluation of sensitivity and specificity and for selection of the best algorithm. An extensive simulation study of cross-validation for three classification rules, Fisher׳s discriminant analysis, 3NN, and decision trees (CART) using both synthetic and real breast cancer patient data was performed in [11]. It was demonstrated that cross-validation is less biased than some other methods but overestimates the number of errors for small samples.
+
+The next question is what indicator has to be used as a measure of algorithm accuracy. We can calculate the accuracy of classification as a ratio of correctly classified cases among all cases. Also the sensitivity and specificity can be used as such a measure. The classification accuracy is appropriate when numbers of examples of different classes are balanced. In our database the fraction of lymphoma patients is equal to 32% for the screening problem and 42% for the differential diagnosis problem. This means that the algorithm selected by classification accuracy can be shifted to good specificity and poor sensitivity. Other commonly used measures of classification quality is the area under Receiver Operating Characteristic (ROC) [78]. The sum of specificity and sensitivity is the distance from curve to the main diagonal which corresponds to the ‘completely random guess׳ classifier. We suggest considering the classifier with maximum sum of specificity and sensitivity as the best.
+
+@&#RESULTS@&#
+
+We need to find how much information about the diagnosis contain the inputs. For this purpose, real data have been binned (organized into groups). The bins have approximately equal depth; the boundaries of bins are represented in Table 1
+                        . Table 2 contains values of RIG for the target feature Lymphoma from any input feature. RIG is calculated for the whole database and for two samples: (Y) with L=“Y” and (N) with L=“N” (we use the abbreviation L for Lymphadenopathy). The RIG from Neutered is always less than 1% and this feature is excluded from the further study.
+
+We calculate the RIG for Lymphoma from all the input features together. The calculated value of RIG is 83%. This gives us an estimate of the expected classification accuracy. Therefore, we do not expect to produce classifiers without misclassifications.
+
+The number of input attributes is five and the problem of feature selection can be solved by exhaustive search. Table 2
+                         shows that the most informative attributes are Hapt (H) and CRP (C). These features are included into all tested sets of input features. The various combination of Age (A), Sex (S) and Lymphadenopathy (L) are included into tested input sets. In total, eight input feature sets are formed. Each set is denoted by abbreviation of included features: CH, CHA, CHL, CHS, CHAL, CHAS, CHLS and CHALS.
+
+The distributions of the real valued features are non-normal. It means that we cannot use any methods based on assumption of normality. The distribution diagram for Lymphoma is represented in Fig. 1
+                        . The diagram shows that only four records without lymphadenopathy have a positive Lymphoma diagnosis. It means that the decision “all dogs without lymphadenopathy have no lymphoma” generates only 4 false negative errors and truly identifies 93 dogs without lymphoma.
+
+The criteria developed for choosing the best solution suggest selecting the following algorithms. The ROC curves for the selected classifiers are depicted in Fig. 2
+                        .
+
+
+                        Differential diagnostic problem. The best algorithm is the decision tree with three input features: a linear combination of the concentrations of CRP and Hapt, and Lymphadenopathy. The tree is formed with DKM as the splitting criterion. The sensitivity of this method is 83.5%, specificity is 77%. The ROC integral for this method is 0.879 (Fig. 2a).
+
+In the case when Lymphadenopathy is considered as unknown we use a decision tree which only uses CRP and Hapt. The tree is formed with Information gain as a splitting criterion. The best version uses input features in linear combinations after logarithmic transformation. The sensitivity of this method is 81.5%, the specificity is 76%. The ROC integral (Fig. 2b) for this method is 0.780.
+
+
+                        Screening. The best classifier for the screening problem is the decision tree with three input features: the concentrations of CRP and Hapt, and Lymphadenopathy. The tree is formed with DKM as a splitting criterion. The concentrations of CRP and Hapt are used separately (not in linear combinations). The sensitivity of this method is 81.4% and specificity is 
+                           >
+                           99
+                           %
+                         (no false negative results in one-leave-out cross-validation). The ROC integral is 0.917 (Fig. 2c). In the case when Lymphadenopathy is considered as unknown we use a decision tree with CRP and Hapt only. The tree is formed with Gini gain as the splitting criteria. The concentrations of CRP and Hapt are used separately. The sensitivity is 69%, the specificity is 83.5%. The ROC integral is 0.771 (Fig. 2d).
+
+The classifiers for screening are prepared using the mixture of clinically suspected patients (Lymphadenopathy=Y) with the patients without lymphadenopathy. Application of these classifiers for screening of dogs without clinical symptoms (Lymphadenopathy=N) requires additional tests because there are only four cases of dogs with lymphoma with Lymphadenopathy=N in the database (see Fig. 1). For the preliminary analysis of this problem we apply both data simulation methods for over-sampling of the minority class, Rectangular (1) and SMOT.
+
+We select N=10 and k=3 in each method and add synthetic data to the instances from the original database with Lymphadenopathy=N and positive lymphoma diagnosis. The new database has well balanced classes. For both methods, the two best decision trees (one for Lymphadenopathy=Y and one for Lymphadenopathy=N) together demonstrate in LOOCV the results presented in Table 3
+                        .
+
+We see that with the simulated data the specificity decreases. In simulation, we add more data points with lymphoma but without observable lymphadenopathy (Lymphadenopathy=N). These new data are not well separated from the real data without lymphoma and with absence of lymphadenopathy. Therefore, all the data mining methods give the similar result and the specificity decreases after adding the simulated data. This fact allows two interpretations:
+                           
+                              •
+                              The simulated data do not reflect the reality properly and they should be substituted by a collection of real instances with lymphoma but without observable lymphadenopathy for the validation of screening algorithms.
+
+The simulated data reflect the reality and, therefore, the use of the acute phase proteins for lymphoma diagnosis is more reliable for the clinically suspected patients than for the patients without clinical symptoms (for the discussion of possible non-specificity of the acute phase proteins at tumor markers we refer to [38]).
+
+To resolve this dilemma, it is necessary to collect more real instances with lymphoma but without observable lymphadenopathy (Lymphadenopathy=N).
+
+
+                        Other criteria. The value of the Hosmer–Lemeshow [37] statistics for the differential diagnosis algorithm with three input value (CHL) is 12.73. It shows that with p-value greater than 10% the distribution of estimated probabilities coincides with the distribution of diagnosis. This test does not consider the prior probability and cannot be applied for the screening problem. Efron׳s pseudo R
+                        2 
+                        [19] shows that classifiers which use Lymphadenopathy explain about 40% of total variance. McFaden׳s pseudo R
+                        2 
+                        [53] for the differential diagnosis problem classifier, which uses Lymphadenopathy, has 38% greater log likelihood than the null model ones. For the screening problem the classifier which uses Lymphadenopathy has 45% greater log likelihood than the log likelihood of null model which is based on prior probability.
+
+We employ the Sensitivity + Specificity criterion for the best model selection. There exist many other criteria, for example, relative information gain (RIG) from the classifier output to the target attribute (Lymphoma, in our case), Accuracy ([“True positive” + “True negative”]/“Number of instances”), Precision (“True positive”/“Number of positive labels”), where “Number of positive labels” is the number of samples labeled as positive, i.e. “True positive” + “False positive”, F-score that is the harmonic mean of Precision and Sensitivity (F=2× Precision×Sensitivity/[Precision + Sensitivity]). We compare performance of these criteria on the test task of selection of the best model for the data set CHL without logarithmic transformation of concentrations. Table 4
+                         represents the sensitivity (Sens) and specificity (Spec) for the best models which are selected by each criterion.
+
+As we can see from this test, only the criterion Precision sometimes gives significantly different results (very precisely all the positive labels are true positive but many false negative results occur). It is risky to use Precision as a single criterion for model selection. All other criteria in Table 4 combine the sensitivity and specificity and provide the reasonable balance between them in all selected models.
+
+
+                        Risk evaluation and risk mapping. All classifiers used in our study can calculate the risk of lymphoma at an arbitrary point. We can use this capability to form a map of risk. To visualize data with more than two dimensions several types of screens can be used: coordinate planes, PCA, non-linear principal graphs and manifolds [24,25]. For this study we use the plane of CRP and Hapt concentrations. The explanation of colors is depicted in the legend included at the right of each figure.
+
+We use risk maps to generate hypotheses about the impact of input features. For example, let us consider the risk of lymphoma in relation to sex for clinically suspected cohort. There are 24 records with lymphoma and 54 records without lymphoma among female records and 38 and 43 records with and without lymphoma correspondingly among male records in the database of clinically suspected cases. The frequencies of lymphoma for female and male are here 31% and 47% correspondingly. This probability difference can be uniformly distributed in the space of the input attributes but can be condensed in some area on the map. To check this hypothesis we form the risk map for the three best classifiers one of each type for three input attributes: CHS (CRP, Hapt and sex). The best PDFE parameters are concentrations of CRP and Hapt, 9 nearest neighbors and Gaussian kernel (Fig. 3
+                        a, e). The best decision tree parameters are linear combinations of CRP and Hapt after logarithmic transformation, Information gain as a splitting criterion and the weight of class with lymphoma equals 1.8 (Fig. 3b, f). The best KNN options are logarithmic transformed CRP and Hapt, Euclidean distance, 15 nearest neighbors and Gaussian kernel for voting (Fig. 3c, g).
+
+
+                        Fig. 3 shows that for each classifier there are two regions: the big sex independent area in right side and small sex dependent area in left side. In this area, the risk of lymphoma may depend on the steroid hormones. This hypothesis needs additional verification.
+
+
+                        Applying the selected methods to lymphoma treatment monitoring. Prognosis and prediction tools give the possibility to more individualized treatments of cancer patients [8]. After initial chemotherapy of lymphoma, complete remission rates 65–97% have been reported. Despite high initial remission rates, most lymphomas relapse and require further therapy. The published median first remission durations have the range 150–400 days [26]. For the dogs, who receive an appropriate and timely therapy at the first relapse, the second complete remission rate is also high (for various groups it is reported between 70% and 92% [26]). Early and reliable diagnosis of lymphoma relapse is realized as an important problem both for canine and for human lymphoma treatment [26–28]. Concentration of some serum proteins increases before lymphoma relapse. For example, serum alpha 1-acid glycoprotein (AGP) concentration increases three weeks prior to lymphoma relapse [28].
+
+We have applied the tools we developed to the problem of monitoring of dogs after treatment for lymphoma. The canine lymphoma blood test was subjected to a blind retrospective study on serum collected from 57 dogs over four years. The cLBT ranks the remission status from 0 to 5 according to PDFE lymphoma risk evaluation, where 0 indicates complete remission, 5 equates to active diseases and a score of 3 represents a border line result. The dogs regularly giving a cLBT score of 2 or lower remained in remission. An increase in the score to 3 or more indicated that lymphoma was recurring.
+
+The first important result is that the score of the test immediately after treatment is very informative for predicting the time before relapse. Fig. 4
+                        a shows that for dogs with cLBT score between 3 and 4 the time of lymphoma relapsing is about four weeks; for dogs with cLBT score 2 the time of lymphoma relapsing is greater than four weeks and less than eight weeks, and for dogs with cLBT score 1 the time of lymphoma relapsing is greater than eight weeks.
+
+The second important result is that the cLBT score indicates the relapse of lymphoma before the clinical symptoms reappear. The study found that the test detected recurrence up to two months prior to the appearance of physical signs. These results strongly support the monthly basis monitoring of lymphoma patients in remission. The properly predicted time before relapse gives the possibility for better treatment planning and we expect that it may increase survival rate.
+
+@&#CONCLUSION@&#
+
+We formulate and analyze the problem of differential diagnosis of clinically suspected cases and the problem of screening. The criteria to select the best classifier for each problem are chosen. These criteria allow the selection of the best algorithms. For differential diagnosis the best solution is the decision tree with three input features: concentrations of CRP and Hapt, and Lymphadenopathy. The tree is formed with DKM as a splitting criterion. In this tree at each node the linear combination of CRP and Hapt is used (Fisher׳s approach). Synthesis of decision trees and linear discriminant analysis is proven to be optimal in some cases. The sensitivity of the best decision tree is 83.5%, the specificity is 77%.
+
+The best result is obtained for screening by the decision tree which uses three input features: the concentrations of CRP and Hapt, and Lymphadenopathy. CRP and Hapt are used separately. DKM is used as the splitting criterion. The sensitivity of this method is 81.4%, the specificity is 
+                        >
+                        99
+                        %
+                      (no false negative results in one-leave-out cross-validation).
+
+For screening on the base of two biomarker concentrations only, without any clinical symptoms, the best decision tree uses the concentrations of CRP and Hapt separately and Gini gain as splitting criteria. The sensitivity of this tree is 69%, the specificity is 83.5%.
+
+It is desirable to organize the systematic comparison of the predictive abilities of our test system with other biomarkers. Some preliminary results for different biomarkers have been reported in [3,5,21,52] for the significantly smaller samples than in our assay. The best reported result is a decision tree for diagnosis of B-cell lymphoma based on three protein peaks with 97% sensitivity and 91% specificity [21] (29 dogs with B-cell lymphoma and 87 control dogs are used). In the future clinical assay, the methods should be compared on the same cohorts of patients.
+
+We compare our results with some well-developed modern screening tests for the detection of human cancer. The accuracy of tests which based on single biomarkers is often worse. For example, the male PSA test gives sensitivity approximately 85% and specificity 35% and the CA-125 screen for human ovarian cancer provides sensitivity approximately 53% and specificity 98%. Supplementation of CA-125 by several other biomarkers increases sensitivity of at least 75% for early stage disease and specificity of 99.7% [71]. For the PSA marker, using age-specific reference ranges improved the test specificity and sensitivity, but did not improve the overall accuracy of PSA testing [36].
+
+The risk map visualization is a friendly tool for exploratory data analysis. It provides the opportunity to generate hypotheses about the impact of input features on the final diagnosis. The risk of lymphoma (cLBT score) defined after lymphoma treatment allows prediction of time before relapse of lymphoma. If after treatment of lymphoma the cLBT is performed regularly, it detected recurrence up to two months prior to the appearance of physical signs.
+
+Canine lymphoma can be considered as a model for human non-Hodgkin lymphoma [54]. The new diagnostic approaches can be applied for this disease.
+
+There are several questions and directions the future work with the biomarkers CRP and Hapt for canine lymphoma
+                        
+                           •
+                           Further clinical testing of the screening classifier with special attention to the instances with lymphoma but without obvious lymphadenopathy.
+
+Further clinical testing of the proposed lymphoma treatment monitoring system to validate the hypothesis that properly predicted time before relapse improves treatment planning and increases survival rate.
+
+Clustering of breeds for numerosity reduction and inclusion of this important feature in the diagnostic system.
+
+Selection of the optimal set of input features for lymphoma diagnosis from combinations of CRP and Hapt with the results of routine blood tests.
+
+@&#SUMMARY@&#
+
+Lymphoma is one of the most frequent canine cancers. It can be also considered as a model for human non-Hodgkin lymphoma. We develop technology for differential diagnosis of canine lymphoma, for screening and for remission monitoring. This technology is based on a specific blood test.
+
+The canine lymphoma blood test detects the levels of two biomarkers, the acute phase proteins, C-Reactive Protein and Haptoglobin. This test can be used for diagnostics, for screening, and for remission monitoring. We analyze clinical data, test various machine learning methods and select the best approach to these problems.
+
+Three family of methods, decision trees, kNN (including advanced and adaptive kNN) and probability density evaluation with radial basis functions, are used for classification and risk estimation. Several pre-processing approaches were implemented and compared. The best of them are used to create the diagnostic system. For the differential diagnosis the best solution gives the LOOCV sensitivity and specificity of 83.5% and 77%, respectively (using three input features, CRP, Haptoglobin and the standard clinical symptom). For the screening task, the decision tree method provides the best result, with sensitivity and specificity of 81.4% and 
+                        >
+                        99
+                        %
+                     , respectively (using the same input features), and if the clinical symptoms (Lymphadenopathy) are considered as unknown then a decision tree with CRP and Hapt provides sensitivity 69% and specificity 83.5%.
+
+The lymphoma risk evaluation problem is formulated and solved. We use three methods to evaluate the risk. The best models are selected as the system for computational lymphoma diagnosis and evaluation the risk of lymphoma as well. These methods are implemented into a special web-accessed software and are applied to the problem of monitoring dogs with lymphoma after treatment. It detects recurrence of lymphoma up to two months prior to the appearance of clinical signs and may help to optimize relapse treatment. The risk map visualization provides a friendly tool for exploratory data analysis.
+
+We compare our results with some current human cancer screening tests. The accuracy of tests which based on single biomarkers is often worse. For example, the male PSA test gives sensitivity approximately 85% and specificity 35% and the CA-125 screen for human ovarian cancer provides sensitivity approximately 53% and specificity 98%. Supplementation of the tests by several other biomarkers increases sensitivity and specificity.
+
+None declared.
+
+@&#ACKNOWLEDGMENTS@&#
+
+Innovation Partnership of the University of Leicester with PetScreen Ltd was partially supported by ERDF (European Regional Development Fund).
+
+Decision tree is a method that constructs a tree like structure which can be used to choose between several courses of action. Binary decision trees are used in this study. The decision tree is comprised of nodes and leaves. Every node can have a child node. If a node has no child node it is called a leaf or a terminal node. Any decision tree contains one root node which has no parent node. Each nonterminal node calculates its own Boolean expression (i.e. true or false). According to the result of this calculation the decision for a given sample would be delegated to the left child node (“true”) or to the right child node (“false”). Each leaf (terminal node) has a label which shows how many samples of the training set belong to each class: 
+                           
+                              
+                                 n
+                              
+                              
+                                 L
+                              
+                           
+                         is the number of cases with lymphoma, 
+                           
+                              
+                                 n
+                              
+                              
+                                 SCWL
+                              
+                           
+                         is the number of clinically suspected cases without lymphoma, 
+                           
+                              
+                                 n
+                              
+                              
+                                 H
+                              
+                           
+                         is the number of healthy cases. The probability of lymphoma is evaluated as a result of the division of the sum of weights of positive samples in this leaf by the sum of weights of all samples in the same leaf: 
+                           
+                              
+                                 
+                                    
+                                       p
+                                    
+                                    
+                                       L
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       L
+                                    
+                                 
+                                 
+                                    
+                                       W
+                                    
+                                    
+                                       L
+                                    
+                                 
+                                 /
+                                 (
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       L
+                                    
+                                 
+                                 
+                                    
+                                       W
+                                    
+                                    
+                                       L
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       SCWL
+                                    
+                                 
+                                 
+                                    
+                                       W
+                                    
+                                    
+                                       SCWL
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       H
+                                    
+                                 
+                                 
+                                    
+                                       W
+                                    
+                                    
+                                       H
+                                    
+                                 
+                                 )
+                                 .
+                              
+                           
+                        For the screening problem 
+                           
+                              
+                                 W
+                              
+                              
+                                 L
+                              
+                           
+                           =
+                           
+                              
+                                 w
+                              
+                              
+                                 L
+                              
+                           
+                           ,
+                           
+                              
+                                 W
+                              
+                              
+                                 SCWL
+                              
+                           
+                           =
+                           
+                              
+                                 w
+                              
+                              
+                                 L
+                              
+                           
+                         and 
+                           
+                              
+                                 W
+                              
+                              
+                                 H
+                              
+                           
+                           =
+                           
+                              
+                                 w
+                              
+                              
+                                 H
+                              
+                           
+                        . For the problem of differential diagnosis 
+                           
+                              
+                                 W
+                              
+                              
+                                 L
+                              
+                           
+                           =
+                           
+                              
+                                 w
+                              
+                              
+                                 p
+                              
+                           
+                           ,
+                           
+                              
+                                 W
+                              
+                              
+                                 SCWL
+                              
+                           
+                           =
+                           1
+                         and 
+                           
+                              
+                                 W
+                              
+                              
+                                 H
+                              
+                           
+                           =
+                           0
+                        .
+
+There are many methods to be used to develop a decision tree [70,68,39,13,22,18]. We use the methods based on information gain, Gini gain, and DKM gain. Since the screening problem defines the prior weights of classes, these weights must be considered. There are two ways to implement prior weights. The simplest way is to multiply the number of positive class cases in a leaf by the weight of the positive class, and the number of negative class cases by the weight of the negative class and then calculate the probability. In this study we use a different method: we modify the split criteria. Let us consider one node and one binary input attribute with values 0 and 1. To form a tree we select the base function for information criterion among 
+                           
+                              
+                                 Entropy
+                                 (
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       L
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 )
+                                 =
+                                 −
+                                 
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             L
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             L
+                                          
+                                       
+                                       +
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       log
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             L
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             L
+                                          
+                                       
+                                       +
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             L
+                                          
+                                       
+                                       +
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                 
+                                 
+                                 
+                                    
+                                       log
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             L
+                                          
+                                       
+                                       +
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                 
+                                 ,
+                              
+                           
+                        
+                        
+                           
+                              
+                                 Gini
+                                 (
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       L
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 )
+                                 =
+                                 1
+                                 −
+                                 
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             L
+                                          
+                                          
+                                             2
+                                          
+                                       
+                                       +
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             n
+                                          
+                                          
+                                             2
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             (
+                                             
+                                                
+                                                   n
+                                                
+                                                
+                                                   L
+                                                
+                                             
+                                             +
+                                             
+                                                
+                                                   n
+                                                
+                                                
+                                                   n
+                                                
+                                             
+                                             )
+                                          
+                                          
+                                             2
+                                          
+                                       
+                                    
+                                 
+                                 ,
+                                 
+                                 DKM
+                                 (
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       L
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 )
+                                 =
+                                 2
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   n
+                                                
+                                                
+                                                   L
+                                                
+                                             
+                                             
+                                                
+                                                   n
+                                                
+                                                
+                                                   n
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         n
+                                                      
+                                                      
+                                                         L
+                                                      
+                                                   
+                                                   +
+                                                   
+                                                      
+                                                         n
+                                                      
+                                                      
+                                                         n
+                                                      
+                                                   
+                                                   )
+                                                
+                                                
+                                                   2
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 ,
+                              
+                           
+                        where 
+                           
+                              
+                                 n
+                              
+                              
+                                 L
+                              
+                           
+                         is the number of positive cases and 
+                           
+                              
+                                 n
+                              
+                              
+                                 n
+                              
+                           
+                         is the number of negative cases. The value of the criterion is the gain of the base function: 
+                           
+                              
+                                 BG
+                                 =
+                                 Base
+                                 (
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       L
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 )
+                                 −
+                                 
+                                    
+                                       
+                                          
+                                             p
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       +
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             L
+                                          
+                                       
+                                       +
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                 
+                                 Base
+                                 (
+                                 
+                                    
+                                       p
+                                    
+                                    
+                                       0
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       0
+                                    
+                                 
+                                 )
+                                 −
+                                 
+                                    
+                                       
+                                          
+                                             p
+                                          
+                                          
+                                             1
+                                          
+                                       
+                                       +
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             1
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             L
+                                          
+                                       
+                                       +
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                 
+                                 Base
+                                 (
+                                 
+                                    
+                                       p
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 )
+                                 ,
+                              
+                           
+                        where p
+                        
+                           a
+                         is the number of positive cases with value of input attribute a, n
+                        
+                           a
+                         is the number of negative cases with value of input attribute a, 
+                           Base
+                           (
+                           m
+                           ,
+                           n
+                           )
+                         is one of the base function listed above. If each case has the weight the criterion is defined as 
+                           
+                              
+                                 BGW
+                                 =
+                                 Base
+                                 (
+                                 w
+                                 ,
+                                 v
+                                 )
+                                 −
+                                 
+                                    
+                                       
+                                          
+                                             w
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       +
+                                       
+                                          
+                                             v
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                    
+                                    
+                                       w
+                                       +
+                                       v
+                                    
+                                 
+                                 Base
+                                 (
+                                 
+                                    
+                                       w
+                                    
+                                    
+                                       0
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       v
+                                    
+                                    
+                                       0
+                                    
+                                 
+                                 )
+                                 −
+                                 
+                                    
+                                       
+                                          
+                                             w
+                                          
+                                          
+                                             1
+                                          
+                                       
+                                       +
+                                       
+                                          
+                                             v
+                                          
+                                          
+                                             1
+                                          
+                                       
+                                    
+                                    
+                                       w
+                                       +
+                                       v
+                                    
+                                 
+                                 Base
+                                 (
+                                 
+                                    
+                                       w
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       v
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 )
+                                 ,
+                              
+                           
+                        where w is the sum of weights of positive cases, v is the sum of weights of negative cases, w
+                        
+                           a
+                         is the sum of weights of positive cases with value of input attribute equals a, v
+                        
+                           a
+                         is the sum of weights of negative cases with value of input attribute equals a. In this study we use IGW instead of information gain, GGW instead of Gini gain and DKMW instead of DKM gain.
+
+For the screening problem 
+                           
+                              
+                                 w
+                              
+                              
+                                 a
+                              
+                           
+                           =
+                           
+                              
+                                 w
+                              
+                              
+                                 L
+                              
+                           
+                           
+                              
+                                 p
+                              
+                              
+                                 a
+                              
+                           
+                         and 
+                           
+                              
+                                 v
+                              
+                              
+                                 a
+                              
+                           
+                           =
+                           
+                              
+                                 w
+                              
+                              
+                                 L
+                              
+                           
+                           
+                              
+                                 n
+                              
+                              
+                                 CSWL
+                                 ,
+                                 a
+                              
+                           
+                           +
+                           
+                              
+                                 w
+                              
+                              
+                                 H
+                              
+                           
+                           
+                              
+                                 n
+                              
+                              
+                                 H
+                                 ,
+                                 a
+                              
+                           
+                        , where 
+                           
+                              
+                                 n
+                              
+                              
+                                 CSWL
+                                 ,
+                                 a
+                              
+                           
+                         is the number of clinically suspected cases without lymphoma with value of input attribute a, and 
+                           
+                              
+                                 n
+                              
+                              
+                                 H
+                                 ,
+                                 a
+                              
+                           
+                         is the number of healthy cases with value of input attribute a. For the problem of differential diagnosis 
+                           
+                              
+                                 w
+                              
+                              
+                                 a
+                              
+                           
+                           =
+                           
+                              
+                                 p
+                              
+                              
+                                 a
+                              
+                           
+                           ,
+                           
+                              
+                                 v
+                              
+                              
+                                 a
+                              
+                           
+                           =
+                           
+                              
+                                 n
+                              
+                              
+                                 a
+                              
+                           
+                        .
+
+There are several approaches for using real valued feature for forming decision tree. The most commonly used approach suggests the binning of the real valued attribute before form the tree. In this study we implement the method of on the fly binning: in each node for each real valued attribute the best threshold is searched and then this threshold is used to bin these feature in this node. The best threshold depends on the split criteria used (information gain, Gini gain or DKM gain). We also use Fisher׳s discriminant to define the best linear combinations of real valued features [20] in each node. This means that we use either each real valued attribute separately or one synthetic real valued feature instead of all real valued input attributes. Pruning techniques are applied to improve the tree. The specified minimal number of instances in the tree׳s leaf is used as a criterion to stop node splitting. This means that each leaf of the tree cannot contain fewer instances than a specified number. For the case study we test the decision trees which differ by:
+                           
+                              •
+                              One of the three modified split criteria (information gain, Gini gain or DKM gain);
+
+The use of real-valued features in the splitting criteria separately or in linear combination;
+
+The use of concentrations of Hapt and CRP or of logarithm of concentrations;
+
+The set of input features: CH, CHA, CHL, CHS, CHAL, CHAS, CHLS and CHALS;
+
+The minimal number of instances in each leaf is varied between 3 and 30.
+
+The basic concept of KNN is: the class of an object is the class of a majority of its k nearest neighbors [16]. This algorithm is very sensitive to distance calculation. There are several commonly used variants of distance for KNN: Euclidean distance; Minkovsky distance; distance calculated after some transformation of input space.
+
+In this study we use three distances: the Euclidian distance, the Fisher׳s transformed distance and adaptive distance [31]. Moreover we use a weighted vote procedure with weighting of neighbors by one of the standard kernel functions [47]. The KNN algorithm is well known [16]. The adaptive distance transformations algorithm is described in [31]. KNN with Fisher׳s transformed distance is less well-known. For these methods the following options are defined: k is the number of nearest neighbors, K is the kernel function, kf is the number of neighbors which are used for distance transformation. To define the risk of lymphoma we have to do the following steps:
+                           
+                              1.
+                              Find the kf nearest neighbors of test point.
+
+Calculate the covariance matrix of kf neighbors and Fisher׳s discriminant direction.
+
+Find the k nearest neighbors of the test point using the distance along Fisher׳s discriminant direction among the earlier found kf neighbors.
+
+Define the maximum of distances from the test point to k neighbors.
+
+For each class we calculate the membership of this class as a sum of points׳ weights. The weight of a point is the product of value of the kernel function K of distance from this point to the test point divided by maximum distance and predefined point weight.
+
+Lymphoma risk is defined as a ratio of the positive class membership to the sum of memberships of all classes.
+
+The number of nearest neighbors is varied between 1 and 20;
+
+The use of concentrations of Hapt and CRP or of logarithm of concentrations;
+
+The set of input features: CH, CHA, CHL, CHS, CHAL, CHAS, CHLS and CHALS;
+
+One of the three distances: Euclidean distance, adaptive distance and Fisher׳s distance.
+
+The kernel function for adaptive distance transformation;
+
+The kernel function for voting.
+
+We implement the radial-basis functions method [14] for probability density function estimation [72]. For the robustness we also implement the local Mahalanobis distance transformation [49]. There are three probabilities for the screening problem: Probability of lymphoma; Probability of belonging to the clinically suspected cohort without lymphoma; Probability of being healthy. Each probability density function is estimated separately by using nonparametric techniques. The total probability of lymphoma has to be equal to the prior probability of lymphoma 
+                           
+                              
+                                 p
+                              
+                              
+                                 L
+                              
+                              
+                                 s
+                              
+                           
+                           =
+                           p
+                        . The total probability of belonging to the clinically suspected cohort without lymphoma is defined by evaluation of the probability of lymphoma in the clinically suspected cohort from data, and from the given total probability of lymphoma in population: 
+                           
+                              
+                                 
+                                    
+                                       p
+                                    
+                                    
+                                       CSWL
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       p
+                                    
+                                    
+                                       L
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       N
+                                    
+                                    
+                                       CS
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       N
+                                    
+                                    
+                                       L
+                                    
+                                 
+                                 )
+                                 /
+                                 
+                                    
+                                       N
+                                    
+                                    
+                                       L
+                                    
+                                 
+                                 .
+                              
+                           
+                        The total probability of being healthy is equal to 1 minus the probability of belonging to the clinically suspected cohort: 
+                           
+                              
+                                 
+                                    
+                                       p
+                                    
+                                    
+                                       H
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 =
+                                 1
+                                 −
+                                 
+                                    
+                                       p
+                                    
+                                    
+                                       L
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       p
+                                    
+                                    
+                                       CSWL
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 .
+                              
+                           
+                        For the differential diagnosis we need to estimate two probabilities: probability of lymphoma and probability that there is no lymphoma. The prior probabilities of these classes are defined by number of instances in each class: 
+                           
+                              
+                                 
+                                    
+                                       p
+                                    
+                                    
+                                       L
+                                    
+                                    
+                                       d
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       N
+                                    
+                                    
+                                       L
+                                    
+                                 
+                                 /
+                                 
+                                    
+                                       N
+                                    
+                                    
+                                       CS
+                                    
+                                 
+                                 
+                                 and
+                                 
+                                 
+                                    
+                                       p
+                                    
+                                    
+                                       H
+                                    
+                                    
+                                       d
+                                    
+                                 
+                                 =
+                                 (
+                                 
+                                    
+                                       N
+                                    
+                                    
+                                       CS
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       N
+                                    
+                                    
+                                       L
+                                    
+                                 
+                                 )
+                                 /
+                                 
+                                    
+                                       N
+                                    
+                                    
+                                       CS
+                                    
+                                 
+                                 .
+                              
+                           
+                        
+                     
+
+For each point, k nearest neighbors from the database are defined. These k points are used to estimate the covariance matrix and calculate the Mahalanobis distance matrix. Then the radius of the neighborhood is estimated as a maximum of the Mahalanobis distances from data point to each of k neighbors. The centre of one of the kernel functions is placed at the data point [47]. The integral of any kernel function over the whole space is equal to 1. There are 
+                           
+                              
+                                 N
+                              
+                              
+                                 L
+                              
+                           
+                         cases of lymphoma and 
+                           
+                              
+                                 N
+                              
+                              
+                                 L
+                              
+                           
+                         kernel functions are placed at these points. The total probability is the integral of the sum of kernel functions and is equal to 
+                           
+                              
+                                 N
+                              
+                              
+                                 L
+                              
+                           
+                         but the total probability of lymphoma has to be equal to the prior probability 
+                           
+                              
+                                 p
+                              
+                              
+                                 L
+                              
+                              
+                                 t
+                              
+                           
+                         (where t is ‘s’ for the screening problem and ‘d’ for differential diagnosis problem). It means that the sum of kernel functions has to be multiplied by 
+                           
+                              
+                                 W
+                              
+                              
+                                 L
+                              
+                           
+                           =
+                           
+                              
+                                 p
+                              
+                              
+                                 L
+                              
+                              
+                                 t
+                              
+                           
+                           /
+                           
+                              
+                                 N
+                              
+                              
+                                 L
+                              
+                           
+                        .
+
+The probability of lymphoma at an arbitrary point is estimated as products of weight 
+                           
+                              
+                                 W
+                              
+                              
+                                 L
+                              
+                           
+                         and the sum of values of kernel functions which are placed at data points that correspond to records with lymphoma. Other probabilities are estimated analogously.
+
+We use the following steps to evaluate the risk of lymphoma: (i) three (screening problem) or two (differential diagnosis problem) probabilities are estimated and (ii) the risk of lymphoma is defined as a ratio of the probability of lymphoma to the sum of all probabilities. We test the PDFE versions which differ by:
+                           
+                              •
+                              The number of nearest neighbors (it is varied between 5 and 30);
+
+The use of concentrations of CRP and Hapt or logarithm of the concentrations;
+
+The set of input features: CH, CHA, CHL, CHS, CHAL, CHAS, CHLS or CHALS;
+
+The kernel function which is placed at each data points.
+
+Let us compare the computational cost of the most expensive procedure, LOOCV, for these three types of algorithms. All software has been implemented in Java 6 with one core usage. A computer with processor Intel(R) Core(TM) i7-3667U CPU 2.0GHz 2.5GHz with 8GB RAM under 64-bit Windows 7 Enterprise operation system has been used. The test results are presented in Table 5
+                        . This is the time for LOOCV of one model. For selection of the best decision tree this LOOCV routine was called 10,368 times for the screening problem and 5,184,400 times for the differential diagnosis, for the best KNN method it was called 25,600,000 times and 3840 times for the best PDFE.
+
+Supplementary data associated with this article can be found in the online version at doi:10.1016/j.compbiomed.2014.08.006.
+
+
+                     
+                        
+                           Application 1
+                           
+                        
+                     
+                  
+
+@&#REFERENCES@&#
+

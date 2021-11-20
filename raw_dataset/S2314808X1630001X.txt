@@ -1,0 +1,1521 @@
+@&#MAIN-TITLE@&#Vegetation structure and soil characteristics of five common geophytes in desert of Egypt
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Study the ecological features of Cyperus capitatus, C. conglomeratus, Elymus farctus, Lasiurus scindicus and Panicum turgidum.
+                           
+
+
+                        
+                        
+                           
+                           The edaphic factors in the Egyptian desert control the distribution and abundance of studied geophytes.
+
+
+                        
+                        
+                           
+                           Some geophytes are used as ornamental plants; others are used in medicine and as food.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Vegetation
+
+Biodiversity
+
+Soil factors
+
+Geophytes
+
+Desert
+
+@&#ABSTRACT@&#
+
+
+                  Geophytes are kind of plants having the capability to survive under arid environmental conditions; parts of their bodies are dormant fleshy underground as bulbs, corms, tubers or rhizomes. The present study was designed to throw light on the ecological features of five representative geophytes, namely, Cyperus capitatus, Cyperus conglomeratus, Elymus farctus, Lasiurus scindicus and Panicum turgidum. The soil characteristics and the associated species of these geophytes are described in their natural habitats of coastal desert (Deltaic Mediterranean coast) and inland desert (Cairo-Suez desert road). A total of 119 species (65 perennials, 3 biennials and 51 annuals) belonging to 97 genera and 28 families constituted their floristic composition. Asteraceae, Poaceae, Fabaceae and Chenopodiaceae are the largest families. Therophytes and chamaephytes are the most abundant life forms. The chorological analysis of the study area revealed that 63.02% and 47.33% belong to Saharo-Arabian and Mediterranean taxa, respectively. The highest species richness value (1.42 species stand–1) is recorded in the coastal desert. The application of TWINSPAN analysis yielded six distinct vegetation groups (A, B, C1, C2, D1 and D2); each is linked to one or more of the studied geophyte plants. The main soil factors affecting the study geophytes are electrical conductivity, organic carbon, sulphates, chlorides and bicarbonates as well as its silt composite.
+               
+
+@&#INTRODUCTION@&#
+
+Geophytes are plants with underground storage organs (bulbs, corms, tubers or rhizomes) that appeared as promising raw materials for various economic uses [1]. The leaves of these plants die annually. No evergreen plants are considered to be geophytes [2]. These geophytes have high diversity in the Mediterranean-type ecosystems, where they are considered as most common in seasonal climates [3,4].
+
+The economic value of these species is attributed to collection and exporting their natural bulbs as ornamental plants. In addition, geophytes are used in medicine and food industry [5].
+
+The Mediterranean desert coastline is an area of relatively high bio-diversity; 10% of the world's higher plants can be found in this area, which represents only 1.6% of the Earth's surface [6]. The northern Mediterranean coast of Egypt is characterized by highly diverse edaphic, topographic and climatic characteristics and as a consequence, by different vegetation groups [7]. During relatively high rainfall periods; most of species are annuals that flourish during the rainy season. However, during the longer dry periods, the characteristic woody shrubs and perennial herbs constitute the scrub vegetation, scattered sparsely in parts and grouped in denser distinct patches [8,9]. On the other hand, the plant life in the Eastern Desert is much richer than that of the Western Desert. The flora of wadis and mountains of the north Eastern Desert has strong relations with that of the Sinai Peninsula [10].
+
+Cyperaceae are the third largest monocotyledonous family [11] and constitute a specialized group of plants, particularly in relation to their generative structure [12]. Cyperus is a large genus with about 600 species, which are distributed throughout all continents in both tropical and temperate regions. Cyperus capitatus and Cyperus conglomeratus are distributed in the coastal region of Egypt. These species are able to survive extreme climatic conditions [13].
+
+
+                     C. capitatus is a perennial creeping sedge that occurs in coastal sandy habitats and mobile dunes of southern Europe and the Mediterranean coast of Egypt [13,14]. This species produces extensive rhizomes, and it is one of the earliest species to colonize newly deposited dunes contributing to the initial stabilization of sand dunes in arid and semiarid coastal areas [15]. C. conglomeratus is a creeping yellowish-green, drought-resistant perennial wild species with short and branched rhizomes that are covered with acute brown scales. It grows in widely distributed in arid regions from Senegal to Pakistan. In Egypt, it is growing in the coastal and inland sand dune habitats [13].
+
+Poaceae are also one of the most ecologically and economically important plant families with about 670 genera, 10,000 species and are distributed worldwide [13,16]. Elymus farctus (sand couch-grass) is a perennial rhizomatous grass with erect, rigid 60–90 cm long culms. It is a facultative halophyte and has the ability to fix sand, therefore, it is considered as the pioneer of the psammosere [17,18]. Lasiurus is a genus of Asian and African plants in the grass family, found primarily in arid regions. Lasiurus scindicus is a perennial herb with culms often woody below, up to 90 cm in length, erect from a thick woody rhizome that occurs in sandy, stony and rocky soils [13]. Panicum turgidum is a glaucous perennial wild species, widely distributed in all phytogeographical regions of Egypt except the western Mediterranean coastal desert [19,20]. It is also considered to have tolerant drought and soil salinity levels, and is an effective sand binding xerophyte and could be used to fix sand dunes [9,21].
+
+This study was designed to throw light on the ecological features of the abovementioned five geophytes growing in the Mediterranean coast and Cairo-Suez road through studying their associated plant species and edaphic factors controlling their richness and distribution in the study area.
+
+The middle section of the Mediterranean coastal land of Egypt (Deltaic coast) extends from Abu-Quir (in the west, Long. 32°19′ E) to Port-Said (in the east Long. 31°19′ E) with a length of about 180 km, and a width in a N-S direction for about 15 km from the coast. On the other hand, Cairo-Suez desert road is about 130 km in length, located in the northern section of the Eastern Desert of Egypt (The Galalah Desert), which extends east of the Nile Delta. It represents the natural xeric habitat mainly inhabited by xerophytic vegetation. The gravel habitat is one of the most characteristic features of this road [9].
+
+The study area is located in some Governorates in the northern part of the Nile Delta and Eastern Desert regions of Egypt, which comprises different habitats (Fig. 1
+                        ). These include: Deltaic Mediterranean coast and inland desert habitat (Cairo-Suez desert road and Wadi Hagul).
+
+According to the map of the world distribution of the arid regions [22], the climatic conditions of the Deltaic Mediterranean coast of Egypt is rather arid to semi-arid, where the rate of evaporation exceeds many times the rate of precipitation [23]. On the other hand, the Cairo-Suez desert road belongs to arid mesothermal type of Thornthwaite [24] and the arid or extreme arid climate of Walter [25]. Meteorological data of the studied area are presented in Table 1
+                        .
+
+After a reconnaissance survey that was conducted between 2014 and 2015, 95 sample stands (10 m × 10 m) were randomly selected to represent a wide range of physiographic and environmental variation in the studied deserts. Specimens of the selected geophyte plants as well as the other associated species were collected from the Deltaic Mediterranean coastal strip and Cairo-Suez desert road. The studied geophyte species were Cyperus capitatus Vand., Cyperus conglomeratus Rottb., Elymus farctus (Viv.) Ranemark ex. Melderis., Lasiurus scindicus Henrard. and Panicum turgidum Forssk.
+
+The relative density and cover of each species have been estimated in the studied stands [27,28]. Relative values of density and cover as well as importance value (IV = 200) for each plant species in each stand were calculated. A floristic count list was taken from the 95 sites to represent the five geophyte plants in the study sites: 80 from the Deltaic Mediterranean coast and 15 from Cairo-Suez desert road. Taxonomic nomenclature and analysis of phytogeographic ranges were used according to Zohary [29], Tackholm [20] and Boulos [30].
+
+Each of the 95 study sites was represented by three soil samples that were collected at depths of 0–20, 20–35 and 35–50 cm. The samples were mixed together to form a single composite sample, which was then spread over sheets of paper and left to dry in the air. Soil texture, water holding capacity (WHC), organic carbon and sulphate were determined according to Piper [31]. Calcium carbonate content was determined by titration against 1N NaOH and expressed as a percentage [32]. Determination of electrical conductivity and pH was determined in soil–water (1:5) suspension by the method adopted by Jackson [32]. Carbonates and bicarbonates were determined by titration using 0.1 N HCl [33]. Sodium and potassium were determined by flame photometry, while calcium and magnesium were estimated using atomic absorption spectrometer [34].
+
+Classification and ordination of the associated vegetation of the studied geophytes were performed using TWINSPAN analysis by the Community Analysis Package (CAP) computer program, version 2.3 [35]. For ordination, the indirect gradient analysis was undertaken using detrended correspondence analysis (DCA) [36]. The relation between the vegetation and soil gradients was assessed using Canonical Correspondence Analysis (CCA) [37].
+
+Linear correlations coefficient (r) was calculated for assessing the relationship between the estimated soil variables and the studied geophytes. The vegetation groups produced from cluster analysis were then subjected to one-way analysis of variance (ANOVA, SPSS 16 for Windows) testing, based on soil variables, to find out whether there were any significant variations among groups.
+
+Species richness (SR) is referred to here as the total number of species per site. The Shannon–Wiener diversity index was calculated from the formula H = –Pi ln Pi where, H is Shannon–Wiener diversity index and Pi is the relative presence value of the ith species [38].
+
+@&#RESULTS@&#
+
+A total of 119 species (65 perennials, 3 biennials and 51 annuals) constituted the floristic composition, belonging to 97 genera and 28 families (Appendix). The largest families were Asteraceae, Poaceae and Fabaceae (24, 18 and 11 species, respectively), Brassicaceae and Chenopodiaceae (8 species each), and Caryophyllaceae (7 species). They constituted 63.87% of the recorded species, and represent most of the floristic structure in the study area, while the other 10 families shared 26.05% of the species and 12 families were monospecific.
+
+The largest genera are arranged in the following sequence: Asteraceae > Poaceae > Brassicaceae > Chenopodiaceae > Boraginaceae and Fabaceae. The total number of recorded species was 80 (38 perennials, 1 biennials and 41 annuals) and 66 (40 perennials, 2 biennials and 24 annuals) for coastal and inland desert, respectively.
+
+The most common perennial species associated with the studied geophytes (C. capitatus, C. conglomeratus and E. farctus) in the costal desert were Atractylis carduus, Calligonum polygonoides, C. capitatus, Echinops spinosus, E. farctus, Launaea mucronata, Silene succulent and Stipagrostis lanata. On the other hand, the perennial species recorded in the inland desert which associated with studied geophytes (Lasiurus scindicus and P. turgidum) were Artemisia judiaca, Diplotaxis harra, Launaea nudicaulis, Haloxylon salicornicum, Ochradenus baccatus, Zilla spinosa and Zygophyllum coccineum. Each of these species attained a maximum importance value (IV).
+
+Therophytes were the most abundant life form and constituted 44.72% of the total species. Chamaephytes ranked second (21.14%), followed by Hemicryptophytes (13.82%), Geophytes (9.76%), Phanerophytes (7.32%), Helophytes (1.63%), and Cistanche phelypaea as well as Orobanche crenata were the only recorded parasites. Life forms of the associated species with studied geophytes in coastal and inland desert are shown in Fig. 2
+                        .
+
+The chorological spectrum of the recorded plant species was illustrated in Fig. 3
+                        . The Cosmopolitan and Neotropical species constituted 7 species (5.88% of the total flora, Table 1). The floristic data indicated the abundance of the Saharo-Arabian chorotype (mono-, bi- and pluriregional) within the major growth forms comprised 75 species (63.02%) of the total recorded flora. The chorological analysis of the present study showed that the Mediterranean taxa were represented by 59 species (47.33%) of the total flora. These taxa were either Pluriregional, Bioregional or Monoregional.
+
+Application of TWINSPAN analysis techniques produced 4 major vegetation groups at the 2nd level of classification, and yielded six subgroups at the 3rd level. The total number of species varied from one subgroup to another (Fig. 4
+                         and Table 2
+                        ). Each of the identified vegetation group was named after the dominant species (i.e., highest importance value). Each is linked to one or more of the studied geophyte plants. Notably, two of the recorded species were determined to have a wide ecological range of distribution and occurred in all the identified vegetation groups: Erodium lacinatum and Hordium murinum.
+
+Group A is dominated by O. baccatus (4 sites and 33 species); the four sites in this group were sampled only from the northern part of the Eastern Desert (Cairo-Suez road and Wadi Hagul) and was the least diversified (33 species) among the recognized groups with average species richness of 0.87 ± 0.32 species/sample and Shannon–Wiener diversity index of 2.87 ± 0.65. This group is linked to L. scindicus and P. turgidum. Among the common associates, Z. spinosa, Lavandula coronopifolia, Cynodon dactylon, Z. coccineum, L. nudicaulis occurred. Tamarix aphylla is the only tree found, while Centaurea aegyptiaca and Launaea capitata were the only biennial species in this group (Table 2). Group A has the lowest share of annuals, with only Trigonella stellata, H. murinum, Volutaria lippii and Zygophyllum simplex recorded. Stands of this group were found on soil rich in fine sand and clay, CaCO3, HCO3 and lowest sand, electrical conductivity, chloride and cations (Table 3
+                        ).
+
+Vegetation group B consisted of 47 species (9 sites) that were codominated by P. turgidum and Z. spinosa representing the two locations in the Wadi Hagul and Deltaic Mediterranean coastal strip with average species richness of 0.82 ± 0.24 species/sample and Shannon–Wiener diversity index of 3.18 ± 0.55. P. turgidum (P = 13.68%) and L. scindicus (P = 7.37%) are linked to this group. Common desert perennials are Z. coccineum, Deverra tortuosus, Launaea spinosa, Retama raetam, Zygophyllum decumbens, Cleome droserifolia and L. nudicaulis. Apart from Tamarix nilotica, the only tree found, C. aegyptiaca is the only biennial species in this group (Table 2). The associated annual species, E. lacinatum, H. murinum, Reichardia tingitana, Senecio glaucus, T. stellata and V. lippii, have been recorded in this group. The sites were characterized by high percentages of HCO3, CaCO3, electric conductivity, and moderate contents of Cl−, SO4
+                        2− and cations (Table 3).
+
+Group C1 is codominated by Limonium pruinosum and Halocnemum strobilaceum (44 species) inhabiting 9 sites studied in the Deltaic Mediterranean coastal strip; it is linked to C. capitatus and E. farctus with average species richness of 0.96 ± 0.35 species/sample and Shannon–Wiener diversity index of 3.52 ± 0.34. Besides these dominant species, T. nilotica, Calligonum comosum, Zygophllum album, Sporobolus spicatus and Salsola kali were present. Twenty-eight annual species, including E. lacinatum, H. murinum, Cakile maritima, Ifloga spicata, Poa annua and Rumex pictus, were recorded in this group (Table 2). The stands were found to have the highest levels of fine sand and clay, electric conductivity, Cl−, SO4
+                        2− and cations as well as moderate contents of HCO3, CaCO3 (Table 3).
+
+Group C2 is codominated by C. comosum and E. farctus (57 species) inhabiting 27 sites in the Deltaic Mediterranean coast that are revealed to have the moderate values of many measured soil variables, excluding electric conductivity, chloride and sulphates (Table 3). This group is linked to C. capitatus and E. farctus with average species richness of 1.17 ± 0.74 species/sample and Shannon–Wiener diversity index of 3.87 ± 0.22. Other associated perennial species include A. carduus, E. spinosus, L. pruinosum and S. lanata (Table 2). Thirty-seven annual species that were recorded in this group with remarkable presence included Carduus getulus, I. spicata, R. pictus, Picris asplenioides and P. annua.
+
+Floristic group D1 consisted of 61 species that were dominated by E. spinosus representing the costal desert vegetation and was the most diversified (61 species) among the recognized groups with average species richness of 1.42 ± 0.52 species/sample and Shannon–Wiener diversity index of 3.20 ± 0.61. This group is linked to C. capitatus and E. farctus. Other common associates imcluded Cynanchum acutum, S. kali, S. lanata, T. nilotica, Z. album and Z. aegyptium (Table 2). Group D1 has the highest share of annuals (46 species), which included C. maritima, I. spicata, Mesembryanthemum nodiflorum, M. crystallinum, Aegilops kotschyi, etc. Most of the examined soil variables (sand, clay, Na+, K+, Ca2+, Mg2+, Cl− and SO4
+                        2−) attained their highest levels in the stands of this group (Table 3).
+
+Group D2 is codominated by C. comosum and E. spinosus (50 species) inhabiting 22 sites in the Deltaic Mediterranean coast that are revealed to have the highest values of many measured soil variables (sand, EC, Cl−, SO4
+                        2−, CaCO3, Na+ and Ca2+) (Table 3). This group is linked to C. capitatus, E. farctus and C. conglomeratus with average species richness of 0.89 ± 0.34 species/sample and Shannon–Wiener diversity index of 3.23 ± 0.33. Other associated perennial species included Moltikopsis cillata, T. nilotica, L. mucronata, Zygophyllum aegyptium, H. strobilaceum, S. lanata and S. succulent (Table 2). Thirty annual species were recorded in this group that included the remarkable presence of Erodium laciniatum, C. maritima, I. spicata, R. pictus, S. glaucus, Lolium perenne, etc.
+
+The application of DCA on 95 stands along axes 1 and 2 (eigenvalues 0.618 and 0.303, respectively) indicated that the vegetation groups produced by the classification technique of the studied sites were generally interconnected, where the six vegetation groups were obtained (Fig. 5
+                        ). Stands of groups A and B were segregated at lower side, which was clearly separated along the two axes of DCA. Groups C1 and C2 were separated at most upper left side. On the other hand, stands of group D1 separated at right side and group D2 demonstrated an intermediate position.
+
+The relationship between the vegetation and soil variables was studied using Canonical Correspondence Analysis (CCA). Fig. 6
+                         shows the CCA ordination biplot with vegetation groups (A-D2) and the examined soil variables. It is clear that the electrical conductivity, silt, organic carbon, sulphates, chlorides and bicarbonates were the most effective soil variables that have high significant correlations with the first and second axes.
+
+In the upper right side of the CCA diagram, O. baccatus, which was dominant species in group A, codominated species (P. turgidum and Z. spinosa) in group B and common species (Z. spinosa, L. coronopifolia, Z. coccineum, L. nudicaulis and D. tortuosus) in group A and B collectively showed close relationships with carbonate, bicarbonate, calcium carbonate and soil fractions (clay and silt). In the upper left side of the diagram, L. pruinosum and H. strobilaceum, which were codominant species in group C1, Calligonium polygnoides, which was codominant species in group C2 and common species (A. carduus and T. nilotica) in groups C1, C2 and D1 showed a close relationships with electrical conductivity, organic carbon and sulphates. On the other hand, in the lower left side, E. spinosus, which was dominant species in group D1 and codominant in group D2, E. farctus, which was codominant species in group C2 and common species (S. lanata and S. succulent) in groups C2, D1 and D2 collectively showed close relationships with sulphates, chloride and cations.
+
+The simple linear correlation coefficient between some soil variables and studied geophytes indicated that C. capitatus was positively significant (r = 0.240, 0.298, 0.280, 0.334 and 0.336) with CaCO3, Na+, K+, Ca2+ and Mg2+, respectively (Table 4
+                        ). C. conglomeratus had positively significant (r = 0.386), while E. farctus had negatively significant correlation with HCO3. In contrast, L. scindicus had a negatively significant correlation with Cl− and SO4
+                        2− (r = −0.223 and r = −0.301, respectively). P. turgidum was negatively significant with organic carbon (r = −0.300), Cl− (r = −364) and SO4
+                        2− (r = −0.418).
+
+@&#DISCUSSION@&#
+
+Geophytes are a kind of plant having the capability to survive arid environmental conditions and part of their annual life cycle as a dormant fleshy underground structure. The present field study indicated that geophytes were recorded along the Mediterranean coast on sandy habitats (coastal dunes and sand flats). This agrees with Maswada and Elzaawely [39], who reported that the most distributed geophytes (C. capitatus, C. conglomeratus, E. farctus, Pancratium maritimum, Sporobolus pungens and S. lanata) were recorded in the Deltaic Mediterranean coast in stabilized, partially stabilized dunes and sand flats. Zahran and Willis [9] reported that L. scindicus and P. turgidum are found in the inland part of the Eastern Desert within the channel of wadis.
+
+The floristic diversity of the study area included 119 species, through 95 sites in two localities, representing 97 genera and 28 families. More than 60% (76 species) of the recorded species belong to 6 families; these are the species-rich families: Asteraceae, Poaceae, Fabaceae, Brassicaceae, Chenopodiaceae and Caryophyllaceae. These families represent the most common in the Mediterranean North African flora [40,41]. In the present study, Asteraceae is the largest family and also the most widespread of the flowering plants in the world [40,42], but is not the only largest family in the Flora of Egypt [20,43,44]. The largest genera arranged in the following sequence: Asteraceae > Poaceae > Brassicaceae > Chenopodiaceae > Boraginaceae > Fabaceae. These findings were in line with those of El-Amier et al. [45] in the Eastern Desert, Abd El-Ghani and Amer [46] in south Sinai, and Salama et al. [47] along the western Mediterranean coast.
+
+Comparing the results of floristic diversity in coastal desert (80 species; 38 perennials, 1 biennial and 41 annuals) with that in the inland desert (66 species; 40 perennials, 2 biennials and 24 annuals) in the present study is more or less similar due to time of field trip in March to May. On the other hand, decreased numbers of annuals in the northern part of the Eastern Desert can be attributed to the environmental aridity which plays an important role in reducing floral diversity [48].
+
+The dominant perennial species provide the permanent character of the plant cover in each habitat. This may be credited to the rather short rainfall, which is not adequate for the appearance of many annuals. On the other hand, the rainy season provides a better opportunity for the appearance of a considerable number of annuals [49–53].
+
+Since the early 1960s, vast areas in the Egyptian deserts (Western, Eastern and Sinai) were subjected to land reclamation due to population growth and increased congestion in the old lands in the Nile Valley and the Delta. Not surprisingly, 61% of the priority reclaimable land through the Nile waters is located on the borders of the Valley and Delta regions where soil is loamy in nature and cultivation can be relatively successful [43,54]. In the study area, urban and agricultural processes were practiced in the deltaic parts. The land reclamation processes entail an almost complete change in the environmental factors. Therefore, the reclaimed areas of this study can be considered as transitional areas of the succession process between the old cultivated lands and that of the desert [43,55].
+
+In this study, the dominance of therophytes (44.72%), chamaephytes (21.14%) and hemicryptophytes (13.82%) over other life forms seems to be a response to the hot dry climate, topographical variations as well as human and animal interferences [47,56]. Therophytes are adapted to the dryness of the region and shortage of rainfall, because they spend their vegetative period in the form of seed [57,58]. These results are congruent with the spectra of vegetation in the desert habitats in other parts of the Middle East [59–61].
+
+Egypt is the meeting point of floristic elements belonging to at least four phytogeographical regions: the African Sudano-Zambesian, the Asiatic Irano-Turanian, the Afro-Asiatic Sahro-Sindian and the Euro-Afro-Asiatic Mediterranean [62]. The whole country lies within the Saharo-Arabian belt of the Holarctic floristic realm [63]. The chorological analysis of the present study indicated the abundance of the Saharo-Arabian chorotype (63.02% of the total recorded flora) and Mediterranean taxa (47.33% of the total recorded species) within the major growth forms. This may be attributed to the fact that plants of the Saharo-Arabian species are good indicators for harsh desert environmental conditions, while Mediterranean species signal to a more mesic environment [58,63,64]. The high percentages of Saharo-Sindian and Mediterranean elements in the study area may be attributed to their capability to penetrate this region and to the influence of man in the study area.
+
+The classification and ordination analyses revealed that the vegetation of the study area can be divided into six major vegetation groups (plant communities). Each is linked to one or more of the studied geophyte plants. It can be noted that certain vegetation groups characterized one or more of the studied localities: group (A) in northern part of the Eastern Desert (Cairo-Suez road and Wadi Hagul), group (B) was distributed in Wadi Hagul and Deltaic Mediterranean coastal strip, and groups (C1), (C2), (D1) and (D2) were restricted in the Deltaic Mediterranean coastal strip.
+
+Group A was the least diversified (33 species) among the recognized groups. This group is linked to L. scindicus and P. turgidum. Zahran and Willis [9] reported that L. scindicus and P. turgidum are found in the channel wadis of Cairo-Suez desert road associated with Anabasis articulata, Hammada elegans, Pituranthos tortuosus and D. harra. This group is consistent with studies indicating that the vegetation of Eastern Desert is dominated by many herbs, shrubs and some trees and, therefore, has high species richness and plant cover [45,63,65]. On the other hand, vegetation group B is less distinct because it is characterized by mixed communities of Wadi Hagul and Deltaic Mediterranean coastal strip. In Egyptian desert, Salama et al. [66], Salama et al. [67], El-Amier et al. [68], Abd El-Ghani et al. [69] and El-Amier and Abdulkader [59] recognized several plant associations, some of which are comparable to those of the present study.
+
+The most diverse groups (C1, C2, D1 and D2) have things in common, such as inhabiting the Deltaic Mediterranean coast and being characterized by some halophytes (L. pruinosum, H. strobilaceum, Stipagrostis scoparia, T. nilotica, and Z. album) and psammophytes (C. comosum, C. capitatus, C. conglomeratus, E. farctus, R. pictus and S. spicatus), which could be related to higher concentration of salinity and soil mineral contents, perhaps due to animal grazing, rainfall, and floods [70]. Similar conclusions were made by other authors [68,71–74]. It can be noted that the salt-tolerant plant T. nilotica characterized vegetation groups inhabiting the Deltaic Mediterranean coastal strip. Tamarix has been identified as a major cause of salt accumulation on the soil surface [75].
+
+Vegetationally, C. capitatus and E. farctus are codominant or indicator species in the study area whereas C. conglomeratus is not. This may be due to C. capitatus and E. farctus being Mediterranean taxa, while C. conglomeratus is of Saharo-Sindian taxon.
+
+The application of DCA on sampled stands indicated that groups A and B were clearly separated along the two axes of DCA, which represent xerophytic vegetation associated with the studied geophytes in inland desert. Groups C1, C2, D1 and D2 are superimposed; this is due to the similarity between these vegetation groups, which represent psammophytic and halophytic vegetation in the coastal desert. Analysis of the vegetation–soil relationships using CCA indicated that the distribution of vegetation associated with investigated geophytes in the study area was mainly controlled by electrical conductivity, silt, organic carbon, sulphates, chlorides and bicarbonates. This agrees more or less with the findings of Shaltout et al. [73], Maswada and Elzaawely [39] in the Mediterranean region of the Nile Delta, Salama et al. [66] in the inland wadi ecosystem of central Eastern Desert as well as El-Amier and Abdulkader [59] in the Northern Sector of Eastern Desert.
+
+@&#CONCLUSION@&#
+
+The present study provides an analysis of vegetation structure and soil characteristics of five common geophytes in Desert of Egypt to help in ecological management and conservation of these natural resources. Geophytes have high diversity in the desert ecosystems and are used as raw materials for various economic ornamental plants, medicine and food. Therefore, the conservation of natural habitats of this desert is of vital importance as well as the need for judicious utilization and sustainable development.
+
+
+                        
+                           
+                              
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                    
+                                       Family
+                                       Species
+                                       Phytogeographical regions
+                                       Duration
+                                       Life forms
+                                       Chorotype
+                                       P%
+                                    
+                                    
+                                       Coastal desert
+                                       Inland desert
+                                    
+                                 
+                                 
+                                    
+                                       Aizoaceae
+                                       
+                                          Mesembryanthemum nodiflorum L.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME+ES+SA
+                                       13.68
+                                    
+                                    
+                                       
+                                       
+                                          Mesembryanthemum crystallinum L.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME+ES
+                                       16.84
+                                    
+                                    
+                                       Amaryllidaceae
+                                       
+                                          Pancratium maritimum L.
+                                       +
+                                       −
+                                       Perennial
+                                       G
+                                       ME
+                                       10.53
+                                    
+                                    
+                                       Apiaceae
+                                       
+                                          Daucus litoralis Sm.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME
+                                       13.68
+                                    
+                                    
+                                       
+                                       
+                                          Deverra tortuosa (Desf.) DC.
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       SA
+                                       7.37
+                                    
+                                    
+                                       Arecaceae
+                                       
+                                          Phoenix dactylifera L.
+                                       +
+                                       −
+                                       Perennial
+                                       MMPh
+                                       Cult.
+                                       3.16
+                                    
+                                    
+                                       Asclepiadaceae
+                                       
+                                          Cynanchum acutum L.
+                                       +
+                                       +
+                                       Perennial
+                                       H
+                                       ME+IT
+                                       4.21
+                                    
+                                    
+                                       Asteraceae
+                                       
+                                          Artemisia judiaca L.
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       SA
+                                       3.16
+                                    
+                                    
+                                       
+                                       
+                                          Atractylis carduus (Forssk.) C.Chr.
+                                       +
+                                       +
+                                       Perennial
+                                       H
+                                       ME+ SA
+                                       25.26
+                                    
+                                    
+                                       
+                                       
+                                          Carduus getulus Pomel.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       SA
+                                       13.68
+                                    
+                                    
+                                       
+                                       
+                                          Carduus pycnocephalus L.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       SA
+                                       4.21
+                                    
+                                    
+                                       
+                                       
+                                          Carthamus tenuis (Boiss & Blanche) Bornm.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME
+                                       10.53
+                                    
+                                    
+                                       
+                                       
+                                          Centaurea aegyptiaca L.
+                                       −
+                                       +
+                                       Biennial
+                                       Th
+                                       SA
+                                       11.58
+                                    
+                                    
+                                       
+                                       
+                                          Echinops spinosus L.
+                                       +
+                                       +
+                                       Perennial
+                                       H
+                                       ME+SA
+                                       52.63
+                                    
+                                    
+                                       
+                                       
+                                          Francoeuria crispa (Forssk.) Cass.
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       SA+SZ
+                                       2.11
+                                    
+                                    
+                                       
+                                       
+                                          Ifloga spicata (Forssk.) Sch.Bip.
+                                       +
+                                       +
+                                       Annual
+                                       Th
+                                       SA
+                                       53.68
+                                    
+                                    
+                                       
+                                       
+                                          Iphiona mucronata (Forssk.) Asch. & Schweinf.
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       SA
+                                       3.16
+                                    
+                                    
+                                       
+                                       
+                                          Lactuca serriola L.
+                                       +
+                                       +
+                                       Annual
+                                       Th
+                                       ME+IT+ES
+                                       3.16
+                                    
+                                    
+                                       
+                                       
+                                          Launaea capitata (Spreng) Dandy
+                                       −
+                                       +
+                                       Biennial
+                                       Th
+                                       SA+ SZ
+                                       1.05
+                                    
+                                    
+                                       
+                                       
+                                          Launaea mucronata (Forssk.) Muschl.
+                                       +
+                                       +
+                                       Perennial
+                                       H
+                                       ME+SA
+                                       31.58
+                                    
+                                    
+                                       
+                                       
+                                          Launaea nudicaulis (L.) Hook.f.
+                                       +
+                                       +
+                                       Perennial
+                                       H
+                                       SA
+                                       12.63
+                                    
+                                    
+                                       
+                                       
+                                          Launaea spinosa (Forssk.) Sch.Bip. ex Kuntze.
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       SA
+                                       6.32
+                                    
+                                    
+                                       
+                                       
+                                          Limbarda crithmoides (L.) Dumort.
+                                       +
+                                       −
+                                       Perennial
+                                       Ch
+                                       ME+ES+SA
+                                       2.11
+                                    
+                                    
+                                       
+                                       
+                                          Nauplius graveolens (Forssk.) Wilklund
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       SA
+                                       2.11
+                                    
+                                    
+                                       
+                                       
+                                          Picris asplenioides L.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME+IT
+                                       7.37
+                                    
+                                    
+                                       
+                                       
+                                          Pulicaria undulata (L.) C.A.Mey.
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       SA
+                                       1.05
+                                    
+                                    
+                                       
+                                       
+                                          Reichardia tingitana (L.) Roth.
+                                       +
+                                       +
+                                       Annual
+                                       Th
+                                       ME+IT
+                                       29.47
+                                    
+                                    
+                                       
+                                       
+                                          Senecio glaucus L.
+                                       +
+                                       +
+                                       Annual
+                                       Th
+                                       ME+IT+SA
+                                       74.74
+                                    
+                                    
+                                       
+                                       
+                                          Sonchus oleraceus L.
+                                       +
+                                       −
+                                       Annual
+                                       Th.
+                                       COSM
+                                       2.11
+                                    
+                                    
+                                       
+                                       
+                                          Urospermum picroides (L.) F.W.Schmidt
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME+IT
+                                       2.11
+                                    
+                                    
+                                       
+                                       
+                                          Volutaria lippii (L.) DC.
+                                       
+                                       +
+                                       Annual
+                                       Th
+                                       SA
+                                       6.32
+                                    
+                                    
+                                       Boraginaceae
+                                       
+                                          Alkanna lehmanii (Tin.) A.DC.
+                                       −
+                                       +
+                                       Perennial
+                                       H
+                                       ME
+                                       1.05
+                                    
+                                    
+                                       
+                                       
+                                          Anchusa humilis (Desf.) I.M. Johnst.
+                                       +
+                                       +
+                                       Annual
+                                       Th
+                                       ME+ SA
+                                       8.42
+                                    
+                                    
+                                       
+                                       
+                                          Echium angustifolium Mill.
+                                       +
+                                       −
+                                       Perennial
+                                       H
+                                       ME
+                                       2.11
+                                    
+                                    
+                                       
+                                       
+                                          Heliotropium curassavicum L.
+                                       +
+                                       −
+                                       Perennial
+                                       Ch
+                                       NEO
+                                       1.05
+                                    
+                                    
+                                       
+                                       
+                                          Moltkiopsis ciliata (Forssk.) I. M. Johnst.
+                                       +
+                                       −
+                                       Perennial
+                                       Ch
+                                       ME+SA+SZ
+                                       9.47
+                                    
+                                    
+                                       
+                                       
+                                          Trichodesma africanum (L.) R.Br.
+                                       −
+                                       +
+                                       Perennial
+                                       H
+                                       SA+ SZ
+                                       2.11
+                                    
+                                    
+                                       Brassicaceae
+                                       
+                                          Brassica tournefortii Gouan.
+                                       +
+                                       +
+                                       Annual
+                                       Th
+                                       ME+IT+SA
+                                       5.26
+                                    
+                                    
+                                       
+                                       
+                                          Cakile maritima Scop.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME+ES
+                                       21.05
+                                    
+                                    
+                                       
+                                       
+                                          Diplotaxis harra (Forssk.) Boiss.
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       ME+ SA
+                                       3.16
+                                    
+                                    
+                                       
+                                       
+                                          Farsetia aegyptia Turra.
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       SA+ SZ
+                                       4.21
+                                    
+                                    
+                                       
+                                       
+                                          Lobularia arabica (Boiss.) Muschl.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       SA
+                                       1.05
+                                    
+                                    
+                                       
+                                       
+                                          Matthiola longipetala (Vent.) DC.
+                                       −
+                                       +
+                                       Annual
+                                       Th
+                                       ME+IT
+                                       2.11
+                                    
+                                    
+                                       
+                                       
+                                          Sisymbrium irio L.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME+IT+ES
+                                       1.05
+                                    
+                                    
+                                       
+                                       
+                                          Zilla spinosa (L.) Prantl.
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       SA
+                                       8.42
+                                    
+                                    
+                                       Caryophyllaceae
+                                       
+                                          Gypsophila capillaris (Forssk.) C.Chr
+                                       −
+                                       +
+                                       Perennial
+                                       H
+                                       SA+IT
+                                       3.16
+                                    
+                                    
+                                       
+                                       
+                                          Herniaria hemistemon J.Gay
+                                       −
+                                       +
+                                       Annual
+                                       Th
+                                       ME+ SA
+                                       3.16
+                                    
+                                    
+                                       
+                                       
+                                          Paronychia arabica (L.) DC.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME+SA +SZ
+                                       9.47
+                                    
+                                    
+                                       
+                                       
+                                          Silene succulenta Forssk.
+                                       +
+                                       −
+                                       Perennial
+                                       H
+                                       ME
+                                       25.26
+                                    
+                                    
+                                       
+                                       
+                                          Silene vivianii Steud.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       SA
+                                       20.00
+                                    
+                                    
+                                       
+                                       
+                                          Spergularia marina (L.) Griseb.
+                                       +
+                                       −
+                                       Biennial
+                                       Th
+                                       ME+IT+ ES
+                                       2.11
+                                    
+                                    
+                                       
+                                       
+                                          Spergularia rubra (L.) J. & C.Presl.
+                                       −
+                                       +
+                                       Annual
+                                       Th
+                                       ME+ES
+                                       3.16
+                                    
+                                    
+                                       Chenopodiaceae
+                                       
+                                          Atriplex semibaccata R.Br.
+                                       +
+                                       −
+                                       Perennial
+                                       H
+                                       AUST
+                                       2.11
+                                    
+                                    
+                                       
+                                       
+                                          Bassia indica (Wight) Scott.
+                                       +
+                                       +
+                                       Annual
+                                       Th
+                                       SZ+IT
+                                       8.42
+                                    
+                                    
+                                       
+                                       
+                                          Bassia muricata (L.) Asch.
+                                       +
+                                       +
+                                       Annual
+                                       Th
+                                       SA+ IT
+                                       2.11
+                                    
+                                    
+                                       
+                                       
+                                          Chenopodium murale L.
+                                       +
+                                       +
+                                       Annual
+                                       Th
+                                       COSM
+                                       3.16
+                                    
+                                    
+                                       
+                                       
+                                          Halocnemum strobilaceum (Pall.) M. Bieb.
+                                       +
+                                       −
+                                       Perennial
+                                       Ch
+                                       ME+IT+SA
+                                       7.37
+                                    
+                                    
+                                       
+                                       
+                                          Haloxylon salicornicum (Moq.) Bunge ex Boiss.
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       SA
+                                       1.05
+                                    
+                                    
+                                       
+                                       
+                                          Salsola kali L.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       COSM
+                                       12.63
+                                    
+                                    
+                                       
+                                       
+                                          Suaeda monoica Forssk.
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       ME+SA
+                                       2.11
+                                    
+                                    
+                                       Cleomaceae
+                                       
+                                          Cleome droserifolia (Forssk.) Delile
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       SA + IT
+                                       2.11
+                                    
+                                    
+                                       Convolvulaceae
+                                       
+                                          Cressa cretica L.
+                                       +
+                                       −
+                                       Perennial
+                                       H
+                                       ME+IT
+                                       2.11
+                                    
+                                    
+                                       Cyperaceae
+                                       
+                                          
+                                             Cyperus capitatus
+                                           
+                                          Vand.
+                                       
+                                       +
+                                       −
+                                       Perennial
+                                       G
+                                       ME
+                                       41.05
+                                    
+                                    
+                                       
+                                       
+                                          
+                                             Cyperus conglomeratus Rottb.
+                                       
+                                       +
+                                       −
+                                       Perennial
+                                       G
+                                       SA+SZ
+                                       12.63
+                                    
+                                    
+                                       Euphorbiaceae
+                                       
+                                          Euphorbia retusa Forssk.
+                                       −
+                                       +
+                                       Perennial
+                                       H
+                                       SA
+                                       5.26
+                                    
+                                    
+                                       
+                                       
+                                          Ricinus communis L.
+                                       +
+                                       −
+                                       Perennial
+                                       Nph
+                                       Cult. & Nat.
+                                       2.11
+                                    
+                                    
+                                       Fabaceae
+                                       
+                                          Alhagi graecorum Boiss.
+                                       +
+                                       −
+                                       Perennial
+                                       H
+                                       ME+IT
+                                       22.11
+                                    
+                                    
+                                       
+                                       
+                                          Astragalus fruticosus Forssk.
+                                       +
+                                       −
+                                       Perennial
+                                       Ch
+                                       SA
+                                       4.21
+                                    
+                                    
+                                       
+                                       
+                                          Astragalus peregrinus Vahl
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       SA
+                                       3.16
+                                    
+                                    
+                                       
+                                       
+                                          Astragalus spinosus (Forssk.) Muschl.
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       SA + IT
+                                       1.05
+                                    
+                                    
+                                       
+                                       
+                                          Lotus creticus L.
+                                       +
+                                       −
+                                       Perennial
+                                       H
+                                       Me
+                                       1.05
+                                    
+                                    
+                                       
+                                       
+                                          Lotus halophilus Boiss.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME+SA
+                                       36.84
+                                    
+                                    
+                                       
+                                       
+                                          Lotus polyphllos E.D.Clarke
+                                       +
+                                       −
+                                       Perennial
+                                       
+                                       ME
+                                       5.26
+                                    
+                                    
+                                       
+                                       
+                                          Lotus glinoides Delile
+                                       −
+                                       +
+                                       Annual
+                                       Th
+                                       SZ
+                                       4.21
+                                    
+                                    
+                                       
+                                       
+                                          Ononis serrata Forssk.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME+SA
+                                       15.79
+                                    
+                                    
+                                       
+                                       
+                                          Retama raetam (Forssk.) Webb & Berthel.
+                                       +
+                                       +
+                                       Perennial
+                                       Nph
+                                       SA
+                                       6.32
+                                    
+                                    
+                                       
+                                       
+                                          Trigonella stellata Forssk.
+                                       −
+                                       +
+                                       Annual
+                                       Th
+                                       SA+IT
+                                       7.37
+                                    
+                                    
+                                       Geraniaceae
+                                       
+                                          Erodium laciniatum (Cav.) Wild.
+                                       +
+                                       +
+                                       Annual
+                                       Th
+                                       ME
+                                       47.37
+                                    
+                                    
+                                       Juncaceae
+                                       
+                                          Juncus bufonius L.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME+IT+ES
+                                       1.05
+                                    
+                                    
+                                       Lamiaceae
+                                       
+                                          Lavandula coronopifolia Poir.
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       SA
+                                       1.05
+                                    
+                                    
+                                       Orobanchaceae
+                                       
+                                          Cistanche phelypaea (L.) Cout.
+                                       +
+                                       −
+                                       Perennial
+                                       P, G
+                                       ME+SA
+                                       2.11
+                                    
+                                    
+                                       
+                                          Orobanche crenata Forssk.
+                                       −
+                                       +
+                                       Annual
+                                       Th, P
+                                       ME+IT
+                                       3.16
+                                    
+                                    
+                                       Plantaginaceae
+                                       
+                                          Plantago squarrosa Murray
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME+SA
+                                       12.63
+                                    
+                                    
+                                       Plumbaginaceae
+                                       
+                                          Limonium pruinosum (L.) Chaz.
+                                       +
+                                       −
+                                       Perennial
+                                       G, He
+                                       SA
+                                       6.32
+                                    
+                                    
+                                       Poaceae
+                                       
+                                          Aegilops bicornis (Forssk.) Jaub. & Spach
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME+ SA
+                                       14.74
+                                    
+                                    
+                                       
+                                       
+                                          Aegilops kotschyi Boiss.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       SA+ IT
+                                       8.42
+                                    
+                                    
+                                       
+                                       
+                                          Bromus diandrus Roth.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME
+                                       14.74
+                                    
+                                    
+                                       
+                                       
+                                          Cutandia memphitica (Spreng.) Benth.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME+IT+SA
+                                       27.37
+                                    
+                                    
+                                       
+                                       
+                                          Cyondon dactylon (L.) Pers.
+                                       +
+                                       +
+                                       Perennial
+                                       G
+                                       COSM
+                                       16.84
+                                    
+                                    
+                                       
+                                       
+                                          
+                                             Elymus farctus (Viv.) Runem. ex Melderis
+                                       
+                                       +
+                                       −
+                                       Perennial
+                                       G
+                                       ME
+                                       46.32
+                                    
+                                    
+                                       
+                                       
+                                          Hordeum murinum L.
+                                       +
+                                       +
+                                       Annual
+                                       Th
+                                       ME+IT+ES
+                                       23.16
+                                    
+                                    
+                                       
+                                       
+                                          
+                                             Lasiurus scindicus Henrard.
+                                       −
+                                       +
+                                       Perennial
+                                       G
+                                       SA+SZ
+                                       7.37
+                                    
+                                    
+                                       
+                                       
+                                          Lolium perenne L.
+                                       +
+                                       −
+                                       Perennial
+                                       Th
+                                       ER-SR+ME+IT
+                                       14.74
+                                    
+                                    
+                                       
+                                       
+                                          
+                                             Panicum turgidum Forssk.
+                                       
+                                       +
+                                       +
+                                       Perennial
+                                       H
+                                       SA
+                                       13.68
+                                    
+                                    
+                                       
+                                       
+                                          Parapholis incurva (L.) C.E. Hubb.
+                                       +
+                                       +
+                                       Annual
+                                       Th
+                                       ME+IT+ES
+                                       3.16
+                                    
+                                    
+                                       
+                                       
+                                          Phalaris minor Retz.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME+IT
+                                       1.05
+                                    
+                                    
+                                       
+                                       
+                                          Phragmites australis (Cav.) Trin.ex Steud.
+                                       +
+                                       +
+                                       Perennial
+                                       G, He
+                                       COSM
+                                       8.42
+                                    
+                                    
+                                       
+                                       
+                                          Poa annua L.
+                                       +
+                                       +
+                                       Annual
+                                       Th
+                                       COSM
+                                       11.58
+                                    
+                                    
+                                       
+                                       
+                                          Sphenopus divaricatus (Gouan) Rchb.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME+IT+SA
+                                       1.05
+                                    
+                                    
+                                       
+                                       
+                                          Sporobolus spicatus (Vahl) Kunth
+                                       +
+                                       +
+                                       Perennial
+                                       G
+                                       ME+SA+SZ
+                                       2.11
+                                    
+                                    
+                                       
+                                       
+                                          Stipagrostis lanata (Forssk.)
+                                       +
+                                       −
+                                       Perennial
+                                       G
+                                       SA
+                                       37.89
+                                    
+                                    
+                                       
+                                       
+                                          Stipagrostis scoparia (Trin. & Rupr.) De Winter
+                                       +
+                                       −
+                                       Perennial
+                                       G
+                                       SA
+                                       3.16
+                                    
+                                    
+                                       Polygonaceae
+                                       
+                                          Calligonum polygonoides L.
+                                       +
+                                       +
+                                       Perennial
+                                       Nph
+                                       SA+ IT
+                                       35.79
+                                    
+                                    
+                                       
+                                       
+                                          Emex spinosa (L.) Campd.
+                                       +
+                                       +
+                                       Annual
+                                       Th
+                                       ME+SA
+                                       2.11
+                                    
+                                    
+                                       
+                                       
+                                          Rumex pictus Forssk.
+                                       +
+                                       −
+                                       Annual
+                                       Th
+                                       ME+SA
+                                       68.42
+                                    
+                                    
+                                       
+                                       
+                                          Rumex vesicarius L.
+                                       −
+                                       +
+                                       Annual
+                                       Th
+                                       ME+SA+SZ
+                                       1.05
+                                    
+                                    
+                                       Resedaceae
+                                       
+                                          Ochradenus baccatus Delile
+                                       −
+                                       +
+                                       Perennial
+                                       Nph
+                                       SA
+                                       4.21
+                                    
+                                    
+                                       
+                                       
+                                          Reseda decursiva Forssk.
+                                       −
+                                       +
+                                       Annual
+                                       Th
+                                       SA
+                                       1.05
+                                    
+                                    
+                                       Scrophulariaceae
+                                       
+                                          Kickxia aegyptiaca (L.) Nάbelek.
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       ME+SA
+                                       3.16
+                                    
+                                    
+                                       Solanaceae
+                                       
+                                          Lycium shawii Roem. & Schult.
+                                       −
+                                       +
+                                       Perennial
+                                       Nph
+                                       SA+SZ
+                                       3.16
+                                    
+                                    
+                                       Tamaricaceae
+                                       
+                                          Tamarix nilotica (Ehrenb.) Bunge.
+                                       +
+                                       +
+                                       Perennial
+                                       Nph
+                                       SA
+                                       17.89
+                                    
+                                    
+                                       
+                                       
+                                          Tamarix tetragyna Ehrenb.
+                                       −
+                                       +
+                                       Perennial
+                                       Nph
+                                       SA+SZ
+                                       2.11
+                                    
+                                    
+                                       
+                                       
+                                          Tamarix aphylla (L.) H. Karst.
+                                       −
+                                       +
+                                       Perennial
+                                       Nph
+                                       SA+SZ
+                                       1.05
+                                    
+                                    
+                                       Zygophyllaceae
+                                       
+                                          Fagonia mollis Delile
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       SA
+                                       2.11
+                                    
+                                    
+                                       
+                                       
+                                          Zygophyllum album L.
+                                       +
+                                       −
+                                       Perennial
+                                       Ch
+                                       ME+SA
+                                       15.79
+                                    
+                                    
+                                       
+                                       
+                                          Zygophyllum coccineum L.
+                                       +
+                                       +
+                                       Perennial
+                                       Ch
+                                       SA
+                                       12.63
+                                    
+                                    
+                                       
+                                       
+                                          Zygophyllum aegyptium Hosny
+                                       +
+                                       −
+                                       Perennial
+                                       Ch
+                                       ME
+                                       9.47
+                                    
+                                    
+                                       
+                                       
+                                          Zygophyllum decumbens Delile
+                                       −
+                                       +
+                                       Perennial
+                                       Ch
+                                       SA
+                                       5.26
+                                    
+                                    
+                                       
+                                       
+                                          Zygophyllum simplex L.
+                                       −
+                                       +
+                                       Annual
+                                       Th
+                                       SA
+                                       6.32
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+@&#REFERENCES@&#
+

@@ -1,0 +1,161 @@
+@&#MAIN-TITLE@&#The ability of UK offshore workers of different body size and shape to egress through a restricted window space
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Up to 75% of successful small window egress outcome is size related.
+
+
+                        
+                        
+                           
+                           Bideltoid breadth, chest depth and weight combined explain ∼70% of egress outcome.
+
+
+                        
+                        
+                           
+                           25% or more of egress outcome relates to non-anatomical factors.
+
+
+                        
+                        
+                           
+                           Predictive testing will inevitably lead to false +ve and –ve results.
+
+
+                        
+                        
+                           
+                           Flexibility and tissue compressibility may also explain successful egress.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Offshore workers
+
+Window egress
+
+Binary logistic regression
+
+3D scanning
+
+@&#ABSTRACT@&#
+
+
+                  404 male offshore workers aged 41.4 ± 10.7 y underwent 3D body scanning and an egress task simulating the smallest helicopter window emergency exit size. The 198 who failed were older (P < 0.01), taller (P < 0.05) and heavier (P < 0.0001) than the 206 who passed. Using all extracted dimensions from the scans, binary logistic regression identified a model (refined using backward elimination) which predicted egress outcome with 75.2% accuracy. Using only weight, bideltoid breadth and maximum chest depth, the model achieved ∼70% accuracy. When anatomical dimensions categorise individuals for small window egress, 25% or more will be misclassified, with false positives (those predicted to fail, but pass) slightly outnumbering false negatives (those predicted to pass, but fail), highlighting the limitations of a predictive approach which treats the body as a rigid object. Differences in flexibility and technique may explain these observations, which may be important considerations for future research.
+               
+
+@&#INTRODUCTION@&#
+
+Although the stature of humans has increased for the last six generations, in many northern European countries it has largely stabilised, while in southern and eastern European countries, it continues to rise (Cole, 2002). Alongside increased stature are increased girths, breadths and depths, although these do not precisely follow a pattern of geometric similarity (Nevill et al., 2004). Observed secular body weight increase necessarily reflects height and other dimensional increases, but in addition, the rising prevalence of global obesity (WHO, 2000). In addition to being a health risk, excess fat enlarges the body laterally, affecting posture, compromising locomotion (Wearing et al., 2006), and increasing the likelihood of adopting unusual or restricted postures in restricted space, with consequences for musculo-skeletal health (Gallacher, 2005). Physical body size and shape affects the ability of a person to function in any environment where space is restricted. The built environment, examples of which endure for centuries, if not millennia, expresses designs which never anticipated the physical size of adults today.
+
+In addition to the underlying trends for size to increase, certain professions are associated with larger individuals, such as truck drivers (Guan and Hsaio, 2012) and firefighters (Hsaio et al., 2014). Whether or not such enlarged dimensions arise via preferential recruitment of larger candidates, or result from wider cultural aspects of the role, these will add to any size burden imposed by the secular trend, and may present specific challenges for ergonomic applications such as accessibility, signage or comfort. Over more than four decades of operations, the UK offshore work environment has borne witness to a progressive size increase of its workers. The male UK offshore population has previously been surveyed (Light and Dingwall, 1985) and reported to be heavier and fatter than their onshore counterparts (Light and Gibson, 1986). At the time, offshore workers were approximately 3% heavier than the equivalent UK onshore population, but this discrepancy varied according to age. Since this time, the average discrepancy has nearly trebled in magnitude. Comparing the Size and shape of the UK Offshore Workforce 2014 (SASOW) findings (Ledingham et al., 2015) to those of Light & Dingwall, show that offshore workers are, on average, 19% heavier, 2% taller, and have 17% greater waist girth, 14% greater neck girth, 12% greater chest and hip girths and 11% greater wrist girth. The theoretical modelling of ability to pass in a narrow corridor using SASOW data suggested that male UK workers were 28% less likely to be able to pass one another than the general male population (Stewart et al., 2015).
+
+The ergonomic consequences of increased body size for emergency escape planning include all aspects of transportation, locomotion, mustering and personal protective equipment (Ledingham and Stewart, 2013). This is perhaps most apparent in helicopter window egress. Research performed in a military facility determined the minimum dimensions of rectangular opening which could be used as a secondary exit in an emergency (Allan and Ward, 1986). Four individuals of varying body size exited progressively smaller apertures underwater in a simulated helicopter escape exit, and the study concluded that an exit of 432 × 356 mm was compatible with the 99th centile of bidletoid breadth, (based on 1970–71 Royal Air Force aircrew size data). How highly trained such individuals were, and other demographic data were not included in the report. While the conclusions may be robust for military aircrew, the applicability to civilians assumes no underlying size difference between the two populations. While a range of human factors other than anatomical ones will govern the response to the successful escape from helicopters ditching in water (Brooks, 1989), it is virtually impossible to recreate authentic emergency situations experimentally due to unassailable practical and ethical considerations, and size-related factors have not been prominent in this consideration due to a lack of current information. As a result, the aim of this study was to provide current, context-specific information for the civilian UK male offshore workforce, relating body dimensions to simulated helicopter window egress.
+
+@&#METHODS@&#
+
+Participants comprised a subset of the larger Size and shape of offshore workers (SASOW) study (Ledingham et al., 2015), and were the 404 ‘core crew’ (who worked at least 50% time offshore) for whom all required data were available, recruited via a range of media from Oil & Gas UK and key stakeholders. Measurements were made in appointments lasting ∼20 min mostly at Aberdeen heliports but also in Norfolk which services the Southern North Sea sector. Participants wore lycra shorts for some scans, and a survival suit of standard type in one of 11 available sizes (over regular indoor clothing), according to manufacturer's instructions based on stature and chest girth. Each volunteer underwent a ‘window frame’ egress test by passing a wooden window frame over himself, when wearing survival suit and re-breather lifejacket. The frame was sized 432 × 356 mm (precisely to replicate the minimum acceptable size for an escape window (CAA, 2006), and smaller than all emergency exit sizes. Three-dimensional (3D) body scans using an Artec L scanner (Artec Group, Luxembourg) wearing form-fitting shorts, and also with a full survival suit and lifejacket over their regular indoor clothing, in two standing and one sitting postures. Examples of scans are depicted in Fig. 1
+                     .
+
+Scans were processed using Artec studio 9 software (Artec Group, Luxembourg). This involved global registration, fusion and hole-filling processes, which rendered the scans into 3D objects suitable for measurement extraction. Scans were oriented using a positioning tool which standardised the presentation in 3D xyz space, with the x axis anterior–posterior, y axis lateral and z axis vertical, which enabled co-ordinates to be calculated for all placed landmarks.
+
+The requirement to constrain measurements to a short enough time to attract a large sample, precluded manual landmarking. Instead, extracted measurements relied on visually identifiable landmark locations placed digitally on the scan surface, such as the axilla, nipple, naval and anterior knee, together with the most anterior, posterior or lateral aspects of convex surfaces. From these locations, planes for measurements were constructed and dimensional analyses performed using direct measurements, or the x–x, y–y, or z–z co-ordinate differences between landmarks. A total of 25 dimensional measurements were extracted which include linear distances, girths and segmental volumes, which are fully described in Ledingham et al. (2015). These are: shoulder girth, bideltoid breadth, height of deltoid, chest depth at deltoid, chest depth at deltoid (in survival suit), maximum chest depth, neck girth, maximal breadth (in survival suit), maximal depth (in survival suit), chest breadth (axilla), chest breadth (nipple), chest girth, waist girth (minimum), waist girth (umbilicus), abdominal depth, hip girth, hip breadth (standing), hip breadth (sitting), wrist girth, buttock to knee (seated), abdominal volume, arm volume, leg volume, total volume, total volume (in survival suit). All linear measurements were in cm, and volumes in l. Measurements acquired when wearing the survival suit were located using landmarks identified by xyz coordinates from the equivalent scans acquired when subjects wore shorts, and such landmarks were readily observable.
+
+After scans were processed, data were all extracted by the same researcher. Reproducibility for measurement extraction was established using blinded re-analysis of the same scans of 28 individuals, four from each of the seven weight categories of the SASOW study, and calculating the technical error of measurement (TEM). Technical error of measurement was calculated by replicate measurement extractions (in cm, or l for linear dimensions and volumes, respectively) for all variables according to the formula:
+                        
+                           TEM = √[Σ(x1 – x2)2 /2n]
+                        
+                     where x1 and x2 are replicate measures, and n is the number of measurement pairs. This gives the absolute error in the same units as the measurement.
+
+The percentage TEM is value is more widely reported, and is given by the formula:
+                        
+                           %TEM = 100 * TEM / mean
+                        
+                     
+                  
+
+Effect size (ES) differences and coefficients of variation (CV) were calculated for each variable, to facilitate comparison of those who passed and failed with the general offshore workforce. Dimensional data were entered into a model with all candidate variables subjected to backwards elimination binary logistic regression to discriminate those who passed from those who failed the window egress. In addition, models which used the variables most easily assessed in practice were also used, including body weight, bideltoid breadth, maximum chest depth (measured against the body surface), and also the maximum breadth and depth when wearing the survival suit and lifejacket. Further receiver operator characteristic tests were performed individually on selected variables retained by the optimised model, or by variables used within the literature on egress, which explained the probability of a single variable correctly predicting an egress test outcome. Examples of some measurements extracted are illustrated in Fig. 2
+                     .
+
+The study was approved by Robert Gordon University Research Ethics Subcommittee.
+
+@&#RESULTS@&#
+
+Descriptive statistics of the physical characteristics of the participants are provided in Table 1
+                     . For the window egress, those who succeeded in passing through the window frame were younger, shorter and lighter, in terms of absolute and relative weight.
+
+The measurements themselves were assessed for reliability, which are illustrated in Table 2
+                     .
+
+The analysis used only the first measurement of paired measurements, in the case of the 28 individuals selected for duplicate measures.
+
+Effect size comparison of passes/fails with a representative sample of the offshore workforce (n = 588), as selected by the SASOW study, is illustrated in Fig. 3
+                     .
+
+
+                     Fig. 3 shows the standardised effect size (ES) when comparing the difference in means for each dimension for those who passed or failed to the entire offshore sample (n = 588). (Note: body weight measures and stature are not included). The upper figure compares those who passed to the offshore sample and the lower figure compares those who failed to the offshore sample. The dimensions for each have been ranked from highest ES to lowest ES (black circles) and 95% CI, with the middle vertical line representing 0 (or no difference). A negative ES represents a dimension for which those who passed/failed are typically smaller than the offshore sample. A positive ES represents a dimension for which those who passed/failed are typically larger than the offshore sample. Effect sizes and 95% CIs for each dimension are listed down the right-hand-side of the figure.
+
+A comparison of CV ratios of passes v fails is illustrated in Fig. 4
+                     .
+
+This figure shows the CV ratios comparing those who passed to those who failed the small window egress test (Note: body weight measures and stature are not included). Dimensions ranked from highest CV ratio to the lowest. All CV ratios have been extended from unity, and anything to the left of 1 represents dimensions for which those who passed are typically less variable than those who failed (only dimensions with a CV ratio less than 0.9, represented by the dashed line, are considered to be substantially less variable). Anything to the right of 1 represents dimensions for which those who passed are typically more variable than those who failed (only dimensions with a CV ratio greater than 1.1, represented by the dashed line, are considered to be substantially more variable).
+
+Binary Logistic Regression yielded results which were broadly similar, in terms of their predictive capability of discriminating those able to pass through the small window frame and those who were not. Using all 30 measures in the backward elimination process yielded the optimal model. These input measures were: shoulder girth, bideltoid breadth, height of deltoid, chest depth at deltoid, maximum chest depth, neck girth, chest depth at deltoid wearing survival suit, maximum depth wearing a survival suit, maximum breadth wearing a survival suit, chest breadth at axilla, chest girth, chest breadth at nipple height, waist girth (minimum), waist girth (umbilicus), abdominal depth, hip girth, hip breadth, wrist girth, total volume, abdominal volume, arm volume, leg volume, total volume wearing a survival suit, hip breadth sitting, buttock to knee, deltoid to thorax, weight (clothing), weight (survival suit), weight (form-fitting) and age.
+
+Using measures of body weight, namely the weight category (1–7, lightest to heaviest), weight in form fitting shorts, weight in indoor clothing (without shoes) and weight in survival suit/re-breather, the model selected the indoor clothed weight. The addition of bideltoid breadth and maximum chest depth enhanced the predictive capability of the test, and the results of the regressions are summarised in Table 3
+                     , and the test outcomes in Table 4
+                     .
+
+ROC analysis was performed to consider the readily-measurable variables separately, to identify the probability of a randomly selected offshore worker failing the test being larger or heavier than one passing the test. This probability is represented by the area under the curves for weight (in indoor clothing), bideltoid breadth and maximum chest depth (measured against the body surface), which were 77, 71 and 76% respectively, as illustrated in Fig. 5
+                     .
+
+@&#DISCUSSION@&#
+
+Key findings. Body morphology can explain up to three quarters of the likelihood of successful small window egress. Using the best manually-measured variables in a practical setting (weight, bideltoid and maximum chest depth), this falls to about 70%. A combination of different measurements out-performs individual measurements in predicting egress.
+
+With the average TEM for repeated measurement extractions close to 1% of the measurement value, the extracted dimensional data, with the exception of segmental volumes, compare very well with conventional anthropometry. Better reproducibility of segmental volumes was obtained using manually landmarked participants (Schranz et al., 2010) which was not practical in the present study. Poorer reliability relates to the variability in the location of the slice plane used to divide the arm and leg segments from the torso. Accepting that we did not reposition individuals and scan twice, but manually extracted dimensions from the same scans on two separate occasions, the key measurements readily made on offshore workers, such as the bideltoid breadth, are very encouraging. Crucially, these involve error which equates to or even outperforms that of experienced anthropometrists' manual measurements (Marfell-Jones et al., 2013).
+
+Consideration of the effect size of passes and fails of small window egress, relative to the entire sample, shows all dimensions with the exception of the height of the deltoid to affect the likelihood of passing. Examination of the CV ratios shows that individuals who pass have less variable dimensions than those who fail for shoulder girth, hip breadth, waist girth (umbilicus), bideltoid breadth, abdominal volume, abdominal depth and hip girth. There was the suggestion of greater variability in dimensions of depth in those who passed as compared with those who failed, but these were not considered substantial (i.e. CV ratios < 1.1). Smaller physiques may have less scope for variability, and this, together with smaller absolute dimensions may explain these findings. Larger individuals, by contrast, have greater potential for variability.
+
+Close inspection of the optimised model revealed some predictor variables that have the opposite sign to the majority of body size dimensions in the prediction. This was the case with stature, suggesting a greater height was associated with passing the test. This is plausible because being taller allows for greater quantities of tissue to be more evenly distributed along the skeleton, an observation noted in a general population sample at sites of fat accumulation (Nevill et al., 2010), enhancing the ability of the individual to achieve a successful escape through the window. Similarly, leg length has been observed to be inversely proportional to cross sectional area (Burton et al., 2012) which could be explained by mechanical work achieved either through a longer contraction distance or a larger cross sectional area.
+
+Weakly positive coefficients also prevailed for waist and hip girth, suggesting that a larger girth led to a greater chance of successful egress, whereas the shoulder girth had a more strongly negative coefficient (suggesting a larger shoulder girth reduces successful egress). More challenging to explain is why the bideltoid breadth also reveals a positive coefficient. The fact that a larger bideltoid breadth is associated with a poorer chance of successful window egress on its own, and yet when, in conjunction with a given bideltoid girth favours a successful outcome is perplexing. Our interpretation is that for a given shoulder girth, a relatively large breadth, but small depth seems favourable. Because the shoulder girdle can elevate or depress relative to the spinal axis, provided sufficient spinal and shoulder flexibility exist, a wide-framed yet flexible person might be favoured. No equivalent effect could influence the dimensions of the thorax, which move only a modest amount during ventilation.
+
+In a recent safety review of helicopter operations the UK Civil Aviation Authority highlighted the mis-match between escape time from a submerged helicopter and breath hold time (CAA, 2014). Of particular concern was the possibility of passengers awaiting the egress of another occupant, prior to making their own escape. It acknowledged the need to ensure compatibility of passenger body morphology and exit window size, and prior to implementation of a CAA recommendation on 1st April 2015, an ambitious measuring programme of bideltoid breadth (via manual anthropometry) of all offshore workers was undertaken, informed by old aviation data (Allan and Ward, 1986) and preliminary data of the SASOW study. A ‘cut-off’ value of bideltoid breadth was chosen above which passengers were categorised as ‘extra-broad’ or ‘XBR’, and the practice implemented that ‘extra-broad’ persons are only seated next to the largest windows in the helicopter. With the proportion of large windows in the current helicopter fleet being much higher than the 3–4% of workers measured as XBR, there is considerable contingency built into this process.
+
+However, it should be noted that while this study was of persons wearing a ‘re-breather’ lifejacket (standard issue for years prior to and during the study), an additional CAA recommendation regarding the type of emergency breathing apparatus to be used on offshore helicopter flights had resulted in the removal of this ‘re-breather’ system from service and the introduction of a new system. The new system has different physical characteristics which may themselves influence ability to exit through a window, and a clear mandate therefore exists to investigate all aspects of the implementation of the new emergency breathing apparatus, in terms of egress.
+
+The current study, with more complete data than those available at the time the April 2015 decision was taken, identifies that the maximum chest depth would perform slightly better than bideltoid breadth as a predictor of ability to exit a window of given size, and that a combination of measures including body weight and both these would perform better still. In its favour, bideltoid breadth can be measured more reliably than many other measures by virtue of its lower %TEM. Furthermore, all extracted data were based on the same scans, and this the same phase of the breathing cycle captured. While most of the thoracic movement during breathing is vertical, the effect of breathing artefact may affect chest depth more than bideltoid breadth. Importantly, maximum chest depth would not be straightforward to measure on females, who comprise 3–4% of offshore workers. Inspection of the effect size chart (Fig. 3) reveals that many of the parameters which have larger effects than bideltoid, are not practical to measure.
+
+The question remains as to what might explain the likelihood of successful egress through a small window, other than anatomy. The issue of the fit of the survival suit and rebreather is important, as the potential for different shapes and juxtapositions may have an influence, both on snag hazard and buoyant force on immersion, which are beyond the scope of this investigation. Three further factors may influence egress, which have not been assessed in the current investigation: compressibility, flexibility and motivation. The methodology of capturing body shape as a 3D scan involves considering the body as a rigid object – as if it were a mannequin. The reality is that the body surface is compressible, but to a different extent within and between individuals, depending upon individual muscularity and adiposity. Ultrasonography of the superficial tissues shows adipose tissue compression of up to 37% with a modest force of only 11.2 N, and only very slightly less compression with half the applied force (Toomey et al., 2011). Given the likely strength of offshore workers, and the forces generated in an emergency situation, there is potential for compressibility to be considerably greater.
+
+Age was significantly greater in those who failed, as compared to those who passed, and this may be associated with factors including increased adiposity and increased thoracic depth. A loss of compliance of the chest wall results in decreased lung volumes with age (Mittman et al., 1965), and structural changes include increased anterio–posterior depth. Flexibility has been shown to decrease with age, but the effect is joint-specific (Medeiros et al., 2013). In their study, a deterioration of the shoulder and trunk flexibility commencing in the 4th or 5th decade, was more marked than at other joints, a finding the authors attribute to the lack of use of regular full range of movement of these joints in the tasks of daily living. Shoulder flexibility may limit egress when wearing a survival suit, and may be reduced according to prior activity or injury.
+
+Motivation to egress the window frame may have not been uniform across all participants. This may be because it was not a genuine emergency situation, and that some individuals may have experienced discomfort during the attempt. While the wooden frame does not reproduce the conditions in an emergency, such conditions would be very challenging to recreate both practically and ethically. At present helicopter underwater escape training does not require participants to attempt to egress through a push-out window of dimensions as small as those of the window used in this study. Nevertheless, anecdotal evidence suggests some workers experience heightened arousal when exiting a much larger window underwater. The industry needs to strike a balance between the need to quantify as accurately as possible the relationship between large individuals and space or exit size provision, and the physical and psychological discomfort associated with the periodic helicopter underwater escape training for a civilian workforce.
+
+The optimal model from 3D scanning yielded 75.2% accuracy. The rationale of the study was to seek to approach its performance using measures which may be feasible in practice. With the two favoured anatomical variables, bideltoid breadth and maximum chest depth, the test accuracy was 68.8%, which reached 72.5% using derived variables from easily-made measurements. In practical terms the reduction in accuracy from the optimal model is likely to be of no consequence, and the suitability of measuring women favours the bideltoid breadth, with the inclusion of clothed weight. This lends support to the strategy of measuring bideltoid breadth favoured by the CAA. Nevertheless, some examples of very large individuals who successfully exited, and, more worryingly, much smaller ones who failed, raises the possibility of a workforce testing regime involving an actual exit test itself. While the logic of such an approach is salient, its value in relation to its cost and time to implement, would present major challenges to the industry. The affordability and practicality of predictive testing justify its continued use meantime. However, questions remain as to whether other factors should be measured which could enhance the predictive accuracy of an egress test, and as an alternative to a mandatory window egress task for all offshore workers, further study of flexibility and compressibility might cast valuable light on this in a cost-effective way.
+
+@&#CONCLUSION@&#
+
+Successful egress through a small window frame is based on a number of factors. Anatomical factors account for the majority of the variability in outcome, however there are limitations of a predictive approach which treats the body as a rigid object because non-morphological factors may also be influential. Bideltoid breadth remains useful in predicting egress, and its accuracy is enhanced with the addition of chest depth and body weight.
+
+@&#ACKNOWLEDGEMENT@&#
+
+Funded by Knowledge Transfer Partnership no. KTP008973 between Robert Gordon University and UK Offshore Oil and Gas Industry Association Ltd. The findings and conclusions expressed do not necessarily reflect the view of Oil & Gas UK, but are those of the authors. A. Stewart and G Furnace obtained the grant, R. Ledingham undertook the scanning and measurement extraction, A. Nevill, N. Schranz and A. Stewart did the statistical analysis and data presentation and all contributed to the writing of the manuscript.
+
+@&#REFERENCES@&#
+

@@ -1,0 +1,3457 @@
+@&#MAIN-TITLE@&#Ill-loaded layout optimization of bi-modulus material
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Compliance design for a bi-modulus structure under multiple ill-loads is studied.
+
+
+                        
+                        
+                           
+                           Fractional norm objective function is presented and sensitive analysis is derivated.
+
+
+                        
+                        
+                           
+                           Material replacement approach is suggested to simplify update of design variables.
+
+
+                        
+                        
+                           
+                           Typical multiple ill-loaded designs are discussed numerically.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Layout optimization
+
+Bi-modulus
+
+Multiple loading cases
+
+
+
+
+                     Q-norm weighting scheme
+
+Ill-loading cases
+
+@&#ABSTRACT@&#
+
+
+                  In topology optimization of a continuum under multiple loading cases (MLC), if the magnitudes of loads are different obviously, it is hard to obtain a clear component to support the weaker loads. Such MLC are called ill-loading cases (ILC). A new method is presented to solve the layout optimization of a continuum with bi-modulus material under multiple loading conditions (MLC) by using a Q-norm weighting objective which is formed with the Q-norm of weighted structural compliances of MLC. The effects both of the value of Q and bi-modulus behavior of material on the final material distribution are studied. Both of validity and efficiency of the present algorithm are discussed numerically. Results show that the optimal bi-modulus material distribution of a structure under serious ILC can be found if using a small positive value of Q within interval of [0.1, 0.2] and the computational efficiency is very close to that of traditional isotropic material layout optimization.
+               
+
+@&#INTRODUCTION@&#
+
+Layout/topology optimization is a powerful tool for the conceptual design of a structure/composite material. In topology optimization the layout of material in structure can change, which is the essential difference from the traditional detailed design approaches, e.g., size/shape optimization. However, the computational cost of topology optimization is usually very heavy as comparing with size/shape optimization. Therefore, the popularity of the method in practical design [1] owe to two aspects, i.e., the development of computer technology and related computational methods. The most successful solution methods are as homogenization design based method (HDM) by Bendsøe and Kikuchi [2], solid isotropic material with penalization method (SIMP) by Rozvany et al. [3], evolutionary structural optimization method (ESO) by Xie and Steven [4] and level set method (LST) by Wang et al. [5].
+
+In practical engineering, such materials as concrete, cast iron, plastic and rubber, are used popularly. Mechanical experiments show that the tensile and compressive moduli of the materials are different under linear elastic deformation along the same direction. In general, the materials are called bi-modulus materials. The mechanical property of a bi-modulus material is stress dependent which results in many times of structural reanalysis for obtaining the accurate deformation of a structure with such material [6]. To avoid the behavior of stress-dependent of a bi-modulus material, approximation schemes are presented [7–10]. In such approximation, the original piecewise linear constitutive curve is approximated with a continuous differentiable curve. On the other hand, material replacement methods are also suggested [11–16] in layout optimization of a continuum as the different behavior in tension and compression exists.
+
+In practical engineering, a structure is generally subjected to multiple loading cases (MLC) [17–22]. In the work by Sui et al. [19], they presented a multiple-level weighting scheme to deal with the topology optimization under ill-loading cases. In their work, the loading cases were divided into two groups according to the magnitudes of the loads. Topology optimization of structure under the higher loads was firstly carried out. And the second level of topology optimization of structure under lower loads was implemented on the results of previous level of topology optimization. In 2006, they [20] proposed a new method to select the weight functions of loads by considering strain energy constraints in optimization.
+
+The approach to deal with ILC design is still complicated. Besides, the stiffness design of a continuum under MLC discussed in above works does not consider material nonlinear, e.g., bi-modulus material in structure. That is the motivation of our present work. Simultaneously, in the present work, the power exponent weighting scheme of objective functioin is adopted. The value of the power exponent is in the interval of (0, 1) to deal with ill-loading cases. Further, the effects of both the value of the power exponent and bi-modulus behavior of material on the optimal topologies are to be discussed numerically.
+
+@&#METHODOLOGY@&#
+
+Essentially, finite element method (FEM) is adopted to give structural deformation analysis is this work. Material replacement method [16] is adopted to solve bi-modulus stiffness design. And Q-norm weighting scheme is presented to solve topology optimization of a continuum under MLC.
+
+In the present work, only linear elastic structure is considered. The optimal stiffness design of a structure with bi-modulus material under weighted MLC is defined as
+                           
+                              (1)
+                              
+                                 Find
+                                 
+                                 
+                                    {
+                                    
+                                       
+                                          
+                                             ρ
+                                          
+                                          
+                                             m
+                                          
+                                       
+                                       
+                                          |
+                                          
+                                             m
+                                             ∈
+                                             Ω
+                                          
+                                       
+                                    
+                                    }
+                                 
+                                 
+                                 min
+                                 
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       w
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       [
+                                       
+                                          
+                                             ∑
+                                             
+                                                i
+                                                =
+                                                1
+                                             
+                                             
+                                                
+                                                   
+                                                      N
+                                                   
+                                                   
+                                                      L
+                                                      C
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         
+                                                            w
+                                                         
+                                                         
+                                                            i
+                                                         
+                                                      
+                                                      
+                                                         
+                                                            
+                                                               
+                                                                  c
+                                                               
+                                                               
+                                                                  i
+                                                               
+                                                            
+                                                         
+                                                         
+                                                            ¯
+                                                         
+                                                      
+                                                   
+                                                   )
+                                                
+                                                Q
+                                             
+                                          
+                                       
+                                       ]
+                                    
+                                    
+                                       1
+                                       /
+                                       Q
+                                    
+                                 
+                                 s
+                                 .t
+                                 .
+                                 
+                                 
+                                    
+                                       ∑
+                                       m
+                                    
+                                    
+                                       
+                                          
+                                             v
+                                          
+                                          
+                                             m
+                                          
+                                       
+                                       
+                                          
+                                             ρ
+                                          
+                                          
+                                             m
+                                          
+                                       
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       f
+                                    
+                                    
+                                       v
+                                    
+                                 
+                                 ⋅
+                                 
+                                    
+                                       V
+                                    
+                                    
+                                       0
+                                    
+                                 
+                                 =
+                                 0
+                                 
+                                 
+                                    
+                                       K
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 ⋅
+                                 
+                                    
+                                       U
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       P
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 ,
+                                 
+                                 
+                                    (
+                                    
+                                       i
+                                       =
+                                       1
+                                       ,
+                                       2
+                                       ,
+                                       ⋯
+                                       ,
+                                       
+                                          
+                                             N
+                                          
+                                          
+                                             L
+                                             C
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 
+                                 
+                                    ∑
+                                    
+                                       i
+                                       =
+                                       1
+                                    
+                                    
+                                       
+                                          
+                                             N
+                                          
+                                          
+                                             L
+                                             C
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          w
+                                       
+                                       
+                                          i
+                                       
+                                    
+                                 
+                                 =
+                                 1.0
+                                 
+                                 
+                                    
+                                       ρ
+                                    
+                                    
+                                       m
+                                    
+                                 
+                                 ∈
+                                 
+                                    [
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         ρ
+                                                      
+                                                      
+                                                         min
+                                                      
+                                                   
+                                                   ,
+                                                
+                                             
+                                             
+                                                
+                                                   1.0
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                                 ,
+                                 
+                                 
+                                    (
+                                    
+                                       m
+                                       ∈
+                                       Ω
+                                    
+                                    )
+                                 
+                              
+                           
+                        where ρ
+                        
+                           m
+                         is the relative density of the m-th element in design domain, i.e., Ω. c
+                        
+                           w
+                         denotes the weighted structural compliance under N
+                        
+                           LC
+                         types of loading conditions. w
+                        
+                           i
+                         is the linear weighting coefficient. Q∈(0, ∞) is power exponent for weighting scheme which is different from that given by Luo et al. [21]. In their work, Q=2 was used and common MLC problem was considered. 
+                           
+                              
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       i
+                                    
+                                 
+                              
+                              
+                                 ¯
+                              
+                           
+                         is the modified structural compliance under the i-th loading condition. K
+                        
+                           I
+                         is the global stiffness matrix of structure under the i-th loading condition, U
+                        
+                           j
+                         and P
+                        
+                           j
+                         are the global nodal displacement vector and nodal force vector, respectively. ρ
+                        
+                           min
+                         is set to be 0.001 in this work to avoid singularity of the global stiffness matrix of structure with fixed mesh scheme.
+
+In optimization, the relative densities of elements in design domain are design variables. In order to use mathematical programming approach to solve the optimization, the binary design (0/1) problem is relaxed to be a continuous design variable problem, i.e., ρ
+                        
+                           m
+                        ∈[ρ
+                        
+                           min
+                        , 1.0]. To reduce the amount of the mid-density elements, the stiffness matrix of porous material with the relative density of ρ
+                        
+                           m
+                         is given according to the power-law rule [23], i.e.,
+                           
+                              (2)
+                              
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       m
+                                       ,
+                                       ρ
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       ρ
+                                    
+                                    
+                                       m
+                                    
+                                    
+                                       p
+                                    
+                                 
+                                 ⋅
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       m
+                                       ,
+                                       0
+                                    
+                                 
+                              
+                           
+                        where D
+                        
+                           m,0 is the stiffness matrix of the m-the element without pores.
+
+
+                        
+                        Fig. 1 gives the elastic constitutive curve of a bi-modulus material. The elasticity of a bi-modulus material is stress-dependent. Take E
+                        
+                           T
+                        =tan
+                        α and E
+                        
+                           C
+                        =tan
+                        β as the tensile modulus and compressive modulus of bi-modulus material, respectively. And define the ratio between E
+                        
+                           T
+                         and E
+                        
+                           C
+                         using
+                           
+                              (3)
+                              
+                                 
+                                    
+                                       R
+                                    
+                                    
+                                       T
+                                       C
+                                       E
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 /
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       C
+                                    
+                                 
+                              
+                           
+                        
+                        
+                        Fig. 2 shows that the bi-modulus material shows isotropic under pure tension (Fig. 2a) or under pure compression (Fig. 2b). Only when under complex stress state (Fig. 2c), the elasticity of bi-modulus material shows orthotropic and the principal directions of material is in accordance with the principal directions of stress tensor. For a complicated deformation of a structure with bi-modulus material, generally, it has components or areas under complex stress states. So, traditionally, many times of structural reanalysis is required for obtaining the enough accurate results of a structure with bi-modulus material [6,7]. In reanalysis, the elastic matrix and the principal directions of material varies alternatively.
+
+Using traditional method to solve topology optimization of a continuum with bi-modulus material, there exist at least two levels of iterations, i.e., the inner iteration for finding out the accurate deformation of structure and outer iteration for updating the design variables. It is known, in the first several iterations for optimization, the results are not optimal. So, our suggestion is to divide the inner iteration and merge them into the outer iteration. In other words, there is only one time of structural analysis for each update of design variables. Simultaneously, the local stiffness should be adjusted with respect to the local stress state in the previous step.
+
+However, the elasticity shows orthotropic with unset material principal directions if the bi-modulus material is under complex stress states. Theoretically, the number of orthotropic materials predefined in simulation should be equal to that of finite elements in structure. It is incredible for a complicated structure with great quantity of elements. Therefore, the feasible way to overcome this difficulty is to define several stress-independent materials to replace the original bi-modulus material. Further, the easiest way is to use two isotropic materials to replace the original material. From above, E
+                        
+                           T
+                         and E
+                        
+                           C
+                         can be selected as the moduli of the two isotropic materials. Clearly, the difference between the mechanical behaviors of structure with original material and with new isotropic materials is mainly caused by the material replacement happening in the elements which are under complicated stress states.
+
+In simulation, the original bi-modulus material is replaced with isotropic materials in structure. To obtain the same loading-deformation relations of structure, the local stiffness must be the same for the structure either with original bi-modulus material or with the new replacement material (isotropic material). Under the same complex stress state, the (original) element with bi-modulus material shows different deformation from that (the new replaced element) with isotropic material. And their strain energy must be different, too. This conclusion is obtained based on the same amount of material in both elements. Fortunately, the amount of material in optimization is changeable. The local stiffness (e.g., strain energy) can be forced to be identical for two elements by modifying the amount of material in element. Therefore, the modification of local stiffness is, actually, a further update of material amount in element. The modification factor of the local stiffness can be calculated by the following equation:
+                           
+                              (4)
+                              
+                                 
+                                    
+                                       f
+                                    
+                                    
+                                       m
+                                    
+                                 
+                                 =
+                                 
+                                 max
+                                 
+                                    [
+                                    
+                                       
+                                          
+                                             10
+                                          
+                                          
+                                             −
+                                             6
+                                          
+                                       
+                                       ,
+                                       (
+                                       
+                                          
+                                             SED
+                                          
+                                          
+                                             m
+                                          
+                                          
+                                             e
+                                             f
+                                             f
+                                             e
+                                             c
+                                             t
+                                             i
+                                             v
+                                             e
+                                          
+                                       
+                                       /
+                                       
+                                       max
+                                       (
+                                       
+                                          
+                                             10
+                                          
+                                          
+                                             −
+                                             30
+                                          
+                                       
+                                       ,
+                                       
+                                          
+                                             SED
+                                          
+                                          
+                                             m
+                                          
+                                       
+                                       )
+                                       )
+                                    
+                                    ]
+                                 
+                              
+                           
+                        where the total SED of the m-th element is
+                           
+                              (5)
+                              
+                                 
+                                    
+                                       SED
+                                    
+                                    
+                                       m
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       TSED
+                                    
+                                    
+                                       m
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       CSED
+                                    
+                                    
+                                       m
+                                    
+                                 
+                              
+                           
+                        where TSED and CSED are the tension and compression strain energy densities of element, respectively. For the m-th element under MLC, the TSED and CSED can be obtained by the following equations:
+                           
+                              (6a)
+                              
+                                 
+                                    
+                                       TSED
+                                    
+                                    
+                                       m
+                                    
+                                 
+                                 =
+                                 
+                                    1
+                                    
+                                       2
+                                       
+                                          
+                                             N
+                                          
+                                          
+                                             G
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    [
+                                    
+                                       
+                                          ∑
+                                          
+                                             i
+                                             =
+                                             1
+                                          
+                                          
+                                             
+                                                
+                                                   N
+                                                
+                                                
+                                                   L
+                                                   C
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             ∑
+                                             
+                                                G
+                                                a
+                                                u
+                                                s
+                                             
+                                             
+                                                
+                                                   
+                                                      N
+                                                   
+                                                   
+                                                      G
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                ∑
+                                                
+                                                   j
+                                                   =
+                                                   1
+                                                
+                                                3
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            w
+                                                         
+                                                         
+                                                            i
+                                                         
+                                                      
+                                                   
+                                                   2
+                                                
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         
+                                                            σ
+                                                         
+                                                         
+                                                            j
+                                                            ,
+                                                            G
+                                                            a
+                                                            u
+                                                            s
+                                                            ,
+                                                            i
+                                                         
+                                                      
+                                                      +
+                                                      
+                                                         |
+                                                         
+                                                            
+                                                               
+                                                                  σ
+                                                               
+                                                               
+                                                                  j
+                                                                  ,
+                                                                  G
+                                                                  a
+                                                                  u
+                                                                  s
+                                                                  ,
+                                                                  i
+                                                               
+                                                            
+                                                         
+                                                         |
+                                                      
+                                                   
+                                                   )
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                                 ⋅
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       j
+                                       ,
+                                       G
+                                       a
+                                       u
+                                       s
+                                       ,
+                                       i
+                                    
+                                 
+                              
+                           
+                        
+                        
+                           
+                              (6b)
+                              
+                                 
+                                    
+                                       CSED
+                                    
+                                    
+                                       m
+                                    
+                                 
+                                 =
+                                 
+                                    1
+                                    
+                                       2
+                                       
+                                          
+                                             N
+                                          
+                                          
+                                             G
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    [
+                                    
+                                       
+                                          ∑
+                                          
+                                             i
+                                             =
+                                             1
+                                          
+                                          
+                                             
+                                                
+                                                   N
+                                                
+                                                
+                                                   L
+                                                   C
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             ∑
+                                             
+                                                G
+                                                a
+                                                u
+                                                s
+                                             
+                                             
+                                                
+                                                   
+                                                      N
+                                                   
+                                                   
+                                                      G
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                ∑
+                                                
+                                                   j
+                                                   =
+                                                   1
+                                                
+                                                3
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            w
+                                                         
+                                                         
+                                                            i
+                                                         
+                                                      
+                                                   
+                                                   2
+                                                
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         
+                                                            σ
+                                                         
+                                                         
+                                                            j
+                                                            ,
+                                                            G
+                                                            a
+                                                            u
+                                                            s
+                                                            ,
+                                                            i
+                                                         
+                                                      
+                                                      −
+                                                      
+                                                         |
+                                                         
+                                                            
+                                                               
+                                                                  σ
+                                                               
+                                                               
+                                                                  j
+                                                                  ,
+                                                                  G
+                                                                  a
+                                                                  u
+                                                                  s
+                                                                  ,
+                                                                  i
+                                                               
+                                                            
+                                                         
+                                                         |
+                                                      
+                                                   
+                                                   )
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                                 ⋅
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       j
+                                       ,
+                                       G
+                                       a
+                                       u
+                                       s
+                                       ,
+                                       i
+                                    
+                                 
+                              
+                           
+                        where N
+                        
+                           G
+                         is the number of Gaussian integral points of element. 
+                           
+                              
+                                 σ
+                              
+                              
+                                 j
+                                 ,
+                                 G
+                                 a
+                                 u
+                                 s
+                                 ,
+                                 i
+                              
+                           
+                         and 
+                           
+                              
+                                 ε
+                              
+                              
+                                 j
+                                 ,
+                                 G
+                                 a
+                                 u
+                                 s
+                                 ,
+                                 i
+                              
+                           
+                         are the principal stress and strain of the j-th Gaussian point under the i-th loading case, respectively.
+
+The effective SED in Eq. (4) is defined as
+                           
+                              (7)
+                              
+                                 
+                                    
+                                       SED
+                                    
+                                    
+                                       m
+                                    
+                                    
+                                       e
+                                       f
+                                       f
+                                       e
+                                       c
+                                       t
+                                       i
+                                       v
+                                       e
+                                    
+                                 
+                                 =
+                                 
+                                    1
+                                    
+                                       2
+                                       
+                                          
+                                             N
+                                          
+                                          
+                                             G
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    ∑
+                                    
+                                       i
+                                       =
+                                       1
+                                    
+                                    
+                                       
+                                          
+                                             N
+                                          
+                                          
+                                             L
+                                             C
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       ∑
+                                       
+                                          G
+                                          a
+                                          u
+                                          s
+                                       
+                                       
+                                          
+                                             
+                                                N
+                                             
+                                             
+                                                G
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          ∑
+                                          
+                                             j
+                                             =
+                                             1
+                                          
+                                          3
+                                       
+                                       
+                                          
+                                             
+                                                w
+                                             
+                                             
+                                                i
+                                             
+                                          
+                                          
+                                             (
+                                             
+                                                sign
+                                                (
+                                                
+                                                   
+                                                      σ
+                                                   
+                                                   
+                                                      j
+                                                      ,
+                                                      G
+                                                      a
+                                                      u
+                                                      s
+                                                      ,
+                                                      i
+                                                   
+                                                
+                                                )
+                                                ⋅
+                                                
+                                                   
+                                                      σ
+                                                   
+                                                   
+                                                      j
+                                                      ,
+                                                      G
+                                                      a
+                                                      u
+                                                      s
+                                                      ,
+                                                      i
+                                                   
+                                                
+                                                ⋅
+                                                
+                                                   
+                                                      ε
+                                                   
+                                                   
+                                                      j
+                                                      ,
+                                                      G
+                                                      a
+                                                      u
+                                                      s
+                                                      ,
+                                                      i
+                                                   
+                                                
+                                             
+                                             )
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+The value of sign(.) in Eq. (7) is determined by both of the current modulus of material and the stress state.
+                           
+                              (a)
+                              If the “current” modulus of material in element is E
+                                 
+                                    T
+                                 , then using
+                                    
+                                       (8a)
+                                       
+                                          sign
+                                          
+                                             (
+                                             
+                                                
+                                                   
+                                                      σ
+                                                   
+                                                   
+                                                      j
+                                                   
+                                                
+                                             
+                                             )
+                                          
+                                          =
+                                          
+                                             {
+                                             
+                                                
+                                                   
+                                                      
+                                                         1
+                                                      
+                                                      
+                                                         
+                                                            for
+                                                            
+                                                            
+                                                               
+                                                                  σ
+                                                               
+                                                               
+                                                                  j
+                                                               
+                                                            
+                                                            ≥
+                                                            0
+                                                         
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               
+                                                                  R
+                                                               
+                                                               
+                                                                  T
+                                                                  C
+                                                                  E
+                                                               
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         
+                                                            for
+                                                            
+                                                            
+                                                               
+                                                                  σ
+                                                               
+                                                               
+                                                                  j
+                                                               
+                                                            
+                                                            <
+                                                            0
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+
+If the “current” modulus of material in element is E
+                                 
+                                    C
+                                 , then using
+                                    
+                                       (8b)
+                                       
+                                          sign
+                                          
+                                             (
+                                             
+                                                
+                                                   
+                                                      σ
+                                                   
+                                                   
+                                                      j
+                                                   
+                                                
+                                             
+                                             )
+                                          
+                                          =
+                                          
+                                             {
+                                             
+                                                
+                                                   
+                                                      
+                                                         1
+                                                      
+                                                      
+                                                         
+                                                            for
+                                                            
+                                                            
+                                                               
+                                                                  σ
+                                                               
+                                                               
+                                                                  j
+                                                               
+                                                            
+                                                            ≤
+                                                            0
+                                                         
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               
+                                                                  R
+                                                               
+                                                               
+                                                                  T
+                                                                  C
+                                                                  E
+                                                               
+                                                               
+                                                                  −
+                                                                  1
+                                                               
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         
+                                                            for
+                                                            
+                                                            
+                                                               
+                                                                  σ
+                                                               
+                                                               
+                                                                  j
+                                                               
+                                                            
+                                                            >
+                                                            0
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+
+As an element under pure compression or under pure tension, the constitutive law of bi-modulus material shows isotropic. It means isotropic material can express the accurate constitutive law of the local bi-modulus under simple stress state. The accuracy can not be guaranteed if the first principal stress is positive and the third is negative in element with new isotropic material. To improve the accuracy, the local material is still replaced with one of the above two isotropic materials and the elastic modulus of new material is determined by the following equation:
+                           
+                              (9)
+                              
+                                 
+                                    
+                                       E
+                                    
+                                    
+                                       m
+                                    
+                                 
+                                 =
+                                 
+                                    {
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         E
+                                                      
+                                                      
+                                                         T
+                                                      
+                                                   
+                                                   ,
+                                                
+                                             
+                                             
+                                                
+                                                   for
+                                                   
+                                                   TSED
+                                                   >
+                                                   CSED
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         E
+                                                      
+                                                      
+                                                         C
+                                                      
+                                                   
+                                                   ,
+                                                
+                                             
+                                             
+                                                
+                                                   for
+                                                   
+                                                   TSED
+                                                   <
+                                                   CSED
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   max
+                                                   (
+                                                   
+                                                      
+                                                         E
+                                                      
+                                                      
+                                                         T
+                                                      
+                                                   
+                                                   ,
+                                                   
+                                                      
+                                                         E
+                                                      
+                                                      
+                                                         C
+                                                      
+                                                   
+                                                   )
+                                                   ,
+                                                
+                                             
+                                             
+                                                
+                                                   others
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+Using gradient-based programming method to update the design variables, it is necessary to get the sensitivities of objective function and constraint functions. For volume constrained stiffness design, the sensitivity analysis of objective function is the major task.
+
+For the i-th loading condition, the mean structural compliance in Eq. (1) can be expressed as
+                           
+                              (10)
+                              
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       U
+                                    
+                                    
+                                       i
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 ⋅
+                                 
+                                    
+                                       P
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             ∑
+                                             
+                                                m
+                                                =
+                                                1
+                                             
+                                             
+                                                
+                                                   
+                                                      N
+                                                   
+                                                   
+                                                      E
+                                                      l
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   u
+                                                
+                                                
+                                                   m
+                                                
+                                                
+                                                   T
+                                                
+                                             
+                                             ⋅
+                                             
+                                                
+                                                   k
+                                                
+                                                
+                                                   m
+                                                
+                                             
+                                             ⋅
+                                             
+                                                
+                                                   u
+                                                
+                                                
+                                                   m
+                                                
+                                             
+                                          
+                                       
+                                       )
+                                    
+                                    
+                                       i
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+The modified mean structural compliance is
+                           
+                              (11)
+                              
+                                 
+                                    
+                                       
+                                          
+                                             c
+                                          
+                                          
+                                             i
+                                          
+                                       
+                                    
+                                    
+                                       ¯
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             ∑
+                                             
+                                                m
+                                                =
+                                                1
+                                             
+                                             
+                                                
+                                                   
+                                                      N
+                                                   
+                                                   
+                                                      E
+                                                      l
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   u
+                                                
+                                                
+                                                   m
+                                                
+                                                
+                                                   T
+                                                
+                                             
+                                             ⋅
+                                             
+                                                (
+                                                
+                                                   
+                                                      
+                                                         f
+                                                      
+                                                      
+                                                         m
+                                                      
+                                                   
+                                                   ⋅
+                                                   
+                                                      
+                                                         k
+                                                      
+                                                      
+                                                         m
+                                                      
+                                                   
+                                                
+                                                )
+                                             
+                                             ⋅
+                                             
+                                                
+                                                   u
+                                                
+                                                
+                                                   m
+                                                
+                                             
+                                          
+                                       
+                                       )
+                                    
+                                    
+                                       i
+                                    
+                                 
+                              
+                           
+                        where N
+                        
+                           El
+                         is the total number of elements in structure, u
+                        
+                           m
+                         is the nodal displacement vector of the m-th element with stiffness matrix of k
+                        
+                           m
+                        . f
+                        
+                           m
+                         is the modification factor of the m-th element for the reason of material replacement and is given in Eq. (4).
+                           
+                              (12)
+                              
+                                 
+                                    
+                                       ∂
+                                       
+                                          
+                                             c
+                                          
+                                          
+                                             w
+                                          
+                                       
+                                    
+                                    
+                                       ∂
+                                       
+                                          
+                                             ρ
+                                          
+                                          
+                                             m
+                                          
+                                       
+                                    
+                                 
+                                 =
+                                 
+                                    ∂
+                                    
+                                       ∂
+                                       
+                                          
+                                             ρ
+                                          
+                                          
+                                             m
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       [
+                                       
+                                          
+                                             ∑
+                                             
+                                                i
+                                                =
+                                                1
+                                             
+                                             
+                                                
+                                                   
+                                                      N
+                                                   
+                                                   
+                                                      L
+                                                      C
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         
+                                                            w
+                                                         
+                                                         
+                                                            i
+                                                         
+                                                      
+                                                      ⋅
+                                                      
+                                                         
+                                                            
+                                                               
+                                                                  c
+                                                               
+                                                               
+                                                                  i
+                                                               
+                                                            
+                                                         
+                                                         
+                                                            ¯
+                                                         
+                                                      
+                                                   
+                                                   )
+                                                
+                                                Q
+                                             
+                                          
+                                       
+                                       ]
+                                    
+                                    
+                                       1
+                                       /
+                                       Q
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       [
+                                       
+                                          
+                                             ∑
+                                             
+                                                i
+                                                =
+                                                1
+                                             
+                                             
+                                                
+                                                   
+                                                      N
+                                                   
+                                                   
+                                                      L
+                                                      C
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         
+                                                            w
+                                                         
+                                                         
+                                                            i
+                                                         
+                                                      
+                                                      ⋅
+                                                      
+                                                         
+                                                            
+                                                               
+                                                                  c
+                                                               
+                                                               
+                                                                  i
+                                                               
+                                                            
+                                                         
+                                                         
+                                                            ¯
+                                                         
+                                                      
+                                                   
+                                                   )
+                                                
+                                                Q
+                                             
+                                          
+                                       
+                                       ]
+                                    
+                                    
+                                       (
+                                       1
+                                       −
+                                       Q
+                                       )
+                                       /
+                                       Q
+                                    
+                                 
+                                 
+                                    [
+                                    
+                                       
+                                          ∑
+                                          
+                                             i
+                                             =
+                                             1
+                                          
+                                          
+                                             
+                                                
+                                                   N
+                                                
+                                                
+                                                   L
+                                                   C
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                (
+                                                
+                                                   
+                                                      
+                                                         w
+                                                      
+                                                      
+                                                         i
+                                                      
+                                                   
+                                                   ⋅
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               c
+                                                            
+                                                            
+                                                               i
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         ¯
+                                                      
+                                                   
+                                                
+                                                )
+                                             
+                                             
+                                                Q
+                                                −
+                                                1
+                                             
+                                          
+                                          ⋅
+                                          
+                                             
+                                                w
+                                             
+                                             
+                                                i
+                                             
+                                          
+                                          
+                                             
+                                                ∂
+                                                
+                                                   
+                                                      
+                                                         
+                                                            c
+                                                         
+                                                         
+                                                            i
+                                                         
+                                                      
+                                                   
+                                                   
+                                                      ¯
+                                                   
+                                                
+                                             
+                                             
+                                                ∂
+                                                
+                                                   
+                                                      ρ
+                                                   
+                                                   
+                                                      m
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                              
+                           
+                        where
+                           
+                              (13)
+                              
+                                 
+                                    
+                                       ∂
+                                       
+                                          
+                                             
+                                                
+                                                   c
+                                                
+                                                
+                                                   i
+                                                
+                                             
+                                          
+                                          
+                                             ¯
+                                          
+                                       
+                                    
+                                    
+                                       ∂
+                                       
+                                          
+                                             ρ
+                                          
+                                          
+                                             m
+                                          
+                                       
+                                    
+                                 
+                                 =
+                                 −
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      f
+                                                   
+                                                   
+                                                      m
+                                                   
+                                                
+                                                ⋅
+                                                p
+                                             
+                                             
+                                                
+                                                   
+                                                      ρ
+                                                   
+                                                   
+                                                      m
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                u
+                                             
+                                             
+                                                m
+                                             
+                                             
+                                                T
+                                             
+                                          
+                                          ⋅
+                                          
+                                             
+                                                k
+                                             
+                                             
+                                                m
+                                             
+                                          
+                                          ⋅
+                                          
+                                             
+                                                u
+                                             
+                                             
+                                                m
+                                             
+                                          
+                                       
+                                       )
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 ,
+                                 
+                                    (
+                                    
+                                       i
+                                       =
+                                       1
+                                       ,
+                                       2
+                                       ,
+                                       ⋯
+                                       ,
+                                       
+                                          
+                                             N
+                                          
+                                          
+                                             L
+                                             C
+                                          
+                                       
+                                    
+                                    )
+                                 
+                              
+                           
+                        
+                     
+
+The optimization problem in Eq. (1) is solved by the optimality criterion (OC) method [24]. For the m-th element at the k-th step, the update of relative density can be obtained by using the following equation:
+                           
+                              (14)
+                              
+                                 
+                                    
+                                       ρ
+                                    
+                                    
+                                       m
+                                    
+                                    
+                                       (
+                                       k
+                                       +
+                                       1
+                                       )
+                                    
+                                 
+                                 =
+                                 
+                                    {
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   max
+                                                   
+                                                      {
+                                                      
+                                                         
+                                                            
+                                                               ρ
+                                                            
+                                                            
+                                                               min
+                                                            
+                                                         
+                                                         ,
+                                                         
+                                                            
+                                                               ρ
+                                                            
+                                                            
+                                                               m
+                                                            
+                                                            
+                                                               (
+                                                               k
+                                                               )
+                                                            
+                                                         
+                                                         −
+                                                         Δ
+                                                      
+                                                      }
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   for
+                                                   
+                                                   
+                                                      
+                                                         ρ
+                                                      
+                                                      
+                                                         m
+                                                      
+                                                      
+                                                         (
+                                                         k
+                                                         )
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         L
+                                                      
+                                                      
+                                                         m
+                                                      
+                                                      
+                                                         ω
+                                                      
+                                                   
+                                                   ≤
+                                                   
+                                                   max
+                                                   
+                                                      {
+                                                      
+                                                         
+                                                            
+                                                               ρ
+                                                            
+                                                            
+                                                               min
+                                                            
+                                                         
+                                                         ,
+                                                         
+                                                            
+                                                               ρ
+                                                            
+                                                            
+                                                               m
+                                                            
+                                                            
+                                                               (
+                                                               k
+                                                               )
+                                                            
+                                                         
+                                                         −
+                                                         Δ
+                                                      
+                                                      }
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         ρ
+                                                      
+                                                      
+                                                         m
+                                                      
+                                                      
+                                                         (
+                                                         k
+                                                         )
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         L
+                                                      
+                                                      
+                                                         m
+                                                      
+                                                      
+                                                         ω
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   others
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   min
+                                                   
+                                                      {
+                                                      
+                                                         1.0
+                                                         ,
+                                                         
+                                                            
+                                                               ρ
+                                                            
+                                                            
+                                                               m
+                                                            
+                                                            
+                                                               (
+                                                               k
+                                                               )
+                                                            
+                                                         
+                                                         +
+                                                         Δ
+                                                      
+                                                      }
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   for
+                                                   
+                                                   
+                                                      
+                                                         ρ
+                                                      
+                                                      
+                                                         m
+                                                      
+                                                      
+                                                         (
+                                                         k
+                                                         )
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         L
+                                                      
+                                                      
+                                                         m
+                                                      
+                                                      
+                                                         ω
+                                                      
+                                                   
+                                                   ≥
+                                                   
+                                                   min
+                                                   
+                                                      {
+                                                      
+                                                         1.0
+                                                         ,
+                                                         
+                                                            
+                                                               ρ
+                                                            
+                                                            
+                                                               m
+                                                            
+                                                            
+                                                               (
+                                                               k
+                                                               )
+                                                            
+                                                         
+                                                         +
+                                                         Δ
+                                                      
+                                                      }
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        where Δ, i.e., the maximum incremental of relative density is set to be 0.1 in this work. Numerical damping coefficient ω=0.5, Using the optimality condition, one can find L
+                        
+                           m
+                         according to the following equation:
+                           
+                              (15)
+                              
+                                 
+                                    
+                                       L
+                                    
+                                    
+                                       m
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       |
+                                       
+                                          
+                                             
+                                                ∂
+                                                
+                                                   
+                                                      c
+                                                   
+                                                   
+                                                      w
+                                                   
+                                                
+                                             
+                                             
+                                                ∂
+                                                
+                                                   
+                                                      ρ
+                                                   
+                                                   
+                                                      m
+                                                   
+                                                
+                                             
+                                          
+                                          /
+                                          
+                                             (
+                                             
+                                                λ
+                                                
+                                                   
+                                                      ∂
+                                                      
+                                                         
+                                                            V
+                                                         
+                                                         
+                                                            m
+                                                         
+                                                      
+                                                   
+                                                   
+                                                      ∂
+                                                      
+                                                         
+                                                            ρ
+                                                         
+                                                         
+                                                            m
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                             )
+                                          
+                                       
+                                       |
+                                    
+                                    
+                                       (
+                                       k
+                                       )
+                                    
+                                 
+                              
+                           
+                        where the Lagrangian multiplier λ is positive and can be obtained by using bi-sectioning algorithm. To avoid the mesh-dependence or checkerboards in optimization, the objective sensitivities are filtered [24,25] according to Eq. (16).
+
+The filtered sensitivity of the m-th element can be expressed as
+                           
+                              (16)
+                              
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             
+                                                ∂
+                                                
+                                                   
+                                                      c
+                                                   
+                                                   
+                                                      w
+                                                   
+                                                
+                                             
+                                             
+                                                ∂
+                                                
+                                                   
+                                                      ρ
+                                                   
+                                                   
+                                                      m
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       )
+                                    
+                                    ⁎
+                                 
+                                 =
+                                 
+                                    (
+                                    
+                                       
+                                          
+                                             ∂
+                                             
+                                                
+                                                   c
+                                                
+                                                
+                                                   w
+                                                
+                                             
+                                          
+                                          
+                                             ∂
+                                             
+                                                
+                                                   ρ
+                                                
+                                                
+                                                   m
+                                                
+                                             
+                                          
+                                       
+                                       +
+                                       
+                                          ∑
+                                          
+                                             i
+                                             =
+                                             1
+                                          
+                                          
+                                             
+                                                
+                                                   A
+                                                
+                                                
+                                                   e
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                r
+                                             
+                                             
+                                                i
+                                             
+                                          
+                                          
+                                             
+                                                ∂
+                                                
+                                                   
+                                                      c
+                                                   
+                                                   
+                                                      w
+                                                   
+                                                
+                                             
+                                             
+                                                ∂
+                                                
+                                                   
+                                                      ρ
+                                                   
+                                                   
+                                                      i
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 /
+                                 
+                                    (
+                                    
+                                       1
+                                       +
+                                       
+                                          ∑
+                                          
+                                             i
+                                             =
+                                             1
+                                          
+                                          
+                                             
+                                                
+                                                   A
+                                                
+                                                
+                                                   e
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                r
+                                             
+                                             
+                                                i
+                                             
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 =
+                                 
+                                    (
+                                    
+                                       
+                                          
+                                             ∂
+                                             
+                                                
+                                                   c
+                                                
+                                                
+                                                   w
+                                                
+                                             
+                                          
+                                          
+                                             ∂
+                                             
+                                                
+                                                   ρ
+                                                
+                                                
+                                                   m
+                                                
+                                             
+                                          
+                                       
+                                       +
+                                       
+                                          ∑
+                                          
+                                             i
+                                             =
+                                             1
+                                          
+                                          
+                                             
+                                                
+                                                   A
+                                                
+                                                
+                                                   e
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      R
+                                                   
+                                                   
+                                                      f
+                                                   
+                                                
+                                                −
+                                                
+                                                   
+                                                      L
+                                                   
+                                                   
+                                                      e
+                                                      (
+                                                      i
+                                                      )
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      R
+                                                   
+                                                   
+                                                      f
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                ∂
+                                                
+                                                   
+                                                      c
+                                                   
+                                                   
+                                                      w
+                                                   
+                                                
+                                             
+                                             
+                                                ∂
+                                                
+                                                   
+                                                      ρ
+                                                   
+                                                   
+                                                      i
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 /
+                                 
+                                    (
+                                    
+                                       1
+                                       +
+                                       
+                                          ∑
+                                          
+                                             i
+                                             =
+                                             1
+                                          
+                                          
+                                             
+                                                
+                                                   A
+                                                
+                                                
+                                                   e
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                (
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               R
+                                                            
+                                                            
+                                                               f
+                                                            
+                                                         
+                                                         −
+                                                         
+                                                            
+                                                               L
+                                                            
+                                                            
+                                                               e
+                                                               (
+                                                               i
+                                                               )
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         
+                                                            
+                                                               R
+                                                            
+                                                            
+                                                               f
+                                                            
+                                                         
+                                                      
+                                                   
+                                                
+                                                )
+                                             
+                                             
+                                                i
+                                             
+                                          
+                                       
+                                    
+                                    )
+                                 
+                              
+                           
+                        where A
+                        
+                           e
+                         is the total number of neighbor elements, e.g., e
+                        1, e
+                        2, e
+                        3 and e
+                        4 in 
+                        Fig. 3. L
+                        
+                           e(i) is the distance between the centroids of the i-th neighbor element and the m-th element. R
+                        
+                           f
+                         is the filtering radius, which is set to be 1.4 times of (square) element length in the present work.
+
+In the first step of above flow chart (
+                        Fig. 4), all the initial design variables are set to be the volume ratio of material, i.e., f
+                        
+                           v
+                        .
+
+The termination criterion is either iterations (k) is greater than 50 or the following equation is satisfied.
+                           
+                              (17)
+                              
+                                 |
+                                 
+                                    (
+                                    
+                                       
+                                          
+                                             c
+                                          
+                                          
+                                             w
+                                             ,
+                                             k
+                                          
+                                       
+                                       −
+                                       
+                                          
+                                             c
+                                          
+                                          
+                                             w
+                                             ,
+                                             j
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 /
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       w
+                                       ,
+                                       k
+                                    
+                                 
+                                 |
+                                 ≤
+                                 η
+                                 1
+                                 <
+                                 j
+                                 =
+                                 k
+                                 −
+                                 n
+                                 ,
+                                 k
+                                 −
+                                 n
+                                 +
+                                 1
+                                 ,
+                                 ⋯
+                                 ,
+                                 k
+                                 −
+                                 1
+                              
+                           
+                        where the algorithm tolerance η=0.001, integer n equals 5 in this work. Lower value of η or higher value of n will require more iterations but has ignorable influence on the optimum results, e.g., material distribution and the values of objective function.
+
+In numerical simulation, commercial software ANSYS [26] is adopted for finite element analysis. In all of the following simulation, the same computer (Intel Pentium Dual-Core processor/CPU 2.66GHz/2GB Memory) with the same computational setting is used.
+
+The design domain shown in 
+                        Fig. 5 is a 4l×l rectangle with thickness of 0.01m. l=1.0m. Two vertical sides are fixed. Two loading conditions are considered. In the first loading condition, the concentrated force P
+                        1=1000N is applied on the center of top with weighting coefficient of w
+                        1. In the second condition, the concentrated force P
+                        2=500N is applied on the center of bottom with weighting coefficient of w
+                        2. The objective is to obtain the optimal material distribution with minimal structural mean compliance with volume constraint, i.e., f
+                        
+                           v
+                         in Eq. (1) is 20%. To consider the difference between the results of a structure with isotropic material (Young׳s modulus of 100GPa and Poisson׳s ratio of 0.2) and with bi-modulus material (the tension modulus is of 100GPa, and R
+                        
+                           TCE
+                        =0.5), six cases are considered:
+                           
+                              (a)
+                              
+                                 Q=1; w
+                                 1/w
+                                 2=1 (w
+                                 1=w
+                                 2=0.5);
+
+
+                                 Q=1; w
+                                 1/w
+                                 2=0.25 (w
+                                 1=0.2; w
+                                 2=0.8);
+
+
+                                 Q=3; w
+                                 1/w
+                                 2=1;
+
+
+                                 Q=3; w
+                                 1/w
+                                 2=0.25;
+
+
+                                 Q=0.5; w
+                                 1/w
+                                 2=1;
+
+
+                                 Q=0.5; w
+                                 1/w
+                                 2=0.25.
+
+
+                           
+                           Fig. 6 gives the optimal material distributions of structure for above six cases. For the three conditions, e.g., (a), (c) and (e), although the weight coefficients for two loads are equal, the topologies are different with different values of Q. It indicates that the amount of material to support the load P
+                           2 increases with the value of Q.
+
+For the three conditions, e.g., (b), (d) and (f), the material distributions are identical, e.g., all of them have two symmetrical axes (see 
+                           Fig. 7), although the values of Q are different. It implies that the value of Q has no effects on the final material distribution. In fact, as we neglect the difference between P
+                           1 and P
+                           2, the two loading conditions make the structure under symmetrical deformation. In Fig. 7, the positions of elements z
+                           1 and z
+                           2 are symmetric along horizontal symmetric axis of structure. When P
+                           1/P
+                           2=r
+                           
+                              P
+                           =2, SED of element z
+                           1 (see Fig. 7) under the load of P
+                           1 should be 
+                              
+                                 
+                                    r
+                                 
+                                 
+                                    P
+                                 
+                                 
+                                    2
+                                 
+                              
+                            times of the SED of element z
+                           2 under the load of P
+                           2. If w
+                           1/w
+                           2=1/4 (or w
+                           1=0.2; w
+                           2=0.8), the two elements (z
+                           1 and z
+                           2) have the same value of SED under above two weighted loading conditions. It is the major reason why the topologies in conditions (b), (d) and (f) are the same. We can conclude that under such weighted loading conditions (as all the loads applied symmetrically on a symmetric structure with right weights of the loads), the value of Q has no effect on the final material distribution of structure.
+
+In 
+                           Fig. 8, the topologies in the left column are different from those in the right column. The left three structures have slight difference only near the position where P
+                           1 is applied. And the difference will be greater with lower value of Q. The three structures in the right column are identical which is clearly caused by the appropriate value of weighting coefficients of loads. In this condition, the value of Q has no effect on the final material distribution.
+
+The initial design of structure shown in 
+                        Fig. 9 is a 4l×l rectangle with thickness of 0.01m. l=1.0m. Two vertical sides are fixed. Two loading conditions are considered. In the first loading condition, the concentrated force P
+                        1=1000N is applied on the center of top with the weighting coefficient of w
+                        1=0.5. In the second condition, the concentrated force P
+                        2=P
+                        1/r
+                        
+                           P
+                         is applied on the center of bottom with the weighting coefficient of w
+                        2=0.5. Volume constrained stiffness design is considered and f
+                        
+                           v
+                         in Eq. (1) is 20%. Three major cases are considered:
+                           
+                              (1)
+                              The structure with isotropic material with Young׳s modulus of 100GPa and Poisson׳s ratio of 0.2;
+
+The material in structure shows bi-modulus, and the tension modulus is of 100GPa, and compression modulus is of 200GPa, i.e., R
+                                 
+                                    TCE
+                                 =0.5.
+
+The material in structure shows bi-modulus, and the tension modulus is of 100GPa, and compression modulus is of 50GPa, i.e., R
+                                 
+                                    TCE
+                                 =2.0.
+
+
+                        
+                        Fig. 10a and b gives the optimal topologies of structure with isotropic material under single load case. They are identical to each other as circulating one of them around X-axis (level axis). One can also find Fig. 10c is the same as Fig. 10f, and Fig. 10d as Fig. 10e because of special values of R
+                        
+                           TCE
+                         for the cases (e.g., 0.5×2.0=1.0).
+
+In this section, the dependence of optimal topology of structure on the values of r
+                           
+                              P
+                            and Q is discussed. Three cases are considered, separately.
+                              
+                                 (a)
+                                 
+                                    r
+                                    
+                                       P
+                                    =2; Q=1 or 0.2;
+
+
+                                    r
+                                    
+                                       P
+                                    =10; Q=1 or 0.2;
+
+
+                                    r
+                                    
+                                       P
+                                    =100 (ill-loading cases); Q=1, 0.2, 0.1 or 0.04, respectively;
+
+In these cases, w
+                           1/w
+                           2=1 are concerned.
+
+
+                           
+                           Fig. 11 gives the isotropic material distributions in structure for different values of Q when r
+                           
+                              P
+                           =2. It is found that the amount of material to support P
+                           2 in Fig. 11b is higher than that in Fig. 11a. It implies that lower value of Q can decrease the effects of the difference between loads on material distribution of structure. Both of the two topologies are different from any one of the topologies in Fig. 10. And the difference, in fact, still exists in the following discussions, e.g., in 
+                           
+                           Figs. 12 and 13.
+
+From Fig. 12a, one can find that the amount of material to support P
+                           2 is less than that shown in Fig. 11a. It is interesting that the material distributions in Fig. 12a is similar with that in Fig. 6c, and the similarity also happens between Fig. 12b and Fig. 6a. Although lower value of Q can increase the amount of material to support lower force (P
+                           2), the higher difference between two forces (r
+                           
+                              P
+                           =10) still affect the material distribution in structure, obviously.
+
+If the value of r
+                           
+                              P
+                            is very high the component in structure to support lower force can not be obtained (Fig. 13a) using 1-norm of weighting scheme which is commonly adopted [14,18,22]. It is commonly called such MLC as ill-loading cases. Sui et al. [19] once presented a method to solve this difficulty. In their work, the loading cases were separated into two groups according to the magnitude of loads. The topology optimizations were carried out on two groups consequently. In which, the lower forces were enlarged by multiplying a weighting coefficient. Especially, in optimization of structure under higher forces, the effects of lower forces were neglected. In practice, the division of the loading cases is not easily handled.
+
+From above examples, to adjust the weighting coefficients ({w
+                           
+                              i
+                           }) of loads is infeasible to overcome the ill-stated problem. In practical engineering, selection of the weighting coefficients is commonly dependent on the frequencies of loading cases [27], and should not be carried out randomly. Therefore, the only way to overcome the difficulty of ill-loaded cases is to adjust the value of Q.
+
+Now, the major task is to select an appropriate value of Q in simulation. From the previous example, we know the ratio between SEDs caused by the maximum force and the minimum force is proportional to the square of the ratio between maximum force and the minimum force. For finding a common method to obtain the value of Q, dimensionless analysis is presented. Here, we set r
+                           
+                              p
+                           =p
+                           
+                              max
+                           /p
+                           
+                              min
+                           , and
+                              
+                                 (18)
+                                 
+                                    y
+                                    
+                                       (
+                                       Q
+                                       )
+                                    
+                                    =
+                                    
+                                       1
+                                       
+                                          
+                                             
+                                                N
+                                             
+                                             
+                                                L
+                                                C
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          [
+                                          
+                                             
+                                                ∑
+                                                
+                                                   n
+                                                   =
+                                                   1
+                                                
+                                                
+                                                   
+                                                      
+                                                         N
+                                                      
+                                                      
+                                                         L
+                                                         C
+                                                      
+                                                   
+                                                   =
+                                                   2
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      (
+                                                      
+                                                         
+                                                            
+                                                               
+                                                                  
+                                                                     p
+                                                                  
+                                                                  
+                                                                     n
+                                                                  
+                                                               
+                                                            
+                                                            
+                                                               
+                                                                  
+                                                                     p
+                                                                  
+                                                                  
+                                                                     max
+                                                                  
+                                                               
+                                                            
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                   
+                                                      2
+                                                      Q
+                                                   
+                                                
+                                             
+                                          
+                                          ]
+                                       
+                                       
+                                          1
+                                          /
+                                          Q
+                                       
+                                    
+                                    =
+                                    
+                                       1
+                                       2
+                                    
+                                    
+                                       
+                                          [
+                                          
+                                             
+                                                ∑
+                                                
+                                                   n
+                                                   =
+                                                   1
+                                                
+                                                
+                                                   
+                                                      
+                                                         N
+                                                      
+                                                      
+                                                         L
+                                                         C
+                                                      
+                                                   
+                                                   =
+                                                   2
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      (
+                                                      
+                                                         
+                                                            1
+                                                            
+                                                               
+                                                                  
+                                                                     r
+                                                                  
+                                                                  
+                                                                     p
+                                                                  
+                                                                  
+                                                                     2
+                                                                  
+                                                               
+                                                            
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                   Q
+                                                
+                                             
+                                          
+                                          ]
+                                       
+                                       
+                                          1
+                                          /
+                                          Q
+                                       
+                                    
+                                 
+                              
+                           
+                        
+
+
+                           
+                           Table 1 shows that the value of y tends to be 1/N
+                           
+                              LC
+                            (or 
+                              
+                                 
+                                    [
+                                    
+                                       
+                                          Σ
+                                       
+                                       
+                                          n
+                                       
+                                       
+                                          
+                                             
+                                                N
+                                             
+                                             
+                                                L
+                                                C
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          (
+                                          
+                                             
+                                                p
+                                             
+                                             
+                                                n
+                                             
+                                          
+                                          /
+                                          
+                                             
+                                                p
+                                             
+                                             
+                                                max
+                                             
+                                          
+                                          )
+                                       
+                                       
+                                          2
+                                          Q
+                                       
+                                    
+                                    ]
+                                 
+                                 
+                                    1
+                                    /
+                                    Q
+                                 
+                              
+                            to be unity) for increasing values of r
+                           
+                              P
+                           . For ill-loaded cases, the value of r
+                           
+                              P
+                            is high. To make the final topology to be practical, the value of Q can be selected as y(Q)≈1.0. It means the value of 
+                              
+                                 
+                                    [
+                                    
+                                       
+                                          Σ
+                                       
+                                       
+                                          n
+                                       
+                                       
+                                          
+                                             
+                                                N
+                                             
+                                             
+                                                L
+                                                C
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          (
+                                          
+                                             
+                                                p
+                                             
+                                             
+                                                n
+                                             
+                                          
+                                          /
+                                          
+                                             
+                                                p
+                                             
+                                             
+                                                max
+                                             
+                                          
+                                          )
+                                       
+                                       
+                                          2
+                                          Q
+                                       
+                                    
+                                    ]
+                                 
+                                 
+                                    1
+                                    /
+                                    Q
+                                 
+                              
+                            is approximately equal to N
+                           
+                              LC
+                            and the effects of r
+                           
+                              P
+                            on the final material distribution is under controlled.
+
+For bi-modulus material, R
+                           
+                              TCE
+                           =0.5 implies tension modulus is half of compression modulus. The amount of material under compression in the final structure should be as higher as possible. In this section, the dependence of optimal topology of structure with bi-modulus material on the value of Q is discussed when r
+                           
+                              P
+                           =100.
+
+
+                           Fig. 14a (Q=1) is similar with Fig. 10 c because the value of P
+                           2 is much less than that of P
+                           1 and the contribution of P
+                           2 on the final material distribution can be neglected. That is the drawback of using common weighting scheme to solve the stiffness design with ill-loading cases.
+
+
+                           
+                           Fig. 14 gives the final material distributions of the structure with different values of Q. From the figures we can find the width of the bottom of solid structure shrinks with the decrease of Q. It implies that the effects of P
+                           2 on the material distribution become stronger. Simultaneously, the amount of material under tension (in the middle part of structure) increases with the decrease of Q. It further demonstrates that the value of Q influence material distribution.
+
+In structure for bi-modulus material with R
+                           
+                              TCE
+                           =2.0, tension modulus is greater than compression modulus, and the amount of material under tension should be as higher as possible. In this section, r
+                           
+                              P
+                           =100, and the effects of the value of Q on the final material distribution are investigated.
+
+
+                           
+                           Fig. 15 implies that the amount of material to support P
+                           2 increases when Q decreases. When Q=1, the component to support P
+                           2 is vague (Fig. 15a). Fig. 15b further demonstrates that the value of Q can be set to be 0.2 to find the practical optimal topology when r
+                           
+                              P
+                           =100. For smaller values of Q, the amount of material to support P
+                           2 is higher (Fig. 15c and d).
+
+In this example, a deep cantilever beam is under two loading conditions. P
+                        1 is applied on the center (point A) of structure as the first condition, and P
+                        2 on point B for the other condition. The initial design domain is given in 
+                        Fig. 16. Volume constrained stiffness design is considered and f
+                        
+                           v
+                        =0.4. For bi-modulus material, the tensile modulus and Poisson׳s ratio equal 10GPa and 0.2, respectively. R
+                        
+                           TCE
+                        =0.3.
+
+The effects of optimal topologies of structure on the value of Q are discussed through two cases of MLC,
+                           
+                              (1)
+                              
+                                 P
+                                 1=P
+                                 2;
+
+
+                                 P
+                                 1=0.01P
+                                 2.
+
+
+                        
+                        Fig. 17 gives the optimal topologies of structure under single load case. As the material in structure shows isotropic, the optimal structure is symmetric. But the symmetry does not exist as material shows bi-modulus.
+
+In the left column of 
+                           Fig. 18, the traditional designs of structure under MLC are given. It shows that three final structures (cases (a), (c) and (e)) are different and the amount of material to support P
+                           2 increases with the value of Q. In the right column, the structures are different from the left structures clearly because of the difference between tension modulus and compression modulus of bi-modulus material. Simultaneously, only Fig. 18e is similar with Fig. 17a. It further demonstrates that higher value of Q leads to the uniform distribution of SED in structure.
+
+As Q=0.1, the material with SED should be distributed as much uniform as possible. That is the reason why more material distributes in subdomains No. 2 and No. 3 on comparison with the results with respective to Q=1. Especially, for bi-modulus material(right column of Fig. 18), the amount of material in subdomain No. 2 increases with the decreasing of Q for the reason of tension modulus being less than compression modulus.
+
+When the structure is filled with isotropic material (the left column in Fig. 18), the average CPU time for each iteration is 63.67s. For the same structure with bi-modulus material (right column of Fig. 18), the average CPU time for each iteration is 75.92s which is 19.24% higher than 63.67s. On the other hand, the number of iterations of all the cases is between [40,50]. Therefore, the efficiency for structure with bi-modulus material is slightly higher than that with isotropic material.
+
+
+                           Fig. 18 shows the validity of the maximum iteration number. If higher accuracy is required, higher iteration number should be adopted. But in a topology optimization, the material layout changes very slightly after about 40 times of iteration. More iteration is unnecessary. From above numerical tests, setting maximum iteration number to be 50 is reasonable.
+
+The results in 
+                           Fig. 19 also demonstrate that a structure under ill-loading conditions (the ratio between the maximum force and the minimum force are very large), a clear topology of structure for practical manufacturing can only be found by using a small value of Q, e.g., Q=0.1, in Fig. 19a and b.
+
+
+                           Fig. 19c and d gives the common solutions of structure under MLC. Clearly, the component to support P
+                           1 is weak and most of material is layout in the left part of structure (subdomains No. 2 and No. 3).
+
+As Q=10 (the third row of Fig. 19), the total structure is approximately covered with two uniform areas in which the relative densities of elements are equal. It implies that high value of Q leads to uniform mid-density material distribution which is not good for obtaining clear topology.
+
+For cases (a), (c) and (e) (the left column in Fig. 19), the CPU time of each iteration is still 63.67s. But the average CPU time for each iteration is 77.14s for cases (b) and (d), and 74.69s for case (f). It shows ill-loading cases has slight effect on efficiency of the present method.
+
+@&#CONCLUSIONS@&#
+
+From numerical discussions given above, the present method can be used to find the optimal stiffness design for a structure under MLC when the material in design domain shows bi-modulus. Simultaneously, the topology optimization of a continuum under ill-loading cases is successfully dealt with using a Q-norm weighting scheme. The effective value of Q is also suggested. The efficiency of the present method is shown through the comparison between bi-modulus stiffness design and traditional isotropic design for the same structural optimization. Some conclusions are given below.
+                        
+                           (1)
+                           For a symmetric structure subjected to weighted symmetric loading conditions (e.g., right columns in Figs. 6 and 8), if the ratio between forces is inversely proportional to the ratio between their weighting coefficients, the value of Q has no effect on final optimal material distribution.
+
+For the stiffness design with serious ill-loading cases (e.g., r
+                              
+                                 P
+                              =p
+                              
+                                 max
+                              /p
+                              
+                                 min
+                              ≈100), the practical optimal design can be found as the value of Q is in the interval of [0.1, 0.2]; the interval of Q is actually suggested with respective to two factors, but not limited to the problems in the present paper. One is that the upper bound should be valid for dealing with the common ill-loaded structural topology optimization, in which the minimal load is about 0.01 to 0.1 times of the maximal load. The lower bound of interval is determined by the practical requirements. It is known that the less of Q, the more seriously ill-loaded topology optimization can be solved well. However, if the value of Q is too close to zero, the difference between the load magnitudes will be covered, i.e., the importance of the components to support both of the weaker loads and the stronger is not clear. An engineer will not accept such design. For example, Q=0.1 can be adopted to effectively solve the structure with r
+                              
+                                 P
+                              =1000. If r
+                              
+                                 P
+                               is far greater than 1000, the weakest load is commonly ignored in design process.
+
+Bi-modulus stiffness design is commonly different from the same structure with isotropic material because the difference between E
+                              
+                                 T
+                               and E
+                              
+                                 C
+                               leads to the redistribution of stiffness and further to the redistribution of material.
+
+The computational efficiency of bi-modulus stiffness design using the present method is slightly lower than that of the same structural topology optimization with isotropic material. The difference is mainly caused by computational cost on the modulus selection of elements.
+
+@&#ACKNOWLEDGMENT@&#
+
+This study is partially supported by the National Natural Science Foundation of China (Grant nos. 50908190, 51279171), the Youth Talents Foundation of Shanxi Province (Grant no. 2011KJXX02), and Open Research Foundation of State Key Lab of State Key Laboratory of Structural Analysis for Industrial Equipment, Dalian University of Technology, China (Grant no. GZ1205).
+
+@&#REFERENCES@&#
+

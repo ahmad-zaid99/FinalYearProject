@@ -1,0 +1,1127 @@
+@&#MAIN-TITLE@&#Feature-based MRI data fusion for cardiac arrhythmia studies
+
+@&#HIGHLIGHTS@&#
+
+
+               
+                  
+                  
+                     
+                        
+                           
+                           MRI techniques can be used to capture and characterize cardiac states.
+
+
+                        
+                        
+                           
+                           Feature-based data fusion combines and enhances MRI data.
+
+
+                        
+                        
+                           
+                           Canonical Correlation Analysis is an effective tool to fuse and quantify MRI data.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Magnetic Resonance Imaging
+
+Current Density Imaging
+
+Diffusion Tensor Imaging
+
+Data fusion
+
+Cardiac arrhythmia
+
+Ventricular Fibrillation
+
+@&#ABSTRACT@&#
+
+
+                  Current practices in studying cardiac arrhythmias primarily use electrical or optical surface recordings of a heart, spatially limited transmural recordings, and mathematical models. However, given that such arrhythmias occur on a 3D myocardial tissue, information obtained from such practices lack in dimension, completeness, and are sometimes prone to oversimplification. The combination of complementary Magnetic-Resonance Imaging (MRI)-based techniques such as Current Density Imaging (CDI) and Diffusion Tensor Imaging (DTI) could provide more depth to current practices in assessing the cardiac arrhythmia dynamics in entire cross sections of myocardium. In this work, we present an approach utilizing feature-based data fusion methods to demonstrate that complimentary information obtained from electrical current distribution and structural properties within a heart could be quantified and enhanced. Twelve (12) pairs of CDI and DTI image data sets were gathered from porcine hearts perfused through a Langendorff setup. Images were fused together using feature-based data fusion techniques such as Joint Independent Component Analysis (jICA), Canonical Correlation Analysis (CCA), and their combination (CCA+jICA). The results suggest that the complimentary information of cardiac states from CDI and DTI are enhanced and are better classified with the use of data fusion methods. For each data set, an increase in mean correlations of fused images were observed with 38% increase from CCA+jICA compared to the original images while mean mutual information of the fused images from jICA and CCA+jICA increased by approximately three-fold. We conclude that MRI-based techniques present potential viable tools in furthering studies for cardiac arrhythmias especially Ventricular Fibrillation.
+               
+
+@&#INTRODUCTION@&#
+
+Current techniques used to characterize cardiac arrhythmias such as surface [1,2] and transmural [3–5] mapping have been proven to provide meaningful information on the electrical activity on and within regions of a myocardium. Cardiac models [6–10] have also been developed to mimic myocardial characteristics with which simulations are performed to study electrical dynamics of cardiac arrhythmias. This allows researchers to study arrhythmias without using biological samples or living subjects. However, applications of such techniques are spatially limited and are restricted by mathematical oversimplifications while cardiac arrhythmias are complex global phenomena.
+
+Various medical imaging modalities may provide an alternative tool not only to improve on the spatial resolution of current mapping techniques but also information on tissue anatomy on which they occur such as fiber orientation and anisotropy. A joint analysis of anatomical and electrophysiological information within a myocardium could provide further insights on the structural and functional nature of cardiac arrhythmias. As an example, Ultrasound Imaging has been used in in vivo cardiac mapping studies such as creation of local activation maps through Electromechanical Wave Imaging [11,12].
+
+Another medical imaging modality, Magnetic Resonance Imaging (MRI), has been thoroughly used in research and clinical practice to study and/or diagnose a wide array of human patho-physiologies. Some MRI techniques, such as Functional MRI [13] and Diffusion Weighted Imaging [14], are heavily used in neurological studies techniques. Moreover, techniques such as Magnetic Resonance Angiography [15], Myocardial Tagging [16] and Magnetic Resonance Perfusion Imaging [17] have been widely used in cardiovascular studies.
+
+In this work, we take advantage of two MRI techniques to identify functional and structural characteristics of different cardiac states, Current Density Imaging (CDI) [18,19] and Diffusion Tensor Imaging (DTI) [14], respectively. On one hand, CDI was developed to detect changes in the magnetic field induced by electrical currents and was previously used to study electrical current distribution and pathways in biological samples [19–21]. On the other hand, DTI further builds on the concept of Diffusion Weighted Imaging which provides micro-structural information of tissues based on tensors derived from water molecules diffusion within a sample. DTI has been long used in cardiac studies, exploring contributions of myocardial ischemia and/or infarction to cardiac arrhythmias [23–25].
+
+Treating CDI and DTI as complementary tools for myocardial assessment may be beneficial in providing more in-depth understanding of cardiac arrhythmias most especially Ventricular Fibrillation (VF) since its electrical dynamics are poorly understood hence considered most lethal of the ventricular arrhythmias. Feature-based data fusion methods such as Joint Independent Component Analysis (jICA), Canonical Correlation Analysis (CCA), and the combination of the latter two (jICA+CCA), which have been used for neurological studies in the past [26–32], could be useful to jointly analyze cardiac data from CDI and DTI. Therefore, we aim to demonstrate the combined capability of MRI techniques, CDI and DTI, to capture unique characteristics of cardiac states by using feature-based data fusion methods. Through these methods, we can then quantify and enhance information acquired from different cardiac states.
+
+To the best of our knowledge data fusion as applied to cardiac imaging data collected through CDI from live biological samples is novel. We have presented a preliminary study of fusing CDI and DTI data using jICA for a smaller database [33]. This work greatly expands on these initial results and analysis to a larger database, the addition of CCA and jiCA+CCA as fusion methods, and metrics of comparison for the said data fusion methods. This paper is organized as follows: Section 2 will outline our protocol for acquiring and preprocessing CDI and DTI data sets and introduce mathematical foundations of data fusion methods. In Section 3, we present the results of our experiments and application of fusion algorithms. We provide an analysis of our results in Section 4. We summarize our findings and discuss future work in Section 5. Finally, we provide some limitations of our study in Section 6.
+
+@&#METHODS@&#
+
+We obtained structural (from DTI) and functional (from CDI) imaging data sets associated to a maximum of two out of three cardiac states on a porcine heart: normal sinus (NM), asystolic (AS), and VF. These states were verified accordingly with corresponding electrograms (EGMs). Overall, 10 porcine hearts were used in experiments from which 12 data sets were obtained, 4 data sets for each said cardiac state. Each experiment lasted from 2.5h to a maximum of 4h. A timeline of the protocol execution followed for each experiment is shown in Fig. 1
+                     .
+
+With an approved Animal Use Protocol from Toronto General Hospital (TGH), ex vivo studies were performed on porcine hearts. Each heart was surgically harvested from healthy anesthetized male yorkshire pigs, each about 60kg in body weight. Each heart was aortically cannulated and mounted to a mobile Langendorff perfusion system (shown in Fig. 2
+                        A). The heart was perfused with carbogenated (95% O2 and 5% CO2) Krebs–Henseleit solution maintained at 
+                           37
+                           °
+                           
+                           C
+                        . The beating heart was allowed to stabilize for 10min. Bipolar EGMs were monitored and recorded to confirm the state of the heart. Examples of acquired bipolar EGMs are shown in Fig. 3
+                        A (NM) and B (VF).
+
+Three pairs of copper and brass electrodes were attached to the heart as shown in Fig. 2B: a pair for current injection (C; one pierced through the base and one pierced through the apex of the heart), a pair for electrical stimulation (S; stitched on the surface of the epicardium), and a pair of copper plates, wrapped around the ventricles, to monitor ventricular electrograms which also acted as defibrillating pads (E/D). The heart was fitted in to a protective MRI phantom (shown in Fig. 2C). The protective phantom allows for subject rotation, as per CDI requirements [19], with minimal axial displacement.
+
+All experiments performed for this study were accomplished under a 1.5T GE Signa MRI system. Working with implied biological and pulse sequence parameter constraints, six 256-by-256 images were collected from the ventricles of each heart for CDI and 21 images encompassing the whole heart volume for DTI, overlapping those collected for CDI, with a 17 pixels per cm spatial resolution. On one hand, the following parameters were used for CDI: NEX (Number of Excitations): 3; repetition time (TR): 700 ms; echo time (TE): 40 ms; slice thickness: 7mm; slice spacing: 0mm; field of view (FOV): 15cm; average current amplitude: 25mA; As per CDI requirements, two phases of an electrical current waveform, shown in Fig. 2D, phase cycles 1 and 2, were passed from the base to the apex of the heart. Phase cycles were timed with respect to spin echo pulse sequence. Details of CDI protocols are described elsewhere [19]. On the other hand, following parameters were used for DTI: NEX: 6; TR: 8300ms; slice thickness: 7mm; slice spacing: 0mm; FOV: 15cm; no. of directions: 30; and b-value: 
+                           1000
+                           
+                           
+                              
+                                 mm
+                              
+                              
+                                 2
+                              
+                           
+                           /
+                           s
+                        . All of the copper and brass electrodes and plates were removed before the DTI protocol was executed to prevent artifacts.
+
+The procedure used to calculate current density maps are described elsewhere [18]. Since the rotations of the heart were constrained to only two orientations, only two dimensional maps (J) were calculated for this study. A requirement for current density map calculation is masking off the background of the MR phase image components using a mask derived from the MR magnitude image component. This was accomplished by selecting the value within the MR magnitude image histogram on which the individual histograms of the object and background intersect so that the object within the image is preserved. A 3-by-3 median filter was used for each CDI image slice to eliminate outliers. An example of a set of calculated current density maps is shown in the top row of Fig. 4
+                        .
+
+To calculate diffusion tensor images, an open-source program, 3D slicer [34], was used. As shown in the bottom row of Fig. 4, the images are encoded under an RGB scheme. Each channel of an RGB image encodes a particular fiber orientation based on the primary eigenvector of the diffusion tensor, 
+                           D
+                        . Based on our previous report [35], encoded within the red, green, and blue channels are the medial–lateral, anterior–posterior, and superior–inferior components of the primary eigenvector, respectively. In order to match the manner in which CDI was collected, only the blue channel, 
+                           B
+                        , is used in conjunction with 
+                           J
+                         images.
+
+Although the image slices for both modalities were acquired from comparable regions of the heart, the slice planning and re-planning performed in-between modalities do not guarantee to scan the exact same slices. To match the CDI and DTI image slices, a minimum-variance area ratio (MVAR) was performed on the corresponding masks of each image by measuring the variance of the ratios of the calculated areas of 6 image masks in batches. As 6 consecutive slices were collected for CDI, 6 consecutive slices must then be matched from DTI with CDI from a similar area which is near the base of a heart. The batches ranged from the first 6 DTI slices to the last 6 DTI slices incrementing by a slice per batch. The variance of each batch is then calculated such that 
+                           
+                              
+                                 R
+                              
+                              
+                                 k
+                              
+                           
+                           =
+                           var
+                           (
+                           r
+                           )
+                        , where 
+                           k
+                           =
+                           1
+                           ,
+                           2
+                           ,
+                           …
+                           ,
+                           M
+                           −
+                           N
+                        , the number of batches being matched. The batch of slices that are closest with each other is the one with the lowest variance such that 
+                           
+                              
+                                 k
+                              
+                              
+                                 match
+                              
+                           
+                           =
+                           min
+                           (
+                           
+                              
+                                 R
+                              
+                              
+                                 k
+                              
+                           
+                           )
+                        .
+
+The matched CDI and DTI image slices were registered through a simple 2D cross-correlation of the image slices׳ masks. Finally, following [26], Principal Component Analysis (PCA) using Singular Value Decomposition (SVD) [36] was used to reduce the dimension of the acquired compilation of images for CDI and DTI per state in preparation for fusion.
+
+Pioneered by Calhoun and Adali [28], jICA has been extensively used to fuse neurological data, such as Electroencephalographs (EEG), fMRI, and sMRI, data to study disorders such as schizophrenia and bipolar disorder [26–28]. jICA focuses on the interaction of data sets and its application in identifying components that are useful in quantitatively categorizing states based on the underlying cross-information between modalities [28]. The aim of jICA is to estimate a set of 
+                              N
+                              ×
+                              N
+                            vectors of weights or loadings, 
+                              W
+                           , which can demix a given set of 
+                              N
+                              ×
+                              M
+                            data, 
+                              X
+                           , to its corresponding 
+                              N
+                              ×
+                              M
+                            components, 
+                              Y
+                           , such that 
+                              Y
+                              =
+                              WX
+                            where N is the number of states and M is the number of variables within a state. Considering that the given data set 
+                              X
+                            is composed of concatenated data obtained from data modalities 
+                              
+                                 
+                                    X
+                                 
+                                 
+                                    A
+                                 
+                              
+                            and 
+                              
+                                 
+                                    X
+                                 
+                                 
+                                    B
+                                 
+                              
+                            which can have different number of variables M
+                           1 and M
+                           2 in which 
+                              M
+                              =
+                              
+                                 
+                                    M
+                                 
+                                 
+                                    1
+                                 
+                              
+                              +
+                              
+                                 
+                                    M
+                                 
+                                 
+                                    2
+                                 
+                              
+                           , such data sets must also be normalized for the modalities to have similar contributions. Group loadings that are statistically different from one another are used for quantitative separation between a control and a patient group. The data organization for jICA is shown in Fig. 5
+                           B.
+
+Originally, jICA uses a maximum-likelihood estimation method (MLEM) which requires an a priori knowledge or an idea of the nature of the distribution the data sets at hand [28]. However, in the case of fusing CDI and DTI data sets, such information is not available as there is no a priori knowledge of current density maps and tensors for a certain state. In this work, Information Maximization (IM) [37] is instead utilized to perform jICA. Previous works have proven that IM has the similar end result as MLEM when used for mixture decomposition [38]. Mathematically, IM estimates 
+                              W
+                            such that
+                              
+                                 (1)
+                                 
+                                    
+                                       
+                                          W
+                                       
+                                       
+                                          new
+                                       
+                                    
+                                    =
+                                    
+                                       
+                                          [
+                                          
+                                             
+                                                W
+                                             
+                                             
+                                                old
+                                             
+                                             
+                                                T
+                                             
+                                          
+                                          ]
+                                       
+                                       
+                                          −
+                                          1
+                                       
+                                    
+                                    +
+                                    η
+                                    (
+                                    1
+                                    −
+                                    2
+                                    U
+                                    )
+                                    
+                                       
+                                          X
+                                       
+                                       
+                                          T
+                                       
+                                    
+                                 
+                              
+                           where η is the learning rate and 
+                              U
+                            is defined as the sigmoid function
+                              
+                                 (2)
+                                 
+                                    U
+                                    =
+                                    g
+                                    (
+                                    Y
+                                    )
+                                    =
+                                    
+                                       
+                                          1
+                                       
+                                       
+                                          1
+                                          +
+                                          
+                                             
+                                                e
+                                             
+                                             
+                                                −
+                                                Y
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           Details of the implementation of the IM algorithm are explained elsewhere [37].
+
+CCA has also been used in the study of neurological disorders [29] and in combination with other data fusion techniques [30]. CCA is a multivariate, statistical method which is used to expose linear relationships that exist between two given data sets [36], 
+                              
+                                 
+                                    X
+                                 
+                                 
+                                    A
+                                 
+                              
+                            and 
+                              
+                                 
+                                    X
+                                 
+                                 
+                                    B
+                                 
+                              
+                           , with dimensions 
+                              N
+                              ×
+                              
+                                 
+                                    M
+                                 
+                                 
+                                    1
+                                 
+                              
+                            and 
+                              N
+                              ×
+                              
+                                 
+                                    M
+                                 
+                                 
+                                    2
+                                 
+                              
+                           , respectively. A linear relationship between the two data sets is unraveled by calculating two 
+                              N
+                              ×
+                              N
+                            matrices, 
+                              
+                                 
+                                    W
+                                 
+                                 
+                                    A
+                                 
+                              
+                            and 
+                              
+                                 
+                                    W
+                                 
+                                 
+                                    B
+                                 
+                              
+                           , known as canonical variates (CV), columns of which are maximally correlated to each other, and estimating two component matrices, 
+                              
+                                 
+                                    Y
+                                 
+                                 
+                                    A
+                                 
+                              
+                            and 
+                              
+                                 
+                                    Y
+                                 
+                                 
+                                    B
+                                 
+                              
+                           , where 
+                              
+                                 
+                                    Y
+                                 
+                                 
+                                    i
+                                 
+                              
+                              =
+                              
+                                 
+                                    W
+                                 
+                                 
+                                    i
+                                 
+                              
+                              
+                                 
+                                    X
+                                 
+                                 
+                                    i
+                                 
+                              
+                            for i=A, B, with the dimensions 
+                              N
+                              ×
+                              
+                                 
+                                    M
+                                 
+                                 
+                                    1
+                                 
+                              
+                            and 
+                              N
+                              ×
+                              
+                                 
+                                    M
+                                 
+                                 
+                                    2
+                                 
+                              
+                           . Like the weights for jICA, the 
+                              
+                                 
+                                    W
+                                 
+                                 
+                                    i
+                                 
+                              
+                            weight matrix are called loadings and only those loadings and/or components that are statistically different from the others are analyzed. Fig. 5C shows how data sets are organized for performing CCA.
+
+
+                           
+                              
+                                 
+                                    W
+                                 
+                                 
+                                    A
+                                 
+                              
+                            and 
+                              
+                                 
+                                    W
+                                 
+                                 
+                                    B
+                                 
+                              
+                            are calculated through 
+                              
+                                 
+                                    W
+                                 
+                                 
+                                    i
+                                 
+                                 
+                                    T
+                                 
+                              
+                              =
+                              
+                                 
+                                    U
+                                 
+                                 
+                                    i
+                                 
+                              
+                              
+                                 
+                                    X
+                                 
+                                 
+                                    i
+                                 
+                                 
+                                    T
+                                 
+                              
+                            for i=A, B. 
+                              
+                                 
+                                    U
+                                 
+                                 
+                                    i
+                                 
+                              
+                            are the eigenvectors of the Lagrange Multipliers:
+                              
+                                 (3a)
+                                 
+                                    (
+                                    
+                                       
+                                          Σ
+                                       
+                                       
+                                          A
+                                       
+                                       
+                                          −
+                                          0.5
+                                       
+                                    
+                                    
+                                       
+                                          Σ
+                                       
+                                       
+                                          A
+                                          ,
+                                          B
+                                       
+                                    
+                                    
+                                       
+                                          Σ
+                                       
+                                       
+                                          B
+                                       
+                                       
+                                          −
+                                          1
+                                       
+                                    
+                                    
+                                       
+                                          Σ
+                                       
+                                       
+                                          B
+                                          ,
+                                          A
+                                       
+                                    
+                                    
+                                       
+                                          Σ
+                                       
+                                       
+                                          A
+                                       
+                                       
+                                          −
+                                          0.5
+                                       
+                                    
+                                    −
+                                    rI
+                                    )
+                                    
+                                       
+                                          U
+                                       
+                                       
+                                          A
+                                       
+                                    
+                                    =
+                                    0
+                                 
+                              
+                           
+                           
+                              
+                                 (3b)
+                                 
+                                    (
+                                    
+                                       
+                                          Σ
+                                       
+                                       
+                                          B
+                                       
+                                       
+                                          −
+                                          0.5
+                                       
+                                    
+                                    
+                                       
+                                          Σ
+                                       
+                                       
+                                          B
+                                          ,
+                                          A
+                                       
+                                    
+                                    
+                                       
+                                          Σ
+                                       
+                                       
+                                          A
+                                       
+                                       
+                                          −
+                                          1
+                                       
+                                    
+                                    
+                                       
+                                          Σ
+                                       
+                                       
+                                          A
+                                          ,
+                                          B
+                                       
+                                    
+                                    
+                                       
+                                          Σ
+                                       
+                                       
+                                          B
+                                       
+                                       
+                                          −
+                                          0.5
+                                       
+                                    
+                                    −
+                                    rI
+                                    )
+                                    
+                                       
+                                          U
+                                       
+                                       
+                                          B
+                                       
+                                    
+                                    =
+                                    0
+                                 
+                              
+                           where 
+                              
+                                 
+                                    Σ
+                                 
+                                 
+                                    i
+                                 
+                              
+                            and 
+                              
+                                 
+                                    Σ
+                                 
+                                 
+                                    i
+                                    ,
+                                    j
+                                 
+                              
+                            are the covariance and cross-covariance of data sets 
+                              
+                                 
+                                    X
+                                 
+                                 
+                                    i
+                                 
+                              
+                            for i=A, B, respectively. While 
+                              r
+                            and 
+                              I
+                            are the eigenvalue and identity matrices, respectively. Both equations in Eq. (3a) are constrained in such a way that 
+                              
+                                 
+                                    W
+                                 
+                                 
+                                    A
+                                 
+                              
+                            and 
+                              
+                                 
+                                    W
+                                 
+                                 
+                                    B
+                                 
+                              
+                            are column-wise maximally correlated by maximizing the following equation:
+                              
+                                 (4)
+                                 
+                                    corr
+                                    (
+                                    
+                                       
+                                          U
+                                       
+                                       
+                                          A
+                                       
+                                    
+                                    
+                                       
+                                          X
+                                       
+                                       
+                                          A
+                                       
+                                       
+                                          T
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          U
+                                       
+                                       
+                                          B
+                                       
+                                    
+                                    
+                                       
+                                          X
+                                       
+                                       
+                                          B
+                                       
+                                       
+                                          T
+                                       
+                                    
+                                    )
+                                    =
+                                    
+                                       
+                                          
+                                             
+                                                U
+                                             
+                                             
+                                                A
+                                             
+                                          
+                                          
+                                             
+                                                Σ
+                                             
+                                             
+                                                A
+                                                ,
+                                                B
+                                             
+                                          
+                                          
+                                             
+                                                U
+                                             
+                                             
+                                                B
+                                             
+                                             
+                                                T
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                (
+                                                
+                                                   
+                                                      U
+                                                   
+                                                   
+                                                      A
+                                                   
+                                                
+                                                
+                                                   
+                                                      Σ
+                                                   
+                                                   
+                                                      A
+                                                   
+                                                
+                                                
+                                                   
+                                                      U
+                                                   
+                                                   
+                                                      A
+                                                   
+                                                   
+                                                      T
+                                                   
+                                                
+                                                )
+                                                (
+                                                
+                                                   
+                                                      U
+                                                   
+                                                   
+                                                      B
+                                                   
+                                                
+                                                
+                                                   
+                                                      Σ
+                                                   
+                                                   
+                                                      B
+                                                   
+                                                
+                                                
+                                                   
+                                                      U
+                                                   
+                                                   
+                                                      B
+                                                   
+                                                   
+                                                      T
+                                                   
+                                                
+                                                )
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           Furthermore, 
+                              
+                                 
+                                    W
+                                 
+                                 
+                                    A
+                                 
+                              
+                            and 
+                              
+                                 
+                                    W
+                                 
+                                 
+                                    B
+                                 
+                              
+                            must exhibit qualities, such as column-wise orthogonality within each matrix, which are described in detail elsewhere [36].
+
+By performing CCA and jICA in succession, a more flexible link between data sets, through correlation, can be established: the constraints imposed by CCA and jICA are relatively relaxed such that both common and unique sources can be extracted along with their respective loadings from estimated mixing profile [32,31]. Such a combination is applicable especially when the associated source maps derived are not sufficiently differing from each other (CCA) and that the modalities are assumed to have a one-to-one correlation (jICA) since there is only one mixing matrix estimated for the two modalities. Following the works of Sui et al. [30–32], the technique from hereon will be called CCA+jiCA, is performed as follows: CCA is first performed on given data sets, 
+                              
+                                 
+                                    X
+                                 
+                                 
+                                    A
+                                 
+                              
+                            and 
+                              
+                                 
+                                    X
+                                 
+                                 
+                                    B
+                                 
+                              
+                           , from two different modalities. 
+                              
+                                 
+                                    W
+                                 
+                                 
+                                    A
+                                 
+                              
+                            and 
+                              
+                                 
+                                    W
+                                 
+                                 
+                                    B
+                                 
+                              
+                            are estimated and are used to extract 
+                              
+                                 
+                                    C
+                                 
+                                 
+                                    A
+                                 
+                              
+                            and 
+                              
+                                 
+                                    C
+                                 
+                                 
+                                    B
+                                 
+                              
+                           , respectively, such that 
+                              
+                                 
+                                    C
+                                 
+                                 
+                                    i
+                                 
+                              
+                              =
+                              
+                                 
+                                    W
+                                 
+                                 
+                                    i
+                                 
+                              
+                              
+                                 
+                                    X
+                                 
+                                 
+                                    i
+                                 
+                              
+                            for i=A, B. Results are then concatenated side by side, creating the matrix 
+                              C
+                           . 
+                              D
+                            is then estimated using jICA to extract 
+                              S
+                           , such that 
+                              S
+                              =
+                              DC
+                           . Since 
+                              S
+                            is a concatenation of two modalities, it can be divided into two matrices 
+                              
+                                 
+                                    S
+                                 
+                                 
+                                    A
+                                 
+                              
+                            and 
+                              
+                                 
+                                    S
+                                 
+                                 
+                                    B
+                                 
+                              
+                           , from which sources can obtained through 
+                              
+                                 
+                                    Y
+                                 
+                                 
+                                    i
+                                 
+                              
+                              =
+                              
+                                 
+                                    E
+                                 
+                                 
+                                    i
+                                 
+                              
+                              
+                                 
+                                    S
+                                 
+                                 
+                                    i
+                                 
+                              
+                            where 
+                              
+                                 
+                                    E
+                                 
+                                 
+                                    i
+                                 
+                              
+                              =
+                              
+                                 
+                                    DW
+                                 
+                                 
+                                    i
+                                 
+                                 
+                                    −
+                                    1
+                                 
+                              
+                            for i=A, B. Fig. 5D summarizes the data organization for CCA+jICA.
+
+@&#RESULTS@&#
+
+Only image slices 3–5 were chosen to be included in both fusion techniques; because of the conductive nature of the E/D electrodes, some 
+                        J
+                      images had areas that have extremely high electrical current and were eliminated through the process of masking. Some of the CDI slices were fragmented especially those close to the E/D electrodes (i.e. 1st and 2nd slices). As for the 6th slice, for some states, fragmentation was observed because of the closeness of the bottom C electrode to the slice itself and therefore was excluded from fusion as well.
+
+Loadings were selected for a binary classification, between VF and non-VF (i.e. NM and AS) subjects, through a two-sample t-test, to quantify the discriminative ability of the information content for every cardiac state. For jICA, the first component yielded the most significant difference between VF and non-VF subjects (p=0.022). Furthermore, while using the same component, AS and NM subjects display some difference between them although not statistically significant 
+                        (
+                        p
+                        >
+                        0.1
+                        )
+                     . This may be attributed to the small sample sizes within each group involved. Fig. 6
+                     A and B summarizes the results obtained from jICA. Additionally, a separate jICA procedure was performed on individual modalities in order to provide evidence that by using only CDI and DTI data sets, the technique׳s discriminative ability is poor, shown in Fig. 7
+                     A and B.
+
+As with CCA, the eighth component for CDI and DTI loadings yielded statistically significant difference between VF and non-VF subjects (p=0.018), with a correlation(r) of 0.9. Using the same component, AS and NM subjects, however, were found to share similarities 
+                        (
+                        p
+                        >
+                        0.1
+                        )
+                     . Shown in Fig. 6C and D is the summary of the results obtained from CCA.
+
+Finally, the third component from CCA+jICA showed to be statistically different 
+                        (
+                        p
+                        =
+                        6.5
+                        
+                           
+                              e
+                           
+                           
+                              −
+                              3
+                           
+                        
+                        )
+                      with a r=0.9 on the CCA stage. Moreover, CCA+jICA did not yield any better classification between AS and NM subjects, using the same component 
+                        (
+                        p
+                        >
+                        0.1
+                        )
+                     . The results from CCA+jICA are summarized in Fig. 6E and F.
+
+To measure the accuracy of loadings as tools to contrast between cardiac states, a Linear Discriminant Analysis (LDA) was performed which was validated through Leave-One-Out (LOO). First, with an overall accuracy of 83.3%, jICA successfully identified 75.0% and 87.5% of VF and non-VF subjects, respectively. Secondly, CCA correctly distinguished 75.0% and 50.0% of the VF and non-VF groups with an overall accuracy of 58.3%. Lastly, with CCA+jICA, overall accuracy was marked at 75.0% with 50.0% samples classified as VF and 87.5% as non-VF. It is important to note that the results shown under CCA and CCA+jICA were scaled by 2 since the number of loadings analyzed for these methods were double that of jICA. Summaries of LDA-LOO from jICA, CCA, and CCA+jICA are summarized in Table 1
+                     .
+
+In evaluating the reconstructed images from all data fusion techniques, we used correlation and mutual information as metrics to measure how well CDI and DTI images were fused. Fig. 8
+                     A and B shows the correlation and mutual information between reconstructed images from all data fusion paradigms compared to their original counterparts: there is an observed increase in the mean correlation from all 12 subjects under jICA and CCA with 5.29% and 7.63%, respectively, while CCA+jICA provides 37.93%; on the other hand, while there is a slight decrease in the mean mutual information of the reconstructed images under CCA (4.36%), both jICA and CCA+jICA׳s increased by approximately three-fold.
+
+@&#DISCUSSION@&#
+
+In this work, we have shown the combined capability of CDI and DTI to capture unique characteristics of different cardiac states which were further enhanced by feature-based data fusion methods. By fusing structural and functional information derived from MRI techniques, we also provided a quantitative metric for identification of such imaging data sets as physiologically classified. Not only that MRI techniques could provide an alternate perspective to the exploration of cardiac arrhythmias, it could also offer an added level of depth and span within which cardiac arrhythmias are studied. This is going to be particularly helpful in analyzing VF since the current tools used for its analysis has been limited only to electrograms from surface and regional mapping as well as mathematical models. With this work we can potentially advance to provide information on electrical activity and structure over entire cross sections of myocardial tissues through imaging data sets.
+
+As seen from the spread of the component loadings of jICA, the distinction between the current distribution pathways of the three cardiac states was improved by data fusion. Even with a limited number, the information content between VF and non-VF groups portrayed significant differences from each other. This is a valuable and yet expected finding as these variations in the current pathways or specific patterns of current distribution might hold the key to characterizing cardiac arrhythmias. With regards to VF loadings, we suspect that the variation of loadings for VF on all data fusion paradigms was caused by CDI capturing VF at different cycles with current densities averaged at different places within the image slice. In AS and NM groups, the contrast between their spreads is evident although only qualitatively. Distinction of current distribution pathways between the VF and non-VF groups under the CCA data fusion paradigm has shown improvement as well compared to using their respective jICA loadings. Finally, by combining CCA and jICA in succession, we noticed a significant improvement in the differentiation of all three cardiac states. Such results show that the loadings derived from CCA+jICA provide improved statistical results compared either CCA or jICA only.
+
+Under AS and NM states, 
+                        J
+                      component of CDI and 
+                        B
+                      component of DTI are known to have high correlation with each other which implies that current propagation is directional within the tissue micro-structure. After fusion, consequently, it is expected that these CDI and DTI components will have higher correlation with each other. Intuitively, since the idea of fusion brings the two data sets together, the resultant mutual or shared information must be higher than their original counterparts. Hence, the results obtained from correlation and mutual information strengthens our previous reports that CDI and DTI share correlated information [35]. The findings in this study then extends to the idea that by methodically combining electrical current pathways and fiber orientation within a tissue can better depict the electrophysiological phenomena than using only one type of information.
+
+Another interesting outcome from all data fusion paradigms is that there is an observed linearity between the distributions of the loadings of each cardiac state: with the VF group having high-value loadings, NM group with mid-value loadings, and AS group with low-value loadings; an apparent trend which bode well for combining CDI and DTI. This means that the complimentary aspects of CDI and DTI might bolster their utility in characterizing cardiac states which could prove useful in the study of a wide variety of cardiac arrhythmia.
+
+@&#CONCLUSIONS AND FUTURE WORK@&#
+
+Overall, despite the limited number of cardiac states due to the resource intensive nature of the experimental protocol and logistical constraints, this work presented evidence towards the potential use of CDI and DTI to study cardiac arrhythmias, such as VF, in an ex vivo mobile Langendorff setup. Data fusion techniques can provide quantitative methods to enhance and quantify unique current distribution pathways in combination with structural information of a cardiac state. This study presents a strong precursor for medical imaging techniques as viable tools to study cardiac arrhythmia. The availability and viability of more advanced instruments to gain deeper insights of the underlying mechanisms of VF could lead to better treatment options for cardiac arrhythmia patients. Future works could include the design of data-driven, three-dimensional model of the images as a result of fusion that could prove useful in studying cardiac arrhythmia. These models can be used to study the myocardium from the macro- and microscopic levels. In addition, fusing information from surface mappings and other clinical data could result in the development of sophisticated tools and procedures to improve treatment options for cardiac arrhythmia.
+
+@&#LIMITATIONS@&#
+
+CDI by nature of the MRI protocol provides time-averaged information over the scan duration and hence may not reflect instantaneous dynamics of cardiac arrhythmia. Image-to-noise ratio and spatial resolution could be improved with a higher Tesla MR machine than the one used in this study. We recognize that image matching and registration techniques used in this work are rudimentary and more sophisticated techniques could be used in future studies. Despite these limitations, CDI was able to capture differences in the average current distributions during cardiac states and was further enhanced by fusing with DTI.
+
+None declared.
+
+@&#ACKNOWLEDGMENT@&#
+
+In recognition of their technical expertise, the authors would like to thank Mr. J. Koch of Ryerson University, who assisted our team in preparation and improvement of our electronics and mechanical aspects of our experimental setup, and Dr. W. Foltz, Mr. N. Spiller, and Mr. E. Hlasny, for lending us their time and technical expertise on MR scanners and helped us optimize our imaging experiments. Finally, the authors would like to thank the Canadian Institutes of Health Research (CIHR) for providing us with resources to make this study possible (CHIR Grant 111253).
+
+@&#REFERENCES@&#
+

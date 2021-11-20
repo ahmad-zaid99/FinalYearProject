@@ -1,0 +1,1927 @@
+@&#MAIN-TITLE@&#Retinal vessel extraction using Lattice Neural Networks with dendritic processing
+
+@&#HIGHLIGHTS@&#
+
+
+               
+                  
+                  
+                     
+                        
+                           
+                           First implementation of a Lattice Neural Network with Dendritic Processing to solve classify retinal images.
+
+
+                        
+                        
+                           
+                           The performance is competitive compared with common approaches like Support Vector Machines and Multilayer Perceptrons.
+
+
+                        
+                        
+                           
+                           The Lattice Neural Network with Dendritic Processing does not require the adjustment of parameters by the user.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Pattern recognition
+
+Machine vision
+
+Blood vessel segmentation
+
+Diabetic retinopathy
+
+Neural networks
+
+Dendritic processing
+
+@&#ABSTRACT@&#
+
+
+                  Retinal images can be used to detect and follow up several important chronic diseases. The classification of retinal images requires an experienced ophthalmologist. This has been a bottleneck to implement routine screenings performed by general physicians. It has been proposed to create automated systems that can perform such task with little intervention from humans, with partial success. In this work, we report advances in such endeavor, by using a Lattice Neural Network with Dendritic Processing (LNNDP). We report results using several metrics, and compare against well known methods such as Support Vector Machines (SVM) and Multilayer Perceptrons (MLP). Our proposal shows better performance than other approaches reported in the literature. An additional advantage is that unlike those other tools, LNNDP requires no parameters, and it automatically constructs its structure to solve a particular problem. The proposed methodology requires four steps: (1) Pre-processing, (2) Feature computation, (3) Classification and (4) Post-processing. The Hotelling T
+                     2 control chart was used to reduce the dimensionality of the feature vector, from 7 that were used before to 5 in this work. The experiments were run on images of DRIVE and STARE databases. The results show that on average, F1-Score is better in LNNDP, compared with SVM and MLP implementations. Same improvement is observed for MCC and the accuracy.
+               
+
+@&#INTRODUCTION@&#
+
+Diabetes is rapidly emerging as a global health care problem that threatens to reach pandemic levels by 2030; the number of people with diabetes worldwide is projected to increase from 171 million in 2000 to 366 million by 2030 [1]. Diabetic Retinopathy is considered as the most common diabetic eye disease that affects up to 80% of diabetics and causes blindness in many cases [2]. Arteriosclerosis is considered as the leading cause of death in people over age 45. According to [3,4], its prevalence is about 30%. High blood pressure, or hypertension is a condition present in about 26% of the total population [5]. The three above-mentioned diseases can be diagnosed and monitored via the retina observation [6]. The retina is the only place in the human body where blood vessels can be directly visualized non-invasively and in vivo 
+                     [7].
+
+Among the different elements of a retina image, the vascular structure is a very relevant one. The segmentation of blood vessels is a required step for further analysis that allows measuring attributes such as length, width, branching factor and tortuosity. With them, it is possible to diagnose and evaluate the evolution of several ophthalmologic and cardiovascular diseases [8,9]. Besides, the pattern of the vascular structure of the retina of an individual is unique, making it one of the best choices for biometric systems [10]. Although this segmentation process can be performed manually, it is a long and tedious work that requires experience [11].
+
+It has been suggested that screening programs, in which retinal images are captured and analyzed, should be implemented on a regular basis. This may certainly help us to detect some of these complications earlier. However, it also implies an additional workload on specialists not only to get the image, but also to analyze it [12,13].
+
+Nowadays, it is easier to capture retina digital images due to the development of digital ophthalmoscopes. This opens the possibility of performing automated image analysis, helping physicians to accomplish screening processes of their patients. This could also enable other applications for telemedicine. For instance, a nurse or a general doctor could capture the image of a patient in a remote place, the image can be analyzed by the intelligent system and then, a recommendation can be made on whether the patient needs to see an specialist or not. There are basically three kinds of retina images: color photography, red-free photography, and fluorescent angiograms. In this work, we concentrate on the first kind. Segmentation in retinal images is a challenging task because retinal images usually have low contrast and are highly noisy. This effect is caused by the safety limitations used when obtaining the image, making the boundaries of the blood vessels unclear. Also, small depth of focus in the camera as well as the motion of the eye causes different degrees of blur. On the other side, some vessels are only a few pixels in diameter and some images have substantial pathology, making it difficult to accomplish proper segmentation. Finally, there are lots of vessel crossing and branching, as well as a phenomenon called central vessel reflex which makes difficult to extract this structure [14].
+
+This work reports the utilization of a Lattice Neural Network with Dendritic Processing (LNNDP) to automate the segmentation and extraction of the blood vessels structure from fundus images. As far as we know, this is the first time such kind of neural network is used for this purpose. This is an extended version of [15], where our first results were presented. In this new version, we extend our previous work by (a) describing the theory behind LNNDP and their different training methods, offering implementation details that were not covered in [15], (b) implementing an adaptive adjustment of parameter called margin (M) to improve the performance in the training phase, which automates a process that in [15] had to be adjusted manually, (c) presenting a comparison of our approach against other common machine learning algorithms, such as the multilayer perceptron (MLP) and the support vector machine (SVM) [16], (d) including other metrics to compare against recent approaches, and (e) we have added data from the DRIVE dataset [9] to show the robustness of LNNDP for this task.
+
+The remainder of the paper is organized as follows: Section 2 describes current advances in retinal image processing. Section 3 introduces Lattice Neural Networks with Dendrite Processing. Section 4 presents our methodology. Section 5 describes experiments and results and finally, Section 6 presents the conclusions and future work.
+
+Although the idea of automating the analysis of eye fundus images has attracted the attention of many research groups during the last years, the problem has still not been completely solved [17,18]. In general, computed aided diagnosis via medical images is a complex task where there are usually four steps involved: preprocessing, segmentation, classification and recognition. The work reported here is focused on preprocessing and segmentation (via a classification subproblem) of retinal blood vessels.
+
+According to [19], the developed methods for vessel detection can be roughly classified into three categories: the edge detection-based, the segmentation-based, and the probing-based. The edge detection-based algorithms use gradient masks to identify edge points between regions in a retinal image. Then, the boundary of the vessel is identified by means of intensity discontinuity. For the segmentation-based methods, a good number of options have been considered, being one of the simplest the use of a single threshold to partition a retinal image into background and vessel. Finally, the probing-based methods utilize a profile model to incrementally step forward along the inspected vessel, and identify vessel boundary during probing.
+
+The three most important areas of active research in retinal imaging include development of cost-effective digital equipment to capture retinal images, development of techniques to study the retina function using oximetry or near-infrared analysis, and development of image processing and analysis algorithms that allow the classification of retinal images for automated diagnosis. In many cases, a set of features of the retina vascular structure can establish a probable diagnosis. Parameters such as diameter, color, curvature and opacity of blood vessels may serve as a basis for diagnosis, treatment, and monitor of the aforementioned diseases [12,20].
+
+In [21] a system named STARE was introduced. The name stands for STructured Analysis of the REtina. The authors describe in theory what steps could be required to analyze retina images, although they did not include experimental results. In a different approach, Hoover et al. [22] define a method based on threshold probing. Such method was compared against a matched filter response (MFR), giving an improvement of 15% on the true positive detection rate.
+
+According to [9], several other methods have been proposed to solve the problem of blood vessel segmentation. These methods can be divided into two general categories: rule based methods, and supervised learning methods. The rule based methods comprise vessel tracking, matched filter responses, grouping of edge pixels, thresholding methods, and morphology based techniques. In the case of supervised learning methods, the general approach is to use image processing techniques to enhance blood vessels, and then use of a classifier to discriminate between blood vessels and background pixels. Among the most commonly used classifiers are the multilayer perceptron (MLP), K-nearest neighbors, and support vector machines (SVM) [8,9,23].
+
+Some of the open problems in this matter are vessel segmentation for vessels that have only a few pixels in diameter, vessel segmentation in images with substantial pathology, differentiating arteries from veins, and assessing vessel tortuosity [14].
+
+In an effort to improve the accuracy of the currently available methods, Ramlugun et al. [24] proposed the use of Gabor filters and vessel enhancement by contrast-limited adaptive histogram equalization followed by a double sided thresholding scheme. Addressing the problem of the segmentation of small blood vessels, Li et al. [25] proposed a multi-scale vessel extraction scheme by multiplying the responses of matched filters at three scales. In a work reported by Staal et al. [9], the authors introduce the Primitive-Based Method (PBM). PBM uses image primitives extracted from image ridges that are grouped and given to a classifier. The results were interesting although the authors point out the need to improve certain aspects of the processing to decrease the computational time required. Recently, in [26] the authors use a modified matched filter, called MF-FDOG, which basically extends the original MF by using a zero-mean Gaussian and its first-order derivative. The main advantage of such a method is the competitive results it reaches, but with lower complexity.
+
+Other authors have been interested in developing classifiers able to distinguish among arteries and veins. For example, in the work by Kondermann [27], the authors performed a comparison of two feature extraction methods and two classifiers based on support vector machines and neural networks. The best combination is able to reach 95.32% of correct classifications. Color has also been considered as an important feature for segmentation. For example in [13] and in [28]. Those approaches usually detect the dark background and remove noise, then a further step of fine segmentation is applied. The authors report up to 95.43% of correctly classified samples. Approaches based on morphological operations have also been reported [29,30]. Statistical based methods have been considered, such as linear discriminant analysis [6]. The work reported by Lau et al. [31] considers two steps. One is a segmentation of the vascular structure and the other one is a post-processing to identify true vessels based on a graph tracer. The results are very good, reaching up to 98.7% of true vessels classification.
+
+In [32], the authors use an SVM to perform the classification of retinal images. The proposed method includes a preprocessing step to remove the optic disk edges, a normalization of the green channel and the computation of wavelets to generate a vector of 12 features. This method falls in the category of semi-supervised learning. In [33] a new segmentation method is proposed. Such method is mainly focused on solving problems related with central reflex pixels, with the error of considering two close pixels as being part of one wide vessel, and disconnected pixels. The method is based on a linear combination of linear detectors at different scales. The main drawback is that the method does not work that well on images of non-healthy retinas. It has trouble with images like the ones contained in the STARE database, due to the presence of dark and bright regions.
+
+An excellent, and recent survey of methods for blood vessel segmentation is offered in [11]. According to that paper, regardless of current advances and the big amount on research on this area, there is still room for improvement. Pathological and noisy images are still a challenge, as well as images where the central reflex is present. Moreover, there are few public databases and those are comprised of a very limited number of samples, making complicated to evaluate the methodologies. More research on taking the methods to parallel implementation, and the creation of larger datasets with available ground truths is also an opportunity.
+
+Although each published work reports improvement over previous approaches, the methods proposed become more and more complex. Therefore, they might not be completely understood by people who is not an expert in the author׳s field. On the other side, the training methods commonly used for supervised learning (Support Vector Machines and Neural Networks, for example) are difficult to understand. We propose the use of standard image processing techniques, along with a powerful, and easy to understand, classifier: Lattice Neural Networks with Dendritic Processing (LNNDP). The training method used for the LNNDP is transparent and it requires no parameter configuration. We consider this as an important aspect when solving medical problems, because more often than not medical experts are not experts in mathematical and computational techniques. It is our hope that this work encourages people to use LNNDP for tackling not only blood vessel segmentation in retinal images, but also other medical problems.
+
+It is possible to state the analysis of retinal images as a classification problem. As such, each pixel can be labeled as blood vessel or non-blood vessel. Thus, one possibility is to use artificial neural networks (ANN) as the classifier. The features considered could be the pixel itself as well as other characteristics of its neighborhood. Artificial Neural Networks seem appropriate given its ability to extract the inherent model of a system represented through a set of attributes or features. If images in which blood vessels are hand labeled are provided as training examples, then the network might learn how to classify new images.
+
+The most well known models of ANNs are derivations of the perceptron. Those models consider that the processing happens in the body of the neuron, requiring a two-step process. The first one computes a weighted sum and the second one applies an activation function that usually is a non-linear model. However, it has been argued that this is not exactly what happens in natural neurons. Thus, new architectures for neural processing have been explored. One of them view the dendrites as the primary basic computational unit of the neuron [34]. It is believed that dendrites perform logical operations such as XOR, AND, and NOT [35,36]. This idea has given place to a new generation of neural networks: Lattice Neural Networks (LNN) [36], Morphological Neural Networks (MNN) [37] and Spiking Neural Networks (SNN), among others.
+
+The absence of dendrites in artificial neural networks presents certain problems that can be avoided by the inclusion of these structures [38]. The main problem that multilayer perceptrons present is their inability to perform reliable pattern rejection. In order to model properly the probability distribution of patterns, the classifier must draw closed separation surfaces on the pattern space. However, Gori and Scarselli proved that when multilayer perceptrons with sigmoidal units have less or equal hidden units than input units, the network creates open surfaces in the pattern space [39]. If the number of hidden units is greater than the number of inputs, the separation surfaces might be closed, but determining it is NP-hard.
+
+Lattice Neural Networks exhibit certain interesting properties, such as it has been observed that there are no convergence problems with a single layer feedforward neural networks and a speeded-up learning process. Also, LNN do not require hidden layers, and are capable of multi-class discrimination, to mention a few [38]. This new model of neural networks is called Lattice Neural Networks with Dendritic Processing (LNNDP).
+
+In a traditional artificial neural network the activation function f receives a linear combination of the weights and the input vector, and a term called “bias”, as given by
+                        
+                           (1)
+                           
+                              f
+                              (
+                              
+                                 
+                                    
+                                       ∑
+                                    
+                                    
+                                       i
+                                       =
+                                       1
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 
+                                    
+                                       x
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 
+                                    
+                                       ω
+                                    
+                                    
+                                       ij
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       θ
+                                    
+                                    
+                                       j
+                                    
+                                 
+                              
+                              )
+                           
+                        
+                     where x
+                     
+                        i
+                      denotes the value of the ith neuron, 
+                        
+                           
+                              ω
+                           
+                           
+                              ij
+                           
+                        
+                      denotes the synaptic strength between the ith neuron and the jth neuron, 
+                        
+                           
+                              θ
+                           
+                           
+                              j
+                           
+                        
+                      is called bias, and n is the number of neurons.
+
+On the other hand, in the case of a Lattice Neural Network, the activation function needs to compute the lattice operations 
+                        ⋁
+                      (maximum) and 
+                        ⋀
+                      (minimum), as well as the sum:
+                        
+                           (2)
+                           
+                              f
+                              (
+                              
+                                 
+                                    
+                                       p
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 
+                                    
+                                       ⋁
+                                    
+                                    
+                                       i
+                                       =
+                                       1
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 
+                                    
+                                       r
+                                    
+                                    
+                                       ij
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       
+                                          x
+                                       
+                                       
+                                          i
+                                       
+                                    
+                                    +
+                                    
+                                       
+                                          ω
+                                       
+                                       
+                                          ij
+                                       
+                                    
+                                 
+                                 )
+                              
+                              )
+                           
+                        
+                     where 
+                        
+                           
+                              r
+                           
+                           
+                              ij
+                           
+                        
+                        =
+                        ±
+                        1
+                      denotes the excitatory or inhibitory pre-synaptic influence of the ith neuron on the jth neuron, and 
+                        
+                           
+                              p
+                           
+                           
+                              j
+                           
+                        
+                        =
+                        ±
+                        1
+                      denotes the post-synaptic response of the jth neuron on the total input received.
+
+In lattice algebra the lattice operations maximum or minimum, and addition substitute their corresponding arithmetic operations of addition and multiplication. This substitution allows extremely fast neural computation and easy hardware implementation. With this new paradigm, convergence problems and complex training algorithms are seldom present [34].
+
+As well as with traditional multi-layer perceptron neural networks, there are different training methods for LNNDPs. In this work, we use a modified version of the hyperboxes partition method introduced in [40]. A former version of this modification was presented in [15], and some of the first steps are described again here for the sake of completeness.
+                  
+
+If we are given a set of n input neurons 
+                        
+                           
+                              N
+                           
+                           
+                              1
+                           
+                        
+                        ,
+                        …
+                        ,
+                        
+                           
+                              N
+                           
+                           
+                              n
+                           
+                        
+                     , where n is the number of features in the input vector, m output neurons 
+                        
+                           
+                              M
+                           
+                           
+                              1
+                           
+                        
+                        ,
+                        …
+                        ,
+                        
+                           
+                              M
+                           
+                           
+                              m
+                           
+                        
+                     , where m is the number of classes, and a finite number of 
+                        d
+                        =
+                        {
+                        1
+                        ,
+                        2
+                        ,
+                        …
+                        }
+                      of dendrites. Each dendrite is the connection point between input neurons and output neurons. The exact number of neurons created by the network will depend on the distribution of the training set. The number of dendrites in each neuron M
+                     
+                        j
+                      may be different. Fig. 2
+                      shows a representation of the LNNDP.
+
+In the LNNDP model, a neuron M
+                     
+                        j
+                      receive information from the input neurons 
+                        
+                           
+                              {
+                              
+                                 
+                                    N
+                                 
+                                 
+                                    i
+                                 
+                              
+                              }
+                           
+                           
+                              i
+                              ∈
+                              I
+                           
+                        
+                        ,
+                        I
+                        =
+                        {
+                        1
+                        ,
+                        2
+                        ,
+                        …
+                        ,
+                        n
+                        }
+                      through a finite number of dendrites D
+                     
+                        jk
+                     . Each neuron N
+                     
+                        i
+                      will have at most two connections on a given dendrite D
+                     
+                        jk
+                     . If two connections are present, then one connection is assumed to provide an inhibitory input, while the other will provide excitatory input. The reason behind having at most two connections on a given dendrite is that the computation of the response of each dendrite is based on maximum and minimum values. Therefore, having more than one excitatory or inhibitory connections will not provide any additional useful information [36].
+
+The weight of the axonal branch of neuron N
+                     
+                        i
+                      terminating on the dendrite D
+                     
+                        jk
+                      of M
+                     
+                        j
+                      is denoted by 
+                        
+                           
+                              ω
+                           
+                           
+                              ijk
+                           
+                           
+                              l
+                           
+                        
+                     , where the superscript 
+                        l
+                        ∈
+                        {
+                        0
+                        ,
+                        1
+                        }
+                      distinguishes between excitatory (l=1, marked as a black dot in Fig. 2), and inhibitory (l=0, marked as an open dot in Fig. 2) input to the dendrite. The computation of the dendrite D
+                     
+                        jk
+                      of M
+                     
+                        j
+                      is given by [15]
+                     
+                        
+                           (3)
+                           
+                              
+                                 
+                                    τ
+                                 
+                                 
+                                    k
+                                 
+                                 
+                                    j
+                                 
+                              
+                              (
+                              x
+                              )
+                              =
+                              
+                                 
+                                    p
+                                 
+                                 
+                                    jk
+                                 
+                              
+                              
+                                 
+                                    ⋀
+                                 
+                                 
+                                    i
+                                    ∈
+                                    I
+                                    (
+                                    k
+                                    )
+                                 
+                              
+                              
+                                 
+                                    ⋀
+                                 
+                                 
+                                    l
+                                    ∈
+                                    L
+                                    (
+                                    i
+                                    )
+                                 
+                              
+                              
+                                 
+                                    (
+                                    −
+                                    1
+                                    )
+                                 
+                                 
+                                    1
+                                    −
+                                    l
+                                 
+                              
+                              (
+                              
+                                 
+                                    x
+                                 
+                                 
+                                    i
+                                 
+                              
+                              +
+                              
+                                 
+                                    ω
+                                 
+                                 
+                                    ijk
+                                 
+                                 
+                                    l
+                                 
+                              
+                              )
+                           
+                        
+                     where 
+                        
+                           
+                              τ
+                           
+                           
+                              k
+                           
+                           
+                              j
+                           
+                        
+                        (
+                        x
+                        )
+                      denotes the output of the dendrite D
+                     
+                        jk
+                     ; 
+                        x
+                        =
+                        (
+                        
+                           
+                              x
+                           
+                           
+                              1
+                           
+                        
+                        ,
+                        …
+                        ,
+                        
+                           
+                              x
+                           
+                           
+                              n
+                           
+                        
+                        )
+                      denotes the input value of the neurons 
+                        
+                           N
+                           1
+                        
+                        ,
+                        …
+                        ,
+                        
+                           N
+                           n
+                        
+                        ;
+                        I
+                        
+                           k
+                        
+                        
+                        ⊆
+                        
+                        
+                           
+                              1
+                              ,
+                              …
+                              ,
+                              n
+                           
+                        
+                      corresponds to the set of all input neurons with terminal fibers that synapse on the k-th dendrite D
+                     
+                        jk
+                      of M
+                     
+                        j
+                     ; 
+                        L
+                        (
+                        i
+                        )
+                        ⊆
+                        {
+                        0
+                        ,
+                        1
+                        }
+                      corresponds to the set of inhibitory and excitatory fibers of N
+                     
+                        i
+                      that synapse on D
+                     
+                        jk
+                      and 
+                        
+                           
+                              p
+                           
+                           
+                              jk
+                           
+                        
+                        ∈
+                        {
+                        −
+                        1
+                        ,
+                        1
+                        }
+                      denotes inhibitory or excitatory response of the dendrite D
+                     
+                        jk
+                      to the received input. The response of the neuron M
+                     
+                        j
+                     , 
+                        
+                           
+                              τ
+                           
+                           
+                              j
+                           
+                        
+                        (
+                        x
+                        )
+                     , is given by the equation proposed in [36]
+                     
+                        
+                           (4)
+                           
+                              
+                                 
+                                    τ
+                                 
+                                 
+                                    j
+                                 
+                              
+                              (
+                              x
+                              )
+                              =
+                              
+                                 
+                                    p
+                                 
+                                 
+                                    j
+                                 
+                              
+                              
+                                 
+                                    ⋁
+                                 
+                                 
+                                    k
+                                    =
+                                    1
+                                 
+                                 
+                                    
+                                       
+                                          K
+                                       
+                                       
+                                          j
+                                       
+                                    
+                                 
+                              
+                              
+                                 
+                                    τ
+                                 
+                                 
+                                    k
+                                 
+                                 
+                                    j
+                                 
+                              
+                              (
+                              x
+                              )
+                           
+                        
+                     where K
+                     
+                        j
+                      represents the total number of dendrites in the neuron 
+                        
+                           
+                              M
+                           
+                           
+                              j
+                           
+                        
+                        ;
+                        
+                           
+                              τ
+                           
+                           
+                              k
+                           
+                           
+                              j
+                           
+                        
+                        (
+                        x
+                        )
+                      is the output of the dendrite k of neuron M
+                     
+                        j
+                      computed using Eq. (3); p
+                     
+                        j
+                     =1 to denote that the particular input is accepted, and p
+                     
+                        j
+                     =0 to denote that the particular input is rejected. The output of the neuron is then determined by the following activation function:
+                        
+                           (5)
+                           
+                              f
+                              (
+                              
+                                 
+                                    
+                                       τ
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 (
+                                 x
+                                 )
+                              
+                              )
+                              =
+                              {
+                              
+                                 
+                                    
+                                       
+                                          1
+                                       
+                                       
+                                          if
+                                          
+                                          
+                                             
+                                                τ
+                                             
+                                             
+                                                j
+                                             
+                                          
+                                          (
+                                          x
+                                          )
+                                          ≥
+                                          0
+                                       
+                                    
+                                    
+                                       
+                                          0
+                                       
+                                       
+                                          if
+                                          
+                                          
+                                             
+                                                τ
+                                             
+                                             
+                                                j
+                                             
+                                          
+                                          (
+                                          x
+                                          )
+                                          <
+                                          0
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+                  
+
+If we take a system that consists only of one input neuron, which receives input x, connected to one output neuron through a single excitatory response 
+                        (
+                        r
+                        =
+                        1
+                        )
+                     , and we denote the weight of this connection as 
+                        ω
+                        =
+                        −
+                        α
+                        ,
+                        α
+                        ∈
+                        R
+                     , then any value of x in the set 
+                        [
+                        α
+                        ,
+                        ∞
+                        )
+                      will activate the neuron. According to Eqs. (3) and (5) for the neuron to be activated
+                        
+                           (6)
+                           
+                              τ
+                              (
+                              x
+                              )
+                              =
+                              r
+                              (
+                              x
+                              +
+                              ω
+                              )
+                              ≥
+                              0
+                              ,
+                           
+                        
+                     so,
+                        
+                           (7)
+                           
+                              x
+                              ≥
+                              −
+                              ω
+                              =
+                              α
+                           
+                        
+                     
+                  
+
+Geometrically, the neuron will fire with all the values of the x-axis that are larger than or equal to α. On the other side, the values that fire a neuron can be delimited using an inhibitory response 
+                        (
+                        
+                           
+                              r
+                           
+                           
+                              2
+                           
+                        
+                        =
+                        −
+                        1
+                        )
+                     . For instance, if 
+                        α
+                        <
+                        β
+                     , a neuron with two connection with weights 
+                        
+                           
+                              ω
+                           
+                           
+                              1
+                           
+                        
+                        =
+                        −
+                        α
+                        ,
+                        
+                           
+                              ω
+                           
+                           
+                              2
+                           
+                        
+                        =
+                        −
+                        β
+                     , and an excitatory response 
+                        (
+                        
+                           
+                              r
+                           
+                           
+                              1
+                           
+                        
+                        =
+                        1
+                        )
+                     , it will fire when
+                        
+                           (8)
+                           
+                              τ
+                              (
+                              x
+                              )
+                              =
+                              min
+                              {
+                              
+                                 
+                                    r
+                                 
+                                 
+                                    1
+                                 
+                              
+                              (
+                              x
+                              +
+                              
+                                 
+                                    ω
+                                 
+                                 
+                                    1
+                                 
+                              
+                              )
+                              ,
+                              
+                                 
+                                    r
+                                 
+                                 
+                                    2
+                                 
+                              
+                              (
+                              x
+                              +
+                              
+                                 
+                                    ω
+                                 
+                                 
+                                    2
+                                 
+                              
+                              )
+                              }
+                              ≥
+                              0
+                              τ
+                              (
+                              x
+                              )
+                              =
+                              min
+                              {
+                              (
+                              x
+                              −
+                              α
+                              )
+                              ,
+                              −
+                              (
+                              x
+                              −
+                              β
+                              )
+                              }
+                              ≥
+                              0
+                           
+                        
+                     
+                  
+
+This condition is met only by the points in the interval 
+                        [
+                        α
+                        ,
+                        β
+                        ]
+                     .
+
+When the input vector x has n dimensions and, therefore, n input neurons are needed, the neuron will fire when x lies inside the n-dimensional hyper-parallelepiped created by the excitatory and inhibitory responses of the dendrites of the output neuron M
+                     
+                        j
+                     . This fact is the basis for the training method proposed by [40] that is implemented in this work.
+
+In multi-class problems, there is an output neuron M
+                     
+                        j
+                      for each class. The input vector x is assigned to the class whose neuron results in the biggest value [40]:
+                        
+                           (9)
+                           
+                              y
+                              =
+                              
+                                 
+                                    ⋁
+                                 
+                                 
+                                    j
+                                    =
+                                    1
+                                 
+                                 
+                                    m
+                                 
+                              
+                              
+                                 
+                                    τ
+                                 
+                                 
+                                    j
+                                 
+                              
+                              (
+                              x
+                              )
+                           
+                        
+                     where m is the number of classes, 
+                        
+                           
+                              τ
+                           
+                           
+                              j
+                           
+                        
+                        (
+                        x
+                        )
+                      is the output of the neuron M
+                     
+                        j
+                     , and y is the output of the Lattice Neural Network with Dendritic Processing. 
+                        y
+                        ∈
+                        {
+                        1
+                        ,
+                        2
+                        ,
+                        …
+                        ,
+                        m
+                        }
+                      represents the class assigned to the input vector x.
+
+@&#METHODOLOGY@&#
+
+Our methodology for blood vessel segmentation consists in six consecutive steps, as depicted in Fig. 1. The first step is concerned with the acquisition of the image, then a pre-processing step is performed to enhance the blood vessels. The third step characterizes each pixel as a 5-dimensional vector. Those vectors will be the features used by the classification algorithm. After all the images have been characterized, we create a training set and proceed to classification using a Lattice Neural Network with Dendritic Processing. Finally, a post-processing stage is performed to remove noise and to reduce the number of pixels misclassified. The following paragraphs give a more detailed description of these steps.
+
+The process starts with the acquisition of an image. In our case, we are using images taken from two well known public databases: DRIVE [9] and STARE [22].
+
+The DRIVE (Digital Retinal Images for Vessel Extraction) database consists in 40 images taken from diabetic patients with ages between 25 and 90 years. Seven of the images show signs of mild early diabetic retinopathy and the rest of the images do not show any sign of diabetic retinopathy. The images were acquired using a Canon CR5 non-mydriatic 3CCD camera with a 45°field of view (FOV). The images have a size of 768 by 584 pixels. The FOV of each image is circular with a diameter of approximately 540 pixels. The images have been cropped around the FOV. The set is divided into two subsets of 20 images each, for training and testing. For the training images, a single manual segmentation of the vasculature is available. For the test cases, two manual segmentations are available; one is used as gold standard, the other one can be used to compare computer generated segmentations with those of an independent human observer. All human observers that manually segmented the vasculature were instructed and trained by an experienced ophthalmologist. They were asked to mark all pixels for which they were at least 70% certain that they were vessels.
+
+The STARE (STructured Analysis of the Retina) database is comprised of 400 retinal images, although for only 20 of them we are provided with a ground truth. The ground truth images were generated by a hand labeling process performed by two independent experts. The images were captured with a TopCon TRV-50 fundus camera with a FOV of 35°. The photographs are 605×700 color images, 24 bits per pixel. Half of the images correspond to health retinas, and the other half are of retinas presenting different pathologies. In this work we will use the images labeled by A. Hoover [22]. An example of each kind of image, as well as its hand labeled segmentation, is shown in Fig. 3
+                        .
+
+Given the conditions of the images, a pre-processing step is required. The goals of the pre-processing step are the following: (a) remove some specular reflections, (b) remotion of background lighting and (c) enhancement of the vessel structure. Here we illustrate the results of each step, and more details on the algorithms are provided in [15]
+                        
+                           
+                              1.
+                              
+                                 Central light reflex removal: The green layer of the image is isolated and a morphological opening is performed to remove the light streak in some vessels. An example of the original and the modified images is shown in Fig. 4
+                                 .
+
+
+                                 Background homogenization: Since the background is not homogeneous, a mean filter, as well as a convolution with a Gaussian kernel is applied. Fig. 5
+                                 . shows the result of such operations.
+
+
+                                 Vessel enhancement: This step is performed by estimating the complement image and then applying a morphological Top-Hat transformation using as a structuring element a disk of eight pixels in radius. The vessel enhanced image is shown in Fig. 6
+                                 .
+
+Following the approach by Marin et al., we compute a 7-D vector composed of gray-levels and moment invariants for pixel representation [23]. The procedure is described in [23] and in [15].
+
+After computing the seven features for each pixel in the 20 images of the STARE dataset, we took a reference image to perform training. We extracted 30,000 random pixels from this single image (half hand-labeled as blood vessels, and half as non-blood vessels) to train the neural network. Some methods required also a cross validation set. In such cases, we extracted an additional 10,000 random pixels from the same reference image. The cross validation set was used for tuning of the parameter M in the case of the LNNDP, the parameters C and γ in the SVM with a Radial Basis Function kernel, and the parameter C in the SVM with linear Kernel. The test set consisted of all the pixels in the 20 images, therefore there is an overlap in the test set and the training set for the image used for training. There is no overlap on the test in the other 19 images. We repeated the same procedure for the DRIVE dataset; however, as this database divides the images in training set and test set, we took one image of the training set to perform training, and used the 20 images of the test set to test its performance.
+
+There are different kinds of approaches to train a Lattice Neural Network with Dendritic Processing. In this work we apply one called “train based on merging”. This approach starts by creating small hyper-parallelepipeds around each pattern, or small group of patterns that belong to the same class. The individual hyper-parallelepipeds are then merged, avoiding the inclusion of elements of foreign classes. Training is completed after merging the hyper-parallelepipeds for all patterns of the same class [36]. An excitatory dendrite recognizes the inner region of the hyper-parallelepiped, while an inhibitory dendrite recognizes the exterior region. The parameter p shown in Eqs. (3) and (4) is set to 1 for this case. Sossa and Guevara proposed an efficient method to implement the training of Lattice Neural Networks with Dendritic Processing [40]. The process is summarized as follows:
+
+Let 
+                           
+                              
+                                 x
+                              
+                              
+                                 1
+                              
+                           
+                           ,
+                           
+                              
+                                 x
+                              
+                              
+                                 2
+                              
+                           
+                           ,
+                           …
+                           ,
+                           
+                              
+                                 x
+                              
+                              
+                                 m
+                              
+                           
+                         be a finite sample of patterns, where each pattern 
+                           
+                              
+                                 x
+                              
+                              
+                                 j
+                              
+                           
+                           =
+                           (
+                           
+                              
+                                 x
+                              
+                              
+                                 j
+                                 1
+                              
+                           
+                           ,
+                           
+                              
+                                 x
+                              
+                              
+                                 j
+                                 2
+                              
+                           
+                           ,
+                           …
+                           ,
+                           
+                              
+                                 x
+                              
+                              
+                                 jn
+                              
+                           
+                           )
+                           ∈
+                           
+                              
+                                 R
+                              
+                              
+                                 n
+                              
+                           
+                         is n-dimensional point with n attributes. Further, each pattern x
+                        
+                           j
+                         belongs to one and only one class 
+                           
+                              
+                                 C
+                              
+                              
+                                 i
+                              
+                           
+                           ⊂
+                           
+                              
+                                 R
+                              
+                              
+                                 n
+                              
+                           
+                        , for 
+                           i
+                           =
+                           1
+                           ,
+                           2
+                           ,
+                           …
+                           ,
+                           p
+                        , where 
+                           p
+                           >
+                           1
+                        , and 
+                           
+                              
+                                 {
+                                 
+                                    
+                                       C
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 }
+                              
+                              
+                                 i
+                                 =
+                                 1
+                              
+                              
+                                 p
+                              
+                           
+                         is a finite set of classes, pairwise disjoint.
+
+The objective is to obtain a sets family 
+                           
+                              
+                                 {
+                                 
+                                    
+                                       H
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 }
+                              
+                              
+                                 i
+                                 =
+                                 1
+                              
+                              
+                                 p
+                              
+                           
+                         of 
+                           
+                              
+                                 R
+                              
+                              
+                                 n
+                              
+                           
+                         such that for each 
+                           i
+                           ∈
+                           {
+                           1
+                           ,
+                           2
+                           ,
+                           …
+                           ,
+                           p
+                           }
+                        , where 
+                           p
+                           >
+                           1
+                        , and H
+                        
+                           i
+                         is the union of hyper-parallelepipeds of dimension n containing only sample patterns of the class C
+                        
+                           i
+                        :
+                           
+                              1.
+                              Let P
+                                 
+                                    k
+                                  with k=0 be a hyper-parallelepiped of 
+                                    
+                                       
+                                          R
+                                       
+                                       
+                                          n
+                                       
+                                    
+                                 , including all the sample patterns 
+                                    
+                                       
+                                          {
+                                          
+                                             
+                                                x
+                                             
+                                             
+                                                j
+                                             
+                                          
+                                          }
+                                       
+                                       
+                                          j
+                                          =
+                                          1
+                                       
+                                       
+                                          m
+                                       
+                                    
+                                 .
+
+Divide each n-dimensional hyper-parallelepiped of P
+                                 
+                                    k
+                                  containing sample patterns of more than one class in 
+                                    
+                                       
+                                          2
+                                       
+                                       
+                                          n
+                                       
+                                    
+                                  smaller hyper-parallelepipeds Q
+                                 
+                                    t
+                                  by dividing the length of the side in every dimension of P
+                                 
+                                    k
+                                  by half.
+
+For each hyper-parallelepiped Q
+                                 
+                                    t
+                                 , apply one and only one of the following three cases:
+                                    
+                                       (i)
+                                       Eliminate all the hyper-parallelepipeds Q
+                                          
+                                             t
+                                           with no sample pattern inside it.
+
+Add the hyper-parallelepipeds Q
+                                          
+                                             t
+                                           that contain sample patterns of a single class 
+                                             
+                                                
+                                                   C
+                                                
+                                                
+                                                   i
+                                                
+                                             
+                                             ,
+                                             i
+                                             ∈
+                                             {
+                                             1
+                                             ,
+                                             2
+                                             ,
+                                             …
+                                             ,
+                                             p
+                                             }
+                                           to the union of hyper-parallelepipeds H
+                                          
+                                             i
+                                          , which can be stated as 
+                                             
+                                                
+                                                   H
+                                                
+                                                
+                                                   i
+                                                
+                                             
+                                             =
+                                             
+                                                
+                                                   ∪
+                                                
+                                                
+                                                   t
+                                                   ∈
+                                                   
+                                                      
+                                                         I
+                                                      
+                                                      
+                                                         i
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   Q
+                                                
+                                                
+                                                   t
+                                                
+                                             
+                                          , where I
+                                          
+                                             i
+                                           is the index set that only includes the hyper-parallelepipeds Q
+                                          
+                                             t
+                                           with sample patterns of the single class C
+                                          
+                                             i
+                                          . If the union of all 
+                                             
+                                                
+                                                   H
+                                                
+                                                
+                                                   i
+                                                
+                                             
+                                             ,
+                                             i
+                                             =
+                                             1
+                                             ,
+                                             2
+                                             ,
+                                             …
+                                             ,
+                                             p
+                                          , contain all the sample patterns 
+                                             
+                                                
+                                                   x
+                                                
+                                                
+                                                   1
+                                                
+                                             
+                                             ,
+                                             
+                                                
+                                                   x
+                                                
+                                                
+                                                   2
+                                                
+                                             
+                                             ,
+                                             …
+                                             ,
+                                             
+                                                
+                                                   x
+                                                
+                                                
+                                                   m
+                                                
+                                             
+                                           proceed with step 4.
+
+Rename as P
+                                          
+                                             k
+                                           the set of all hyper-parallelepipeds Q
+                                          
+                                             t
+                                           that contain sample patterns of more than one class C
+                                          
+                                             i
+                                          . Iterate between steps 2 and 3.
+
+Finally, for each 
+                                    k
+                                    ∈
+                                    {
+                                    1
+                                    ,
+                                    2
+                                    ,
+                                    …
+                                    ,
+                                    p
+                                    }
+                                  and based on the coordinates on each axis, calculate the weights for each n-dimensional hyper-parallelepipeds of H
+                                 
+                                    k
+                                  that encloses patterns belonging to C
+                                 
+                                    k
+                                 .
+
+Under this approach, the hyper-parallelepipeds are represented by dendrite D
+                        
+                           jk
+                        , and each class of patterns is represented by an output neuron M
+                        
+                           j
+                        . It is important to mention that since the number of hyper-parallelepipeds for each class may vary, each class may have different number of dendrites. Fig. 7
+                         illustrates an example of how this method would classify a sample pattern.
+
+The size of the original hyper-parallelepiped P
+                        0 in step 1 is determined by the extreme points in every dimension. Therefore 
+                           
+                              
+                                 d
+                              
+                              
+                                 i
+                              
+                           
+                           =
+                           max
+                           {
+                           
+                              
+                                 x
+                              
+                              
+                                 i
+                              
+                           
+                           }
+                           −
+                           min
+                           {
+                           
+                              
+                                 x
+                              
+                              
+                                 i
+                              
+                           
+                           }
+                        , where d
+                        
+                           i
+                         is the length of the hyper-parallelepiped along dimension 
+                           i
+                           =
+                           1
+                           ,
+                           2
+                           …
+                           ,
+                           n
+                        , 
+                           max
+                           {
+                           
+                              
+                                 x
+                              
+                              
+                                 i
+                              
+                           
+                           }
+                         is the maximum value of all the sample patterns in dimension i, and 
+                           min
+                           {
+                           
+                              
+                                 x
+                              
+                              
+                                 i
+                              
+                           
+                           }
+                         is the minimum value of all the sample patterns in dimension i. In order to increase the tolerance to noise, it is possible to add a margin M on each side of the hyper-parallelepipeds. This margin is a number greater or equal to zero, and it is a function of d
+                        
+                           i
+                        . For example if M=0.1, each side of the hyper-parallelepipeds will increase 
+                           0.1
+                           
+                              
+                                 d
+                              
+                              
+                                 i
+                              
+                           
+                         at each endpoint.
+
+Each input neuron N
+                        
+                           i
+                         will connect to an output neuron M
+                        
+                           j
+                         through a dendrite D
+                        
+                           jk
+                         at two different points: one excitatory 
+                           (
+                           l
+                           =
+                           1
+                           )
+                        , and one inhibitory 
+                           (
+                           l
+                           =
+                           0
+                           )
+                        . The weight 
+                           
+                              
+                                 ω
+                              
+                              
+                                 ijk
+                              
+                              
+                                 l
+                              
+                           
+                         associated with each connection will be the borders of the hyper-parallelepiped represented by D
+                        
+                           jk
+                         over the axis i. The lowest value of the border will be assigned to 
+                           −
+                           
+                              
+                                 ω
+                              
+                              
+                                 ijk
+                              
+                              
+                                 1
+                              
+                           
+                        , while the highest value will be assigned to 
+                           −
+                           
+                              
+                                 ω
+                              
+                              
+                                 ijk
+                              
+                              
+                                 0
+                              
+                           
+                        . Fig. 8
+                         shows an example of how weights would be assigned to a hyper-parallelepiped n=2.
+
+One of the main advantages of this network is that it creates the number of dendrites needed to correctly classify all the patterns in the training set in an automatic way. This eliminates the need for guessing the number of neurons in the hidden layer, and the number of layers that the multilayer perceptron requires.
+
+The images predicted by different methods contained “salt and pepper” noise, and small regions misclassified as blood vessels. To improve the quality of the prediction a post-processing phase was implemented. Our proposal includes three sub-steps:
+                           
+                              1.
+                              Apply a median filter using a mask of 5×5 to eliminate “salt and pepper”noise.
+
+Conjunction of the original and filtered images. This step eliminates white points that might be introduced by the filter.
+
+The regions whose area was below 25 pixels were classified as non-vessel [23]. In this case, the area of a region is the number of pixels connected.
+
+@&#EXPERIMENTS AND RESULTS@&#
+
+In the STARE dataset we achieved an accuracy of 99.02%. The network created 4844 dendrites in the neuron that classifies the pixels as blood vessels, and 4786 dendrites in the one that classifies them as non-blood vessels. On the other side, we achieved an accuracy of 99.96% on the training phase using the DRIVE dataset. The network created 6048 dendrites for the neuron that classifies pixels as non-blood vessels, and 5698 dendrites in the neuron that classifies them as blood vessels.
+
+In general, LNNDPs reach a 100% accuracy in the training phase, due to the learning algorithm. However, in this case, it did not happen, mainly because some pixels with the same feature vector were classified sometimes as blood vessels, and some other times as non-blood vessels. This could be caused by noise in the images, in the raw data, or due to human error in the hand labeling process. To avoid convergence problems caused by inconsistencies in the data, a process to re-label the pixels whose feature vector belonged to different classes had to be performed, the details can be found in [15].
+
+Because of the inner characteristics of the Lattice Neural Networks with Dendritic Processing, outliers present in the training set can diminish the generalization capabilities of the network. In order to reduce this effect, a control chart to remove outliers in the training set was used. The Hotelling T
+                     2 control chart was used for that purpose [41]. After implementing this control chart, about 6.6% of the samples fell in this category. A further elimination of the two features produced the biggest amount of outliers (f
+                     4 and f
+                     6), the percentage diminished to 2.4%. Once the outliers were removed, the experiment was run again. The network created 6966 dendrites for the first class and 6611 for the second class, and it achieved an accuracy of 99.8% in the training phase.
+
+The third experiment consisted in training the LNNDP with 3 images instead of just one. A feature vector of 5 dimensions was used. The images were selected considering those which seemed different by visual inspection. The objective of this experiment is to identify if the addition of images with different characteristics improves the generalization capability of the network. We selected 5000 pixels labeled as blood vessels, and 5000 labeled as non-blood vessels from each image to create the new train set.
+
+Finally, we modified the parameter M (which was set to 0 in the previous experiments) using the method of differential evolution as proposed in [40]. For comparison purposes, we also implemented a multilayer perceptron with 9 dendrites in the hidden layer, a neural network with 3 hidden layers containing 15 hidden units each as proposed in [23], and a support vector machine following the methodology proposed in [42]. The results of our implementation of the methodology proposed by Marin et al. in [23] showed a lower performance than the results reported by them. This difference could be caused by the selection of the training set: they chose the training set manually, while we chose it randomly.
+
+In order to evaluate the predicted images, we used a set of metrics: 
+                        
+                           
+                              F
+                           
+                           
+                              1
+                           
+                        
+                        Score
+                     , specificity, sensitivity, Matthews Correlation Coefficient (MCC), and accuracy which are defined by
+                        
+                           (10)
+                           
+                              specificity
+                              =
+                              TN
+                              /
+                              (
+                              FP
+                              +
+                              TN
+                              )
+                           
+                        
+                     
+                     
+                        
+                           (11)
+                           
+                              sensitivity
+                              =
+                              TP
+                              /
+                              (
+                              TP
+                              +
+                              FN
+                              )
+                           
+                        
+                     
+                     
+                        
+                           (12)
+                           
+                              
+                                 
+                                    F
+                                 
+                                 
+                                    1
+                                 
+                              
+                              Score
+                              =
+                              2
+                              ×
+                              (
+                              precision
+                              ×
+                              sensitivity
+                              )
+                              /
+                              (
+                              precision
+                              +
+                              sensitivity
+                              )
+                           
+                        
+                     
+                     
+                        
+                           (13)
+                           
+                              MCC
+                              =
+                              
+                                 
+                                    (
+                                    TP
+                                    ×
+                                    TN
+                                    )
+                                    −
+                                    (
+                                    FP
+                                    ×
+                                    FN
+                                    )
+                                 
+                                 
+                                    
+                                       
+                                          (
+                                          (
+                                          TP
+                                          +
+                                          FP
+                                          )
+                                          ×
+                                          (
+                                          TP
+                                          +
+                                          FN
+                                          )
+                                          ×
+                                          (
+                                          TN
+                                          +
+                                          FP
+                                          )
+                                          ×
+                                          (
+                                          TN
+                                          +
+                                          FN
+                                          )
+                                          )
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+                     
+                        
+                           (14)
+                           
+                              Accuracy
+                              =
+                              
+                                 
+                                    (
+                                    TP
+                                    +
+                                    TN
+                                    )
+                                 
+                                 
+                                    TP
+                                    +
+                                    TN
+                                    +
+                                    FP
+                                    +
+                                    FN
+                                 
+                              
+                           
+                        
+                     where TP: True Positives, TN: True Negatives, FP: False Positives, FN: False Negatives.
+                  
+
+
+                     Table 1
+                      shows the results of the experiments ran over the 20 images of the STARE dataset: LNNDP 3 Im refers to the experiment where 3 images were used in the training phase. LNNDP NO (no outliers) refers to the experiment where outliers were removed from the training set. NN 3 HL refers to the experiment where we used a neural network with 3 hidden layers and 15 neurons in each layer. LNDDP opt. M refers to the experiment where we used differential evolution to find an optimal M to train the LNNDP. MLP 9 N refers to the experiment where we used a multilayer perceptron with 9 neurons in the hidden layer. Fig. 10
+                      shows some of the segmentation computed by the Lattice Neural Network with Dendritic Processing using the 5-dimensional feature set, which presented the best results. Fig. 11
+                      shows segmentation results on selected retinal regions for detection of thin and wide blood vessels. The metrics for the sub-images on this figure are shown in Table 5. On the other side, Table 2
+                      lists the results of the same experiments over the test set of the DRIVE dataset. As the LNNDP NO showed the best results when compared with LNNDP 3Im, and LNNDP opt. M, we only report the results of the LNNDP NO on this dataset (Table 3
+                     ).
+
+Most works in the literature use accuracy as a metric. For comparison purposes, we also estimated the accuracy of the previously described algorithms. However, the disadvantage of using accuracy for this particular problem is that between 92% and 95% of the pixels in the images are non-blood vessels, so an algorithm that always labels a pixel as non-blood vessel will have 92–95% of accuracy, giving a false idea of good performance. The metric 
+                        
+                           
+                              F
+                           
+                           
+                              1
+                           
+                        
+                        Score
+                      gives a more realistic evaluation by calculating the relationship between true positives, false negatives, and false positives. In this way, an algorithm that always labels the pixels as non-blood vessels will have a grade of 0, and an algorithm that labels all the pixels correctly will have a grade of 1. Table 4
+                      compares the accuracy of our method with the accuracy reported by other works.
+
+
+                      
+                     Fig. 9 shows three images. The first one is the segmentation generated by the method described in this paper, the second and the third correspond to ground truths of two different experts. It is important to notice that the segmentation is different between the two experts. However, if we compute the metrics defined above for image (a), the results are as follows: 
+                        
+                           
+                              F
+                           
+                           
+                              1
+                           
+                        
+                      Score: 0.754, Specificity: 0.967, Sensitivity: 0.836, MCC: 0.735 and Accuracy: 0.957. The numbers give the idea of a good match. Even though, we can still detect some differences in the image by a naked eye inspection. This suggests that maybe it would be a good idea to continue exploring similarity metrics for this kind of images. Also, that the incorporation of images segmented by more experts may improve the generalization in the network.
+
+Support Vector Machine was implemented using LIBSVM Library [43], and Multi-layer perceptron using the Octave package nnet.
+
+@&#CONCLUSIONS@&#
+
+The Lattice Neural Network with Dendritic Processing showed a better performance than the other algorithms tested in this work. The increase was about 2% in the best case. We showed the robustness of this classification method by testing it in two different datasets. Six different experiments were ran to compare the performance of our algorithm with others. Our findings show that the best result was obtained with the training set generated with a single image, represented with an attribute vector of 5 dimensions. We also noticed that if more images are added to the training set, the performance of the classifier degrades. We believe that this is due to the high variety of the images in the database. Different methods were tested to remove noise and decrease false positives. The problem is that most of them also remove important details of the veins. More research should be done in this matter. In order to reduce the cardinality of the attribute vector, a Hotelling T
+                     2 control chart was employed. We believe that more work can be done on this issue by considering proper feature reduction methods. In particular our work provides some insights on the statistical analysis of data prior to use machine learning algorithms, which is often missing in the literature. In this way, our methodology not only performed better that traditional neural networks, but also included a missing step in previous works.
+
+In [40], Sossa and Guevara proposed a margin M that can be added to the LNNDP to improve its generalization capabilities. We implemented differential evolution for finding an optimal M; however, we obtained almost the same results than setting M=0. This suggests that differential evolution was not efficient for finding this parameter in this particular problem, so other approaches must be implemented in order to find it.
+
+We want to point out that an advantage of Lattice Neural Network with Dendritic Processing over well known methods such as multilayer perceptron and support vector machines is that it creates as many dendrites as needed in an automatic way. This makes it unnecessary to specify a configuration prior to the training phase to find optimal parameters that other algorithms need (for example learning rate, number of neurons in the hidden layer, and kernel to use). At the same time, the training algorithm for the LNNDP is completely transparent and simple to explain. These characteristics make the LNNDP an excellent tool for people who have little experience with machine learning algorithms.
+
+However, there are some aspects that could be considered for future work. One of them has to do with the definition of similarity metrics between images. Different alternatives have been proposed along the time, going from a simple ratio for the accuracy (ACC), to other metrics such as sensitivity, Matthews Correlation Coefficient and other alternatives [11]. However, we believe that more work could be conducted in this matter to better represent when is that two retina images are similar. We observed that in some cases the values of some of those parameters might be considered “good”, but when a human looks at the images, some important differences can be appreciated. That may indicate that the metrics are still to be improved. Another direction for future research could be on the definition of features to characterize the images. In this work, we proposed 5 parameters, based on previous works that proposed 7. But, more research could be conducted in this direction.
+
+None declared.
+
+@&#ACKNOWLEDGMENTS@&#
+
+The authors thank Tecnológico de Monterrey, Campus Guadalajara, for their support under the Research Chair in Information Technologies and Electronics, as well as IPN-CIC under project SIP 20140776, and CONACYT under project 155014 for the economical support to carry out this research. We also acknowledge Professor Marco Antonio de Luna for his insight about statistical analysis.
+
+Supplementary data associated with this paper can be found in the online version at doi:10.1016/j.compbiomed.2014.12.016.
+
+
+                     
+                        
+                           Application 1
+                           
+                        
+                     
+                     
+                        
+                           Application 2
+                           
+                        
+                     
+                  
+
+@&#REFERENCES@&#
+

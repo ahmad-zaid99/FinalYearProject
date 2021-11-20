@@ -1,0 +1,1488 @@
+@&#MAIN-TITLE@&#A meso-scale numerical method for the simulation of chloride diffusivity in concrete
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           We simulate the chloride diffusivity in concrete at meso-scale using the FEM.
+
+
+                        
+                        
+                           
+                           Aggregate distribution and aggregate shape have a weak effect on chloride ingress.
+
+
+                        
+                        
+                           
+                           The water/cement ratio w/c has a marked effect on chloride diffusivity.
+
+
+                        
+                        
+                           
+                           ITZ properties and aggregate content have a great impact on chloride diffusivity.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Concrete
+
+Chloride diffusion
+
+Meso-scale
+
+Composites
+
+Finite element method
+
+@&#ABSTRACT@&#
+
+
+                  Chloride-induced rebar corrosion is a common degradation process for concrete infrastructures, which is a practical concern in coastal areas. It is essential to study the chloride diffusivity behavior in concrete. Considering the concrete heterogeneity, a meso-scopic numerical model based on the finite-element method is developed for the simulation of chloride diffusivity. Concrete is regarded as a heterogeneous material consisting of three components, i.e., aggregate, mortar matrix and the Interfacial Transition Zones (ITZs). A random aggregate structure of concrete is built, in which the mortar matrix is considered homogeneous. The aggregate phase is set as impermeable, and the chloride diffusion is assumed to take place only in the mortar matrix and the ITZs. The diffusion properties of the mortar matrix are determined based on the water/cement ratio, degree of hydration and porosity gradients away from aggregate particles. The transport equations are solved using the finite-element method, in which the three components are meshed separately and the continuity in fluxes at interfaces between them is applied. The present numerical model is validated against the available test data from the literature and compared with analytical results for ideal cases. Using the finite-element simulation method, a parametric study has been undertaken to understand the influences of the meso-structural parameters, including aggregate distribution, aggregate shape, diffusivity properties of the ITZ, water/cement ratio and aggregate content. The simulation results indicate that both aggregate distribution and aggregate shape have a negligible influence on chloride ingress in concrete, the diffusion properties of the ITZ and aggregate content have a significant impact, and the water/cement ratio has a marked effect.
+               
+
+@&#INTRODUCTION@&#
+
+Chloride ions contained in an environment surrounding concrete can penetrate into the material and induce the corrosion of embedded reinforcing steel, which leads to serious economic and safety implications. Therefore, it is of significant importance to know the chloride diffusivity in concrete to predict the initiation time of corrosion [1]. In order to protect the reinforcing steel from corrosion, it is important to understand how the chloride penetration takes place in concrete and how the individual components of the concrete mixture influences the penetration of chlorides.
+
+A lot of efforts have been devoted to determine the apparent chloride diffusivity of concrete by using analytical, experimental and numerical methods. Usually, the chloride diffusivity in concrete can be directly measured by the conventional or accelerated chloride diffusion test [2,3]. Based on the available experimental observations, some empirical formulae have been formulated based on regression analysis for practical use by engineers. Lab based transport testing has been conducted for many years to gain a better understanding of different variables influencing the diffusivity of cement-based materials. In experimental investigations, Delagrave et al. [2] tested three series of mortars with different aggregate contents. They found that the aggregates would hinder the penetration of chloride ions into concrete and the apparent chloride diffusion coefficient of concrete would decrease with the increase of aggregate content. Using an electrochemical method, Lu et al. [4] found that the total chloride diffusivity was about 2.2–3.4 times the free one. In their efforts, the free chloride refers to the water-soluble chloride in concrete as usual, and the bound chloride means the total chloride minus the free one. On the basis of the steady-state diffusion test, Caré [1] explored the effect of aggregates size distribution. Chalee and Jaturapitakkul [5] studied the effect of W/B ratios and fineness on chloride diffusion coefficient of concrete under a marine environment. However, the experimental measurement has some limitations. Since the microstructure of concrete is highly complex and its transport properties are affected by many interacting parameters, it is often difficult to isolate the effects of specific variables because other influencing parameters inevitably vary [6]. Besides that, it is sometimes time-consuming to measure the chloride diffusivity especially for high-density concrete.
+
+For these reasons, it would be extremely useful to be able to predict diffusivity based on the microstructure of concrete, either using an analytical or numerical model. In analytical investigations, the Fick second law has been used to characterize the ingress of chloride ions into concrete, such as in the literature [7–9]. With the development of the multi-scale mechanical theories, homogenization approaches have provided an effective analytical tool for prediction of chloride diffusivity in concrete. Garboczi and Bentz [10] proposed a comprehensive multi-scale model to predict the diffusivity of concrete considering the effect of the Interfacial Transition Zone (ITZ). They calculated the volume of the ITZ assuming that the thickness of ITZ was constant regardless of the dimension of aggregate particles. Xi and Bazant [11] and Xi et al. [12] investigated the diffusion of chloride ions into concrete and developed a new chloride penetration model for saturated concrete by using a multi-scale modeling approach. The approach, however, which did not consider the effect of the ITZ layers, may be only suitable for the case of high aggregate content (e.g. more than 50%). In this case, the ITZs around neighboring aggregates will become very close to each other, and at a certain volume fraction of aggregate, the ITZs may eventually connect with each other and thus create a continuous pathway with high porosity. Thus, most of the cement paste in concrete is in ITZs [11]. Considering the diffusivities of both ITZ and cement paste, Oh and Jang [13] adopted the general effective media equation to obtain the diffusivity and derived the effective diffusivity of concrete based on the composite sphere assemblage model. Song et al. [14] proposed a refined model for the diffusion coefficient and surface chloride content for time-dependent chloride transport. The N-layered spherical inclusion theory was applied by Sun et al. [15] to develop a multi-scale model to predict the effective diffusion coefficient of chloride in concrete. These homogenization methods have been demonstrated to be effective in predicting the chloride diffusivity in concrete. However, these analytical methods are generally too simple to differentiate the effects of some factors. For instance, in these analytical methods, the aggregates were often assumed to be circular, and thus the effect of aggregate shape cannot be reflected. In addition, the effects of aggregate gradation, aggregate size, aggregate distribution and the ITZ thickness cannot be explained.
+
+Recently, some efforts have been conducted by the FEM simulations. For instance, in the work of Bitaraf and Mohammadi [9], a finite point method was developed and adopted for solving the chloride diffusion equation for prediction of service life of concrete structures. Xiao et al. [16] used the FEM to describe the effect of recycled aggregate on the chloride diffusion in recycled aggregate concrete. The lattice model was employed by Zheng et al. [17] to analyze the chloride diffusion in concrete based on the simulated meso-structure of concrete, and the effect of aggregate shape was studied in a quantitative manner. They have found that when the aspect ratio of elliptical aggregate particles increases, the chloride diffusivity in concrete decreases for a given chloride diffusivity ratio of ITZ to cement paste. Zeng [18] and Li et al. [19] assumed concrete as a two-phase composite composed of aggregate and mortar matrix, and they all adopted the finite-element method to study the chloride diffusivity behavior in concrete. However, some modeling and mercury intrusion porosimetry (MIP) experimental work has showed that, even if the interfacial zone thickness is taken to be as small as 10μm, the ITZ phase can still form a continuous percolating channel, which implies an even larger effect on the transport properties of the composite [20,21]. Simply to say, the effect of the ITZ should not be ignored in the simulations. Considering the influence of ITZ, Abyaneh et al. [6] used the 3D finite element method to investigate chloride diffusion in concrete at the meso-scale. Wang and Ueda [22] used a two-dimension meso-scale truss network model to predict chloride diffusion in concrete, in which the effects of time and temperature were taken into account. After that, the two-dimensional model was extended to three-dimensional lattice model by Šavija et al. [23], and the chloride transport in saturated sound and cracked concrete was simulated. Great progress has been made in the numerical simulation of chloride diffusivity in concrete. Nevertheless, the study on chloride diffusivity in concrete is still incomplete, for instance, the influence of concrete heterogeneities does not get well recognized. And further work thus needs to be conducted.
+
+The aim of the present study is to explore how chloride penetration takes place in concrete and how the individual components of the concrete mixture influences the penetration of chlorides. In other words, this study focuses on the influences of meso-structure parameters on chloride diffusivity in concrete, including aggregate distribution, aggregate shape, the ITZ diffusion properties, water-to-cement ratio and aggregate content.
+
+Taking the concrete heterogeneity in account, the concrete in the present work was treated as a multi-phase composite. The meso-scale material constituents involved the mortar matrix, aggregates and the ITZ. The aggregates were treated as inclusions with random spatial distribution enfolded by an interface layer of ITZ, and the mortar matrix was considered homogeneous. It was regarded that the aggregate was relatively impermeable compared with the ITZ and the mortar matrix. The chloride diffusion coefficient of aggregate was thus taken to be zero in the present study. The chloride diffusion was assumed to take place only in the mortar matrix and the ITZ phases. And the diffusion properties of the mortar matrix were determined based on water/cement ratio, degree of hydration and porosity. The transport equations were solved using the finite element method, in which the three components were meshed separately and continuity in fluxes at interfaces between them was applied.
+
+After the introduction, the paper is organized as follows: In Section 2, the basic theory of chloride diffusivity in concrete is described. Section 3 presents the meso-structure of concrete and the diffusion properties of the meso components. The validation of the present FE simulation method is shown in Section 4, where the present simulation results are compared to the available test data and the analytical results in ideal cases. Based on the FE simulations, a series of parametric studies are carried out to investigate the influences of the meso-structure parameters, as shown in Section 5. Finally, Section 6 presents some concluding remarks.
+
+The governing equations for mass diffusion are an extension of Fick׳s equation: they allow for non-uniform solubility of the diffusing substance in the base material and mass diffusion driven by gradients of temperature and pressure. The basic solution variable (used as the degree of freedom at the nodes of the mesh) is the “normalized concentration” (often also referred to as the “activity” of the diffusing material), 
+                           ϕ
+                           =
+                           C
+                           /
+                           s
+                        , where C is the mass concentration of the diffusing material and s means its solubility in the base material. The diffusion problem is defined from the requirement of mass conservation for the diffusion phase [24]
+                        
+                           
+                              (1)
+                              
+                                 
+                                    ∫
+                                    V
+                                 
+                                 
+                                    
+                                       
+                                          d
+                                          c
+                                       
+                                       
+                                          d
+                                          t
+                                       
+                                    
+                                    d
+                                    V
+                                 
+                                 +
+                                 
+                                    ∫
+                                    S
+                                 
+                                 
+                                    n
+                                    ⋅
+                                    J
+                                 
+                                 
+                                 d
+                                 S
+                                 =
+                                 0
+                              
+                           
+                        in which V is any volume whose surface is S, n is the outward normal to S, J is the flux of concentration of the diffusion phase, and 
+                           n
+                           ⋅
+                           J
+                         is the concentration flux leaving S.
+
+According to the divergence theorem, it can be obtained as
+                           
+                              (2)
+                              
+                                 
+                                    ∫
+                                    V
+                                 
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             
+                                                d
+                                                c
+                                             
+                                             
+                                                d
+                                                t
+                                             
+                                          
+                                          +
+                                          
+                                             ∂
+                                             
+                                                ∂
+                                                X
+                                             
+                                          
+                                          ⋅
+                                          J
+                                       
+                                       )
+                                    
+                                    d
+                                    V
+                                 
+                                 =
+                                 0
+                              
+                           
+                        
+                     
+
+Because the volume V is arbitrary, Eq. (2) provides the point wise equation:
+                           
+                              (3)
+                              
+                                 
+                                    
+                                       d
+                                       c
+                                    
+                                    
+                                       d
+                                       t
+                                    
+                                 
+                                 +
+                                 
+                                    ∂
+                                    
+                                       ∂
+                                       X
+                                    
+                                 
+                                 ⋅
+                                 J
+                                 =
+                                 0
+                              
+                           
+                        
+                     
+
+And the equivalent weak form is
+                           
+                              (4)
+                              
+                                 
+                                    ∫
+                                    V
+                                 
+                                 
+                                    δ
+                                    ϕ
+                                    
+                                       (
+                                       
+                                          
+                                             
+                                                d
+                                                c
+                                             
+                                             
+                                                d
+                                                t
+                                             
+                                          
+                                          +
+                                          
+                                             ∂
+                                             
+                                                ∂
+                                                X
+                                             
+                                          
+                                          ⋅
+                                          J
+                                       
+                                       )
+                                    
+                                 
+                                 d
+                                 V
+                                 =
+                                 0
+                              
+                           
+                        where 
+                           δ
+                           ϕ
+                         is an arbitrary, suitable continuous and scalar field.
+
+Using the divergence theorem again yields
+                           
+                              (5)
+                              
+                                 
+                                    ∫
+                                    V
+                                 
+                                 
+                                    [
+                                    
+                                       δ
+                                       ϕ
+                                       
+                                          (
+                                          
+                                             
+                                                
+                                                   d
+                                                   c
+                                                
+                                                
+                                                   d
+                                                   t
+                                                
+                                             
+                                          
+                                          )
+                                       
+                                       −
+                                       J
+                                       ⋅
+                                       
+                                          
+                                             ∂
+                                             δ
+                                             ϕ
+                                          
+                                          
+                                             ∂
+                                             X
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                                 d
+                                 V
+                                 +
+                                 
+                                    ∫
+                                    S
+                                 
+                                 
+                                    δ
+                                    ϕ
+                                    n
+                                    ⋅
+                                    J
+                                 
+                                 
+                                 d
+                                 S
+                                 =
+                                 0
+                              
+                           
+                        
+                     
+
+As known, the diffusion is assumed to be driven by the gradient of a chemical potential, which gives the general behavior:
+                           
+                              (6)
+                              
+                                 J
+                                 =
+                                 −
+                                 s
+                                 D
+                                 ⋅
+                                 
+                                    [
+                                    
+                                       
+                                          
+                                             ∂
+                                             ϕ
+                                          
+                                          
+                                             ∂
+                                             X
+                                          
+                                       
+                                       +
+                                       
+                                          
+                                             κ
+                                          
+                                          
+                                             s
+                                          
+                                       
+                                       
+                                          ∂
+                                          
+                                             ∂
+                                             X
+                                          
+                                       
+                                       (
+                                       ln
+                                       (
+                                       θ
+                                       −
+                                       
+                                          
+                                             θ
+                                          
+                                          Z
+                                       
+                                       )
+                                       )
+                                       +
+                                       
+                                          
+                                             κ
+                                          
+                                          
+                                             p
+                                          
+                                       
+                                       
+                                          
+                                             ∂
+                                             p
+                                          
+                                          
+                                             ∂
+                                             X
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                              
+                           
+                        where 
+                           D
+                           (
+                           c
+                           ,
+                           θ
+                           ,
+                           f
+                           )
+                         denotes the diffusivity; 
+                           s
+                           (
+                           θ
+                           ,
+                           f
+                           )
+                         means the solubility; 
+                           
+                              
+                                 κ
+                              
+                              
+                                 s
+                              
+                           
+                           (
+                           c
+                           ,
+                           θ
+                           ,
+                           f
+                           )
+                         is the “Soret effect” factor, providing diffusion because of the temperature gradient; 
+                           θ
+                         is the temperature; 
+                           
+                              
+                                 θ
+                              
+                              Z
+                           
+                         is the absolute zero on the temperature scale used; 
+                           
+                              
+                                 κ
+                              
+                              
+                                 p
+                              
+                           
+                           (
+                           c
+                           ,
+                           θ
+                           ,
+                           f
+                           )
+                         is the pressure stress factor, providing diffusion driven by the gradient of the equivalent pressure stress, 
+                           p
+                           =
+                           −
+                           t
+                           r
+                           a
+                           c
+                           e
+                           (
+                           σ
+                           )
+                           /
+                           3
+                        ; and f are any predefined field variables.
+
+Equilibrium in a finite element model is approximated by a finite set of equations through the introduction of appropriate interpolation functions. Discretized quantities are indicated by uppercase superscript (e.g., 
+                           
+                              
+                                 ϕ
+                              
+                              N
+                           
+                        ). The summation convention is adopted for the superscripts. These represent nodal variables, with nodes shared between adjacent elements and appropriate interpolation chosen to provide adequate continuity of the assumed variation. The interpolation is based on material coordinates S
+                        
+                           i
+                        , i=1, 2, 3.
+
+The virtual normalized concentration field is interpolated by
+                           
+                              (7)
+                              
+                                 δ
+                                 ϕ
+                                 =
+                                 
+                                    
+                                       N
+                                    
+                                    N
+                                 
+                                 δ
+                                 
+                                    
+                                       ϕ
+                                    
+                                    N
+                                 
+                              
+                           
+                        where 
+                           
+                              
+                                 N
+                              
+                              N
+                           
+                           (
+                           
+                              
+                                 S
+                              
+                              
+                                 i
+                              
+                           
+                           )
+                         represent interpolation functions. Then, the discretized equations are written as
+                           
+                              (8)
+                              
+                                 
+                                    ∫
+                                    V
+                                 
+                                 
+                                    [
+                                    
+                                       
+                                          
+                                             N
+                                          
+                                          N
+                                       
+                                       
+                                          (
+                                          
+                                             s
+                                             
+                                                
+                                                   d
+                                                   ϕ
+                                                
+                                                
+                                                   d
+                                                   t
+                                                
+                                             
+                                             +
+                                             ϕ
+                                             
+                                                
+                                                   d
+                                                   s
+                                                
+                                                
+                                                   d
+                                                   θ
+                                                
+                                             
+                                             
+                                                
+                                                   d
+                                                   θ
+                                                
+                                                
+                                                   d
+                                                   t
+                                                
+                                             
+                                          
+                                          )
+                                       
+                                       +
+                                       
+                                          
+                                             ∂
+                                             
+                                                
+                                                   N
+                                                
+                                                N
+                                             
+                                          
+                                          
+                                             ∂
+                                             X
+                                          
+                                       
+                                       ⋅
+                                       s
+                                       D
+                                       ⋅
+                                       
+                                          (
+                                          
+                                             
+                                                
+                                                   ∂
+                                                   ϕ
+                                                
+                                                
+                                                   ∂
+                                                   X
+                                                
+                                             
+                                             +
+                                             
+                                                
+                                                   
+                                                      
+                                                         κ
+                                                      
+                                                      
+                                                         s
+                                                      
+                                                   
+                                                
+                                                
+                                                   θ
+                                                   −
+                                                   
+                                                      
+                                                         θ
+                                                      
+                                                      Z
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   ∂
+                                                   θ
+                                                
+                                                
+                                                   ∂
+                                                   X
+                                                
+                                             
+                                             +
+                                             
+                                                
+                                                   κ
+                                                
+                                                
+                                                   p
+                                                
+                                             
+                                             
+                                                
+                                                   ∂
+                                                   p
+                                                
+                                                
+                                                   ∂
+                                                   X
+                                                
+                                             
+                                          
+                                          )
+                                       
+                                    
+                                    ]
+                                 
+                                 d
+                                 V
+                                 =
+                                 
+                                    ∫
+                                    S
+                                 
+                                 
+                                    
+                                       
+                                          N
+                                       
+                                       N
+                                    
+                                    q
+                                    
+                                    d
+                                    S
+                                 
+                              
+                           
+                        where q is the concentration flux entering the body across S, 
+                           q
+                           =
+                           −
+                           n
+                           ⋅
+                           J
+                        .
+
+Time integration in transient problems utilizes the backward Euler method. Here, the “Soret effect” and the pressure stress factors are not taken into account temporarily in the present study, i.e. 
+                           
+                              
+                                 κ
+                              
+                              
+                                 s
+                              
+                           
+                           =
+                           0
+                         and 
+                           
+                              
+                                 κ
+                              
+                              
+                                 p
+                              
+                           
+                           =
+                           0
+                        .
+
+The structure of concrete is highly heterogeneous and complex than any other porous materials in that the sizes of aggregate particles and hydrated solid components in concrete vary in very wide range from nanometers to centimeters [13]. As it is known that the concrete conductivity and diffusivity are strongly dependent on its microstructure [10]. Effective diffusion coefficients of chloride, characterizing the resistance of concrete to diffusive ingress of chlorides, are therefore considered to be a function of the characteristics of cement paste matrix, aggregates and the ITZ [25,26]. The rate at which chloride ions penetrate into water-saturated concrete not only depends on the diffusion coefficients in mortar matrix and aggregates but also the ITZ. The ITZ is of great importance since it is a “zone of weakness” in the microstructure of concrete, in terms of transport properties as well as in terms of strength [13]. As a result, to predict the chloride diffusivity accurately, the concrete must be considered as at least a three-phase composite composed of aggregates, mortar matrix, and the ITZ, with each phase having its own distinct diffusion characteristics.
+
+In the present work, the meso-scale concrete material constituents are the mortar matrix, aggregates and the Interfacial Transition Zone (ITZ). Similar with that in [27], the aggregates are modeled as spheres with random spatial distribution enfolded by an interface layer of ITZ. The mortar matrix is considered homogeneous, and cracks are not accounted for. In the present study, the popular “take-and-place” method [27,29,30] was employed to generate the coarse aggregate particles. The fine ones and other components (e.g. voids and cracks) were assumed to be mixed up with the cement paste establishing the matrix phase. Therefore this phase is considered as a homogeneous component at the meso-scale. The material properties of the mortar phase are thus strongly dependent on the type of cement used, amount of pores, water to cement ratio and other additives present in the concrete.
+
+The aggregate fraction in concrete, if only particles with a diameter above 2mm are considered, is around 30% and can rise up above 70%, if smaller inclusions are considered too. Herein the present study, the matrix was assumed to include all the particles smaller than 2mm. Similar with that in [29], the distribution of aggregate with different sizes employed in the present concrete specimen was determined by using a sieve analysis for a given aggregate volume fraction. Here, the Fuller curve was exploited here to describe the size of aggregate. The aggregate particles were placed into the mortar matrix one by one at randomly determined positions in such a way that no overlapping with particles already placed.
+
+
+                        
+                        Fig. 1 depicts a typical schematic diagram of concrete meso-structure at meso-scale, which consists of coarse aggregate particles, mortar matrix and the ITZ. The heterogeneous specimen sized by 100mm × 100mm is utilized to determine the chloride diffusion in concrete. Note that aggregate particles in real concrete are not perfectly circular. However, as it will be demonstrated later, the effect of aggregate shape on chloride diffusion in concrete seems very small.
+
+The size of the aggregate particles within concrete had a large range, and herein four equivalent aggregate sizes were utilized, i.e. 6mm, 8mm, 10mm and 14mm. According to Fuller׳s curve [27–29], 69 circular equivalent aggregate particles in the class 6–14mm were placed into the specimen, as depicted in Fig. 1. The aggregate content is about 35%, which is same with those used in [23,30].
+
+In Fig. 1, the green areas mean the aggregate phase, the red zones are the interfacial transition zone (i.e. the ITZ) and the grey zones denote the mortar matrix. It is in this manner that different transport (or mechanical) properties are assigned to different phases.
+
+The interfacial zones are viewed as uniform thickness shells placed concentrically around each aggregate or sand grain. Because the average particle size of the cement is much smaller than the average particle size of the sand or aggregate, the thickness of the interfacial zone is determined by the cement particle size. Therefore, the thickness has the same value for each sand grain [21,31]. In addition, it was assumed that the ITZs do not overlap with each other. Simply to say, the aggregate size and aggregate content do not affect the ITZ thickness and quality.
+
+As known, the transport property of each component in the concrete meso-structure is defined according to its porosity. Compared to the cement paste and the ITZ, most aggregate particles used in concrete are dense, and thus it is assumed that aggregate particles have zero diffusivity in this study. Moreover, the effect of aggregate particles on paste structure was not considered for the sake of simplicity.
+
+At the micro-scale, the hardened cement paste is composed of unhydrated cement particles, hydration products and pore networks occupied by the bulk water and air at a normal temperature. Herein the present study, the hardened cement paste was treated as a homogenized medium.
+
+There has been a great deal of efforts devoted to determining the chloride diffusivity in cement paste both experimentally and theoretically for the durability assessment and design of RC structures, for instance in the work [13,32–34]. At the scale of micrometers, the cement paste itself is heterogeneous consisting of capillary pores, unhydrated cement, and crystalline and gel hydration products. Many empirical and theoretical equations between the diffusivity in cement paste and the porosity of cement paste have been established, e.g. in Refs. [13,33–35].
+
+In view of the general effective medium theory, Zheng and Zhou [34] derived an analytical solution for the chloride diffusivity of hardened cement paste. The expression of the chloride diffusion coefficient D
+                        cp has the form as
+                           
+                              (9)
+                              
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       cp
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       2
+                                       
+                                          
+                                             φ
+                                          
+                                          
+                                             p
+                                          
+                                          
+                                             2.75
+                                          
+                                       
+                                       
+                                          
+                                             D
+                                          
+                                          
+                                             p
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             φ
+                                          
+                                          
+                                             p
+                                          
+                                          
+                                             1.75
+                                          
+                                       
+                                       (
+                                       3
+                                       −
+                                       
+                                          
+                                             φ
+                                          
+                                          
+                                             p
+                                          
+                                       
+                                       )
+                                       +
+                                       n
+                                       
+                                          
+                                             (
+                                             1
+                                             −
+                                             
+                                                
+                                                   φ
+                                                
+                                                
+                                                   p
+                                                
+                                             
+                                             )
+                                          
+                                          
+                                             2.75
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        where D
+                        p means the chloride diffusivity in the pore solution; n is a parameter; 
+                           
+                              
+                                 φ
+                              
+                              
+                                 p
+                              
+                           
+                         is the porosity of cement paste, including the porosity of capillary pores and gel pores. The expression of the porosity 
+                           
+                              
+                                 φ
+                              
+                              
+                                 p
+                              
+                           
+                         of cement paste has the form [15,34]:
+                           
+                              (10)
+                              
+                                 
+                                    
+                                       φ
+                                    
+                                    
+                                       p
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       w
+                                       /
+                                       c
+                                       −
+                                       0.17
+                                       α
+                                    
+                                    
+                                       w
+                                       /
+                                       c
+                                       +
+                                       0.32
+                                    
+                                 
+                              
+                           
+                        where 
+                           α
+                         means the degree of hydration, ranging from 0 to 1, and w/c is the water-to-cement ratio. Eq. (10) illustrates that the developing of porosities can be determined by w/c and α. The two parameters, i.e. D
+                        p and n, involved in Eq. (9) need to be determined for the prediction of the chloride diffusivity in cement paste. Similar with the work of Zheng and Zhou [34], the magnitude of parameter n is taken here as 14.44, D
+                        p is assumed to be a constant in this study and it is taken as [36]
+                        
+                           
+                              (11)
+                              
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       p
+                                    
+                                 
+                                 =
+                                 1.07
+                                 ×
+                                 
+                                    
+                                       10
+                                    
+                                    
+                                       −
+                                       10
+                                    
+                                 
+                                 
+                                    
+                                       m
+                                    
+                                    2
+                                 
+                                 /
+                                 s
+                              
+                           
+                        
+                     
+
+For the prediction of the effective chloride diffusivity in concrete, the diffusivity of the ITZ needs to be determined. In a three-phase composite model, the area fraction assigned to the interfacial zone phase depends on what thickness is taken to define the boundary between the interfacial zone and the bulk mortar matrix. Thus, one must select the thickness h of the interfacial zone paste and the value of its diffusivity (D
+                        itz) compared to that of the bulk paste (D
+                        cp) [21].
+
+As known, the magnitude of the diffusion coefficient is dependent on the ITZ thickness. Ping et al. [37] found that the value of D
+                        itz/D
+                        cp =10 with an ITZ thickness of 20μm. Breton et al. [38] and Bourdette et al. [39] obtained same results, and their experimental data showed that the effective diffusion coefficient of ITZ was 6–12 times greater than that of cement paste. Delagrave et al. [2] argued that the value of D
+                        itz was about 6–10 times larger than that of D
+                        cp, while Shane et al. [40] reported that the D
+                        itz/D
+                        cp varied from 2 to 7. Caré and Hervé [41] found that D
+                        
+                           itz
+                         was estimated as 16.2 times of that of cement paste without aggregate when the ITZ thickness was taken as 30μm. It was found in Oh and Jang׳s [13] experimental data that the chloride diffusion coefficient was about 7 times of that of cement paste as the ITZ thickness was 20μm.
+
+It is worth noting that the ITZ, as used in the present model, does not exactly coincide with the real thickness of the interfacial transition zone (i.e. between 30 and 80μm [2]). Generally speaking, in the FE simulations it is very difficult to adopt the real ITZ thickness to study the mechanical and the diffusivity behaviors of concrete because of the limitation of the computation, e.g. in [23,27,30,42]. Similar with that in [23], the interface was considered as a phase between mortar and coarse aggregate, and not the ITZ per se. Hence it was not directly comparable to experimental and analytical studies. The thickness h of the ITZ in the following simulations was set as 500μm. This value is much higher than the real one. However, compared with the one used in Šavija et al.׳s [23] numerical simulations on chloride diffusivity in concrete (i.e. the thickness was about 1000μm), the ITZ thickness selected in the present study is more close to the real thickness.
+
+This section aims at verifying the accuracy of the present numerical method. The validity of the developed numerical method was to be verified with Mangat and Molloy׳s [43] experimental data on chloride diffusivity in concrete. In Mangat and Molloy׳s [43] test, eight concrete mixes were used to investigate the chloride diffusion coefficient of concrete. And here one of the experimental results was selected for the validation of the present simulation method.
+
+It is worth mentioning herein that, although the apparent diffusion coefficient of chlorides in concrete should be predicted directly by using three-dimensional simulations, this kind of simulations is not only very time-consuming but also extremely expensive in computing. Similar with that in [17,18,34], two-dimensional models were thus used herein. In order to demonstrate the reasonability and the accuracy of the present numerical method, the simple two-dimensional meso-scale model of Fig. 1 was utilized.
+
+It can be regarded that the aggregate is relatively impermeable compared with the ITZ and cement paste. The chloride diffusivity D
+                           agg of aggregate is taken to be zero in the present simulations. The chloride diffusion is assumed to take place only in the cement paste and the ITZ phases.
+
+In Mangat and Molloy׳s [43] test, the “Mix A” was selected. Mix A was based on OPC, with a cement content of 590kg/m−3 and a water/cement ratio of 0.4. According to the test, the apparent chloride diffusion coefficient of concrete derived was 5.736×10−9
+                           m2/s. For the meso-structure of concrete shown in Fig. 1, the volume fraction f
+                           agg of the aggregate particles, the sizes of the aggregate particle and the thickness of the ITZ layer (i.e., h=500μm) are known, the volume fraction f
+                           itz of the ITZ can be easily determined, i.e. f
+                           itz=8.39%. Similar with the work in [23], the chloride diffusion coefficient of the ITZ was regarded as 3 times of that of cement paste. The diffusion coefficients for the cement paste and the ITZ can be deduced easily through the inverse method (see Appendix A) that D
+                           cp=8.691×10−9
+                           m2/s and D
+                           itz=3D
+                           cp= 26.073 ×10−9
+                           m2/s.
+
+On the diffusion boundary, the surface chloride concentration C
+                           s at the top surface is assumed as 1.5% (by weight of cementitious materials). The initial chloride ion concentration C
+                           0 within the concrete specimen is zero.
+
+The transport equations were solved numerically using the finite element methods, in which the three components were meshed separately and continuity in fluxes at interfaces between them was applied. The commercial software Abaqus was used in the FEM simulations. The transient analysis was selected, and the time period was 4 years. The type of incrementation was fixed. The increment size was 0.04 years. Matrix storage in the Equation Solver was unsymmetric. In the simulations, convert severe discontinuity iterations was propagated from previous step; extrapolation of previous state at start of each increment was linear. Concrete was modeled by four-node linear heat transfer quadrilateral elements. The approximate global mesh size was 0.5mm, and the concrete specimen shown in Fig. 1 was discretized into 51472 elements.
+
+The profiles of chloride concentration along the three dotted lines (see Fig. 1) were selected as the calculation results, and they were used to compare with the experimental data and the analytical results. It should be emphasized that the analytical solution is derived by the multi-scale homogenization method mentioned in Appendices A and B. When the apparent diffusion coefficient D
+                           eff of concrete and the initial and boundary conditions are known, the chloride diffusion of concrete can be easily obtained according to Eq. (15).
+
+@&#RESULTS AND ANALYSIS@&#
+
+Based on the previous simulation method, the chloride diffusivity in concrete was modeled. 
+                        Fig. 2 plots the comparison of the chloride concentration profiles, after 2.8 years of exposure, obtained from the present simulation result, the experimental data and the analytical solution. It can be noted clearly from Fig. 2 that the numerical results show a good correlation with Mangat and Molloy׳s [43] experimental data and the analytical solution. Therefore, it is validated that the present two-dimensional numerical method can predict the chloride diffusivity in concrete with good accuracy.
+
+In this section, a sensitivity analysis was carried out using the present simulation method to examine the influences of aggregate distribution, aggregate shape, diffusion properties of the ITZ, water/cement ratio and aggregate volume fraction. Some numerical test cases were designed to examine the effect of changing a particular variable on the chloride diffusion in concrete, as listed in 
+                     Table 1.
+
+It is to be noted that the influences of the chloride binding capacity, age of concrete, local chloride content, and temperature variation on chloride penetration were not taken into account for the simplification of the model. Simply to say, the chloride diffusion coefficient was not treated as a variable dependent on time, depth, concrete age, binding capacity and temperature, but a constant. In the following simulations, the boundary concentration C
+                     s of the specimen was set as 0.5% (by weight of cementitious materials), the thickness h of the ITZ was set as 500μm and the degree of hydration α was assumed as 0.8. According to the given parameters, including water-to-cement ratio w/c, hydration degree α, D
+                     p and n (mentioned previously in Section 3.2), the diffusion coefficient D
+                     cp of the cement paste was derived by Eq. (9). Thus, D
+                     itz can be obtained according to the relationship between D
+                     itz and D
+                     cp (as presented in Table 1). Herein, the aggregate phase was also set as impermeable, i.e. D
+                     agg=0.
+
+For case I, after 1.2 years and 4 years of exposure, the contour maps of the total chloride concentration distributions within concrete with three groups of different aggregate distributions are shown at the top row and the bottom row of 
+                        Fig. 3, respectively.
+
+It can be seen from these concentration contours that the positions of the iso-surface are almost identical at the same years of exposure, illustrating that the distribution pattern of aggregate almost has no influence on the chloride diffusivity behavior in concrete. This can also be explained through the concentration-depth relationship curves plotted in 
+                        Fig. 4. It can be noted from Fig. 4 that the curves obtained from the three specimens with different aggregate distributions are almost coincide. Based on these results, it can be concluded that the aggregate distribution has a negligible influence on the diffusion coefficient of chlorides in concrete as long as the random distribution of the aggregates is created using the sieve analysis.
+
+To examine the effect of aggregate shape on the chloride diffusivity behavior in concrete, numerical analyses for the plain concrete with circular, elliptical, squared aggregate shapes were conducted. 
+                        Fig. 5 shows the three concrete meso-scopic samples with different aggregate shapes, at an identical volume fraction of aggregate. For the same volume fraction of aggregate the concrete of squared aggregate particles is believed to have larger tortuosity than the concretes of circular and elliptical aggregate shapes.
+
+After 4 years of exposure, the total chloride concentration distribution contours of the three specimens are presented in 
+                        Fig. 6(a)–(c), respectively. As seen in Fig. 6, for the three different aggregate shapes, the chloride diffusion performances in concrete are essentially the same. The relationships between the chloride concentration and depth obtained from the three specimens are described in 
+                        Fig. 7. Although the chloride diffusivity in concrete should be affected by the tortuosity of impermeable aggregate particles, the results presented in Figs. 6 and 7 illustrate that the shape of aggregates has small influence on the diffusion coefficient of chloride ions in concrete. This is consistent with the observations of Li et al. [19]. In a word, the effect of aggregate shape on the chloride diffusivity in concrete can be ignored.
+
+As known, the inclusion of aggregates in the mortar matrix has two opposite effects on the transport properties. The dilution (blocking) and tortuosity (redirecting) effects reduce the permeability of concrete while the ITZ and percolation effects increase the permeability of concrete.
+
+The ITZ contains a higher water/cement ratio and more porosity than the bulk paste, and therefore it has higher chloride diffusivity. As for case III, the effect of the diffusivity properties of the ITZ was investigated. For this purpose, the chloride diffusivity of four specimens under different D
+                        itz/D
+                        cp ratios with same ITZ thickness was investigated, i.e. D
+                        itz/D
+                        cp=1, 3, 5 and 8.
+
+The profiles of total chloride concentration along the depth of the concrete sample at different D
+                        itz/D
+                        cp were described in 
+                        
+                        Figs. 8 and 9. As can be seen, with the increase of D
+                        itz/D
+                        cp, the global diffusion capacity of concrete improves obviously. 
+                        Fig. 10 describes the relationships between the exposure time t and the chloride concentrations at 30mm and 50mm below the exposed surface. One can see that with the increase of D
+                        itz/D
+                        cp, the chloride concentrations at both 50mm and 30mm below the exposed surface increase. Moreover, it can be noted from Fig. 10(a) that, the chloride concentration obtained from the concrete sample at 30mm below the exposed surface with D
+                        itz/D
+                        cp=8 is about twice that with D
+                        itz/D
+                        cp=1.
+
+According to the simple computations, the apparent chloride diffusion coefficients of concrete at different D
+                        itz/D
+                        cp ratios can be derived by Eq. (15). The obtained results are listed in 
+                        Table 2. The results in Table 2 state again that the global diffusion coefficient of concrete increases with the increase of D
+                        itz/D
+                        cp.
+
+Water-to-cement ratio w/c can be referred as a micro-scale parameter because it determines the porosity and pore structure of cement paste at the micro-scale. It is of practical significance to evaluate the effect of water/cement ratio on the chloride diffusivity of concrete in a quantitative manner. For this purpose, four different water/cement ratios were studied, i.e. w/c=0.4, 0.5, 0.6 and 0.7.
+
+
+                        
+                        
+                        Figs. 11 and 12 show the chloride concentration along the depth of the concrete specimen at different water-to-cement ratios. It can be seen clearly that the chloride ions with the specimen at higher water/cement ratio spreads much faster than that at lower water/cement ratio. 
+                        Fig. 13 describes the relationships between the exposure time t and the chloride concentrations at both 30mm and 50mm below the exposed surface. One can see that with the increase of w/c, the chloride concentrations at both 50mm and 30mm below the exposed surface increase sharply. This is because the porosity is higher with a higher w/c, which in turn leads to higher diffusivity.
+
+The apparent chloride diffusion coefficients of concrete at different water/cement ratios can be derive and listed in 
+                        Table 3. Based on the numerical results shown in Table 3, it can be seen that with the increase of water/cement ratio, the chloride diffusion coefficient increases sharply. Furthermore, it can be found that, the apparent chloride diffusivity of concrete at w/c=0.7 is about 5.7 times that at w/c=0.4, and the one at w/c=0.6 is about 3.8 times that at w/c=0.4 when the degree of hydration α equals to 0.8. The results are very close to the analytical solution of Zheng et al. [44]. This illustrates that water-to-cement ratio has a significant influence on the chloride diffusivity in concrete.
+
+Therefore, it can be concluded that the most effective way to reduce chloride ion penetration would be to decrease the water-cement ratio. This is consistent with that in Han׳s work [45].
+
+As for case V, the effect of volume fraction of aggregate was explored. Herein, specimens with different aggregate area fractions, ranging from 0 to 0.6, were cast and tested to investigate the effect of the aggregate content on the chloride diffusivity in concrete.
+
+After 1.52 years and 4 years of exposure, the profiles of chloride concentration of a heterogeneous concrete sample at different D
+                        itz/D
+                        cp and that of pure cement paste are described and compared in 
+                        Fig. 14. At the ITZ thickness h=500μm, it can be found from Fig. 14 that
+                           
+                              •
+                              When the magnitude of D
+                                 itz/D
+                                 cp is less than 2.7, the overall chloride diffusivity in the heterogeneous concrete is smaller than that in the pure cement paste.
+
+When the magnitude of D
+                                 itz/D
+                                 cp equals to 2.7, the apparent chloride diffusivity in the concrete sample is almost identical with that in the pure cement paste.
+
+And when the magnitude of D
+                                 itz/D
+                                 cp is larger than 2.7, the apparent chloride diffusivity in the concrete sample is larger than that in the pure cement paste.
+
+Some discussions about these observations are illustrated as follows.
+
+As Shah [46] pointed out that the influence of aggregate in the hydrated cement paste is fourfold: dilution, tortuosity, ITZ and percolation. Generally speaking, the dilution and tortuosity effects reduce concrete diffusivity, while the ITZ and percolation effects increase diffusivity.
+                           
+                              •
+                              When the magnitude of D
+                                 itz/D
+                                 cp is less than 2.7, the combined effects of aggregate and the ITZ hinder or weaken the ingress of chloride ions into concrete. For this situation, as the aggregate content increases, the apparent chloride diffusivity of concrete will decrease, as demonstrated in 
+                                 Fig. 15.
+
+When the magnitude of D
+                                 itz/D
+                                 cp is equal to 2.7, the combined effects of aggregate and the ITZ are essentially equivalent to that of cement paste. For this situation, as the aggregate content changes, the apparent chloride diffusivity of concrete will keep unchanged. This also can be demonstrated in Fig. 15.
+
+When the magnitude of D
+                                 itz/D
+                                 cp is larger than 2.7, the combined effects of aggregate and the ITZ facilitate or speed up the penetration of chloride ions into concrete. For this situation, as the aggregate content increases, the apparent chloride diffusivity of concrete will increase, as illustrated in Fig. 15.
+
+The ratio of D
+                        eff and D
+                        cp obtained from the present meso-scale numerical model is plotted in Fig. 15 against aggregate content and compared with the experimental data of Delagrave et al. [2]. Besides that, it can be noticed that the present numerical results are very close to the analytical solutions from Oh and Jang [13], the experimental observations from Caré [1] and the theoretical results from Nilenius et al. [47]. A lot of experimental observations (e.g. [1,2]) have presented that an increase of the aggregate volume fraction leads to a significant decrease of D
+                        eff. According to the comparison of the present simulation results and the test data, it can be found that the determination of the value of D
+                        itz/D
+                        cp is of significant importance. If the selection of D
+                        itz/D
+                        cp is not reasonable, great deviation may generate in the simulation results. Furthermore, it can be concluded that aggregate content has a great impact on the chloride diffusivity in concrete.
+
+In this study, a meso-scopic numerical model based on the FEM was developed and utilized to investigate the chloride diffusivity in concrete. The concrete numerical model contained three phases, i.e. aggregate, mortar matrix and the ITZ phase. The aggregate phase was set to be impermeable, and the chloride diffusion was assumed to take place only in the cement paste and the ITZ phases. It should be noted that the interface was considered as a phase between the matrix and the coarse aggregates, and not the ITZ per se. In the meso-scale model, the three components are meshed separately and continuity in fluxes at interfaces between them was applied. The present simulation method was first verified by available experimental observations and the analytical solution. And then the approach was extended to explore the effects of some meso-structural parameters, including aggregate distribution, aggregate shape, diffusivity properties of the ITZ, water/cement ratio and aggregate content on the chloride diffusivity in concrete. Finally, some conclusions are made as follows:
+                        
+                           (1)
+                           Both aggregate distribution and aggregate shape have a negligible influence on the chloride diffusivity in concrete.
+
+The ITZ diffusion properties have a big impact on the chloride penetration of concrete. The global chloride diffusion coefficient of concrete increases with the increase of D
+                              itz/D
+                              cp.
+
+In the FE simulations, the determination of the magnitude of D
+                              itz/D
+                              cp is of significant importance. If the selection of D
+                              itz/D
+                              cp is not reasonable, great deviation may generate.
+
+Water-to-cement ratio has a significant influence on the chloride diffusivity in concrete. As water-to-cement ratio increases, the global chloride diffusion coefficient of concrete increases sharply. The most effective way to reduce chloride ion penetration is to decrease the water-cement ratio.
+
+An increase of the aggregate content leads to a significant decrease of the global diffusion coefficient of concrete.
+
+It is noted that 2D models have been used in the present work. In the future, the two dimensional model will be extended to three dimensions. The ITZ thickness used is not realistic due to the constraints of the numerical simulation model, which may generate an error with the actual case. In the future, the actual ITZ size will be employed in the FE simulations with the development of computational capacity of computer. In addition, some other influencing factors will be studied, such as the cracks within concrete and the interaction between mechanical actions and chloride diffusivity.
+
+@&#ACKNOWLEDGMENTS@&#
+
+This research was supported by the National Key Basic Research and Development Program of China (No. 2011CB201600), the major program of the National Natural Science Foundation of China (No. 91215301), the Municipal Natural Science Foundation of Beijing (No. 8100001) and the Doctoral Fund of Innovation (No. YB201207). The support is gratefully acknowledged.
+
+In order to determine the transport properties of concrete, a homogenization method was adopted. Concrete was treated as a three-phase spherical model. The equivalent process of the three-phase concrete composite composed of aggregate, mortar matrix and the ITZ was depicted in 
+                     Fig. 16. The homogenization process was decomposed into two steps. In the first step, the aggregate particle and the ITZ layer shown in Fig. 16(a) was processed to be the homogeneous equivalent aggregate particle (see Fig. 16(b)) based on an equivalent approach. And in the second step, the two-phase composite of Fig. 16(b) was homogenized as a homogeneous and isotropic body. Simply to say, in the first step the effective chloride diffusivity of the equivalent aggregate composed of the aggregate and the ITZ would be obtained, and in the second step the effective chloride diffusivity of concrete would be achieved. The detailed analysis was carried out as below.
+
+It was assumed that the aggregate has no impermeable capacity compared with ITZ and cement paste, namely, the chloride diffusivity D
+                     agg was negligible and thus set as zero here. Considering the influence of the diffusion of the ITZ, the effective chloride diffusivity D
+                     ea in the equivalent aggregate shown in Fig. 16(b) can be obtained as [17,48]
+                     
+                        
+                           (12)
+                           
+                              
+                                 
+                                    D
+                                 
+                                 
+                                    e
+                                    a
+                                 
+                              
+                              =
+                              
+                                 
+                                    D
+                                 
+                                 
+                                    i
+                                    t
+                                    z
+                                 
+                              
+                              
+                                 [
+                                 
+                                    1
+                                    −
+                                    
+                                       
+                                          2
+                                          
+                                             
+                                                f
+                                             
+                                             
+                                                a
+                                                g
+                                                g
+                                             
+                                          
+                                       
+                                       
+                                          (
+                                          
+                                             
+                                                f
+                                             
+                                             
+                                                i
+                                                t
+                                                z
+                                             
+                                          
+                                          +
+                                          2
+                                          
+                                             
+                                                f
+                                             
+                                             
+                                                a
+                                                g
+                                                g
+                                             
+                                          
+                                          )
+                                       
+                                    
+                                 
+                                 ]
+                              
+                           
+                        
+                     in which f
+                     agg and f
+                     itz are the volume fractions of aggregate and the ITZ, respectively. The aggregate volume fraction f
+                     agg can determined easily after the aggregate particles are generated. And the ITZ area fraction f
+                     itz can be evaluated when the number of aggregates, size of the aggregates as well as the ITZ thickness has been set. Based on the statistical geometry of composites, Lu and Torquato [49] introduced a theory of nearest-surface distribution functions, which can be utilized to assess the volume fraction of multi-size spherical particle packed. This theory was also applied in [10]. Zheng et al. [50] adopted the Monte Carlo method to evaluate the ITZ area fraction.
+
+Based on the equivalent analysis presented previously, the concrete became a two-phase composite material consisting of mortar matrix and the equivalent aggregate, as shown in Fig. 16(b). Christensen [51] has developed a model for the conduction in a composite with the imperfect interfaces between matrix and particle inclusions. Accordingly, when the analytical model was applied, the effective diffusivity of the two-phase concrete composite can be calculated as
+                        
+                           (13)
+                           
+                              
+                                 
+                                    D
+                                 
+                                 
+                                    e
+                                    f
+                                    f
+                                 
+                              
+                              =
+                              
+                                 
+                                    D
+                                 
+                                 
+                                    cp
+                                 
+                              
+                              ⋅
+                              
+                                 [
+                                 
+                                    1
+                                    +
+                                    
+                                       
+                                          
+                                             
+                                                f
+                                             
+                                             
+                                                e
+                                                a
+                                             
+                                          
+                                       
+                                       
+                                          (
+                                          1
+                                          −
+                                          
+                                             
+                                                f
+                                             
+                                             
+                                                e
+                                                a
+                                             
+                                          
+                                          )
+                                          /
+                                          3
+                                          +
+                                          
+                                             
+                                                D
+                                             
+                                             
+                                                c
+                                                p
+                                             
+                                          
+                                          /
+                                          (
+                                          
+                                             
+                                                D
+                                             
+                                             
+                                                e
+                                                a
+                                             
+                                          
+                                          −
+                                          
+                                             
+                                                D
+                                             
+                                             
+                                                c
+                                                p
+                                             
+                                          
+                                          )
+                                       
+                                    
+                                 
+                                 ]
+                              
+                           
+                        
+                     where D
+                     cp is the diffusivity of matrix (cement paste); and D
+                     eff means the apparent effective chloride diffusivity of concrete; f
+                     ea is the volume fraction of the equivalent aggregate, f
+                     ea=f
+                     agg+f
+                     itz. This expression has been widely used e.g. in [12,13,15]. Furthermore, from Eq. (13), it is obvious that the effective diffusivity of concrete, D
+                     eff, is determined by the area fractions of aggregates and the interfacial zones, and the diffusivity of ITZ relative to that of cement paste.
+
+According to Fick׳s second law of diffusion, the governing equation of chloride diffusion for the case of one-dimensional problem with no binding/reaction can be described as the following form [24]:
+                        
+                           (14)
+                           
+                              
+                                 
+                                    ∂
+                                    C
+                                    (
+                                    x
+                                    ,
+                                    t
+                                    )
+                                 
+                                 
+                                    ∂
+                                    t
+                                 
+                              
+                              =
+                              
+                                 ∂
+                                 
+                                    ∂
+                                    x
+                                 
+                              
+                              
+                                 (
+                                 
+                                    D
+                                    
+                                       
+                                          ∂
+                                          C
+                                          (
+                                          x
+                                          ,
+                                          t
+                                          )
+                                       
+                                       
+                                          ∂
+                                          x
+                                       
+                                    
+                                 
+                                 )
+                              
+                           
+                        
+                     When the surface chloride concentration is a constant, the total chloride concentration C at depth x and time t can be obtained as
+                        
+                           (15)
+                           
+                              C
+                              =
+                              
+                                 
+                                    C
+                                 
+                                 
+                                    0
+                                 
+                              
+                              +
+                              (
+                              
+                                 
+                                    C
+                                 
+                                 
+                                    s
+                                 
+                              
+                              −
+                              
+                                 
+                                    C
+                                 
+                                 
+                                    0
+                                 
+                              
+                              )
+                              
+                                 (
+                                 
+                                    1
+                                    -
+                                    e
+                                    r
+                                    f
+                                    
+                                       [
+                                       
+                                          
+                                             x
+                                             
+                                                2
+                                                
+                                                   
+                                                      D
+                                                      t
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       ]
+                                    
+                                 
+                                 )
+                              
+                           
+                        
+                     where 
+                        
+                           
+                              C
+                           
+                           
+                              0
+                           
+                        
+                      is initial concentration; 
+                        
+                           
+                              C
+                           
+                           
+                              s
+                           
+                        
+                      is the surface chloride concentration; erf indicates the complementary error function as below:
+                        
+                           (16)
+                           
+                              e
+                              r
+                              f
+                              (
+                              z
+                              )
+                              =
+                              
+                                 2
+                                 
+                                    
+                                       π
+                                    
+                                 
+                              
+                              
+                                 ∫
+                                 0
+                                 z
+                              
+                              
+                                 
+                                    
+                                       e
+                                    
+                                    
+                                       −
+                                       
+                                          
+                                             t
+                                          
+                                          2
+                                       
+                                    
+                                 
+                                 
+                                 d
+                                 t
+                              
+                           
+                        
+                     Eq. (15) provides a convenient analytical solution to evaluate the validity of one-dimensional finite element or finite difference models for diffusive transport.
+
+Herein the present work, no chlorides initially present in the concrete sample (i.e. C
+                     0=0), and the diffusion coefficient D can be determined based on the homogenization approach mentioned in Appendix A.
+
+@&#REFERENCES@&#
+

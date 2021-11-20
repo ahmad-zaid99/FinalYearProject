@@ -1,0 +1,2690 @@
+@&#MAIN-TITLE@&#Superconvergent second derivative recovery technique and its application in a nonlocal damage mechanics model
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           A nonlocal finite element technique is proposed that is based on the superconvergent second derivative recovery methods.
+
+
+                        
+                        
+                           
+                           A way to construct element-based patches is proposed that is suitable for unstructured meshes.
+
+
+                        
+                        
+                           
+                           The proposed technique is implemented with a simplified Hessian matrix computation process.
+
+
+                        
+                        
+                           
+                           The proposed technique is verified by the recovery of the equivalent strains in a nonlocal damage mechanics model.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Super-convergent patch
+
+Nonlocal damage mechanics
+
+Strain gradients
+
+Finite element method
+
+@&#ABSTRACT@&#
+
+
+                  This study proposes a nonlocal finite element technique that is based on the super-convergent patch (SCP) second derivative recovery methods. The SCP second derivative recovery methods are proven effective in evaluating the Laplacian of the equivalent strains at C0 linear elements. The element-based patches and their construction criteria are defined. Other patch-based techniques either are limited to structured meshes or only utilize nodal based patches for first derivative recoveries. The SCP technique has not previously been used to recover higher order (2nd and higher) strain derivatives. The proposed technique can deal with unstructured meshes with various element types and the patches are constructed in a fashion that greatly accelerates the evaluation of Hessian matrices. A numerical example of a strain gradient damage mechanics problem is given at the end. The results show that the proposed technique is capable of evaluating the Laplacian of the equivalent strains and has the potential for even higher order derivative recovery.
+               
+
+@&#INTRODUCTION@&#
+
+The simulation of materials with softening behavior is generally a challenging topic, including damage mechanics, softening plasticity, etc. Classical continuum mechanics may fail in this regard when the ellipticity of the governing equations is lost, i.e., post peak mesh-dependent numerical solutions are usually seen. As a remedy, continuum models with nonlocal formulations have been introduced. There are two main types of nonlocal formulations, i.e., the integral type and the gradient type. Both formulations have been widely studied numerically. However, the difficulty in their finite element implementation still remains.
+
+Typically, in an integral type formulation, the nonlocal form F(x) of a local state variable f(x) is expressed as
+                        
+                           (1)
+                           
+                              F
+                              (
+                              x
+                              )
+                              =
+                              
+                                 ∫
+                                 Ω
+                              
+                              
+                                 α
+                                 (
+                                 x
+                                 ,
+                                 ξ
+                                 )
+                              
+                              f
+                              (
+                              ξ
+                              )
+                              d
+                              ξ
+                           
+                        
+                     where α(x,ξ) is a spatial weight function defined in the three-dimensional Euclidean space Ω. The weight function is normalized with
+                        
+                           (2)
+                           
+                              
+                                 ∫
+                                 Ω
+                              
+                              
+                                 α
+                                 (
+                                 x
+                                 ,
+                                 ξ
+                                 )
+                              
+                              d
+                              ξ
+                              =
+                              1
+                              
+                              for
+                              
+                              x
+                              ∈
+                              Ω
+                           
+                        
+                     
+                  
+
+The nonlocal elasticity theories of Eringen and Edelen [1] were among the first to be implemented in finite element methods. Their nonlocality is usually incorporated into the stiffness matrices obtained from the material constitutive relation. Bazant and Chang [2], Pijaudier-Cabot and Bazant [3] also proposed an imbricate finite element procedure for the simulation of the strain-softening materials with similar ideas. However, it was reported that the imbricate finite element approach could fail due to zero energy modes instability. Similar approaches with nonlocal stiffness matrices can also be found in Refs. [4–6].
+
+Recently, Stromberg and Ristinmaa [7] proposed a way to obtain the nonlocal field through a spatial averaging process. The weighted integral is evaluated through the numerical integration of each finite element. Similarly, Jirasek and Marfia [8] also advocated a way to calculate the nonlocal quantity through a weighted spatial averaging process through the neighboring integration points in the mesh. This method is implemented in Refs. [9–11] as,
+                        
+                           (3)
+                           
+                              F
+                              (
+                              
+                                 
+                                    x
+                                 
+                                 
+                                    k
+                                 
+                              
+                              )
+                              =
+                              
+                                 ∑
+                                 
+                                    l
+                                    =
+                                    1
+                                 
+                                 
+                                    
+                                       
+                                          N
+                                       
+                                       
+                                          G
+                                          P
+                                       
+                                    
+                                 
+                              
+                              
+                                 
+                                    
+                                       w
+                                    
+                                    
+                                       l
+                                    
+                                 
+                                 
+                                    
+                                       
+                                       J
+                                    
+                                    
+                                       l
+                                    
+                                 
+                                 α
+                                 (
+                                 
+                                    
+                                       x
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 ,
+                                 
+                                    
+                                       x
+                                    
+                                    
+                                       l
+                                    
+                                 
+                                 )
+                                 f
+                                 (
+                                 
+                                    
+                                       x
+                                    
+                                    
+                                       l
+                                    
+                                 
+                                 )
+                              
+                           
+                        
+                     
+                     
+                        
+                           (4)
+                           
+                              α
+                              (
+                              
+                                 
+                                    x
+                                 
+                                 
+                                    k
+                                 
+                              
+                              ,
+                              
+                                 
+                                    x
+                                 
+                                 
+                                    l
+                                 
+                              
+                              )
+                              =
+                              
+                                 
+                                    
+                                       
+                                          α
+                                       
+                                       
+                                          0
+                                       
+                                    
+                                    (
+                                    |
+                                    |
+                                    
+                                       
+                                          x
+                                       
+                                       
+                                          k
+                                       
+                                    
+                                    −
+                                    
+                                       
+                                          x
+                                       
+                                       
+                                          l
+                                       
+                                    
+                                    |
+                                    |
+                                    )
+                                 
+                                 
+                                    
+                                       ∑
+                                       
+                                          n
+                                          =
+                                          1
+                                       
+                                       
+                                          
+                                             
+                                                N
+                                             
+                                             
+                                                G
+                                                P
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             w
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                       
+                                          
+                                             J
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                       
+                                          
+                                             α
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       (
+                                       
+                                          
+                                             x
+                                          
+                                          
+                                             k
+                                          
+                                       
+                                       ,
+                                       
+                                          
+                                             x
+                                          
+                                          
+                                             l
+                                          
+                                       
+                                       )
+                                    
+                                 
+                              
+                           
+                        
+                     where w
+                     
+                        l
+                      and J
+                     
+                        l
+                      are the integration weights and element Jacobian at the Gauss point x
+                     
+                        l
+                     . An approximate weight function with a cut-off radius needs to be determined for efficiency.
+
+On the other hand, gradient type formulations are also widely implemented. Typically, the nonlocal form F(x) can either be expressed in a local state variable f(x) and its gradients explicitly as,
+                        
+                           (5)
+                           
+                              F
+                              (
+                              x
+                              )
+                              =
+                              f
+                              (
+                              x
+                              )
+                              +
+                              c
+                              
+                                 
+                                    ∇
+                                 
+                                 2
+                              
+                              f
+                              (
+                              x
+                              )
+                           
+                        
+                     or implicitly as,
+                        
+                           (6)
+                           
+                              F
+                              (
+                              x
+                              )
+                              −
+                              c
+                              
+                                 
+                                    ∇
+                                 
+                                 2
+                              
+                              F
+                              (
+                              x
+                              )
+                              =
+                              f
+                              (
+                              x
+                              )
+                           
+                        
+                     where c is a constant related to the intrinic material length scale. The early attempts to implement gradient enhanced formulation in finite element methods usually treat a scalar nonlocal variable as an additional nodal parameter [12,13]. Hence, an additional equation with appropriate boundary conditions is combined with the local governing equations to form a coupled finite element formulation. (i.e., [14–25]) The main difficulty faced by a coupled formulation is to define an appropriate boundary condition for this additional equation. That boundary is usually a moving boundary. This topic is discussed in Ref. [26]. Sometimes, the moving boundary condition is relaxed to the external boundary of the whole body [18].
+
+In order to overcome this difficulty, Abu Al-Rub and Voyiadjis [27] proposed a way to evaluate the nonlocal variable through a so-called super element. Their idea is to evaluate the strain derivatives at each integration point by least square fitting the local strains at a structured set of neighboring integration points. Later, Abu Al-Rub and Voyiadjis [28] successfully applied this technique to an anisotropic damage model for a concrete fracture analysis. However, this method is only limited to a structured mesh.
+
+Later, Han et al. [29] also proposed a finite element approach that can recover the strain derivatives by using nodal based patches. The patch least square fitting process is conducted to obtain the nodal nonlocal values. The benefit of this method is that it is no longer limited to structured meshes, however, only the nodal based patches are built in this method and it is so far only be utilized to evaluate the first derivatives of the strain, besides, no unstructured mesh examples were tested.
+
+This paper proposes a nonlocal unstructured finite element technique that is based on the super-convergent patches (SCP). Therefore, a brief review on the related SCP techniques is also given below.
+
+Zienkiewicz and Zhu [30–32] were among the first to introduce the idea of obtaining a smooth variable field by utilizing patches of elements in the finite element methods. For each patch of elements, the discontinuous derivative field is sampled at the super-convergent points inside each element and a set of local least square fit nodal variables are obtained to yield the continuous derivative field. Zienkiewicz and Zhu [30] verified that the above mentioned least square fit process would give a first derivative estimation that is accurate at least to the order of O(h
+                     
+                        p+1), where h is the size of the element and p is the order of the interpolation function. Therefore, this patch recovery process is widely known as the super-convergent patch recovery. They also showed that this process is numerically effective in its applications in a posteriori error estimates.
+
+Wiberg and coworkers [33–35] later improved the SCP technique by least square fitting the higher-order derivatives at the superconvergent points. They showed a higher accuracy of the first derivative recovery than Zienkiewicz's approach by using one-order higher polynomials. Most recently, Jefferson [36] and Akin [37] further extended the SCP technique to recover the second derivatives, and various element-based patches were tested. Error estimations and adaptive element methods were also developed to achieve a high accuracy of the second derivatives recovery.
+
+The present work establishes a new nonlocal finite element technique that is based on the super-convergent patch recovery technique of the second order derivatives. The SCP element-based patches are defined and implemented. Algorithms are developed to recover the second derivatives of the equivalent strain through a local least square fitting process at each SCP patch. The algorithm is implemented in an F95 program — library MODEL [37]. The second derivatives of the scalar equivalent strain are recovered from the element-based patches. The proposed recovery technique allows an unstructured mesh with arbitrary element types and arbitrary, but compatible polynomial patch degrees.
+
+A scalar variable based nonlocal rate-independent isotropic damage model is utilized to test the proposed technique as introduced in Jirasek [38]. The damage density 
+                        ω
+                      is controlled by the damage evolution function g(κ) as,
+                        
+                           (7)
+                           
+                              ω
+                              =
+                              g
+                              (
+                              κ
+                              )
+                           
+                        
+                     where κ is the damage threshold. In this paper, g(κ) is defined to have an exponential softening behavior as,
+                        
+                           (8)
+                           
+                              g
+                              (
+                              κ
+                              )
+                              =
+                              
+                                 {
+                                 
+                                    
+                                       
+                                          
+                                             0
+                                          
+                                          
+                                             
+                                                κ
+                                                ≤
+                                                
+                                                   
+                                                      ε
+                                                   
+                                                   
+                                                      0
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                1
+                                                −
+                                                
+                                                   
+                                                      
+                                                         
+                                                            ε
+                                                         
+                                                         
+                                                            0
+                                                         
+                                                      
+                                                   
+                                                   κ
+                                                
+                                                exp
+                                                
+                                                   (
+                                                   
+                                                      −
+                                                      
+                                                         
+                                                            κ
+                                                            −
+                                                            
+                                                               
+                                                                  ε
+                                                               
+                                                               
+                                                                  0
+                                                               
+                                                            
+                                                         
+                                                         
+                                                            
+                                                               
+                                                                  ε
+                                                               
+                                                               
+                                                                  f
+                                                               
+                                                            
+                                                            −
+                                                            
+                                                               
+                                                                  ε
+                                                               
+                                                               
+                                                                  0
+                                                               
+                                                            
+                                                         
+                                                      
+                                                   
+                                                   )
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      ε
+                                                   
+                                                   
+                                                      0
+                                                   
+                                                
+                                                ≤
+                                                κ
+                                                ≤
+                                                
+                                                   
+                                                      ε
+                                                   
+                                                   
+                                                      f
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     where 
+                        
+                           
+                              ε
+                           
+                           
+                              0
+                           
+                        
+                      is the limit elastic strain and 
+                        
+                           
+                              ε
+                           
+                           
+                              f
+                           
+                        
+                      is a scalar parameter that controls the softening behavior. The nonlocal equivalent strain 
+                        
+                           
+                              
+                                 ε
+                                 ˜
+                              
+                           
+                           
+                              e
+                              q
+                           
+                        
+                      is expressed explicitly from the local equivalent strain 
+                        
+                           
+                              ε
+                           
+                           
+                              e
+                              q
+                           
+                        
+                      and its Laplacian as,
+                        
+                           (9)
+                           
+                              
+                                 
+                                    
+                                       ε
+                                       ˜
+                                    
+                                 
+                                 
+                                    e
+                                    q
+                                 
+                              
+                              (
+                              ε
+                              )
+                              =
+                              
+                                 
+                                    ε
+                                 
+                                 
+                                    e
+                                    q
+                                 
+                              
+                              (
+                              ε
+                              )
+                              +
+                              
+                                 
+                                    l
+                                 
+                                 2
+                              
+                              
+                                 
+                                    ∇
+                                 
+                                 2
+                              
+                              
+                                 
+                                    ε
+                                 
+                                 
+                                    e
+                                    q
+                                 
+                              
+                              (
+                              ε
+                              )
+                           
+                        
+                     where l is a intrinsic material length scale.
+
+Instead of using higher order inter-element continuity elements (i.e., C1 and C2 elements), the proposed technique will recover the second order strain gradients from a patch of neighboring elements through a least square fitting process. In this regard, C0 elements suffice. The patch has its own interpolation functions and nodes, just like a larger size element. 
+                        Fig. 1 shows the three element gathering criteria that can be used to construct a patch, i.e., element-based, face-based, and nodal-based. The selection of the patch element shape is based on the shape of its parent element.
+
+Upon input of an unstructured mesh, the connection topology is examined to create the list of all element neighbors of each and every element in the mesh. That list is also flagged to denote a subset of those elements share a “face” with the element. The element neighbor list is used to define that element's patch members and that element is named as the patch's parent element. The elements in the patch are assumed to be C0, but they can be different parametric types (such as a mixture of linear triangles and bi-linear quadrilaterals) and have different interpolation functions.
+
+As shown in 
+                        Fig. 2, the patch or the parametric patch element (PPE) is first selected to be the same as the parametric shape as the parent element in the patch (a square, right triangle, brick, wedge, etc.). The interpolation degree of the PPE is set to be one or two degrees higher than the interpolation degree of the parent element at the center of the patch. The size of the PPE mapping into physical space is defined by the space occupied by the element and either the full neighbor list or just the “facing” neighbors. This is achieved by specifying the outmost coordinates of the element nodes in that patch.
+
+So long as the mesh connectivity does not change, each PPE and it's Jacobian, remains unchanged. If the problem involves large deflections only the PPE Jacobian (and its inverse) needs updating. That is done by using the updated coordinates of the nodes in the patch.
+
+After a solution has been obtained for the primary variables (displacements), an element loop is executed to obtain their first derivatives (and strains) at each quadrature point in each element. Those data are stored for later use in plotting and/or for error estimation and/or for second derivative estimations. A second loop over all the elements is executed for the later calculations. One could estimate the second physical derivatives, in the parent element of the patch, by taking the first parametric derivatives of the PPE interpolation of the first physical derivatives and scaling them to physical values by using the inverse of the constant diagonal Jacobian of the PPE.
+
+To carry out the least square fit there must be more quadrature points in the elements in the patch than the number of nodes used for the PPE interpolations. Since each element type in the patch has an assigned number of quadrature points it is easy to count the number of data points in the active patch. If that number is sufficiently large, then the degree of the PPE interpolation could be increased by one or two. That is, a parametric element with more nodes could be selected to be the PPE. In the current application, the degree of the PPE is usually one degree higher than that of the primary variable interpolation. The fit to the patch quadrature point data is done using a singular value decomposition algorithm.
+
+The relationship between the second parametric derivatives and the second physical derivatives is obtained as,
+                           
+                              (10)
+                              
+                                 
+                                    {
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               ξ
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               η
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         ξ
+                                                         ∂
+                                                         η
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    }
+                                 
+                                 =
+                                 
+                                    [
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                         x
+                                                      
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               ξ
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                         y
+                                                      
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               ξ
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                         x
+                                                      
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               η
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                         y
+                                                      
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               η
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                         x
+                                                      
+                                                      
+                                                         ∂
+                                                         ξ
+                                                         ∂
+                                                         η
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                         y
+                                                      
+                                                      
+                                                         ∂
+                                                         ξ
+                                                         ∂
+                                                         η
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                                 
+                                    {
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      ∂
+                                                      
+                                                         ∂
+                                                         x
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      ∂
+                                                      
+                                                         ∂
+                                                         y
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    }
+                                 
+                                 +
+                                 
+                                    [
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         (
+                                                         
+                                                            
+                                                               
+                                                                  ∂
+                                                                  x
+                                                               
+                                                               
+                                                                  ∂
+                                                                  ξ
+                                                               
+                                                            
+                                                         
+                                                         )
+                                                      
+                                                      2
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         (
+                                                         
+                                                            
+                                                               
+                                                                  ∂
+                                                                  y
+                                                               
+                                                               
+                                                                  ∂
+                                                                  ξ
+                                                               
+                                                            
+                                                         
+                                                         )
+                                                      
+                                                      2
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   2
+                                                   
+                                                      
+                                                         ∂
+                                                         x
+                                                         ∂
+                                                         y
+                                                      
+                                                      
+                                                         ∂
+                                                         ξ
+                                                         ∂
+                                                         ξ
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         (
+                                                         
+                                                            
+                                                               
+                                                                  ∂
+                                                                  x
+                                                               
+                                                               
+                                                                  ∂
+                                                                  η
+                                                               
+                                                            
+                                                         
+                                                         )
+                                                      
+                                                      2
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         (
+                                                         
+                                                            
+                                                               
+                                                                  ∂
+                                                                  y
+                                                               
+                                                               
+                                                                  ∂
+                                                                  η
+                                                               
+                                                            
+                                                         
+                                                         )
+                                                      
+                                                      2
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   2
+                                                   
+                                                      
+                                                         ∂
+                                                         x
+                                                         ∂
+                                                         y
+                                                      
+                                                      
+                                                         ∂
+                                                         η
+                                                         ∂
+                                                         η
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         ∂
+                                                         x
+                                                      
+                                                      
+                                                         ∂
+                                                         ξ
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         ∂
+                                                         x
+                                                      
+                                                      
+                                                         ∂
+                                                         η
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         ∂
+                                                         y
+                                                      
+                                                      
+                                                         ∂
+                                                         ξ
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         ∂
+                                                         y
+                                                      
+                                                      
+                                                         ∂
+                                                         η
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         ∂
+                                                         x
+                                                      
+                                                      
+                                                         ∂
+                                                         η
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         ∂
+                                                         y
+                                                      
+                                                      
+                                                         ∂
+                                                         ξ
+                                                      
+                                                   
+                                                   +
+                                                   
+                                                      
+                                                         ∂
+                                                         x
+                                                      
+                                                      
+                                                         ∂
+                                                         ξ
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         ∂
+                                                         y
+                                                      
+                                                      
+                                                         ∂
+                                                         η
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                                 
+                                    {
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               x
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               y
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         x
+                                                         ∂
+                                                         y
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    }
+                                 
+                              
+                           
+                        Eq. (10) shows that the Hessian matrix is usually nonsymmetrical. However, the patches are constructed such that their local coordinate systems are parallel to the global coordinate system. For example, as shown in Fig. 2, the quadrilateral PPE is built such that its sides are parallel to the global axis x and y. The triangular PPE is built as a right triangle such that its legs are parallel to the global axis. Such an alignment of the patch elements offers a linear mapping between the local coordinates and the global coordinates. The patch Jacobian is constant and diagonal in this case. Therefore, the first rectangular matrix on the right hand side of Eq. (10) is zero. If in addition, the Jacobian is diagonal, then,
+                           
+                              (11)
+                              
+                                 
+                                    
+                                       ∂
+                                       x
+                                    
+                                    
+                                       ∂
+                                       η
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       ∂
+                                       y
+                                    
+                                    
+                                       ∂
+                                       ξ
+                                    
+                                 
+                                 =
+                                 0
+                              
+                           
+                        
+                     
+
+Therefore, for the patch construction process given above, Eq. (10) reduces to
+                           
+                              (12)
+                              
+                                 
+                                    {
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               ξ
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               η
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         ξ
+                                                         ∂
+                                                         η
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    }
+                                 
+                                 =
+                                 
+                                    [
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         (
+                                                         
+                                                            
+                                                               
+                                                                  ∂
+                                                                  x
+                                                               
+                                                               
+                                                                  ∂
+                                                                  ξ
+                                                               
+                                                            
+                                                         
+                                                         )
+                                                      
+                                                      2
+                                                   
+                                                
+                                             
+                                             
+                                                0
+                                             
+                                             
+                                                0
+                                             
+                                          
+                                          
+                                             
+                                                0
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         (
+                                                         
+                                                            
+                                                               
+                                                                  ∂
+                                                                  y
+                                                               
+                                                               
+                                                                  ∂
+                                                                  η
+                                                               
+                                                            
+                                                         
+                                                         )
+                                                      
+                                                      2
+                                                   
+                                                
+                                             
+                                             
+                                                0
+                                             
+                                          
+                                          
+                                             
+                                                0
+                                             
+                                             
+                                                0
+                                             
+                                             
+                                                
+                                                   
+                                                      ∂
+                                                      x
+                                                   
+                                                   
+                                                      ∂
+                                                      ξ
+                                                   
+                                                
+                                                
+                                                   
+                                                      ∂
+                                                      y
+                                                   
+                                                   
+                                                      ∂
+                                                      η
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                                 
+                                    {
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               x
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               y
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         x
+                                                         ∂
+                                                         y
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    }
+                                 
+                              
+                           
+                        
+                     
+
+Then, we just need to calculate the inverse of the diagonal square matrix on the right hand side to obtain the physical second derivatives. The computation of the Laplacian from the diagonal Hessian matrix for the two-dimensional patches is finally simplified as,
+                           
+                              (13)
+                              
+                                 
+                                    {
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               x
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               y
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    }
+                                 
+                                 =
+                                 
+                                    [
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         (
+                                                         
+                                                            
+                                                               
+                                                                  ∂
+                                                                  x
+                                                               
+                                                               
+                                                                  ∂
+                                                                  ξ
+                                                               
+                                                            
+                                                         
+                                                         )
+                                                      
+                                                      
+                                                         −
+                                                         2
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                0
+                                             
+                                          
+                                          
+                                             
+                                                0
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         (
+                                                         
+                                                            
+                                                               
+                                                                  ∂
+                                                                  y
+                                                               
+                                                               
+                                                                  ∂
+                                                                  η
+                                                               
+                                                            
+                                                         
+                                                         )
+                                                      
+                                                      
+                                                         −
+                                                         2
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                                 
+                                    {
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               ξ
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                               η
+                                                            
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    }
+                                 
+                              
+                           
+                        
+                     
+
+To compute the Laplacian, one does not need the second cross derivative. Since other applications may require them they are calculated. For numerical approximations, the cross derivatives may not be identical (
+                           
+                              
+                                 ∂
+                              
+                              2
+                           
+                           /
+                           ∂
+                           x
+                           ∂
+                           y
+                           ≠
+                           
+                              
+                                 ∂
+                              
+                              2
+                           
+                           /
+                           ∂
+                           y
+                           ∂
+                           x
+                        ), so their average values are retained.
+
+It has been shown that the gradient type nonlocal damage mechanics involves the evaluation of the second derivatives (Laplacian) of the equivalent strain. For each patch, a local least square-fitting problem is to be solved. Eq. (9) is rewritten with the incremental nonlocal equivalent strain 
+                           Δ
+                           
+                              
+                                 
+                                    ε
+                                    ˜
+                                 
+                              
+                              
+                                 e
+                                 q
+                              
+                           
+                           (
+                           x
+                           )
+                         as,
+                           
+                              (14)
+                              
+                                 Δ
+                                 
+                                    
+                                       
+                                          ε
+                                          ˜
+                                       
+                                    
+                                    
+                                       e
+                                       q
+                                    
+                                 
+                                 (
+                                 x
+                                 )
+                                 =
+                                 Δ
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       e
+                                       q
+                                    
+                                 
+                                 (
+                                 x
+                                 )
+                                 +
+                                 
+                                    
+                                       l
+                                    
+                                    2
+                                 
+                                 
+                                    
+                                       ∇
+                                    
+                                    2
+                                 
+                                 Δ
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       e
+                                       q
+                                    
+                                 
+                                 (
+                                 x
+                                 )
+                              
+                           
+                        
+                     
+
+The local least square-fitting problem to be solved is
+                           
+                              (15)
+                              
+                                 min
+                                 |
+                                 |
+                                 Δ
+                                 
+                                    
+                                       
+                                          ε
+                                          ^
+                                       
+                                    
+                                    
+                                       e
+                                       q
+                                    
+                                 
+                                 −
+                                 Δ
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       e
+                                       q
+                                    
+                                 
+                                 |
+                                 |
+                              
+                           
+                        
+                     
+
+For example, in a two-dimensional problem, the patches are utilized to construct a smooth surface 
+                           Δ
+                           
+                              
+                                 
+                                    ε
+                                    ^
+                                 
+                              
+                              
+                                 e
+                                 q
+                              
+                           
+                           (
+                           x
+                           )
+                         by approximating the local equivalent strain field. If [H(x,y)] is the patch interpolation function, and {d} is the nodal value of the patch fitted equivalent strain increments, then
+                           
+                              (16)
+                              
+                                 Δ
+                                 
+                                    
+                                       
+                                          ε
+                                          ^
+                                       
+                                    
+                                    
+                                       e
+                                       q
+                                    
+                                 
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 )
+                                 =
+                                 [
+                                 N
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 )
+                                 ]
+                                 {
+                                 d
+                                 }
+                              
+                           
+                        
+                     
+
+The local equivalent strain increments are usually sampled at all the n
+                        
+                           qp
+                         quadrature points in the patch,
+                           
+                              (17)
+                              
+                                 Δ
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       e
+                                       q
+                                    
+                                 
+                                 =
+                                 {
+                                 a
+                                 }
+                                 =
+                                 
+                                    
+                                       {
+                                       Δ
+                                       
+                                          
+                                             ε
+                                          
+                                          
+                                             e
+                                             q
+                                          
+                                          
+                                             1
+                                          
+                                       
+                                       ,
+                                       ⋯
+                                       ,
+                                       Δ
+                                       
+                                          
+                                             ε
+                                          
+                                          
+                                             e
+                                             q
+                                          
+                                          
+                                             
+                                                
+                                                   n
+                                                
+                                                
+                                                   q
+                                                   p
+                                                
+                                             
+                                          
+                                       
+                                       }
+                                    
+                                    T
+                                 
+                              
+                           
+                        
+                     
+
+The corresponding normal equation to be solved for Eq. (15) can be expressed as the summation over the quadrature points in the patch as,
+                           
+                              (18)
+                              
+                                 
+                                    (
+                                    
+                                       
+                                          
+                                             Σ
+                                          
+                                          
+                                             q
+                                             =
+                                             1
+                                          
+                                          
+                                             q
+                                             =
+                                             
+                                                
+                                                   n
+                                                
+                                                
+                                                   q
+                                                   p
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             [
+                                             H
+                                             (
+                                             
+                                                
+                                                   x
+                                                
+                                                
+                                                   q
+                                                
+                                             
+                                             ,
+                                             
+                                                
+                                                   y
+                                                
+                                                
+                                                   q
+                                                
+                                             
+                                             )
+                                             ]
+                                          
+                                          T
+                                       
+                                       [
+                                       H
+                                       (
+                                       
+                                          
+                                             x
+                                          
+                                          
+                                             q
+                                          
+                                       
+                                       ,
+                                       
+                                          
+                                             y
+                                          
+                                          
+                                             q
+                                          
+                                       
+                                       )
+                                       ]
+                                    
+                                    )
+                                 
+                                 {
+                                 d
+                                 }
+                                 =
+                                 
+                                    (
+                                    
+                                       
+                                          
+                                             Σ
+                                          
+                                          
+                                             q
+                                             =
+                                             1
+                                          
+                                          
+                                             q
+                                             =
+                                             
+                                                
+                                                   n
+                                                
+                                                
+                                                   q
+                                                   p
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             [
+                                             H
+                                             (
+                                             
+                                                
+                                                   x
+                                                
+                                                
+                                                   q
+                                                
+                                             
+                                             ,
+                                             
+                                                
+                                                   y
+                                                
+                                                
+                                                   q
+                                                
+                                             
+                                             )
+                                             ]
+                                          
+                                          T
+                                       
+                                       
+                                          
+                                             a
+                                          
+                                          
+                                             q
+                                          
+                                       
+                                    
+                                    )
+                                 
+                              
+                           
+                        
+                     
+
+The patch nodal solution is obtained as,
+                           
+                              (19)
+                              
+                                 {
+                                 d
+                                 }
+                                 =
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             
+                                                Σ
+                                             
+                                             
+                                                q
+                                                =
+                                                1
+                                             
+                                             
+                                                q
+                                                =
+                                                
+                                                   
+                                                      n
+                                                   
+                                                   
+                                                      q
+                                                      p
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                [
+                                                H
+                                                (
+                                                
+                                                   
+                                                      x
+                                                   
+                                                   
+                                                      q
+                                                   
+                                                
+                                                ,
+                                                
+                                                   
+                                                      y
+                                                   
+                                                   
+                                                      q
+                                                   
+                                                
+                                                )
+                                                ]
+                                             
+                                             T
+                                          
+                                          [
+                                          H
+                                          (
+                                          
+                                             
+                                                x
+                                             
+                                             
+                                                q
+                                             
+                                          
+                                          ,
+                                          
+                                             
+                                                y
+                                             
+                                             
+                                                q
+                                             
+                                          
+                                          )
+                                          ]
+                                       
+                                       )
+                                    
+                                    
+                                       −
+                                       1
+                                    
+                                 
+                                 
+                                    (
+                                    
+                                       
+                                          
+                                             Σ
+                                          
+                                          
+                                             q
+                                             =
+                                             1
+                                          
+                                          
+                                             q
+                                             =
+                                             
+                                                
+                                                   n
+                                                
+                                                
+                                                   q
+                                                   p
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             [
+                                             H
+                                             (
+                                             
+                                                
+                                                   x
+                                                
+                                                
+                                                   q
+                                                
+                                             
+                                             ,
+                                             
+                                                
+                                                   y
+                                                
+                                                
+                                                   q
+                                                
+                                             
+                                             )
+                                             ]
+                                          
+                                          T
+                                       
+                                       
+                                          
+                                             a
+                                          
+                                          
+                                             q
+                                          
+                                       
+                                    
+                                    )
+                                 
+                              
+                           
+                        
+                     
+
+Therefore, the Laplacian 
+                           
+                              
+                                 ∇
+                              
+                              2
+                           
+                           Δ
+                           
+                              
+                                 ε
+                              
+                              
+                                 e
+                                 q
+                              
+                           
+                           (
+                           x
+                           )
+                         are evaluated from the continuous surface obtained as
+                           
+                              (20)
+                              
+                                 
+                                    
+                                       ∇
+                                    
+                                    2
+                                 
+                                 Δ
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       e
+                                       q
+                                    
+                                 
+                                 =
+                                 [
+                                 
+                                    
+                                       ∇
+                                    
+                                    2
+                                 
+                                 H
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 )
+                                 ]
+                                 {
+                                 d
+                                 }
+                              
+                           
+                        where
+                           
+                              (21)
+                              
+                                 [
+                                 
+                                    
+                                       ∇
+                                    
+                                    2
+                                 
+                                 H
+                                 (
+                                 x
+                                 ,
+                                 y
+                                 )
+                                 ]
+                                 =
+                                 
+                                    [
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   ∂
+                                                
+                                                2
+                                             
+                                             H
+                                             (
+                                             x
+                                             ,
+                                             y
+                                             )
+                                          
+                                          
+                                             ∂
+                                             
+                                                
+                                                   x
+                                                
+                                                2
+                                             
+                                          
+                                       
+                                       +
+                                       
+                                          
+                                             
+                                                
+                                                   ∂
+                                                
+                                                2
+                                             
+                                             H
+                                             (
+                                             x
+                                             ,
+                                             y
+                                             )
+                                          
+                                          
+                                             ∂
+                                             
+                                                
+                                                   y
+                                                
+                                                2
+                                             
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                              
+                           
+                        
+                     
+
+To calculate the Laplacian, two second partial derivatives are required and thus saved, they are
+                           
+                              (22)
+                              
+                                 
+                                    
+                                       
+                                          
+                                             ∂
+                                          
+                                          2
+                                       
+                                       Δ
+                                       
+                                          
+                                             
+                                                ε
+                                                ^
+                                             
+                                          
+                                          
+                                             e
+                                             q
+                                          
+                                       
+                                    
+                                    
+                                       ∂
+                                       
+                                          
+                                             x
+                                          
+                                          2
+                                       
+                                    
+                                 
+                                 =
+                                 
+                                    [
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   ∂
+                                                
+                                                2
+                                             
+                                             H
+                                             (
+                                             x
+                                             ,
+                                             y
+                                             )
+                                          
+                                          
+                                             ∂
+                                             
+                                                
+                                                   x
+                                                
+                                                2
+                                             
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                                 {
+                                 d
+                                 }
+                                 
+                                 and
+                                 
+                                 
+                                    
+                                       
+                                          
+                                             ∂
+                                          
+                                          2
+                                       
+                                       Δ
+                                       
+                                          
+                                             
+                                                ε
+                                                ^
+                                             
+                                          
+                                          
+                                             e
+                                             q
+                                          
+                                       
+                                    
+                                    
+                                       ∂
+                                       
+                                          
+                                             y
+                                          
+                                          2
+                                       
+                                    
+                                 
+                                 =
+                                 
+                                    [
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   ∂
+                                                
+                                                2
+                                             
+                                             H
+                                             (
+                                             x
+                                             ,
+                                             y
+                                             )
+                                          
+                                          
+                                             ∂
+                                             
+                                                
+                                                   y
+                                                
+                                                2
+                                             
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                                 {
+                                 d
+                                 }
+                              
+                           
+                        
+                     
+
+After looping over all the patches in the mesh, every node within the mesh would receive multiple values of the strain gradients. Therefore, a nodal averaging process is necessary to obtain the unique smoothed strain gradients at each element node, and then the strain gradients are interpolated back to the quadrature points in each element and the Laplacian of the equivalent strains are calculated subsequently.
+
+A classical three point bending test previously done by Jirasek [38] is simulated in this paper to test the proposed nonlocal finite element technique. The concrete beam tested has a square cross section area of 100×100mm2. The span of the beam is 450mm. For the beam with a notch, a 5mm wide and 50mm deep notch is set at the center of the beam throughout its thickness. 
+                        Fig. 3 shows the two-dimensional plane stress model used for the simulation. Assume an exponential softening material as defined in Eq. (8). The Young's modulus E=20GPa and the Poisson's ratio γ=0.2. The damage parameters are kept the same as in Ref. [38] with ε
+                        
+                           0
+                        =9.0e−5 and ε
+                        
+                           f
+                        =7e−3.
+
+The bending tests are run on both notched and unnotched beams. For each case, three meshes with different element sizes are built. As shown in 
+                        Fig. 4, the notched beam's mesh sizes are 5mm, 2.5mm and 1.6mm; while those of unnotched beam are 15mm, 7.5mm and 5mm. The elements used are the bi-linear four node quadrilaterals (Q4) with a standard 2×2 Gauss quadrature rule. For Q4 elements, the patches are constructed as bi-quadratic quadrilateral elements (Q9).
+
+@&#RESULTS AND DISCUSSIONS@&#
+
+The exaggerated deformed meshes and the damage density contours are plotted in 
+                        Fig. 5(a) for the notched beams and in 
+                        Fig. 6(a) for the unnotched beams. The damage density is plotted as a mean value at each element, therefore is element piecewise constant.
+
+The damage density contours of the notched beam with different mesh fineness are shown in Fig. 5(b, c). The contour plots on the left in Figs. 5 and 6 are obtained from the local damage model while the contour plots on the right are from nonlocal one. It is shown that the evolution of the damage density is localized to single elements in the mesh for a local model. The damage area initiates from the stress concentration point at the notch and is restricted to a narrow strip, of which the width is limited to the size of a single element. The damage area cannot propagate properly by using a local formulation.
+
+The same damage density contour plots for the unnotched beam are plotted in Fig. 6(b, c). Again, the damage density contours obtained from the local models are plotted on the left and those from the nonlocal models are on the right, which also shows the similar results as those for the notched beams.
+
+If we look at the final damage density contours obtained from the nonlocal model as shown on the right in Fig. 5(c) for the notched beam and Fig. 6(c) for the unnotched beam. The final damage areas obtained are all very similar for different mesh sizes. The damage area is no longer localized to the size of a single element but localized to certain areas of a similar size.
+
+Finally, the loading–displacement curves obtained from the nonlocal tests are plotted in 
+                        Fig. 7(a) for the notched beam case. The experimental and Jirasek's results obtained from Ref. [38] are also plotted for comparison. Jirasek's results are obtained through an integral formula with cut-off radius and are plotted here from an averaging of his results from various mesh sizes. It is shown that the regularized loading–displacement curves behave similarly during post peak stage, the peak loads reached are almost the same disregard of the mesh sizes and are all converged to center area of the experimental results. The dissipation energy is also conserved for different mesh results. Compared to the experiments, the results obtained from this study are closer to the experimental data than Jirasek's. However, the peak loading values obtained are not uniform for the notched beam case, the possible cause can be a result of the elements grouped to construct the patch at the notch corner are not evenly distributed in that patch, which affects the accuracy of the recovered Laplacian.
+
+The unnotched beam's loading–displacement curves obtained from the nonlocal tests are plotted in Fig. 7(b). Again, the patch smoothed nonlocal finite element technique implemented in this study successfully presents a mesh independent loading–displacement curve for the unnotched beam simulation. However, as compared to Jirasek's result, the simulation gives a higher peak loading value for the same length scale, but for different mesh fineness, the loading–displacement curves are uniform. The difference between our results and Jirasek's can be a result of the different nonlocal approach used, which is discussed at the end of this section. Since all the experimental data are obtained from Ref. [38], the experimental data for the unnotched beam is not available as in Jirasek's paper.
+
+The Laplacian of the equivalent strains are also given here. But before plotting that in two-dimensional space, it would be helpful to see the one-dimensional case. 
+                        Fig. 8 shows a spike shape continuous function f(x) and its Laplacian. Typically, the Laplacian is negative at the peak of the spike and is positive at the diminishing bounds of the spike.
+
+
+                        
+                        Fig. 9 shows the recovered Laplacian of the equivalent strain increment at the final loading stage for both notched and unnotched beams. To avoid redundancy, the recovered Laplacian is plotted in only one mesh resolution for each case. The contours of the localized normal strains in the x-direction are also plotted. As indicated from a one-dimensional case, the Laplacian is positive at the edge and is negative at the center of the localized strain zone. The SCP nodal averaging process used to recover the second derivatives of the equivalent strain creates a good approximation to the Laplacian profile, thus helps the proper propagation of the localized zone and keeps the ellipticity of the original problem.
+
+One thing to mention here is that the strain gradient methods are used instead of the integral type methods in this study, length scales used are different from those used by Jirasek. For integral type methods, the length scale is given as the radius R of the spatial weighting function. According to Jirasek [38], it is assumed that R=4mm for the notched beam and R=8mm for the unnotched beam. In this study, the length scale l as defined in Eq. (9) is set to 2mm for the notched beam based on the calibration with the experimental results, while that for the unnotched beam is kept the same as 8mm. This explains the difference shown in Fig. 7(b).
+
+@&#CONCLUSIONS@&#
+
+A nonlocal finite element technique was developed for the implementation of a strain gradient type nonlocal damage mechanics model. The SCP based second derivative recovery method is proven effective for evaluating the Laplacian of the equivalent strains at C0 linear elements.
+
+The Laplacian of the equivalent strains are recovered through a nodal averaging process. Generally, after the patch looping, all element nodes receive multiple second derivative values; therefore, an additional nodal averaging process was utilized to get the arithmetic mean of all the received second derivatives. Other nodal averaging criteria can also be considered.
+
+The proposed technique performs better for the domains with smooth boundaries. For domains with sharp corners like notches, the elements used to consist the patches at that corner may not evenly spreads the patch which would introduce inaccuracy for the patch least square fitting process.
+
+Secondly, the proposed technique is only tested for explicit type nonlocal formulations. The implementation in an implicit type nonlocal formulation will be different since that is generally a boundary value problem to be solved. Future study in these two regards is highly recommended.
+
+@&#ACKNOWLEDGMENT@&#
+
+The study conducted in this paper is partly supported by the Grant 07121-1603c of Research Partnership to Secure Energy for America (RPSEA).
+
+@&#REFERENCES@&#
+

@@ -1,0 +1,552 @@
+@&#MAIN-TITLE@&#Model of unidirectional block formation leading to reentrant ventricular tachycardia in the infarct border zone of postinfarction canine hearts
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Ventricular tachycardia is common after myocardial infarction and it is a serious health problem worldwide.
+
+
+                        
+                        
+                           
+                           The source of reentrant ventricular tachycardia is often located in the infarct border zone, the layer of thin surviving myocardium adjacent to the infarct.
+
+
+                        
+                        
+                           
+                           Although there is electrical activity occurring in the infarct border zone, the conduction velocity of the leading edge of the propagating wavefront is not constant.
+
+
+                        
+                        
+                           
+                           Where the infarct border zone dimension changes from thin-to-thick in the travel direction, very slow conduction or even functional block occur at locations where the wavefront becomes critically convex.
+
+
+                        
+                        
+                           
+                           In this study, the activation rate and IBZ geometric structure necessary for functional block to form during premature stimulation and during reentrant ventricular tachycardia, are determined.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Activation mapping
+
+Isthmus
+
+Unidirectional block
+
+Ventricular tachycardia
+
+Wavefront curvature
+
+@&#ABSTRACT@&#
+
+
+                  Background
+                  When the infarct border zone is stimulated prematurely, a unidirectional block line (UBL) can form and lead to double-loop (figure-of-eight) reentrant ventricular tachycardia (VT) with a central isthmus. The isthmus is composed of an entrance, center, and exit. It was hypothesized that for certain stimulus site locations and coupling intervals, the UBL would coincide with the isthmus entrance boundary, where infarct border zone thickness changes from thin-to-thick in the travel direction of the premature stimulus wavefront.
+               
+                  Method
+                  A quantitative model was developed to describe how thin-to-thick changes in the border zone result in critically convex wavefront curvature leading to conduction block, which is dependent upon coupling interval. The model was tested in 12 retrospectively analyzed postinfarction canine experiments. Electrical activation was mapped for premature stimulation and for the first reentrant VT cycle. The relationship of functional conduction block forming during premature stimulation to functional block during reentrant VT was quantified.
+               
+                  Results
+                  For an appropriately placed stimulus, in accord with model predictions: (1) The UBL and reentrant VT isthmus lateral boundaries overlapped (error: 4.8±5.7mm). (2) The UBL leading edge coincided with the distal isthmus where the center-entrance boundary would be expected to occur. (3) The mean coupling interval was 164.6±11.0ms during premature stimulation and 190.7±20.4ms during the first reentrant VT cycle, in accord with model calculations, which resulted in critically convex wavefront curvature with functional conduction block, respectively, at the location of the isthmus entrance boundary and at the lateral isthmus edges.
+               
+                  Discussion
+                  Reentrant VT onset following premature stimulation can be explained by the presence of critically convex wavefront curvature and unidirectional block at the isthmus entrance boundary when the premature stimulation interval is sufficiently short. The double-loop reentrant circuit pattern is a consequence of wavefront bifurcation around this UBL followed by coalescence, and then impulse propagation through the isthmus. The wavefront is blocked from propagating laterally away from the isthmus by sharp increases in border zone thickness, which results in critically convex wavefront curvature at VT cycle lengths.
+               
+
+@&#INTRODUCTION@&#
+
+In postinfarction hearts, a reentrant circuit causing ventricular tachycardia (VT) can form within the infarct border zone, which is the thin region of remaining viable myocardium located between the infarct and the epicardial surface of the heart [1]. In canine postinfarction, a complete reentrant circuit is often apparent when the epicardial surface of the epicardial border zone is mapped with a multielectrode array [2]. In humans, post myocardial infarction reentrant VT circuits are mostly endocardial; however, epicardial circuits have also been described [3]. It has been shown that the isthmus, or diastolic pathway, present when the pattern of reentrant VT is that of a double-loop, coincides with the region of thinnest border zone [4–6]. Based in part on this observation, it was previously demonstrated that changes in activation wavefront curvature along the border zone Z-axis (thickness axis) likely result in very slow conduction or functional conduction block at the lateral isthmus boundaries during VT [6]. The wavefront becomes critically convex when it propagates in the outward direction at those locations due to the sharp spatial gradient from thinner to thicker border zone (lesser to greater volume of tissue activating), with a resulting source/sink mismatch. Because the current available forward to the propagation direction is insufficient to activate the larger volume of tissue downstream, the wavefront slows and blocks. Yet, block due to convex wavefront curvature is also activation rate dependent [7], and the relationship of activation rate to Z-axis thickness changes has not yet been considered.
+
+More recently, it was shown that if the spatial change from thin to thick at the lateral isthmus boundaries has variable steepness, it can result in very slow and variable conduction across the lateral boundaries [8]. The resulting discontinuities in the laterally propagating electrical activation wavefront are a source of electrogram fractionation. Fractionation is defined as the presence of multiple variable deflections in the electrogram arising from asynchronous electrical activity. This compares with the normal condition in which a single activation wavefront is present, the source of the biphasic electrogram shape which is recorded from healthy myocardium. Because the geometric configuration of the conducting medium in postinfarction hearts is intransigent over time intervals of hours or more, electrogram fractionation can often be observed at the same recording location during normal sinus rhythm as well as during reentrant VT, depending on the wavefront direction [8] and the coupling interval for electrical activation.
+
+Although the functional block lines forming at the lateral isthmus boundaries, and electrogram fractionation arising from those locations, can be explained on the basis of critically convex wavefront curvature, the cause of unidirectional block line (UBL) formation during premature stimulation, which leads to onset of reentrant VT with a double-loop reentrant circuit pattern, has not been entirely elucidated. It is possible that large spatial changes in refractoriness are partially responsible for UBL formation leading to reentrant VT, as was shown in some prior canine experiments [9,10]. However in canine postinfarction, the effective refractory period at the isthmus location (inner pathway), versus immediately outside the isthmus (outer pathway), may also have little or no difference [11,12]. A low safety factor associated with longitudinal propagation in a non-uniformly anisotropic substrate can also contribute to conduction block [13]. Alternatively, herein it is shown how critically convex wavefront curvature, caused by changes in infarct border zone thickness, can result in unidirectional conduction block during premature excitation, and lead to the formation of a double-loop reentrant circuit with central isthmus at VT onset. The model can be helpful for understanding reentrant circuit formation because wavefront curvature changes have an anatomical, i.e., structural basis, and do not require the presence of sharp spatial changes in molecular-level properties at locations where functional block lines arise.
+
+@&#METHOD@&#
+
+From an archived retrospective database of canine postinfarction, experiments were selected for analysis in which monomorphic ventricular tachycardia with a stable double-loop reentrant circuit was inducible by premature stimulation. Of 20 experiments that were analyzed, 12 met the inclusion criteria for the study. In all experiments, mongrel canines weighing 20–40kg were anesthetized using sodium pentobarbital (intravenous, 30mg/kg). The left anterior descending coronary artery (LAD) was then ligated near its base [1,2]. A transmural anteroseptal myocardial infarction resulted, with an epicardial rim of muscle having variable thickness, termed the infarct border zone. Canines were prepared for electrophysiological analysis 3–5 days following ligation of the LAD, which is the interval during which the postinfarction canine heart is most likely to be arrhythmogenic [1,2,4,5,14]. Bipolar electrodes sutured onto the left ventricle, near the LAD artery, at the base of the heart (BASE), the center region, and the left lateral edge (LAT), were used to induce reentrant VT via programmed electrical stimulation. A train of 10 S1 pulses with an interval of 250–300ms between pulses was followed by a premature stimulus. The pace train was repeated, shortening the last stimulus interval by 5–10ms on each subsequent train, until reentry was initiated or until block occurred at the stimulus site. During the normal sinus rhythm, premature stimulation, and during any monomorphic VT that was induced, electrograms were simultaneously recorded from the epicardial surface of the left ventricle, where the border zone usually forms in postinfarction canine hearts after LAD ligation, from 196 to 312 bipolar electrodes configured as a multielectrode array. These methods were previously described in detail [2]. An image of the 312 bipolar multielectrode array taken during its construction is shown in 
+                        Fig. 1. The array consists of silver disks 1mm in diameter arranged on a square grid and embedded in polyurethane. Each silver disk was formed by melting the end of a thin solid silver wire. The 624 silver wires (two for each of 312 bipolar pairs) were attached to the data acquisition system via a zero insertion force (ZIF) connector. At the data acquisition system, a differential amplifier was used to form bipolar signals from pairs of leads, which were bandpass filtered at 0.5–500Hz, digitized at 1–2kHz per channel, and streamed to computer disk. Further details of the electronic configuration of the acquisition system and data throughput are described elsewhere [15], as are details of electrical activation mapping [2,4,5,14]. The quantitative methods for registration of the multielectrode array with respect to anatomical landmarks have also been described [16]. The canine experiments were approved by the Institutional Review Board of Columbia University Medical Center, and the experimental paradigm was in accord with institutional guidelines.
+
+In prior work, details concerning the relationship between infarct border zone thickness, wavefront curvature, and conduction velocity were provided [6]. In this section it is shown how the wavefront curvature model can be used to predict where functional electrical conduction block will form in the infarct border zone. The summary equation for thickness-induced changes in wavefront curvature in the border zone is given by [6]
+                        
+                           
+                              (1)
+                              
+                                 θ
+                                 ≈
+                                 
+                                    
+                                       θ
+                                    
+                                    
+                                       o
+                                    
+                                 
+                                 −
+                                 
+                                    D
+                                    c
+                                 
+                                 ⋅
+                                 
+                                    
+                                       Δ
+                                       T
+                                    
+                                    T
+                                 
+                              
+                           
+                        where θ is the conduction velocity of the propagating wavefront, θ
+                        
+                           o
+                         is the conduction velocity of the propagating wavefront when the geometry of the conducting medium along a particular distance is unchanged, resulting in a rectilinear (straight) leading edge (~0.4mm/ms in ventricular myocardium), T is the border zone thickness, c the space step and D the diffusion coefficient are constants, and ΔT is the spatial change in thickness per unit space step c, taken as the maximum ΔT in the vector field about the measurement point. For the present study, values of c=1mm or unity [6] and D=0.1mm2/ms [17] were used. Based on Eq. (1), therefore, when ΔT/T→4.0 (unitless), θ→0mm/ms, i.e., wavefront curvature becomes critically convex. This will occur when T is minimized and ΔT is maximized when the activation wavefront propagates from thin to thick infarct border zone. The latter condition is met at the lateral boundaries of the reentry isthmus, since the isthmus is coincident with the thinnest border zone, and since it has been shown that there is a maximal change to thicker border zone outward in the lateral directions [6].
+
+As a first approximation, suppose that the effective refractory period of the myocardial tissue is relatively uniform throughout the infarct border zone, and for simplicity, suppose conduction, as a first approximation, is isotropic. The likelihood of conduction block for a given level of wavefront convexity is rate dependent [7]. When the premature stimulus interval is shorter than the cycle length of reentrant VT, block is more likely to occur at a given level of wavefront curvature during premature stimulation as compared with during VT.
+
+Based on Eq. (1) and the relationship of cycle length to block, it would be expected that alterations in wavefront curvature are as noted in 
+                        Fig. 2. For the schematics of both premature stimulation (panel A) and ventricular tachycardia (panel B), the infarct is shown in gray, and wavefront curvature is noted in brown. As a reference, in the inset at lower left, the epicardial surface is depicted as a red plate (not present in panels A and B for clarity of detail). To show sequence progression over time, short arrows depict the direction of propagation from red to violet in panels A and B. During premature stimulation (panel A), the wavefront is rectilinear near the stimulus site, where there is no change in border zone thickness (labeled 1). As the wavefront encounters the isthmus location, where the border zone is thinner, it becomes concave, facilitating propagation (2a). Propagation outside the isthmus in the same direction is rectilinear (2b), since there is no change in thickness in the propagation direction there. For simplicity, propagation outside the isthmus is only shown on one side. Propagation along the isthmus center, and also outside the isthmus location in the same direction is rectilinear (3a and 3b), since there is no change in thickness in the propagation direction. As the wavefront encounters a change to thicker tissue near the isthmus end (4a) it becomes convex, slowing conduction. At the short coupling interval during premature stimulation, conduction blocks at this degree of curvature, noted by thick black lines at the isthmus center-entrance boundary location and at the lateral edges of the isthmus entrance location. However, block does not occur at 4b, because there is no change in thickness in the propagation direction. From 4b, the wavefront curves around. It cannot propagate directly from 4b to 4a due to the discontinuity that would result from wavefront pivoting [19]. Were the wavefront to move obliquely across the isthmus entrance boundary from 4b, it would slow or block, since the transition in the forward direction within the entrance area would be thin-to-thick. Toward the isthmus end, the wavefront coalesces with the wavefront arriving from the other side of the isthmus (not shown), activates the isthmus entrance, and reenters the isthmus center in the opposite direction, which has recovered excitability.
+
+During a full cycle of reentrant VT, the configuration is as shown in panel B of Fig. 2. Propagation through the isthmus center is rectilinear because there is approximately no change in thickness (1). However, were portions of the wavefront to propagate toward the lateral isthmus boundaries, they would block due to the steep lateral transition from thin-to-thick border zone there. As the wavefront encounters the isthmus exit, it becomes convex because of the thin-to-thick transition (2). However, because cycle length during stable monomorphic reentrant VT is longer than during premature stimulation, critically convex curvature does not occur and it does not block. The wavefront bifurcates at the isthmus exit and then propagates around the outer pathway as a rectilinear wavefront (3). Propagation at the isthmus entrance is facilitated because of the thick-to-thin change in border zone thickness, resulting in concave wavefront curvature (4). Thus there is a change in wavefront propagation direction only at isthmus center and exit locations during premature stimulation (panel A) versus reentrant VT (panel B).
+
+Based on the above paradigm, the timing relationship of the premature stimulation cycle versus the first reentrant VT cycle is depicted in 
+                        Fig. 3A. Activation wavefront propagation direction during the premature excitation cycle is denoted with black arrows. Examples of approximate timing are given, with the actual timing depending in part on the distances between landmarks. The premature excitation wavefront arrives at time 50ms at the opposite end of the isthmus and blocks around it on three sides due to the steep thin-to-thick transition in the forward wavefront direction. Toward the end of the premature stimulation cycle, the bifurcated wavefronts coalesce, and are facilitated to rapidly propagate in the travel direction at time 150ms since the spatial transition is thick-to-thin. A single impulse then proceeds and enters the isthmus. Due in part to the wavefront curving a total of 180° in this region, there is a long delay for arrival at the reentry point (from time 50ms to time 160ms). This is a consequence of propagation of the wave about a pivot point, with convex wavefront curvature slowing the conduction velocity about such points [18,19]. A gray arrow shows the propagation direction as the wavefront breaks through the unidirectional block line on the opposite side to initiate the first reentry cycle (time 160ms). The wavefront proceeds through the isthmus center (time 160–180ms). It is constrained in this region as a narrow electrical impulse, and is prevented from propagating outwardly across the lateral boundaries due to the steep change in thin-to-thick transition there (see also Fig. 2B). The impulse then proceeds through the isthmus exit. There is a slight possibility of block at short VT cycle lengths at this location due to convex wavefront curvature, depending on the shortness of the cycle length. However, if the wavefront does propagate through the exit, it then bifurcates, the distinct wavefronts slowly pivot, then travel in the downward direction in the schematic away from the lateral boundaries (gray arrows, time 300ms), and arrive at the isthmus entrance (time 320ms), whereupon they coalesce, completing the first reentry cycle. Thus the double-loop pattern of reentry is established during premature stimulation and the first reentry cycle, with a VT cycle length of approximately 200ms on average [20]. On subsequent cycles, due to the constraints of thin-to-thick transition and because of the refractory relationships forming during the first cycle, the pattern perpetuates, so long as wavefront breakthrough does not occur.
+
+The isthmus end with sharpest spatial transition ΔT/c would be anticipated to most likely block from an appropriately placed premature stimulus, as convex wavefront curvature will be greater and closer to the critical value there. This is illustrated in Fig. 3B–D. The isthmus ends are shown having a more gradual slope (lesser density of horizontal lines and longer path) or a steeper slope (greater density of horizontal lines and shorter path to effect the same change in thickness). The configurations that are schematized in Fig. 3B–D would occur in different postinfarction hearts. In Fig. 3B, the premature excitation wavefront originating from the LAD blocks on the opposite end of the isthmus from the stimulus site due to the sharp thin-to-thick transition there (similarly when the stimulus is from the BASE – not shown). In Fig. 3C and D, the premature excitation wavefront originating from the LAT or from the center, respectively, also block at the opposite end of the isthmus from the stimulus site due to the sharp thin-to-thick transition. The corresponding activation patterns during reentry, for the premature stimulation patterns of Fig. 3B–D, are shown in Fig. 3E–G. The isthmus entrance is located at the end with steepest spatial change in thickness. The isthmus exit is located at the end having the most gradual spatial change in thickness.
+
+At locations where wavefront curvature approaches a critical convexity, when the rate of activation is increased, the likelihood of conduction block also increases [7]. To show the rate dependency relationship, the conduction velocity equation can be written as [19,21]
+                        
+                           
+                              (2)
+                              
+                                 θ
+                                 =
+                                 
+                                    
+                                       θ
+                                    
+                                    
+                                       o
+                                    
+                                 
+                                 −
+                                 D
+                                 ⋅
+                                 ρ
+                              
+                           
+                        where ρ is the absolute magnitude of the degree of wavefront curvature. From Eqs. (1) and (2)
+                        
+                           
+                              (3)
+                              
+                                 ρ
+                                 =
+                                 
+                                    1
+                                    c
+                                 
+                                 ⋅
+                                 
+                                    
+                                       Δ
+                                       T
+                                    
+                                    T
+                                 
+                              
+                           
+                        The conduction velocity equation can also be modeled as a circular arc [22]
+                        
+                           
+                              (4)
+                              
+                                 θ
+                                 =
+                                 
+                                    
+                                       θ
+                                    
+                                    
+                                       o
+                                    
+                                 
+                                 −
+                                 D
+                                 ⋅
+                                 
+                                    
+                                       2
+                                       ⋅
+                                       
+                                       sin
+                                       (
+                                       β
+                                       )
+                                    
+                                    w
+                                 
+                              
+                           
+                        where β is the angle between the propagation direction and the taper of the conducting medium, w is the distance across the conducting medium at the wavefront leading edge, and
+                           
+                              (5)
+                              
+                                 ρ
+                                 =
+                                 
+                                    
+                                       2
+                                       ⋅
+                                       
+                                       sin
+                                       (
+                                       β
+                                       )
+                                    
+                                    w
+                                 
+                              
+                           
+                        Based on a prior analysis of reentrant VT in postinfarction canine hearts [6], mean border zone thickness T was shown to average 231μm at the isthmus location and 1440μm along the outer pathway of the circuit. Thus the average change in thickness between isthmus and outer pathway is ΔT=1440–231=1209μm, and
+                           
+                              (6)
+                              
+                                 
+                                    
+                                       Δ
+                                       T
+                                    
+                                    T
+                                 
+                                 =
+                                 
+                                    
+                                       1440
+                                       −
+                                       231
+                                    
+                                    
+                                       231
+                                    
+                                 
+                                 =
+                                 5.23
+                                 
+                                 (
+                                 unitless
+                                 )
+                              
+                           
+                        in the direction from thinnest isthmus to thicker outer pathway. If ΔT occurs over a spatial interval of c=1mm, then from Eq. (1), this would likely result in conduction block, since the value of ΔT/T is greater than 4.0. However, the occurrence of conduction block when wavefront convexity approaches a critical value of curvature also depends upon activation rate. When a narrow isthmus opens to an expanse, the angle β=90°, and conduction block has been shown to occur at w=0.6mm for a rate of 200ms [7]. The interval 200ms is approximately the mean reentrant VT cycle length as induced by premature stimulation in canine postinfarction experiments [20]. At this value of w
+                        
+                           
+                              (7)
+                              
+                                 ρ
+                                 =
+                                 
+                                    
+                                       2
+                                       ⋅
+                                       
+                                       sin
+                                       (
+                                       90
+                                       °
+                                       )
+                                    
+                                    
+                                       0.6
+                                       
+                                       mm
+                                    
+                                 
+                                 =
+                                 3.33
+                                 
+                                 
+                                    
+                                       mm
+                                    
+                                    
+                                       −
+                                       1
+                                    
+                                 
+                              
+                           
+                        From Eq. (3), the distance interval, or space step c, corresponding to this value of ρ is thus
+                           
+                              (8)
+                              
+                                 c
+                                 =
+                                 
+                                    
+                                       Δ
+                                       T
+                                    
+                                    
+                                       T
+                                       ⋅
+                                       ρ
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       5.23
+                                    
+                                    
+                                       3.33
+                                       
+                                       
+                                          
+                                             mm
+                                          
+                                          
+                                             −
+                                             1
+                                          
+                                       
+                                    
+                                 
+                                 =
+                                 1.6
+                                 
+                                 mm
+                              
+                           
+                        Based upon Eq. (8), the spatial distance over which the thickness transition from 231μm to 1440μm should occur in order to result in block across a lateral boundary would be ~2mm, which can be considered to be a steep spatial change. This is in accord with the actual distance over which ρ is maximal across the lateral isthmus boundaries, on the order of 2mm as is evident in a prior study [6].
+
+Consider now the occurrence of conduction block for an activation interval of 150ms, which is approximately the value of the premature stimulation coupling interval used for VT induction in canine postinfarction experiments [2]. Block through a narrow isthmus occurs when w=1.29mm [7]. At this value of w, the degree of wavefront curvature is
+                           
+                              (9)
+                              
+                                 ρ
+                                 =
+                                 
+                                    
+                                       2
+                                       ⋅
+                                       
+                                       sin
+                                       (
+                                       90
+                                       °
+                                       )
+                                    
+                                    
+                                       1.29
+                                       
+                                       mm
+                                    
+                                 
+                                 =
+                                 1.55
+                                 
+                                 
+                                    
+                                       mm
+                                    
+                                    
+                                       −
+                                       1
+                                    
+                                 
+                              
+                           
+                        From Eq. (3), the distance interval, or space step c, for this value of ρ is
+                           
+                              (10)
+                              
+                                 c
+                                 =
+                                 
+                                    
+                                       Δ
+                                       T
+                                    
+                                    
+                                       T
+                                       ⋅
+                                       ρ
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       5.23
+                                    
+                                    
+                                       1.55
+                                       
+                                       
+                                          
+                                             mm
+                                          
+                                          
+                                             −
+                                             1
+                                          
+                                       
+                                    
+                                 
+                                 =
+                                 3.4
+                                 
+                                 mm
+                              
+                           
+                        
+                     
+
+Moreover, at a very fast rate of 117ms, which is occasionally an approximate premature coupling interval for which induction of VT in canine postinfarction results, conduction block was shown to occur when w=2.64mm [7]. The degree of wavefront curvature is then
+                           
+                              (11)
+                              
+                                 ρ
+                                 =
+                                 
+                                    
+                                       2
+                                       ⋅
+                                       
+                                       sin
+                                       (
+                                       90
+                                       °
+                                       )
+                                    
+                                    
+                                       2.64
+                                       
+                                       mm
+                                    
+                                 
+                                 =
+                                 0.758
+                                 
+                                 
+                                    
+                                       mm
+                                    
+                                    
+                                       −
+                                       1
+                                    
+                                 
+                              
+                           
+                        The distance interval, or space step c, for this value of ρ is
+                           
+                              (12)
+                              
+                                 c
+                                 =
+                                 
+                                    
+                                       Δ
+                                       T
+                                    
+                                    
+                                       T
+                                       ⋅
+                                       ρ
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       5.23
+                                    
+                                    
+                                       0.758
+                                       
+                                       
+                                          
+                                             mm
+                                          
+                                          
+                                             −
+                                             1
+                                          
+                                       
+                                    
+                                 
+                                 =
+                                 6.9
+                                 
+                                 mm
+                              
+                           
+                        Based upon the result of Eqs. (10) and (12), it would be anticipated that block at an isthmus end would occur during premature excitation when the distance over which a thickness transition from 231 to 1440μm occurs is in the range of approximately 5–10mm. Therefore on average, it would be expected that the UBL described in Figs. 1 and 2 would extend for a distance of approximately 5–10mm, beginning at the isthmus center-entrance boundary. These model estimates of conduction block parameters were tested as described below.
+
+For all experiments, the location of the UBL leading to reentrant VT was determined by activation mapping of the premature stimulation cycle. The location of the reentrant circuit isthmus, and the direction of propagation through the isthmus, was measured during the first complete cycle of reentrant VT, and during a subsequent cycle within 10 beats as a check of the stability of the circuit. On a computerized grid, the unidirectional block position as delineated by a curved line was overlaid on the isthmus location. The stimulus site location was also marked. It was determined whether the UBL of premature stimulation coincided with the isthmus entrance boundary of VT, based upon the following measurements (
+                        Fig. 4). Length a: the distance from the stimulus site to the leading edge of the UBL. Length b: the distance over which the UBL extends. Length c: the isthmus length along its long axis, averaged if the two lateral block lines have disparate lengths. Value of length d, the projection of the UBL lateral edges onto the locations of the VT lateral block lines, divided by length c, ratio d/c: the fraction of the total isthmus length that is overlapped by the UBL, expressed as a percent. Length e: the closest distance between the lateral edges of the UBL and the lateral isthmus boundary, averaged from both sides, which was used as an error function.
+
+For all 12 experiments, the value of the premature coupling interval leading to reentrant VT, and the mean cycle length of VT at onset (first 10 cycles) were also tabulated. At the site of breakthrough initiating reentry, the interval between activation during premature stimulation and activation during the first reentrant VT cycle, termed the reexcitation interval, was recorded.
+
+@&#RESULTS@&#
+
+In 
+                     Fig. 5 a typical result is shown, for experiment 7. The view is of the epicardial surface of the anterior left ventricle, where the infarct border zone is located. The activation map for the premature stimulation cycle leading to reentrant VT is shown in panel A. The stimulus location is noted near the BASE. Isochronal colors denote areas with activation times differing by 15ms. The UBL is shown in gray. Its leading edge is toward the stimulus site, and the activation wave bifurcates around it, beginning at time ~70ms into the cycle (arrows). Due to the curvature of the wavefront around each side of the UBL, and considering that propagation about a pivot point fails beyond a critical value of curvature [19], propagation is delayed.
+
+The two wavefronts begin to coalesce at time ~110ms (violet isochrones) and then proceed to the opposite side of the UBL, arriving at time 180ms (arrow pointing toward the LAD). Whereupon, time for recovery of excitability, which is 180ms–74ms=103ms (panel A), is sufficient so that the wavefront breaks through and reenters the previously excited region to establish the first reentry cycle (panel B, arrow closest to the LAD). The functional lines of block at the lateral boundaries of the isthmus during the first reentrant VT cycle are shown as black curved lines, and arrows point out the activation sequence (panel B). For reference, the UBL of premature excitation is shown overlaid on the grid in gray color. There is an approximate coincidence between the locations of the lateral edges of the UBL and the lateral boundaries of the reentry isthmus during VT (red asterisks in panel B). The area of unidirectional block during premature stimulation approximately coincides with the distal half of the isthmus location, which serves as the entrance to the isthmus during reentrant VT. In panel C is shown the reentry activation map during a subsequent cycle (cycle 10) when the circuit has more completely stabilized; it is mostly similar to the first reentry cycle in terms of length and orientation, as well as activation sequence (arrows). In panel D, electrograms are shown which include the premature stimulus cycle with a coupling interval of 170ms, and the first reentry cycle (V1), as noted. In the inset at upper left of panel D, the locations of the recorded electrograms are shown with respect to the UBL, with channels 88, 76, 77, 63, and 64 being on the LAD side, proximal to the UBL, and channels 65–68 being distal to this block line. During the S2 cycle, block occurs between channel 64 and 65 (panel D), which corresponds to the recording sites on opposite sides of the UBL leading edge (inset). The distinct activation wavelets proceed around and coalesce on the opposite side of the UBL, so that the activation sequence is in the reverse direction during V1. There is some delay in activation at the exit sites (76, 75, and 88) as was predicted by the model, due to the likelihood of Z-axis convex curvature there, resulting in slowed wavefront propagation. The reexcitation interval of 103ms (time for reactivation at site 64 from S2 to V1) is substantially shorter than the S1–S2 coupling interval of 170ms.
+
+A second example of reentry induction after a short S1–S2 coupling interval is shown in 
+                     Fig. 6 for experiment 9, with the stimulus site being located toward the LAD (panel A). The UBL of premature stimulation is again shown as a curved gray line in panel A, while functional block at the lateral isthmus boundaries during the first cycle of reentrant VT are denoted by curved black lines in panels B and C. There is much overlap of the block lines (asterisks in panel B), with the UBL, shown overlapped in gray, coinciding with the distal half of the isthmus location. The electrogram recordings (panel D) show a short reexcitation interval of 156ms (channel 52) as compared with the S1–S2 coupling interval (175ms). The electrode locations are noted in the inset.
+
+In 
+                     Fig. 7 the results of activation mapping for all 12 postinfarction canine experiments are depicted, which are numbered. A marker depicting 10mm in length is shown at lower right in the figure, and it applies to all 12 panels, which are drawn to scale. The LAD side of the grid is at top for all 12 panels. Functional lines of conduction block during reentry are illustrated as thick black lines. The UBL of premature stimulation resulting in reentry is delineated as a thinner gray line. The stimulus site is noted by a circle, and the direction of propagation leading to breakthrough at onset of the first reentry cycle is delineated as a black arrow. The stimulus site is approximately in the direction of this arrow, in proximity to the isthmus exit location. The UBL forms at the isthmus end that is furthest from the stimulus site, which becomes the isthmus entrance during reentry. The lateral UBL edges approximately coincide with the lateral isthmus boundaries during reentry. Overall, the error was 4.8±5.7mm (measurement e, Fig. 3). The relatively large standard deviation occurred because in six experiments the UBL edges and the lateral isthmus boundaries overlapped (error=0) while in a few experiments there was some misalignment.
+
+The measurements done for each experiment of Fig. 7 are shown in 
+                     Table 1. Pooled for all 12 experiments, the mean distance from stimulus site to the UBL leading edge was 31.4±14.2mm (measurement a, Fig. 3). The mean length of the UBL lateral edges was 10.7±5.7mm (measurement b, Fig. 3). This is approximately in accord with the range of 5–10mm predicted by the model. The mean isthmus length along the long axis was 23.1±9.3mm (measurement c, Fig. 3), and is in accord with prior observations [20]. The mean length of the UBL projected along the isthmus long axis was 8.9±4.5mm (measurement d, Fig. 3). Measurement d averaged slightly less than measurement b due to misalignment between the UBL lateral edges and the lateral block lines of VT. On average, the leading edge of the unidirectional block line began at a point 38.5±9.7% of the way along the isthmus with respect to its distal end (percent of measurement d/measurement c), as would be anticipated for block occurring at the isthmus center-entrance boundary. In 
+                     Table 2, values for the premature coupling interval and the first reentrant VT cycle length are shown. The mean value for premature coupling interval for all 12 experiments was 164.6±11.0ms while for VT cycle length it was 190.7±20.4ms. These actual mean values for premature stimulation and VT are in agreement with those used for model calculations to support conduction block (Eqs. (6)–(12) and Fig. 2). Thus unidirectional block at the isthmus entrance location is supported during the premature stimulation cycle, and functional block at the lateral isthmus boundaries is supported during reentrant VT cycles. The reexcitation interval (time difference for activation during premature stimulation versus cycle 1 of VT at the breakthrough point) averaged 150.9±26.7ms for the 12 experiments; in 8/12 experiments the reexcitation interval was shorter than the premature coupling interval.
+
+@&#DISCUSSION@&#
+
+@&#SUMMARY@&#
+
+In this study a model of UBL formation during premature stimulation, leading to reentrant VT with a double-loop circuit, was described for canine postinfarction. The model is based on changes in activation wavefront curvature along the infarct border zone Z-axis (thickness axis). It was shown in a series of 12 experiments that the lateral edges of the UBL forming during premature stimulation which results in reentrant VT tend to coincide with the locations of the lateral isthmus edges (Figs. 5–7). Conduction block at the isthmus entrance location was correctly predicted to be supported when the premature coupling interval was on the order of 117–150ms. During the premature stimulus cycle, when unidirectional block occurred around the isthmus entrance location, as predicted by the model, the wavefront would then bifurcate, curve around with delay, coalesce, and reenter the previously excited region. Conduction block at the lateral isthmus edges during reentrant VT was correctly predicted to be supported for a mean cycle length of 200ms.
+
+Onset of reentry can only occur when the isthmus entrance region, which is the area of steepest thin-to-thick transition in the direction of wavefront propagation during premature stimulation (Fig. 3B), is sufficiently steep for a particular short premature coupling interval so that block can occur, and of sufficient size to support the delay necessary for recovery of excitability and breakthrough into the previously excited region, initiating the first reentry cycle (Figs. 2 and 3). Although there is a thin-to-thick transition at the isthmus exit during reentry, block there would not be expected to occur due to the relatively gradual transition, unless a short VT cycle length resulted from wavefront breakthrough elsewhere in the circuit. Reentrant VT would not be expected to be inducible by stimulating from the APEX or LAT in Fig. 3B, nor from the LAD or BASE in Fig. 3C or D. If however both isthmus ends were to have a sufficiently large and sharp transition region, depending on the stimulus site location, either might possibly act as points to initiate reentry, i.e., there would be two possible reentry morphologies. However, the likelihood of block at the isthmus exit for either of these VT circuit morphologies would presumably be increased, due to the relatively steep transition at whichever isthmus end serves as the exit. Thus any induced VT episodes would likely be short-lived. Future studies are needed to test this hypothesis.
+
+Based on the model, refractoriness within the infarct border zone is important for initiation and maintenance of reentry, in the sense that the UBL must be of sufficient size so that there is recovered excitability when the wavefront arrives on the opposite side at the end of the premature stimulus cycle. Furthermore, depending in part upon cycle length (see Eqs. (6)–(8)), if very slow conduction rather than actual block occurs when the activation wavefront propagates outward across the lateral isthmus boundaries during the diastolic interval of reentry, as proposed elsewhere [8], refractoriness at the outer portion of the circuit may be necessary to prevent wavefront breakthrough and thus to maintain reentry.
+
+@&#CONCLUSIONS@&#
+
+Based on the quantitative model described herein, functional block line locations can be estimated after measurement of infarct border zone thickness, for example by using enhanced magnetic resonance imaging or MRI (
+                        Fig. 8, top). Mapping ΔT/T and detecting areas of maximal change in ΔT/T are key to the estimation process (Fig. 8, lower left panels). In instances when the premature excitation cycle leads to a stable reentrant VT circuit pattern initiated on the next cycle, the characteristics of wavefront curvature due to changes in border zone thickness along the Z-axis are useful to describe the electrophysiologic events that occur. When the premature coupling interval during programmed electrical stimulation is sufficiently short, conduction blocks unidirectionally along the surface area with steepest thin-to-thick transition, which corresponds to the isthmus entrance during reentrant VT (Fig. 8, PS). The UBL tends to coincide with the isthmus entrance boundary on three sides, where ΔT/T would be largest since T is minimized there and ΔT changes from thin-to-thick in the direction of wavefront propagation (Eq. (1)). Due to the bifurcation and curving of the premature stimulation wavefront around the UBL, followed by coalescence, and then by breakthrough into the previously excited region, with the constraint that the electrical impulse within the isthmus blocks in the direction of the lateral boundaries, the pattern of activation during subsequent reentry cycles with a double-loop circuit is established (Fig. 8, VT panel). This double-loop circuit pattern with central common pathway is often observed in canine postinfarction, and also in clinical cases of reentrant VT [23].
+
+The quantitative model described in this study cannot be used to predict the reentrant circuit activation pattern when VT onset is unstable. In previous work, reentry episodes with unstable onsets were not excluded, resulting in more varied locational relationships between the UBL and isthmus location [24]. In some cases when VT onset is unstable, the UBL can form at the isthmus end that is most proximal to the stimulus site, or even proximal to the isthmus location itself [6,24].
+
+The precise rate dependency of conduction block occurring at the isthmus entrance, with respect to the steepness of the thickness transition, is unknown and should be determined in future experiments. Furthermore, experiments with magnetic resonance imaging or histological analysis are needed to determine whether the UBL leading edge coincides exactly with the location of the isthmus center-entrance boundary as defined in Fig. 2. To develop the model described herein, isotropic conduction was supposed. The effect of anisotropic conduction in delaying propagation in the direction transverse to muscle fibers [25], as well as the effect of safety factor on myocardial conduction [13], should be considered for further development of the model. Propagation through constricted regions along the XY plane (i.e., the surface plane of the heart) [26] can also lead to critically convex wavefront curvature, and may be responsible for some of the slowing and block that was observed in this series of experiments. Further development of the model should include wavefront curvature in the XY plane as well as along the Z-axis.
+
+VT caused by a reentrant circuit can occur in myocardial infarction patients and is a major public health concern. Untreated, it can lead to sudden cardiac death. To treat the arrhythmia, radiofrequency ablation is often used to destroy arrhythmogenic tissue. A common clinical problem is that the best region to ablate the heart to interrupt the circuit and prevent reinduction of reentrant VT is difficult to ascertain. This can be due to the fact that during patient electrophysiologic study, it may not be possible to induce the clinical tachycardia so that it can be characterized. Even if the clinical tachycardia is inducible, the patient can be hemodynamically compromised and will not tolerate the induction of tachycardia well; thus it must be terminated prior to characterization. The model described herein suggests a mechanism by which functional electrical conduction block forms during premature stimulation and during reentrant VT. Since, according to the model, block depends on geometric changes in the structure of the infarct border zone, the narrow region of surviving tissue in proximity to the infarct, imaging methods with sufficient spatial resolution, notably cardiac magnetic resonance imaging, can be used to determine the structural configuration, for estimation of functional block locations. Other types of imaging methods coming online may also soon be capable of detailing the heart structure with sufficient resolution to determine structural configuration and functional block. Once functional block locations are known, radiofrequency ablation across the narrowest isthmus width would likely prevent reinduction of the reentrant VT morphology, since impulse propagation is the most constrained at this location. The methods described herein can therefore potentially improve patient treatment by eliminating the need to induce VT, and by shortening procedure time.
+
+The authors have no conflicts of interest.
+
+@&#ACKNOWLEDGMENTS@&#
+
+Dr. Peters acknowledges funding from the British Heart Foundation (RG/10/11/28457 and Centre of Research Excellence), the Imperial Electro Cardio Maths Programme, and the National Institute for Health Research (UK) Biomedical Research Centre.
+
+@&#REFERENCES@&#
+

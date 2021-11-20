@@ -1,0 +1,172 @@
+@&#MAIN-TITLE@&#Black berry juice attenuates neurological disorders and oxidative stress associated with concurrent exposure of aluminum and fluoride in male rats
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Aluminum as neurotoxin.
+
+
+                        
+                        
+                           
+                           Fluoride as neurotoxin.
+
+
+                        
+                        
+                           
+                           Blackberry as neuroprotective agent.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Aluminum chloride
+
+Sodium fluoride
+
+Black berry
+
+Oxidative stress
+
+Antioxidants
+
+Male rats
+
+@&#ABSTRACT@&#
+
+
+                  The objective of this study was to assess the protective effect of black berry juice (BBJ) on the neurological disorders and oxidative stress induced by co-exposure to ALCL3 and NaF in male albino rats. Administration of either AlCl3 (200 mg/kg bw) or NaF (10 mg/kg bw) or both of them caused a significant increase in serum and brain TL, TC, TG as well as serum LDLC and VLDLC levels while serum HDLC level was decreased significantly. Additionally, brain neurotransmitter (DA and 5-HT) levels, AChE, Na-K ATPase activity and ATP values were decreased significantly but NE level was increased in rats administered Al or F alone or in combination. Moreover, a significant increase in brain MDA, NO, H2O2 and free radical enzyme (xanthine oxidase (XO)) and a significant decrease in the level of TAC, SOD and GSH were recorded in AlCl3 or NaF intoxicated rats. In addition, the levels of serum Na, Ca, Cu and zinc (Zn) were significantly diminished, while the level of K was significantly increased. However ALCL3 appears to enhance the neurotoxic hazards caused by NaF. On the other hand, the administration of BBJ (1.6 g/kg bw) showed a marked neuroprotective effect against the biochemical abnormalities that occurred and oxidative stress of the brain induced by co-exposure to AlCl3 and NaF. So, it can be concluded that the consumption of BBJ might be useful for alleviating the neurological disorders and oxidative stress associated with concurrent exposure of ALCL3 and NaF indicating its free radical scavenging and potent antioxidant activity.
+               
+
+@&#INTRODUCTION@&#
+
+Aluminum and fluoride are the most widely distributed toxic metals in the environment. The exposure of the human to these metals causes various adverse physiological effects particularly neuropathological changes. Aluminum occurs naturally and makes up around 8% of the surface of the earth. It constantly exists in combination with other elements like fluorine, oxygen and silicon. Everybody is exposed to aluminum from the air, water and food at low levels. It is frequently utilized as a part of building materials, cooking utensils, appliances and containers. It is additionally utilized as a component in fireworks and paints, to produce glass, rubber, and ceramics, and in consumer products such as buffered aspirin, astringents, antacids, food additives, and antiperspirants [1]. Production of free radicals seems to be the catalytic activity of aluminum. Additionally, aggregation of beta-amyloid protein in the brain of Alzheimer's patients induces more free radicals production [2]. Aluminum (Al) can induce oxidative damage through its ability to attach to negatively charged phospholipids of the brain, which include polyunsaturated fatty acids. So the reactive oxygen species (ROS) including H2O2, O2•−, OH•, and OH− can easily attack these fatty acids [3]. Furthermore, the most electronegative element in nature is fluoride anion, its accumulation leads to fluorosis, a common disorder in developing countries, where human's main source of drinking water is usually polluted with fluoride [4]. Fluoride easily distributes throughout the body through the blood stream, penetrates the cellular membranes and its subsequent intoxication leads to cellular injury [5]. Also, production of free radical is considered to be one of the most crucial mechanisms of fluoride toxicity [4]. Brain tissues are highly susceptible to oxidative damage, probably because of high oxygen consumption rate (20%), the presence of abundant polyunsaturated fatty acids in cell membranes, high iron (Fe) content, and low anti-oxidative enzyme activities [6]. Actually, ingestion of diets containing large amounts of natural antioxidants including vegetables and fruits were considered to diminish specific age related neurological disorders such as dementia and macular degeneration [7].
+
+Black berry (Rubus spp.) is one of the most important natural diets with anti-oxidant properties, contains large amounts of anthocyanins, and these flavonoid pigments give black berries their special red to blue color. Numerous studies have demonstrated the health benefits and antioxidant activities of the anthocyanins which naturally occur in various vegetables and fruits [8,9]. Anthocyanins, water soluble pigments found in plants, are polyphenols that have health promoting benefits including antioxidant and anti-inflammatory effects [10]. The antioxidative properties of anthocyanins arise from their high reactivity and ability to scavenge free radicals. Some reports have confirmed that anthocyanins are good antioxidants and can effectively eliminate free radicals [10]. So the present study was designed to elucidate the neurological disorders and oxidative stress related to exposure to fluoride alone or in conjugation with aluminum and the possible protective effect of black berry as a natural antioxidant against their adverse effects in male albino rats.
+
+Aluminum chloride (98%; anhydrous) and sodium fluoride (99%) were obtained from Sigma Chemical Company (St. Louis, USA). Fresh black berry fruits (Rubus spp.) were purchased from the local market (Mansoura, Egypt). The fruits were washed, homogenized and their juice was freshly prepared daily. The doses administered were prepared from the LD50 values of each compound; LD50 for NaF is 52 mg/kg for rat, while LD50 for AlCl3 is 200–1000 mg/kg in rats. The tested doses of aluminum chloride (AlCl3; 200 mg/kg bw) and sodium fluoride (NaF; 10 mg/kg bw) was chosen according to previous studies conducted by our group [11] also, black berry dose (1.6 g/kg bw equal to 9 ml/kg bw) was selected based on earlier studies [8,12]. All kits used through the experiment were obtained from Biodiagnostic Company, Egypt. All used reagents and chemicals were of analytical grade.
+
+Forty-eight adult male Wistar albino rats (Rattus rattus) with weight of 120–140 g, were obtained from the holding company for biological product and vaccines (VACSERA), Cairo, Egypt. The local committee approved the design of the experiments and the protocol follows the guidelines of the National Institutes of Health (NIH). Animals received human care, were kept under good ventilation, had adequate stable diet and water were allowed ad libitum. They were maintained on normal light/dark cycle throughout the experimental period. The animals were acclimatized to the laboratory conditions for two weeks before being experimented.
+
+@&#EXPERIMENTAL DESIGN@&#
+
+After 2 weeks of acclimation, rats were classified into eight groups comprising six rats in each. Group 1: served as untreated control (C). Group 2: rats were given orally black berry juice (BBJ) at dose of 1.6 g/kg bw. Group 3 (AlCl3): rats were given orally AlCl3 dissolved in distilled water at dose of 200 mg/kg bw. Group 4 (NaF): rats were given orally NaF dissolved in distilled water at dose of 10 mg/kg bw. Group 5 (AlCl3+NaF): rats were given orally AlCl3 followed by NaF at the same mentioned doses. Group 6 (BBJ+AlCl3): rats were given orally BBJ followed by AlCl3 at the same mentioned dose. Group 7 (BBJ+NaF): rats were given orally BBJ followed by NaF at the same mentioned dose. Group 8 (BBJ+AlCl3+NaF): rats were given orally BBJ followed by AlCl3 then NaF at the same mentioned doses. Rats were given their respective doses daily for 5 weeks.
+
+At the end of the experimental period (5 weeks), blood samples were collected from the retro-orbital venous plexus of overnight fasted rats [13] in clean tubes and then centrifuged at 860 × g for 20 minutes. The separated sera were stored at −20 °C for subsequent analysis. Then rats of each group were sacrificed by decapitation and brain specimens were carefully removed, washed using chilled saline solution, weighed and then homogenized in phosphate buffer (50 mM, pH 7.0) to form about 10% (w/v) homogenate for biochemical assay.
+
+Total lipid (TL) level was estimated by using a biodiagnostic kit according to the method of Zollner and Kirsch [14]. Total cholesterol (TC) level was estimated according to the method of the colorimetric method of Young [15]. Triglyceride (TG) level was assayed according to Fossati and Prencipe [16]. HDLC level was assayed according to the procedure of [15]. LDLC and VLDLC levels in serum were calculated as described by Friedewald et al.'s [17] formula:
+                           
+                              
+                                 
+                                    LDLC
+                                    =
+                                    Total cholesterol
+                                    –
+                                    
+                                       [
+                                       
+                                          
+                                             
+                                                triglycerides
+                                             
+                                             /
+                                             5
+                                          
+                                          –
+                                          HDLC
+                                       
+                                       ]
+                                    
+                                    =
+                                    
+                                       
+                                          mg
+                                       
+                                       /
+                                       
+                                          dl
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                        
+                           
+                              
+                                 
+                                    VLDLC
+                                    =
+                                    
+                                       
+                                          triglycerides
+                                       
+                                       /
+                                       5
+                                    
+                                    =
+                                    
+                                       
+                                          mg
+                                       
+                                       /
+                                       
+                                          dl
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+Monoamine neurotransmitter (DA, 5-HT and NE) level was estimated using HPLC technique and the brain content of these neurotransmitters was made using the equation of Pagel et al. [18]. Brain acetyl choline esterase (AChE) activity was determined according to the method of Ellman et al. [19], Na-K ATPase activity was assayed according to Taussky and Shorr [20] and ATP content was estimated using HPLC according to Liu et al. [21]. The level of malondialdehyde (the end product of lipid peroxidation) was measured by the thiobarbituric acid assay according to the method of Ohkawa et al. [22]; H2O2 level was assayed as described by Aebi [23]; NO production was measured according to the method of Montgomery and Dymock [24]. Brain xanthine oxidase was performed according to the method described by Litwack et al. [25]. TAC was measured according to Koracevic et al. [26]; SOD activity was assayed according to Nishikimi et al. [27]; and GSH content was assayed according to Beutler et al. [28]. Moreover, serum sodium (Na) and potassium (K) concentrations were evaluated according to the method of Henry [29]. Calcium (Ca) concentration was estimated according to Gindler and King [30]. Zinc (Zn) concentration was estimated according to Hayakawa and Jap [31] and copper (Cu) concentration was estimated according to Ventura and King [32].
+
+The obtained results were evaluated by one way ANOVA (analysis of variance) test and post comparison was carried out with Tukey's Pairwise comparison as described by Snedecor and Cochran [33]. The results were expressed as means ± standard error (SE) of six animals (N = 6). The values of p ≤ 0.05 were considered statistically significant based on Least Significant Difference (LSD) probability. All the statistical analysis was carried out with the use of SPSS 20.00 software.
+
+@&#RESULTS@&#
+
+As shown in Tables 1–3 the oral administration of black berry juice (1.6 g/kg) alone for 5 weeks did not induce pronounced changes in the most estimated parameters. However, brain TL, serum LDLC level, Na-K ATPase activity and the measured antioxidant parameters were significantly increased while, MDA, H2O2 and K concentrations were significantly decreased in comparison with the control group.
+
+A marked increase in serum TL, TC, TG, LDLC, VLDLC levels and a marked decrease in serum HDLC level were observed in aluminum chloride and sodium fluoride alone and in combination rat groups compared with that of the control rat group. However, an improvement in the above parameters was observed in the AlCl3 or NaF intoxicated rats after the administration of BBJ. Also, a significant elevation in the brain TL, TC, TG levels was observed in AlCl3 or NaF in a single or in combination intoxicated rat groups if compared to control rats. However the administration of BBJ to intoxicated rats caused a marked improvement in these parameters (Table 1
+                     ).
+
+As shown in Table 2
+                      the administration of aluminum chloride and sodium fluoride alone or in combination produced significant decrease in the brain DA, 5-HT, AChE, Na-K ATPase and ATP as compared with control rat group while, NE showed significant increase. The administration of BBJ with AlCl3 or NaF or both of them resulted in a significant improvement in the above examined parameters as compared to the corresponding values of intoxicated rat groups without BBJ treatment.
+
+Furthermore, a marked increase in lipid peroxidation and free radicals production as measured by MDA and H2O2 formation respectively was observed in AlCl3 or NaF intoxicated rat groups. Also an increase in NO level and XO activity was coupled with a significant decrease in TAC, SOD and GSH in the AlCl3 or NaF or both of the treated rat groups (Table 3
+                     ). In contrast a significant improvement in the above examined parameters was observed in intoxicated rat groups when co-administrated with BBJ. Moreover, the data in Table 4
+                      showed a significant decrease in serum Na, Ca, Zn and Cu levels, while an increase in K level was recorded in the AlCl3 or NaF or both of the intoxicated rats. This effect is significantly ameliorated in rats pre-administered with BBJ. In the present study, it was recorded that AlCl3 exposed rats showed marked alteration in most of the estimated parameters than NaF but more pronounced toxicity was observed during co-exposure to both toxicants (AlCl3 or NaF).
+
+@&#DISCUSSION@&#
+
+Recent reports have shown that synergistic action of aluminum and fluoride as a result of the aluminum–fluoride complex accumulates in the brain and would also be expected to cause prolonged neurotoxicity, leading to neurodegeneration and synaptic loss [34]. Fluoride is known to potentiate the toxicity of aluminum by promoting its absorption in the gastrointestinal tract and across the blood–brain barrier [35]. Another mechanism by which fluoride might increase brain free radical generation and lipid peroxidation would be through activation of protein kinase C by a fluoroaluminum complex which can increase the risk of excitotoxicity [34]. Neurotoxicity of aluminum is due to the synergistic effect of both aluminum and iron. It potentiates the activity of iron ions to cause neuronal oxidative damage where aluminum binding to the neuronal membrane accelerates attacks by iron-induced free radicals, while membrane oxidation successively increases aluminum coordination and subsequently, intensive oxidation [36].
+
+The present disturbance in lipid constituents of serum and brain in aluminum or fluoride exposed animals has earlier been reported [37,38]. This finding may be due to the exposure of aluminum which is able to cause alterations in lipid profile of the brain myelin which is because of pro-oxidant activity of this metal as shown by increased lipid peroxidation which interferes with the lipids of cellular membranes and subsequently influences their functional ability and integrity, so aluminum toxicity was found to induce a significant effect on the various membrane bound enzymes [39]. Also, hyperlipidemia may either be due to increased synthesis of fatty acids in the liver or to disturbances in lipid metabolism as a result of aluminum or fluoride accumulation in the liver [40]. The hypo activity of lipoprotein lipase enzymes may be because of hepatic dysfunction appearing to be one of the most important factors responsible for the increment in serum triglycerides and cholesterol, these enzymes may be inhibited by aluminum or fluoride, for example unspecific esterase, triglyceride lipase and pyrophosphates [41]. The irregularities in lipoprotein profile may be a result of the decrease in the removal of low density lipoprotein (LDL) and VLDL from the circulation accompanied by or uncontrolled production of VLDL by the liver [42]. Moreover, the significant alterations of the brain catecholamine neurotransmitters (DA, 5-HT and NE) in the intoxicated rats may be attributed to the increased rate of free radicals production such as O2−, H2O2. These radicals cause oxidation of DA, 5-HT and NE which in turn might result in neurodegenerative diseases including Alzheimer’s and Parkinson’s diseases [43]. Also, it may be due to increased neuronal activity resulting release of catechol-O-methyl, or may be attributed to the low activity of the enzymes involved in neurotransmitters synthesis such as dopamine β-hydroxylase and tyrosine hydroxylase [44]. The decrease of serotonin might have occurred due to conversion of serotonin to melatonin (which is also considered as a powerful antioxidant) to combat the oxidative stress caused by both exposures. Serotonin and melatonin exist in proportion to each other; as melatonin increases, serotonin decreases in the brain. Also, it has been suggested that inhibitory effect on 5-HT system was due to the withdrawal of cholinergic input and resulting in decreased levels of 5-HT in different regions after exposure [45]. The decreased levels of dopamine observed following exposure could be the result of altered activity of biosynthetic enzymes, or altered availability of their precursor amino acid tyrosine [46]. Concerning the elevation in cerebral norepinephrine showed in the present study, it may be a consequence to the oxidative stress, caused by the metal, causing the activation of its synthetic pathway, particularly the step which involves the conversion of dopamine to norepinephrine via hydroxylation [47].
+
+The observed inhibition in brain AChE activity may have resulted from the slow accumulation of aluminum in the brain and formation of aluminum complex with high affinity for binding with the active site of this enzyme, leading to induction of oxidative stress, consequently it diminishes the activity of AChE in all parts of the brain. So, acetylcholine (ACh) is not hydrolyzed and accumulates in cholinergic sites leading to disturbance in the nervous system [48], inhibition in AChE resulted in the accumulation of ACh, stimulation of lymphocytes and increased lymphocyte motility and cytotoxicity. Since AChE is a membrane bound enzyme, ACh may be removed from the binding with AChE and may result in decreased activity of AChE, so the effect on the synaptic transmission could be explained by the inhibition in the activity of AChE in the brain [49].
+
+The inhibition of Na-K ATPase activity and decreased ATP were previously reported [50]. Na+-K+ ATPase activity is vital in maintenance of Na+ and K+ electrochemical gradients through the membrane. Thus, changes in the activity of this enzyme could be related to disturbances in neuronal action potential firing [51]. Phospholipid is very important for the activity of this membrane bound enzyme so it is highly susceptible to oxidative injury, thus the inhibition mechanism includes damage to protein of enzyme by reactive oxygen species and other products of lipid peroxidation directly or alteration of enzyme's phospholipid microenvironment [52]. The suppression of Na-K ATPase could induce partial membrane depolarization permitting excessive Ca2+ to enter into neurons causing toxic complications similar to excitotoxicity and involved in the physiological and pathological abnormalities [53]. While the loss of ATP results in rapid membrane depolarization in the mammalian brain, the enzyme is present in high concentration in the brain and muscles [54]. The inhibition of glycolysis where it is a main source of ATP in mammalian cells, could affect the critical cellular functions such as protein phosphorylation and ion transport through membrane [55].
+
+Further, the present study revealed that the increased levels of MDA, H2O2, NO and XO in the brains of AlCl3 or NaF intoxicated rats indicate high level of oxidative stress and free radical generation. Additionally the decreased antioxidant levels of TAC, SOD and GSH reduced the ability of scavenging high levels of ROS produced in the brain. It is well known that the overproduction of ROS causes oxidation of macromolecules. This leads to free radical attacks of phospholipids in membrane causing membrane damage through different mechanisms such as lipid peroxidation, mitochondrial membrane depolarization and apoptosis [56]. Moreover, membrane lipid peroxidation could disturb the anatomical integrity of the membrane and diminishes its fluidity leading to inhibition of several membrane bound enzymes including Na+-K+ ATPase and that is in agreement with findings of Abd El-Rahmana et al. [57]. The increased nitric oxide (NO) exerts its effects through the produced toxic metabolites such as peroxynitrite (OONO−) which impairs the oxidative phosphorylation complex activities of mitochondria exerting metabolic disturbances and ATP production depletion causing destructive conditions for brain tissues leading to increase the blood–brain barrier permeability [58,59].
+
+The significant changes in total SOD (MnSOD and CuZnSOD) can be explained by the deficiency of serum level of Zn and Cu (being essential for regulating cellular redox state) which may be related to the reduction of SOD activity in brains of AlCl3 or NaF exposed rats or rats exposed to both, exerting mitochondrial impairments and dysfunction [60]. Also the observed disturbances in serum electrolytes due to binding of Al ion with different brain cells namely astrocytes, neural cells and synaptosomes, cause inhibition of membrane bound Na+, K+, Ca2+ ATPase activity. These enzymatic disturbance would alter the electrolytes level and result in cellular alterations [61]. Moreover, in the gastrointestinal tract, fluoride being a highly electronegative halogen forms complexes with cations like Ca and thereby reduces their absorption leading to decreased serum Ca level [62]. Also, Cu and Zn are essential enzyme cofactors required for numerous cellular processes, but their abnormal accumulation in the brain will lead to neurotoxicity [63]. Any deficiency of zinc could induce an increase in tissue oxidative damage and excessive Zn translocation might be a molecular trigger of the cellular apoptosis [64].
+
+Black berry fruits are well known to have high antioxidant capacity because it was considered a rich source of polyphenols known with a great potential for improving short term memory performance in animal studies [65]. Blackberry was considered to be an important source of metabolites with neuro-protective properties. Digested metabolites from these black berries can protect neuronal cells against oxidative damage, one of the most critical mechanisms of neurodegeneration, through activating cellular stress response pathways like GSH modulation, reduction of ROS production and caspase activation [66]. This finding was evidenced by the observed improvement of most examined biomarkers including oxidative stress, endogenous antioxidants system, neurotransmitters and electrolyte levels. The current anti-peroxidation and antioxidant activity of BBJ may be assigned to its different functional constituents of antioxidants such as flavonoids (anthocyanin), vitamins (A, B complex, E and C), some minerals (Na, K, Ca, Zn, Se and P), phenolic polymers (ellagic acids) and phenolic acids (ferulic, p-coumaric, caffeic and gallic) [67]. Anthocyanins, the active component in BBJ, and their derivatives use different mechanisms to protect against a variety of oxidants. It can combat the dangerous hydroxyl radical-generating system, a main source of oxidants in the body, so it can protect lipids of cellular membranes from oxidation as well as membrane bound enzymes, and protects amino acids such as tyrosine from peroxynitrite, a highly reactive oxidant. Also, it has been expected that anthocyanins and non-anthocyanin phenolics in black berries act additively or synergistically to produce the detected beneficial changes via their ability to act as anti-oxidants and/or pro-oxidants in various biological environments [68]. In addition, the protective effect of BBJ may be due to the synergistic antioxidant effect of both vitamins E and C for ameliorating oxidative stress and cell degeneration; when vitamin E attacks free radicals, it converts into a vitamin E radical, which then acts as chelating agent and returns to its antioxidant state using vitamin C [8].
+
+In conclusion, black berry juice administration during exposure to fluoride and aluminum could be recommended for reverting back brain oxidative stress and neurological disorders as well as modulation of antioxidant defense mechanism. The observed beneficial effect of BBJ is probably through the synergistic anti-oxidant capacity of its various nutritional constituents. However, the fractionation and bioavailability of the main constituents of black berry which are responsible for the antioxidant activity will be an important area in the future.
+
+@&#REFERENCES@&#
+

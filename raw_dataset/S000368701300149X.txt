@@ -1,0 +1,421 @@
+@&#MAIN-TITLE@&#Pleasant music as a countermeasure against visually induced motion sickness
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Music as a countermeasure against visually induced motion sickness (VIMS) was tested.
+
+
+                        
+                        
+                           
+                           Different music types (relaxing, neutral, stressful, or no music) were chosen.
+
+
+                        
+                        
+                           
+                           Relaxing music showed a non-significant trend to reduce VIMS.
+
+
+                        
+                        
+                           
+                           Music rated as pleasant significantly reduced the severity of VIMS.
+
+
+                        
+                        
+                           
+                           Pleasant music could act as an effective and low-cost countermeasure against VIMS.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Visually induced motion sickness
+
+Music
+
+Countermeasures
+
+Motion sickness
+
+Simulator sickness
+
+@&#ABSTRACT@&#
+
+
+                  Visually induced motion sickness (VIMS) is a well-known side-effect in virtual environments or simulators. However, effective behavioral countermeasures against VIMS are still sparse. In this study, we tested whether music can reduce the severity of VIMS. Ninety-three volunteers were immersed in an approximately 14-minute-long video taken during a bicycle ride. Participants were randomly assigned to one of four experimental groups, either including relaxing music, neutral music, stressful music, or no music. Sickness scores were collected using the Fast Motion Sickness Scale and the Simulator Sickness Questionnaire. Results showed an overall trend for relaxing music to reduce the severity of VIMS. When factoring in the subjective pleasantness of the music, a significant reduction of VIMS occurred only when the presented music was perceived as pleasant, regardless of the music type. In addition, we found a gender effect with women reporting more sickness than men. We assume that the presentation of pleasant music can be an effective, low-cost, and easy-to-administer method to reduce VIMS.
+               
+
+@&#INTRODUCTION@&#
+
+Motion sickness is a well-known phenomenon not only when traveling, but also in virtual environments. In the latter case, motion sickness typically occurs in the absence of real physical motion, thus, motion sickness in simulators, cinemas, video-games, or virtual reality is usually referred to as being visually induced. Typical symptoms during an acute phase of visually induced motion sickness
+                        1
+                     
+                     
+                        1
+                        Visually induced motion sickness, VIMS.
+                      include, but are not limited to, pallor, cold sweat, dizziness, disorientation, fatigue, or nausea.
+
+The genesis of VIMS is not fully understood. Arguably the most prominent explanation for VIMS is described by the sensory conflict theory (Reason, 1978; Oman, 1990). Following this approach, a mismatch between or within the visual, vestibular, and/or the proprioceptive system is the origin of VIMS. For instance, users of fixed-base driving or flight simulators frequently experience the illusion of self-motion—so-called vection (see Hettinger, 2002; for an overview)—although they remain physically unmoved. Thus, the signals delivered by the visual system (indicating vection) and the vestibular organs (indicating the observer's veridical, stationary position) are at variance with each other. If this visual-vestibular mismatch is unfamiliar to the user VIMS might occur as a potential side-effect. Note that for good reasons, the sensory conflict theory has been discussed controversially over the past years. Alternative approaches include the sensed vertical hypothesis (Bles et al., 1998), the postural instability hypothesis (Riccio and Stoffregen, 1991), or the eye-movement theory (Ebenholtz, 1992). Unfortunately, none of these theories is capable of explaining all nuances of the multi-faceted nature of VIMS, hence, the precise genesis of VIMS still remains ambiguous.
+
+Despite the lack of a profound theory, several countermeasures against motion sickness and VIMS do exist. A variety of drugs have been tested over the past years (for an overview see Sherman, 2002; Shupak and Gordon, 2006), and two drug classes have gained special popularity, namely antihistamines and anticholinergics (Hoyt et al., 2009). Antihistamines (e.g. meclozine, cyclizine, or promethazine) are designed to inhibit histaminergic H-receptors and might affect the H1-receptors in the vestibular nuclei (Golding, 2006). In contrast, the purpose of anticholinergic substances is to block muscarinic receptors in the brain and to subdue the input from the vestibular organs to the vestibular nuclei. Currently, scopolamine is probably the most common anticholinergic medication used against motion sickness (Murray, 1997; Sherman, 2002). Although medical drugs can reliably reduce motion sickness, serious temporary side-effects – such as drowsiness, fatigue, or cognitive impairment – frequently occur and pose a serious limit to the application of anti-motion sickness drugs. Note that most drugs have been designed to ease classical, travel-related motion sickness. It remains uncertain whether such drugs can also be assessed to successfully diminish VIMS. For instance, Furman and Marcus (2009) showed that rizatriptan—a tryptamine-based drug used to treat migraine—can reduce classical motion sickness but is less effective in preventing VIMS.
+
+Additionally, several behavioral techniques have been introduced in the past to counteract both motion sickness and VIMS. The most efficient method to prevent VIMS is adaptation or habituation, respectively. VIMS typically subsides in most people with repeated exposure to the same nauseating stimuli (Cowings and Toscano, 2000; Young et al., 2003; Cheung and Hofer, 2005). Although some behavioral techniques have delivered promising results, they come at a price or may be impractical in many situations. For instance, adaptation to VIMS is very time-consuming and cost-intensive, hence, it is not the method of choice in many cases.
+
+
+                     Yen Pik Sang et al. (2003a) highlighted the role of music as a potential countermeasure against classical motion sickness that does not have the disadvantages outlined above. The authors asked their participants to perform head movements in off-vertical directions during full-body rotation along the earth-vertical yaw-axis. This procedure typically causes Coriolis effects and is known to be highly nauseating. Relaxing background music turned out to significantly prolong the onset time of motion sickness compared to a control group that did not listen to music. However, several questions were left unanswered. The authors used physical movement to create motion sickness, but did not focus on VIMS. Also, the music was only introduced after the onset of sickness symptoms. This could have been later than optimal, as motion sickness can rapidly increase once the first signs appear. Furthermore, the authors analyzed the onset delay of MS rather than its magnitude. Finally, the effect of several types of music and the relation between the music's pleasantness and its effect on VIMS has not been addressed.
+
+Thus, the aim of the present study was to determine the effectiveness of different music types as suitable countermeasures against VIMS. We exposed our participants to a nauseating video of a bicycle ride and either added relaxing (instrumental music), neutral (mainstream pop music), or stressful music (fast speed electronic music). A control group received no music. We assumed that relaxing music would effectively reduce the severity of VIMS compared to stressful or no music. Additionally, gender was added as further factor as previous research showed higher VIMS-reports for women compared to men (Flanagan et al., 2005; Klosterhalfen et al., 2005).
+
+@&#METHODS@&#
+
+All participants gave written consent to their participation prior to the experiment and assured to be in a normal state of health. Two participants were eliminated from data analyses due to severely increased sickness scores prior to the beginning of the testing (measured by the simulator sickness questionnaire, SSQ; Kennedy et al., 1993). Thus, 50 female (M
+                        age = 24.16, SDage = 4.40) and 43 male (M
+                        age = 25.72, SDage = 5.17) young adults were randomly assigned to one of the four experimental groups (see also Table 3
+                        
+                        
+                        ). All subjects had normal or corrected-to-normal vision and were naïve with respect to the purpose of the study. The stimuli were administered in accordance with the Declaration of Helsinki to ensure research ethics in human experimentation. Participants were free to abort the experiment at any time without negative consequences and were rewarded with partial course credit. Twenty participants (4 in the relaxing group, 4 in the neutral group, 5 in the stressful group, and 7 in the control group) chose to abort the experiment prior to stimulus offset due to severe sickness or strong discomfort.
+
+We chose a one-factorial between subjects design including the factor music type (relaxing, neutral, stressful, no music). Gender was counterbalanced for all groups. The stimuli consisted of a video (14 min 15 s long) showing a first-person view of a bicycle ride through the city of Mainz, Germany. The bicycle ride was mainly performed on a flat terrain, including sequences of even pavement and cobble stone roads, thus providing a mixture of smooth and shaky video images. The driver navigated the bicycle through a crowded area of the city center of Mainz, thus, navigation speed was moderate, and a number of turns and stops (e.g., caused by traffic lights) were included. Note that the rider used to create the stimuli was not a subject in this study. The video was captured with a Sony video camera, which was mounted on the handle-bars of a bicycle. Participants were seated in dimly lit room in a height-adjustable chair 200 cm in front of a 191 cm × 144 cm large screen, resulting in a field of view of 51° horizontally and 40° vertically. A chinrest was used to minimize participants' head movements and was fixed 116 cm above the ground with eye-height adjusted to the center of the screen. The video had a resolution of 600 × 480 Pixels with a refresh rate of 60 Hz. Depending on the experimental group, participants were either exposed to easy-listening instrumental music, mainstream pop music, or fast speed electronic music. Prior investigations among the subjects' peer group (personal comments) labeled the chosen songs as relaxing (instrumental music), neutral (pop music), and stressful (electronic music). Table 1 shows detailed information regarding the chosen songs. The loudness of each music style varied between 60 and 70 dB. No music and no other sounds were presented for the control group. For each music category, the transitions between songs were blended to avoid noticeably break points. The last song of each category was shortened and faded out to correspond to the length of the video.
+
+Visually induced motion sickness was measured in two ways. Firstly, participants used the fast motion sickness scale (FMS; Keshavarz and Hecht, 2011) to rate their level of VIMS every minute. The FMS is a verbal rating scale ranging from 0 (no sickness at all) to 20 (severe sickness) and is designed to capture discomfort and nausea in particular. Secondly, the simulator sickness questionnaire (SSQ, Kennedy et al., 1993) – a standardized questionnaire including 16 items that have to be judged on 4-point Likert scales (0 = not at all, 1 = slight, 2 = moderate, 3 = severe) – was assessed once before (SSQ-pre) and once after stimulus presentation. Three subscales (nausea, disorientation, oculomotor) and to a total-score can be calculated using pre-defined factor weightings. The SSQ-pre was used to control for potential group differences prior to the experiment and to ensure that participants were feeling well at the outset. Additionally, participants were asked to rate the presented music on 7-point Likert scales regarding its pleasantness (1 = very pleasant, 7 = very unpleasant) and its stress level (1 = very relaxing, 7 = very stressful). Additionally, we asked the participants whether they were familiar with the chosen songs to control for familiarity effects.
+
+@&#PROCEDURE@&#
+
+Participants were randomly assigned to one of the four experimental groups. All subjects successfully passed a Romberg Test of vestibular dysfunction and filled in the SSQ-pre questionnaire before the experiment began. The experimenter verbally asked the participants to rate their level of sickness every minute during stimulus presentation by reporting a single score from the FMS scale. Stimulus presentation was terminated whenever the participants wanted to stop due to severe VIMS or when the video reached its end. The SSQ and the questionnaire including the music ratings had to be filled in immediately after stimulus offset. Before leaving the laboratory, all subjects were debriefed and the experimenter ensured that the VIMS-related symptoms had subsided.
+
+@&#RESULTS@&#
+
+The rated stressfulness
+                           2
+                        
+                        
+                           2
+                           Regrouping of participants with respect to the level of stressfulness (i.e., dichotomy labeled as stressful or non-stressful) did not deliver significant differences regarding the severity of VIMS. Thus, the level of stressfulness will not be further discussed here.
+                         of the music (1 = very relaxing, 7 = very stressful) and its pleasantness (1 = very pleasant, 7 = very unpleasant) reflected the intended valence of the music. The average stress ratings for the relaxing music (M = 1.88, SD = 1.33), the neutral music (M = 3.42, SD = 1.44), and the stressful music (M = 6.17, SD = 1.01) matched our expectations. A non-parametric test (Kruskall–Wallis) revealed a significant difference between all three groups, H(2) = 46.31, p < .001. The pleasantness ratings for the relaxing music (M = 2.29, SD = 1.20), the neutral music (M = 2.38, SD = 1.28), and the stressful music (M = 5.33, SD = 1.50) showed a similar pattern. Again, a non-parametric test (Kruskall–Wallis) revealed significant differences between the groups, H(2) = 35.61, p < .001. However, the relaxing and the neutral music showed no differences regarding their pleasantness (Mann–Whitney, p = .983). There were no gender differences regarding the music ratings (Mann–Whitney, pleasantness p = .762; stressfulness p = .736). And only 4 of the 93 participants were familiar with some of the chosen songs, thus we assume that familiarity can be neglected as a potential confound.
+
+No differences regarding the SSQ scores prior to stimulus onset occurred (see Table 2). A one-way ANOVA including the between-subjects factor music type revealed no significant differences for the SSQ subscales nausea, F(3, 89) = 1.783, p = .156, oculomotor, F(3, 89) = 1.703, p = .172, disorientation, F(3, 89) = .789, p = .503, and the SSQ total-score, F(3, 89) = 1.609, p = .193.
+
+A priori significance level was set to α = .05 for all analyses. A 4 [music type (relaxing, neutral, stressful, no music)] × 2 [gender (male, female)] multivariate ANOVA
+                           3
+                        
+                        
+                           3
+                           Note that the FMS and SSQ scores were not normally distributed (Shapiro–Wilk, p < .05). However, due to the MANOVA's robustness against violations of the normality assumption (see Finch, 2005), we preferred to assess parametric tests. Nonparametric tests were performed as well and revealed similar results.
+                         was calculated on the peak FMS-scores (the highest FMS score reported during stimulus presentation), the SSQ sub-scores for nausea (SSQ-N), disorientation (SSQ-D), and oculomotor (SSQ-O), and the SSQ total-score (SSQ-TS). Participants who aborted the experiment prior to stimulus offset were included in the data analysis although they might have received even higher scores had the stimulus exposure continued. The mean peak FMS-scores are presented in Table 3, and the SSQ-scores are depicted in Fig. 1
+                        . As expected, Pearson correlations were high and significant between the peak FMS scores and the SSQ subscales nausea (r = .76, p < .001), oculomotor (r = .64, p < .001), disorientation (r = .52, p < .001), and the SSQ total score (r = .71, p < .001).
+
+A non-significant trend for music type showed for the peak FMS scores, F(3, 85) = 2.277, p = .097, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .071, but not for the SSQ scores (ranging from p = .126 to p = .446). A significant effect of gender occurred for the FMS score, F(1, 85) = 4.941, p = .029, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .055, as well as the SSQ sub-scores nausea, F(1, 85) = 6.436, p = .013, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .070, oculomotor, F(1, 85) = 4.694, p = .033, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .052, and the SSQ total-score, F(1, 85) = 4.331, p = .040, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .048. The SSQ sub-scale disorientation, F(1, 85) = 2.588, p = .111, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .030 and the interaction between music type and gender were not significant.
+
+A repeated-measures ANOVA including the within-subjects factor time and the between-subjects factors gender and music type was calculated to analyze the time-course of the peak FMS-scores minute by minute (Fig. 2
+                        ). Participants who aborted the experiment prior to stimulus offset were not excluded from data analysis, instead, the last FMS score reported before drop-out was continuously implemented for the following time slots. For instance, if a participant terminated the experiment after 10 min with a FMS score of 18, the same score was inserted for the remaining 4 min. Results (Huynh–Feldt corrected, ε = .176) showed a significant effect of time, indicating increased VIMS scores with prolonged stimulus duration, F(14, 1190) = 68.342, p < .001, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .446. Additionally, a significant interaction for time and gender, F(14, 1190) = 4.902, p = .005, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .055, and a non-significant trend for time and music type showed, F(14, 1190) = 1.914, p = .065, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .063.
+
+As the subjective pleasantness ratings did not vary for relaxing and neutral music, we restructured our data based on the pleasantness ratings. By way of a median split, we divided our subjects into two separate groups, one group that rated the presented music as pleasant (pleasantness scores 1–3) and one that rated the music as unpleasant (pleasantness scores 4–7). The distribution of participants based on their pleasantness ratings for each music type is given in Table 4
+                        .
+
+A 3 [music pleasantness (pleasant, unpleasant, no music)] × 2 [gender (male, female)] multivariate ANOVA was calculated for the peak FMS score and the SSQ scores. The mean SSQ scores are shown in Fig. 3
+                         and the mean peak FMS scores are presented in Fig. 4
+                        . The MANOVA revealed a significant effect of music pleasantness for all independent measures, including the peak FMS score, F(2, 87) = 6.485, p = .002, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .130 and the SSQ sub-scores nausea, F(2, 87) = 3.379, p = .030, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .053.,oculomotor, F(2, 87) = 4.432, p = .015, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .072, disorientation, F(2, 87) = 3.523, p = .034, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .075, and the SSQ total-score, F(2, 87) = 3.921, p = .023, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .083. Additionally, a significant effect of gender showed for the peak FMS score, F(1, 87) = 5.703, p = .019, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .062, the SSQ sub-scores nausea, F(1, 87) = 6.559, p = .012, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .070, oculomotor, F(1, 87) = 5.772, p = .018, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .062, and the SSQ total-score, F(1, 87) = 4.848, p = .030, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .053. The SSQ sub-scale disorientation, F(1, 87) = 3.065, p = .084, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .034, as well as the interaction between music pleasantness and gender were not significant.
+
+A repeated-measures ANOVA including the within-subjects factor time and the between-subjects factors gender and music pleasantness was calculated to analyze the time-course of the peak FMS-scores minute by minute (Fig. 2). Results (Huynh–Feldt corrected, ε = .177) showed a significant effect of time, F(14, 1218) = 75.440, p < .001, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .464. Additionally, a significant interaction for time and gender, F(14, 1218) = 5.120, p = .004, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .056, and time and music pleasantness showed, F(14, 1218) = 4.049, p = .002, 
+                           
+                              
+                                 
+                                    
+                                       η
+                                       p
+                                    
+                                 
+                                 2
+                              
+                           
+                         = .085.
+
+@&#DISCUSSION@&#
+
+The purpose of our study was to determine the role of music as a potential countermeasure against VIMS. Our results indicated that music can indeed act as an efficient tool to reduce the severity of VIMS. We chose three different types of background music during exposure to a VIMS-provoking stimulus, that is relaxing instrumental music, neutral mainstream pop music, and stressful electronic music. Relaxing music tended to reduce VIMS, whereas stressful music did not. However, this result missed statistical significance, as it was modulated by the pleasantness of the music. In other words, participants who perceived the presented music as pleasant – regardless of the music type – reported significantly less VIMS. This result is in line with the findings of Yen Pik et al. (2003a) who reported prolonged onset times for motion sickness when their participants were exposed to a music audiotape that “was claimed by the manufacturer to reduce motion sickness” (p. 109). Note that sound in general is not an appropriate countermeasure against VIMS, as realistic background sound (e.g. engine sound, traffic noise etc.) did not affect the severity of VIMS in other studies (Dahlman et al., 2008; Keshavarz and Hecht, 2012a, 2012b). Hence, music sets itself apart from simple background sounds, probably due to its more complex and vivid nature. Additionally, we found a gender effect with women tending to suffer (or at least to report) more from motion sickness than men. This result is in concordance with other findings (Flanagan et al., 2005; Klosterhalfen et al., 2005), however, note that the effect of gender has been lately discussed in controversy (Klosterhalfen et al., 2008). The reason for increased VIMS in women is not yet fully understood. Hormonal differences have been summoned to explain this gender effect (Clemes and Howarth, 2005; Grunfeld and Gresty, 1998).
+
+Other existing behavioral countermeasures against VIMS mostly focus on technological features, such as constraining the field-of-view (Bos et al., 2010; Keshavarz et al., 2011), minimizing the time-delay in virtual environments (Draper et al., 2001; Akizuki et al., 2005), or reducing the use of head mounted displays (Moss and Muth, 2011; Patterson et al., 2006). However, those mechanisms might not always be applicable. As long as behavioral countermeasures are not finally optimized, we believe that pleasant music could be an efficient method to reduce VIMS.
+
+Interestingly, our findings are not compatible with any of the well-established theories of motion sickness. Neither the sensory conflict theory (Reason, 1978), nor one of the alternative approaches – for instance the postural instability hypothesis (Riccio and Stoffregen, 1991), the sensed vertical hypothesis (Bles et al., 1998), or the eye-movement theory (Ebenholtz, 1992) – can sufficiently explain the positive effect of pleasant music regarding the severity of VIMS. Thus, we can only speculate why music could act as a countermeasure against VIMS. Three different explanations come to mind, including (i) distraction, (ii) mood, and (iii) psychophysiological changes. We will briefly discuss all three approaches.
+
+Firstly, music could have simply distracted our participants. Thus, music could have led to reduced awareness towards VIMS and hence reduced the level of sickness. Following this idea, other cognitive tasks such as simple math should also reduce VIMS. We cannot definitely exclude this assumption as the impact of cognitive distraction regarding VIMS has not been discussed in the current literature so far. However, our results do not support this idea, as only pleasant music significantly affected the level of VIMS whereas unpleasant music did not. If pure distraction was the reason for the reduction of VIMS, pleasant and unpleasant music should both affect VIMS to the same extent.
+
+Secondly, pleasant music could have reduced the level of VIMS by improving our participants' mood and by inducing positive emotions. Drowsiness and mood changes are two of the cardinal symptoms of the so-called sopite syndrome (Lawson and Mead, 1998), a malady close to (but not identical with) traditional motion sickness. Pleasant music is known to influence emotions (Krumhansl, 1997; Blood and Zatorre, 2001; Rickard, 2004) and might have created a comfortable ambience thereby positively affecting the mood of our participants. Both the sopite syndrome and VIMS could have been mitigated by music. This hypothesis is of rather speculative nature, as we neither measured symptoms according to the sopite syndrome, nor captured mood or emotionality of our participants in detail. The role of emotions during the induction of VIMS is not yet known.
+
+The third explanation involves the complex relationship between music and physiological parameters. Several studies have shown that music can affect physiological activity such as heart rate, respiration, or skin conductance (Etzel et al., 2006; Gomez and Danuser, 2004; Schaefer and Sedlmeier, 2011). Bernardi et al. (2006) captured several physiological parameters and analyzed changes of the autonomic nervous system with respect to the tempi of different music styles. The authors found significantly increased breathing frequencies proportional to the tempo of the music, indicating more rapid breathing during fast techno music compared to slow classical music. The same pattern surfaced for blood pressure (increase) and heart rate (acceleration). On the other hand, physiological changes have been linked to VIMS as well, although their relationship still remains vague (Golding, 2006; Kim et al., 2005; Shupak and Gordon, 2006). For instance, Yen Pik Sang et al. (2003a; see also Yen Pik Sang et al., 2003b) not only analyzed music as a behavioral countermeasure against motion sickness, but also found reduced sickness scores when controlled breathing was induced. Taken together, it seems plausible that music affects the level of VIMS via changes in the autonomic nervous system, although our data cannot verify this assumption. Additional research is needed to investigate the link between music, physiological changes, emotions, and VIMS.
+
+Several questions still remain unanswered and should be addressed in the future. Most importantly, the power of music as a countermeasure against VIMS needs to be determined more in-depth. We found a significant decrease of VIMS ratings during pleasant music, but the effect sizes were only moderate and leave room for optimization. Furthermore, the direct link between music, physiological changes, and VIMS should be carefully analyzed, for instance by using appropriate techniques such as physiological measurements. Other VIMS-related aspects, such as postural sway (e.g., Merhi et al., 2007) or eye-movements (e.g., Ji et al., 2009), have to be taken into account in the future, as they might add to the effect of pleasant music and help further reducing VIMS. Finally, the potential relationship between music pleasantness and other music-related components such as personal preference, valence, or arousal needs to be researched more precisely. Taken together, we assume that pleasant music could act as a very simple, easy-to-assess, and cost-effective method to reduce the occurrence of VIMS in rehabilitation, entertainment, or training.
+
+@&#ACKNOWLEDGMENTS@&#
+
+This study was embedded in a seminar for undergraduate psychology students at the Psychological Institute of the Johannes Gutenberg-University Mainz in 2012. We would like to thank all students for their enthusiasm and their effort. Additionally, we thank Agnes Münch for her support regarding technological aspects.
+
+@&#REFERENCES@&#
+

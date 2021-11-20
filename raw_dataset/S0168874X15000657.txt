@@ -1,0 +1,3437 @@
+@&#MAIN-TITLE@&#A discontinuous Galerkin method for cohesive zone modelling
+
+@&#HIGHLIGHTS@&#
+
+
+               
+                  
+                  
+                     
+                        
+                           
+                           A new discontinuous FEM for cohesive zones is proposed.
+
+
+                        
+                        
+                           
+                           Allows for seamless transition from pre-failure to post-failure behaviour.
+
+
+                        
+                        
+                           
+                           Application to realistic nonlinear models of cohesive failure.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+@&#ABSTRACT@&#
+
+
+                  We propose a discontinuous finite element method for small strain elasticity allowing for cohesive zone modeling. The method yields a seamless transition between the discontinuous Galerkin method and classical cohesive zone modeling. Some relevant numerical examples are presented.
+               
+
+@&#INTRODUCTION@&#
+
+In this paper we develop a discontinuous finite element method for cohesive zone modeling using the approach first suggested by Hansbo and Hansbo [3]. Unlike in the standard pre-failure treatment of cohesive zones, which consists of tying the meshes together using a penalty approach, we use a combination of Nitsche׳s method and the cohesive law governing the interelement stiffness, thus allowing the same discretization method in both pre-failure and post-failure regimes. This means that the method is consistent with the original differential equation and no large penalty parameters are required for accurate solutions even in the pre-failure regime. The approach was implemented for cohesive cracks by Hansbo and Heintz [4] in an XFEM setting, but here we consider a discontinuous Galerkin method allowing for discontinuities appearing only between elements.
+
+An approach similar to ours has been suggested by Mergheim et al. [7], and later used by Pretchel et al. [8] for small deformation crack simulations, and Radovitzky et al. [9] and Wu et al. [12] for large deformation crack simulations. The method of [7] however uses a different blending of Nitsche׳s method and cohesive zones. There a discontinuous Galerkin method is used only in the pre-failure regime and a switch to a standard cohesive zone approximation is performed at a given traction threshold. To ensure a continuous transition between the discretization methods, a matching of discrete tractions between the two cases is performed. This matching is cumbersome in a more general situation of nonmatching meshes across the cohesive zone. In this paper we avoid this switch and a more generally applicable method results.
+
+An outline of the remainder of the paper is as follows. In Section 2 we define our discrete method in a linear setting; in Section 3 we discuss and motivate the cohesive law that we favour and the resulting secant compliance we use in our numerical solution process; and in Section 4 we give some numerical examples of our approach. Finally, in Section 5, we give some concluding remarks.
+
+W consider first an elasticity problem in 
+                           
+                              
+                                 n
+                              
+                              
+                                 sd
+                              
+                           
+                           =
+                           2
+                         or 3 dimensions with a smooth boundary C dividing 
+                           Ω
+                         into two parts Ω
+                        1 and Ω
+                        2. The displacement 
+                           u
+                           =
+                           
+                              
+                                 [
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 ]
+                              
+                              
+                                 i
+                                 =
+                                 1
+                              
+                              
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       sd
+                                    
+                                 
+                              
+                           
+                         has restrictions to the different domains 
+                           
+                              
+                                 u
+                              
+                              
+                                 i
+                              
+                           
+                           =
+                           u
+                           
+                              
+                                 |
+                              
+                              
+                                 
+                                    
+                                       Ω
+                                    
+                                    
+                                       i
+                                    
+                                 
+                              
+                           
+                        , and we denote by 
+                           〚
+                           u
+                           〛
+                           =
+                           
+                              
+                                 u
+                              
+                              
+                                 1
+                              
+                           
+                           
+                              
+                                 |
+                              
+                              
+                                 C
+                              
+                           
+                           −
+                           
+                              
+                                 u
+                              
+                              
+                                 2
+                              
+                           
+                           
+                              
+                                 |
+                              
+                              
+                                 C
+                              
+                           
+                         and let 
+                           n
+                         denote the outward normal vector to 
+                           ∂
+                           Ω
+                         and to Ω
+                        1 on C. Then, a linear elasticity problem with cohesive layer C can be written: Find 
+                           u
+                         and the symmetric stress tensor 
+                           σ
+                           =
+                           
+                              
+                                 [
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       ij
+                                    
+                                 
+                                 ]
+                              
+                              
+                                 i
+                                 ,
+                                 j
+                                 =
+                                 1
+                              
+                              
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       sd
+                                    
+                                 
+                              
+                           
+                         such that
+                           
+                              (1)
+                              
+                                 σ
+                                 =
+                                 λ
+                                 ∇
+                                 ·
+                                 uI
+                                 +
+                                 2
+                                 μ
+                                 ε
+                                 (
+                                 u
+                                 )
+                                 
+                                 in
+                                 
+                                 
+                                    
+                                       Ω
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ∪
+                                 
+                                    
+                                       Ω
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 ,
+                                 −
+                                 ∇
+                                 ·
+                                 σ
+                                 =
+                                 f
+                                 
+                                 in
+                                 
+                                 
+                                    
+                                       Ω
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ∪
+                                 
+                                    
+                                       Ω
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 ,
+                                 u
+                                 =
+                                 g
+                                 
+                                 on
+                                 
+                                 ∂
+                                 
+                                    
+                                       Ω
+                                    
+                                    
+                                       D
+                                    
+                                 
+                                 ,
+                                 σ
+                                 ·
+                                 n
+                                 =
+                                 h
+                                 
+                                 on
+                                 
+                                 ∂
+                                 
+                                    
+                                       Ω
+                                    
+                                    
+                                       N
+                                    
+                                 
+                                 〚
+                                 σ
+                                 ·
+                                 n
+                                 〛
+                                 =
+                                 0
+                                 
+                                 on
+                                 
+                                 C
+                                 〚
+                                 u
+                                 〛
+                                 =
+                                 −
+                                 K
+                                 σ
+                                 ·
+                                 n
+                                 
+                                 on
+                                 
+                                 C
+                              
+                           
+                        Here λ and μ are positive constants called the Lamé constants, satisfying 
+                           0
+                           <
+                           
+                              
+                                 μ
+                              
+                              
+                                 1
+                              
+                           
+                           <
+                           μ
+                           <
+                           
+                              
+                                 μ
+                              
+                              
+                                 2
+                              
+                           
+                         and 
+                           0
+                           <
+                           λ
+                           <
+                           ∞
+                        , and 
+                           ε
+                           (
+                           u
+                           )
+                           =
+                           
+                              
+                                 [
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       ij
+                                    
+                                 
+                                 (
+                                 u
+                                 )
+                                 ]
+                              
+                              
+                                 i
+                                 ,
+                                 j
+                                 =
+                                 1
+                              
+                              
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       sd
+                                    
+                                 
+                              
+                           
+                         is the strain tensor with components 
+                           
+                              
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       ij
+                                    
+                                 
+                                 (
+                                 u
+                                 )
+                                 =
+                                 
+                                    
+                                       1
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       
+                                          ∂
+                                          
+                                             
+                                                u
+                                             
+                                             
+                                                i
+                                             
+                                          
+                                       
+                                       
+                                          ∂
+                                          
+                                             
+                                                x
+                                             
+                                             
+                                                j
+                                             
+                                          
+                                       
+                                    
+                                    +
+                                    
+                                       
+                                          ∂
+                                          
+                                             
+                                                u
+                                             
+                                             
+                                                j
+                                             
+                                          
+                                       
+                                       
+                                          ∂
+                                          
+                                             
+                                                x
+                                             
+                                             
+                                                i
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 )
+                                 .
+                              
+                           
+                        Furthermore, 
+                           ∇
+                           ·
+                           σ
+                           =
+                           
+                              
+                                 [
+                                 
+                                    
+                                       ∑
+                                    
+                                    
+                                       j
+                                       =
+                                       1
+                                    
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             sd
+                                          
+                                       
+                                    
+                                 
+                                 ∂
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       ij
+                                    
+                                 
+                                 /
+                                 ∂
+                                 
+                                    
+                                       x
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 ]
+                              
+                              
+                                 i
+                                 =
+                                 1
+                              
+                              
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       sd
+                                    
+                                 
+                              
+                           
+                        , 
+                           I
+                           =
+                           
+                              
+                                 [
+                                 
+                                    
+                                       δ
+                                    
+                                    
+                                       ij
+                                    
+                                 
+                                 ]
+                              
+                              
+                                 i
+                                 ,
+                                 j
+                                 =
+                                 1
+                              
+                              
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       sd
+                                    
+                                 
+                              
+                           
+                         with 
+                           
+                              
+                                 δ
+                              
+                              
+                                 ij
+                              
+                           
+                           =
+                           1
+                         if i=j and 
+                           
+                              
+                                 δ
+                              
+                              
+                                 ij
+                              
+                           
+                           =
+                           0
+                         if 
+                           i
+                           ≠
+                           j
+                        , 
+                           f
+                         and 
+                           h
+                         are given loads, 
+                           g
+                         is a given boundary displacement, and 
+                           n
+                         is the outward unit normal to 
+                           ∂
+                           Ω
+                        . Finally, 
+                           K
+                         is a symmetric positive semi-definite flexibility matrix (constitutive law on C). For example, with isotropic elasticity on C we have that 
+                           
+                              
+                                 K
+                                 =
+                                 α
+                                 I
+                                 +
+                                 (
+                                 β
+                                 −
+                                 α
+                                 )
+                                 n
+                                 ⊗
+                                 n
+                                 
+                                 or
+                                 
+                                 
+                                    
+                                       K
+                                    
+                                    
+                                       ij
+                                    
+                                 
+                                 =
+                                 α
+                                 
+                                    
+                                       δ
+                                    
+                                    
+                                       ij
+                                    
+                                 
+                                 +
+                                 (
+                                 β
+                                 −
+                                 α
+                                 )
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 ,
+                              
+                           
+                        where 
+                           ⊗
+                         denotes outer product, with 
+                           α
+                           ≥
+                           0
+                         and 
+                           β
+                           ≥
+                           0
+                         denoting the complicancy in the direction tangential and normal to C, respectively, cf. [3]. (In this paper, a more general compliance, with cross coupling between normal and tangential directions, will be considered.)
+
+Consider a subdivision of 
+                           Ω
+                         into a geometrically conforming finite element partitioning 
+                           
+                              
+                                 T
+                              
+                              
+                                 h
+                              
+                           
+                           =
+                           {
+                           T
+                           }
+                         of 
+                           Ω
+                        . Let 
+                           
+                              
+                                 
+                                    
+                                       P
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 (
+                                 T
+                                 )
+                                 =
+                                 {
+                                 v
+                                 :
+                                 each
+                                 
+                                 component
+                                 
+                                 of
+                                 
+                                 v
+                                 
+                                 is
+                                 
+                                 a
+                                 
+                                 polynomial
+                                 
+                                 of
+                                 
+                                 degree
+                                 ≤
+                                 k
+                                 
+                                 on
+                                 
+                                 T
+                                 }
+                                 ,
+                              
+                           
+                        
+                        
+                           
+                              
+                                 
+                                    
+                                       W
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 =
+                                 {
+                                 v
+                                 ∈
+                                 
+                                    
+                                       [
+                                       
+                                          
+                                             L
+                                          
+                                          
+                                             2
+                                          
+                                       
+                                       (
+                                       Ω
+                                       )
+                                       ]
+                                    
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             sd
+                                          
+                                       
+                                    
+                                 
+                                 :
+                                 v
+                                 
+                                    
+                                       |
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 ∈
+                                 
+                                    
+                                       [
+                                       
+                                          
+                                             P
+                                          
+                                          
+                                             k
+                                          
+                                       
+                                       (
+                                       T
+                                       )
+                                       ]
+                                    
+                                    
+                                       
+                                          
+                                             n
+                                          
+                                          
+                                             sd
+                                          
+                                       
+                                    
+                                 
+                                 ∀
+                                 T
+                                 ∈
+                                 
+                                    
+                                       T
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 }
+                                 .
+                              
+                           
+                        We also introduce the set of element faces in the mesh, 
+                           F
+                           =
+                           {
+                           F
+                           }
+                        , and we split 
+                           F
+                         into three disjoint subsets 
+                           
+                              
+                                 F
+                                 =
+                                 
+                                    
+                                       F
+                                    
+                                    
+                                       I
+                                    
+                                 
+                                 ∪
+                                 
+                                    
+                                       F
+                                    
+                                    
+                                       D
+                                    
+                                 
+                                 ∪
+                                 
+                                    
+                                       F
+                                    
+                                    
+                                       N
+                                    
+                                 
+                                 ,
+                              
+                           
+                        where 
+                           
+                              
+                                 F
+                              
+                              
+                                 I
+                              
+                           
+                         is the set of faces in the interior of 
+                           Ω
+                         and 
+                           
+                              
+                                 F
+                              
+                              
+                                 D
+                              
+                           
+                         and 
+                           
+                              
+                                 F
+                              
+                              
+                                 N
+                              
+                           
+                         are the sets of faces on 
+                           ∂
+                           
+                              
+                                 Ω
+                              
+                              
+                                 D
+                              
+                           
+                         and 
+                           ∂
+                           
+                              
+                                 Ω
+                              
+                              
+                                 N
+                              
+                           
+                        , respectively. Further, with each face we associate a fixed unit normal 
+                           n
+                         such that for faces on the boundary 
+                           n
+                         is the exterior unit normal. We denote the jump of a function 
+                           v
+                           ∈
+                           
+                              
+                                 W
+                              
+                              
+                                 h
+                              
+                           
+                         at an internal face 
+                           F
+                           ∈
+                           
+                              
+                                 F
+                              
+                              
+                                 I
+                              
+                           
+                         by 
+                           〚
+                           v
+                           〛
+                           =
+                           
+                              
+                                 v
+                              
+                              
+                                 +
+                              
+                           
+                           −
+                           
+                              
+                                 v
+                              
+                              
+                                 −
+                              
+                           
+                        , and 
+                           〚
+                           v
+                           〛
+                           =
+                           
+                              
+                                 v
+                              
+                              
+                                 +
+                              
+                           
+                         for 
+                           F
+                           ∈
+                           
+                              
+                                 F
+                              
+                              
+                                 D
+                              
+                           
+                        , and the average 
+                           〈
+                           v
+                           〉
+                           =
+                           (
+                           
+                              
+                                 v
+                              
+                              
+                                 +
+                              
+                           
+                           +
+                           
+                              
+                                 v
+                              
+                              
+                                 −
+                              
+                           
+                           )
+                           /
+                           2
+                         for 
+                           F
+                           ∈
+                           
+                              
+                                 F
+                              
+                              
+                                 I
+                              
+                           
+                        , and 
+                           〈
+                           v
+                           〉
+                           =
+                           
+                              
+                                 v
+                              
+                              
+                                 +
+                              
+                           
+                         for 
+                           F
+                           ∈
+                           
+                              
+                                 F
+                              
+                              
+                                 D
+                              
+                           
+                        , where 
+                           
+                              
+                                 v
+                              
+                              
+                                 ±
+                              
+                           
+                           =
+                           
+                              
+                                 lim
+                              
+                              
+                                 ϵ
+                                 ↓
+                                 0
+                              
+                           
+                           v
+                           (
+                           x
+                           ∓
+                           ϵ
+                           n
+                           )
+                         with 
+                           x
+                           ∈
+                           F
+                        .
+
+For the modelling of cohesive interfaces, we here assume that the solution may be discontinuous across each element face F, and thus the role of C in (1) is now taken by all element faces.
+
+The DG method can then be formulated as follows: Seek 
+                           
+                              
+                                 u
+                              
+                              
+                                 h
+                              
+                           
+                           ∈
+                           
+                              
+                                 W
+                              
+                              
+                                 h
+                              
+                           
+                         such that
+                           
+                              (2)
+                              
+                                 
+                                    
+                                       a
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 ,
+                                 v
+                                 )
+                                 =
+                                 
+                                    
+                                       L
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 (
+                                 v
+                                 )
+                                 
+                                 for
+                                 
+                                 all
+                                 
+                                 v
+                                 ∈
+                                 
+                                    
+                                       W
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 .
+                              
+                           
+                        The bilinear form is defined by
+                           
+                              (3)
+                              
+                                 
+                                    
+                                       a
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 ,
+                                 v
+                                 )
+                                 =
+                                 
+                                    
+                                       ∑
+                                    
+                                    
+                                       T
+                                       ∈
+                                       
+                                          
+                                             T
+                                          
+                                          
+                                             h
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 σ
+                                 (
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 )
+                                 :
+                                 ε
+                                 (
+                                 v
+                                 )
+                                 
+                                 dx
+                                 −
+                                 
+                                    
+                                       ∑
+                                    
+                                    
+                                       F
+                                       ∈
+                                       
+                                          
+                                             F
+                                          
+                                          
+                                             I
+                                          
+                                       
+                                       ∪
+                                       
+                                          
+                                             F
+                                          
+                                          
+                                             D
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       F
+                                    
+                                 
+                                 〈
+                                 σ
+                                 (
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 )
+                                 ·
+                                 n
+                                 〉
+                                 ·
+                                 (
+                                 〚
+                                 v
+                                 〛
+                                 +
+                                 K
+                                 〈
+                                 σ
+                                 (
+                                 v
+                                 )
+                                 ·
+                                 n
+                                 〉
+                                 )
+                                 
+                                 ds
+                                 −
+                                 
+                                    
+                                       ∑
+                                    
+                                    
+                                       F
+                                       ∈
+                                       
+                                          
+                                             F
+                                          
+                                          
+                                             I
+                                          
+                                       
+                                       ∪
+                                       
+                                          
+                                             F
+                                          
+                                          
+                                             D
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       F
+                                    
+                                 
+                                 〈
+                                 σ
+                                 (
+                                 v
+                                 )
+                                 ·
+                                 n
+                                 〉
+                                 ·
+                                 (
+                                 〚
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 〛
+                                 +
+                                 K
+                                 〈
+                                 σ
+                                 (
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 )
+                                 ·
+                                 n
+                                 〉
+                                 )
+                                 
+                                 ds
+                                 +
+                                 
+                                    
+                                       ∑
+                                    
+                                    
+                                       F
+                                       ∈
+                                       
+                                          
+                                             F
+                                          
+                                          
+                                             I
+                                          
+                                       
+                                       ∪
+                                       
+                                          
+                                             F
+                                          
+                                          
+                                             D
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       F
+                                    
+                                 
+                                 〈
+                                 σ
+                                 (
+                                 v
+                                 )
+                                 ·
+                                 n
+                                 〉
+                                 ·
+                                 (
+                                 K
+                                 〈
+                                 σ
+                                 (
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 )
+                                 ·
+                                 n
+                                 〉
+                                 )
+                                 
+                                 ds
+                                 +
+                                 
+                                    
+                                       ∑
+                                    
+                                    
+                                       F
+                                       ∈
+                                       
+                                          
+                                             F
+                                          
+                                          
+                                             I
+                                          
+                                       
+                                       ∪
+                                       
+                                          
+                                             F
+                                          
+                                          
+                                             D
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       F
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       S
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 (
+                                 〚
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 〛
+                                 +
+                                 K
+                                 〈
+                                 σ
+                                 (
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 )
+                                 ·
+                                 n
+                                 〉
+                                 )
+                                 )
+                                 ·
+                                 (
+                                 〚
+                                 v
+                                 〛
+                                 +
+                                 K
+                                 〈
+                                 σ
+                                 (
+                                 v
+                                 )
+                                 ·
+                                 n
+                                 〉
+                                 )
+                                 
+                                 ds
+                                 ,
+                              
+                           
+                        and the linear functional by
+                           
+                              (4)
+                              
+                                 
+                                    
+                                       L
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 (
+                                 v
+                                 )
+                                 =
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       Ω
+                                    
+                                 
+                                 f
+                                 ·
+                                 v
+                                 
+                                 dx
+                                 +
+                                 
+                                    
+                                       ∑
+                                    
+                                    
+                                       F
+                                       ∈
+                                       
+                                          
+                                             F
+                                          
+                                          
+                                             N
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       F
+                                    
+                                 
+                                 h
+                                 ·
+                                 v
+                                 
+                                 ds
+                                 −
+                                 
+                                    
+                                       ∑
+                                    
+                                    
+                                       F
+                                       ∈
+                                       
+                                          
+                                             F
+                                          
+                                          
+                                             D
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       F
+                                    
+                                 
+                                 σ
+                                 (
+                                 v
+                                 )
+                                 ·
+                                 n
+                                 ·
+                                 g
+                                 
+                                 ds
+                                 +
+                                 
+                                    
+                                       ∑
+                                    
+                                    
+                                       F
+                                       ∈
+                                       
+                                          
+                                             F
+                                          
+                                          
+                                             D
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       F
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       S
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 g
+                                 )
+                                 ·
+                                 (
+                                 v
+                                 +
+                                 K
+                                 σ
+                                 (
+                                 v
+                                 )
+                                 ·
+                                 n
+                                 )
+                                 
+                                 ds
+                                 .
+                              
+                           
+                        Here 
+                           
+                              
+                                 S
+                              
+                              
+                                 h
+                              
+                           
+                         is a matrix which depends on the interface conditions of the problem, the local meshsize, and a penalty parameter 
+                           γ
+                           ≔
+                           (
+                           2
+                           μ
+                           +
+                           3
+                           λ
+                           )
+                           
+                              
+                                 γ
+                              
+                              
+                                 0
+                              
+                           
+                        , where γ
+                        0 is a dimensionless number which has to be large enough for the method to be stable. The stability of the method increases with increasing flexibility, so the choice of γ
+                        0 needed for stability in the case of zero flexibility can be used in all other cases (numerical values for γ
+                        0 can be found, e.g., in [5]). More precisely, on a face F with diameter h
+                        
+                           F
+                        , 
+                           
+                              (5)
+                              
+                                 
+                                    
+                                       S
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 
+                                    
+                                       |
+                                    
+                                    
+                                       F
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      h
+                                                   
+                                                   
+                                                      F
+                                                   
+                                                
+                                             
+                                             
+                                                γ
+                                             
+                                          
+                                          I
+                                          +
+                                          K
+                                       
+                                       )
+                                    
+                                    
+                                       −
+                                       1
+                                    
+                                 
+                              
+                           
+                        On each face F, the mesh parameter h
+                        
+                           F
+                         is defined by
+                           
+                              (6)
+                              
+                                 
+                                    
+                                       h
+                                    
+                                    
+                                       F
+                                    
+                                 
+                                 =
+                                 {
+                                 
+                                    
+                                       
+                                          
+                                             (
+                                             meas
+                                             (
+                                             
+                                                
+                                                   T
+                                                
+                                                
+                                                   +
+                                                
+                                             
+                                             )
+                                             +
+                                             meas
+                                             (
+                                             
+                                                
+                                                   T
+                                                
+                                                
+                                                   −
+                                                
+                                             
+                                             )
+                                             )
+                                             /
+                                             2
+                                             meas
+                                             (
+                                             F
+                                             )
+                                          
+                                          
+                                             for
+                                             
+                                             F
+                                             ⊂
+                                             ∂
+                                             
+                                                
+                                                   T
+                                                
+                                                
+                                                   +
+                                                
+                                             
+                                             ∩
+                                             ∂
+                                             
+                                                
+                                                   T
+                                                
+                                                
+                                                   −
+                                                
+                                             
+                                             ,
+                                          
+                                       
+                                       
+                                          
+                                             meas
+                                             (
+                                             T
+                                             )
+                                             /
+                                             meas
+                                             (
+                                             F
+                                             )
+                                          
+                                          
+                                             for
+                                             
+                                             F
+                                             ⊂
+                                             ∂
+                                             T
+                                             ∩
+                                             ∂
+                                             
+                                                
+                                                   Ω
+                                                
+                                                
+                                                   D
+                                                
+                                             
+                                             .
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+We note that as the flexibility goes to zero, we approach a standard discontinuous Galerkin method for elasticity. Looking instead at the limit case of 
+                           h
+                           →
+                           0
+                         (assuming that 
+                           K
+                         is invertible) we retrieve a standard formulation for cohesive laws where the only term contributing to the stiffness matrix from the interfaces is the interface stiffness term 
+                           
+                              
+                                 
+                                    
+                                       ∑
+                                    
+                                    
+                                       F
+                                       ∈
+                                       
+                                          
+                                             F
+                                          
+                                          
+                                             I
+                                          
+                                       
+                                       ∪
+                                       
+                                          
+                                             F
+                                          
+                                          
+                                             D
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       F
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       K
+                                    
+                                    
+                                       −
+                                       1
+                                    
+                                 
+                                 〚
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 〛
+                                 )
+                                 ·
+                                 〚
+                                 v
+                                 〛
+                                 
+                                 ds
+                                 .
+                              
+                           
+                        The proposed method thus seamlessly blends discontinuous Galerkin with standard FEM for cohesive interfaces.
+
+By use of Green׳s formula, we readily establish that the method (2) is consistent in the sense that
+                           
+                              (7)
+                              
+                                 
+                                    
+                                       a
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 (
+                                 u
+                                 −
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 ,
+                                 v
+                                 )
+                                 =
+                                 0
+                              
+                           
+                        for all 
+                           v
+                           ∈
+                           
+                              
+                                 W
+                              
+                              
+                                 h
+                              
+                           
+                         and for 
+                           
+                              
+                                 u
+                              
+                              
+                                 h
+                              
+                           
+                         sufficiently regular, which is key to retrieving optimal accuracy of the method. Stability follows from the analysis in [2,3,5]. We also mention the work of Juntunen and Stenberg [6], where an analysis of this approach for handling general boundary conditions for Poisson׳s equation is given.
+
+We are now interested in the case when the interface compliance depends on the jump of the solution, 
+                        K
+                        =
+                        K
+                        (
+                        〚
+                        u
+                        〛
+                        )
+                     . In the numerical solution of the cohesive zone FE model, we shall for ease of implementation use a secant method for the nonlinear solver. Thus, we replace the compliance 
+                        K
+                      by a corresponding secant compliance as follows.
+
+The compliance between the elements can be defined a priori by cohesive zone models. Frequently, cohesive zone models that are easy to implement are chosen to model the initiation of cracks. These models are often un-coupled, meaning that there is no relationship between the normal and tangential stresses other than the fracture criterion. However, it is reasonable to imagine that the tangetial stiffness is effected by the reduction of the normal stiffness. Thus, in order to couple the cohesive behavior of the interfaces in mixed mode, we choose to derive the traction–separation laws from a weighted energy release rate surface, cf. [11,1].
+
+We denote the energy release rates in pure normal and pure tangential directions 
+                        
+                           
+                              Γ
+                           
+                           
+                              I
+                           
+                        
+                        (
+                        
+                           
+                              u
+                           
+                           
+                              n
+                           
+                        
+                        )
+                      and 
+                        
+                           
+                              Γ
+                           
+                           
+                              II
+                           
+                        
+                        (
+                        
+                           
+                              u
+                           
+                           
+                              t
+                           
+                        
+                        )
+                     , respectively, where, for convenience, the normal and tangential jumps in displacement are denoted by 
+                        
+                           
+                              u
+                           
+                           
+                              n
+                           
+                        
+                        =
+                        〚
+                        u
+                        〛
+                        ·
+                        n
+                      and 
+                        
+                           
+                              u
+                           
+                           
+                              t
+                           
+                        
+                        =
+                        〚
+                        u
+                        〛
+                        ·
+                        t
+                     , where 
+                        t
+                      is the tangent vector to the given face, such that 
+                        n
+                      and 
+                        t
+                      constitute a right-handed orthonormal system. The energy release rates are obtained from the interface traction on 
+                        
+                           
+                              F
+                           
+                           
+                              I
+                           
+                        
+                      according to
+                        
+                           (8)
+                           
+                              
+                                 
+                                    Γ
+                                 
+                                 
+                                    I
+                                 
+                              
+                              (
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    n
+                                 
+                              
+                              )
+                              =
+                              
+                                 
+                                    Γ
+                                 
+                                 
+                                    I
+                                 
+                              
+                              (
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    n
+                                 
+                              
+                              ,
+                              0
+                              )
+                              =
+                              
+                                 
+                                    
+                                       ∫
+                                    
+                                 
+                                 
+                                    0
+                                 
+                                 
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          n
+                                       
+                                    
+                                 
+                              
+                              σ
+                              (
+                              
+                                 
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          n
+                                       
+                                    
+                                 
+                                 
+                                    ˜
+                                 
+                              
+                              ,
+                              0
+                              )
+                              ·
+                              n
+                              
+                              d
+                              
+                                 
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          n
+                                       
+                                    
+                                 
+                                 
+                                    ˜
+                                 
+                              
+                              ,
+                           
+                        
+                     
+                     
+                        
+                           (9)
+                           
+                              
+                                 
+                                    Γ
+                                 
+                                 
+                                    II
+                                 
+                              
+                              (
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    t
+                                 
+                              
+                              )
+                              =
+                              
+                                 
+                                    Γ
+                                 
+                                 
+                                    I
+                                 
+                              
+                              (
+                              0
+                              ,
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    t
+                                 
+                              
+                              )
+                              =
+                              
+                                 
+                                    
+                                       ∫
+                                    
+                                 
+                                 
+                                    0
+                                 
+                                 
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          t
+                                       
+                                    
+                                 
+                              
+                              σ
+                              (
+                              0
+                              ,
+                              
+                                 
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          t
+                                       
+                                    
+                                 
+                                 
+                                    ˜
+                                 
+                              
+                              )
+                              ·
+                              t
+                              
+                              d
+                              
+                                 
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          t
+                                       
+                                    
+                                 
+                                 
+                                    ˜
+                                 
+                              
+                              .
+                           
+                        
+                     
+                  
+
+By use of a polar coordinate system, a dimensionless effective separation λ can be defined together with an angle φ that determines the mode mix. The mode mix and the effective separation are defined as
+                        
+                           (10)
+                           
+                              φ
+                              =
+                              arctan
+                              (
+                              
+                                 
+                                    
+                                       
+                                          
+                                             u
+                                          
+                                          
+                                             nc
+                                          
+                                       
+                                       
+                                          
+                                             u
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             u
+                                          
+                                          
+                                             tc
+                                          
+                                       
+                                       
+                                          
+                                             u
+                                          
+                                          
+                                             t
+                                          
+                                       
+                                    
+                                 
+                              
+                              )
+                              ,
+                           
+                        
+                     
+                     
+                        
+                           (11)
+                           
+                              λ
+                              =
+                              
+                                 
+                                    
+                                       
+                                          (
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         u
+                                                      
+                                                      
+                                                         n
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         u
+                                                      
+                                                      
+                                                         nc
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          )
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                    +
+                                    
+                                       
+                                          (
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         u
+                                                      
+                                                      
+                                                         t
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         u
+                                                      
+                                                      
+                                                         tc
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                          )
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                 
+                              
+                              .
+                           
+                        
+                     Here, 
+                        
+                           
+                              u
+                           
+                           
+                              nc
+                           
+                        
+                      and 
+                        
+                           
+                              u
+                           
+                           
+                              tc
+                           
+                        
+                      are the critical normal and tangential separations in pure modes. The normal and tangential separations, 
+                        
+                           
+                              u
+                           
+                           
+                              n
+                           
+                        
+                        /
+                        
+                           
+                              u
+                           
+                           
+                              nc
+                           
+                        
+                      and 
+                        
+                           
+                              u
+                           
+                           
+                              t
+                           
+                        
+                        /
+                        
+                           
+                              u
+                           
+                           
+                              tc
+                           
+                        
+                      , are defined as the projections of the effective separation on each respective pure mode axis, cf. Fig. 1
+                     .
+
+It then follows that u
+                     
+                        n
+                      and u
+                     
+                        t
+                      are given by
+                        
+                           (12)
+                           
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    n
+                                 
+                              
+                              =
+                              λ
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    nc
+                                 
+                              
+                              
+                              cos
+                              (
+                              φ
+                              )
+                              ,
+                           
+                        
+                     
+                     
+                        
+                           (13)
+                           
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    t
+                                 
+                              
+                              =
+                              λ
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    tc
+                                 
+                              
+                              
+                              sin
+                              (
+                              φ
+                              )
+                              .
+                           
+                        
+                     
+                  
+
+In order to obtain the complete contributions of the energy release rates in each pure mode and not the projections, some additional definitions, 
+                        
+                           
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    ¯
+                                 
+                              
+                           
+                           
+                              n
+                           
+                        
+                      and 
+                        
+                           
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    ¯
+                                 
+                              
+                           
+                           
+                              t
+                           
+                        
+                      are introduced. For example, we may choose to define 
+                        
+                           
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    ¯
+                                 
+                              
+                           
+                           
+                              n
+                           
+                        
+                        ≔
+                        λ
+                        
+                           
+                              u
+                           
+                           
+                              nc
+                           
+                        
+                      and 
+                        
+                           
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    ¯
+                                 
+                              
+                           
+                           
+                              t
+                           
+                        
+                        ≔
+                        λ
+                        
+                           
+                              u
+                           
+                           
+                              tc
+                           
+                        
+                     . As a first step in the development of the cohesive law, two independent functions are fitted to experimentally measured energy release rate curves, see 
+                        
+                           
+                              Γ
+                           
+                           
+                              I
+                           
+                        
+                      and 
+                        
+                           
+                              Γ
+                           
+                           
+                              II
+                           
+                        
+                      in Fig. 2
+                     .
+
+The shapes of the traction–separation curves in each pure mode, respectively, are obtained by differentiating the energy release rates in each pure mode with respect to each pure mode relative separation, u
+                     
+                        n
+                      and u
+                     
+                        t
+                     . From these curves, laws are chosen that captures the most essential features of the curves. Fig. 3
+                      shows two idealized schematic curves.
+
+In order to capture the behavior of the cohesive law in mixed mode, the two energy release rate curves in Fig. 2 are combined to yield a surface where the axes are total energy release rate, 
+                        Γ
+                     , relative normal and relative tangential separations, u
+                     
+                        n
+                      and u
+                     
+                        t
+                      respectively, see Fig. 4
+                     .
+
+The surface representing the weighted energy release rate, 
+                        Γ
+                        (
+                        
+                           λ
+                           ,
+                           φ
+                        
+                        )
+                      is generated by a weighted sum of the experimentally determined energy release rates in pure normal, 
+                        
+                           
+                              Γ
+                           
+                           
+                              I
+                           
+                        
+                     , and pure tangential, 
+                        
+                           
+                              Γ
+                           
+                           
+                              II
+                           
+                        
+                     , directions according to
+                        
+                           (14)
+                           
+                              
+                                 
+                                    Γ
+                                 
+                                 
+                                    I
+                                 
+                              
+                              (
+                              λ
+                              ,
+                              φ
+                              )
+                              =
+                              f
+                              (
+                              φ
+                              )
+                              
+                                 
+                                    Γ
+                                 
+                                 
+                                    I
+                                 
+                              
+                              (
+                              λ
+                              )
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    nc
+                                 
+                                 
+                                    2
+                                 
+                              
+                              +
+                              (
+                              1
+                              −
+                              f
+                              (
+                              φ
+                              )
+                              )
+                              
+                                 
+                                    Γ
+                                 
+                                 
+                                    II
+                                 
+                              
+                              (
+                              λ
+                              )
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    tc
+                                 
+                                 
+                                    2
+                                 
+                              
+                           
+                        
+                     where 
+                        f
+                        (
+                        φ
+                        )
+                      is the weight function.
+
+The stresses for any given mode mix are given by partial differentiation of 
+                        Γ
+                      with respect to each relative separation, u
+                     
+                        n
+                      and u
+                     
+                        t
+                     , respectively.
+                        
+                           (15)
+                           
+                              σ
+                              ·
+                              n
+                              =
+                              
+                                 
+                                    ∂
+                                    Γ
+                                 
+                                 
+                                    ∂
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          n
+                                       
+                                    
+                                 
+                              
+                              =
+                              
+                                 
+                                    ∂
+                                    Γ
+                                 
+                                 
+                                    ∂
+                                    λ
+                                 
+                              
+                              
+                                 
+                                    ∂
+                                    λ
+                                 
+                                 
+                                    ∂
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          n
+                                       
+                                    
+                                 
+                              
+                              +
+                              
+                                 
+                                    ∂
+                                    Γ
+                                 
+                                 
+                                    ∂
+                                    φ
+                                 
+                              
+                              
+                                 
+                                    ∂
+                                    φ
+                                 
+                                 
+                                    ∂
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          n
+                                       
+                                    
+                                 
+                              
+                              ,
+                           
+                        
+                     
+                     
+                        
+                           (16)
+                           
+                              σ
+                              ·
+                              t
+                              =
+                              
+                                 
+                                    ∂
+                                    Γ
+                                 
+                                 
+                                    ∂
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          t
+                                       
+                                    
+                                 
+                              
+                              =
+                              
+                                 
+                                    ∂
+                                    Γ
+                                 
+                                 
+                                    ∂
+                                    λ
+                                 
+                              
+                              
+                                 
+                                    ∂
+                                    λ
+                                 
+                                 
+                                    ∂
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          t
+                                       
+                                    
+                                 
+                              
+                              +
+                              
+                                 
+                                    ∂
+                                    Γ
+                                 
+                                 
+                                    ∂
+                                    φ
+                                 
+                              
+                              
+                                 
+                                    ∂
+                                    φ
+                                 
+                                 
+                                    ∂
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          t
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+                  
+
+The secant compliance is computed as follows. We first establish the secant stiffness matrix 
+                        
+                           
+                              S
+                           
+                           
+                              T
+                           
+                        
+                      as 
+                        
+                           
+                              
+                                 
+                                    S
+                                 
+                                 
+                                    T
+                                 
+                              
+                              =
+                              
+                                 
+                                    σ
+                                    ·
+                                    n
+                                 
+                                 
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          n
+                                       
+                                    
+                                 
+                              
+                              n
+                              ⊗
+                              n
+                              +
+                              
+                                 
+                                    σ
+                                    ·
+                                    t
+                                 
+                                 
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          t
+                                       
+                                    
+                                 
+                              
+                              t
+                              ⊗
+                              t
+                              +
+                              
+                                 
+                                    σ
+                                    ·
+                                    t
+                                 
+                                 
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          n
+                                       
+                                    
+                                 
+                              
+                              n
+                              ⊗
+                              t
+                              +
+                              
+                                 
+                                    σ
+                                    ·
+                                    n
+                                 
+                                 
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          t
+                                       
+                                    
+                                 
+                              
+                              t
+                              ⊗
+                              n
+                              ,
+                           
+                        
+                     followed by computing the secant compliance as 
+                        
+                           
+                              K
+                           
+                           
+                              T
+                           
+                        
+                        =
+                        
+                           
+                              S
+                           
+                           
+                              T
+                           
+                           
+                              −
+                              1
+                           
+                        
+                     . The interface stiffness, 
+                        
+                           
+                              S
+                           
+                           
+                              h
+                           
+                        
+                        
+                           
+                              |
+                           
+                           
+                              F
+                           
+                        
+                     , is then given by
+                        
+                           (17)
+                           
+                              
+                                 
+                                    S
+                                 
+                                 
+                                    h
+                                 
+                              
+                              
+                                 
+                                    |
+                                 
+                                 
+                                    F
+                                 
+                              
+                              =
+                              
+                                 
+                                    (
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   h
+                                                
+                                                
+                                                   F
+                                                
+                                             
+                                          
+                                          
+                                             γ
+                                          
+                                       
+                                       I
+                                       +
+                                       
+                                          
+                                             K
+                                          
+                                          
+                                             T
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 
+                                    −
+                                    1
+                                 
+                              
+                           
+                        
+                     
+                  
+
+This first numerical example is intended to illustrate problems concerning mesh dependence of the crack path. The specimen is a rectangular block with a hole that is asymmetrically placed. The dimensions of the specimen are given by width and height according to W=1.00mm, H=1.00mm and the hole diameter D=0.20mm, respectively. The hole is located at center coordinate 
+                        (
+                        0.75
+                        ,
+                        1.00
+                        )
+                        
+                        mm
+                      from the lower left corner. The boundary conditions for the specimen are set to be clamped on the bottom edge, i.e. 
+                        
+                           
+                              u
+                           
+                           
+                              x
+                           
+                        
+                        (
+                        x
+                        ,
+                        0
+                        )
+                        =
+                        
+                           
+                              u
+                           
+                           
+                              y
+                           
+                        
+                        (
+                        x
+                        ,
+                        0
+                        )
+                        =
+                        0
+                     . The top boundary is constrained horizontally 
+                        
+                           
+                              u
+                           
+                           
+                              x
+                           
+                        
+                        (
+                        x
+                        ,
+                        2
+                        H
+                        )
+                        =
+                        0
+                      and the displacement is controlled vertically 
+                        
+                           
+                              u
+                           
+                           
+                              y
+                           
+                        
+                        (
+                        x
+                        ,
+                        2
+                        H
+                        )
+                        =
+                        Δ
+                     . The specimen is considered elastic with material properties; E=10MPa and 
+                        ν
+                        =
+                        0.45
+                     . The maximum cohesive strengths are set to 1MPa and the maximum critical separations are set to 0.02mm in the cohesive sawtooth model giving a fracture energy of 0.1J/mm2. The domain is discretized in two different ways, where the first contains a section which has a somewhat structured mesh at the mid section, see Fig. 5
+                      on the left, and the second which has an unstructured mesh for the same region, see Fig. 6
+                      on the left.
+
+As is observed in both figures, the crack initiates and propagates similarly. However, due to the fact that the crack is constrained to propagate along the element boundaries, slight differences should be expected. Also, once a crack has initiated in a particular direction along an element boundary, the crack driving force will be directed along this boundary. Thus, depending on the alignment of the first initial crack, this will change the load case momentarily to some extent. Nevertheless, it should be evident that this effect will have less impact for a finer discretization.
+
+In this second example, a specimen with two inclusions and an initial crack, see Fig. 7
+                     , is used to show the applicability of the modeling technique. The dimensions of the specimen are given by 
+                        W
+                        =
+                        H
+                        =
+                        1.00
+                        
+                        mm
+                     , D=0.20mm, a=0.20mm. The lower right inclusion is located at center coordinate 
+                        (
+                        0.75
+                        ,
+                        1.00
+                        )
+                        
+                        mm
+                      and the top left inclusion is located at 
+                        (
+                        0.45
+                        ,
+                        1.10
+                        )
+                        
+                        mm
+                     . The crack is located at center coordinates 
+                        (
+                        0.40
+                        ,
+                        0.90
+                        )
+                        
+                        mm
+                      and it is inclined at an angle of 33° to the horizontal axis. The boundary conditions for the specimen are set to be clamped on the bottom edge, i.e. 
+                        
+                           
+                              u
+                           
+                           
+                              x
+                           
+                        
+                        (
+                        x
+                        ,
+                        0
+                        )
+                        =
+                        
+                           
+                              u
+                           
+                           
+                              y
+                           
+                        
+                        (
+                        x
+                        ,
+                        0
+                        )
+                        =
+                        0
+                     . The top boundary is constrained horizontally 
+                        
+                           
+                              u
+                           
+                           
+                              x
+                           
+                        
+                        (
+                        x
+                        ,
+                        2
+                        H
+                        )
+                        =
+                        0
+                      and the displacement is controlled vertically 
+                        
+                           
+                              u
+                           
+                           
+                              y
+                           
+                        
+                        (
+                        x
+                        ,
+                        2
+                        H
+                        )
+                        =
+                        Δ
+                     , see Fig. 7.
+
+Two different set-ups are modeled for comparison. The first is a specimen where the inclusions have the same material properties as the rest of the specimen with elastic material properties; E=10MPa and 
+                        ν
+                        =
+                        0.45
+                     . The second is a specimen where Young׳s modulus of the inclusions is 100 times greater than in the rest of the specimen. The maximum cohesive strengths are set to 1MPa and the maximum critical separations are set to 0.02mm in the cohesive sawtooth model giving a fracture energy of 
+                        0.1
+                        
+                        J
+                        /
+                        
+                           
+                              mm
+                           
+                           
+                              2
+                           
+                        
+                     . Note that these properties are the same for both set-ups.
+
+One of the major issues with this type of modeling is mesh dependency. However, if a large number of elements are used the mesh dependency is obviously reduced. Furthermore, the compliance between all continuum elements introduce numerical issues which can be reduced by an increase of the elastic stiffness of the cohesive zone model sufficiently to minimize the compliance. In the present model, the compliance is allowed to be initially zero and then gradually increases as the load is increased. Damage initiation, and essentially crack propagation, is enabled by a decrease of the stiffness according to (17) where the interfaces, as stated in the definition of the method, are given as the boundaries between all the continuum elements (this is of course not a requirement, as a mix of continuous and discontinuous methods is also possible). Thus, cracks are free to form, nucleate and propagate along the continuum element boundaries by Nitsche׳s method instead of the standard approach of using cohesive elements, as in, e.g., [10,13].
+
+For the first set-up, see Fig. 8
+                     , the crack initiates as expected and then it propagates without considering the inclusions. In the second set-up, however, the crack is arrested by the stiffer inclusion boundary and deflects downwards around the lower right inclusion to finally to continue to propagate to the free edge of the specimen, see Fig. 9
+                     . It can be seen for both set-ups that there is virtually no compliance issues prior to any cracks forming. Both simulations, thus shows the applicability of the modeling technique.
+
+In this paper, we have suggested an FE method which seamlessly blends the discontinuous Galerkin method with classical cohesive zone models. There is no need for interface elements as the interelement stiffness is represented by a modification of the weak form. There is no need to identify threshold values for transitions between discretization approaches since the same bilinear form is used for all cases of interface stiffness. The method also directly allows for modeling cohesive zones between non-matching meshes, unlike the similar approach suggested previously in [7], which does not immediately generalize to this case.
+
+@&#ACKNOWLEDGMENTS@&#
+
+This research was supported in part by the Swedish Foundation for Strategic Research Grant no. AM13-0029 and the Swedish Research Council Grant no. 2011-4992.
+
+@&#REFERENCES@&#
+

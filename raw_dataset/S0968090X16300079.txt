@@ -1,0 +1,905 @@
+@&#MAIN-TITLE@&#Extracting accurate location information from a highly inaccurate traffic accident dataset: A methodology based on a string matching technique
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           A generic model for evaluating traffic accident locations is proposed.
+
+
+                        
+                        
+                           
+                           The potential use of OpenStreetMap in traffic accident analysis is evaluated.
+
+
+                        
+                        
+                           
+                           Traffic accidents street names are analyzed using the Jaro–Winkler metrics.
+
+
+                        
+                        
+                           
+                           Traffic accident locations are analyzed using Inverse Distance Weighting.
+
+
+                        
+                        
+                           
+                           The proposed model shows significant improvements in estimating correct locations.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Traffic accident
+
+OpenStreetMap
+
+Jaro–Winkler
+
+Inverse Distance Weighting
+
+Data validation
+
+@&#ABSTRACT@&#
+
+
+                  The objective of this research was to develop a model for validating traffic accident locations that would be applicable worldwide, regardless of linguistic or cultural differences. In order to achieve this, a Volunteered Geographic Information (VGI) dataset was used, the OpenStreetMap (OSM) project. To test the developed model, a total of 8550 accidents with fatal or non-fatal injuries that occurred in the City of Zagreb from 2010 to 2014 were evaluated. Traffic accident data was collected using the pen-and-paper method while the traffic accident locations were determined using Global Positioning System (GPS) receivers embedded within police vehicles. This form of data entry invariably introduces errors in both geometric and contextual attributes. To fully counteract these errors, the developed model consists of two key concepts: the Jaro–Winkler string matching technique and the Inverse Distance Weighting method. Over 66% of traffic accident locations were validated, which is an increase of 15% when compared to the classical approach. The model outlined in this paper shows a significant improvement in estimating the correct location of traffic accidents. This in turn results in a drastic decrease in resources needed to estimate the quality of accident locations.
+               
+
+@&#INTRODUCTION@&#
+
+According to the World Health Organization (2013), road traffic injuries are the eighth leading cause of death globally and considering the current trends, by 2030 they will become the fifth leading cause of death. Road accidents are a direct result of the increased mobility of contemporary society. As noted by Anderson (2009), their impact in terms of injuries and fatalities is a social and public health challenge.
+
+
+                     Loo (2006) has argued that while a highly sophisticated statistical and mathematical models can be built to prevent future occurrences of accidents, the integrity of the results depends heavily on the availability and quality of collected accident data. Most cities and countries rely on the police force for collecting, storing and publishing traffic accident data. The traffic accident data available to us was collected primarily for administrative purposes rather than scientific analysis. Although a high level of precision about the location of a traffic accident may not be vital for all accident analyses, it is essential to know the accuracy of any given dataset. This is crucial for any meaningful spatial analysis ranging from simple visualizations of spatial patterns to more complex analyses of underlying spatial trends.
+
+As noted by Tegge and Ouyang (2009), most of the safety analysis models are built upon spatially and temporally matched traffic accident and roadway datasets, errors and inconsistencies in traffic accident location records are a realistic problem that often compromises accuracy of safety model outcomes. These problems may occur for numerous reasons (a) traffic accident location information is generally extracted from paper-based police reports which accuracy highly depends on the skill and experience of the police officers on site, as well as the motivation of other persons involved in data processing, (b) traffic accident information and road geometry datasets are often developed on different software platforms that utilize different spatial coordinate systems and formats (evident upon merging datasets), (c) most accidents are located at the borderline of two or more different road segments because such locations are easily identifiable by police officers.
+
+
+                     Khan et al. (2004) reviewed international practices and technologies used in accident data management. At the time, they found that the pen-and-paper method was the most commonly used method for recording accident data in the field. Loo (2006) concluded that most pen-and-paper forms found to be 2–4 pages long and were filled under difficult circumstances which prohibits police officers from making detailed and accurate records of all relevant data. However, despite the recent advancements in technology, Burns et al. (2014) noted that these practices had not improved.
+
+Traffic accident locations have to be evaluated before conducting any meaningful spatial analysis and our model should be able to decrease the resources needed to evaluate the quality of these locations and identify the ones that are likely to be incorrect. Since the model was designed to evaluate traffic accident locations, a digital database containing traffic accident records was needed. These records should include geographic coordinates of all accidents and, if possible, references to cities, streets or roads where they occurred. The accident dataset used in this study had unreliable location data (latitude and longitude) due to several factors, including the use of various Web services and the misuse of GPS devices. The dataset also contained various street name abbreviations as a direct result of using the pen-and-paper method. When compared to the accident datasets used in the existing literature, the quality of the accident dataset, including the availability of certain attributes is much poorer.
+
+In order to create a universally applicable model, a publicly accessible dataset was needed. One of the these publicly available datasets is the OpenStreetMap (OSM) project. Mooney and Corcoran (2012) definded the OSM project as a collaborative project which aims at creating a free editable map (road) database of the world and it is the most well known example of Volunteered Geographic Information (VGI) system. VGI refers to the collaborative collection of geographic information by citizens.
+
+
+                     Haklay (2010) and Neis et al. (2011) analyzed the quality of OSM dataset and indicated that the quality of the OSM dataset is on the rise. Therefore, one of the objectives of our research was to evaluate its potential for researches in traffic safety. This research employs a string matching technique to identify the most probable street for each accident. String matching techniques have already been used on the OSM dataset by Mooney and Corcoran (2012) for detecting changes in attribute data on heavily edited objects. In our research, the same technique was used to compare the street names registered in police records to the street names from the OSM. Considering the possible discrepancies between the records in the accident and the OSM databases, one of the main challenges was to estimate at what level the string matching algorithm was suitable for determining the location of a traffic accident based on the street names registered by the police.
+
+When comparing street names between accident and the street network datasets, exact name matches are the most preferable result. However, there is no guidance in the existing literature as to the most suitable lower value of similarity percentage between two street names. Therefore, several suggestions regarding acceptable similarity percentages will be proposed in this paper. The objective of our research was to develop a model capable of extracting accurate traffic accident locations from a highly inaccurate dataset that would be applicable worldwide, regardless of linguistic or cultural differences.
+
+@&#METHODS@&#
+
+The model described in this paper was the result of a project commissioned by the Ministry of Interior of the Republic of Croatia. It was successfully implemented on a national scale and produced outstanding results. However, in this paper only 8550 fatal and non-fatal accidents located in the City of Zagreb were analyzed in detail.
+
+The developed model was implemented in the Python programming language. It also includes the use of the Jaro–Winkler string matching technique as described by Bilenko et al. (2003) and the Inverse Distance Weighting method as described by Bakkali and Amrani (2008).
+
+The study area in this research was the City of Zagreb, the largest urban metropolitan area in Croatia. The traffic accident dataset for the study area was obtained from the Ministry of Interior of the Republic of Croatia in a Comma Separated Value (CSV) file. The dataset comprises all accidents that occurred from 2010 to 2014 inclusive. A total of 8550 fatal or non-fatal accidents were analyzed in detail. The street network dataset used in this research was obtained from the OpenStreetMap (OSM) project on February 1st, 2015.
+
+After acquiring the necessary datasets, the data was imported into a PostgreSQL database which was extended with PostGIS, an open-source spatial database extension for the PostgreSQL object-relational database.
+
+In Croatia, traffic accident data are collected by the local police departments. The police officers present at the accident site collect attribute and location data using the pen-and-paper method. Although they should register location data using GPS receivers embedded in their vehicles, they also use Web services such as Google Maps or Google Earth. Upon arrival at the police station, the data collected on site is manually entered, either by police officers or IT personnel, into the police database through a web application.
+
+The location description of an accident is mandatory. It is registered in the form of geographic coordinates, and street names are recorded as optional attributes. The default coordinate format of all GPS receivers used by police departments in Croatia is Decimal Minutes (DM). However, Web services use different default coordinate formats. For instance, Google Maps uses the Decimal Degrees (DD) format while Google Earth uses the Degrees Minutes Seconds (DMS). This means that the coordinates registered in the traffic accident records (TAR) have three possible locations upon input (Table 1
+                        ). The web application currently used for the input of TARs only checks whether or not the location of the traffic accident is within the bounding box that covers the whole territory of Republic of Croatia.
+
+According to official administrative records, a street can have three different names: an Official name, a Full name and a Short name (Table 2
+                        ).
+
+Aside from the dense street network, a street from the OSM dataset can have an official name, alternative name, local name, old name and several other variations stored in their corresponding tags.
+
+@&#IMPLEMENTATION@&#
+
+When combining information from heterogeneous information sources, data records should be referred to equivalent entities. Furthermore, records describing the same object might differ syntactically. Variations can arise from differences in data storage formats, typographical and optical character recognition errors and abbreviations. One effective string similarity metric is the Jaro (1989, 1995) metric which is based on the number and order of common characters between two strings. Winkler (1999) proposed a variant of the Jaro metric that also uses the length of the longest common prefix of two strings which emphasizes matches in the first few characters. In his study, Bilenko et al. (2003) argued that the Jaro and Jaro–Winkler metrics are intended primarily for short strings, such as personal names.
+
+Similar to the German language, the Croatian language has cases (e.g. Nominative, Accusative, etc.) as well as noun and adjective declension. Considering the fact that the majority of street names in Croatia consist of personal names, the Jaro–Winkler metrics algorithm is appropriate for string matching purposes. In this research, the Jaro–Winkler string matching algorithm was used to estimate the percentage of similarity between street names recorded in police records and names recorded in the OSM dataset. Since there are no guidelines in the existing literature regarding acceptable similarity percentages provided by the Jaro–Winkler algorithm, our paper proposes several solutions. In our case, a similarity percentage between street names of 68% was sufficient enough to eliminate improbable street names and drastically speed up the computation process.
+
+In order to estimate the overall quality of accident location data, the Inverse Distance Weighting (IDW) method was implemented. Inverse distance is a weighted average interpolator. With inverse distance, data is weighted during interpolation so that the influence of one point decreases with distance from the grid node. Weighting was assigned to data through the use of a weighting power which controls the drop of weighting factors with the increase of distance from the grid node. As noted by Bakkali and Amrani (2008), the greater the weighting power, the less effect the points have during the interpolation. IDW adds a quality coefficient to each accident, ranging from zero for least probable locations to infinity for most probable locations. This method eliminates the need for buffers and can be modified to different scenarios. If the accident location was determined via GPS receivers, the environment plays a significant role in the process. The result of the IDW method is a coefficient which can be adjusted to fit different kinds of environments, such as urban, rural, and coastal. On the other hand, if the location was determined by using Web services such as Google Maps, the algorithm can take that factor into consideration and further adjust the IDW parameters.
+
+Each traffic accident was represented by three possible GPS formats: decimal degrees (DD), decimal minutes (DM) and decimal seconds (DMS), while each format was represented as a point from a geometric standpoint. The IDW coefficients were determined by comparing all three possible GPS formats to street segments selected from the OSM dataset. Based on the coefficient assigned to each location, only one of the possible locations is chosen as the most probable.
+
+The developed model shown in Fig. 1
+                         was based on assigning values to each GPS format based on a certain set of tests divided into three steps (Algorithm 1). Each GPS format was represented by a point and each point has its own coefficient 
+                           
+                              
+                                 
+                                    C
+                                 
+                                 
+                                    p
+                                 
+                              
+                           
+                         value. The value was determined as follows:
+                           
+                              1.
+                              The first step was to determine whether or not the point (representing a specific GPS format) was located within the study area. Since police officers are not always aware of the administrative borders while on the site, the neighbouring municipalities were also taken into consideration. The distance between certain GPS formats can be up to 40km and with this step, less probable GPS formats (such as Decimal Degrees) were eliminated, as well as gross errors. If the point was located within the study area, the point’s coefficient 
+                                    
+                                       
+                                          
+                                             C
+                                          
+                                          
+                                             p
+                                          
+                                       
+                                    
+                                  was assigned the value 1.0. If the point was located within the neighbouring area, the coefficient 
+                                    
+                                       
+                                          
+                                             C
+                                          
+                                          
+                                             p
+                                          
+                                       
+                                    
+                                  was assigned the value 0.5. If neither of the two mentioned cases were met, the coefficient 
+                                    
+                                       
+                                          
+                                             C
+                                          
+                                          
+                                             p
+                                          
+                                       
+                                    
+                                  was assigned the value 0.0. The coefficient needs to be higher than 0.0 for the algorithm to resume calculations for a certain point.
+
+The second step refers to the extraction of street segments from the OSM dataset. Street segments were extracted based on the percentage of similarity between the street name recorded in the police report and of all available street names from the OSM dataset. Given the complexity and density of the OSM road network, a specific road filtering concept was developed to address this issue. Firstly, the administrative area (study or neighbouring) containing the point was determined. Secondly, only the street segments located within that specific area were considered. For instance, if the point was located within the study area, only the streets located within that area were considered. After selecting the streets located within the area, the Jaro–Winkler algorithm was used to compare the OSM street names to the street names listed in the police report. If the percentage of similarity between street names from the two datasets was higher than 68%, the OSM street segment in question was selected for further computations.
+
+In the third and final step, distances between the remaining points and the selected roads were calculated. The shortest distance d was selected and the IDW coefficient was calculated as 1/d
+                                 2. The point coefficient 
+                                    
+                                       
+                                          
+                                             C
+                                          
+                                          
+                                             p
+                                          
+                                       
+                                    
+                                  was assigned to the calculated IDW coefficient. If there were more possible points (GPS formats), the point with the highest coefficient was selected as the GPS format representing the most probable location of the accident. After assigning values to each point coefficient 
+                                    
+                                       
+                                          
+                                             C
+                                          
+                                          
+                                             p
+                                          
+                                       
+                                    
+                                 , the highest point coefficient 
+                                    
+                                       
+                                          
+                                             C
+                                          
+                                          
+                                             p
+                                          
+                                       
+                                    
+                                  becomes the final coefficient 
+                                    
+                                       
+                                          
+                                             C
+                                          
+                                          
+                                             f
+                                          
+                                       
+                                    
+                                 . The point with the highest coefficient was selected as the GPS format representing the most probable location of the accident.
+
+Pseudo-code for determining the most probable traffic accident location 
+                                 
+                                    
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                1: procedure GetMostProbableLocation
+                                                
+                                                   
+                                                      (
+                                                      OSM
+                                                      ,
+                                                      TAR
+                                                      )
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                2: 
+                                                
+                                                   
+                                                      S
+                                                      ←
+                                                      OSM
+                                                   
+                                                 
+                                                
+                                                ▷ OSM road dataset
+                                          
+                                          
+                                             
+                                                
+                                                3: 
+                                                
+                                                   
+                                                      A
+                                                      ←
+                                                      TARs
+                                                   
+                                                
+                                                
+                                                ▷ number as location from TAR
+                                          
+                                          
+                                             
+                                                
+                                                4: 
+                                                for 
+                                                
+                                                   
+                                                      a
+                                                      ∈
+                                                      A
+                                                   
+                                                 
+                                                do
+                                                
+                                                ▷ Start of Step 1
+                                          
+                                          
+                                             
+                                                
+                                                5: 
+                                                
+                                                
+                                                   
+                                                      
+                                                         
+                                                            p
+                                                         
+                                                         
+                                                            DM
+                                                         
+                                                      
+                                                      ←
+                                                   
+                                                 ToDecimalMinutes(a)
+                                          
+                                          
+                                             
+                                                
+                                                6: 
+                                                
+                                                
+                                                   
+                                                      
+                                                         
+                                                            p
+                                                         
+                                                         
+                                                            DMS
+                                                         
+                                                      
+                                                      ←
+                                                   
+                                                 ToDegreesMinutesSeconds(a)
+                                          
+                                          
+                                             
+                                                
+                                                7: 
+                                                
+                                                
+                                                   
+                                                      
+                                                         
+                                                            p
+                                                         
+                                                         
+                                                            DD
+                                                         
+                                                      
+                                                      ←
+                                                   
+                                                 ToDecimalDegrees(a)
+                                          
+                                          
+                                             
+                                                
+                                                8: 
+                                                end for
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                9: 
+                                                
+                                                   
+                                                      P
+                                                      ←
+                                                      (
+                                                      
+                                                         
+                                                            p
+                                                         
+                                                         
+                                                            DM
+                                                         
+                                                      
+                                                      ,
+                                                      
+                                                         
+                                                            p
+                                                         
+                                                         
+                                                            DMS
+                                                         
+                                                      
+                                                      ,
+                                                      
+                                                         
+                                                            p
+                                                         
+                                                         
+                                                            DD
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             10: 
+                                                for 
+                                                
+                                                   
+                                                      p
+                                                      ∈
+                                                      P
+                                                   
+                                                 
+                                                do
+                                             
+                                          
+                                          
+                                             11: 
+                                                
+                                                if 
+                                                
+                                                   
+                                                      p
+                                                      
+                                                      within
+                                                      
+                                                      study
+                                                      
+                                                      area
+                                                   
+                                                 
+                                                then
+                                             
+                                          
+                                          
+                                             12: 
+                                                
+                                                
+                                                
+                                                   
+                                                      
+                                                         
+                                                            C
+                                                         
+                                                         
+                                                            p
+                                                         
+                                                      
+                                                      ←
+                                                      1.0
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             13: 
+                                                
+                                                exit
+                                          
+                                          
+                                             14: 
+                                                
+                                                else if 
+                                                
+                                                   
+                                                      p
+                                                      
+                                                      within
+                                                      
+                                                      neighbouring
+                                                      
+                                                      area
+                                                   
+                                                 
+                                                then
+                                             
+                                          
+                                          
+                                             15: 
+                                                
+                                                
+                                                
+                                                   
+                                                      
+                                                         
+                                                            C
+                                                         
+                                                         
+                                                            p
+                                                         
+                                                      
+                                                      ←
+                                                      0.5
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             16: 
+                                                
+                                                exit
+                                          
+                                          
+                                             17: 
+                                                
+                                                else
+                                             
+                                          
+                                          
+                                             18: 
+                                                
+                                                
+                                                
+                                                   
+                                                      
+                                                         
+                                                            C
+                                                         
+                                                         
+                                                            p
+                                                         
+                                                      
+                                                      ←
+                                                      0.0
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             19: 
+                                                
+                                                end if
+                                             
+                                          
+                                          
+                                             20: 
+                                                
+                                                if 
+                                                
+                                                   
+                                                      
+                                                         
+                                                            C
+                                                         
+                                                         
+                                                            p
+                                                         
+                                                      
+                                                      >
+                                                      0.0
+                                                   
+                                                 
+                                                then 
+                                                
+                                                ▷ Start of Step 2
+                                          
+                                          
+                                             21: 
+                                                
+                                                
+                                                for 
+                                                
+                                                   
+                                                      s
+                                                      ∈
+                                                      S
+                                                   
+                                                 
+                                                do
+                                             
+                                          
+                                          
+                                             22: 
+                                                
+                                                
+                                                
+                                                if 
+                                                
+                                                   
+                                                      s
+                                                      
+                                                      within
+                                                      
+                                                      area
+                                                   
+                                                 
+                                                then
+                                             
+                                          
+                                          
+                                             23: 
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                   
+                                                      sName
+                                                      ←
+                                                      street
+                                                      
+                                                      name
+                                                      
+                                                      from
+                                                      
+                                                      s
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             24: 
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                   
+                                                      aName
+                                                      ←
+                                                      street
+                                                      
+                                                      name
+                                                      
+                                                      from
+                                                      
+                                                      a
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             25: 
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                   
+                                                      
+                                                         
+                                                            JW
+                                                         
+                                                         
+                                                            p
+                                                         
+                                                      
+                                                      ←
+                                                   
+                                                 JW(sName,aName)
+                                          
+                                          
+                                             26: 
+                                                
+                                                
+                                                
+                                                
+                                                if 
+                                                
+                                                   
+                                                      
+                                                         
+                                                            JW
+                                                         
+                                                         
+                                                            p
+                                                         
+                                                      
+                                                      >
+                                                      68
+                                                      %
+                                                   
+                                                 
+                                                then 
+                                                
+                                                ▷ Start of Step 3
+                                          
+                                          
+                                             27: 
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                   
+                                                      
+                                                         
+                                                            IDW
+                                                         
+                                                         
+                                                            p
+                                                         
+                                                      
+                                                      ←
+                                                   
+                                                 IDW(
+                                                   
+                                                      
+                                                         
+                                                            geom
+                                                         
+                                                         
+                                                            a
+                                                         
+                                                      
+                                                      ,
+                                                      
+                                                         
+                                                            geom
+                                                         
+                                                         
+                                                            s
+                                                         
+                                                      
+                                                   
+                                                )
+                                          
+                                          
+                                             28: 
+                                                
+                                                
+                                                
+                                                
+                                                end if
+                                             
+                                          
+                                          
+                                             29: 
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                   
+                                                      
+                                                         
+                                                            C
+                                                         
+                                                         
+                                                            p
+                                                         
+                                                      
+                                                      ←
+                                                      
+                                                         
+                                                            C
+                                                         
+                                                         
+                                                            p
+                                                         
+                                                      
+                                                      +
+                                                      max
+                                                      (
+                                                      
+                                                         
+                                                            IDW
+                                                         
+                                                         
+                                                            p
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             30: 
+                                                
+                                                
+                                                
+                                                end if
+                                             
+                                          
+                                          
+                                             31: 
+                                                
+                                                
+                                                end for
+                                             
+                                          
+                                          
+                                             32: 
+                                                
+                                                end if
+                                             
+                                          
+                                          
+                                             33: 
+                                                
+                                                
+                                                   
+                                                      
+                                                         
+                                                            C
+                                                         
+                                                         
+                                                            f
+                                                         
+                                                      
+                                                      ←
+                                                   
+                                                 
+                                                max
+                                                
+                                                   
+                                                      (
+                                                      
+                                                         
+                                                            C
+                                                         
+                                                         
+                                                            DM
+                                                         
+                                                      
+                                                      ,
+                                                      
+                                                         
+                                                            C
+                                                         
+                                                         
+                                                            DMS
+                                                         
+                                                      
+                                                      ,
+                                                      
+                                                         
+                                                            C
+                                                         
+                                                         
+                                                            DD
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             34: 
+                                                end for
+                                             
+                                          
+                                          
+                                             35: end procedure
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+
+Before conducting any analysis, the lower value of the starting similarity percentage was determined by comparing each street name registered by the police to all OSM street names. The OSM street name with the highest percentage of similarity determined by the Jaro–Winkler algorithm was assigned to the street name from the accident record. Once all of the TAR street names were evaluated, the smallest percentage of similarity registered was 68%. The use of this percentage in the following calculations drastically reduces computation time.
+
+@&#RESULTS@&#
+
+The results of this research are divided into two tables. A total of 8550 accidents were analyzed. Table 3
+                     , represents the results achieved during each step of the computation. In order to better understand the merits of this model, a simulation representing a more classical approach was conducted and its results were compared to the final results achieved by our model. The classical approach corresponds to accidents in the DM GPS format and with exact name matches between the accident and the street network dataset. The improvements highlighted in the table represent the differences in percentages between two approaches, our and the classical approach. Specifically, the first improvement represents the improvement which can be achieved by adding the Jaro–Winkler string matching technique to exact name matches. The second improvement is a comparison of the results achieved by the developed model and of the classical approach.
+
+
+                     Table 3 shows the results achieved by the developed model in three steps as well as the results of the classical approach. The results of the first step confirm that the majority of accidents was located within the study area. However, a small amount of accidents was located within the neighbouring areas as well as outside of all areas of interest. The accidents located within the neighbouring areas were also taken into account, while the accidents located outside of all interest areas were marked as gross errors and dropped from further analyses.
+
+The results of the second step refer to the implementation of the Jaro–Winkler string matching technique. The number and percentage of accidents with exact name matches was displayed first. On average, 40.8% of accidents have exact name matches between the street names recorded in TARs and the street names extracted from the OSM dataset. The application of the Jaro–Winkler string matching technique increases the average percentage of usable accidents by 11.1%, which amounts to an average of 51.9%. It is worth noting that the improvement varies from 7.7% to 15.3%, depending on the period (year) from which the accident data was available.
+
+The third step refers to the implementation of the IDW method as well as the determination of the final coefficient 
+                        
+                           
+                              
+                                 C
+                              
+                              
+                                 f
+                              
+                           
+                        
+                     . The final coefficient determines whether an accident was correctly located or not. After conducting a manual revision of the entire dataset it was concluded that a final coefficient of 1.000055 was the boundary between acceptable and unacceptable results. This coefficient corresponds to the distance of 71m between an accident and the street it occurred on. Furthermore, this value corresponds to the estimated range of geocoding positional error provided by Zandbergen (2008) which ranges from 25 to 168m. The results show that an average of 33.5% of accidents were not properly located. This includes accidents with the final coefficient below 1.000055. The main reason behind these mismatches were the incorrect inputs of street names by police officers. This lead to a low amount of matches with the OSM dataset. The second reason was the limitation of the implemented string matching technique which greatly depends on the character length of the street name. Abbreviations in string names (e.g. St. instead of Street) have a much larger influence in shorter street names. On the other hand, an average of 66.5% of accidents were assigned to their proper locations. This includes accidents with the final coefficient equal of above 1.000055.
+
+The final part of the table refers to the simulation conducted on the analyzed dataset. The results of this simulation include accidents that were in the DM GPS format and have exact name matches between street names from the two datasets. On average, 51.6% satisfy these criteria.
+
+A comparison of the latter two groups of results was conducted and presented in form of percentages. The average improvement achieved by our model was 14.9%. However, this value spans from 9.7% to 19.6%, depending on the period (year) from which the accident data was available.
+
+
+                     Table 4
+                      represents the distribution of GPS formats by years. The default DM GPS format was the most used format with an average of 77.8%. The DMS GPS format, present in Web services, has an average usage rate of 22.2%. The DD format remained unused and is therefore dropped from further analyses.
+
+Apart from setting the starting similarity percentage at 68%, it was found that the similarity percentage of 92.5% was enough for detecting similarities between street names containing nouns like “Street”, “Avenue” or “Road” as well as parts of personal names, without a introducing large number of false positives.
+
+@&#DISCUSSION@&#
+
+Our results confirmed that the model developed for this research is able to successfully validate traffic accident locations based on their geographic coordinates and using street names registered in police reports. Over 66% of accidents were validated to their respective locations, which shows an increase of 15% when compared to the results of a classical approach.
+
+After reviewing all of the results, we have set 92.5% as the string similarity percentage needed to provide a positive match and eliminate the majority of false positives. The only false positives that remain at this level were Roman numerals. In order to fully eliminate false positives, a similarity percentage of 97% was needed. However, the value of 97% was too rigorous and eliminates a large number of correct matches.
+
+A similar approach was used by Tarko et al. (2009). They applied the mainstream probabilistic method of Fellegi and Sunter for automated linking of traffic accident and road records. Unlike our research, they checked the names for correct spelling to allow perfect matching. Although they mentioned that a real world application should use a string matching technique to allow limited discrepancies, no such method was used in their research. They applied their algorithm on an official road network dataset and pointed out the problem of multiple street names for one street. With our research that problem was solved by using the OSM dataset.
+
+Streets from the OSM dataset often contain various abbreviations of street names, which proves to be an invaluable resource considering that the police officers are often locals who live and work in the same area for several years. This means that they are accustomed to using local names or slang instead of official street names declared by local authorities. A closer inspection of police records revealed that this is a common practice among police officers responsible for filling out report forms. Fortunately, as Haklay (2010) noted, the OSM project is created and maintained by volunteers who posses an outstanding local knowledge of the areas they map. They are well aware of the variety of street names and are able to register all name abbreviations in their corresponding tags.
+
+The road network dataset is often acquired from a governmental or commercial source in similar researches. However, there are countries where such datasets are unavailable for research purposes which is the case in our research. One of the limitations of this research is the unavailability of the official road network dataset of the Republic of Croatia. As an alternative to an official road network dataset, the OSM road network dataset was used. The quality of the OSM dataset was recently analyzed by Haklay (2010) and Neis et al. (2011). They compared the OSM dataset to commercial and official road networks and concluded that the OSM dataset was of sufficient quality regarding geometric and attribute data. Furthermore, Mooney and Corcoran (2012) analyzed the changes in the OSM dataset and concluded that the quality is improving over time. The OSM dataset presented itself as a viable alternative due to its geometric density and attribute completeness.
+
+Another limitation of this research was the lack of validation method used to record the geographic coordinates registered in the police records. However, this limitation was minimized by converting geographic coordinates to three possible GPS formats. The default format of GPS devices used by the police force is Decimal Minutes (DM). Our results show that this GPS format was the most often used with the average usage of 78%. However, the DMS GPS format was also present. This GPS format is often found in Web mapping services such as Google Maps or Google Earth. Although the use of such services was not substantial, it remains constant over the years, which suggests that the same number of police officers use these services instead of the official GPS devices. In the selected research area, the DecimalDegrees format remained unused although our preliminary results (not published) conducted on a national scale suggest that the DecimalDegrees GPS format was common in several police stations across the country. This indicates that the practice of using Web mapping services was not restricted to certain police stations and that police officers were unaware of the possible implications of wrong coordinate format inputs. One of the possible solutions to this problem is using Geographic Information Systems (GIS) tools.
+
+Since the 1990’s, GIS have been used more frequently as comprehensive management tools for traffic safety. GIS enables analysts to merge different types of spatial data (e.g. accident and road network datasets), geocoding accident locations and conducting various spatial analyses. Erdogan et al. (2008) and Anderson (2009) concluded that the results of these actions provide a lot of information about hazardous locations and traffic accidents hot spots. According to Li et al. (2007), there are two main ways of locating traffic accidents onto digital maps (a) accidents can be directly added if the exact geographic references (e.g. coordinates) are available and (b) address geocoding can be conducted when the exact address (e.g. street name) is available. However, when such data is superimposed on the corresponding digital road network map, mismatches may occur due to inherent errors in the data.
+
+
+                     Burns et al. (2014) used a Google geocoding method which is based on an unknown string matching technique used by Google. Google imposes several restrictions on using their geocoding method. One of them is the daily limit in the number of requests to their service and the second is the licensing model of Google geocoder which prohibits saving their geocoded data to a local database. This is not acceptable for large datasets that need to be geocoded. Compared to our results, they achieved a higher match rate which can be justified by the quality of the input accident dataset. Along with street names, their dataset contained street numbers of houses near accident locations, route numbers and identifying landmarks which increases the efficiency of the geocoding process.
+
+
+                     Levine et al. (1995) used GIS techniques to geocode the Honolulu traffic accident database from 1990 to 1991. The accident dataset was primarily characterized by missing, incomplete or inaccurate data, as well as the use of the Hawaiian language. Our approach differs in several aspects and the timespan between these two researches needs to be considered. At that time, the TIGER dataset was the only adequate dataset available to Levine et al. (1995). Nowadays, the OSM project provides a versatile multilingual dataset that comprises various information about spatial entities. In this research, no modifications to the reference street name dataset were made on the account of various street name abbreviations stored in the OSM dataset. Although Levine et al. (1995) argue against loosening street name criterion, we have applied a conceptually similar but technically different methodology. Using string matching techniques, the similarity between nouns and their abbreviations can be recognized so no modifications of attributes is required. Furthermore, given the multilingual nature and the flexibility of the OSM project, street names and their abbreviations can be stored in multiple languages. This variety of attributes presents endless possibilities and more importantly, enables further development of a our model.
+
+Beside the Honolulu study, there have been similar researches in this field of study. Loo (2006) developed a spatial data validation system for identifying precise traffic accident locations with the link-node system without using a buffer zone. It was concluded that 20% of accidents have errors in road or district names. Imprialou et al. (2014) developed a generic method for identification of the candidate road link based on a transformed map-matching method that produced 99% of correct matches. Deka and Quddus (2014) developed an accident mapping algorithm that used a distance based pattern-matching approach to identify the correct road segments. The algorithm was based on common accident variables, i.e. road name and type, location and direction of movement.
+
+Both Imprialou et al. (2014) and Deka and Quddus (2014) analyzed accidents that occurred on highways using map-matching techniques and the official UK road network dataset. Along with the British grid coordinates (i.e. easting and northing), they used locations written in the form of a road class and number (e.g. M25) as well as other parameters like heading of the road or distance from the road. Their map-matching methodology cannot be applied automatically to our dataset due to the limited data quality and roughness of the available police records. Police officers do collect additional parameters but only for traffic accidents with severe injuries and our dataset consisted of all traffic accidents, regardless of injuries. The police record dataset lacks a detailed information since it was prepared for general statistical purposes. Furthermore, the coordinates of accident locations registered in our police reports (latitude and longitude) are the least reliable pieces of information due to the input inconsistency generated in the data collection process. As a result of this inconsistency, contextual data in a form of street or district names, proved to be the more reliable information.
+
+Theoretically, the methodology described in this paper is complementary to the map-matching process which could be the next step in further improving the quality of the accident dataset. Although our dataset had limited data quality, the algorithm described in this paper can be modified in hopes of improving the map-matching algorithms such as the ones developed by Imprialou et al. (2014) and Deka and Quddus (2014). Our algorithm can produce several most probable streets (including their locations) for each accident which further simplifies the map-matching process in urban environments and eliminate possible false positives. With our algorithm we managed to identify what is the most probable OSM street (link) that corresponds to particular police record. Upon determining the link, we were able to determine the GPS format of the registered coordinates and thus validate the recorded location of an accident. This drastically reduces the need for manual revisions of police records. Finally, the possibility of other string matching techniques should be investigated.
+
+@&#CONCLUSION@&#
+
+The quality of the traffic accident dataset primarily depends on the data registration method used by the police authorities. During the registration process, various errors can be introduced to the dataset, the most serious being errors in location data, such as latitude and longitude. Since inaccurate accident data can neither be used nor disregarded effectively, a model capable of validating accident location information from a highly inaccurate dataset needs to be developed. In this research, the Jaro–Winkler string matching technique was used to compare the traffic accident dataset to the road network provided by the OpenStreetMap project. Prior to conducting string matching analysis accident records were processed and validated using geospatial analysis to eliminate gross errors. Consequently, available location description attributes and their variations from OpenStreetMap were used in the string matching algorithm. By iterative validation of the model results, a string similarity percentage of 92.5% was selected. Using the developed model, we were able to successfully validate location information for 66% of the accident records, which presents an increase of 15% compared to classical approach. The developed model presents a straightforward validation procedure that greatly reduces the resources needed to estimate the quality of accident locations form highly inaccurate records. The multilingual nature of the OpenStreetMap project and the versatility of the Jaro–Winkler string matching technique suggests that this methodology is applicable worldwide, regardless of linguistic or cultural differences.
+
+@&#ACKNOWLEDGEMENT@&#
+
+This research was supported by the National Road Traffic Safety Program administrated by the Ministry of Interior of the Republic of Croatia.
+
+@&#REFERENCES@&#
+

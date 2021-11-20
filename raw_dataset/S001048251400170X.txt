@@ -1,0 +1,258 @@
+@&#MAIN-TITLE@&#Identifying high-cost patients using data mining techniques and a small set of non-trivial attributes
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           We used data mining techniques to build predictive models to identify very high-cost patients.
+
+
+                        
+                        
+                           
+                           A refined Medical Expenditure Panel Survey dataset of 31,704 records was modeled.
+
+
+                        
+                        
+                           
+                           CHAID was the top performing predictive model.
+
+
+                        
+                        
+                           
+                           Created a set of 5 non-trivial attributes to identify the top 5% of high cost patients.
+
+
+                        
+                        
+                           
+                           The results of this study can improve the delivery of health services.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Healthcare expenditures
+
+Predictive models
+
+Data mining
+
+Decision tree
+
+Medical Expenditure Panel Survey
+
+@&#ABSTRACT@&#
+
+
+                  In this paper, we use data mining techniques, namely neural networks and decision trees, to build predictive models to identify very high-cost patients in the top 5 percentile among the general population. A large empirical dataset from the Medical Expenditure Panel Survey with 98,175 records was used in our study. After pre-processing, partitioning and balancing the data, the refined dataset of 31,704 records was modeled by Decision Trees (including C5.0 and CHAID), and Neural Networks. The performances of the models are analyzed using various measures including accuracy, G-mean, and Area under ROC curve. We concluded that the CHAID classifier returns the best G-mean and AUC measures for top performing predictive models ranging from 76% to 85%, and 0.812 to 0.942 units, respectively. We also identify a small set of 5 non-trivial attributes among a primary set of 66 attributes to identify the top 5% of the high cost population. The attributes are the individual׳s overall health perception, age, history of blood cholesterol check, history of physical/sensory/mental limitations, and history of colonic prevention measures. The small set of attributes are what we call non-trivial and does not include visits to care providers, doctors or hospitals, which are highly correlated with expenditures and does not offer new insight to the data. The results of this study can be used by healthcare data analysts, policy makers, insurer, and healthcare planners to improve the delivery of health services.
+               
+
+@&#BACKGROUND@&#
+
+The continued growth of health care spending and the widespread implementation of quality performance initiatives have created a growing need for tools to identify high-cost populations. Several countries including Canada (11.2%), the United States (17.7%), Netherlands (11.9%), France (11.6%) and Germany (11.3%) spent more of its GDP on healthcare in 2011 than the OECD average of 9.3% [1]. In the U.S., healthcare spending reached 14–17% of the nation׳s GDP in the 2005–2009 period and amounted to $2.5 Trillion in 2009 [2,3]. Canada has seen similar trends as health spending reached $192 billion in 2010, growing an estimated $9.5 billion or 5.2% since 2009. This represents an increase of $216 per Canadian, bringing total health expenditure per capita to an estimated $5614 [4]. Other developed countries are showing similar expenditures and increasing rates of healthcare spending.
+
+While there is an overarching desire to reduce healthcare spending, doing so becomes more complicated in presence of the skewed nature of healthcare costs. A small portion of the population is responsible for a majority of healthcare costs. In the US, chronic disease including diabetes, heart attacks, cancer, and stroke cause approximately 70% of all deaths and over 75% of all healthcare costs [2,5]. In Canada, chronic diseases are the leading causes of death [6]. The estimated total cost in Canada of illness, disability and death attributable to chronic diseases amounts to over $80 billion, annually [7].
+
+Healthcare has been referred to as data rich but knowledge poor in that we collect large amounts of data but have difficulty using the data to support tasks such as decision making and policy development [8]. The abundance of healthcare data that is currently available often leads to information overload which severely limits our ability to analyze and apply data meaningfully [9]. A variety of data mining approaches including decision trees, neural networks, and Bayesian nets have been used to analyze and model healthcare data. These data mining approaches have supported healthcare decision making about interventions [10], to diagnose disease conditions [11–14], to track major epidemics and outbreaks [15–17], and to support management decisions such as resource allocation and capacity decisions [18–20]. We will expand on existing studies conducted on healthcare cost modeling that have applied regression analysis on the MEPS data [27] and data mining techniques [26].
+
+We have also seen the use of data mining algorithms in healthcare for predictive model building. Data mining is a multi-disciplinary field of science and technology which includes machine learning, information retrieval, algorithm development, and statistical analysis, among others, and focuses on the individual units of analysis and predicting its final assignment to a specific class; follows a bottom-up approach which is not concerned with hypothesis formation and testing; are not affected by multi-collinearities among numerous predictors; and effectively handle multiple independent variables in a large dataset with exhaustive details [21]. Researchers have used data mining algorithms to examine healthcare costs by focusing on high-cost profiles among patients diagnosed with specific medical conditions including cardiovascular diseases [22], diabetes [23] and asthma [24]. However, few studies have examined healthcare costs among the general population, irrespective of an individual׳s disease background [25,26].
+
+A significant shortcoming in existing data mining research in healthcare is the use of trivial measures such as diagnostic disease category [27] or visit counts [22,26] for determining contribution of a given factor in predicting higher health cost. By trivial we are not implying negative connotations of the data but rather a shortcoming of the data because while disease categories, visits, and access to services can provide insight on cost prediction, a shortcoming with that approach is that it only allows us to predict costs after the fact. A better approach is to identify non-trivial and proactive factors of health system expenditures to allow early identification of high cost patients. Doing that could help reduce healthcare expenditures by developing policies to better manage care for these patients.
+
+We summarize the above literature on data mining approaches in healthcare by identifying two areas needing further research. First, is to study the performance of different machine learning predictive models in order to identify which model should be used for different tasks. Second, is to identify data management approaches to enable better incorporation of healthcare data into decision making for clinical and administrative decisions. More specifically, we need to support identification of high cost patients by identifying non-trivial and easy to survey data elements that could enable better proactive identification of high cost patients.
+
+This paper addresses the two above research shortcomings. First, we build and compare the performance of two predictive models to estimate high-cost patients in the general population. Second, we introduce a small set of attributes from the Medical Expenditure Panel Survey (MEPS) database to predict high and low-cost patients in order to better estimate healthcare costs.
+
+@&#METHODOLOGY@&#
+
+We used data mining techniques to build a set of predictive models based on the Medical Expenditure Panel Survey (MEPS) dataset. The research methodology follows the data mining process model which consists of 3 consecutive steps (
+                     Fig. 1). The first step is preprocessing that includes raw data extraction, attribute selection, and preparation of different versions of the final dataset with a select set of pertinent attributes that are used in decision tree and neural networks classifiers. The second step is modeling in which we build, train, and run multiple models on the test sets. The third step is evaluation which deals with analyzing the model׳s performance using relevant measures to compare different models based on common performance measures.
+
+The performances of classifiers are analyzed by five performance measures. The first three measures are derived from the confusion matrix: sensitivity, specificity, and correctness accuracy. The sensitivity of a classifier is defined as its ability to correctly identify actual cases true positives (TP). In our study it measures the proportion of high-cost instances which are correctly identified as such. The specificity of a classifier is defined as its ability to correctly identify negative cases true negatives (TN). In our study it measures the proportion of low-cost instances which are correctly identified as such. The correctness accuracy for a data mining classifier is defined as the degree of closeness of its prediction to the actual values, either true or false. In our study, it measures the true results (both true positives or high-costs, and true negatives or low-costs) among all the test population. The confusion matrix measures are summarized as follows:
+                        
+                           
+                              Sensitivity
+                              =
+                              
+                              
+                                 
+                                    TP
+                                 
+                                 
+                                    TP
+                                    +
+                                    FN
+                                 
+                              
+                              
+                              Specificity
+                              =
+                              
+                              
+                                 
+                                    TN
+                                 
+                                 
+                                    TN
+                                    +
+                                    FP
+                                 
+                              
+                              Correctness
+                              
+                              accuracy
+                              =
+                              
+                              
+                                 
+                                    TP
+                                    +
+                                    TN
+                                 
+                                 
+                                    TP
+                                    +
+                                    FN
+                                    +
+                                    TN
+                                    +
+                                    FP
+                                 
+                              
+                           
+                        
+                     The correctness accuracy is reported as an absolute value between 0% and 100% and is used to differentiate models based on their accuracies. However, Kubat et al. [28] claimed that this measure is not adequate when the absolute count of actual negative cases is much larger than actual positives. This is the case in our study, where, for example, we define the high-cost population as the top 5% of the test population, the proportion of high-costs vs. low-costs proportionate is 1:19. This biases the correctness accuracy toward specificity, not sensitivity.
+
+
+                     G-mean [28] is a geometric mean of sensitivity and specificity and is only the highest when both of these measures are high:
+                        
+                           
+                              G
+                              -
+                              mean
+                              =
+                              
+                                 
+                                    Sensitivity
+                                    ×
+                                    Specificity
+                                 
+                              
+                           
+                        
+                     TPr is the percentage of positive examples correctly recognized, and TNr is the percentage of negative examples correctly recognized.
+
+The area under the ROC curve [29] is a similar measure to compare different classification models, which takes into account the trade-off between sensitivity and specificity of a model. In our study, the misclassification costs have been weighed low, but the AUC measure is still reported. The AUC measure for all decision trees (C5.0 and CHAID) and neural networks models are calculated. The adjusted propensity scores are then used to draw the ROC curve and calculate the AUC. The raw propensities are solely based on estimates given by the model, which may be over-fitted, leading to over-optimistic estimates of propensity.
+
+The Medical Expenditure Panel Survey (MEPS) conducted by the American Agency for Healthcare Research and Quality (AHRQ) uses a subsample of the households participating in the National health interview survey (NHIS), and collects data on the US civilian non-institutionalized (household) population׳s characteristics and their uses of health services. The household component (HC) of the MEPS surveys the US households for demographics, health status and health conditions, medical events by type (hospital including inpatient, outpatient, and ER; office-based; dental; home health; prescribed medications; and other including glasses, ambulance, equipment, etc.), date and other details of an event, charges and payments by source for each event, employment profile, health insurance profile, income, access to care, level of satisfaction, and opinions [30]. Each year, new HC data files are released in ASCII and SAS file formats which are available to public through the MEPS website at http://meps.ahrq.gov/mepsweb/.
+
+In our study, the HC׳s full consolidated (FC) and medical conditions (MC) files from 2006 to 2008 were used, along with the next year׳s expenditure data for each individual in dollars amount. The primary dataset includes 98,175 records (each record representing one family member) and 1600–1800 attributes. After removing records with zero personal-level weights (which do not represent any part of the US household population), removing redundant records (due to the MEPS׳ overlapping panels), and discarding non-adult (<17years old) population, the final MEPS dataset includes 31704 rows, each row representing information for one household individual in the US.
+
+Our data preprocessing approach used a two-step approach for attribute reduction. We discuss the primary and secondary reduction below.
+
+Based on insight from the literature review, and an extensive review of all attributes detailed in MEPS documentation files for the years 2006–2008, in the first iteration of attribute reduction, we selected 66 predictor attributes from the pool of attributes available in the final MEPS dataset (
+                        Table 1); and grouped them into five separate modules: demographics (9 attributes), health status (17), preventive care (16), priority conditions (14), and visits (10).
+
+One major objective of this study is to introduce a small set of attributes that can be used effectively in order to predict high-cost cases with reasonable accuracy. We used attribute reduction efforts to narrow down the primary set of 66 attributes in order to obtain the least possible attributes while achieving a desirable accuracy. In the subsections below we describe attribute reduction for each of the five modules of the primary set of predictor attributes. We use the attribute codes from Table 1 (e.g. EDUCYR – Years of Education When First Entered MEPS).
+
+In the demographic module, AGE, SEX, RACE, HIDEG, and REGION all are relevant for predicting healthcare costs. Because of a high level of one-tailed test for bivariate correlation between HIDEG and EDUCYR (Pearson r=0.706, significant, p-value<0.01) and between POVCAT and TTLP (Pearson r=0.478, significant, p-value<0.01), both EDUCYR and TTLP attributes were removed from demographics module.
+
+In the health status module (Health), both the complex summary attributes PCS and MCS were discarded in favor of RTHLTH and MNHLTH, as they show a significant correlation with either RTHLTH (Pearson r is −0.378, and −0.220 respectively) or MNHLTH (Pearson r is −0.227, and −0.261 respectively) in a one-tailed test (p-values<0.01). The inverse correlation is due to inverse scoring of RTHLTH and MNHLTH in the MEPS. The correlation with an expenditure target (TOTEXP1 – is a binary value which is set to “1” when the total expenditure in the current year is in top 5 percentile) is greater for RTHLTH (−0.225) compared to PCS (0.179), but both are significant (p-values<0.01) in a two-tailed test. ANYLIM has a strong bivariate correlation (Pearson r coefficient) to IADHLP (0.425), ADLHLP (0.296), WLKLIM (0.641), AIDHLP (0.361), ACTLIM (0.538), and COGLIM (0.321), which is always statistically significant in a two-tailed test (p-value<0.01). Some of functional limitations attributes (e.g. IADLHP and LFTDIF) had too many missing values to be useful for model building and were removed from the dataset. All sub-attributes were discarded and ANYLIM kept as the sole attribute which represents aggregate predictive strengths of all functional limitations attributes together.
+
+In the preventive care module (Preventive) the PSA, MAMOGR, BRSTEX, PAPSMR, HYSTER attributes were discarded as they showed high percentages of missing values and they were gathered over a specific age range and/or in a specific gender which made them unfavorable to use in model building. BPCHEK and BPMONT are coding same data in different measures, and BPMONT has been discarded in favor of BPCHEK. DENTCK has been retained in the study to act as a single dental care attribute, as it has more preventive care meaning than LSTETH.
+
+In the priority conditions module (PrioC), all diseases׳ diagnoses attributes along with the two newly derived attributes (PC and PCCOUNT) were retained.
+
+All Visits count variables are continuous data and show the counts of an individual׳s visits to the different level of health care. The names of these attributes are indicative of data they are representing, for example OBTOTV is the office-based total Visits counts which is provided by a physician (OBDRV) or another non-physician (OBOTHV). We include medicine usage in this module because it simply represents an individual׳s counts of visits to pharmacies (RXTOT). We normalized all these variables in a new scale measure between 0 and 1, in order to prevent variables with a higher range of values (such as RXTOT and OBTOTV) from overshadowing variables that accept only a short range of values (IPDIS and ERTOT). We discarded OBDRV and OBOTHV in favor of OBTOTV, and similarly OPDRV and OPOTHV in favor of OPTOTV. We deleted IPNGTD and retained IPDIS as they confer same information.
+
+After the attribute reduction efforts on the primary set of 66 attributes we were left with a final dataset of 39 attributes. 
+                        Table 2 shows the 39 attributes along with each attribute׳s measurement type, range, and values they accept in the final dataset (refer to Table 1 for full attribute names).
+
+With respect to the target attributes, the intention is to predict high-cost instances among the general population in the USA, and the target attributes should be ideally in binary format, identifying high-cost and low-cost instances using true and false values, respectively. We define two sets of target attributes to build two sets of predictive models. In the first set, the models predict the current year׳s total expenditure (TOTEXP1) using the current year׳s input variable. In the second set, the models predict the next year׳s total expenditure (TOTEXP2) using the current year׳s input variable. For both TOTEXP1 and TOTEXP2 targets, the distribution of dollar expenses is highly skewed, is non-normal, and is partially fitted to the Weibull distribution (
+                        Fig. 2). To identify individual distribution fit with Weibull, all non-positive values (the lowest possible cost=0) may be replaced by a value of 0.01, as the fit may be applied when the data has no zero values.
+
+Simple testing of TOTEXP1 data against 20/80 rule was useful. In the final dataset, out of $133,147,351 cumulative cost of TOTEXP1 for three years, 45%, 61%, and 78% is incurred by top 5, 10, and 20 percentiles, respectively. Similar cost figures are evident for TOTEXP2 (
+                        Table 3). We tried to find a standard definition of “high cost” with respect to patient expenditures. Other researchers who have analyzed the MEPS dataset [30] used the term high cost and high expenditures without actually defining it. Other studies have used the top 5% of patients as being high cost [31]. For the lack of consistent definition we started with three high-cost thresholds (95, 90 and 80 percentiles).
+
+Based on results of TOTEXP data analysis, six target attributes have been identified; three from current year expenditures and three from next year expenditures. In each year, all three relevant high-cost thresholds were set at 95, 90 and 80 percentiles (TOTEXP 95, 90, and 80), respectively.
+
+In order to build and compare predictive models, and to identify the small set of predictive attributes, several models were built using different types of classifiers and various sets of attributes. We started with 31704 records; each record with all 39 attributes (i.e. the SET39 dataset). We used 10-fold cross validation to measure the various performances of the classifiers. In 10-fold cross validation, the data is divided in 10 segments, where 9 segments are used in the training phase, and the remaining segment is used in the test phase to measure the performance of the model. This process is repeated 10 times, each time with a different set of 9 segments as the training set, and the remaining segment as the test set. The overall performance measures of the model are then averaged out over the 10 different runs.
+
+We first considered building models of different types, namely decision tree (DT) and neural networks (NN). DT and NN are inherently different in the way they build the models and predict the classes. While DT measures information gain at each splitting node to build the structure of branches and leaves, and classify the input data by assigning them to each leaf, a NN is a non-linear model trained by adjusting the weights of its internal connections in an iterative process such as back-propagation. To examine the performance of the two different predictive models we built the C5.0 and CHAID decision trees, as well as neural networks, with the IBM SPSS Modeller software package. All 39 predictors were considered in these models (i.e. the SET39 dataset). The performance measures for resultant models are shown in 
+                        Table 4 detailed by six targets from the current and following years. Both Accuracy and Area Under the Curve (AUC) measures are calculated to evaluate the performance of the models in the test partition.
+
+The predictive performance of the 3 different classifiers in estimating current year/next year is remarkably higher than that of a random guess, which confirms proper model functioning and data preparation. As shown in Table 4, among the 3 models (C5.0, CHAID, and NN), the C5.0 decision tree provides the highest accuracy rates (93.7%) comparing to CHAID (86.3%) and NN (76.2). The AUC measure shows the opposite, with the lowest areas for C5.0 (0.816), and much higher areas for CHAID (0.946), and NN (0.956). NN usually perform the best when the input attributes are continuous values (instead of binary or discrete values in our case). Also when the number of input attributes is high (in our case, 39 attributes), it takes longer for NN to converge, and it impacts its accuracy. For these reasons, we conclude that the decision tree models perform better than the NN for analysis of the dataset.
+
+The modeling also showed differences between the two types of decision tree models. As stated above, while C5.0 provided the highest accuracy, the CHAID exhibited a higher AUC. This indicates that, although C5.0 is more accurate it also generates a higher rate of false negatives than the CHAID does. A closer look into the confusion matrices for all three models (
+                        Fig. 3) explains how the AUC measure is a better criteria to rank these classifiers as the false values (TOTEXP targets=0) abound in the final MEPS dataset. While the confusion matrix produced for the NN models by the IBM MODELER does contain an additional row for NULL values, the actual accuracy that the IBM MODELER reports for NN, however, ignores these null values. Therefore we discarded all NULL values from the NN confusion matrix for ease of comparison.
+
+Comparing C5 and CHAID models in Fig. 3, we observe that the CHAID model provides a higher sensitivity (90% vs. 56%). Since False Negative is an important measure in our study (i.e. we do not want to predict individuals as low cost while they are actually high cost patients), we conclude that the CHAID provides a better predictive model for our dataset. Also, when compared to C5.0, the CHAID tree gives a better G-mean which is an indication of better trade-off between true positive and true negative estimations.
+
+Moreover, as shown in Table 4, all models perform better when the threshold for high-cost is set at the 95 percentile (top 5 percent) or very high-cost instances, compared to high-cost thresholds (threshold at 90 or 80 percentiles). Using 5% as threshold for high-cost patients is consistent with other studies [31]. All models predict the current year׳s cost better than next year׳s cost, which is considered a given fact, i.e. all models built for the current year, show a higher correctness accuracy or AUC compared to the next year׳s models. All TOTEXP1-95, TOTEXP1-90, and TOTEXP 1-80 models perform better than their counterparts in TOTEXP2-95, TOTEXP2-90, and TOTEXP 2-80 models, respectively. Based on these results, we consider TOTEXP1-95 as the cost target throughout the rest of this study. The C5.0 classifier has higher accuracy than the CHAID classifier when estimating TOTEXP1-95 using each of five modules of predictors. The higher accuracies are attributed to the higher specificities, while the sensitivities are always lower than that of the CHAID classifier. The CHAID tree works better in Health and Visits modules compared to the C5.0, based on the AUC measures. We do not measure the AUC in other modules (Demographics, Preventive, and PrioC), because the modeling software returns only the raw propensity scores for the C5.0 models. Different from the adjusted scores which represent both training and test partitions, raw scores are solely derived from the training partition and are thus more optimistic.
+
+Overall the DT models performed better than the NN. Across the two DT models the CHAID algorithm performed better compared to C5.0. Consequently, in the upcoming modeling efforts, we will use CHAID models to rank the predictive attributes and to identify the small set of attributes.
+
+In this modeling run, the CHAID classifier is employed on the combinations of different modules in order to find the small set of attributes. To build the combination of attributes, the 7 Demographics attributes (AGE3, SEX, RACEX, HIDEG, REGION, MARRY, POVCAT) are considered as the base module, and the remaining four modules (i.e. Health, Preventive, PrioC and Visits modules) are added to it consecutively. Also, the PC and PCCOUNT attributes are excluded from this modeling run. This allows us to understand the relative rank of each priority condition in estimating the model. The resultant combination CHAID models are named DHealth, DPreventive, DPrioC, and DVisits, respectively (
+                        Table 5). We call this set of attributes SET37.
+
+The Accuracy, G-mean, and AUC measures are calculated to evaluate performances of the new combination models as shown in 
+                        Table 6. Since all compared models use the same classifier (i.e. CHAID), accuracy can provide a good insight into their relative performances.
+
+As shown in Table 6, the performance of the relevant CHAID tree classifier remains approximately unchanged. For instance, the DHealth combination model (combination of demographics and Health attributes) performs slightly better compared to the Health module itself. We also measured the performances of the other possible combinations as shown in Table 6.
+
+Based on the predictors׳ ranking in each combination model, we built additional CHAID models to study all possible combination between five primary modules (Demographics, Health, Preventive, Priority conditions, and Visits). Step by step, the predictors employed in each combination model have been reduced in order to reach to a small set of attributes that performs similar to, or better than the original large sets. After conducting this iterative process, the resultant shortest list of predictors in each combination is obtained. Any further attribute removal causes a remarkable drop in the model׳s performance. 
+                        Table 7 shows the reduced list of the predictive attributes obtained from the iterative process of building CHAID models with various number of attributes. We call this set of attributes SET10.
+
+As shown in Table 7, all modules share AGE and SEX predictor attributes from the demographics module, and the two other attributes are from their relevant module. The performances of model built on the SET10 dataset were compared with the ones built on the SET37 dataset using G-mean and AUC measures, along with the model׳s accuracy (
+                        Table 8). As all models use the same classifier (CHAID), the accuracy itself can provide good insight into their relative performances.
+
+As shown in Table 8, the models built on the SET10 dataset shows the same performances (Accuracy, AUC and G-mean) as the predictive models built on the SET37 dataset. This verifies that our proposed iterative process of removing attributes, one-by-one, and building CHID models until no remarkable drop is observed in the model accuracy was successful in identifying the significant small set of attributes.
+
+
+                        
+                        Table 9 summarizes the predictor importance results for each of the small set combination models, along with 10 top ranked attributes for all four small sets together which includes PCCOUNT, CHOLCK, IPDIS, RTHLTH, OBTOT, AGE, ANYLIM, BOWEL, SEX, and REGION (shown as ALL).
+
+All 10 of these predictor attributes are considered for further CHAID tree modeling in order to identify a small set of non-trivial attributes. First, the two remaining attributes from the Visits module (IPDIS and OBTOT) were discarded; as they are trivial predictors (i.e. they are highly correlated with cost of healthcare). We then tried all possible combination of the remaining 8 attributes in a CHAID tree. The performance results for the best resultant models are shown in 
+                        Table 10.
+
+As shown in Table 10, the best CHAID classifier which estimates TOTEXP1-95 uses a small set of attributes including AGE, RTHLTH, ANYLIM, CHOLCK, and BOWEL, and performs acceptably well, returning correctness accuracy, G-mean and AUC equal to 75%, 76% and 0.812, respectively. This model performs superior to all single or combination models that use any of Demographics, Health, Preventive, and PrioC attribute sets. This set does not use any trivial predictors from the visits modules, or a count of priority conditions by excluding PCCOUNT, as count of important medical conditions (PCCOUNT) and an individual׳s number of visits to different health providers (visits attributes) are highly correlated with the overall health expenditures.
+
+@&#DISCUSSION@&#
+
+This paper had two objectives. First, was to compare the performance of two predictive models to estimate high-cost patients in the general population. Second, was to use the MEPS database to identify a small set of non-trivial attributes to predict high and low-cost patients in order to enable better proactive estimation of healthcare costs.
+
+To answer our first objective, we compared the performance of decision trees and neural networks by modeling our dataset of 31,704 records using Decision Trees (including C5.0 and CHAID), and Neural Networks. We then analyzed the performance of the models using Accuracy, G-mean, and Area under ROC curve. The CHAID classifier returned the best G-mean and AUC measures for top performing predictive models ranging from 76% to 85%, and 0.812 to 0.942 units, respectively. In the MEPS dataset, when the high-cost threshold is set at 95 percentile (to predict top 5 percentile of costs) in the current year, the true cases comprise 5% of the population. A G-mean and AUC measure provide a better trade-off between models׳ sensitivity and specificity and is superior to accuracy measure in evaluating predictive performance when there are abundant negative classes. We also identified that when the number of input attributes is high (as in our case with 39 attributes), or if the attributes are continuous values (instead of binary or discrete values) it takes longer for neural networks to converge, which impacts its accuracy. We therefore concluded that decision tree models perform better than the neural networks for analysis of the dataset. We also identified that between the two decision tree algorithms the CHAID performed better than C5.0 due to a lower rate of false negatives.
+
+In answering our second objective we identified a small set of 5 predictor attributes to estimate the high-cost population among a primary set of 66 attributes. The predictors are the individual׳s overall health perception, age, history of blood cholesterol check, history of physical/sensory/mental limitations, and history of colonic prevention measures. It is interesting to note that the predictors׳ importance as ranked by the IBM SPSS Modeler when we started building the models showed a convergence on attributes from the Visits module as the top cost predictors. All the models we initially developed ranked 4–5 attributes from the Visits module as the top 5 predictors. This is reasonably expected as attributes in the Visits module are highly correlated with expenditures. We refer to visit attributes as “trivial” attributes in that they identify costs after the fact and the attributes have a direct linear relationship with costs (i.e. a visit incurs a cost). Our small set of attributes differs from existing trivial health cost predictors in that we have identified attributes that provide proactive insight on healthcare spending rather than identifying high cost patients after the fact. Further, the small set of attributes is routinely collected data elements so it should not impose any additional workflow burden on clinicians.
+
+Our findings have several implications for model building to predict healthcare costs. Healthcare planners can use the small set of non-trivial attributes to design local, regional, or national surveys for tracking high-cost groups in the general population before they seek medical help. That would give policy makers time to better plan disease-management programs for high-risk groups (i.e. patients with high blood pressure), and will provide them with information to tailor those programs to localized demographic targets. The information from a representative sample of a high-risk population in a given geographic area can be presented to a trained CHAID tree classifier in order to identify potential high-cost groups among them, and to enroll and track the group in preventive or disease-control programs to closely monitor them for complications, recurrences, or exacerbations. Healthcare planners then can also better allocate available resources to potentially high-risk groups and allocate the healthcare budget in a more targeted manner.
+
+Insurance companies seek efficient ways to enroll their clients into the most suitable health protection plans. The small set of attributes from this research can help insurers to identify potential high-cost or very high-cost individuals among a pool of potential clients, based on non-trivial and non-clinical data. The proposed attributes are easy to collect, and they can be used in a short screening questionnaire which may be employed as a preliminary screening tool to find the potential high-cost cases among the general population. To obtain better results, the insurer may decrease the confidence threshold for interpreting the screening survey results to identify a very high-cost person; i.e. they may extract 10% of a specific population as a potential pool for the top 5% costs, or they may set a lower threshold for G-mean or AUC of the predictive model in order to extend the boundaries of high-cost group. After narrowing the potential high-costs to the 10% population size, extra runs of predictive modeling on the remaining pool, or further clinical interview can be conducted to better identify those with the highest possibility of becoming high-cost in the future.
+
+Limitations of this research are that the MEPS database is a unique health expenditure dataset that stores medical spending data for the non-institutionalized US population according to the sources of payments and services that incurred the costs. Its extensiveness is limited by the categorical nature of the data it stores, which limits the application of strong data mining algorithms that work better with continuous data. Normalization techniques can reshape the categorical data to other scale types but doing so may leave the results less interpretable. We were also limited by the state of the date in the MEPS dataset. For example, in the preventative care module several attributes had to be discarded because of missing data or the fact they were isolated within a specific age group or gender. We recognize that these attributes, for example time since last PSA or Mammogram, can be valuable for predicating health status. We suggest that future research could focus on modeling building to predict costs for specific target groups such as gender and age.
+
+Implementing the predictive models from this study along with the small set of attributes can enable policy makers and service providers to examine healthcare costs in various clinical conditions and service delivery models. Further customization in modeling provisions and alterations to the small set of attributes may be necessary when researchers attempt to apply cost-modeling tools to specific health service delivery contexts.
+
+@&#CONCLUSIONS@&#
+
+In this research, we built multiple data mining models to predict very high-cost individuals in the top 5 percentile among General populations in the MEPS dataset. The CHAID decision tree classifier performs more accurate, and returns higher G-mean and AUC values compared to other classifiers including C5 decision trees and neural networks. We also identified the following 5 attributes as the small set of attributes to proactively predict very high-cost percentile (top 5 percentile of costs) instances among the general population (ranked according to their estimating power and relevance in the final model): RTHLTH: perceived health status; AGE: age of the individual in years; ANYLIM: presence of any limitation (physical, sensory, or cognitive) in individual; BOWEL: time elapsed since last sigmoidoscopy/colonoscopy; and CHOLCK: time elapsed since last blood cholesterol check. This small set of attributes includes non-trivial, but easy-to-survey measures of self-perception of health, age, along with two preventive health indicators (history of blood cholesterol checks, and colonic preventive interventions) and presence or absence of any physical, sensory, or cognitive limitations. Consequently, the results of this study are useful for policy makers, health planners, and insurers to proactively plan the delivery of healthcare services.
+
+@&#ACKNOWLEDGMENT@&#
+
+This research was supported by a Discovery Grant from the Natural Sciences and Engineering Research Council of Canada (Grant No. 341811/RGPIN/2007). We would also like to acknowledge the support of IBM for providing an educational license of the IBM Modeller software package.
+
+@&#REFERENCES@&#
+

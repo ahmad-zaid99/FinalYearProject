@@ -1,0 +1,1982 @@
+@&#MAIN-TITLE@&#Investigation of effective parameters on composite patch debonding under static and cyclic loading using cohesive elements
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           A high cycle fatigue de-cohesive constitutive law is used for debonding investigation of composite patch–cracked panel interface.
+
+
+                        
+                        
+                           
+                           Effects of material, width, and thickness of patch, and bonding strength on progressive damage of bonding interface are investigated.
+
+
+                        
+                        
+                           
+                           A patch material with larger elastic modulus, thickness and adhesive thickness leads to more damages in the adhesive bound-line.
+
+
+                        
+                        
+                           
+                           By increasing the adhesive strength and patch width, the de-bonding and crack growth rate of the panel are decreased.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Bonded repair
+
+Interface element
+
+Cohesive law
+
+Composite patch
+
+Aluminum panel
+
+@&#ABSTRACT@&#
+
+
+                  The major addressed issue in this paper is investigation of impressive parameters on initiation and propagation of debonding in the adhesive layer when it occurs concurrently with the growth of an initial crack in a single-side repaired aluminum panels by composite patches under cyclic loading. Using the softening behavior of thin layer solid like interface elements, debonding is modeled between the composite patch layer adjacent to the aluminum panel as a function of loading condition and stress field. A user element routine and two damage model routines were developed to include the interface element and to simulate the distribution of damage in adhesive layer under static and cyclic loading. Fatigue crack growth in aluminum panel was also modeled using a simple approach developed by the authors. It is shown that, it is possible to decrease the debonding propagation by implementing appropriate composite patch and adhesive dimensional and material properties.
+               
+
+@&#INTRODUCTION@&#
+
+Extending the service life of cracked components with composite patch has generated a lot of controversy in recent years. This technique is more structurally efficient, formable on curved panels with fewer damages and side effects on the structure than others such as metallic patches. Repair of aluminum structures was initiated by Baker in the early 1970s [1]. Different numerical models have been already used for calculating the stress field of single-side repairs and optimizing the patch geometry to reduce the stress intensity factor (SIF). Chung and Young [2] performed fatigue crack growth tests for the repaired thick plates containing an inclined edge crack. They used Al 6061-T6 alloy for the base material and HT145/RS1222 for the single-side composite patch. Hosseini-Toudeshky et al. [3–7] performed 3D finite elements fatigue crack growth analysis of single-side repaired panels to simulate the actual crack-front shape and crack growth life for various panels with dominant mode-I and mixed mode condition cracks. They also examine their observation in the finite element analyses by performing experiments on single-side repaired panels using different composite patches in various fracture mode conditions [3,8–10]. Jones and Chiu [11] also performed experimental and numerical studies on the repair of cracked structural components. They observed that the crack propagates with a curved front shape along the panel thickness.
+
+In contrast to all the advantages mentioned, fatigue life prediction of repaired component by composite patch seems to be complicated due to several possible failure modes, such as growth of initial crack in the aluminum panel, patch debonding and new fatigue cracks in the skin (panel) at the patch edges. The focus of this paper is prediction of possible patch debonding due to the fatigue loading concurrent with the possible growth of the initial crack in the repaired panels.
+
+Whether debonding of patch could significantly affect the repaired panel life or not, further questions may arise such as how can it be modeled trustworthily, and which parameters affect the propagation of debonding? Papanikos et al. [12] used finite element-based progressive failure model (elastic property degradation) to investigate the geometrical effects on patch debonding initiation and propagation induced by monotonic loading. It was found that, depending on the patch thickness, debonding may initiate either at the upper patch edge (being catastrophic for the repair) or at the crack faces (being not catastrophic). Denney and Mall [13] and Naboulsi et al. [12] used experiments and the three-layer technique to investigate the effects of pre-existing debonding of various sizes and in different locations on the fatigue crack growth and life of repaired structures. Megueni et al. [14] used the finite element method to compute the stress intensity factor for repairing cracks with bonded composite patch taking debonding into account. The previous studies did not consider principal properties and characteristics of adhesive layers. Moreover, the fracture mechanics approaches cannot easily predict the simultaneous debonding initiation and propagation; therefore, in this paper, the cohesive zone modeling concept using interface element is employed for modeling of adhesive layer and progressive debonding under static and cyclic loading. Different models were already presented for interface elements. The recent models have been developed by Zeng and Li [15], a novel multi-scale cohesive zone in which the bulk material is modeled as a local quasi-continuum medium and the cohesive force and displacement relations inside the cohesive zone are governed by a coarse grained depletion potential. Then [16] they applied their model for composite laminates to simulate the failure process. Li and Zeng [17] also developed a new atomistic-based interphase zone model (AIZM), and employed that for simulation of fractures at small scales.
+
+In this paper, the developed solid like interface element model by Balzani and Wagner [18] is used, for the analyses of debonding of composite patches from the panels. Besides, a damage model based on the cohesive zone concept for the analyses of fatigue debonding propagation under quasi-static and high cycle fatigue loadings which was developed in [19,20] is added to the constitutive law equation. Finally, the explained procedure is used for the prediction of possible debonding initiation and propagation concurrently with possible fatigue crack growth in the aluminum panel, which is analyzed using the previously developed simple method by the authors [7].
+
+Cohesive interface elements are generally formulated in terms of tractions and relative displacements between two surfaces. In this work, we implement a solid-like interface element formulation from [18] (
+                     Fig. 1) which tolerates the strain status of material to a damage variable to define material degradation or damage portion in each Gauss integration point. Such formulation is a standard hexahedral isoparametric solid element but carries only the interlaminar stresses. Therefore, the three-dimensional stress and strain tensors are reduced to interlaminar stress and strain vectors accounting for interlaminar components only and defined by
+                        
+                           (1)
+                           
+                              u
+                              =
+                              
+                                 [
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      u
+                                                   
+                                                   
+                                                      s
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      u
+                                                   
+                                                   
+                                                      t
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      u
+                                                   
+                                                   
+                                                      n
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 ]
+                              
+                              ,
+                              
+                              ε
+                              =
+                              
+                                 [
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      γ
+                                                   
+                                                   
+                                                      s
+                                                      n
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      γ
+                                                   
+                                                   
+                                                      t
+                                                      n
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      ε
+                                                   
+                                                   
+                                                      n
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 ]
+                              
+                              =
+                              
+                                 [
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      u
+                                                   
+                                                   
+                                                      s
+                                                      ,
+                                                      n
+                                                   
+                                                
+                                                +
+                                                
+                                                   
+                                                      u
+                                                   
+                                                   
+                                                      n
+                                                      ,
+                                                      s
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      u
+                                                   
+                                                   
+                                                      t
+                                                      ,
+                                                      n
+                                                   
+                                                
+                                                +
+                                                
+                                                   
+                                                      u
+                                                   
+                                                   
+                                                      n
+                                                      ,
+                                                      t
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      u
+                                                   
+                                                   
+                                                      n
+                                                      ,
+                                                      n
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 ]
+                              
+                              ,
+                              
+                              σ
+                              =
+                              
+                                 [
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      τ
+                                                   
+                                                   
+                                                      s
+                                                      n
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      τ
+                                                   
+                                                   
+                                                      t
+                                                      n
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      σ
+                                                   
+                                                   
+                                                      n
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 ]
+                              
+                           
+                        
+                     where s, t and n are the integer subscripts for local coordinate directions as shown in Fig. 1, u is the real displacement vector, 
+                        
+                           
+                              ε
+                           
+                           
+                              n
+                           
+                        
+                        ,
+                        
+                           
+                              γ
+                           
+                           
+                              s
+                              n
+                           
+                        
+                        ,
+                        
+                           
+                              γ
+                           
+                           
+                              t
+                              n
+                           
+                        
+                      are the strain components corresponding to modes I, II, and III, and 
+                        
+                           
+                              σ
+                           
+                           
+                              n
+                           
+                        
+                        ,
+                        
+                           
+                              τ
+                           
+                           
+                              s
+                              n
+                           
+                        
+                        ,
+                        
+                           
+                              γ
+                           
+                           
+                              t
+                              n
+                           
+                        
+                      are the stress components corresponding to modes I, II, and III of fracture.
+
+The displacement and strain vectors can be approximated as follows:
+                        
+                           (2)
+                           
+                              u
+                              =
+                              
+                                 ∑
+                                 
+                                    I
+                                    =
+                                    1
+                                 
+                                 8
+                              
+                              
+                                 
+                                    
+                                       N
+                                    
+                                    
+                                       I
+                                    
+                                 
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       I
+                                    
+                                 
+                              
+                              ,
+                              
+                              ε
+                              =
+                              
+                                 ∑
+                                 
+                                    I
+                                    =
+                                    1
+                                 
+                                 8
+                              
+                              
+                                 
+                                    
+                                       B
+                                    
+                                    
+                                       I
+                                    
+                                 
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       I
+                                    
+                                 
+                              
+                           
+                        
+                     
+                  
+
+In this equation, 
+                        
+                           
+                              N
+                           
+                           
+                              I
+                           
+                        
+                      is the shape function of the node-I and 
+                        
+                           
+                              B
+                           
+                           
+                              I
+                           
+                        
+                      is the shape function derivatives matrix which is defined by
+                        
+                           (3)
+                           
+                              
+                                 
+                                    B
+                                 
+                                 
+                                    I
+                                 
+                              
+                              =
+                              
+                                 
+                                    B
+                                 
+                                 
+                                    i
+                                    ,
+                                    j
+                                 
+                              
+                              =
+                              
+                                 {
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      N
+                                                   
+                                                   
+                                                      I
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                i
+                                                =
+                                                j
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             0
+                                          
+                                          
+                                             
+                                                i
+                                                ≠
+                                                j
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+                  
+
+Linearization of principle of virtual work can be written as follows [18]:
+                        
+                           (4)
+                           
+                              Δ
+                              δ
+                              Π
+                              (
+                              u
+                              )
+                              =
+                              
+                                 ∫
+                                 V
+                              
+                              
+                                 δ
+                                 
+                                    
+                                       ε
+                                    
+                                    T
+                                 
+                                 C
+                                 Δ
+                                 ε
+                                 d
+                                 V
+                              
+                              ,
+                              
+                              C
+                              =
+                              
+                                 
+                                    ∂
+                                    σ
+                                 
+                                 
+                                    ∂
+                                    ε
+                                 
+                              
+                           
+                        
+                     
+                  
+
+Using the finite element approximation, Eq. (4) can be written as
+                        
+                           (5)
+                           
+                              δ
+                              
+                                 
+                                    Π
+                                 
+                                 e
+                              
+                              =
+                              
+                                 ∑
+                                 
+                                    I
+                                    =
+                                    1
+                                 
+                                 8
+                              
+                              
+                                 δ
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       I
+                                    
+                                    
+                                       T
+                                    
+                                 
+                              
+                              
+                                 ∫
+                                 V
+                              
+                              
+                                 
+                                    
+                                       B
+                                    
+                                    
+                                       I
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 σ
+                                 d
+                                 V
+                                 =
+                              
+                              
+                                 ∑
+                                 
+                                    I
+                                    =
+                                    1
+                                 
+                                 8
+                              
+                              
+                                 δ
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       I
+                                    
+                                    
+                                       T
+                                    
+                                 
+                              
+                              
+                                 
+                                    R
+                                 
+                                 
+                                    I
+                                 
+                                 
+                                    e
+                                 
+                              
+                              ,
+                              Δ
+                              δ
+                              
+                                 
+                                    Π
+                                 
+                                 e
+                              
+                              =
+                              
+                                 ∑
+                                 
+                                    I
+                                    =
+                                    1
+                                 
+                                 8
+                              
+                              
+                                 
+                                    ∑
+                                    
+                                       k
+                                       =
+                                       1
+                                    
+                                    8
+                                 
+                                 
+                                    δ
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          I
+                                       
+                                       
+                                          T
+                                       
+                                    
+                                 
+                              
+                              
+                                 ∫
+                                 V
+                              
+                              
+                                 
+                                    
+                                       B
+                                    
+                                    
+                                       I
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 C
+                                 
+                                    
+                                       B
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 d
+                                 V
+                                 Δ
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 =
+                              
+                              
+                                 ∑
+                                 
+                                    I
+                                    =
+                                    1
+                                 
+                                 8
+                              
+                              
+                                 
+                                    ∑
+                                    
+                                       k
+                                       =
+                                       1
+                                    
+                                    8
+                                 
+                                 
+                                    δ
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          I
+                                       
+                                       
+                                          T
+                                       
+                                    
+                                 
+                              
+                              
+                                 
+                                    K
+                                 
+                                 
+                                    
+                                       
+                                          T
+                                       
+                                       
+                                          I
+                                          k
+                                       
+                                    
+                                 
+                                 
+                                    e
+                                 
+                              
+                              Δ
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    k
+                                 
+                              
+                           
+                        
+                     where 
+                        
+                           
+                              K
+                           
+                           
+                              T
+                           
+                           
+                              e
+                           
+                        
+                      is the tangent stiffness matrix and 
+                        
+                           
+                              R
+                           
+                           
+                              I
+                           
+                           
+                              e
+                           
+                        
+                      is the residual force vector and V is the volume of element, 
+                        δ
+                        ε
+                      and 
+                        σ
+                      are the virtual strain and interlaminar stress vectors for the interface element, respectively.
+
+The notion of this work is to obtain initiation and propagation of debonding under both static and cyclic loading. Therefore, the related constitutive law should have appropriate response to all possible loadings including static and cyclic loading. On the other hand, according to the previous researches [20,21], the damage evolution in a degradation process involving high-cycle fatigue should be considered as the sum of the damage growth from quasi-static loads and the one from cyclic loads as follows:
+                        
+                           (6)
+                           
+                              d
+                              =
+                              
+                                 
+                                    d
+                                 
+                                 
+                                    s
+                                    t
+                                    a
+                                    t
+                                    i
+                                    c
+                                 
+                              
+                              +
+                              
+                                 
+                                    d
+                                 
+                                 
+                                    c
+                                    y
+                                    c
+                                    l
+                                    i
+                                    c
+                                 
+                              
+                           
+                        
+                     
+                  
+
+For the static part of the question a bilinear constitutive law is chosen, which is based on the solid-like interface element presented in [18]. In the case of mixed mode loading, it relates the effective stress to the effective strain, as shown in 
+                        Fig. 2 and contains three parts. In the first part, the interface material behaves in a linearly elastic manner. It continues until the effective strain is less than the damage onset. In this part, the dissipated energy is zero and no damage is presented in the element. In the second part, the stress evaluation is defined by a damage variable, which has an amount between 0 and 1. It initiates when the effective strain reaches the damage onset. In this part, the energy dissipation is formulated as follows [19]:
+                           
+                              (7)
+                              
+                                 
+                                    
+                                       
+                                          
+                                             E
+                                          
+                                          
+                                             d
+                                             i
+                                             s
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             G
+                                          
+                                          
+                                             c
+                                          
+                                       
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       
+                                          
+                                             A
+                                          
+                                          
+                                             d
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             A
+                                          
+                                          
+                                             e
+                                          
+                                       
+                                    
+                                 
+                                 =
+                                 1
+                                 −
+                                 
+                                    
+                                       
+                                          
+                                             ε
+                                          
+                                          
+                                             m
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             ε
+                                          
+                                          
+                                             
+                                                
+                                                   m
+                                                
+                                                
+                                                   0
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 (
+                                 1
+                                 −
+                                 d
+                                 )
+                              
+                           
+                        where 
+                           d
+                         is the damage variable, A
+                        
+                           d
+                         is the element damage area and A
+                        
+                           e
+                         is the element area. 
+                           
+                              
+                                 E
+                              
+                              
+                                 d
+                                 i
+                                 s
+                              
+                           
+                         is the dissipated energy. Also, 
+                           
+                              
+                                 ε
+                              
+                              
+                                 m
+                              
+                           
+                         is the effective strain, 
+                           
+                              
+                                 ε
+                              
+                              
+                                 
+                                    
+                                       m
+                                    
+                                    
+                                       0
+                                    
+                                 
+                              
+                           
+                         is the effective strain at delamination onset and 
+                           
+                              
+                                 G
+                              
+                              
+                                 c
+                              
+                           
+                         is the mixed mode critical energy release rate. Note that a non-dimensional parameter defined as the ratio of damaged area with respect to the element area has been used. Therefore, elements size and area does not influence the damage parameter or fatigue life directly. In the final part, the stress becomes zero and the energy dissipation reaches the critical energy release rate. This part is the well known complete decohesion.
+
+The required formulations for the interface constitutive law under static loading are summarized in 
+                        Table 1 where 
+                           
+                              
+                                 ε
+                              
+                              
+                                 m
+                                 f
+                              
+                           
+                         is the effective strain at complete decohesion, K is the penalty stiffness, I is the identity matrix, 
+                           
+                              
+                                 h
+                              
+                              
+                                 0
+                              
+                           
+                         is the interface element thickness and η is an experimental parameter.
+
+The deleterious influence of cyclic loads can be formulated as a function of the number of cycles. Since there is no explicit expression to define this function, the degradation process which is based on the high cycle fatigue model presented by Turon [19] is implemented by incorporating a fatigue damage parameter that evolves during cyclic loading and is accumulated with the obtained static damage parameter (
+                        Fig. 3).
+
+To calculate the evolution of the damage variable, the following expression is used to relate the evolution of damage variable to the growth rate of damage area in each integration point [19].
+                           
+                              (8)
+                              
+                                 
+                                    
+                                       ∂
+                                       d
+                                    
+                                    
+                                       ∂
+                                       N
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       ∂
+                                       d
+                                    
+                                    
+                                       ∂
+                                       
+                                          
+                                             A
+                                          
+                                          
+                                             d
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       ∂
+                                       
+                                          
+                                             A
+                                          
+                                          
+                                             d
+                                          
+                                       
+                                    
+                                    
+                                       ∂
+                                       N
+                                    
+                                 
+                              
+                           
+                        where d is damage variable and A
+                        
+                           d
+                         is the element damage area.
+
+In the framework of fracture mechanics, the term 
+                           ∂
+                           d
+                           /
+                           ∂
+                           
+                              
+                                 A
+                              
+                              
+                                 d
+                              
+                           
+                         can be calculated from Eq. (7) as the following expression [19]:
+                           
+                              (9)
+                              
+                                 
+                                    
+                                       ∂
+                                       d
+                                    
+                                    
+                                       ∂
+                                       
+                                          
+                                             A
+                                          
+                                          
+                                             d
+                                          
+                                       
+                                    
+                                 
+                                 =
+                                 
+                                    1
+                                    
+                                       
+                                          
+                                             A
+                                          
+                                          
+                                             e
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          
+                                             [
+                                             
+                                                
+                                                   ε
+                                                
+                                                
+                                                   
+                                                      
+                                                         m
+                                                      
+                                                      
+                                                         f
+                                                      
+                                                   
+                                                
+                                             
+                                             (
+                                             1
+                                             −
+                                             d
+                                             )
+                                             +
+                                             d
+                                             
+                                                
+                                                   ε
+                                                
+                                                
+                                                   
+                                                      
+                                                         m
+                                                      
+                                                      
+                                                         0
+                                                      
+                                                   
+                                                
+                                             
+                                             ]
+                                          
+                                          2
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             ε
+                                          
+                                          
+                                             
+                                                
+                                                   m
+                                                
+                                                
+                                                   0
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             ε
+                                          
+                                          
+                                             
+                                                
+                                                   m
+                                                
+                                                
+                                                   f
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+Besides, 
+                           ∂
+                           
+                              
+                                 A
+                              
+                              
+                                 d
+                              
+                           
+                           /
+                           ∂
+                           N
+                         can be formulated as [19]
+                        
+                           
+                              (10)
+                              
+                                 
+                                    
+                                       ∂
+                                       
+                                          
+                                             A
+                                          
+                                          
+                                             d
+                                          
+                                       
+                                    
+                                    
+                                       ∂
+                                       N
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       
+                                          
+                                             A
+                                          
+                                          
+                                             e
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             A
+                                          
+                                          
+                                             c
+                                             z
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       ∂
+                                       A
+                                    
+                                    
+                                       ∂
+                                       N
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+To calculate the mean damage evaluation rate in Eq. (10), the fatigue crack growth law of fracture mechanics, the Paris law, can be expressed as
+                           
+                              (11)
+                              
+                                 
+                                    
+                                       ∂
+                                       A
+                                    
+                                    
+                                       ∂
+                                       N
+                                    
+                                 
+                                 =
+                                 c
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             
+                                                Δ
+                                                G
+                                             
+                                             
+                                                
+                                                   
+                                                      G
+                                                   
+                                                   
+                                                      c
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       )
+                                    
+                                    m
+                                 
+                              
+                           
+                        where C and m are the material constants. 
+                           Δ
+                           G
+                         is the cyclic variation in the energy release rate, which can be computed by the following formulation [20]:
+                           
+                              (12)
+                              
+                                 Δ
+                                 G
+                                 =
+                                 ∫
+                                 
+                                    σ
+                                    d
+                                    ε
+                                 
+                              
+                           
+                        which represents the area under constitutive law curve in cyclic loading.
+
+Degradation process in cyclic loading seems to be more complicated than static loading. First of all, according to the explanations in the previous section, damage evolution under cyclic loading results from the loading history and it is obtained through an iterative process in both static and fatigue loadings. Moreover, in a degradation process involving high-cyclic fatigue, a cycle-by-cycle analysis becomes computationally intractable and it is time consuming. Therefore, a cycle jump strategy (defining the interval cycles number and considering the damage portion in one-step) is implemented in the finite element model.
+
+Finally, the damage variable is updated in each cycle jump containing 
+                           Δ
+                           
+                              
+                                 N
+                              
+                              
+                                 i
+                              
+                           
+                         fatigue cycles by the following expression.
+                           
+                              (13)
+                              
+                                 
+                                    
+                                       d
+                                    
+                                    
+                                       i
+                                       +
+                                       1
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       d
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       ∂
+                                       
+                                          
+                                             d
+                                          
+                                          
+                                             i
+                                          
+                                       
+                                    
+                                    
+                                       ∂
+                                       N
+                                    
+                                 
+                                 Δ
+                                 
+                                    
+                                       N
+                                    
+                                    
+                                       i
+                                    
+                                 
+                              
+                           
+                        where 
+                           
+                              
+                                 d
+                              
+                              
+                                 i
+                              
+                           
+                         is the damage parameter in the ith step and 
+                           
+                              
+                                 d
+                              
+                              
+                                 i
+                                 +
+                                 1
+                              
+                           
+                         is that in the next step.
+
+The obtained damage variable from (13) is the cyclic damage portion of constitutive law and should be added to the static part of damage variable in each step.
+
+It is worth noting that, the developed model used un-loading/re-loading concept in each cycle jump (interval) for taking into account the damage variation as a result of panel crack growth into the interface layer. For this purpose, when the interface elements are under unloading, the previously calculated damages are saved. In the next step, when a reloading is applied, analyses are repeated according to the new condition in the constitutive model as shown in 
+                        Fig. 4.
+
+It is worth noting that the cyclic degradation should be only performed in the region close to the debonding-front in the considered cohesive zone in which interface elements have exceeded their linear-elastic stress and experience damage [20] would be an oversight.
+
+In the finite element modeling of progressive debonding analysis of repaired panels, the following three major parts work coincidently in each step as illustrated in 
+                     Fig. 5:
+                        
+                           (i)
+                           modeling, meshing, and applying the boundary conditions;
+
+elastic-damage solution, degradation process and damage evolution calculations under static and cyclic loading formulated in the UPF;
+
+fatigue crack growth calculation of aluminum panel at each increment.
+
+The geometry and typical mesh in the FEM analyses are shown in 
+                     Fig. 6. The cracked panels are made of aluminum 2024-T3; the composite patches are made of Glass/Epoxy, Graphite/Epoxy and Boron/Epoxy. The applied remote stress range is 118MPa. To perform the degradation under cyclic loading (cumulative damage), it is required to restore nodal stress of previous load step at each calculation step. Therefore, it is more convenient to un-change the mesh information in every load step. The existing symmetry conditions are also used to reduce the calculation volume of the debonding and crack growth modeling of repaired panel.
+
+For consideration of the cyclic loading damage in interface elements, (
+                     Fig. 7), the load is divided to two parts. The first part is static loading in which the applied load gradually increases from zero to the maximum load value. In this part damage variable is defined by the expression performed in the second row of Table 1in each Gauss point of the elements. The second part is cyclic loading in which the load amplitude remains constant and fatigue process starts at fatigue zone as shown in Fig. 7. In this part, the elements damage accumulation or material degradation occurs which will be considered by Eq. (13). The crack closure technique based on the simple method presented by the authors in [7] is also implemented to compute the fatigue crack growth in the aluminum panels.
+
+For prediction of possible debonding initiation and propagation concurrently with possible fatigue crack growth of the preexisting crack in the repaired aluminum panel, a special procedure is needed for handling of crack growth in the aluminum panel. For this purpose, one may suggest to consider a real crack-front to predict the crack growth length and life in finite element modeling. But consideration of real crack-front modeling concurrently with the use of cohesive elements in the bonding area makes too much complexity in the finite element analyses. To overcome such difficulty, the simple method performed by the authors [7] can be used. In this simple method, the real crack-front is not considered in the finite element crack growth modeling (crack-front remains perpendicular to the panel surfaces during the crack growth), but the stress intensity factor of a specific point on the thickness is used for life prediction that approximately gives life similar to the real crack-front modeling.
+
+In each step of crack growth, the mode-I strain energy release rate is calculated using the following expression [22]:
+                        
+                           (14)
+                           
+                              
+                                 
+                                    G
+                                 
+                                 
+                                    I
+                                 
+                              
+                              =
+                              −
+                              
+                                 1
+                                 
+                                    2
+                                    a
+                                    b
+                                 
+                              
+                              
+                                 
+                                    F
+                                 
+                                 
+                                    y
+                                 
+                                 
+                                    c
+                                    r
+                                    a
+                                    c
+                                    k
+                                    
+                                    f
+                                    r
+                                    o
+                                    n
+                                    t
+                                 
+                              
+                              (
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    y
+                                 
+                                 
+                                    u
+                                 
+                              
+                              −
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    y
+                                 
+                                 
+                                    d
+                                 
+                              
+                              )
+                           
+                        
+                     where a and b are the length and width of the element respectively, and 
+                        
+                           
+                              F
+                           
+                           
+                              y
+                           
+                        
+                      and 
+                        
+                           
+                              u
+                           
+                           
+                              y
+                           
+                        
+                      are the nodal forces and displacements respectively as shown in 
+                     Fig. 8(b). Then the stress intensity factor for a linear elastic fracture condition can be calculated from the following expression:
+                        
+                           (15)
+                           
+                              
+                                 
+                                    K
+                                 
+                                 
+                                    I
+                                 
+                              
+                              =
+                              
+                                 
+                                    E
+                                    
+                                       
+                                          G
+                                       
+                                       
+                                          I
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     where E is the modulus of elasticity. To calculate the fatigue life for a known crack length increment or to find a crack growth increment for a known and limited number of load cycle increments, the well known Paris fatigue crack growth law is used as follows:
+                        
+                           (16)
+                           
+                              
+                                 
+                                    d
+                                    a
+                                 
+                                 
+                                    d
+                                    N
+                                 
+                              
+                              =
+                              c
+                              
+                                 
+                                    (
+                                    Δ
+                                    K
+                                    )
+                                 
+                                 m
+                              
+                           
+                        
+                     where 
+                        c
+                      and 
+                        m
+                      are the empirical material constants, 
+                        Δ
+                        K
+                        =
+                        
+                           
+                              K
+                           
+                           
+                              max
+                           
+                        
+                        (
+                        1
+                        −
+                        R
+                        )
+                      is the stress intensity factor range in fatigue loading, 
+                        N
+                      is the number of cycles, 
+                        d
+                        a
+                      is the crack growth length and R is the cyclic load ratio. According to the suggestion of the developed simple method [7], the point along the crack-front, 
+                        
+                           
+                              Z
+                           
+                           
+                              e
+                           
+                        
+                     , whose stress intensity factor has to be used in Eq. (16) can be obtained from the following equation:
+                        
+                           (17)
+                           
+                              
+                                 
+                                    
+                                       
+                                          Z
+                                       
+                                       
+                                          e
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          t
+                                       
+                                       
+                                          p
+                                       
+                                    
+                                 
+                              
+                              =
+                              0.0166
+                              
+                                 (
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                E
+                                             
+                                             
+                                                A
+                                                l
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                E
+                                             
+                                             
+                                                P
+                                                a
+                                                t
+                                                c
+                                                h
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 )
+                              
+                              +
+                              0.3453
+                           
+                        
+                     where 
+                        
+                           
+                              Z
+                           
+                           
+                              e
+                           
+                        
+                      is measured from the unpatched surface of the panel as indicated in Fig. 8(a), 
+                        
+                           
+                              E
+                           
+                           
+                              A
+                              l
+                           
+                        
+                      and 
+                        
+                           
+                              E
+                           
+                           
+                              P
+                              a
+                              t
+                              c
+                              h
+                           
+                        
+                      are Young′s modulus of elasticity of panel and patch materials respectively and 
+                        
+                           
+                              t
+                           
+                           
+                              p
+                           
+                        
+                      is the thickness of composite patch.
+
+@&#RESULTS AND DISCUSSION@&#
+
+In this section, a monotonic tension load is applied on the repaired aluminum panel as shown in Fig. 6(b) to predict the damage parameter values in different loading sub-steps. The average of damage parameter, 
+                           
+                              
+                                 d
+                              
+                              
+                                 A
+                                 v
+                                 e
+                              
+                           
+                        , in cohesive layer is proposed as follows:
+                           
+                              (18)
+                              
+                                 
+                                    
+                                       d
+                                    
+                                    
+                                       A
+                                       v
+                                       e
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       
+                                          ∑
+                                          
+                                             e
+                                             ∈
+                                             c
+                                             z
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                d
+                                             
+                                             
+                                                a
+                                                v
+                                                e
+                                             
+                                             
+                                                e
+                                             
+                                          
+                                          .
+                                          
+                                             
+                                                A
+                                             
+                                             
+                                                e
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             A
+                                          
+                                          
+                                             c
+                                             z
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        where 
+                           
+                              
+                                 
+                                    d
+                                 
+                                 e
+                              
+                              
+                                 a
+                                 v
+                                 e
+                              
+                           
+                         is the average of damage values for an element in the adhesive layer, 
+                           
+                              
+                                 A
+                              
+                              
+                                 e
+                              
+                           
+                         is the element area and 
+                           
+                              
+                                 A
+                              
+                              
+                                 c
+                                 z
+                              
+                           
+                         is the adhesive layer area (cohesive zone area).
+
+
+                        
+                        Fig. 9 compares the obtained variations of average damage parameter, 
+                           
+                              
+                                 
+                                    d
+                                 
+                                 e
+                              
+                              
+                                 a
+                                 v
+                                 e
+                              
+                           
+                        , versus applied stress in static loading for composite patches of Glass/Epoxy, Graphite/Epoxy and Boron/Epoxy. It is clear that even at the primary steps of loading, damage initiation is identical, but, as the load increases, damage value and debonding become different for various patch materials. Debonding in adhesive layer for Graphite/Epoxy patch can be divided into three distinct loadings: firstly, 0–75MPa in which damage parameter is almost zero; secondly, 75–270MPa in which damage is lower than one, and finally, loading values of larger than 400MPa, in which the patch experiments the complete decohesion. Also for this patch material, the gradual rise in deterioration from 0 to approximately 0.1 in the first 250MPa of loading is followed by a sharper increase by increasing of applied stress.
+
+
+                        
+                        Fig. 10 shows the variation of stress intensity factor, 
+                           
+                              
+                                 K
+                              
+                              
+                                 I
+                              
+                           
+                        , versus the applied remote stress for various patch materials. It also shows an almost linear variation of stress intensity factor by increasing the applied stress. At the applied load of about 250MPa, an almost sharp increase of 
+                           
+                              
+                                 K
+                              
+                              
+                                 I
+                              
+                           
+                         value is observed for repaired panels with Graphite/Epoxy and Boron/Epoxy patches which is concurrent with almost complete debonding of patch from the panel.
+
+
+                        
+                        Fig. 11 shows the progressive debonding area between the Glass/Epoxy patch and cracked panel (a quarter of the model) at different stages of loading. In this case, debonding initially occurs around the crack region when the applied load becomes close to about 170MPa. Then, it grows steadily until the load is below the 240MPa (part 1). Afterward, debonding starts to initiate and grow near the patch edges and propagates by increasing the load value up to about 320MPa applied load (part 2). Eventually, it initiates and grows at the patch upper edges (part 3) and propagates by increasing the load until the final failure. The final total debonding occurs at the load of 370MPa (Fig. 9).
+
+Variations of average damage parameters versus applied stress in Fig. 9 for glass/epoxy, graphite/epoxy, and boron/epoxy patches show that both initial increase in damage value and debonding (
+                           
+                              
+                                 d
+                              
+                              
+                                 a
+                                 v
+                                 e
+                              
+                              
+                                 e
+                              
+                           
+                        =1.0) of patch from the panel depend considerably on the composite patch material. It represents that increasing in the elasticity modulus of patch material causes augmentation in the debonding initiation and propagation significantly. It is also considerable that it definitely affects the stress intensity factor (SIF) in which, any increase in elastic module of patch material could cause the reduction of SIF as shown in Fig. 10.
+
+
+                        
+                        Fig. 12 shows the variation of average damage parameter versus glass/epoxy patch thickness expressing the initiation and propagation behavior of patches with various thicknesses. This figure shows that the damage initiation and damage growth into adhesive layer becomes faster with increase of the patch thickness. It is also noticed that the damage parameter starts to increase from zero value to a larger value for smaller path thickness earlier than the thick patch thickness. This initial growth of d value is a kind of material degradation only. It becomes fully damaged when d approaches unity which the figure shows that it occurs for thick patches earlier than the thin patches. It is also noted that for smaller patch thickness, the debonding initiates at the crack edge region, while for larger patch thickness it occurs at the patch edges which is caused by pealing stresses. Therefore, we are faced with different damage areas at patch bonding for thin and thick patches.
+
+In this part, concurrent debonding and crack growth analyses are performed for single-side repaired panels under cyclic loading by implementing the procedure presented in Fig. 5. Effects of four important parameters, i.e., patch material, bonding properties, adhesive thickness and patch width, on patch debonding initiation and propagation are investigated. The model includes an aluminum cracked panel (100mm×50mm×2.29mm) with a central crack length of 10mm repaired by a single-side composite patch (40mm×35mm×0.72mm). Geometrical parameters of model are listed in 
+                        Table 2.
+
+Variations of average damage parameter versus number of load cycles for repaired panels with different patch materials and with consideration of concurrent fatigue crack growth of the panel are shown in 
+                        Fig. 13. The considered three patch materials are Glass/Epoxy, Graphite/Epoxy and Boron/Epoxy with mechanical properties listed in 
+                        Table 3. It is evident that, bonding damage initiates after about 1300 cycles for all three patches. Therefore, the patch material does not have a serious effect on damage initiation. As it is mentioned in the previous sections, by increasing the number of load cycles damage propagation in adhesive layer between Boron/Epoxy patch the cracked aluminum panel is larger than those that occurred for Graphite/Epoxy and Glass/Epoxy patches. It means, in spite of more decrease of SIF at the crack-front of the aluminum panel due to the use of composite patches with larger elastic module such as Boron/Epoxy, it may cause more damage progress in the adhesive layer.
+
+Fracture toughness of adhesive layers relates to the bonding properties that appear in the cohesive fatigue constitutive law. Therefore, a sensitivity analysis on the effect of cohesive shearing strength on damage progress of adhesive layer becomes valuable. 
+                        Fig. 14 shows the damage progress against the number of load cycles for the considered three different bonding properties with differences in the shear strength as listed in 
+                        Table 4. This figure shows that by decreasing the shear strength of the adhesive the mean damage value or debonding is significantly increased. Therefore, bonding shear strength of interface layer could strongly affect the damage and debonding growth of patch from the panel.
+
+Adhesive layer thickness could be another impressive parameter on damage growth and debonding of composite patch from a cracked panel, which is investigated in this part. For this purpose three typical adhesive thicknesses of 0.01mm, 0.05mm and 0.1mm are considered for the analyses. The obtained variations of average damage parameter versus number of load cycles are shown in 
+                        Fig. 15 for the three adhesive thicknesses. This figure shows that the increase in adhesive thickness leads to the increase of damage values and leads to more debonding potential. It is worth noting that, increasing of this parameter has an inverse effect on the fracture toughness of adhesive layer and interface zone which justifies such results.
+
+Lastly, the effects of patch width on damage propagation of interface area between the patch and panel are investigated here. For this purpose, three patch width values of 35mm, 30mm, and 25mm and the same panel width were considered for the analyses. The obtained variations of average damage parameter versus number of cycles are shown in 
+                        Fig. 16 for three different patch widths. This figure shows that by increasing the patch the damage values are decreased indicating a positive effect on debonding phenomenon.
+
+@&#CONCLUSION@&#
+
+In this paper, a damage model based on the cohesive zone concept and finite element procedure was developed for progressive damage analyses in the bonding area of composite patches and cracked panels under quasi-static and high cycle fatigue loadings. This procedure was linked with the concurrent fatigue crack growth in the aluminum panel using the previously developed simple method by the authors. Effects of patch material, patch width, patch thickness, adhesive thickness, and bonding shear strength on progressive damage of bonding interface were investigated under both static and fatigue loadings. It was shown that when a patch material with larger elastic modulus, patch thickness and adhesive thickness is used, it leads to more damage in the adhesive layer during the loading (static or cyclic). It was also shown that by increasing the shear strength of the adhesive and patch width, the mean damage value or debonding and crack growth rate of the panel are decreased.
+
+Therefore, for the purpose of more strength against the debonding phenomenon, smaller values for elastic modulus of patch, patch thickness and adhesive thickness and also larger values of adhesive shear strength and patch width are more desirable.
+
+@&#REFERENCES@&#
+

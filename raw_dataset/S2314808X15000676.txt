@@ -1,0 +1,466 @@
+@&#MAIN-TITLE@&#Characterization, quantum, antibacterial, antifungal and antioxidant studies on Hg(II) and Cd(II) complexes of allyl and ethyl thiosemicarbazides derived from 2-aminothiazole-4-yl acetohydrazide
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Preparation of Cd(II) and Hg(II) complexes of the new thiosemicarbazide.
+
+
+                        
+                        
+                           
+                           Elemental analysis, spectral characterization of the ligands and their Cd(II) and Hg(II) complexes.
+
+
+                        
+                        
+                           
+                           Thermal behaviour of the solid metal complexes was studied using TGA technique.
+
+
+                        
+                        
+                           
+                           The compounds were screened for antibacterial, antifungal, antioxidant and antitumor activity.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Thiosemicarbazide complex
+
+Spectral characterization
+
+Thermal degradation
+
+Biological activity
+
+@&#ABSTRACT@&#
+
+
+                  Two thiosemicarbazide ligands were derived from the addition of 2-(2-aminothiazol-4-yl) acetohydrazide to both ethyl isothiocyanate (H2TAET) and allyl isothiocyanate (H2TAAT) where their Cd (II) and Hg (II) complexes were synthesized and characterized by traditional techniques. The complexes were assigned the formulas [Cd(HTAET)(H2O)Cl](H2O)2, [Hg(TAET)(H2O)2]2, [Cd(HTAAT)(H2O)Cl]H2O and [Hg(H2TAAT)(H2O)Cl2], respectively. In Cd (II) complexes, the IR spectra show that the ligands behave as monobasic bidentate through (CN) thiazole ring and deprotonated enolized (CO). In Hg (II) complexes, H2TAET acts as dibasic tridentate (NSO) via thiol (CS), enolized (CO) and new azomethine (NC)* groups, while H2TAAT acts as neutral tridentate (NNO) through (CN) of thiazole ring, (CO) and new (CN) due to SH formation. A tetrahedral geometry for Cd (II) complexes, square pyramidal geometry for [Hg(TAET)(H2O)2]2 and octahedral geometry for [Hg(H2TAAT)(H2O)Cl2] were proposed. The data of theoretical and experimental vibrational frequencies of ligands are comparable. The calculated HOMO-LUMO energies gap data decided the possibility of charge transfer within the molecule. The binding energies calculations showed that the stability of complexes is higher than that of ligands. The kinetic and thermodynamic parameters of the Cd (II) complexes have been calculated by Coats–Redfern and Horowitz–Metzger methods. Moreover, the antimicrobial activities of the compounds have been discussed using a wide spectrum of bacterial and fungal strains. Representatives of the synthesized compounds were tested and evaluated for anti-oxidant and antitumour activities.
+               
+
+@&#INTRODUCTION@&#
+
+Thiazole and its derivatives have shown a wide range of biological significance, for example vitamin B1 and the coenzyme cocarboxylase with a thiazole ring [1]. It is known that 2-aminothiazole is an effective compound with a broad range of biological activity; also, it is an intermediate in the preparation of antibiotics and dyes [2] according to more than one type of donor atoms in thiosemicarbazide derivatives and their pronounced microbial activities [3–5]. Their metal complexes have attracted considerable attention which can introduce novel reactivity and frequently stabilize the metal cluster framework [6–9]. As an extension of our study on thiosemicarbazide moiety [10–13], we report herein the preparation of Cd (II) and Hg (II) complexes derived from a new thiosemicarbazide, namely 2-amino-4-yl acetothiosemicarbazide ending by ethyl (H2TAET) and allyl (H2TAAT) groups. The study determined the structure of ligands and complexes by traditional techniques and conceded by molecular modelling, DFT calculations and their thermal degradation kinetics using Coats–Redfern and Horowitz–Metzger techniques. Also, the microbial activities of the prepared compounds have been studied using a wide spectrum of bacterial and fungal strains.
+
+All the chemicals used were from Aldrich and Fluka without further purification. Elemental analyses (C, H, N) have been determined with a Perkin-Elmer 2400 series II analyzer. The Molar conductance values (10−3 mol L−1) of the complexes in DMF were measured using a Tacussel conductivity bridge model CD6NG. The IR spectra were shown at a Mattson 5000 FTIR spectrophotometer with KBr discs within the range of IR spectra 4000–400 cm−1. Electronic spectra have been recorded on a Unicam UV–Vis spectrophotometer UV2. 1H NMR and 13C NMR were measured in d6-DMSO at room temperature on Bruker Bio Spin GmbH 400 MHz spectrometer. Thermogravimetric measurements (TGA, DTG and 20–800 °C) have been recorded on a DTG-50 Shimadzu thermo gravimetric analyzer with a heating rate of 10 °C/min and nitrogen flow rate of 15 ml/min.
+
+H2TAET and H2TAAT have been synthesized by heating 1 mmol of 2-(2-aminothiazol-4-yl) acetohydrazide with 1 mmol ethyl and allyl isothiocyanate under reflux for 2 h. The resulting precipitate that formed for each has been filtered, washed more than once with ethanol and dried under vacuum over anhydrous CaCl2.
+
+Dissolved Cd and Hg chloride (1.0 mmol) has been added to ethanolic solution of H2TAET (0.259 g, 1.0 mmol) and H2TAAT (0.271 g, 1.0 mmol). The mixture was refluxed for 2–3 h and the precipitates formed were filtered, washed and dried in a vacuum desiccator over anhydrous CaCl2. The complexes are stable in air and insoluble in most organic solvents but soluble in both dimethyl formamide (DMF) and dimethyl sulphoxide (DMSO). The molar conductivity values of all complexes were determined in DMF at the range 1–18 ohm−1 cm2 mol−1 of non-electrolytes. Unfortunately, we could not get single crystals from the solid metal complexes.
+
+Chemical compounds have been tested against gram positive Staphylococcus aureus and gram negative Escherichia coli bacteria. Each of the compounds dissolved in DMSO, this solution with concentration (1 mg /ml) were made ready by separately paper discs of Whatman filter paper which were prepared with standard size (5 cm) and cut with sterilized in an autoclave. The paper discs were soaked in the desired concentration of the complex solution and put in the Petri dishes containing nutrient agar media (agar 20 g + beef extract 3 g + peptone 5 g) seeded with S. aureus and E. coli. The Petri dishes have been incubated at 36 °C and the inhibition zones were recorded after 24 h of incubation. Each treatment was done three times. The antimicrobial activity of a standard antibiotic ampicillin was also recorded using the same concentration and solvents. The % activity index for the complex was determined by the following formula:
+                              
+                                 
+                                    
+                                       
+                                          
+                                             %
+                                             Activity Index
+                                          
+                                       
+                                       
+                                          
+                                              
+                                             =
+                                             
+                                                
+                                                   Zone of inhibition by test compound
+                                                    
+                                                   (
+                                                   diametre
+                                                   )
+                                                
+                                                
+                                                   Zone of inhibition by standard
+                                                    
+                                                   (
+                                                   diametre
+                                                   )
+                                                
+                                             
+                                             ×
+                                             100
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+
+Antifungal activity, depend on the growth inhibition rates of the mycelia of Candida albicans in Potato Dextrose Broth medium (PDB) to determine growth inhibition rates. It was detected from the infected organs on potato dextrose agar (potato 250 g + dextrose 20 g + agar 20 g) medium of the host plants. The cultures of the fungi were filtered by single spore isolation technique. The solution with the concentration 1 mg/ml for all compounds in DMSO has been synthesized for testing against spore germination. A drop of the solution of each concentration was kept separately on glass slides. The conidia and fungal reproducing spores hoisted up with the help of an inoculating needle, which mixed in every drop for all compounds separately. Each treatment was repeated three times and a parallel DMSO solvent control set was done concurrently on separate glass slides. All the slides have been incubated in humid chambers at 25 ± 2 °C for 24 h. Each slide was observed under the microscope for spore germination and finally per cent germination was determined. A zone of inhibition of growth referred to an indication of antifungal activity. The results have been also compared with a blank antifungal drug Clotrimazole at the same concentration.
+
+The antioxidant activity [14] employed a technique depending on measuring the reducing of stable free radicals. The methodology explains that the consumption of the stable free radical (X') will be calculated by reactions as follows:
+                              
+                                 
+                                    
+                                       
+                                          X
+                                          ′
+                                       
+                                       +
+                                       YH
+                                       →
+                                       XH
+                                       +
+                                       
+                                          Y
+                                          ′
+                                       
+                                    
+                                 
+                              
+                           
+                        
+
+The rate or the extent of the process measured in terms of the decrease in X' concentration would be related to the ability of the added compounds to trap free radicals. The colour intensity of the solution will decrease due to scavenging of the free radical by the antioxidant material and this can be measured colorimetry at a specific wavelength. The assay employs the radical cation derived from 2,2′-azino-bis(3-ethylbenzthiazoline-6-sulphonic acid) (ABTS) or diphenyl picryl hydrazyl (DPPH) as stable free radical to be antioxidant and extracts. Inhibition per cent of free radical DPPH or ABTS has been determined owing to the equation:
+                              
+                                 
+                                    
+                                       I
+                                       %
+                                       =
+                                       
+                                          
+                                             (
+                                             
+                                                A
+                                                
+                                                   blank
+                                                
+                                             
+                                             −
+                                             
+                                                A
+                                                
+                                                   sample
+                                                
+                                             
+                                             )
+                                          
+                                          /
+                                          
+                                             (
+                                             
+                                                A
+                                                
+                                                   blank
+                                                
+                                             
+                                             )
+                                          
+                                       
+                                       ×
+                                       100
+                                    
+                                 
+                              
+                           where Ablank is the absorbance of the control reaction (containing all reagents except the test compound), and Asample is the absorbance of the test sample.
+
+All different concentrations of the tested chemical compounds under study have been dissolved in methanol to obtain final concentration ranging from 6.25 to 200 mg/ml to show IC50 (concentration makes 50% inhibition of DPPH colour). Fifty microlitres of different sample concentrations was added to 5 ml of 0.004% methanolic solution of DPPH. We let the solution dry for 60 min in the dark then the absorbance was recorded vs a blank at 517 nm.
+
+For 3 ml of MnO2 solution (25 mg/ml), we added the solution containing both the investigated compounds and 2 ml of ABTS solution (60 mM). All were synthesized in 5 ml aqueous phosphate buffer solution (pH 7, 0.1 M). The solution was shaken, centrifuged, filtered and the absorbance of the resulting green–blue solution (ABTS radical solution) at λ734 nm was referred to approx. 0.5. Then, 50 ml of (2 mM) mixture of the tested compound in spectroscopic grade MeOH/phosphate buffer (1:1) was added. The absorbance was calculated, and the reduction in colour intensity was referred to inhibition percentage. l-ascorbic acid was used as a blank antioxidant (positive control). Blank was run without ABTS and using MeOH/phosphate buffer (1:1) instead of tested compounds.
+
+Negative control was run with ABTS and MeOH/phosphate buffer (1:1) only [15,16].
+
+
+                           In vitro cytotoxicity was done at a range of concentrations 500, 200, 100, 50, 10 and 1 µg/ml against mammary gland (Breast) MCF7 with a standard MTT assay as shown by Mosmann [17] with minor modifications [18]. The cell line made from ATCC through holding company for biological products and vaccines, Cairo, Egypt and cultured in RPMI 1640 medium with 10% foetal bovine serum. Antibiotics added were 100 units/ml penicillin and 100 µg/ml streptomycin at 37 °C in a 5% CO2 incubator. The reagents RPMI-1640 medium, MTT and DMSO and 5-fluorouracil (Sigma Co., St. Louis, MO, USA), Foetal Bovine serum (GIBCO, UK) and the cell line MCF7 (obtained from ATCC) have been used. MTT was based on the reduction of the yellow tetrazolium dye MTT to a violet formazan product through the mitochondrial succinate dehydrogenase in viable cells. MTT was poured at 5 mg/ml in PBS and filtered to remove a small amount of insoluble residue in some batches of MTT. The cells harvested from exponential phase have been plated in 96-well plates (104 cells/well in 100 µl of medium) and incubated for 24 h for attachment. Test compounds have been synthesized prior to the experiment by dissolving in 0.1% DMSO and diluting with medium. Considering the cytotoxicity effect of DMSO, the concentration of DMSO in the medium was set below 1%; under this condition, DMSO did not affect the growth and viability of the cell [19].
+
+The cells have been then exposed to various concentrations of the compounds in the volume of 100 µl/well. Control wells have been synthesized by addition of an equal volume of the culture medium having 0.1% DMSO. Wells having culture medium without cells have been used as standard. 5-Fluorouracil was used as a blank anticancer drug for comparison. After 24 h, the medium was rinsed and cell cultures have been incubated by 100 µl MTT reagent (5 mg/ml MTT stock in PBS diluted to 1 mg/ml with 10% RPMI-1640 medium) for 4 h at 37 °C. The formazan produced by the viable cells was solubilized by using 100 µl DMSO. Then, the absorbances have been calculated at 570 nm using a plate reader (EXL 800) and the cytotoxic midpoint value, the concentration of chemical agent needed to reduce the spectrophotometric absorbance to 50% (IC50), was shown by linear regression analysis with 95% of confidence limits. The IC50 was defined as the medium of two independent experiments through the equation of graphic line obtained. The experiment was performed in triplicate to get the mean values. The percentage viability was calculated using the formula
+                              
+                                 
+                                    
+                                       
+                                          
+                                             The relative cell viability
+                                             %
+                                          
+                                       
+                                       
+                                          
+                                              
+                                             =
+                                             
+                                                
+                                                   A
+                                                    
+                                                   570
+                                                    
+                                                   of treated samples
+                                                
+                                                
+                                                   A
+                                                    
+                                                   570
+                                                    
+                                                   of untreated sample
+                                                
+                                             
+                                             ×
+                                             100
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+
+We performed cluster calculations by DMOL3 program [20] in Materials Studio program [21], which was designed for large scale density functional theory (DFT) calculations. DFT semi-core pseudo pods determinations (dspp) have been shown with the double numerical basis sets plus polarization (DNP) functional. The DNP basis sets are of comparable quality to 6-31G Gaussian basis sets [22]. Kessi and Delley assumed that the DNP basis sets are highly more accurate than Gaussian basis sets of the same size [23]. The RPBE functional [24] is so far the best exchange-correlation functional [25], based on the generalized gradient approximation (GGA), employed to take account of the exchange and correlation effects of electrons. The geometric optimization was shown without any symmetry restriction.
+
+@&#RESULTS AND DISCUSSION@&#
+
+The data of elemental analysis and some physical properties of the complexes were shown in Table 1
+                     .
+
+Theoretical calculations of the IR spectra of H2TAET and H2TAAT (Table 2
+                           ) were carried out using a previously mentioned method (Figs. 1 and 2
+                           ), and from a comparison with the experimental data we can conclude that: The calculated IR vibrations of H2TAET and H2TAAT show high agreement with the experimental data.
+                        
+
+The molecular structures along with atom numbering of H2TAET, H2TAAT and their complexes have been shown in Structures 1–6. Their analysis data and the calculated data of bond lengths and angles for the bonds are shown in Tables S1–S13 (Supplementary Materials), which give us the following concluding remarks:
+                              
+                                 i.
+                                 All bond lengths of both ligands became slightly shorter in the complexes, except C(10)-S(16) which became slightly longer in [Hg(H2TAAT)(H2O)Cl]2 
+                                    [26].
+
+In all Cd(II) and Hg(II) complexes, the bond distances [C(15)-N(7) and C(15)-O(16)] of H2TAET and the bond distances [C(7)-N(8) and C(7)-O(11)] of H2TAAT became shorter owing to the formation of MO bond that makes CO bond strong.
+
+In all complexes, the bond distances [C(1)-N(5) and N(5)-C(4)] of H2TAET and the bond distances [C(1)-N(2) and N(2)-C(3)] of H2TAAT are shorter. Due to formation of MN bond in both Cd (II) and Hg(II) complexes of H2TAAT, CN bond weakened, which formed a double bond character.
+
+The bond angles of the thiosemicarbazide moiety of H2TAET and H2TAAT are altered somewhat upon coordination; the largest change affects C(1)-N(5)-C(3), O(16)-C(15)-N(7), N(8)-N(7)-C(15), C(9)-N(8)-N(7), N(8)-C(9)-S(13) and C(9)-N(10)-C(11) angles of H2TAET and C(1)-N(2)-C(3), O(11)-C(7)-N(8), N(9)-N(8)-C(7), C(10)-N(9)-N(8), N(8)-C(10)-S(16) and C(10)-N(11)-C(12) angles of H2TAAT which are reduced or increased on complex formation as a consequence of bonding.
+
+The O(16)-C(15)-N(7) angle of H2TAET changes from 119.92° to 118.74° in Cd complex owing to formation of O(19)-Cd(16)-N(5) chelate ring, whereas in H2TAAT, the O(15)-C(7)-N(8) angle changes from 120.93° to 126.9° due to formation of O(15)-Cd(17)-N(3) chelate ring.
+
+The N(7)-N(8)-C(9) angle of H2TAET changes from 119.81° to 119.82° and 119.33° in Hg complex owing to formation of S(16)-Hg(33)-N(8) and S(32)-Hg(38)-N(24), but in H2TAAT, the N(9)-N(8)-C(7) angle changes from 112.46° to 120.504° owing to formation of N(9)-Hg(17)-O(15) and O(15)-Hg(17)-N(3) chelate angle.
+
+The bond angles N(5)-Cd(16)-O(19), O(19)-Cd(16)-O(18), O(18)-Cd(16)-Cl(17), Cl(17)-Cd(16)-N(5), and N(3)-Cd(17)-O(15), O(15)-Cd(17)-Cl(18), Cl(18)-Cd(17)-O(19), O(19)-Cd(17)-N(3) of Cd(II) complexes indicate that they are quite near to a tetrahedral geometry predicting sp3 hybridization where Hg(II) of H2TAET and H2TAAT show a square pyramidal and adopt an octahedral arrangement predicting sp3d2 hybridization.
+
+The complexes were arranged by their (MN)azomethine bond lengths as: Hg-N > Cd-N; reflecting Cd-N bond as the strongest among the others [27].
+
+The lower values of HOMO energy show that molecules donating electron ability are weaker. On the contrary, a higher energy of HOMO implies that it is a good electron donor. LUMO energy showed that the molecule can receive electron.
+                                    
+                                    
+                                    
+                                    
+                                    
+                                 
+
+The most important IR frequencies have been shown in Table 2. The H2TAET exhibits four bands at 3360, 3282, 3146 and 3107 cm−1 due to ν(NH2), ν(NH)a, ν(NH)b and ν(NH)c respectively. While in H2TAAT, ν(NH2), ν(NH)a, ν(NH)b and ν(NH)c show bands at 3437, 3342, 3273 and 3179 cm−1, respectively. The broadness of (NH) bands in both H2TAAT and H2TAET may be owing to the chance of H-bond formation as in Structures 1 and 2. The ν(CN)th of (H2TAET and H2TAAT) at 1641 and 1648 cm−1 undergoes a negative shift of wave number and the ν(CN) thiazole ring appears at 1622 and 1626 cm−1 
+                        [28] in the Cd(II) and Hg(II).
+
+Spectra of all complexes showed that the bands assigned to the newly formed (NC)* band owing to the thiolating of the (CS) group and enolization of (CO) group were located at 1569 and 1574 cm−1 in the complexes of H2TAET, respectively. While in complexes of H2TAAT, the new (NC)* band appears at 1566 and 1537 cm−1, respectively. The bands assigned to ν(CO) in both ligands disappeared in both Cd(II) and Hg(II) complexes of H2TAET with the appearance of an assigned band of ν(CO) groups. On the other hand, the ν(CO) in Hg(II) complex of H2TAAT undergoes an increase in the band value resulting from the coordination to the metal. The strong bands observed at 985 and 982 cm−1 in both ligand spectra are assignable to the ν(NN) vibrational modes. These bands were shifted to higher wave numbers in the complexes of H2TAET, ν(CS) and δ(CS) appear at the frequencies 1323 and 843, while in H2TAAT they appear at 1330 and 845 cm−1 
+                        [29]. In all complexes except in Hg(II) complex of H2TAET, appearance of weak bands assigned to ν(CS) owing to the formation of (SH) group without deprotonation. Based on the above evidence, the two ligands behave as monobasic bidentate through (CN)Th and (CO) groups in both Cd(II) complexes. In Hg(II) complexes, H2TAET acts as dibasic tridentate via the sulphur atom of thiolate (CS), oxygen atom of (CO) and the new azomethine (NC)* group. H2TAAT acts as tridentate through (CN)Th, (CO) and the new azomethine (NC)* group. The positive shift of ν(NN) is owing to the increase in the character of double bond of NN showing the decrease of electron density through donation to metal ion and is a good evidence of coordination via azomethine nitrogen atom. In all complexes, appearance of bands in the regions 426–435 cm−1 and 464–531 cm−1 assigned to ν(MN) and ν(MO), respectively supports the proposed modes of coordination. Also, the spectra of complexes exhibit bands at ≈3389–3509, 873–860, and ≈565cm−1 referred to the coordinated water vibrations (Δ(H2O), pr (H2O) and Pw (H2O), respectively.
+
+The 1H NMR and 13C spectra of H2TAET, H2TAAT and both complexes have been recorded in d6-DMSO. The spectra of the H2TAET (Fig. 3
+                        ) revealing signals at δ 7.87, 9.23 and 9.9 ppm are assigned to (NH)a, (NH)b and (NH)c respectively, which disappears on addition of D2O. The signals at δ = 6.31, 6.89 and 3.3 ppm are attributed to CH of thiazole ring, (NH2) and (CH2) which are attached to the ring respectively. The signals owing to CH2 protons of ethyl group appeared as a quartet at 3.48 ppm (q, J = 4, 2H) and those due to CH3 protons as a triplet at 1.02 ppm (t, J = 6.96, 3H).
+
+The 1H NMR spectrum of the H2TAAT represented in Fig. 4
+                         shows signals at δ 8.10, 9.35 and 9.94 ppm are assigned to (NH)a, (NH)b and (NH)c respectively, which disappears on addition of D2O. The signals at δ = 3.31, 6.30 and 6.84 ppm are revealing to (CH2) protons attached to the ring, (CH) group of thiazole ring and NH2, respectively. The quartet signal at 4.36 ppm while the doublet at 5.03 ppm are assignable to the protons of CH2 (NHCH2) and CH2 (CHCH2), respectively. Moreover, the sextet signal centred at 5.78 ppm is assigned to the protons of the allyl CH group (ddd, J = 5.14, H).
+
+In the 1H NMR spectra of Cd(II) complexes and Hg(II) of H2TAAT complexes (Figs. 5–7
+                        ), the disappearance of the signal assignable to (NH)a and (NH)b protons and the appearance of SH proton at new signal at δ 10.18 and 10.21 ppm confirm the deprotonation of ligands without involving this S atom in coordination. But, in the 1H NMR spectrum of Hg(II) complex of H2TAET, the signal attributed to (NH)b proton disappeared with the presence of signal at 10.49 due to SH group. Also, the shift of the signal owing to thiazole proton supports the coordination through (CN)Th. The conclusions drawn from this study lend further support to the mode of bonding discussed in IR spectra under study (Fig. 8).
+                        
+                        
+                     
+
+The important peaks of 13C NMR of ligands and its diamagnetic complexes are listed in Table 3
+                        . From the 13C NMR data of the complexes, [Cd(HTAET)(H2O)Cl](H2O)2 and [Cd(HTAAT)(H2O)Cl]H2O, the signals for the (CSH), (CN)th, and (CO) carbon led to an upfield shift compared to the corresponding free ligand. On other hand for [Hg(TAET)(H2O)2]2 complex the signals for the (CSH) carbon and (CN)th carbon led to an up field shift compared to the free ligand. Finally for the complex [Hg(H2TAAT)(H2O)Cl2] the signals for the (CSH) carbon, (CN)th carbon and (CO) carbon showed an up field shift on complexation compared with the corresponding free ligand.
+
+Thermogravimetric analysis data (TGA) for Cd (II) complexes were shown in Table 4
+                        . One of the aims in the TGA data showed that the associated molecules of water within complexes support the elemental analyses. The data represented in Table 4 indicate that water of crystallization has been lost in temperature range 75–147 °C. Also, the TG thermograms for the same complexes represented a high part of residual including MO with carbon revealing a good stability of the formed chelates.
+
+The influences of the structural properties of chelating agent on the thermal behaviour of complexes, the order (n) and the heat of activation Ea of the different decomposition stages have been determined from the TG and DTG by Coats–Redfern [30] (Figs. 9 and 10
+                        ) and Horowitz–Metzger [31] (Figs. 11 and 12).
+                        
+                        
+                     
+
+The 
+                           
+                              
+                                 (
+                                 
+                                    
+                                       
+                                          d
+                                          α
+                                       
+                                       
+                                          d
+                                          t
+                                       
+                                    
+                                 
+                                 )
+                              
+                           
+                         rate of thermal decomposition expressed by the Arrhenius equation has the following form:
+                           
+                              (1)
+                              
+                                 
+                                    
+                                       
+                                          d
+                                          α
+                                       
+                                       
+                                          d
+                                          t
+                                       
+                                    
+                                    =
+                                    A
+                                    exp
+                                    
+                                       (
+                                       
+                                          −
+                                          
+                                             
+                                                
+                                                   E
+                                                   a
+                                                
+                                             
+                                             
+                                                R
+                                                T
+                                             
+                                          
+                                       
+                                       )
+                                    
+                                    g
+                                    (
+                                    α
+                                    )
+                                 
+                              
+                           
+                        where (A) is the Arrhenius pre-exponential factor; (Ea) is the activation energy; (R) is the gas constant and g(α) is the differential conversion factor and equal (1-α)n where n is the reaction order, assumed to remain constant through the reaction. The degradation of metal complexes was shown as firs t order reaction. Under this assumption the integration of Equation (1) leads to:
+                           
+                              (2)
+                              
+                                 
+                                    ln
+                                    (
+                                    1
+                                    −
+                                    α
+                                    )
+                                    =
+                                    −
+                                    
+                                       A
+                                       β
+                                    
+                                    
+                                       
+                                          
+                                             ∫
+                                             
+                                                
+                                                   T
+                                                   o
+                                                
+                                             
+                                             T
+                                          
+                                          
+                                             Exp
+                                             
+                                                (
+                                                
+                                                   −
+                                                   
+                                                      
+                                                         
+                                                            E
+                                                            a
+                                                         
+                                                      
+                                                      
+                                                         RT
+                                                      
+                                                   
+                                                
+                                                )
+                                             
+                                             dT
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+From Equation (2), the degradation kinetic parameters A and Ea can be determined. Thermodynamic parameters can be determined by the Eyring equation [32]. From results obtained in Tables 5 and 6, the following remarks showed that:
+                           
+                              i.
+                              Decomposition steps showed a best fit of n = 1.
+
+A (+) sign of activation enthalpy, ΔH* shows that the decomposition steps were endothermic processes.
+
+The activation energy Ea of complexes increases, indicating the higher stability of the remaining part due to their covalent bond character [33] and the decrease of Ea on going from [Cd(HTAET)(H2O)Cl](H2O)2 complex to [Cd(HTAAT)(H2O)Cl](H2O) complex reflects the greater thermal stability of the first one than the second complex as Ea depends on the strength of (O→M←N).
+
+The (+) sign of ΔG* for the complexes reveals that all the decomposition stages were nonspontaneous processes.
+                                 
+                              
+
+In our screening of antimicrobial activity it has been shown that the studies must lead to an overall comparison of activities between the H2TAET, H2TAAT and their complexes so that the mechanism of their activities can be understood. The experimental antifungal activity data (Table 7
+                           ) indicate that H2TAET, H2TAAT and their complexes show an appreciable activity against C. albicans. DMSO control has shown a negligible activity as compared to H2TAET, H2TAAT and their complexes.
+
+[Hg(TAET)(H2O)2]2 showed a highly good activity (92.6%) compared with the rest of the complexes. From the data, we also observed that complexes are more active than the corresponding ligands. The toxicity of complexes was related to the strength of metal–ligand bond, besides other factors such as the size of the cation [34]. The action mode of the compounds may involve formation of a hydrogen bond via the azomethine group (>CN) with the active centres of cell constituents resulting in interferences with the normal cell process.
+
+H2TAET, H2TAAT and their complexes, standard drug Ampicillin and DMSO solvent were screened separately for their antibacterial activity vs E. coli and S. aureus. Activity of complexes has been compared to activity of a standard antibiotic Ampicillin and % Activity Index for the complexes has been calculated. The antibacterial results (Table 7) suggest that [Cd(HTAAT)(H2O)Cl]H2O, [Cd(HTAET)(H2O)Cl](H2O)2 and [Hg(TAET)(H2O)2]2 show highest activity against both bacteria [26,34] as compared to the standard drug. The complexes show higher antibacterial activity than their corresponding ligands.
+
+The complexes with negative results showed inability of it to diffuse into the Gram-negative bacteria cell membranes and hence unable to interfere its biological activity and inactivated by unknown cellular mechanism i.e. bacterial enzymes.
+
+The (+) results suggested the highest diffusion of complexes into the bacterial cells and this complexes with positive results are able to kill the bacterium as shown by the zones of inhibition of bacterial growth [34].
+
+Increasing effect of the radical-scavenging of phenolic acids and their ester derivatives (Table 8
+                           ) and the antioxidant capacity assays (DPPH 2- diphenyl-1-picrylhydrazyl radical; ABTS 2,2′-azino-bis(3-ethylbenzthiazoline-6-sulphonic acid) were used. The DPPH method was done in a homogeneous phase with the advantage of establishing a real ranking hierarchy of antioxidant activity of electron- or H-donating agents, where DPPH method was not affected by any factors and this leads to interfere with another model systems, as metal chelation or partitioning abilities [35,36]. The generation of the ABTS radical cation is a basis of other spectrophotometric methods that are currently being used for the calculations of antioxidant activity in solutions of pure substances, mixtures and beverages [37]. Where H2TAET, H2TAAT and [Cd(HTAAT)(H2O)Cl]H2O showed the best activity which are near to standard Ascorbic acid comparing to the ABTS•+ radical-scavenging activity.
+
+The data obtained with DPPH radical revealed that all compounds showed good antioxidant capacity except [Cd(HTAET)(H2O)Cl](H2O)2 which showed low activity while [Hg(TAET)(H2O)2]2 showed moderate activity, as shown in Table 8. The effective anticancer drug, “5-fluorouracil” has been used as standard.
+
+
+                           In vitro cytotoxic tests were conducted utilizing all the prepared compounds against human tumour cell line MCF7 normal cell line by means of a colorimetric assay (MTT assay) that measures mitochondrial dehydrogenase activity as an indication of cell viability. The activities corresponding to viability of growth cell cancer are shown in Table 9
+                           . In parallel, the effectiveness of spread used anticancer drug, “5-fluorouracil” has been used as standard. H2TAAT and its complexes covered a high range of activity with viability (%) near the standard. 5-Florouracil indicated that these compounds exhibited anti-tumour activity vs. cell lines without causing significant damage to normal cells. H2TAET and its complexes showed low potential activity. It means that the chemical structure of compounds is important to express biological activity of the complex and can be essential in designing and synthesizing anti-cancer drugs.
+
+@&#CONCLUSION@&#
+
+The addition of 2-(2-amino thiazole -4-yl acetohydrazide) to both ethyl isothiocyanate (H2TAET) and allyl isothiocyanate (H2TAAT) has shown a versatility that leads to a rise in the complexes with metal chlorides by various stoichiometries in spite of similar experimental conditions. The experimental and theoretical frequency results of ligands are comparable. The calculated HOMO-LUMO energies gap confirmed the possibility of charge transfer. Also, the data of thermal degradation of the solid complexes were shown by Coats–Redfern and Horowitz–Metzger methods. [Cd(HTAAT)(H2O)Cl]H2O, [Cd(HTAET)(H2O)Cl](H2O)2 and [Hg(TAET)(H2O)2]2 showed high antibacterial activity while [Hg(TAET)(H2O)2]2 showed the highest antifungal activity. The present results are of significance, considering the pharmacological and antimicrobial activity of thiosemicarbazides; therefore, compound [Hg(TAET)(H2O)2]2 can be used as a promising antimicrobial activity agent.
+
+Supplementary data associated with this article can be found in the online version at doi:10.1016/j.ejbas.2015.09.005.
+
+The following is the supplementary data to this article:
+                        
+                           Appendix S1
+                           
+                              Tables S1–S13.
+                           
+                           
+                        
+                     
+                  
+
+@&#REFERENCES@&#
+

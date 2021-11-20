@@ -1,0 +1,3588 @@
+@&#MAIN-TITLE@&#Stabilized space–time finite elements for high-definition simulation of packed bed chromatography
+
+@&#HIGHLIGHTS@&#
+
+
+               
+                  
+                  
+                     
+                        
+                           
+                           A space–time finite element method has been tailored to multidomain mass transfer problems.
+
+
+                        
+                        
+                           
+                           Packed bed chromatography is simulated in full spatial resolution.
+
+
+                        
+                        
+                           
+                           Different binding models and boundary conditions are implemented.
+
+
+                        
+                        
+                           
+                           The solver is parallelized to solve realistic problems on high performance computers.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Stabilized space–time finite elements
+
+Multidomain
+
+Multi-physics
+
+Advection–diffusion–reaction
+
+@&#ABSTRACT@&#
+
+
+                  We present a finite element scheme for spatially resolved simulations of fluid flow and mass transfer in chromatography columns. Packed bed chromatography is an important unit operation for the purification of product molecules in biopharmaceutical industry. The problem combines different challenges arising from advection dominance, stiffness due to the presence of reaction terms, and from the size of the resulting linear equation systems. We show that our stabilized space–time finite element method can handle these difficulties adequately and solve test problems efficiently.
+               
+
+@&#INTRODUCTION@&#
+
+Packed bed column liquid chromatography is among the most important unit operations in biotechnology and chemical process engineering [1]. It is commonly applied for separating and purifying target molecules, e.g., proteins for pharmaceutical use, from fermentation broth. An aqueous solution containing a mixture of molecules is pumped through the cylindrical chromatography column which is filled with porous particles (beads). While mass transport through the interstitial volume between the beads is governed by advection and diffusion, the solute molecules can also diffuse into the beads. The inner surfaces of the beads are functionalized with chemical groups to which the solute molecules can bind. The desired separation is facilitated by varying binding affinities of different molecule species in the mixture. Consequently, these species have different retention times, i.e. leave the column at different times [2,3] (Fig. 1
+                     ).
+
+For numerical process analysis and optimization of packed bed chromatography, most established algorithms employ rather simple one-dimensional models [4,5]. In spite of complex packing geometries, these models rely on homogeneity assumptions, considering concentration gradients only along the column axial and in bead radial directions. Such simplified models generally produce proper numerical predictions for typical laboratory and industrial-scale applications with columns of up to several liters of volume. However, recently miniaturized chromatography columns on the micro-liter scale are increasingly utilized for investigating and optimizing industrial chromatography processes. For these scale-down applications, the prevalent one-dimensional models are not suitable, since spatial inhomogeneities due to channeling and wall influence become dominant.
+
+We have developed a finite element method for simulating separation processes in randomly packed micro-columns. Such problems are strongly advection dominated and stiff due to low diffusivities and complex reactive terms, which describe the binding of solute molecules to the functionalized inner bead surfaces. Moreover, realistic-size applications that require 3D simulations can involve 104 and more beads, which result in complicated geometries and in 108 elements minimum for a reasonable spatial resolution. Thus, besides accurate numerical schemes, a special focus is required on computational efficiency and parallel scalability.
+
+We apply a stabilized fully implicit space–time finite element method to solve the described problems. The approach relies on a piecewise linear approximation with Galerkin least squares stabilization and uses a discontinuous-in-time ansatz for transient problems. This allows us to use a classical time marching procedure and provides a simple formulation while precluding stability problems. Parallel computations on distributed memory clusters are facilitated by a two-level mesh segmentation which is obtained from existing graph-partitioners. We present 2D and 3D test cases to verify the implemented method and to underline the suitability of our approach for realistic problem settings.
+
+Spatially resolved simulation of packed bed chromatography involves two steps:
+                        
+                           1.
+                           solving the steady-state incompressible flow problem,
+
+solving the transient mass transport and the adsorption problem.
+
+Fluid flow in the interstitial volume between the beads is in the low Reynolds number regime (typically 
+                           Re
+                           <
+                           0.1
+                        ). Hence, this region is governed by Stokes equations describing steady-state flow of an incompressible fluid by means of conservation of mass and momentum (see, e.g., [6]):
+                           
+                              (1)
+                              
+                                 ∇
+                                 ·
+                                 σ
+                                 =
+                                 0
+                                 
+                                 with
+                                 
+                                 σ
+                                 =
+                                 −
+                                 μ
+                                 (
+                                 ∇
+                                 u
+                                 +
+                                 ∇
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 )
+                                 +
+                                 p
+                                 I
+                                 ,
+                              
+                           
+                        
+                        
+                           
+                              (2)
+                              
+                                 ∇
+                                 ·
+                                 u
+                                 =
+                                 0
+                                 
+                                 in
+                                 
+                                 
+                                    
+                                       Ω
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 .
+                              
+                           
+                        Here 
+                           σ
+                         is the fluid stress tensor, μ denotes the dynamic viscosity and Ω
+                        1 refers to the interstitial column volume. Appropriate boundary conditions are no-slip on the cylinder wall and bead surfaces, along with a prescribed normal velocity field at the inlet and vanishing normal stresses at the outlet:
+                           
+                              (3)
+                              
+                                 u
+                                 =
+                                 0
+                                 
+                                 on
+                                 
+                                 
+                                    
+                                       Γ
+                                    
+                                    
+                                       wall
+                                    
+                                 
+                                 
+                                 ∪
+                                 
+                                 
+                                    
+                                       Γ
+                                    
+                                    
+                                       surf
+                                    
+                                 
+                                 ,
+                              
+                           
+                        
+                        
+                           
+                              (4)
+                              
+                                 u
+                                 =
+                                 U
+                                 
+                                 on
+                                 
+                                 
+                                    
+                                       Γ
+                                    
+                                    
+                                       in
+                                    
+                                 
+                                 ,
+                              
+                           
+                        
+                        
+                           
+                              (5)
+                              
+                                 n
+                                 ·
+                                 σ
+                                 =
+                                 0
+                                 
+                                 on
+                                 
+                                 
+                                    
+                                       Γ
+                                    
+                                    
+                                       out
+                                    
+                                 
+                                 ,
+                              
+                           
+                        with 
+                           ∂
+                           
+                              
+                                 Ω
+                              
+                              
+                                 1
+                              
+                           
+                           =
+                           
+                              
+                                 Γ
+                              
+                              
+                                 in
+                              
+                           
+                           ∪
+                           
+                              
+                                 Γ
+                              
+                              
+                                 out
+                              
+                           
+                           ∪
+                           
+                              
+                                 Γ
+                              
+                              
+                                 wall
+                              
+                           
+                           ∪
+                           
+                              
+                                 Γ
+                              
+                              
+                                 surf
+                              
+                           
+                        .
+
+Transport and binding of solute molecules in the packed bed are described in terms of a multidomain formulation, because the problem comprises different physical phenomena in different parts of the computational domain (Fig. 2
+                        ). While the interstitial volume is governed by an advective–diffusive transport problem, we have a coupled diffusion–reaction problem inside the beads. The diffusion equation incorporates a sink term which accounts for the effect of adsorption and is directly influenced by the respective binding model. Such models comprise ordinary differential equations and potentially algebraic constraints. In this paper, we use the customary Langmuir [7] and steric mass action (SMA) [8] models, but our formulation allows us to employ any other adsorption model as well.
+
+For a system consisting of N chemical species, the governing equations for mobile phase concentrations c
+                        
+                           i
+                         and stationary phase concentrations q
+                        
+                           i
+                         of species i read (where i=1 refers to the buffer salt component in the case of the SMA model) as follows:
+
+
+                        Domain Ω
+                        1 – interstitial volume – advection and diffusion:
+                           
+                              (6)
+                              
+                                 
+                                    
+                                       ∂
+                                       
+                                          
+                                             c
+                                          
+                                          
+                                             1
+                                          
+                                          
+                                             i
+                                          
+                                       
+                                    
+                                    
+                                       ∂
+                                       t
+                                    
+                                 
+                                 +
+                                 (
+                                 u
+                                 ·
+                                 ∇
+                                 )
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       1
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 
+                                    
+                                       ∇
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 
+                                 in
+                                 
+                                 
+                                    
+                                       Ω
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ,
+                              
+                           
+                        where u is the fluid velocity field as determined by solving Stokes equations in the first step, and D
+                        1 is the molecular diffusivity. The transported scalar c
+                        1 is the concentration of solute molecules in the surrounding fluid. For better readability, we drop from here on the superscript i on all concentrations (c and q) and species-dependent coefficients (e.g., D, k
+                        
+                           f
+                        , q
+                        
+                           m
+                        , k
+                        
+                           a
+                        , k
+                        
+                           d
+                        , ν, σ), unless a differentiation is necessary.
+
+
+                        Domain Ω
+                        2 – beads – diffusion and adsorption:
+                           
+                              (7)
+                              
+                                 ε
+                                 
+                                    
+                                       ∂
+                                       
+                                          
+                                             c
+                                          
+                                          
+                                             2
+                                          
+                                       
+                                    
+                                    
+                                       ∂
+                                       t
+                                    
+                                 
+                                 +
+                                 (
+                                 1
+                                 −
+                                 ε
+                                 )
+                                 
+                                    
+                                       ∂
+                                       q
+                                    
+                                    
+                                       ∂
+                                       t
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 ε
+                                 
+                                    
+                                       ∇
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 
+                                 in
+                                 
+                                 
+                                    
+                                       Ω
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 ,
+                              
+                           
+                        where D
+                        2 is the effective diffusivity, and ε is the bead porosity. Two different binding models describing the exchange between liquid and solid phase are implemented:
+
+
+                        Langmuir model:
+                           
+                              (8)
+                              
+                                 
+                                    
+                                       ∂
+                                       q
+                                    
+                                    
+                                       ∂
+                                       t
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       k
+                                    
+                                    
+                                       a
+                                    
+                                 
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 
+                                    
+                                       q
+                                    
+                                    
+                                       m
+                                    
+                                 
+                                 (
+                                 
+                                    1
+                                    −
+                                    
+                                       
+                                          ∑
+                                       
+                                       
+                                          j
+                                          =
+                                          1
+                                       
+                                       
+                                          N
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             
+                                                q
+                                             
+                                             
+                                                j
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                q
+                                             
+                                             
+                                                m
+                                             
+                                             
+                                                j
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 )
+                                 +
+                                 
+                                    
+                                       k
+                                    
+                                    
+                                       d
+                                    
+                                 
+                                 q
+                                 =
+                                 0
+                              
+                           
+                        
+                        Steric mass action (SMA) model:
+                           
+                              (9)
+                              
+                                 
+                                    
+                                       q
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       ∑
+                                    
+                                    
+                                       j
+                                       =
+                                       2
+                                    
+                                    
+                                       N
+                                    
+                                 
+                                 
+                                    
+                                       ν
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 
+                                    
+                                       q
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 −
+                                 Λ
+                                 =
+                                 0
+                                 
+                                 (
+                                 electro
+                                 -
+                                 neutrality
+                                 
+                                 constraint
+                                 )
+                              
+                           
+                        
+                        
+                           
+                              (10)
+                              
+                                 
+                                    
+                                       ∂
+                                       q
+                                    
+                                    
+                                       ∂
+                                       t
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       k
+                                    
+                                    
+                                       a
+                                    
+                                 
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             
+                                                
+                                                   q
+                                                
+                                                
+                                                   ¯
+                                                
+                                             
+                                          
+                                          
+                                             1
+                                          
+                                       
+                                       )
+                                    
+                                    
+                                       ν
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       k
+                                    
+                                    
+                                       d
+                                    
+                                 
+                                 q
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             c
+                                          
+                                          
+                                             2
+                                          
+                                          
+                                             1
+                                          
+                                       
+                                       )
+                                    
+                                    
+                                       ν
+                                    
+                                 
+                                 =
+                                 0
+                                 
+                                 for
+                                 
+                                 i
+                                 =
+                                 2
+                                 .
+                                 .
+                                 N
+                              
+                           
+                        
+                        
+                           
+                              (11)
+                              
+                                 where
+                                 
+                                 
+                                    
+                                       
+                                          
+                                             q
+                                          
+                                          
+                                             ¯
+                                          
+                                       
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       q
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       ∑
+                                    
+                                    
+                                       j
+                                       =
+                                       2
+                                    
+                                    
+                                       N
+                                    
+                                 
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 
+                                    
+                                       q
+                                    
+                                    
+                                       j
+                                    
+                                 
+                              
+                           
+                        Here k
+                        
+                           a
+                         and k
+                        
+                           d
+                         are the adsorption and desorption coefficients, respectively, q
+                        
+                           m
+                         is the maximum binding capacity in the Langmuir model, 
+                           Λ
+                         is the ionic capacity in the SMA model, σ is the steric factor, and ν is the characteristic charge of the molecules.
+
+Both binding models allow mutual interactions between different chemical species. However, while the Langmuir model can describe a single component system, the SMA model always relies on an additional salt component which regulates the binding affinities of the other molecules. The SMA model involves highly non-linear reaction terms and an algebraic constraint (Eq. (9)), which makes it generally stiff.
+
+
+                        Boundary conditions: Most boundary conditions are straightforward (inlet, outlet, and column wall). However, depending on the modeled system, either a diffusive flux continuity or an infinitely thin film of stagnant fluid may be assumed at the bead surfaces. Both options can be treated with our method. The conditions are the following:
+
+Prescribed concentrations at the inlet:
+                           
+                              (12)
+                              
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 (
+                                 t
+                                 )
+                                 =
+                                 C
+                                 (
+                                 t
+                                 )
+                                 
+                                 on
+                                 
+                                 
+                                    
+                                       Γ
+                                    
+                                    
+                                       in
+                                    
+                                 
+                              
+                           
+                        Vanishing normal diffusive flux at the outlet and vanishing normal total flux at the column wall 
+                           (
+                           where
+                           
+                           u
+                           ≡
+                           0
+                           )
+                        :
+                           
+                              (13)
+                              
+                                 n
+                                 ·
+                                 ∇
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 =
+                                 0
+                                 
+                                 on
+                                 
+                                 
+                                    
+                                       Γ
+                                    
+                                    
+                                       out
+                                    
+                                 
+                                 ∪
+                                 
+                                    
+                                       Γ
+                                    
+                                    
+                                       wall
+                                    
+                                 
+                              
+                           
+                        Flux continuity across bead surfaces:
+                           
+                              (14)
+                              
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ·
+                                 (
+                                 −
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ∇
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 )
+                                 =
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 ·
+                                 (
+                                 −
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 ε
+                                 ∇
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 )
+                                 
+                                 on
+                                 
+                                 
+                                    
+                                       Γ
+                                    
+                                    
+                                       surf
+                                    
+                                 
+                                 ,
+                              
+                           
+                        or infinitely thin film diffusion across bead surfaces:
+                           
+                              (15)
+                              
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ·
+                                 (
+                                 −
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ∇
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 )
+                                 =
+                                 
+                                    
+                                       k
+                                    
+                                    
+                                       f
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 )
+                                 
+                                 on
+                                 
+                                 
+                                    
+                                       Γ
+                                    
+                                    
+                                       surf
+                                       ,
+                                       1
+                                    
+                                 
+                                 ,
+                              
+                           
+                        
+                        
+                           
+                              (16)
+                              
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 ·
+                                 (
+                                 −
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 ε
+                                 ∇
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 )
+                                 =
+                                 
+                                    
+                                       k
+                                    
+                                    
+                                       f
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 )
+                                 
+                                 on
+                                 
+                                 
+                                    
+                                       Γ
+                                    
+                                    
+                                       surf
+                                       ,
+                                       2
+                                    
+                                 
+                                 ,
+                              
+                           
+                        where k
+                        
+                           f
+                         is a film mass transfer coefficient, and 
+                           
+                              
+                                 Γ
+                              
+                              
+                                 surf
+                                 ,
+                                 1
+                              
+                           
+                         and 
+                           
+                              
+                                 Γ
+                              
+                              
+                                 surf
+                                 ,
+                                 2
+                              
+                           
+                         refer to the bead surface seen from subdomains 1 and 2, respectively. The continuity condition (14) automatically ensures 
+                           
+                              
+                                 c
+                              
+                              
+                                 1
+                              
+                           
+                           =
+                           
+                              
+                                 c
+                              
+                              
+                                 2
+                              
+                           
+                         at the domain interface for all times 
+                           t
+                           >
+                           
+                              
+                                 t
+                              
+                              
+                                 0
+                              
+                           
+                        , provided that the computation is started with physically correct initial conditions 
+                           
+                              
+                                 c
+                              
+                              
+                                 1
+                              
+                           
+                           =
+                           
+                              
+                                 c
+                              
+                              
+                                 2
+                              
+                           
+                         at 
+                           t
+                           =
+                           
+                              
+                                 t
+                              
+                              
+                                 0
+                              
+                           
+                        . On the other hand, the film diffusion BC (15) allows differing concentrations at both sides of the interface. Hence, the discretization scheme must account for such jumps in the solution.
+
+The steady-state Stokes flow problem in subdomain 
+                           Ω
+                           =
+                           
+                              
+                                 Ω
+                              
+                              
+                                 1
+                              
+                           
+                         ((Eqs. (1) and 2)) is solved with a stabilized Galerkin finite element method on simplex elements (P1P1). The corresponding discrete weak formulation reads as follows:
+
+Find 
+                           (
+                           
+                              
+                                 v
+                              
+                              
+                                 h
+                              
+                           
+                           ,
+                           
+                              
+                                 p
+                              
+                              
+                                 h
+                              
+                           
+                           )
+                           ∈
+                           
+                              
+                                 S
+                              
+                              
+                                 h
+                              
+                           
+                           ×
+                           
+                              
+                                 Q
+                              
+                              
+                                 h
+                              
+                           
+                         such that for all 
+                           (
+                           
+                              
+                                 w
+                              
+                              
+                                 h
+                              
+                           
+                           ,
+                           
+                              
+                                 q
+                              
+                              
+                                 h
+                              
+                           
+                           )
+                           ∈
+                           
+                              
+                                 V
+                              
+                              
+                                 h
+                              
+                           
+                           ×
+                           
+                              
+                                 Q
+                              
+                              
+                                 h
+                              
+                           
+                        :
+                           
+                              (17)
+                              
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       Ω
+                                    
+                                 
+                                 ∇
+                                 
+                                    
+                                       w
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 :
+                                 μ
+                                 ∇
+                                 
+                                    
+                                       v
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 
+                                 d
+                                 Ω
+                                 +
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       Ω
+                                    
+                                 
+                                 
+                                    
+                                       w
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 ·
+                                 ∇
+                                 
+                                    
+                                       p
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 
+                                 d
+                                 Ω
+                                 =
+                                 0
+                                 ,
+                              
+                           
+                        
+                        
+                           
+                              (18)
+                              
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       Ω
+                                    
+                                 
+                                 
+                                    
+                                       v
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 ·
+                                 ∇
+                                 
+                                    
+                                       q
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 
+                                 d
+                                 Ω
+                                 −
+                                 
+                                    
+                                       ∑
+                                    
+                                    
+                                       E
+                                    
+                                 
+                                 
+                                    
+                                       τ
+                                    
+                                    
+                                       E
+                                    
+                                 
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Ω
+                                          
+                                          
+                                             E
+                                          
+                                       
+                                    
+                                 
+                                 ∇
+                                 
+                                    
+                                       q
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 ·
+                                 ∇
+                                 
+                                    
+                                       p
+                                    
+                                    
+                                       h
+                                    
+                                 
+                                 
+                                 d
+                                 
+                                    
+                                       Ω
+                                    
+                                    
+                                       E
+                                    
+                                 
+                                 =
+                                 0
+                                 .
+                              
+                           
+                        Herein, 
+                           
+                              
+                                 S
+                              
+                              
+                                 h
+                              
+                           
+                         and Q
+                        
+                           h
+                         are the suitable finite dimensional interpolation spaces for velocities and pressure, respectively. Note that members of 
+                           
+                              
+                                 S
+                              
+                              
+                                 h
+                              
+                           
+                         must satisfy the Dirichlet boundary conditions, i.e. in our case the inlet velocity profile. The test function space for the pressure is identical to its solution space Q
+                        
+                           h
+                        , whereas test functions for velocities are required to vanish on Dirichlet boundaries.
+
+The stabilization term 
+                           
+                              
+                                 ∑
+                              
+                              
+                                 E
+                              
+                           
+                           …
+                         is a sum of element-wise contributions to prevent oscillations which are due to our equal-order discretization that does not satisfy the LBB condition [9]. There are different formulations available for the stabilization parameter 
+                           
+                              
+                                 τ
+                              
+                              
+                                 E
+                              
+                           
+                         that generally include some heuristics.
+
+Detailed derivations and explanations of the stabilized Galerkin method for the Stokes problem can be found in the literature [10–13].
+
+For discretization of the time-dependent mass transfer equations (Eqs. (6)–(11)) we apply a stabilized first-order space–time finite element scheme [14–16]. The space–time domain is subdivided into so-called space–time slabs. Each space–time slab has to be solved in consecutive order, as in a typical time-marching scheme. For time discretization, we use piecewise linear shape functions that are not continuous across space–time slab interfaces. Temporal continuity is weakly enforced in the variational formulation.
+
+Stabilization is required for the usually advection-dominant transport problem in the interstitial column volume. The coupled diffusion–adsorption problem inside the porous beads may also need stabilization, if the reaction terms become dominant [17,18]. However, even for realistic parameter settings the problem is typically just at the edge of reaction-dominance and even without stabilization no spurious oscillations have been observed. Error analyses of similar finite element schemes for the advection–diffusion–reaction problem can, e.g., be found in [19,20].
+
+The complete mass transfer problem is described by the following weak forms:
+
+
+                        Domain Ω
+                        1: For time step n with space–time slab 
+                           
+                              
+                                 Q
+                              
+                              
+                                 n
+                              
+                           
+                           =
+                           
+                              
+                                 Ω
+                              
+                              
+                                 1
+                              
+                           
+                           ×
+                           ]
+                           
+                              
+                                 t
+                              
+                              
+                                 n
+                              
+                           
+                           ,
+                           
+                              
+                                 t
+                              
+                              
+                                 n
+                                 +
+                                 1
+                              
+                           
+                           [
+                         over the spatial domain Ω
+                        1, find 
+                           
+                              
+                                 c
+                              
+                              
+                                 1
+                              
+                              
+                                 h
+                              
+                           
+                           ∈
+                           
+                              
+                                 S
+                              
+                              
+                                 D
+                              
+                              
+                                 h
+                              
+                           
+                         s.t. 
+                           ∀
+                           
+                              
+                                 w
+                              
+                              
+                                 h
+                              
+                           
+                           ∈
+                           
+                              
+                                 S
+                              
+                              
+                                 0
+                              
+                              
+                                 h
+                              
+                           
+                         (where S
+                        
+                           h
+                        
+                        
+                           D
+                         is the space of functions satisfying the Dirichlet BC, and S
+                           h
+                        
+                        0 is the linear space whose elements vanish on the Dirichlet nodes):
+                           
+                              (19)
+                              
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Q
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                 
+                                 w
+                                 (
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                       ,
+                                       t
+                                    
+                                 
+                                 +
+                                 (
+                                 u
+                                 ·
+                                 ∇
+                                 )
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 )
+                                 
+                                 
+                                    
+                                       dQ
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Q
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                 
+                                 ∇
+                                 w
+                                 ·
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ∇
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 
+                                 
+                                    
+                                       dQ
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 
+                                 +
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Ω
+                                          
+                                          
+                                             1
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       w
+                                    
+                                    
+                                       +
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                    
+                                       +
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                    
+                                       −
+                                    
+                                 
+                                 )
+                                 
+                                 d
+                                 
+                                    
+                                       Ω
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       ∑
+                                    
+                                    
+                                       E
+                                    
+                                 
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Q
+                                          
+                                          
+                                             E
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       τ
+                                    
+                                    
+                                       E
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       w
+                                    
+                                    
+                                       ,
+                                       t
+                                    
+                                 
+                                 +
+                                 (
+                                 u
+                                 ·
+                                 ∇
+                                 )
+                                 w
+                                 −
+                                 ∇
+                                 ·
+                                 (
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ∇
+                                 w
+                                 )
+                                 )
+                                 (
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                       ,
+                                       t
+                                    
+                                 
+                                 +
+                                 (
+                                 u
+                                 ·
+                                 ∇
+                                 )
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 −
+                                 ∇
+                                 ·
+                                 (
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ∇
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 )
+                                 )
+                                 
+                                 
+                                    
+                                       dQ
+                                    
+                                    
+                                       E
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 =
+                                 RHS
+                              
+                           
+                        This equation has to be solved for each chemical species i (c
+                        
+                           i
+                        
+                        1). The superscript h, which denotes members of finite dimensional subspaces (in terms of piecewise linear polynomials), has been omitted for readability.
+
+The first integral describes local and advective contributions, the second integral corresponds to the diffusive term. The third integral weakly enforces temporal continuity across space–time slab interfaces (where 
+                           
+                              
+                                 c
+                              
+                              
+                                 1
+                              
+                              
+                                 −
+                              
+                           
+                         and 
+                           
+                              
+                                 c
+                              
+                              
+                                 1
+                              
+                              
+                                 +
+                              
+                           
+                         are the different solution values when approaching the space–time slab interface from below and above, respectively). The sum over all elements refers to Galerkin/least squares type stabilization, which is consistent in the sense that any solution to the strong form (6) is also a solution to the stabilized weak form. The right-hand side of this equation depends on the boundary condition used at the domain interface:
+
+
+                        Flux continuity:
+                           
+                              (20)
+                              
+                                 RHS
+                                 =
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Γ
+                                          
+                                          
+                                             surf
+                                          
+                                       
+                                    
+                                 
+                                 w
+                                 
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 ·
+                                 (
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 ε
+                                 ∇
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 )
+                                 
+                                 ds
+                              
+                           
+                        
+                        Thin film diffusion:
+                           
+                              (21)
+                              
+                                 RHS
+                                 =
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Γ
+                                          
+                                          
+                                             surf
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    w
+                                 
+                                 
+                                 
+                                    k
+                                    
+                                       f
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 )
+                                 
+                                 ds
+                              
+                           
+                        The stabilization parameter 
+                           
+                              
+                                 τ
+                              
+                              
+                                 E
+                              
+                           
+                         depends on the local element Péclet number, which means that it has to be computed separately for each chemical component, because the diffusivities can vary between different species. Moreover, note that in our special case of linear shape functions, the second-order terms 
+                           ∇
+                           ·
+                           (
+                           
+                              
+                                 D
+                              
+                              
+                                 1
+                              
+                           
+                           ∇
+                           w
+                           )
+                         and 
+                           ∇
+                           ·
+                           (
+                           
+                              
+                                 D
+                              
+                              
+                                 1
+                              
+                           
+                           ∇
+                           
+                              
+                                 c
+                              
+                              
+                                 1
+                              
+                           
+                           )
+                         vanish. Hence, the final space–time GLS formulation for linear elements reads in residual form:
+                           
+                              (22)
+                              
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Q
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                 
+                                 w
+                                 (
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                       ,
+                                       t
+                                    
+                                 
+                                 +
+                                 (
+                                 u
+                                 ·
+                                 ∇
+                                 )
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 )
+                                 
+                                 
+                                    
+                                       dQ
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Q
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                 
+                                 ∇
+                                 w
+                                 ·
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ∇
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 
+                                 
+                                    
+                                       dQ
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 
+                                 +
+                                 
+                                    
+                                       ∑
+                                    
+                                    
+                                       E
+                                    
+                                 
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Q
+                                          
+                                          
+                                             E
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       τ
+                                    
+                                    
+                                       E
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       w
+                                    
+                                    
+                                       ,
+                                       t
+                                    
+                                 
+                                 +
+                                 (
+                                 u
+                                 ·
+                                 ∇
+                                 )
+                                 w
+                                 )
+                                 (
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                       ,
+                                       t
+                                    
+                                 
+                                 +
+                                 (
+                                 u
+                                 ·
+                                 ∇
+                                 )
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 )
+                                 
+                                 
+                                    
+                                       dQ
+                                    
+                                    
+                                       E
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 
+                                 +
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Ω
+                                          
+                                          
+                                             1
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       w
+                                    
+                                    
+                                       +
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                    
+                                       +
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                    
+                                       −
+                                    
+                                 
+                                 )
+                                 
+                                 d
+                                 
+                                    
+                                       Ω
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 −
+                                 RHS
+                                 =
+                                 0
+                              
+                           
+                        
+                     
+
+
+                        Domain Ω
+                        2: For space–time slab 
+                           
+                              
+                                 Q
+                              
+                              
+                                 n
+                              
+                           
+                           =
+                           
+                              
+                                 Ω
+                              
+                              
+                                 2
+                              
+                           
+                           ×
+                           ]
+                           
+                              
+                                 t
+                              
+                              
+                                 n
+                              
+                           
+                           ,
+                           
+                              
+                                 t
+                              
+                              
+                                 n
+                                 +
+                                 1
+                              
+                           
+                           [
+                         over the spatial domain Ω
+                        2, find 
+                           
+                              
+                                 c
+                              
+                              
+                                 2
+                              
+                              
+                                 h
+                              
+                           
+                           ,
+                           
+                              
+                                 q
+                              
+                              
+                                 h
+                              
+                           
+                           ∈
+                           
+                              
+                                 S
+                              
+                              
+                                 h
+                              
+                           
+                         s.t. 
+                           ∀
+                           
+                              
+                                 w
+                              
+                              
+                                 h
+                              
+                           
+                           ∈
+                           
+                              
+                                 S
+                              
+                              
+                                 h
+                              
+                           
+                        :
+
+
+                        Transport:
+                           
+                              (23)
+                              
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Q
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                 
+                                 w
+                                 (
+                                 ε
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       2
+                                       ,
+                                       t
+                                    
+                                 
+                                 +
+                                 (
+                                 1
+                                 −
+                                 ε
+                                 )
+                                 
+                                    
+                                       q
+                                    
+                                    
+                                       ,
+                                       t
+                                    
+                                 
+                                 )
+                                 
+                                 
+                                    
+                                       dQ
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Q
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                 
+                                 ∇
+                                 w
+                                 ·
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 ε
+                                 ∇
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 
+                                 
+                                    
+                                       dQ
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 
+                                 +
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Ω
+                                          
+                                          
+                                             2
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       w
+                                    
+                                    
+                                       +
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       2
+                                    
+                                    
+                                       +
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       2
+                                    
+                                    
+                                       −
+                                    
+                                 
+                                 )
+                                 
+                                 d
+                                 
+                                    
+                                       Ω
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Ω
+                                          
+                                          
+                                             2
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       w
+                                    
+                                    
+                                       +
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       q
+                                    
+                                    
+                                       +
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       q
+                                    
+                                    
+                                       −
+                                    
+                                 
+                                 )
+                                 
+                                 d
+                                 
+                                    
+                                       Ω
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 −
+                                 RHS
+                                 =
+                                 0
+                              
+                           
+                        Here we have either
+                           
+                              (24)
+                              
+                                 RHS
+                                 =
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Γ
+                                          
+                                          
+                                             surf
+                                          
+                                       
+                                    
+                                 
+                                 w
+                                 
+                                    
+                                       n
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ·
+                                 (
+                                 
+                                    
+                                       D
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 ∇
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 )
+                                 
+                                 ds
+                              
+                           
+                        or
+                           
+                              (25)
+                              
+                                 RHS
+                                 =
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Γ
+                                          
+                                          
+                                             surf
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       wk
+                                    
+                                    
+                                       f
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       1
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 )
+                                 
+                                 ds
+                              
+                           
+                        
+                        Langmuir model:
+                           
+                              (26)
+                              
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Q
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                 
+                                 w
+                                 (
+                                 
+                                    
+                                       
+                                          q
+                                       
+                                       
+                                          ,
+                                          t
+                                       
+                                    
+                                    −
+                                    
+                                       
+                                          k
+                                       
+                                       
+                                          a
+                                       
+                                    
+                                    
+                                       
+                                          c
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                    
+                                       
+                                          q
+                                       
+                                       
+                                          m
+                                       
+                                    
+                                    (
+                                    
+                                       1
+                                       −
+                                       
+                                          
+                                             ∑
+                                          
+                                          
+                                             j
+                                             =
+                                             1
+                                          
+                                          
+                                             N
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   q
+                                                
+                                                
+                                                   j
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   q
+                                                
+                                                
+                                                   m
+                                                
+                                                
+                                                   j
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    )
+                                    +
+                                    
+                                       
+                                          k
+                                       
+                                       
+                                          d
+                                       
+                                    
+                                    q
+                                 
+                                 )
+                                 
+                                 
+                                    
+                                       dQ
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Ω
+                                          
+                                          
+                                             2
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       w
+                                    
+                                    
+                                       +
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       q
+                                    
+                                    
+                                       +
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       q
+                                    
+                                    
+                                       −
+                                    
+                                 
+                                 )
+                                 
+                                 d
+                                 
+                                    
+                                       Ω
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 =
+                                 0
+                              
+                           
+                        
+                        SMA model:
+                           
+                              (27)
+                              
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Q
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                 
+                                 w
+                                 (
+                                 
+                                    
+                                       
+                                          q
+                                       
+                                       
+                                          1
+                                       
+                                    
+                                    +
+                                    
+                                       
+                                          ∑
+                                       
+                                       
+                                          j
+                                          =
+                                          2
+                                       
+                                       
+                                          N
+                                       
+                                    
+                                    
+                                       
+                                          ν
+                                       
+                                       
+                                          j
+                                       
+                                    
+                                    
+                                       
+                                          q
+                                       
+                                       
+                                          j
+                                       
+                                    
+                                    −
+                                    Λ
+                                 
+                                 )
+                                 
+                                 
+                                    
+                                       dQ
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 =
+                                 0
+                              
+                           
+                        
+                        
+                           
+                              (28)
+                              
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Q
+                                          
+                                          
+                                             n
+                                          
+                                       
+                                    
+                                 
+                                 w
+                                 (
+                                 
+                                    
+                                       q
+                                    
+                                    
+                                       ,
+                                       t
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       k
+                                    
+                                    
+                                       a
+                                    
+                                 
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             
+                                                
+                                                   q
+                                                
+                                                
+                                                   ¯
+                                                
+                                             
+                                          
+                                          
+                                             1
+                                          
+                                       
+                                       )
+                                    
+                                    
+                                       ν
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       k
+                                    
+                                    
+                                       d
+                                    
+                                 
+                                 q
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             c
+                                          
+                                          
+                                             2
+                                          
+                                          
+                                             1
+                                          
+                                       
+                                       )
+                                    
+                                    
+                                       ν
+                                    
+                                 
+                                 )
+                                 
+                                 
+                                    
+                                       dQ
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       
+                                          
+                                             Ω
+                                          
+                                          
+                                             2
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       w
+                                    
+                                    
+                                       +
+                                    
+                                 
+                                 (
+                                 
+                                    
+                                       q
+                                    
+                                    
+                                       +
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       q
+                                    
+                                    
+                                       −
+                                    
+                                 
+                                 )
+                                 
+                                 d
+                                 
+                                    
+                                       Ω
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 =
+                                 0
+                              
+                           
+                        This formulation is sufficient for implementing a residual function for the mass transfer equations and to assemble element and global system matrices. Local linearization is typically required, if a Newton method is used for the non-linear system solution.
+
+Although in this paper our focus is on the mathematical foundations of our method, we aim at computing realistic-size chromatography problems with our solver. Since these can easily involve 108 and more degrees of freedom, adequate parallelization and scalability on high-performance computers is required. This should be accounted for already in early stages of the solver development. Hence, in this section we highlight major implementation details of our code, with a focus on parallelization issues.
+
+In order to solve the non-linear algebraic systems resulting from the space–time discretization, we apply a Newton-Raphson method. The residual and Jacobian matrix are assembled directly from the weak forms (22), (23) and (26)–(28). We apply second-order quadrature rules to evaluate most element-wise integrals exactly for linear shape functions. Finally, the linear systems for the Newton update are solved using a GMRES method which performs well for our problems [21–23]. Preconditioning, for example by incomplete LU factorization (ILU), is currently not used in order to improve parallel scalability. Future developments will address parallel ILU preconditioning [24–26].
+
+For a correct formulation of the physical domain interface at bead surfaces (esp. for the thin film layer boundary condition), we must allow a sharp discontinuity in solution values. We have chosen a straightforward approach in which the interface is exactly resolved by the finite element mesh and we always have two mesh nodes at the same location, each belonging to a different subdomain (Fig. 3
+                        ). An alternative concept for treating domain and material interfaces with potential discontinuities would be, for example, the extended finite element method (XFEM) in which element interpolation spaces are locally enriched with discontinuous shape functions for representing jumps in the solution variable [27,28]. However, this can complicate load balancing, and conditioning of the discrete system may be worse due to very small cut cells. The specific difficulties we face in connection with the multi-domain coupling are in detail:
+                           
+                              •
+                              The mesh will disaggregate into disjoint parts because corresponding interface nodes (partner nodes) are not connected by elements (Fig. 3).
+
+The multidomain connectivity across the interface must be stored in addition to the regular mesh connectivity.
+
+In parallel computations, nodal values have to be exchanged, i.e. communicated, between partner nodes in every solver iteration to evaluate the interface boundary condition.
+
+Coupling terms in the system matrix resulting from the domain interface surface integrals (Eqs. (14) and (15)) can corrupt the band structure of the system matrix. In our implementation, these coupling terms are neglected without noticeable decrease in convergence rates.
+
+Within the finite element solution procedure we encounter different steps that have to be parallelized on different levels:
+                           
+                              1.
+                              The matrix and the residual assembly are performed element-wise. Thus, a certain distribution of elements on the available processing units is required.
+
+The linear system solution is related to the degrees of freedom of the system, which are located on the nodes. Therefore, in order to perform parallel matrix–vector multiplications, a distribution of the mesh nodes is required as well.
+
+We use graph-partitioning techniques to obtain close-to-optimal segmentations of unstructured triangular and tetrahedral meshes. The FE mesh is converted to an extended dual graph in which each element and each node are represented by a graph vertex (Fig. 4
+                        ). Edges exist between vertices of neighbor elements and between elements and their corresponding nodes. Consequently, the graph vertices mirror computing effort (either element or node related) while edges represent required communication between the two levels.
+
+Such a dual graph can be handled directly by typical graph-partitioning or mapping algorithms such as METIS [29] or SCOTCH [30]. These algorithms use certain heuristics to split the graph across its edges into a given number of parts, such that each part comprises a similar amount of vertices, and the number of cut edges is minimized. We use the MPI parallel versions ParMETIS [31] and PT-SCOTCH [32] to avoid excessive computation time requirements and memory problems for large meshes. While ParMETIS scales better on large numbers of processors 
+                           (
+                           >
+                           512
+                           )
+                        , PT-SCOTCH appears to be more robust, and furthermore provides the possibility to compute mesh-architecture mappings, which account for the network topology of the compute cluster.
+
+Through the multidomain coupling we introduce an additional communication pattern to our system, because partner node values have to be exchanged every time when the interface boundary condition is evaluated. In order to account for this in the partitioning, we add edges to the extended dual graph between partner nodes. These are the only edges between two node vertices.
+
+@&#RESULTS AND DISCUSSION@&#
+
+The multi-physics extensions and binding models recently implemented to our code are tested and benchmarked with three different example problems. The first two test cases are planar 2D problems, which are used to illustrate adsorption kinetics and boundary condition features. The third example is a 3D case that illustrates large-scale and high-performance computing capabilities of our code.
+
+The first two test cases are computed in the same 2D domain. Here, the chromatography “column” is in fact a rectangle, which contains 20 circular “beads”. The dimensions of the column are 
+                           [
+                           2.7
+                           ×
+                           
+                              
+                                 10
+                              
+                              
+                                 −
+                                 4
+                              
+                           
+                           ×
+                           1.008
+                           ×
+                           
+                              
+                                 10
+                              
+                              
+                                 −
+                                 3
+                              
+                           
+                           ]
+                        , while the porous beads have diameters of 
+                           d
+                           =
+                           9
+                           ×
+                           
+                              
+                                 10
+                              
+                              
+                                 −
+                                 5
+                              
+                           
+                         (in non-dimensional units – equivalent to SI).
+
+The unstructured computational mesh consists of 200k triangular elements connecting 100k nodes. All computations are performed in parallel on 16 processors; the corresponding mesh-partitioning was generated using PT-SCOTCH. Fig. 5
+                         shows the triangular mesh (a) and its partitioning for mass transfer computations involving the complete domain (b) and for fluid flow computations in only the interstitial volume (c).
+
+The geometrical structure of our problem might suggest a partitioning in which one process handles exactly one bead. However, we let the partitioner cut through the beads so that each process receives roughly the same number of elements from any domain, which is beneficial in terms of load balancing. Moreover, this way we reduce MPI communication during evaluation of the bead surface BC to a minimum, because almost all partner nodes are assigned to the same processes.
+
+As described in Section 2, the first step is to solve the Stokes velocity profile in the interstitial column volume. Once determined, this steady-state profile can be reused for any subsequent mass transfer simulation. For the Stokes simulation, we apply the boundary conditions described in Section 2.1. The inflow profile U is given by the constant normal value 
+                           U
+                           =
+                           2
+                           ×
+                           
+                              
+                                 10
+                              
+                              
+                                 −
+                                 4
+                              
+                           
+                           ·
+                           
+                              
+                                 (
+                                 0
+                                 ,
+                                 1
+                                 )
+                              
+                              
+                                 T
+                              
+                           
+                         on the lower boundary 
+                           
+                              
+                                 Γ
+                              
+                              
+                                 in
+                              
+                           
+                        . With a fluid viscosity of 
+                           ν
+                           =
+                           
+                              
+                                 10
+                              
+                              
+                                 −
+                                 6
+                              
+                           
+                         and a resulting average velocity of 
+                           
+                              
+                                 u
+                              
+                              
+                                 ¯
+                              
+                           
+                           =
+                           1
+                           ×
+                           
+                              
+                                 10
+                              
+                              
+                                 −
+                                 3
+                              
+                           
+                        , we obtain a Reynolds number with respect to the bead diameter of 
+                           
+                              
+                                 Re
+                              
+                              
+                                 d
+                              
+                           
+                           =
+                           
+                              
+                                 u
+                              
+                              
+                                 ¯
+                              
+                           
+                           d
+                           /
+                           ν
+                           ≈
+                           0.1
+                        , so the Stokes assumption is valid.
+
+Although the example resembles not at all a randomly packed cylindrical column, even this simple 2D test case exhibits features which are also observed in realistic 3D applications (Fig. 5(d)): gaps between the beads and the column wall (i.e. larger packing porosities in the vicinity of the wall) lead to fluid velocities much above average in this region. This effect is all the more visible in the propagation of solute molecules as discussed in the next sections.
+
+In this first test case, we investigate how the empty column is loaded with a single protein until complete saturation. The model parameters are taken from previous publications [5,33] and are summarized in Table 1
+                        .
+
+The average element diameter of 
+                           h
+                           =
+                           2
+                           ×
+                           
+                              
+                                 10
+                              
+                              
+                                 −
+                                 6
+                              
+                           
+                         and maximum advective velocities of approximately 
+                           ∥
+                           u
+                           ∥
+                           =
+                           3
+                           ×
+                           
+                              
+                                 10
+                              
+                              
+                                 −
+                                 3
+                              
+                           
+                         (Fig. 5(d)) lead to element Péclet numbers of up to 
+                           Pe
+                           =
+                           ∥
+                           u
+                           ∥
+                           h
+                           /
+                           
+                              
+                                 D
+                              
+                              
+                                 1
+                              
+                           
+                           =
+                           60
+                        . Consequently, the discretized system is advection dominated and requires stabilization. At the bead surfaces we use the continuity boundary condition.
+
+In the presented experiment, the initially empty column is loaded with a constant input of solute molecules. Fig. 6
+                         shows how these percolate with the fluid through the interstitial volume, diffuse into the beads and undergo a phase change to the stationary phase (adsorption). One clearly notices the different time scales of interstitial transport (seconds) and diffusion and adsorption in the beads (minutes to hours). However, with increasing concentration in the liquid phase, also the phase change is accelerated. Finally, after sufficiently long simulated time, a fully saturated state is reached (t=2200) with a maximum value of q=4.1516 as given by the simple algebraic correlation 
+                           q
+                           
+                              
+                                 |
+                              
+                              
+                                 t
+                                 →
+                                 ∞
+                              
+                           
+                           =
+                           
+                              
+                                 q
+                              
+                              
+                                 m
+                              
+                           
+                           (
+                           
+                              
+                                 k
+                              
+                              
+                                 a
+                              
+                           
+                           c
+                           /
+                           (
+                           
+                              
+                                 k
+                              
+                              
+                                 a
+                              
+                           
+                           c
+                           +
+                           
+                              
+                                 k
+                              
+                              
+                                 d
+                              
+                           
+                           )
+                           )
+                         (which is obtained from Eq. (8) by setting 
+                           ∂
+                           q
+                           /
+                           ∂
+                           t
+                           =
+                           0
+                        ).
+
+For this test case, the two different implemented boundary conditions for domain interfaces have been investigated (Fig. 7
+                        ). The continuity boundary condition enforces continuous concentration profiles across the interface. This is identical to the asymptotic case of using the film diffusion boundary condition with an infinitely large value for k
+                        
+                           f
+                        . A finite k
+                        
+                           f
+                         will lead to a certain mass transfer resistance at the interface, which results in jumps in the concentration profile at the bead boundaries. For k
+                        
+                           f
+                        =0 we have pure transport in the interstitial volume and no propagation into the beads.
+
+In this test case, we investigate a multicomponent system of three proteins and an influencing salt component, which is described by the steric mass action model. The parameters of the binding model are summarized in Table 2
+                        . This example simulates a typical series of load, wash, and elution phases: In the first step, the column is loaded with a constant input of proteins. The molecules adsorb to the beads while the inlet concentration of salt is kept on a constant level. Then, for a rather short period of time, the column is flushed with only salt in the fluid so that all proteins are washed out of the mobile phase and only the bound molecules reside in the stationary phase. Finally, after an initial jump, the salt concentration is slowly increased over a long time so that proteins are gradually displaced from the stationary phase. Fig. 8
+                         shows the column inlet concentration profiles of the salt component and the proteins.
+
+Ideally, this procedure will separate proteins due to their different binding affinities, because more strongly binding proteins will resist high salt concentrations for longer times and consequently exit the column later. Fig. 8 shows simulation results for the average protein concentrations at the column outlet during the elution phase. The results are plausible, however the components are not fully separated, because the simulated 2D “column” is much too short. While protein 3 is very sensitive to the jump in the salt concentration and is hence eluted rapidly, the other proteins are not being concentrated in a peak and exit the column later.
+
+As a check for correctness, we compute the overall mass balance, i.e. the total amount of protein entering the column and the amount exiting it. During the 60.4025s of the load phase, each protein was supplied to the column at a concentration of 0.01. The accumulated mass exiting the column was computed as follows:
+                           
+                              •
+                              for protein 1: 
+                                    
+                                       
+                                          ∫
+                                       
+                                       
+                                          T
+                                       
+                                    
+                                    
+                                       
+                                          c
+                                       
+                                       
+                                          
+                                             
+                                                Γ
+                                             
+                                             
+                                                out
+                                             
+                                          
+                                       
+                                       
+                                          1
+                                       
+                                    
+                                    (
+                                    t
+                                    )
+                                    
+                                    dt
+                                    =
+                                    0.6055
+                                    ,
+                                 
+                              
+
+for protein 2: 0.6059,
+
+for protein 3: 0.6049.
+
+This last test problem is used to illustrate large-scale computing capabilities of our finite element solver and the presented multi-physics extensions. We investigate the loading of a 3D, randomly packed column section containing 750 spherical beads [34,35] with a single protein (Fig. 10a). As in realistic micro-scale applications, the column diameter is 1mm, while each bead has a diameter of 0.1mm. Only the column length is about one order of magnitude less than in real systems. The model parameters used in this benchmark are identical to the first 2D test case (Section 5.3).
+
+The tetrahedral mesh for this geometry consists of roughly 20M elements, which results in approximately 10M degrees of freedom for the Stokes and 15M degrees of freedom for the transient mass transfer problem. With a suitable partitioning, we solve it on 2048 compute cores of an IBM BlueGene/Q system in less than 14h (354 time steps). As shown in Fig. 9
+                        , strong scalability is slightly better for the steady-state fluid flow problem than for the time-dependent mass transfer problem for which optimal load balancing is harder to achieve due to the multidomain formulation. However, much larger problems will be addressed in future studies, where greater numbers of processors can be efficiently utilized. Hence, weak scalability will be more relevant than strong scalability.
+
+In the packing, we observe a highly inhomogeneous fluid velocity profile (Fig. 10
+                        b) with peaks up to tenfold above average. This flow field controls the transport of solute molecules which is shown in Fig. 11
+                        . Also the distribution of mobile phase concentrations over the column cross-section (Fig. 10c) is strongly inhomogeneous, reflecting especially the much faster propagation along the column wall. This generally substantiates our notion that simple homogenized 1D models (which cannot account for such spatial deviations) are not sufficient to describe chromatography at the micro-scale.
+
+@&#CONCLUSIONS@&#
+
+We have presented a finite element method for spatially resolved simulation of fluid flow and coupled mass transport and adsorption/desorption processes in packed bed chromatography columns. Such a scheme is required to investigate and fundamentally understand the impact of local mechanisms in chromatography columns in particular but not only at the micro-scale.
+
+A Galerkin/least squares type stabilization makes our method applicable to strongly advection dominated problems, while the fully implicit space–time FEM approach allows stiff reactive, i.e. adsorption, equations. Multi-domain physics are captured in the discrete FEM context by doubling mesh nodes at domain interfaces and thereby allowing for sharp jumps in the discrete solution. Since realistic 3D chromatography applications can involve several hundred million degrees of freedom, our focus has been on solver efficiency and scalability on parallel supercomputers. This is realized by mesh-partitioning that ensures load balancing and minimization of inter-process communication.
+
+We have demonstrated correct implementation of multi-physics extensions by means of 2D test cases. Transport and adsorption of single and multi-component systems as well as exchange between different physical subdomains can be correctly simulated with our code. These results lay the basis for applying the solver to full-scale 3D problems. The presented simulator is ready for large-scale computations, which we have illustrated with a 3D benchmark problem with 750 spherical beads. Although this system is still about one order of magnitude smaller than our target problems, it incorporates all the expected challenges and shows important features of micro-scale chromatography. Fluid velocities as well as solute molecule concentration profiles exhibit pronounced inhomogeneities inside the packed bed. This observation strongly supports our hypothesis that simple homogenized 1D models may not be valid for mathematical description of chromatography at the micro-scale. However, the question how these irregularities ultimately affect separation efficiency of multi-component mixtures in complete micro-scale columns with more than 10K beads is still to be answered, and will be subject of future research.
+
+@&#ACKNOWLEDGMENTS@&#
+
+The authors thank the Jülich Supercomputing Center (JSC) for granting access to the JUQUEEN supercomputer on which the large-scale computations were performed. Moreover, the authors gratefully acknowledge Prof. Ulrich Tallarek and Dr. Siarhei Khirevich at Marburg University for kindly providing the computer generated random sphere packing used in the 3D benchmark example.
+
+@&#REFERENCES@&#
+

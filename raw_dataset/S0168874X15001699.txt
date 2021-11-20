@@ -1,0 +1,2893 @@
+@&#MAIN-TITLE@&#An axisymmetrical non-linear finite element model for induction heating in injection molding tools
+
+@&#HIGHLIGHTS@&#
+
+
+               
+                  
+                  
+                     
+                        
+                           
+                           Induction heating in injection molding tools was simulated with an FE-model.
+
+
+                        
+                        
+                           
+                           B-H is described with a modified Fröhlich equation and parameters are included.
+
+
+                        
+                        
+                           
+                           Cyclic steady state model agrees with experiments.
+
+
+                        
+                        
+                           
+                           An effective linear permeability can be established for this type of setup.
+
+
+                        
+                        
+                           
+                           The temperature dependency of the B-H was not found to be strong.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Injection molding
+
+Temperature dependent magnetic properties
+
+Induction heating
+
+Non-linear finite element
+
+Axisymmetric
+
+@&#ABSTRACT@&#
+
+
+                  To analyze the heating and cooling phase of an induction heated injection molding tool accurately, the temperature dependent magnetic properties, namely the non-linear B-H curves, need to be accounted for in an induction heating simulation. Hence, a finite element model has been developed, including the non-linear temperature dependent magnetic data described by a three-parameter modified Fröhlich equation fitted to the magnetic saturation curve, and solved with an iterative procedure. The numerical calculations are compared with experiments conducted with two types of induction coils, built in to the injection molding tool. The model shows very good agreement with the experimental temperature measurements. It is also shown that the non-linearity can be used without the temperature dependency in some cases, and a proposed method is presented of how to estimate an effective linear permeability to use with simulation codes not able to utilize a non-linear solver.
+               
+
+@&#INTRODUCTION@&#
+
+Induction heating is well known in processes like surface hardening, annealing, preheating for hot forging of billets as well as melting and welding of metals. In recent years induction heating has been employed for injection molding tools for different reasons. Using a very rapid heating in the cavity surface of the mold is typically desired due to micro- or nanostructures on the surface, the part is long and having thin features, or a good surface finish is required. Since injection pressure levels are decreased with higher mold temperatures, it is also possible to mold large parts on smaller machines than normally if applying induction heating. Another use is to avoid weld lines, hence improving the mechanical properties of injection molded parts. Elevating the mold temperature above the no flow temperature will help ensuring complete filling of the cavity, but will lead to a longer cooling time, hence cycle time, if the mold is heated in a conventional way. Placing an induction coil near the cavity surface can increase the temperature very fast to reach the no flow temperatures, which will prevent the frozen layer to develop during filling.
+
+Induction heating in injection molding is typically based on two different principles either using an external inductor or an internal inductor. The external inductor is typically placed on a moving arm, which heats up the mold surface when the mold is open. The inductor coil can be wrapped around features [1–3], or be a flat coil, not necessarily circular, placed above a flat mold surface with e.g. micro/nano features [4,5]. The internal inductor is integrated in the mold, and different types exist, such as placing a coil with a flux concentrator beneath the mold surface [6].
+
+As mentioned, induction heating for heat treatment, melting and welding of metals has been used for a long time, and also simulation of the induction heating process in those applications has been addressed in the literature; see [7,8] for references. More recently, the topic of simulating induction heating in injection molding tools has been introduced in several papers, which are typically dealing with the simulation of the induction heating itself [1,2,4,5,9–12,6], while the effect of fluid flow is emulated by assuming an equivalent thermal boundary condition [13,14]. In these papers, the magnetic properties are assumed linear, that is a linear relation between the magnetic field and flux. Recently, simulation of coupled induction heating and fluid flow has been conducted [3,15,4], in which the electromagnetic analysis and the mold filling simulation are coupled by imposing either an average constant thermal boundary condition or the actual transient thermal field from the induction simulation to the fluid flow simulation. This is done by mapping the thermal field from the electromagnetic solution to the flow solver to include the effect of the induction heating during filling of the cavity. Imposing the mapped actual transient thermal field was found to give the most realistic results. The work done in Refs. [3,15,4] also assume linear magnetic data, similarly to the previously mentioned papers.
+
+The magnetic materials that have been used in this work include magnetic tool steels, which had their B-H relation (describing the relation between magnetic flux density, B, and magnetic field, H) and its dependence on temperature (in the range of the injection molding process 25–350°C) characterized by the authors in [16]. Due to the fact that the magnetic properties depend on temperature, and are non-linear (stemming from magnetic saturation) a lot of data is required to analyze the influence of induction heating applied to injection molding tools. Furthermore, the heat arising from the induction is mainly due to Eddy currents, which can be realistically estimated from the linear magnetic properties (e.g. constant permeability), but since the magnetic permeability is non-linear and temperature dependent, a study on these effects are needed.
+
+In this work a finite element model has been developed with a proposal on how to include the non-linear temperature dependent magnetic data characterized in [16] by using a three-parameter modified Fröhlich equation fitted to the B-H data, and solved with an iterative procedure. The numerical calculations are compared to experiments conducted with two types of induction coils built in to the injection molding tool. A traditional ferrite core with copper windings and a flat core made of Somaloy with copper windings, are investigated.
+
+The electromagnetic part of induction heating is controlled by Maxwell׳s equations, which here are presented in terms of free charges and currents:
+                           
+                              (1)
+                              
+                                 ∇
+                                 ·
+                                 D
+                                 =
+                                 
+                                    
+                                       ρ
+                                    
+                                    
+                                       f
+                                    
+                                 
+                              
+                           
+                        
+                        
+                           
+                              (2)
+                              
+                                 ∇
+                                 ·
+                                 B
+                                 =
+                                 0
+                              
+                           
+                        
+                        
+                           
+                              (3)
+                              
+                                 ∇
+                                 ×
+                                 E
+                                 =
+                                 −
+                                 
+                                    
+                                       ∂
+                                       B
+                                    
+                                    
+                                       ∂
+                                       t
+                                    
+                                 
+                              
+                           
+                        
+                        
+                           
+                              (4)
+                              
+                                 ∇
+                                 ×
+                                 H
+                                 =
+                                 
+                                    
+                                       J
+                                    
+                                    
+                                       f
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       ∂
+                                       D
+                                    
+                                    
+                                       ∂
+                                       t
+                                    
+                                 
+                              
+                           
+                        where D is the electric flux density, B is the magnetic flux density, E is the electric field, H is the magnetic field, 
+                           
+                              
+                                 J
+                              
+                              
+                                 f
+                              
+                           
+                         is the free current density, ρ
+                        
+                           f
+                         is the free charge density, t is the time. Relating D and H in terms of E and B depends on the material, and for linear media it can be related through the following constitutive relations: 
+                           
+                              (5)
+                              
+                                 D
+                                 =
+                                 ε
+                                 E
+                                 =
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       0
+                                    
+                                 
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       r
+                                    
+                                 
+                                 E
+                              
+                           
+                        
+                        
+                           
+                              (6)
+                              
+                                 H
+                                 =
+                                 
+                                    
+                                       1
+                                    
+                                    
+                                       μ
+                                    
+                                 
+                                 B
+                                 =
+                                 
+                                    
+                                       1
+                                    
+                                    
+                                       
+                                          
+                                             μ
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       
+                                          
+                                             μ
+                                          
+                                          
+                                             r
+                                          
+                                       
+                                    
+                                 
+                                 B
+                              
+                           
+                        where 
+                           
+                              
+                                 ε
+                              
+                              
+                                 0
+                              
+                           
+                           =
+                           8.854
+                           ·
+                           
+                              
+                                 10
+                              
+                              
+                                 −
+                                 12
+                              
+                           
+                           
+                           F
+                           /
+                           m
+                         is the vacuum permittivity, ε
+                        
+                           r
+                         is the relative permittivity, 
+                           
+                              
+                                 μ
+                              
+                              
+                                 0
+                              
+                           
+                           =
+                           4
+                           π
+                           ·
+                           
+                              
+                                 10
+                              
+                              
+                                 −
+                                 7
+                              
+                           
+                           
+                           H
+                           /
+                           m
+                         is the vacuum permeability, and μ
+                        
+                           r
+                         is the relative permeability. Furthermore the current density and electric field can be related by the well-known Ohm׳s law:
+                           
+                              (7)
+                              
+                                 J
+                                 =
+                                 σ
+                                 E
+                              
+                           
+                        where σ is the electrical conductivity. The displacement current, the last term in Eq. (4), will be ignored and the assumption that a time-harmonic varying source current density will result in a sinusoidally varying magnetic field will be made. Combining Maxwell׳s Eqs. (1)–(4) with the constitutive Eq. (5)–(7), the following complex diffusion equation can be derived:
+                           
+                              (8)
+                              
+                                 
+                                    
+                                       1
+                                    
+                                    
+                                       μ
+                                    
+                                 
+                                 
+                                    
+                                       ∇
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 
+                                    
+                                       A
+                                    
+                                    
+                                       ¯
+                                    
+                                 
+                                 +
+                                 i
+                                 ω
+                                 σ
+                                 
+                                    
+                                       A
+                                    
+                                    
+                                       ¯
+                                    
+                                 
+                                 =
+                                 −
+                                 
+                                    
+                                       
+                                          
+                                             J
+                                          
+                                          
+                                             ¯
+                                          
+                                       
+                                    
+                                    
+                                       s
+                                    
+                                 
+                              
+                           
+                        where 
+                           
+                              
+                                 A
+                              
+                              
+                                 ¯
+                              
+                           
+                         is the magnetic vector potential related to the magnetic flux by 
+                           B
+                           =
+                           ∇
+                           ×
+                           A
+                        , 
+                           
+                              
+                                 
+                                    
+                                       J
+                                    
+                                    
+                                       ¯
+                                    
+                                 
+                              
+                              
+                                 s
+                              
+                           
+                         is the source current density in the coil, 
+                           ω
+                           =
+                           2
+                           π
+                           f
+                         is the angular frequency (and f the frequency), and the overbar is denoting the peak value or the amplitude. From Eq. (8) it is possible to derive certain other quantities, such as the magnetic flux density B or the magnetic field H, but for the case of induction heating it is the time average Joule heat density that comes from the induced Eddy currents which is of interest and can be derived from Eq. (8) as:
+                           
+                              (9)
+                              
+                                 
+                                    
+                                       
+                                          
+                                             J
+                                          
+                                          
+                                             ¯
+                                          
+                                       
+                                    
+                                    
+                                       e
+                                    
+                                 
+                                 =
+                                 −
+                                 i
+                                 ω
+                                 σ
+                                 
+                                    
+                                       A
+                                    
+                                    
+                                       ¯
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+And the Joule heating is found using Joules law:
+                           
+                              (10)
+                              
+                                 
+                                    
+                                       Q
+                                    
+                                    
+                                       ̇
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       1
+                                    
+                                    
+                                       2
+                                       σ
+                                    
+                                 
+                                 
+                                    
+                                       |
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      J
+                                                   
+                                                   
+                                                      ¯
+                                                   
+                                                
+                                             
+                                             
+                                                e
+                                             
+                                          
+                                       
+                                       |
+                                    
+                                    
+                                       2
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+For the calculations of the temperature distribution from the induction, the transient heat conduction equation is solved
+                           
+                              (11)
+                              
+                                 ρ
+                                 
+                                    
+                                       c
+                                    
+                                    
+                                       p
+                                    
+                                 
+                                 
+                                    
+                                       ∂
+                                       T
+                                    
+                                    
+                                       ∂
+                                       t
+                                    
+                                 
+                                 =
+                                 k
+                                 
+                                    
+                                       ∇
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 T
+                                 +
+                                 
+                                    
+                                       Q
+                                    
+                                    
+                                       ̇
+                                    
+                                 
+                              
+                           
+                        where T is the temperature, ρ
+                        is the density, c
+                        
+                           p
+                         is the specific heat capacity, k is the thermal conductivity and 
+                           
+                              
+                                 Q
+                              
+                              
+                                 ̇
+                              
+                           
+                         is the heat source from Eq. (10). The thermal conductivity is assumed not to vary as a function of temperature.
+
+The B-H curves (sometimes called anhysteresis curves) express the non-linear behavior of the magnetic material, and they can be used to describe the relation between the magnetic field and the flux density in a material. This relation can be used in an FEM simulation code that assumes the electrical currents and the magnetic fields are varying sinusoidally, hereby using the complex formulation. It can in this respect be convenient to have an analytical expression for the anhysteresis curve, also in connection with iterative methods [17]. Most commonly used is the Fröhlich approximation:
+                              
+                                 (12)
+                                 
+                                    B
+                                    =
+                                    
+                                       
+                                          H
+                                       
+                                       
+                                          α
+                                          +
+                                          β
+                                          |
+                                          
+                                             H
+                                          
+                                          |
+                                       
+                                    
+                                 
+                              
+                           where α and β are two material fitted constants (which can be temperature dependent). The equation has two limitations with respect to this work, firstly it does not yield a relative permeability of 1 at high fields, but it rather yields 0, so an extra term 
+                              
+                                 
+                                    μ
+                                 
+                                 
+                                    0
+                                 
+                              
+                              H
+                            should be added. Furthermore, it does not correctly describe the transition from the high permeability at low magnetic fields to the saturation (the knee area). This can be remedied by adding a term that is proportional to the square root of the magnetic field, so the Fröhlich equation becomes a three-parameter equation [18]:
+                              
+                                 (13)
+                                 
+                                    B
+                                    =
+                                    
+                                       
+                                          H
+                                       
+                                       
+                                          α
+                                          +
+                                          β
+                                          |
+                                          
+                                             H
+                                          
+                                          |
+                                          +
+                                          γ
+                                          
+                                             
+                                                |
+                                                
+                                                   H
+                                                
+                                                |
+                                             
+                                          
+                                       
+                                    
+                                    +
+                                    
+                                       
+                                          μ
+                                       
+                                       
+                                          0
+                                       
+                                    
+                                    H
+                                 
+                              
+                           
+                        
+
+The three parameters in the modified Fröhlich equation, can be seen in Figs. 14–21 for all the measured materials from [16]. They all represent the measured B-H curves and have been fitted in a least square sense. The fitting of the modified Fröhlich and the original Fröhlich equations can be seen in Fig. 1
+                           , and it shows a better fitting with the modified Fröhlich equation as expected. Further explanation of this is given in Section 3.
+
+A simulation code can then utilize the three parameters of α, β, γ, with a coupling to a heat transfer analysis. In [17] a procedure for utilizing the parameters from the Fröhlich equation was presented. The non-linear material is approximated with a fictitious linear material that has a constant relative permeability, which is unknown, called μ
+                           
+                              r
+                           
+                           
+                              f
+                            where f denotes the fictitious material. The linear fictitious material should have the same average heat density loss as the non-linear material, in every point, and this is ensured by a permeability given by Eq. (16). The procedure is slightly changed compared to the one presented in [17], due to the extra added terms in the analytical representation of the B-H curves. The iteration method requires a calculation of the magnetic co-energy density (integrated B-H curve with respect to H), from both the analytical representation called w
+                           1i
+                            and from the average value of the slope during a quarter of a period denoted w
+                           2i
+                           , i.e.:
+                              
+                                 (14)
+                                 
+                                    
+                                       
+                                          w
+                                       
+                                       
+                                          1
+                                          i
+                                       
+                                    
+                                    =
+                                    
+                                       
+                                          ∫
+                                       
+                                       
+                                          0
+                                       
+                                       
+                                          
+                                             
+                                                H
+                                             
+                                             
+                                                mi
+                                             
+                                             
+                                                f
+                                             
+                                          
+                                       
+                                    
+                                    B
+                                    
+                                    d
+                                    H
+                                 
+                              
+                           and
+                              
+                                 (15)
+                                 
+                                    
+                                       
+                                          w
+                                       
+                                       
+                                          2
+                                          i
+                                       
+                                    
+                                    =
+                                    
+                                       
+                                          
+                                             1
+                                          
+                                          
+                                             2
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          B
+                                       
+                                       
+                                          mi
+                                       
+                                    
+                                    
+                                       
+                                          H
+                                       
+                                       
+                                          mi
+                                       
+                                       
+                                          f
+                                       
+                                    
+                                 
+                              
+                           
+                        
+
+The two co-energies should give an over and underestimation of the heat losses, respectively. These values are subsequently used to calculate a fictitious linear material with a relative permeability of:
+                              
+                                 (16)
+                                 
+                                    
+                                       
+                                          μ
+                                       
+                                       
+                                          ri
+                                       
+                                       
+                                          f
+                                       
+                                    
+                                    =
+                                    
+                                       
+                                          
+                                             
+                                                w
+                                             
+                                             
+                                                1
+                                                i
+                                             
+                                          
+                                          +
+                                          
+                                             
+                                                w
+                                             
+                                             
+                                                2
+                                                i
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                μ
+                                             
+                                             
+                                                0
+                                             
+                                          
+                                          
+                                             
+                                                (
+                                                
+                                                   
+                                                      
+                                                         H
+                                                      
+                                                      
+                                                         mi
+                                                      
+                                                      
+                                                         f
+                                                      
+                                                   
+                                                
+                                                )
+                                             
+                                             
+                                                2
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+
+Substituting Eq. (13) into Eq. (14) and integrating is not trivial (given in the appendix), hence numerical integration can be utilized. Finding the value of w
+                           2i
+                            from Eq. (15) is done by substituting in Eq. (13) and evaluating. An initial value for the relative permeability can conveniently be chosen as the initial relative permeability (i.e. the slope of the B-H curve close to zero magnetic field), which can be derived as follows. We start by using the linear relation
+                              
+                                 (17)
+                                 
+                                    
+                                       
+                                          B
+                                       
+                                       
+                                          mi
+                                       
+                                    
+                                    =
+                                    
+                                       
+                                          μ
+                                       
+                                       
+                                          0
+                                       
+                                    
+                                    
+                                       
+                                          μ
+                                       
+                                       
+                                          r
+                                       
+                                    
+                                    
+                                       
+                                          H
+                                       
+                                       
+                                          mi
+                                       
+                                    
+                                 
+                              
+                           in Eq. (15) to give the co-energy in one quarter of a period:
+                              
+                                 (18)
+                                 
+                                    
+                                       
+                                          w
+                                       
+                                       
+                                          f
+                                       
+                                    
+                                    =
+                                    
+                                       
+                                          1
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                    
+                                       
+                                          μ
+                                       
+                                       
+                                          0
+                                       
+                                    
+                                    
+                                       
+                                          μ
+                                       
+                                       
+                                          r
+                                       
+                                    
+                                    
+                                       
+                                          (
+                                          
+                                             
+                                                
+                                                   H
+                                                
+                                                
+                                                   mi
+                                                
+                                                
+                                                   f
+                                                
+                                             
+                                          
+                                          )
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                 
+                              
+                           
+                        
+
+Then using the modified Fröhlich approximation Eq. (13) in a quarter of a period gives
+                              
+                                 (19)
+                                 
+                                    
+                                       
+                                          w
+                                       
+                                       
+                                          2
+                                          i
+                                       
+                                    
+                                    =
+                                    
+                                       
+                                          1
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                    (
+                                    
+                                       
+                                          
+                                             H
+                                          
+                                          
+                                             α
+                                             +
+                                             β
+                                             |
+                                             
+                                                H
+                                             
+                                             |
+                                             +
+                                             γ
+                                             
+                                                
+                                                   |
+                                                   
+                                                      H
+                                                   
+                                                   |
+                                                
+                                             
+                                          
+                                       
+                                       +
+                                       
+                                          
+                                             μ
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       H
+                                    
+                                    )
+                                    
+                                       
+                                          H
+                                       
+                                       
+                                          mi
+                                       
+                                       
+                                          f
+                                       
+                                    
+                                 
+                              
+                           
+                        
+
+Now, setting 
+                              
+                                 
+                                    w
+                                 
+                                 
+                                    f
+                                 
+                              
+                              =
+                              
+                                 
+                                    w
+                                 
+                                 
+                                    2
+                                    i
+                                 
+                              
+                            by combining Eqs. (18) and (19), and setting 
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    mi
+                                 
+                                 
+                                    f
+                                 
+                              
+                              =
+                              0
+                            it is finally possible to solve for the initial relative permeability, which gives:
+                              
+                                 (20)
+                                 
+                                    
+                                       
+                                          μ
+                                       
+                                       
+                                          r
+                                       
+                                       
+                                          f
+                                       
+                                    
+                                    =
+                                    
+                                       
+                                          1
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                    +
+                                    
+                                       
+                                          1
+                                       
+                                       
+                                          2
+                                          α
+                                          
+                                             
+                                                μ
+                                             
+                                             
+                                                0
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+
+As earlier mentioned, Eq. (20) can be used as an initial guess for a domain of a given material. It will be constant throughout each material domain in the beginning, but will gradually start to change as the iteration procedure is commenced.
+
+The iteration procedure presented by [17] can be employed for the modified Fröhlich equation by modifying some of the equations used in the different steps. Since both μ
+                           
+                              r
+                           
+                           
+                              f
+                            and H
+                           
+                              f
+                            are unknowns, an iterative procedure can be employed using these few steps:
+                              
+                                 1.
+                                 Solve for the magnetic field H
+                                    
+                                       f
+                                     using Eq. (20) as initial guess for μ
+                                    
+                                       r
+                                    
+                                    
+                                       f
+                                    .
+
+Calculate the magnetic co-energy density w
+                                    
+                                       i
+                                    
+                                    
+                                       f
+                                     using Eq. (18) with H
+                                    
+                                       f
+                                     found in step 1.
+
+Calculate magnetic co-energy densities w
+                                    1i
+                                     by inserting the modified Fröhlich equation Eq. (13) into Eq. (14) and use numerical integration, and w
+                                    2i
+                                     from Eq. (19). Also find the average 
+                                       
+                                          
+                                             w
+                                          
+                                          
+                                             i
+                                          
+                                       
+                                       =
+                                       
+                                          
+                                             
+                                                
+                                                   w
+                                                
+                                                
+                                                   1
+                                                   i
+                                                
+                                             
+                                             +
+                                             
+                                                
+                                                   w
+                                                
+                                                
+                                                   2
+                                                   i
+                                                
+                                             
+                                          
+                                          
+                                             2
+                                          
+                                       
+                                    .
+
+Test whether the change in energy in every point is less than a small value 
+                                       |
+                                       
+                                          
+                                             
+                                                w
+                                             
+                                             
+                                                i
+                                             
+                                          
+                                          −
+                                          
+                                             
+                                                w
+                                             
+                                             
+                                                i
+                                             
+                                             
+                                                f
+                                             
+                                          
+                                       
+                                       |
+                                       ≤
+                                       
+                                          
+                                             w
+                                          
+                                          
+                                             err
+                                          
+                                       
+                                    , if true end the iteration procedure, if not go to step 1, but use 
+                                       
+                                          
+                                             μ
+                                          
+                                          
+                                             ri
+                                          
+                                          
+                                             f
+                                          
+                                       
+                                       =
+                                       
+                                          
+                                             2
+                                             
+                                                
+                                                   w
+                                                
+                                                
+                                                   i
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   μ
+                                                
+                                                
+                                                   0
+                                                
+                                             
+                                             
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         
+                                                            H
+                                                         
+                                                         
+                                                            mi
+                                                         
+                                                         
+                                                            f
+                                                         
+                                                      
+                                                   
+                                                   )
+                                                
+                                                
+                                                   2
+                                                
+                                             
+                                          
+                                       
+                                     as a new initial guess for the relative permeability.
+
+The computed value of losses has an acceptable difference compared to transient calculation when using the above criteria [17].
+
+The materials used in this work includes two core materials, EPCOS Ferrite N27 and Höganäs 
+                        Somaloy
+                        ®
+                     , and the primal heated mold material is the Uddeholm Impax Supreme (AISI P20). The magnetic properties of these materials are non-linear and temperature dependent, and have been characterized with a Vibrating Sample Magnetometer (VSM) equipment in earlier work by the authors [16]. The B-H curves have all been fitted to the modified Fröhlich equation see Eq. (13). The three coefficients have been found for each temperature level ranging from 25°C to 350°C at an interval of 25°C. They have been fitted in a least square sense and all the resulting α, β and γ coefficients can be seen in the appendix, Figs. 14–21. The value of the squared 2-norm of the residual for all the fittings is below 0.1, indicating they have a good fit to the modified Fröhlich equation, as was also seen in Fig. 1.
+
+The electrical properties for the mold insert have been estimated by having a long parallelepiped of approx. 1×1×5mm subjected to a 5A current, and then measuring the voltage drop over the material. The electrical conductivity was then estimated from Ohm׳s law Eq. (7).
+
+The magnetic, electrical and thermal properties used in this work can be seen in Table 1
+                     . For the non-linear magnetic materials an estimate of the initial magnetic permeability is given.
+
+The material used for the moldings is ABS and it is the objective to reach its no flow temperature 
+                        
+                           
+                              T
+                           
+                           
+                              no
+                              −
+                              flow
+                           
+                        
+                      which is usually close to the glass transition temperature T
+                     
+                        g
+                      which is 94°C. The 
+                        
+                           
+                              T
+                           
+                           
+                              no
+                              −
+                              flow
+                           
+                        
+                      is around 111°C, so if the mold cavity surface is above 120°C it should be sufficient.
+
+@&#EXPERIMENTS@&#
+
+Two different induction heating systems were implemented in an injection mold. The first setup is a traditional ferrite core with windings of water cooled copper wires inside. This is fairly large, and takes up space behind the mold insert. This is referred to as the bulk setup. The other setup is one that takes up less space, and its thickness is in the same range as that of the mold insert. This flat setup is referred to as the pancake setup.
+
+The copper wire with water cooling in the bulk setup winded inside the inner core, are insulated with cement that is cast around it, to protect and electrically insulate it.
+
+The pancake setup uses a Litz wire (consisting of 100 insulated copper wires) which is winded into the spiral path processed on the Somaloy.
+
+A thermocouple was placed on the backside of the insert in the center in each of the experiments, and denoted P1.
+
+The injected molded parts are small geometries which are 15mm long and 3mm wide, and with four cantilevers having thicknesses of 0.1mm, 0.3mm, 0.5mm and 0.7mm respectively.
+
+The bulk setup was expected to have a more concentrated heat generation above the coil, while the pancake setup was expected to have a more uniform heat distribution through the volume of the insert, (possibly) allowing for a uniform temperature distribution on the cavity surface. It was found that the bulk setup provided better injection molded parts in terms of flow length in the thin cavities. The reason for this is analyzed with the FE model showing how the temperature in the cavity surface and the distribution through the thickness are developing in the two setups.
+
+The temperatures from P1 will be compared with the simulations.
+
+The experimental setup and its produced parts are further presented and discussed by the authors in [19].
+
+Using the Galerkin method to approximate the solution of Eq. (8) on a set of discrete points we get
+                           
+                              (22)
+                              
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       Ω
+                                    
+                                 
+                                 
+                                    
+                                       [
+                                       
+                                          N
+                                       
+                                       ]
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 [
+                                 
+                                    
+                                       
+                                          1
+                                       
+                                       
+                                          μ
+                                       
+                                    
+                                    
+                                       
+                                          ∇
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                    
+                                       
+                                          A
+                                       
+                                       
+                                          ¯
+                                       
+                                    
+                                    +
+                                    i
+                                    ω
+                                    σ
+                                    
+                                       
+                                          A
+                                       
+                                       
+                                          ¯
+                                       
+                                    
+                                    +
+                                    
+                                       
+                                          
+                                             
+                                                J
+                                             
+                                             
+                                                ¯
+                                             
+                                          
+                                       
+                                       
+                                          s
+                                       
+                                    
+                                 
+                                 ]
+                                 
+                                 d
+                                 Ω
+                                 =
+                                 0
+                              
+                           
+                        
+                     
+
+Which in an axisymmetric coordinate system yields
+                           
+                              (23)
+                              
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       Ω
+                                    
+                                 
+                                 
+                                    
+                                       [
+                                       
+                                          N
+                                       
+                                       ]
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 [
+                                 
+                                    
+                                       
+                                          1
+                                       
+                                       
+                                          μ
+                                       
+                                    
+                                    (
+                                    
+                                       
+                                          
+                                             1
+                                          
+                                          
+                                             r
+                                          
+                                       
+                                       
+                                          
+                                             ∂
+                                          
+                                          
+                                             ∂
+                                             r
+                                          
+                                       
+                                       (
+                                       
+                                          r
+                                          
+                                             
+                                                ∂
+                                                
+                                                   
+                                                      
+                                                         
+                                                            A
+                                                         
+                                                         
+                                                            ¯
+                                                         
+                                                      
+                                                   
+                                                   
+                                                      θ
+                                                   
+                                                
+                                             
+                                             
+                                                ∂
+                                                r
+                                             
+                                          
+                                       
+                                       )
+                                       +
+                                       
+                                          
+                                             
+                                                
+                                                   ∂
+                                                
+                                                
+                                                   2
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         A
+                                                      
+                                                      
+                                                         ¯
+                                                      
+                                                   
+                                                
+                                                
+                                                   θ
+                                                
+                                             
+                                          
+                                          
+                                             ∂
+                                             
+                                                
+                                                   z
+                                                
+                                                
+                                                   2
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 
+                                    +
+                                    i
+                                    ω
+                                    σ
+                                    
+                                       
+                                          
+                                             
+                                                A
+                                             
+                                             
+                                                ¯
+                                             
+                                          
+                                       
+                                       
+                                          θ
+                                       
+                                    
+                                    +
+                                    
+                                       
+                                          
+                                             
+                                                J
+                                             
+                                             
+                                                ¯
+                                             
+                                          
+                                       
+                                       
+                                          s
+                                          ,
+                                          θ
+                                       
+                                    
+                                 
+                                 ]
+                                 
+                                 d
+                                 Ω
+                                 =
+                                 0
+                              
+                           
+                        where 
+                           [
+                           
+                              N
+                           
+                           ]
+                         is a row vector containing the shape functions, and Ω is the domain of interest. The total matrix system becomes:
+                           
+                              (24)
+                              
+                                 [
+                                 
+                                    [
+                                    
+                                       K
+                                    
+                                    ]
+                                    +
+                                    i
+                                    [
+                                    
+                                       C
+                                    
+                                    ]
+                                    {
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   A
+                                                
+                                                
+                                                   ¯
+                                                
+                                             
+                                          
+                                          
+                                             θ
+                                          
+                                       
+                                    
+                                    }
+                                 
+                                 ]
+                                 =
+                                 {
+                                 
+                                    f
+                                 
+                                 }
+                              
+                           
+                        with the following matrix element equations:
+                           
+                              (25)
+                              
+                                 
+                                    
+                                       [
+                                       
+                                          K
+                                       
+                                       ]
+                                    
+                                    
+                                       e
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       Ω
+                                    
+                                 
+                                 
+                                    
+                                       1
+                                    
+                                    
+                                       μ
+                                    
+                                 
+                                 
+                                    
+                                       [
+                                       
+                                          B
+                                       
+                                       ]
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 [
+                                 
+                                    B
+                                 
+                                 ]
+                                 
+                                 d
+                                 Ω
+                              
+                           
+                        
+                        
+                           
+                              (26)
+                              
+                                 
+                                    
+                                       [
+                                       
+                                          C
+                                       
+                                       ]
+                                    
+                                    
+                                       e
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       Ω
+                                    
+                                 
+                                 ω
+                                 σ
+                                 
+                                    
+                                       [
+                                       
+                                          N
+                                       
+                                       ]
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 [
+                                 
+                                    N
+                                 
+                                 ]
+                                 
+                                 d
+                                 Ω
+                              
+                           
+                        
+                        
+                           
+                              (27)
+                              
+                                 
+                                    
+                                       {
+                                       
+                                          f
+                                       
+                                       }
+                                    
+                                    
+                                       e
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       ∫
+                                    
+                                    
+                                       Ω
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          
+                                             J
+                                          
+                                          
+                                             ¯
+                                          
+                                       
+                                    
+                                    
+                                       s
+                                    
+                                 
+                                 
+                                    
+                                       [
+                                       
+                                          N
+                                       
+                                       ]
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 
+                                 d
+                                 Ω
+                              
+                           
+                        where 
+                           [
+                           
+                              B
+                           
+                           ]
+                         is the derivative of the shape functions also called the gradient matrix. Linear triangular elements have been employed and a closed form solution of the integration has been done with the resulting elemental matrices being similar to those described in [8].
+
+The spatial part of the heat conduction equation Eq. (11) is discretized in a similar way as in the electromagnetic FE model. It will be on the form
+                           
+                              (28)
+                              
+                                 [
+                                 
+                                    C
+                                 
+                                 ]
+                                 {
+                                 
+                                    
+                                       
+                                          ∂
+                                          T
+                                       
+                                       
+                                          ∂
+                                          t
+                                       
+                                    
+                                 
+                                 }
+                                 +
+                                 [
+                                 
+                                    K
+                                 
+                                 ]
+                                 {
+                                 
+                                    T
+                                 
+                                 }
+                                 =
+                                 {
+                                 
+                                    f
+                                 
+                                 }
+                              
+                           
+                        
+                     
+
+The FE matrices are similar to the ones derived for the electromagnetic case, except for the coefficient in the front, where 
+                           
+                              
+                                 1
+                              
+                              
+                                 μ
+                              
+                           
+                         is substituted by k in Eq. (25), 
+                           ω
+                           σ
+                         by 
+                           ρ
+                           
+                              
+                                 c
+                              
+                              
+                                 p
+                              
+                           
+                         in Eq. (26) and 
+                           
+                              
+                                 
+                                    
+                                       J
+                                    
+                                    
+                                       ¯
+                                    
+                                 
+                              
+                              
+                                 s
+                              
+                           
+                         by 
+                           
+                              
+                                 Q
+                              
+                              
+                                 ̇
+                              
+                           
+                         in Eq. (27). The time derivative is discretized using an implicit Euler formulation. This yields an equation system for the temperatures at the new time step as
+                           
+                              (29)
+                              
+                                 (
+                                 
+                                    [
+                                    
+                                       C
+                                    
+                                    ]
+                                    +
+                                    Δ
+                                    t
+                                    [
+                                    
+                                       K
+                                    
+                                    ]
+                                 
+                                 )
+                                 
+                                    
+                                       {
+                                       
+                                          T
+                                       
+                                       }
+                                    
+                                    
+                                       n
+                                       +
+                                       1
+                                    
+                                 
+                                 =
+                                 [
+                                 
+                                    C
+                                 
+                                 ]
+                                 
+                                    
+                                       {
+                                       
+                                          T
+                                       
+                                       }
+                                    
+                                    
+                                       n
+                                    
+                                 
+                                 +
+                                 Δ
+                                 t
+                                 {
+                                 
+                                    f
+                                 
+                                 }
+                              
+                           
+                        where 
+                           Δ
+                           t
+                         is the time step, n is at the old time level, 
+                           n
+                           +
+                           1
+                         is the new time level. Since the implicit formulation is unconditionally stable time steps of 0.1s have been used in this work, as it showed sufficiently accuracy.
+
+The in-house, self-developed simulation program has been written in Matlab. It is made to function with Comsol with Live-link to Matlab in order to directly import the mesh from Comsol. The only imported arrays from Comsol are the node locations, the connectivity array and the material number of the elements. This information is then used by the function building the different FE matrices presented in Eqs. (25)–(27).
+
+The structure of the program is first importing the mesh, then assign the material properties to each element and defining input parameters such as the frequency and current. The non-linear data are loaded and stored in a cell format and the non-linear tolerances are defined. The code then initializes the different arrays used to allocate the needed memory. The thermal stiffness and mass matrix, and the thermal load vector are constructed for the initial setup with appropriate boundary conditions. Induction cycles and time step are defined, followed by the main time loop which includes the procedure schematically shown in Fig. 2
+                        . It is first detected whether or not the induction heating is turned on or not. In the case of the former the code builds the electromagnetic FE matrices and load vectors and solves for the magnetic vector potential, Eq. (24), assuming an initial permeability from Eq. (20). The sparse matrix is solved using Matlab׳s build in sparse matrix solver. The magnetic field is calculated (from the relation 
+                           B
+                           =
+                           ∇
+                           ×
+                           A
+                         and Eq. (6)) and the first iteration procedure is calculated as presented in Section 2.2.2. This new fictitious linear permeability is then used for next iteration, and this is continued until convergence. The heat source is found from Eq. (10), and applied to the load vector for the thermal solution. Eq. (29) is then stepped forward one time step, so the temperatures of the new time level are solved for (since this is done implicitly the sparse matrix solver is again used). If the end time is not reached the modified Fröhlich coefficients α, β and γ are used for the new temperature in the elements for the next electromagnetic solution. If a cooling phase is initiated the code skips the solution of the electromagnetic and goes directly to solve for the thermal part, stepping forward in time, using a load vector with no heat source from the induction. The building of the FE matrices and the iteration procedure to obtaining the fictive linear permeability are both functions which are called from the main script. As it is easy to switch the heat source term on and off in the time loop, it is possible to calculate the cyclic steady state temperature in the process of heating, cooling, heating, cooling, etc.
+
+The bulk setup is shown in Fig. 3
+                         in an axisymmetric coordinate system. With the symmetry line marked with the red dotted line in the figure. The coil is placed in the mold, and consists of a core encasement of stainless steel containing the flux concentrator (core). Inside the core the coil itself consists of eight windings, encapsulated by the coil encasement which is cement. On top of the flux concentrator and coil windings is the magnetic mold tool steel Uddeholm Impax Supreme. The mold opens at the cavity line, and in the other mold half is a cooling channel with cooling water.
+
+The pancake setup is similar in principle as the bulk setup, but has a different flux concentrator and winding placement. As seen in Fig. 4
+                         the flux concentrator is still placed in the mold, but it is flat, and all of the windings are placed next to each other. The coil is the Litz wire, insulated by Nomex paper and placed in the core material, which is Somaloy. Somaloy is used due to it is machinability, that makes it possible to cut in it, which is difficult in normal ferrite materials due to their brittleness. Furthermore, a cooling channel is placed below the core, and the insert is similar to the bulk setup.
+
+The mesh for the bulk setup has 23,925 elements and 12,063 nodes and the pancake setup have 25,702 elements and 12,896 nodes. A mesh example for the insert can be seen in Fig. 5
+                        , and as seen it is necessary to have a fine mesh in the magnetic material due to the well-known skin depth (or penetration depth), which is derived from Maxwell׳s equations. This quantity is defined as the distance for which the amplitude of a plane wave decreases by a factor of 
+                           
+                              
+                                 e
+                              
+                              
+                                 −
+                                 1
+                              
+                           
+                           =
+                           0.368
+                        :
+                           
+                              (30)
+                              
+                                 δ
+                                 =
+                                 
+                                    
+                                       1
+                                    
+                                    
+                                       
+                                          
+                                             π
+                                             f
+                                             μ
+                                             σ
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        where f is the frequency, μ is the magnetic permeability and σ is the electrical conductivity. This means that 63.2% of the magnetic field and currents will flow in this distance, so in order to resolve the solution properly it is normally recommended to have at least three skin depths of fine mesh [8].
+
+The boundary conditions imposed for the electromagnetic analysis are a vanishing magnetic field at the outer boundary, that is 
+                           
+                              
+                                 
+                                    
+                                       A
+                                    
+                                    
+                                       ¯
+                                    
+                                 
+                              
+                              
+                                 θ
+                              
+                           
+                           =
+                           0
+                         as well as at the axis of rotation. The induced current for the pancake configuration is 50.6A at a frequency of 11230Hz, and for the bulk configuration 52.4A at 11700Hz. The boundaries for the thermal calculations are described via a heat transfer coefficient between adjacent parts of the mold
+                           
+                              (31)
+                              
+                                 −
+                                 k
+                                 
+                                    
+                                       ∂
+                                       T
+                                    
+                                    
+                                       ∂
+                                       n
+                                    
+                                 
+                                 =
+                                 h
+                                 (
+                                 
+                                    
+                                       
+                                          T
+                                       
+                                       
+                                          1
+                                       
+                                    
+                                    −
+                                    
+                                       
+                                          T
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                 
+                                 )
+                              
+                           
+                        where h is the heat transfer coefficient which is set to 
+                           1000
+                           
+                              
+                                 w
+                              
+                              
+                                 
+                                    
+                                       m
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 k
+                              
+                           
+                         in this work. The axis of rotation is defined as an adiabatic boundary. The initial temperature is set to room temperature of 25°C, and the heating is turned on for 7s and cooling for 19s in the pancake setup, while the heating is turned on for 6s and cooled for 37s in the bulk setup.
+
+Some initial simulations were run in order to see the effect of the resulting temperatures, when varying the demagnetization coefficient, N, used for correcting the obtained VSM B-H curves from the authors׳ earlier work [16]. This showed a large difference in resulting temperatures. The setup used was the bulk, and the α, β and γ coefficients were found for different values of the demagnetization coefficient.
+
+As seen in Fig. 6
+                         is it important to use a good estimate for the demagnetization coefficient as the thermal field will be underestimated if a too low value is used. The proposed method for finding N presented in [16] does seem to fit the induction heating simulation in this work. The scale goes from using no demagnetization at N=0 to the largest possible demagnetization (using a larger N will result in an unphysical B-H curve). The estimated N by Aharoni [20], approximating a homogeneous rectangular prism, was typically above the largest possible value.
+
+@&#RESULTS AND DISCUSSION@&#
+
+The simulations are run taking heating and cooling into account until there is a cyclic steady state. The outer boundaries are specified as a heat flux with a heat transfer coefficient of 
+                        1000
+                        
+                           
+                              W
+                           
+                           
+                              
+                                 
+                                    m
+                                 
+                                 
+                                    2
+                                 
+                              
+                              K
+                           
+                        
+                      for the metal - metal interface, as mentioned in Section 5.2. Between the two mold halves, that is at y=10mm for the pancake and y=44mm for the bulk model, the heat flux will be lower due to a potential air gap of 0.1mm, giving an effective heat flux of 
+                        260
+                        
+                           
+                              W
+                           
+                           
+                              
+                                 
+                                    m
+                                 
+                                 
+                                    2
+                                 
+                              
+                              K
+                           
+                        
+                     . The main part of the heat is generated in the magnetic insert, due to its skin depth and electrical resistivity, whereas the core is carrying the magnetic field to concentrate it in front of the core and since it conducts electrical currents poorly, there is almost no eddy currents running in the core, hence no heating. There is also some heating coming from the current applied to the coil itself, and this is also accounted for, even though it is quickly cooled from the cooling water in the bulk setup, and also limited since a Litz wire is used in the pancake setup, which means the currents will evenly spread across the cross-section area, and not concentrate at the skin depth, thus not creating high peak temperatures.
+
+The nine cycles take around 6–700s in CPU time to solve and approximately 7–8 iterations are needed in the first non-linear iteration, and subsequent 1–6 iterations with the three new updated modified Fröhlich parameters. It takes around five cycles to get into the cyclic steady state. Using the non-linear material data gives a very good agreement with the experimental measured data from the thermocouple in the center. The temperature distribution after cyclic steady state reaches a higher maximum temperature for the bulk than in the pancake, but it is more evenly distributed in the pancake setup. The maximum temperature at the corner of the cavity (P2) in the bulk setup shows that the maximum temperatures are located above the coil, and as the heat conducts away the maximum temperatures start to be close to the center of the geometry. Whereas the pancake shows the heat more evenly spread across the magnetic insert, it conducts away more quickly, and the position of the maximum temperature is all the time close to the center of the geometry (P1). It is also quite evident from the temperature contour plots in Figs. 7 and 10
+                      that the temperatures at the cavity surface where the thin cantilever geometries are located (near P2) are on the lower side of the required 
+                        
+                           
+                              T
+                           
+                           
+                              no
+                              −
+                              flow
+                           
+                        
+                      for the pancake setup, and this is also seen in the experiments, as they short shot [19].
+
+The cantilever geometries are better filled and replicated in the bulk setup, due to the location of the maximum temperatures. There is an overall good agreement between the transient P1 thermal signal from the experiments and the simulation as seen in Fig. 8
+                      for the pancake setup and in Fig. 11 for the bulk setup.
+
+The fictitious linear permeability for each element together with the magnetic field lines can be seen in Fig. 9
+                      for the pancake setup and in Fig. 12 for the bulk setup. It is seen how the material starts to become less magnetic where the magnetic field is concentrated, which is specifically above each winding and in the corners of the Somaloy core in the pancake setup. Similarly for the bulk setup in the magnetic insert, and in the ferrite core it is more unevenly distributed compared to the Somaloy. It is also evident that the flux concentrator does carry most of the magnetic field and concentrates it on the backside of the magnetic insert. This is where the magnetic flux lines are concentrated in the magnetic insert and the eddy currents are located and the heat is dissipated from.
+
+Even though the pancake setup in this particular experiment is not giving sufficiently high temperature at P2 as the bulk does, the pancake is still preferable due to easier installation in the mold, and the less space it takes up compared to the bulk. In order to benefit more from the pancake configuration a higher current should have been used, as this could have given the required temperature field. The problem that might arise from this, is that the conducting wire carrying the current should not be heated to an extent where this insulation will burn off, and short circuit the coil with the mold. A suggestion to remedy this will be to use the solid copper wire with water cooling inside.
+
+To estimate the power required to heat the insert to an average temperature the following equation is used:
+                        
+                           (32)
+                           
+                              
+                                 
+                                    P
+                                 
+                                 
+                                    w
+                                 
+                              
+                              =
+                              
+                                 
+                                    mc
+                                 
+                                 
+                                    p
+                                 
+                              
+                              
+                                 
+                                    
+                                       
+                                          T
+                                       
+                                       
+                                          f
+                                       
+                                    
+                                    −
+                                    
+                                       
+                                          T
+                                       
+                                       
+                                          in
+                                       
+                                    
+                                 
+                                 
+                                    t
+                                 
+                              
+                           
+                        
+                     where m is the mass (
+                        =
+                        V
+                        ρ
+                     , where V is the volume and ρ is the density), c
+                     
+                        p
+                      is the specific heat capacity, T
+                     
+                        f
+                      is the final average temperature, T
+                     
+                        in
+                      is the initial temperature and t is time. The average temperature of the insert is calculated from the numerical simulation at the time of the maximum temperature of P2, see Table 2
+                      for comparison of the analytically estimated and the numerical power. The latter is calculated from Eq. (10) which is integrated over the volume of the insert. The agreement is acceptable between the the numerical and analytical power.
+
+The temperature results found using a non temperature dependent non-linear simulation, is shown in Table 2 (here the coefficients α, β and γ have been used at 100°C). For the pancake setup it is evident that both the temperature dependent and the non temperature dependent cases are very close. This should in fact also be the case, since the pancake temperature distribution is much better in the insert compared to the bulk case, which can be seen by comparing Figs. 7 and 10
+                     . The temperature differences between prediction at P1 from experiment and simulation is mainly due to the location of the sensor in the experiment, as this might have been slightly closer to the inner windings. This is because it is a spiral ending in the axis of rotation, so the maximum temperature might be a better comparison with the P1 experiment, as the maximum temperature is in fact located right next to the inner winding, as seen in Fig. 7.
+
+The bulk setup has more noticeable power and temperature differences between temperature and non temperature dependent properties. The power induced in the insert is larger in the non temperature dependent case due to an overestimation of the fictive relative permeability, since the quicker saturation at higher temperature is not accounted for. This happens due to the less evenly distributed temperature field in the insert, as the heating is only localized above the the windings.
+                     
+                  
+
+The linear simulations have been conducted, estimating an effective linear permeability from the non-linear simulation results. It is essentially the fictitious relative permeability at the boundary between the almost saturated zone and the zone further away with the initial relative permeability. This span ranges from around 68 to 1860 for the bulk setup, with an effective relative permeability of 300 and in the pancake setup 200. This effective linear permeability can roughly be estimated from Eqs. (19) and (16) assuming 
+                        
+                           
+                              w
+                           
+                           
+                              1
+                              i
+                           
+                        
+                        =
+                        
+                           
+                              w
+                           
+                           
+                              2
+                              i
+                           
+                        
+                      and using the mean H
+                     
+                        mi
+                     
+                     
+                        f
+                      magnetic field from the insert geometry from the non-linear simulation (that is only accounting for the average of the magnetic field where it has a strength of more than 1% of the maximum value). The different modified Fröhlich plots of the used non-linear materials, together with different linear relative permeabilities can be seen in Fig. 13
+                     . As seen in the range of 200–300 for μ
+                     
+                        r
+                      where the insert material is placed, the highest magnet fields are present, while for the flux concentrator it is in the range of 500–1000 in μ
+                     
+                        r
+                      at much lower magnetic fields. This is especially evident for the ferrite, since it would be saturated already at a slightly higher magnetic field. This is also possible to see in Fig. 12 for the bulk setup, where the ferrite is close to saturated at the upper inner corner closest to the windings. 
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                  
+
+@&#CONCLUSION@&#
+
+In this work, an axisymmetric non-linear finite element model for induction heating in injection molding tools has been developed. It consists of a non-linear electromagnetic solver to find the heat source for the heat conduction equation. The non-linearity is linearized by using an iterative procedure with a fictitious linear permeability and fictitious magnetic field in each element of the non-linear materials. This is updated until the change in energy is small. The non-linearity consists of a B-H curve which has been fitted to a modified Fröhlich relation, utilized in the iteration procedure. This equation contains three parameters, which are dependent on temperature. A single electromagnetic solution is done before the heat conduction equation is solved, and the modified Fröhlich parameters are then updated with the new temperatures, whereafter the electromagnetic solution is carried out once again. The heat conduction equation is stepped forward in time with this procedure until the induction is turned off, and continues with cooling, where the heat source term is turned off. This is repeated until cyclic steady state is reached.
+
+The FE model has been compared with two experimental configurations, namely a traditional ferrite core with windings and a magnetic mold tool insert, and a more flat flux concentrator consisting of a machinable material, with windings lying in the top layer with the magnetic mold tool insert in front. The flat configuration has a more uniformly heating insert, due to the spread of the windings, compared to the traditional core, which has very concentrated heating just above the windings. In this case this proved to give high temperatures at the locations of the thin cavities and as such a higher flowability of the polymer in the traditional core configuration. For the flat configuration, a higher current is needed, which can be achieved with water cooled copper windings. As this setup gives more uniform temperature distribution, it is desirable.
+
+The significance of the non-linear temperature dependence has been demonstrated to be minor in the cases presented here. However, the methodology holds also for future materials and is thus now available for future work. It was shown that utilizing temperature dependent modified Fröhlich coefficients is not necessary when a relatively low uniform temperature distribution is present, here it is sufficing to use the coefficients at the temperature level of the desired temperature. The traditional core setup did however show a greater need for temperature dependency due to its highly local concentrated heat, generated right above the windings. Furthermore, is it possible to find an effective relative permeability which can be utilized in other codes or commercial programs not supporting non-linear magnetic properties in a time-harmonic formulation like the one presented in this work.
+
+@&#ACKNOWLEDGMENTS@&#
+
+This work was carried out as part of the Innomold Project (Innovative Plastic Products and More Energy Efficient Injection Molding Processes) supported by the Danish Council for Technology and Innovation.
+
+The modified Fröhlich coefficients α, β and γ are shown in Figs. 14–21 for the characterized materials from [16].
+
+The integral from Eq. (14) with Eq. (13) inserted is evaluated here:
+                        
+                           (33)
+                           
+                              
+                                 
+                                    w
+                                 
+                                 
+                                    1
+                                    i
+                                 
+                              
+                              =
+                              
+                                 
+                                    ∫
+                                 
+                                 
+                                    0
+                                 
+                                 
+                                    
+                                       
+                                          H
+                                       
+                                       
+                                          mi
+                                       
+                                       
+                                          f
+                                       
+                                    
+                                 
+                              
+                              (
+                              
+                                 
+                                    
+                                       H
+                                    
+                                    
+                                       α
+                                       +
+                                       β
+                                       |
+                                       
+                                          H
+                                       
+                                       |
+                                       +
+                                       γ
+                                       
+                                          
+                                             |
+                                             
+                                                H
+                                             
+                                             |
+                                          
+                                       
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       μ
+                                    
+                                    
+                                       0
+                                    
+                                 
+                                 H
+                              
+                              )
+                              
+                              d
+                              H
+                           
+                        
+                     
+                     
+                        
+                           (34)
+                           
+                              
+                                 
+                                    w
+                                 
+                                 
+                                    1
+                                    i
+                                 
+                              
+                              =
+                              
+                                 
+                                    1
+                                 
+                                 
+                                    2
+                                 
+                              
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    2
+                                 
+                              
+                              
+                                 
+                                    μ
+                                 
+                                 
+                                    0
+                                 
+                              
+                              +
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    β
+                                 
+                              
+                              +
+                              
+                                 
+                                    2
+                                    
+                                       
+                                          H
+                                          γ
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          β
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                 
+                              
+                              +
+                              
+                                 
+                                    ln
+                                    (
+                                    
+                                       α
+                                    
+                                    )
+                                    α
+                                 
+                                 
+                                    
+                                       
+                                          β
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                 
+                              
+                              −
+                              
+                                 
+                                    ln
+                                    (
+                                    
+                                       α
+                                    
+                                    )
+                                    
+                                       
+                                          γ
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          β
+                                       
+                                       
+                                          3
+                                       
+                                    
+                                 
+                              
+                              −
+                              
+                                 
+                                    ln
+                                    (
+                                    
+                                       H
+                                       +
+                                       
+                                          
+                                             H
+                                          
+                                       
+                                       γ
+                                       +
+                                       α
+                                    
+                                    )
+                                    α
+                                 
+                                 
+                                    
+                                       
+                                          β
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                 
+                              
+                              +
+                              
+                                 
+                                    ln
+                                    (
+                                    
+                                       β
+                                       H
+                                       +
+                                       
+                                          
+                                             H
+                                          
+                                       
+                                       γ
+                                       +
+                                       α
+                                    
+                                    )
+                                    
+                                       
+                                          γ
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          β
+                                       
+                                       
+                                          3
+                                       
+                                    
+                                 
+                              
+                              +
+                              
+                                 
+                                    6
+                                    
+                                    arctan
+                                    (
+                                    
+                                       
+                                          
+                                             
+                                                2
+                                                β
+                                                
+                                                   
+                                                      H
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      4
+                                                      α
+                                                      β
+                                                      −
+                                                      
+                                                         
+                                                            γ
+                                                         
+                                                         
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       +
+                                       
+                                          
+                                             
+                                                γ
+                                             
+                                             
+                                                
+                                                   
+                                                      4
+                                                      α
+                                                      β
+                                                      −
+                                                      
+                                                         
+                                                            γ
+                                                         
+                                                         
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    )
+                                    α
+                                    γ
+                                 
+                                 
+                                    
+                                       
+                                          β
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                    
+                                       
+                                          4
+                                          α
+                                          β
+                                          −
+                                          
+                                             
+                                                γ
+                                             
+                                             
+                                                2
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                              +
+                              
+                                 
+                                    2
+                                    
+                                    arctan
+                                    (
+                                    
+                                       
+                                          
+                                             
+                                                2
+                                                β
+                                                
+                                                   
+                                                      H
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      4
+                                                      α
+                                                      β
+                                                      −
+                                                      
+                                                         
+                                                            γ
+                                                         
+                                                         
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       +
+                                       
+                                          
+                                             
+                                                γ
+                                             
+                                             
+                                                
+                                                   
+                                                      4
+                                                      α
+                                                      β
+                                                      −
+                                                      
+                                                         
+                                                            γ
+                                                         
+                                                         
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    )
+                                    
+                                       
+                                          γ
+                                       
+                                       
+                                          3
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          β
+                                       
+                                       
+                                          3
+                                       
+                                    
+                                    
+                                       
+                                          4
+                                          α
+                                          β
+                                          −
+                                          
+                                             
+                                                γ
+                                             
+                                             
+                                                2
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                              −
+                              
+                                 
+                                    6
+                                    
+                                    arctan
+                                    (
+                                    
+                                       
+                                          
+                                             
+                                                γ
+                                             
+                                             
+                                                
+                                                   
+                                                      4
+                                                      α
+                                                      β
+                                                      −
+                                                      
+                                                         
+                                                            γ
+                                                         
+                                                         
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    )
+                                    α
+                                    γ
+                                 
+                                 
+                                    
+                                       
+                                          β
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                    
+                                       
+                                          4
+                                          α
+                                          β
+                                          −
+                                          
+                                             
+                                                γ
+                                             
+                                             
+                                                2
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                              +
+                              
+                                 
+                                    2
+                                    
+                                    arctan
+                                    (
+                                    
+                                       
+                                          
+                                             
+                                                γ
+                                             
+                                             
+                                                
+                                                   
+                                                      4
+                                                      α
+                                                      β
+                                                      −
+                                                      
+                                                         
+                                                            γ
+                                                         
+                                                         
+                                                            2
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    )
+                                    
+                                       
+                                          γ
+                                       
+                                       
+                                          3
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          β
+                                       
+                                       
+                                          3
+                                       
+                                    
+                                    
+                                       
+                                          4
+                                          α
+                                          β
+                                          −
+                                          
+                                             
+                                                γ
+                                             
+                                             
+                                                2
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+                  
+
+@&#REFERENCES@&#
+

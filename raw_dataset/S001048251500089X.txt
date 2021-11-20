@@ -1,0 +1,145 @@
+@&#MAIN-TITLE@&#Effects of game-based virtual reality on health-related quality of life in chronic stroke patients: A randomized, controlled study
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Rehabilitation can improve physical function and quality of life after a stroke.
+
+
+                        
+                        
+                           
+                           Virtual reality (VR) is an emerging modality for performing rehabilitation.
+
+
+                        
+                        
+                           
+                           We evaluated the effects of VR and conventional therapy among stroke patients.
+
+
+                        
+                        
+                           
+                           VR plus therapy improved specific health-related quality of life items.
+
+
+                        
+                        
+                           
+                           VR plus therapy also improved depression and physical function measures.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Virtual reality
+
+Health-related quality of life
+
+Rehabilitation
+
+Stroke
+
+Game
+
+Clinical study
+
+Motor function
+
+Depression
+
+@&#ABSTRACT@&#
+
+
+                  In the present study, we aimed to determine whether game-based virtual reality (VR) rehabilitation, combined with occupational therapy (OT), could improve health-related quality of life, depression, and upper extremity function. We recruited 35 patients with chronic hemiparetic stroke, and these participants were randomized into groups that underwent VR rehabilitation plus conventional OT, or the same amount of conventional OT alone, for 20 sessions over 4 weeks. Compared to baseline, the VR rehabilitation plus OT group exhibited significantly improved role limitation due to emotional problems (p=0.047). Compared to baseline, both groups also exhibited significantly improved depression (p=0.017) and upper extremity function (p=0.001), although the inter-group differences were not significant. However, a significant inter-group difference was observed for role limitation due to physical problems (p=0.031). Our results indicate that game-based VR rehabilitation has specific effects on health-related quality of life, depression, and upper extremity function among patients with chronic hemiparetic stroke.
+               
+
+@&#INTRODUCTION@&#
+
+Stroke affects various aspects of human activity, participation, and life. Upper limb motor deficit is known to be the most common impairment in the acute phase of stroke (77.4% of all cases), and persists in approximately half of all chronic stroke survivors [1,2]. Furthermore, upper limb motor deficit affects the quality of life of these patients, and improving upper extremity function remains a major component of rehabilitation among stroke patients. Therefore, a variety of interventions have been developed for this purpose, and virtual reality (VR) has recently been described as a promising tool for rehabilitation. In this context, VR provides a computer-generated real-time simulation of an activity or environment, which promotes a virtual experience via interactions between the user and artificial environments. It has also been suggested that VR could provide high-intensity, repetitive, and task-specific training. Virtual reality was introduced as an assistive technology for neurorehabilitation approximately 25 years previously, and was introduced specifically for stroke rehabilitation in the early 2000s [3], where it is gaining popularity, despite inconsistent results. In their pragmatic clinical trial among 376 stroke patients, Turolla et al. [4] demonstrated that a combination of VR-based rehabilitation with conventional therapy provided greater improvements in upper limb motor function and capacity for activities of daily living, compared to the same amount of conventional therapy alone. In addition, the improvements in kinematic and clinical outcomes were superior in the VR group, compared to the group that received conventional therapy alone [5]. However, other studies have concluded that there were no significant differences when VR rehabilitation was combined with conventional interventions [6,7].
+
+Non-immersive game systems have recently been adopted as VR for rehabilitation, and have become more popular with the advent of off-the-shelf commercial systems. For example, the Nintendo® Wii or Microsoft Kinect™ systems provide a motion-based control interface, which makes these systems applicable and suitable for rehabilitation that is focused on motor function. These systems are also relatively affordable, and are widely available in many non-hospital settings. Unfortunately, the therapeutic effect of VR gaming has not been consistent, and is known to vary according to the outcome measures and classification systems that are used [8,9]. Furthermore, the studied outcomes have been limited to motor-related factors, such as range of motion, strength, and body function, and do not consider the patient’s quality of life.
+
+Health-related quality of life (HRQOL) is defined as the quality of life that is affected by disease, and is a multidimensional measure that includes physical, social, and emotional health. Therefore, HRQOL measurements more accurately reflect the status of participants, compared to functional or impairment measures [10,11]. Although HRQOL is subjectively evaluated from the participant’s perspective, it is known to be a powerful predictor of mortality and morbidity [12]. Furthermore, it is difficult to improve HRQOL in stroke survivors, which is often very poor [13]. Specific interventions include botulinum toxin type A injection or robot-assisted therapy, which have a significant effect on HRQOL; however, the effects of VR rehabilitation on HRQOL among stroke patients has not been determined [14]. Therefore, the objective of the present study was to determine whether HRQOL, depression, and upper extremity function could be improved using game-based VR rehabilitation plus conventional occupational therapy (OT), compared to the same amount of conventional OT alone.
+
+@&#MATERIAL AND METHODS@&#
+
+Patients who were aged ≥18 years and had chronic hemiparetic upper limb dysfunction, secondary to a first-ever stroke, were prospectively recruited between January 2012 and March 2014 from one university hospital and one rehabilitation hospital. A total of 117 potential candidates were screened for eligibility, and all exhibited mild-to-moderate deficits of their paretic upper extremity at the time of enrolment. Eligibility was determined using Medical Research Council Scale scores of ≥2 (able to move the extremity with full range of motion, when gravity is eliminated) and ≤4 (able to complete the range of motion against gravity with moderate resistance) and a Brunnstom motor recovery stage for the proximal upper extremity of ≥2 (limb synergy develops out of flaccid paralysis, and spasticity appears, although not marked) and ≤5 (relative independence out of the limb synergies, and spasticity wanes) [15]. The exclusion criteria were severe cognitive impairment or aphasia (which impaired the participant’s ability to follow instructions), pre-existing mental illness or arm impairment, difficulty in sitting for at least 30min, and/or uncontrolled medical illness. All patients provided their written informed consent before participating in the study. The study was conducted in accordance with the Declaration of Helsinki, and its design was approved by the institutional review board of the National Rehabilitation Center and Hanyang University.
+
+@&#METHODS@&#
+
+This prospective, randomized, single-blind, parallel-group study used a two-factorial repeated measures design to compare the changes in HRQOL, depression, and motor function due to VR+OT or OT alone, among participants with chronic stroke. The participants were randomly divided in a 1:1 ratio into two groups using a computer-generated randomization schedule. The OT group received 30min of conventional OT, plus an additional 30min of OT, for a total of 1h of OT. The VR+OT group received 30min of conventional OT, plus 30min of game-based VR rehabilitation with the RehabMaster™ system (D-Gate, Seoul, Korea) (
+                     Fig. 1). The conventional OT was similar to standard OT, which includes range of motion and strengthening exercises for the affected limb, table-top activities, and training for activities of daily living. The additional 30min of OT or VR rehabilitation was variably conducted by two trained occupational therapists who were exclusively dedicated to this study. The framework for the additional therapies was designed to promote the use of the affected limb and movement of the trunk, depending on the participant’s functional status, and comprised various motions, such as reaching, catching, wrist flexion or extension, and grasping. The therapists adjusted the difficulty of the OT by controlling the target’s placement or weight, or task speed. The interventions were performed 5 days per week for 4 weeks.
+
+The RehabMaster™ is a game-based VR rehabilitation system, which uses the OpenNI™-compliant depth sensor, PrimeSense™ 3D awareness sensor, infrared projectors, and standard red–green–blue and infrared (IR) complementary metal–oxide semiconductor image sensors for VR rehabilitation. The infrared projectors emit thousands of IR beams towards an object, which subsequently reflects the beams back towards an infrared camera. The PrimeSense™ 3D awareness sensor is linked to a software development kit, which calculates the distance between each reflected infrared beam. After completing these distance calculations, a depth image is created from these distances, the body parts are isolated from the depth image, the joints are distinguished from each body part, and a relative vector value is calculated for each body part (relative to the other parts) (
+                     Fig. 2). Finally, a computer with Microsoft Windows 7, a 2.9-GHz quad-core processor, and 4GB of SDRAM renders the image of the participant onto a 60-in monitor with a resolution of 1920×1080pixel. The RehabMaster’s main user interface consists of four elements: a “user management” module that displays the participant’s information (e.g., an abbreviated medical record, history of the system usage, and the therapist’s notes), an “assessment” module that evaluates the participants’ physical status, a “rehabilitation training” module that asks the participant to imitate specific motions that are performed by an avatar, and “rehabilitation games” that facilitate rehabilitation exercises using gaming concepts (
+                     Fig. 3). A full description of this system has been previously reported [16].
+
+The game-based VR rehabilitation in the present study was accomplished using 10min of “rehabilitation training” and 20min of “rehabilitation games,” which were selected by the occupational therapist to encourage active arm and trunk movements and promote successful rehabilitation. The patients sat in a chair in front of the monitor and depth sensor, and moved their upper limb or trunk according to the training protocol, which was selected by the therapists to address specific functional deficits. The difficulty of the VR rehabilitation was set by manipulating the range of motion or speed of the activity, or by manipulating the number, size, location, speed, or trajectories of the targets.
+
+In this study, we collected baseline data regarding patient demographics, handedness, and stroke characteristics. Each participant’s HRQOL was assessed via an interview using the Korean version of the Short Form Health Survey (SF-36), which has been shown to be valid and reliable [17,18]. The following eight health domains from the SF-36 were assessed: physical functioning (performance of a variety of physical activities, 10 items), role limitations due to physical problems (problems with work or other daily activities as a result of physical health, 4 items), bodily pain (pain or limitations due to pain, 2 items), general health (evaluation of personal health, 5 items), vitality (tiredness or energy, 4 items), social functioning (social activities due to physical and emotional problems, 2 items), role limitations due to emotional problems (problems with work or other daily activities as a result of emotional problems, 3 items), and mental health (feelings of nervousness, depression, peacefulness, happiness, and calm, 5 items). The score for each domain ranges from 0 to 100, with higher scores reflecting a better health condition. Depression was measured using the validated Korean version of Hamilton Depression Rating Scale (HAMD), which is widely used as a clinician-administered depression rating scale, with higher scores indicating more severe depression [19,20]. Upper limb function was evaluated using the upper extremity Fugl-Meyer Assessment (FMA, scores range from 0 to 66), with higher scores reflecting a better function. The FMA provides a global assessment of upper extremity impairment, with high intra- and inter-rater reliability [21,22]. All scores were evaluated at baseline, and during a separate testing session after the twentieth intervention session. A trained and blinded outcome assessor performed all assessments.
+
+All statistical analyses were performed using SPSS software (version 17.0, SPSS Inc., Chicago IL, USA), and differences with a p-value of <0.05 were considered statistically significant. The normality of the data was evaluated using the Kolomogorov–Smirnov test. As the data were not normally distributed, nonparametric tests were used to evaluate the inter-group and intra-group differences. The Wilcoxon signed-rank test was used to analyse the intra-group changes over time, while the two-tailed Mann–Whitney U test was used to compare the inter-group differences at baseline and at the study end point.
+
+@&#RESULTS@&#
+
+A total of 35 participants were enrolled and randomized into the two groups. Two patients in the VR+OT group and one patient in the OT group withdrew during the study. Thus, 16 participants were eventually included in each group (Fig. 1). None of the study participants experienced an adverse event.
+
+
+                     
+                     Table 1 shows the participants’ baseline characteristics. There were no significant differences between the groups in terms of age, sex, duration from stroke onset, handedness, affected side, HAMD, FMA, and all of the SF-36 items (except mental health). Compared to baseline, the VR+OT group exhibited a significant improvement in role limitation due to emotional problems (p=0.047). In addition, among the SF-36 items, a significant difference between the VR+OT and OT groups was observed for role limitation due to physical problems (p=0.031) (
+                     Table 2). Furthermore, vitality improved in the VR+OT group, compared to the OT group, although this difference was not statistically significant (p=0.065). Finally, compared to baseline, significant improvements in HAMD and FMA were observed in both groups, although no inter-group differences were observed (
+                     Table 3).
+
+@&#DISCUSSION@&#
+
+The findings of the present study revealed that game-based VR rehabilitation, combined with conventional OT, improved specific HRQOL items in participants with chronic stroke Furthermore, the VR+OT group had significantly improved role limitation due to emotional problems (compared to the baseline), and significantly improved role limitation due to physical problems (compared to the OT group). Similar effects were observed for depression and upper extremity function compared to the baseline.
+
+The nature of the game that we embedded in the RehabMaster™ system might provide a highly realistic and immersive environment for users. Gaming is known to provide challenging and fun game play, which can encourage skill development and motivate further movement [23,24]. Similarly, game-based VR systems provide engaging gameplay that is associated with immersion, motivation, and fun, and one case study has reported that stoke patients derived a high level of interest and enjoyment via the use of a game system [25]. In addition, our previous study has demonstrated that a flow experience, and enjoyable feeling without any negative emotions, was elicited in stroke patients via game-based VR rehabilitation [16]. Therefore, this experience of interest and positive feelings might have caused the gradual improvements in role limitation due to emotional problems in the VR+OT group. This hypothesis is also consistent with the improved vitality that we observed in the VR+OT group, compared to that in the OT group.
+
+Interestingly, role limitation due to physical problems was significantly improved in the VR+OT group, compared to in the OT group. However, no differences in physical function (FMA and SF-36 physical functioning) were observed between the two groups. This result might be associated with the decrement of role limitation due to physical problems in the OT group. However, we believe that this significant effect might also be related to the use of game-based VR rehabilitation, because there were no significant differences in the vitality and social functioning scores in the two groups, despite the decrements for these variables in the OT group. Furthermore, most of the participants stated that “they were satisfied with their improvements (as reported via the VR system’s scoring or graphs), although they did not know the exact improvement in the real world.” Thus, it is possible that the participants’ altered perception during the VR rehabilitation might have affected their role limitations due to physical problems, even though a similar physical status was maintained. For example, stroke patients have reported less stress in a virtual environment, compared to what they experience while performing the same task in the real world [5]. Furthermore, the RehabMaster™ system senses the participant’s natural body motion and presents real-time graphics to the user, which may increase the user’s interaction and immersion experience. As immersive VR has been known to affect body perception and facilitate cognitive modelling [26], it is possible that the VR system’s immersive properties might also have affected the participant’s perceptions of role limitations. Therefore, this type of VR technology may provide various effects that are not achievable when using traditional OT methods [27].
+
+Upper extremity function, mental health, and participation in leisure activities have been identified as key variables that enhance the HRQOL in stroke survivors [28]. However, only limited and unsatisfactory functional improvements have been achieved after a stroke [29], and we did not observe any significant change in upper extremity function between the two groups. Functional effects have been reported for the RehabMaster™ system [16], although the present study failed to demonstrate superiority for game-based VR rehabilitation, compared to the same amount of OT. This finding is in agreement with the findings of a systematic review [30], which reported that trials involving >15h of VR intervention provided a significant improvement in upper extremity function, compared to trials that involved <15h of intervention. In contrast, a different study has reported that 4.5h of VR-based rehabilitation (combined with 3h of OT) provided superior upper extremity function, compared to the same amount of OT (7.5h of OT), among patients with brain tumours [31]. This discrepancy may be related to the disease characteristics of the patients in each study. Therefore, further studies should evaluate a greater intervention period, and target a more diverse group of subjects (e.g., those with brain tumours), to verify the functional effects of game-based VR rehabilitation. Nevertheless, mental health and participation in leisure activities could be enhanced via the embedded characteristics of our game-based VR system, as the HRQOL may be enhanced independent of physical impairment and disability [13].
+
+Several limitations should be considered when interpreting the present study’s results. First, most of the participants’ had experienced their stroke approximately 6 months prior to enrolment, and their chief complaints involved functional deficits that were related to motor impairments. Therefore, as ethical treatment principles currently preclude the use of VR-based rehabilitation alone, we could not perform a direct comparison of game-based VR rehabilitation and conventional OT, which may obscure the effects of game-based VR. Therefore, future head-to-head studies might provide more in-depth information regarding the effects of game-based VR rehabilitation. Second, the SF-36 tool was used to evaluate HRQOL, although the use of SF-36 among participants with specific diseases has been questioned. Nevertheless, usefulness of the SF-36 have been reported among stroke survivors [32]. In addition, we administered the SF-36 in a standardised face-to-face interview in order to provides a measure of consistency and overcome the poor completion rates that have been reported in studies that mailed out the questionnaires [33]. Third, as we did not perform follow-up evaluations, we can only comment on the short-term effects of the interventions. Fourth, the small number of participants may have obscured potentially significant changes in other variables, as a similar study has reported that 96 subjects are required for each group to detect significant differences in upper extremity FMA [34]. Thus, a much larger study is needed to compare and evaluate game-based VR rehabilitation and conventional OT.
+
+In conclusion, game-based VR rehabilitation with conventional OT provided improvements in specific HRQOL items, depression, and upper extremity function. In addition, game-based VR rehabilitation plus OT provided enhanced HRQOL benefits, compared to an equivalent amount of conventional OT, and these benefits may not be attainable via conventional OT. Therefore, our findings suggest a unique role for game-based VR rehabilitation in chronic stroke patients, which can address both their physical limitations and quality of life.
+
+@&#SUMMARY@&#
+
+@&#INTRODUCTION@&#
+
+Virtual reality (VR) is a computer-generated real-time simulation of an activity or environment, which promotes virtual experience via interactions between a user and artificial environments. It has been suggested that VR could provide high-intensity, repetitive, task-specific training, and previous studies have demonstrated that VR can be used as a tool for stroke rehabilitation. We hypothesized that game-based VR rehabilitation, combined with conventional occupational therapy (OT), might yield superior improvements in health-related quality of life (HRQOL), depression, and upper extremity function, compared to conventional OT alone.
+
+@&#METHODS@&#
+
+We recruited 35 participants with chronic hemiparetic upper limb dysfunction that was secondary to stroke, and randomized the participants into two groups. The first group received 30min of game-based VR rehabilitation plus 30min of conventional OT (the VR+OT group), while the second group received 1h of conventional OT (OT group). Both groups underwent 20 rehabilitation sessions over 4 weeks. For the VR rehabilitation, we used the RehabMaster™ system, which is a game-based VR rehabilitation system that incorporates the Open NI™-compliant depth sensor. We evaluated HRQOL (via the SF-36 tool), depression (via the Hamilton Depression Rating Scale), and upper extremity motor function (via the Fugl-Meyer Assessment) at baseline and after 20 rehabilitation sessions.
+
+@&#RESULTS@&#
+
+The VR+OT group exhibited a significant improvement in role limitation due to emotional problems (compared to baseline), and a significant improvement in role limitation due to physical problems (compared to OT alone). Compared to baseline, both groups exhibited significant improvements in HAMD and FMA, although no inter-group differences were observed.
+
+@&#DISCUSSION@&#
+
+Our findings demonstrate that game-based VR rehabilitation plus conventional OT improved specific HRQOL items, depression, and upper extremity function among individuals with chronic stroke. These findings suggest that game-based VR rehabilitation may have specific effects on HRQOL, although not being generalized, therefore, it can be applied with the extended indication or goal beyond physical function improvement.
+
+This research was funded by grants from the Korean Health Technology R&D Project, Ministry of Health & Welfare, Republic of Korea (A112074), and Quality of Life Technology Development Program (10047879), which is funded by the Ministry of Trade, Industry and Energy (MOITE), Republic of Korea. The funding sources played no part in the study design, analysis, interpretation, or decision to publish.
+
+@&#ACKNOWLEDGEMENTS@&#
+
+The authors thank Hanbyeoul Lee and Hyejin Sim for assistance with the clinical experiments, and Jae-Bong Lee and Suyoung Kim for their consultation regarding the statistical analysis and study design.
+
+@&#REFERENCES@&#
+

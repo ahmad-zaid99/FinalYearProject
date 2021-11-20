@@ -1,0 +1,972 @@
+@&#MAIN-TITLE@&#ARWAR: A network approach for predicting Adverse Drug Reactions
+
+@&#HIGHLIGHTS@&#
+
+
+               
+                  
+                  
+                     
+                        
+                           
+                           We apply an existing approach to build a network of highly related drugs.
+
+
+                        
+                        
+                           
+                           We consider the informative knowledge hidden in the relationships among drugs.
+
+
+                        
+                        
+                           
+                           We augment the original Human Drug Network by adding new nodes and edges.
+
+
+                        
+                        
+                           
+                           We apply random walk with restart to relate each drug to its side-effects.
+
+
+                        
+                        
+                           
+                           Our method outperforms the existing approach significantly.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Side effects
+
+Adverse Drug Reactions
+
+Network approach
+
+Human Drug Network
+
+Multi-label classification
+
+Graph augmentation
+
+Random Walk with Restarts
+
+@&#ABSTRACT@&#
+
+
+                  Predicting novel drug side-effects, or Adverse Drug Reactions (ADRs), plays an important role in the drug discovery process. Existing methods consider mainly the chemical and biological characteristics of each drug individually, thereby neglecting information hidden in the relationships among drugs. Complementary to the existing individual methods, in this paper, we propose a novel network approach for ADR prediction that is called Augmented Random-WAlk with Restarts (ARWAR). ARWAR, first, applies an existing method to build a network of highly related drugs. Then, it augments the original drug network by adding new nodes and new edges to the network and finally, it applies Random Walks with Restarts to predict novel ADRs. Empirical results show that the ARWAR method presented here outperforms the existing network approach by 20% with respect to average Fmeasure. Furthermore, ARWAR is capable of generating novel hypotheses about drugs with respect to novel and biologically meaningful ADR.
+               
+
+@&#INTRODUCTION@&#
+
+A typical drug discovery cycle, from target identification to clinical use, can take approximately 14 years [1] with an associated cost of 800 million US dollars [2]. One of the main causes of failure in the process of the drug development is the existence of Adverse Drug Reactions (ADRs). ADRs are known as a serious clinical problems and are estimated to result in more than 2 million hospitalizations [3] and more than 100,000 deaths in the United States per year [4]. Additionally, in case of serious ADR pharmaceutical companies are forced to withdraw their drugs from the market, which involves significant danger for patients, as well as major financial implications to the companies involved. Therefore, predicting the ADRs prior to market introduction of the drug is necessary and has been considered as a very challenging issue in drug development.
+
+Laboratory-based approaches for predicting and evaluating the potential ADRs are very costly and time consuming. Therefore, using computational approaches for early identification of potential ADRs in the drug discovery process gained much attention in the recent years.
+
+The general pattern for computational methods is as follows: First, they consider different chemical and biological properties of the drugs. Second, they transform the considered properties into numerical features. Third, they develop a systematic way of understanding, predicting and interpreting the desired and undesired effects of drugs [5–16]. The main difference among these methods lies in the type of properties they consider for the ADRs analysis.
+
+In the most domains, more interesting knowledge can be mined from the relationships among entities [17]. For example, several studies [18–21] showed that considering the relationships among different diseases reveals informative patterns and is indeed useful for different prediction tasks. To the best of our knowledge, most of the existing methods focus on each drug individually neglecting the informative knowledge that could be gained from the hidden relationships among different drugs. However, there are some more recent approaches that follow “similar drugs have similar ADRs” pattern and consider relationships among drugs for predicting ADRs [22,23]. For example, Vilar et al. [22] and Luo et al. [23] calculated similarity between two drugs according to drugs’ 3D molecular structure and their docking profiles, respectively, to predict potential ADR for new drugs.
+
+Extending upon previous approaches, we now in this work consider also information hidden in the relationships among drugs. We apply the previous method [24] (as described in Section 6.2) to discover hidden relationships among drugs. Rahmani et al. [24] consider target proteins of drugs, Protein–Protein Interaction (PPI) networks, functional and structural information of PPI networks to discover the most informative relationships among drugs and accordingly, build a network among highly related drugs. Network representation of relationships among drugs provides the unique opportunity to apply the successful off-the-shelf network-based classifiers in other domains for predicting novel ADRs. The effectiveness of the network approach for generating novel hypotheses about drugs has been shown in previous studies [24–29].
+
+In this paper, we explore methods implementing the network approach for predicting the novel ADRs. We examine two classifiers for this purpose. The first classifier is called the Majority Rule Method (MRM) [30] and considers the ADR of neighboring drugs in the network for the prediction. MRM has been used as a baseline method in different domains [31–33]. Considering the limitations of MRM, we propose a second classifier that is called Augmented Random WAlk with Restarts (ARWAR). Our empirical results show that ARWAR outperforms MRM significantly with respect to Fmeasure and is capable of generating novel hypotheses about ADR.
+
+This paper is structured as follows: Section 2 discusses the previous methods on ADR prediction. We model, formally, the task of ADR prediction as a multi-label classification problem in Section 3. Section 4 discusses MRM and its limitations as one of the prominent methods for the multi-label classification problem. We describe our proposed ARWAR approach in details in Section 5. In Section 6, a drug network is constructed and then evaluated in terms of interpretability and novel ADR predictions. Section 7 concludes.
+
+@&#BACKGROUND@&#
+
+Considering different types of input data, we categorize the existing computational methods for the task of novel ADR prediction into three categories.
+
+The first category of methods tries to relate drug side-effects to their chemical substructures [11,12,8,5]. Their results indicate that side-effects of drugs are usually associated with the presence of specific chemical substructures. However, their precision is highly dependent on the pre-definition of chemical substructures. This is true for specific toxic features, e.g. nitrogen mustards, but usually toxicity depends on complex combination of substructures that is not captured by these methods.
+
+The second category of methods relates drug side-effects to its protein targets [9,14,34]. Campillos et al. [9] propose a measure for side-effect similarity by considering the relations among terms in the Unified Modeling Language System (UMLS) ontology. Then, they observe a clear correlation between side-effect similarity and the likelihood that two drugs share protein targets. Finally, they exploit this characteristic to predict novel target proteins for drugs. Fukuzaki et al. [14] use cooperative pathways and gene expression profiles to predict ADRs. Brouwers et al. [34] present the contribution of Protein–Protein Interaction (PPI) networks to drug side-effect similarities.
+
+The third category of methods predicts drug side-effects by integrating multiple data sources [10,13,35,36]. Yamanishi et al. [10] describe each drug according to its chemical profile (an 881 dimensional feature vector where each element encodes for the presence/absence of each PubChem chemical structure) and biological profile (an 1368 dimensional feature vector where each element encodes for the presence/absence of each target protein). Then, they apply different machine learning methods to predict potential side-effect profiles for uncharacterized drugs. Huang et al. [13,35] significantly improve the accuracy of ADR prediction by integrating drug target data, PPI networks, drug structure and Gene Ontology (GO) term annotations. Liu et al. [36] apply five different machine learning methods, namely logistic regression (LR), naive Bayes (NB), K-nearest neighbor (KNN), random forest (RF), and support vector machine (SVM) on the integration of chemical, biological and phenotypic (i.e., indications and other known side-effects) properties. Then, they show that SVM outperforms the other methods and phenotypic data are the most informative for the ADR prediction. The latter conclusion can be explained by the existence of high correlation among ADRs.
+
+In this section, we model the task of ADR prediction as a network-based multi-label classification problem. Consider an undirected network 
+                        G
+                        〈
+                        V
+                        ,
+                        E
+                        〉
+                      with node set V and edge set E, where each node 
+                        
+                           
+                              v
+                           
+                           
+                              i
+                           
+                        
+                        ∈
+                        V
+                      is annotated with a description 
+                        d
+                        (
+                        
+                           
+                              v
+                           
+                           
+                              i
+                           
+                        
+                        )
+                        ∈
+                        D
+                      and, optionally, a label 
+                        l
+                        (
+                        
+                           
+                              v
+                           
+                           
+                              i
+                           
+                        
+                        )
+                        ∈
+                        L
+                     . We assume that there exists a “true” labeling function λ from which l is a sample, i.e., 
+                        l
+                        (
+                        v
+                        )
+                        =
+                        λ
+                        (
+                        v
+                        )
+                      where l(v) is defined. The task of node classification [37] is to predict the labeling set 
+                        l
+                        (
+                        
+                           
+                              v
+                           
+                           
+                              i
+                           
+                        
+                        )
+                      for each unclassified node v
+                     
+                        i
+                     . If 
+                        |
+                        L
+                        |
+                        =
+                        2
+                      then the classification problem is called binary classification while if 
+                        |
+                        L
+                        |
+                        >
+                        2
+                      then it is called multi-class classification. In case l(v) associated with a set of labels 
+                        Y
+                        ⊆
+                        L
+                      then the classification problem is called multi-label classification [38].
+
+In our Human Drug Network (HDN) (as described in details in Section 6.2), each node 
+                        
+                           
+                              v
+                           
+                           
+                              i
+                           
+                        
+                        ∈
+                        V
+                      represents a drug and each edge 
+                        
+                           
+                              e
+                           
+                           
+                              ij
+                           
+                        
+                        ∈
+                        E
+                      represents an relationship between two drugs v
+                     
+                        i
+                      and v
+                     
+                        j
+                     . Description vector 
+                        d
+                        (
+                        
+                           
+                              v
+                           
+                           
+                              i
+                           
+                        
+                        )
+                      contains the available biological and chemical properties of drug v
+                     
+                        i
+                     . The labeling function 
+                        l
+                        (
+                        
+                           
+                              v
+                           
+                           
+                              i
+                           
+                        
+                        )
+                      returns a set of ADR for drug v
+                     
+                        i
+                      (
+                        |
+                        l
+                        (
+                        
+                           
+                              v
+                           
+                           
+                              i
+                           
+                        
+                        )
+                        |
+                        >
+                        =
+                        0
+                     ). In this context, the task of a multi-label classification is to generate a classifier H that, given an unlabeled drug v
+                     
+                        j
+                      with description vector 
+                        d
+                        (
+                        
+                           
+                              v
+                           
+                           
+                              j
+                           
+                        
+                        )
+                     , is capable of predicting the ADR associated to v
+                     
+                        j
+                     .
+
+In the following sections, we discuss two network approaches for predicting novel ADR considering relationships among drugs. The first one is called Majority Rule Method (MRM) and has been applied before in several domains [30–33], while the second method is the Random-WAlk with Restarts (ARWAR) method proposed here. Both methods take Human Drug Network, that is partially annotated with ADR, as input and predict new ADR for drugs in HDN as an output. We discuss both methods in the following sections.
+
+K-nearest neighbor (KNN) classifier considers the majority label(s) of k nearest neighbors of unclassified input data in the classification process [39]. KNN is easy to implement, its results are easy to interpret and it has been studied extensively in the literature [40–42]. One specific graph implementation of KNN classifier is called Majority Rule Method (MRM) [30] that assigns to each unclassified node those labels that occur most frequently among its neighbors in the graph. As an example, Fig. 1
+                      shows the simple graph with four nodes 
+                        V
+                        =
+                        {
+                        
+                           
+                              v
+                           
+                           
+                              1
+                           
+                        
+                        ,
+                        
+                           
+                              v
+                           
+                           
+                              2
+                           
+                        
+                        ,
+                        
+                           
+                              v
+                           
+                           
+                              3
+                           
+                        
+                        ,
+                        
+                           
+                              v
+                           
+                           
+                              4
+                           
+                        
+                        }
+                      and labeling set 
+                        l
+                        (
+                        
+                           
+                              v
+                           
+                           
+                              i
+                           
+                        
+                        )
+                      for each node v
+                     
+                        i
+                     . MRM predicts 
+                        {
+                        
+                           
+                              l
+                           
+                           
+                              1
+                           
+                        
+                        }
+                      for node v
+                     1 as it occurs most in the neighborhood of v
+                     1.
+
+However, this method suffers from several limitations. First, this method only considers the local neighborhood of the v
+                     
+                        i
+                      ignoring the remaining information in the network. In Fig. 2
+                     , MRM cannot discriminate three labels l
+                     1, l
+                     2 and l
+                     3 from each other since they all occur two times in the neighborhood of v
+                     1. However one might prioritize l
+                     1 over 
+                        {
+                        
+                           
+                              l
+                           
+                           
+                              2
+                           
+                        
+                        ,
+                        
+                           
+                              l
+                           
+                           
+                              3
+                           
+                        
+                        }
+                      by considering the labeling information of the second level neighboring nodes (node v
+                     5 in Fig. 2).
+
+Second, MRM does not take into account the connectivity of the neighboring nodes in the prediction process. In Fig. 3
+                     , independent from the existence of edge e
+                     1, MRM cannot discriminate three labels l
+                     1, l
+                     2 and l
+                     3 from each other. However, one might give more priority to class label l
+                     1 since it is more reachable to unclassified node v
+                     1.
+
+Third, MRM does not consider the confidence of class labels in the neighborhood of the unclassified nodes. In Fig. 4
+                     , all three labels l
+                     1, l
+                     2 and l
+                     3 occurred two times in the local neighborhood of v
+                     1 but one might consider l
+                     3 as class label with higher confidence since it occurs in nodes with a smaller number of class labels. In general, we assume that for one node, the confidence of its class labels decreases as the number of class labels increases.
+
+Considering the limitations of MRM discussed in Section 4, in this section, we propose a network-based multi-label classifier that first augments the initial network by adding new nodes and edges and then applies the Random Walk with Restarts method to predict novel ADRs. These steps are discussed in the following sub-sections.
+
+In this section, we augment the initial (Human Drug) Network G (which is formally described in Section 3) by adding new nodes and edges to G. If 
+                           L
+                           =
+                           {
+                           
+                              
+                                 l
+                              
+                              
+                                 1
+                              
+                           
+                           ,
+                           
+                              
+                                 l
+                              
+                              
+                                 2
+                              
+                           
+                           ,
+                           …
+                           ,
+                           
+                              
+                                 l
+                              
+                              
+                                 n
+                              
+                           
+                           }
+                         is the set of all considered ADR then, for each 
+                           
+                              
+                                 l
+                              
+                              
+                                 i
+                              
+                           
+                           ∈
+                           L
+                         we add a new node l
+                        
+                           i
+                         to G (
+                           V
+                           =
+                           V
+                           ∪
+                           {
+                           li
+                        }) and for each annotated drug v
+                        
+                           j
+                         in which 
+                           
+                              
+                                 l
+                              
+                              
+                                 i
+                              
+                           
+                           ∈
+                           l
+                           (
+                           
+                              
+                                 v
+                              
+                              
+                                 j
+                              
+                           
+                           )
+                        , we add a new edge 
+                           
+                              
+                                 e
+                              
+                              
+                                 i
+                                 ,
+                                 j
+                              
+                           
+                           =
+                           {
+                           
+                              
+                                 v
+                              
+                              
+                                 j
+                              
+                           
+                           ,
+                           
+                              
+                                 l
+                              
+                              
+                                 i
+                              
+                           
+                           }
+                         connecting drug v
+                        
+                           j
+                         to ADR l
+                        
+                           i
+                         (
+                           E
+                           =
+                           E
+                           ∪
+                           {
+                           
+                              
+                                 e
+                              
+                              
+                                 ij
+                              
+                           
+                           }
+                        ). As a result, if each drug v
+                        
+                           j
+                         is annotated, on average, with k ADRs, then the augmented graph 
+                           
+                              
+                                 G
+                              
+                              
+                                 ′
+                              
+                           
+                         will have 
+                           |
+                           V
+                           |
+                           +
+                           |
+                           L
+                           |
+                         nodes and, on average, 
+                           |
+                           E
+                           |
+                           +
+                           |
+                           V
+                           |
+                           ⁎
+                           K
+                         edges.
+
+After augmenting the initial network, in order to predict the novel ADR, we apply the steady state distribution of a Random Walk with Restarts (RWR) technique [43] to calculate the network similarity between each drug v
+                        
+                           i
+                         and each ADR l
+                        
+                           j
+                        . We simulate the trajectory of random walker that starts from v
+                        
+                           i
+                         and moves to its neighbors with uniform probability. We keep the random walker close to the original node v
+                        
+                           i
+                         by allowing transition to the original node with probability r as the restart probability. Formally, the RWR technique can be represented by the following formula:
+                           
+                              (1)
+                              
+                                 
+                                    
+                                       x
+                                    
+                                    
+                                       k
+                                       +
+                                       1
+                                    
+                                 
+                                 ←
+                                 (
+                                 1
+                                 −
+                                 r
+                                 )
+                                 
+                                    
+                                       Ax
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 +
+                                 c
+                                 
+                                    
+                                       x
+                                    
+                                    
+                                       0
+                                    
+                                 
+                              
+                           
+                        where 
+                           
+                              
+                                 x
+                              
+                              
+                                 k
+                              
+                           
+                         denotes the proximity vector at iteration t (i.e., a vector which contains the probability of reaching each node from v
+                        
+                           i
+                         in k steps in the corresponding element). Therefore, 
+                           
+                              
+                                 x
+                              
+                              
+                                 0
+                              
+                           
+                         is a vector with all elements being zero except the ith element which is one, and 
+                           A
+                         is the adjacency matrix. This formula is used iteratively to generate the steady state RWR proximity vector (for more details refer to [43]).
+
+For each drug in the DrugBank [44] database, we extract its side-effects from the SIDER (Side Effect Resource) [45] database and then select 146 drugs that have at least 5 target proteins and 5 side-effects. The decision of focusing on elements with sufficient annotation information has been addressed in the drug literature [22,11,10]. Atias and Sharan [11] consider drugs with at least 2 ADRs. Vilar et al. [22] and Yamanishi et al. [10] consider ADRs associated with at least 5 and 2 drugs, respectively. Target proteins and side-effects of the 146 selected drugs are listed in [46] and [47], respectively. In the final integrated dataset, each drug has, on average, 11.6 target proteins and 134.7 side-effects.
+
+Rahmani et al. [24] proposed a novel approach that takes drug target proteins (seed proteins), Protein–Protein Interaction (PPI) networks and functional annotation of proteins as input and discovers informative relationships among drugs and accordingly, builds a Human Drug Network (HDN) as output. No side-effect information is used in the construction of the HDN. To construct the HDN, Rahmani et al. [24] perform the following four steps for each drug d
+                        
+                           i
+                        :
+                           
+                              1.
+                              let testSet contain the seed proteins of all drugs except d
+                                 
+                                    i
+                                 .
+
+let trainSet contain all proteins not in testSet.
+
+Rahmani et al. [24] learn a predictive model M from trainSet, using the seed proteins of d
+                                 
+                                    i
+                                  as positive examples and all other proteins as negative examples. They then use M to predict for each protein in testSet how likely it is targeted by d
+                                 
+                                    i
+                                 . For randomized learners, they repeat this 10 times (otherwise just 1 time) and calculate for each 
+                                    p
+                                    ∈
+                                    testSet
+                                  the average, denoted APV(p). There are many ways in which the predictive model M can be learned from the PPI network. Based on the study on the same PPI dataset [48], Rahmani et al. [24] choose a hybrid prediction method which considers both Structural and Functional information in the PPI network.
+
+For each drug 
+                                    
+                                       
+                                          d
+                                       
+                                       
+                                          j
+                                       
+                                    
+                                    ∈
+                                    D
+                                    (
+                                    j
+                                    ≠
+                                    i
+                                    )
+                                 , they add an edge 
+                                    
+                                       
+                                          d
+                                       
+                                       
+                                          i
+                                       
+                                    
+                                    →
+                                    
+                                       
+                                          d
+                                       
+                                       
+                                          j
+                                       
+                                    
+                                  to the HDN with a weight
+                                    
+                                       (2)
+                                       
+                                          weight
+                                          (
+                                          
+                                             
+                                                d
+                                             
+                                             
+                                                i
+                                             
+                                          
+                                          →
+                                          
+                                             
+                                                d
+                                             
+                                             
+                                                j
+                                             
+                                          
+                                          )
+                                          =
+                                          
+                                             
+                                                
+                                                   
+                                                      ∑
+                                                   
+                                                   
+                                                      p
+                                                      ∈
+                                                      SP
+                                                      (
+                                                      
+                                                         
+                                                            d
+                                                         
+                                                         
+                                                            j
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                
+                                                APV
+                                                (
+                                                p
+                                                )
+                                             
+                                             
+                                                |
+                                                SP
+                                                (
+                                                
+                                                   
+                                                      d
+                                                   
+                                                   
+                                                      j
+                                                   
+                                                
+                                                )
+                                                |
+                                             
+                                          
+                                       
+                                    
+                                 with 
+                                    |
+                                    SP
+                                    (
+                                    
+                                       
+                                          d
+                                       
+                                       
+                                          j
+                                       
+                                    
+                                    )
+                                    |
+                                  the number of seed proteins of d
+                                 
+                                    j
+                                 .
+
+This procedure is repeated for all drugs. The resulting HDN is a directed, fully connected network in which each node is a drug and each weighted edge shows a relationship between two drugs. In order to focus on the most important relationships in the HDN, Rahmani et al. [24] prune the network by keeping only the highest-ranked edges.
+
+We applied the same method to the PPI network used by Milenkovic et al. [49]. This dataset is the union of three human PPI datasets: HPRD [50], BIOGRID [51] and the dataset used by Radivojac et al. [52] and contains 47,303 physical interactions among 10,282 proteins. Milenkovic et al. [49] provide details on the construction of the integrated network. The GO functions of proteins are extracted from [53]. As a result, there are 
+                           21
+                           ,
+                           170
+                           (
+                           146
+                           ×
+                           145
+                           )
+                         possible edges in the original Human Drug Network (HDN). Each edge 
+                           
+                              
+                                 d
+                              
+                              
+                                 i
+                              
+                           
+                           →
+                           
+                              
+                                 d
+                              
+                              
+                                 j
+                              
+                           
+                         shows the average rank of seed proteins of d
+                        
+                           j
+                         among all the proteins in the Test set using the seed proteins of d
+                        
+                           i
+                         as positive examples in the Train set. Train and Test sets have both been described before (Steps 1 and 2 of building the HDN). The lower average rank indicates stronger relationship between d
+                        
+                           i
+                         and d
+                        
+                           j
+                        , in comparison with other drugs. To select the most informative relationships among drugs, first, we sort the edges according to their score, in ascending order. The result is shown in Fig. 5
+                        . In this figure, the X axis shows the 21,170 edges in the HDN and the Y axis shows, for each edge 
+                           
+                              
+                                 d
+                              
+                              
+                                 i
+                              
+                           
+                           →
+                           
+                              
+                                 d
+                              
+                              
+                                 j
+                              
+                           
+                        , the average rank of the seed proteins of d
+                        
+                           j
+                         (the smaller, the better). Second, we determine the candidate cutoff points by discovering two turning points in Fig. 5, roughly at 9% and 92% of all edges. Finally, instead of analyzing the whole HDN, we focus on the pruned HDN containing only the 1767 (9% of the original HDN) highest-ranked edges. This turns the fully connected graph into a more informative, visualizable graph.
+
+
+                        Fig. 6
+                         shows the pruned HDN using Cytoscape [54]. Additionally, Table 1
+                         shows the 20 highest-ranked relationships in the HDN shown in Fig. 6.
+
+
+                        Fig. 6 shows the Human Drug Network where three main clusters can be observed, one in Fig. 6a and two smaller ones in Fig. 6b. Interestingly, the top section of the cluster located in Fig. 6a contains drugs that are known to interact with different G protein-coupled receptors (GPCRs). These include ergotamine, epinephrine, mirtazapine among others which bind mainly to GPCRs of class A, e.g. serotonine, adrenergic, muscarinic, dopamine, and histamine receptors. Many of the drugs in this cluster present high degree of polypharmacology, i.e., they bind to many different receptors and hence present several side-effects. On the other hand, the bottom of Fig. 6a encloses a large number of psychoactive drugs. Different benzodiazepines and barbiturates can be located in this region including lorazepam, bromazepam, clobazam, phenobarbital, pentobarbital, etc. These drugs are commonly used to treat anxiety disorders, insomnia, seizures but also present side-effects such as sedative effects and muscle relaxation [56]. Both barbiturates and benzodiazepines act as positive allosteric modulators of the GABAA receptor. In other words they enhance the action of a neurotransmitter called gamma-aminobutyric acid (GABA) [56]. In the same section of the figure we can find anesthetic compounds such as halothane, sevoflurane and enflurane, which also act as positive GABAA allosteric modulators. Although is not surprising that all these GABAA ligands produce a similar sedative effect, it is encouraging that these structurally unrelated compounds were grouped together based on their side-effects.
+
+The cluster located on the top of Fig. 6b shows a set of four kinase inhibitors namely, imatinib, sorafenib, sunitinib and dasatinib [57]. These compounds are known to inhibit multiple kinases and hence present similar side-effects during cancer therapy [58]. For instance, Davis et al. showed in a recent kinome profiling study that 32 kinase sequences are inhibited by the four kinase inhibitors mentioned before and another 47 kinase variations are target by at least three of the four inhibitors [59]. The most common shared targets of the four inhibitors include ABL1, ABL2, KIT, PDGFRA, PDGFRB among others. The large number of shared targets is not surprising as the four compounds bind to a highly conserved region across the kinome, i.e., the ATP binding site. Close to this cluster, we find tamoxifen and arsenic trioxide, two drugs also used in the cancer chemotherapy. In the lower part of Fig. 6b there is cluster containing acitretin and adapalene. Both are retinoids that help to normalize epithelial cell cycle and differentiation [60]. As retinoids, both compounds present a similar structure to vitamin A (retinol), especially acitretin that contains the polyene side-chain and a polar group. The flexibility given by the polyene chain allows Vitamin A and acitretin to bind several retinoid receptors and hence present similar side-effects as proposed by the network. ADRs presented by synthetic retinoids include skin irritation, mucocutaneous toxicity hyperglyceridemia among others, which are associated with the retinoid receptors, and not surprisingly are similar to the symptoms of chronic Vitamin A intoxication [61]. Apart from the common ADRs, the shared targets among retinoids, such as RXRs, also confer common indications such an anti-inflammatory effect. It is known that many retinoids present anti-inflammatory effects although the mechanism of action is not completely understood [62,63]. This was captured by the network by joining acitretin and adapalene with other anti-inflammatory drugs such as sulfasalazine, indomethacin and ibuprofen. Moreover, acitretin and adapalene are linked to progesterone and troglitazone, two drugs with different medical prescriptions that also present anti-inflammatory effects [64,65]. These results support the idea that ARWAR is robust enough to find the link between compounds regardless of their main target or medical prescription.
+
+
+                        Table 1 shows the highest-ranked drug relationships in the network. In the first place we found acitretin and dapalene. As discussed before, both compounds are retinoid derivatives, present similar therapeutic effect in the regulation of epithelial cells and anti-inflammatory activity. The interaction between clonidine and labelatol occupies the second place of the top ranked interactions. Labelatol acts as an adrenergic antagonist by blocking the binding of epinephrine or norepinephrine to the α1 receptor. On the other hand, clonidine is an agonist of α2 receptor, which inhibits the release of norepinephrine. Both compounds are used to treat high-blood pressure due to their antiadrenergic effects, i.e., inhibit signals of epinephrine or norepinephrine. All the relationships ranked between position 3 and position 20 are between GABAA agonist. These include the relationships between different anesthetic agents (etomidate and enflurane) and benzodiazepines in good accordance with Fig. 6. Overall, these results support the idea that clustering drugs based on ADRs provides different information compared to methods relying on the chemical structure or biological targets.
+
+Our original HDN shown in Fig. 6 contains 1767 relationships among 128 drugs. Following the steps described in Section 5.1, we augmented the original HDN by adding 4192 nodes, representing the side-effects and 17,977 edges, connecting each drug to its related side-effects. As a result, the final augmented graph contains 4320 nodes and 19,744 edges.
+
+We next compared our proposed ARWAR method, discussed in Section 5, with MRM, discussed in Section 4, with respect to leave-one-out cross validation (LOOCV). LOOCV is the particular case of cross validation where a single node from a network is considered as a validation data, and the remaining nodes as the training data. We repeated this process for each node in the graph data and we averaged the N (=number of the examined nodes) results to produce a single estimation.
+
+Following the LOOCV, we applied MRM and ARWAR to predict 
+                           X
+                           (
+                           =
+                           10
+                           ,
+                           20
+                           ,
+                           …
+                           ,
+                           100
+                           )
+                         side-effects for each drug v
+                        
+                           i
+                        . The result of comparing ARWAR and MRM is shown in Fig. 8. Our ARWAR method outperforms MRM, on average, 20% with respect to average Fmeasure. Formula (3) defines Fmeasure with respect to Precision and Recall that are defined in Formulas (4) and (5), respectively:
+                           
+                              (3)
+                              
+                                 Fmeasure
+                                 =
+                                 
+                                    
+                                       2
+                                       ⁎
+                                       Precision
+                                       ⁎
+                                       Recall
+                                    
+                                    
+                                       Precision
+                                       +
+                                       Recall
+                                    
+                                 
+                              
+                           
+                        
+                        
+                           
+                              (4)
+                              
+                                 Precision
+                                 =
+                                 
+                                    
+                                       tp
+                                    
+                                    
+                                       tp
+                                       +
+                                       fp
+                                    
+                                 
+                              
+                           
+                        
+                        
+                           
+                              (5)
+                              
+                                 Recall
+                                 =
+                                 
+                                    
+                                       tp
+                                    
+                                    
+                                       tp
+                                       +
+                                       fn
+                                    
+                                 
+                              
+                           
+                        where tp, fp and fn denote the number of true positives, false positives, and false negatives, respectively and are defined in Fig. 7
+                        .
+
+Applying paired t-test results in p-value 
+                           ≤
+                           0.000001
+                         which indicates that MRM and ARWAR methods are significantly different.
+
+In this section, we predicted novel side-effects for each drug shown in Fig. 6 using the ARWAR method discussed in Section 5.2. Then, we sorted the novel side-effects based on their prediction scores, in descending order. Table 2
+                         shows 20 novel side-effects with the highest prediction scores. The list of 200 novel predicted side-effects is available in [66]. Usually, it is not straightforward to give a direct interpretation of side-effects as many of these are caused by the action on unknown targets. Nevertheless, some of the side-effects predicted in Table 2 have a direct biological interpretation. This is the case of phenoxybenzamine which is an α receptor antagonist used to treat hypertension. The vasodilatation of blood vessels caused by this drug, which drops blood pressure, can activate nocireceptors and cause headache [67]. In a similar way, the predicted side-effect of halothane and enflurane can be explained as an effect of blocking NMDA receptors [68]. It is known that these two compounds are antagonist of NMDA receptors, which have been associated with ataxia and can produce a dissociative state. Another example of side-effects produced by off targets is hypotension caused by ergotamine. It has been reported that ergotamine is a potent inhibitor of α1 and α2 receptors (pKi α1=8, pKi α2=8.2) [69]. As discussed before, antiadrenergic agents (α receptor antagonist) are used to treat high-blood pressure and hence hypotension could be expected as a side-effect. Hence, overall it can be seen that ARWAR is a powerful method to predict side-effects that, in some cases, can be associated with specific targets.
+                     
+
+@&#CONCLUSIONS AND FUTURE WORK@&#
+
+One of the main causes of drug failure not only in the market, but also during clinical studies (before drugs come to the market), is the existence of serious Adverse Drug Reactions (ADRs). Accordingly, much attention has focused on ways to detect, and predict, Adverse Drug Reactions as early as possible during discovery and development. To the best of our knowledge, most of the existing methods for ADR prediction focus on each drug individually, predicting ADRs based on the chemical and biological properties of a drug. However, we strongly believe that there is an informative knowledge in the relationships among drugs that could be taken into consideration for the ADR prediction process. To discover the relationships among drugs, we applied the method proposed by Rahmani et al. [24] to our dataset and we succeed to discover 1767 relationships among 146 drugs. Next, domain experts manually confirmed (in Section 6.2) the accuracy and biologically meaningfulness of the predicted relationships. Having found the informative drug–drug relationships and accordingly, build a network among highly related drugs, then we were able to examine different multi-label network-based classifiers. Considering the main limitations (discussed in Section 4) of existing classifiers, we proposed an Augmented Random WAlk with Restarts (ARWAR) method that is capable of resolving the shortcomings of the previous method, outperforming the Majority Rule Method (MRM) by 20% with respect to average Fmeasure and predicting novel and biologically meaningful side-effects, even for drugs with no initial side-effect information in the SIDER [45] database. The main limitation of our proposed method is that the proposed method by Rahmani et al. [24] may not discover informative relationships for drugs with a limited number of target proteins and accordingly, the performance of our proposed ARWAR method decreases in such cases. In addition to this, the ARWAR method only is capable to identify general side effects associated directly associated with the drug structure or pharmacological effect, but overlooks idiosyncratic drug reactions (also known as type B) or those associated with allergies. This limitation results from the fact that allergies and many idiosyncratic reactions are patient-dependent, this information not taken into account in this method.
+
+Regarding future research induced by our work, we see two important directions for refinement and extension of our approach. First, further exploration of possibilities for extensive validation of the achieved results. We have already discussed and validated our results in Sections 6.2 and 6.5 using literature mining, however, validation of the findings is still challenging and needs separate clinical studies. Second, by further analysis of the augmented graph, we could cluster side-effects according to their graph connectivity and then use the co-cluster information to predict more precise and complete set of ADRs. Additionally, we could use the augmented graph to relate the side-effects to other biological elements such as the target proteins of drugs or Gene Ontology (GO) of the target proteins.
+
+None declared.
+
+@&#ACKNOWLEDGMENT@&#
+
+This research is funded by the Dutch Science Foundation (NWO) through MISS project (Project no. 640.005.003). O.M.-L. would like to thank CONACyT (No. 217442/312933), the Cambridge Overseas Trust, the Secretariat of Public Education and the Mexican Government for funding.
+
+@&#REFERENCES@&#
+

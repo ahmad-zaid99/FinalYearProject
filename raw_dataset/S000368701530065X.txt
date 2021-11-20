@@ -1,0 +1,165 @@
+@&#MAIN-TITLE@&#Evaluation of load carriage systems used by active duty police officers: Relative effects on walking patterns and perceived comfort
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           We compared two different load carriage designs for uniformed police.
+
+
+                        
+                        
+                           
+                           Gait kinematics in police are significantly altered with different load carriage designs.
+
+
+                        
+                        
+                           
+                           Police have a personal preference for a load bearing vest design.
+
+
+                        
+                        
+                           
+                           Knowledge gained from this research may help in improving design of load carriage systems for police.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Load bearing vest
+
+Equipment
+
+Kinematics
+
+Temporospatial
+
+Musculoskeletal disorders
+
+Biomechanics
+
+Ergonomics
+
+Law enforcement
+
+@&#ABSTRACT@&#
+
+
+                  Objectives
+                  This study aimed to examine the effects of two different load carriage systems on gait kinematics, temporospatial gait parameters and self-reported comfort in Swedish police.
+               
+                  Methods
+                  21 active duty police officers were recruited for this crossover study design. Biomechanical and self-report data was collected on two testing occasions. On occasion 1, three dimensional kinematic data was collected while police wore a/no equipment (control), b/their standard issues belt and ballistic protection vest and c/a load bearing vest with ballistic protection vest. Police then wore the load bearing vest for a minimum of 3 months before the second testing occasion.
+               
+                  Results
+                  The load bearing vest was associated with a significant reduction in range of motion of the trunk, pelvis and hip joints. Biomechanical changes associated with the load bearing vest appeared to reduce with increased wear time. In both the standard issue belt condition and the load bearing vest condition, police walked with the arms held in a significantly greater degree of abduction. Self-report data indicated a preference for the load bearing vest.
+               
+                  Conclusion
+                  The two load carriage designs tested in this study were found to significantly alter gait kinematics. The load bearing vest design was associated with the greatest number of kinematic compensations however these reduced over time as police became more accustomed to the design. Results from this study do not support selection of one load carriage design over the other and providing individuals with the option to choose a load carriage design is considered appropriate.
+               
+
+@&#INTRODUCTION@&#
+
+As an occupational group police have been reported to experience a high incidence of musculoskeletal injuries with low back pain being the most commonly reported condition (Nabeel et al., 2007; Jahani et al., 2002). In Swedish police, low back pain experienced one day per week or more, is reported by 43% of active duty officers (Elgmark et al., 2013). In the Swedish general working population this figure is 29% (Arbetsmiljöverket, 2011). Evidence is increasingly suggesting that the underlying cause of musculoskeletal injury in police is associated with the requirement to wear heavy ballistic protection vests and carry equipment belts (Burton et al., 1996). Given that there is an established link between load carriage and low back pain (Picavet and Schouten, 2000; Orloff and Rapp, 2004), it is considered important to determine how the load carried by police affects performance of tasks typically encountered in policing. This information could significantly aid future researchers in the development of safer and healthier load carriage designs for police.
+
+The uniform of a police officer has a great impact on how they are perceived. The colour of the material, style of clothes and equipment carried all have an influence on how police are perceived by the general public (Johnson, 17th June 2015). A standardised uniform for police can be dated back to the early 1800's (Johnson, 17th June 2015) and has been adopted by police forces worldwide. While a standard uniform for all police ensures that they are highly recognizable to the general public, it also means that changes in uniform come at a great economic cost and must be carefully considered.
+
+The Swedish police force issues all active duty officers with equipment belts to be worn around the waist for the carriage of mandatory equipment (pistol, extra ammunition, torch, handcuffs, pepper spray, radio, and baton). The belts are fabricated from reinforced nylon with holster and accessory pouches fastened to the belt. Individuals may choose to place accessory pouches as they please however, in order to minimize sitting discomfort, equipment is typically placed anteriorly and laterally. Swedish police are also issued a ballistic protection vest that is worn firmly around the torso and has adjustment possibilities at the shoulders and trunk.
+
+Limited information is available regarding the effect of the present load carriage design on gait and posture however similar designs to those worn by the Swedish police have been documented as significantly reducing mobility, compromising dynamic balance and negatively affecting performance of job related activities (Dempsey et al., 2013). In a study exploring Swedish police officers perceptions of musculoskeletal injury, the duty belt worn by police was considered to be a major factor contributing to low back pain (Ramstrand and Bæk Larsen, 2012).
+
+In order to minimize problems associated with use of heavy equipment belts, several countries have introduced load bearing vests which are designed to eliminate the need for an equipment belt and redistribute the weight borne by police by carrying items in specially designed pouches on the vest itself (Filtness et al., 2014). At the present time the decision by certain authorities to alter the equipment carriage of police appears to lack a sound evidence base. While research has indicated that load bearing vests are associated with improved sitting comfort in police officers while driving standard and modified fleet vehicles (Filtness et al., 2014), there is presently no research investigating the relative effects of different load carriage designs on gait, posture and performance of other police related tasks. Given the high incidence of low back pain reported by police, an important first step when considering a new load carriage design for police is to understand how it interacts with the body, to ensure that the incidence of injuries will not increase and that job performance will not be affected.
+
+To support the increased weight when a load is added to the body, humans tend to make adjustments in order to maintain balance (Orloff and Rapp, 2004; Caron et al., 2013). A well-documented example of this is the kinematic adjustments to gait and posture that occur in response to wearing a backpack. The load of a backpack shifts the centre of gravity of the body posteriorly; in order to compensate, individuals have been demonstrated to lean forward with the trunk and/or head (Caron et al., 2013; Simpson et al., 2012) or to increase anterior tilt of the pelvis (Smith et al., 2006). These postural adjustments have been suggested as contributing to back pain by increasing muscle activity and stress applied to ligaments or muscles in the back (Orloff and Rapp, 2004; Simpson et al., 2012). The degree of postural adjustment made by persons wearing backpacks has been demonstrated to increase with the magnitude of load applied but is also affected by the position of the load. Several authors have demonstrated that loads placed higher on the trunk result in a more upright posture than loads placed in a low position (Simpson et al., 2012; Knapik et al., 2004). Double packs, in which the load is distributed equally on the front and back of the body, have been shown to reduce forward lean of the trunk. By distributing the load closer to the centre of mass of the body it has also been suggested that double packs move in synchrony with the body, reducing cyclic stress to structures in the back such as muscles, ligaments and spine (Knapik et al., 2004).
+
+As police forces look towards altering the load carriage of their officers it is necessary that we understand the biomechanical effects that this may have on gait and posture. While much can be learned from backpack studies, the results cannot be generalized to police who typically carry smaller loads that are positioned anteriorly around the hips or, in the case of a load bearing vest, on the chest. Based upon results from backpack studies one can however hypothesize that moving the load carriage from the waist to the trunk; closer to the center of mass, will ensure that the load carriage moves in synchrony with the body (Knapik et al., 2004). This will result in a more upright posture, less compensatory movements during gait and would be less likely to cause low back pain. Given this hypothesis, the aim of the present study was to investigate the effects of varying load carriage in active duty police officers on gait kinematics and self-reported comfort during walking.
+
+Twenty-one police were recruited for the present study including nine women and twelve men. Participants represented 11 of the 21 police municipalities in Sweden. To be eligible for the study, participants were required to be currently serving as active duty uniformed officers who routinely wore a standard issue equipment belt and ballistic protection vest. Police who had previously trialed the load bearing vest were not included in the study. All testing procedures were approved by the Linköping regional ethics committee (dnr 2010/261-31).
+
+@&#PROCEDURE@&#
+
+Police were tested on two separate occasions with a minimum of three months between each testing occasion. On each of the two testing occasions, three-dimensional motion analysis data (Qualisys AB, Gothenburg) was collected as police walked on a nine meter walkway. Police were also required to complete a questionnaire related to their physical health at the time of testing. On testing occasion one, three-dimensional motion analysis data was captured under three load carriage conditions (a) control (no belt or vest), (b) standard issue belt and ballistic protection vest, (c) load bearing vest and ballistic protection vest (Fig. 1
+                        ). In both the belt and load bearing vest conditions police were required to carry their standard issue equipment including pistol, extra ammunition, pepper spray, handcuffs, baton, torch and radio. After the first testing occasion participants were provided with a load bearing vest and requested to use it for all shifts until the time of their scheduled second testing occasion. On the second testing occasion motion analysis data was collected for the control and load bearing vest conditions only. Throughout testing all participants wore underwear or tight neoprene shorts together with their standard issue boots. Those who routinely used a thigh holster were able to choose to continue using it together with the load bearing vest if they wished otherwise the pistol was placed in a pouch on the hip which was attached to the load bearing vest. The load bearing vest used in the study was a prototype commissioned by the Swedish national police. It included adjustable pockets in which equipment could be carried.
+
+In order to capture three-dimensional kinematic data and temporospatial parameters, spherical reflective markers (∅ 12 mm) were applied bilaterally to the following landmarks: Head of the 1st metatarsal (MT1), head of the 5th metatarsal (MT5), heel, malleoli, knees, greater trochanter, anterior superior iliac spine (ASIS), Posterior superior iliac spine (PSIS), iliac crest, acromion, 3 around the elbows, 2 at the wrists, 2 at the metacarpophalangeal joints and finally 3 on the head. Three markers were placed anteriorly on the torso and one marker posteriorly on C7. Clusters of 4 markers were placed laterally on the thigh and shank of both legs. In order to account for markers hidden by the equipment belt, a purpose designed carbon fiber U-shaped cluster containing three markers was manufactured and placed on the posterior pelvis (Borhani et al., 2013). The same physiotherapist (RZ), with more than 10 years' experience, was responsible for marker placement on all subjects. A standing calibration file was collected for each subject and three walking trials, at a self-selected velocity were collected for each condition.
+
+Three-dimensional trajectories of markers were captured at a sampling frequency of 240 Hz using a 12-camera Oqus system (Qualisys AB, Gothenburg, Sweden). Before each session the measurement volume was calibrated using a calibration wand and an L-shaped metal frame placed on the floor. For calculations of kinematic variables Visual 3D™ software (C-Motion, Inc., Germatown, USA) was used. Marker trajectories were filtered using a fourth-order zero-lag Butterworth low-pass-filter, with a 6 Hz cutoff frequency.
+
+A questionnaire was completed by all participants on both testing occasions. The questionnaire contained general information about the participant and the equipment they used on a daily basis, information related to perceived comfort and questions related to pain that they were experiencing in specific regions of the body. If pain was reported, participants were requested to indicate its severity on a 10 cm visual analogue scale. On testing occasion 2 additional questions were added to determine how often they used the load bearing vest and if they would like to continue using it.
+
+Standing calibration files for each subject were used to create a gait model and three-dimensional joint angles were determined using a Cardan sequence x-y-z (flexion/extension, abduction/adduction, longitudinal rotation). The hip, knee and ankle angles were defined relative to the proximal segment. Orientation of the pelvis was defined relative to the global (laboratory) coordinate system with pelvic tilt being about the global x axis. Gait data was normalized to the duration of each gait cycle and data from the second of the three walking trials was analysed for each participant. Temporospatial parameters were calculated and kinematic data was analysed in sagittal, coronal and transverse planes to determine the average range of motion and the maximum and minimum angles of major joints. Pelvic motion in all three planes and position of the head relative to the trunk were also analysed. A Wilcoxon rank sum test was used to compare temporospatial data across testing occasions while a Friedman test was run to determine if there were differences across load carriage conditions. Pairwise comparisons were performed (IBM SPSS statistics 21) with a Bonferroni correction for multiple comparisons. Survey data was analysed to evaluate physical health prior to using the load bearing vest (baseline) and after using the vest for at least three months.
+
+@&#RESULTS@&#
+
+Eighteen police completed all phases of testing and were included in the final analysis (9 men and 9 women). One male participant failed to attend the second testing occasion for unknown reasons while another male participant was unable to complete the trial period with the load bearing vest due to neck surgery unrelated to the study or vest. One female participant stopped using the load bearing vest after several weeks. This participant reported that the equipment placed on the front of her vest was too bulky and restricted her ability to apprehend suspects. Details of those who completed the study are included as Table 1
+                     . The average age of participants was 35 years (SD = 6.4; range 29–49) while average years of experience as a police officer was 6.7 (SD = 3.8; range 4–20 years). The average weight of equipment in the belt and vest condition (including all accessories) was 6.5 kg (SD = 0.93) while average weight of the load bearing vest condition (including all accessories) was 6.9 kg (SD = 0.10). Half of the participants routinely used a thigh holster while the others used a belt holster. One participant was left handed and subsequently wore his holster on the left side while all remaining participants were right handed. Thirteen participants worked as patrol officers, three as dog handlers and two as community police.
+
+A Wilcoxon rank sum test revealed no significant differences in temporospatial data for the control condition on occasions one and two. The decision was subsequently made to include only control data from occasion one in the analysis.
+
+Analysis of temporospatial data across testing conditions revealed significant differences in stride length between the load bearing vest conditions and the other test conditions (p < 0.05) (Table 2
+                        ). No significant differences were observed in walking velocity across conditions or testing occasions.
+
+When compared to the control condition the load bearing vest conditions were found to have the greatest effect on range of motion (Table 3
+                        ). On testing occasion one, range of motion was significantly less in the load bearing vest condition compared to the control condition for lateral trunk lean, trunk rotation, pelvic tilt, pelvic rotation and hip ab/adduction (p < 0.05). On testing occasion two, significant differences between the load bearing vest condition and the control condition were observed for lateral trunk lean, trunk rotation, pelvic tilt and internal and external rotation of the hip (p < 0.05). The only significant difference observed between the standard belt condition and the control condition was in relation to internal and external rotation of the hip joint (p < 0.05). When comparing the load bearing vest on occasions one versus occasion two significant differences were observed in the range of trunk flexion/extension and hip ab/adduction (p < 0.05).
+
+
+                        Table 4
+                         presents data related to maximum and minimum joint angles. Most differences were observed between the load bearing vest condition measured on testing occasion one and the control condition. Significant differences were observed in 11 variables (p < 0.05). When the load bearing vest was tested on occasion 2, after three months of use, only 5 of the variables were significantly different from the control group. Analysis of the standard belt condition revealed significant differences in five of the variables investigated.
+
+When compared to the control condition, all test conditions revealed significantly greater arm abduction angles indicating that the arms are held further out from the body. On testing occasion one the load bearing vest was demonstrated to significantly reduce trunk rotation, anterior pelvic tilt, hip-extension and abduction on the right side. These differences were not observed on testing occasion two.
+
+Survey responses are presented in Table 5
+                        . On occasion one participants had not yet received the load bearing vest and results subsequently reflect their experience with their standard issue utility belt and ballistic protection vest. On occasion two they had been using the load bearing vest for a minimum of three months and survey results subsequently reflect their experience with this new equipment carriage.
+
+On occasion 2 participants were asked to indicate how often they used the load bearing vest. Seventy-eight percent (n = 14) indicated that they wore it more than 75% of the working week. Eleven percent (n = 2) wore the load bearing vest between 50 and 75% of the working week and the remaining person 5.6% (n = 1) wore it between 25 and 50% of the week. Participants were also requested to indicate if they would like to continue using the vest. Fifty-five percent (6 men and 4 women) indicated that they would choose to continue using the vest. Thirty-three percent (3 men and 3 women) indicated that they would not choose to continue and 11.1 percent (2 women) were undecided.
+
+The majority of participants indicated that they felt more comfortable while standing and walking and while sitting in fleet vehicles when they used the load bearing vest. They also perceived that their range of motion was greater with the load bearing vest. More police reported pain in the lower back on testing occasion one while pain in the upper back and neck was reported more frequently on occasion two.
+
+@&#DISCUSSION@&#
+
+The purpose of this study was to determine whether load carriage design affected gait kinematics and self-reported comfort of active duty police offices. The study is the first of its kind to investigate biomechanical effects of load carriage design in police.
+
+It was hypothesized that moving the load carriage from the waist to the trunk; closer to the centre of mass, would result in fewer compensatory movements and a more upright posture. This hypothesis was not confirmed by results of this study. While both the standard belt condition and the load bearing vest conditions were found to significantly affect gait kinematics, the load bearing vest was associated with most compensatory movements. It is important to note however that, with the exception of range of motion at the trunk, the number of gait compensations observed when initially donning the load bearing vest (testing occasion 1) decreased after a three month accommodation period (testing occasion 2). This suggests that compensatory movements are temporary and reduce as police became more accustomed to the load carriage design. For police forces considering implementing the load bearing vest as part of a standardised uniform this suggests that, after an initial accommodation period one would not expect to see any major differences in gait kinematics between the standard belt and the load bearing vest.
+
+The effects of load on temporospatial gait parameters has been investigated extensively in the literature (Mullins et al., 2014; Birrell and Haslam, 2009; Park et al., 2013; Singh and Koh, 2009). While results of these studies are varied, significant differences have been noted as the magnitude of loads is increased (Birrell and Haslam, 2009; Park et al., 2013; Singh and Koh, 2009). In the present study, none of the load carriage conditions had a major effect on temporospatial parameters of gait. It can subsequently be concluded that the weight of the load carriage borne by police (between 6 and 7 kg) does not induce changes in temporospatial parameters. As no differences in temporospatial parameters were observed between the standard issue belt and the load bearing vest we would hypothesise that energy expenditure is not affected by the load carriage condition. If one of the load carriage conditions tested in this study required more energy for walking, we would have expected to see a subsequent decrease in walking velocity (Ralston, 1958). This hypothesis should however be tested in a controlled study of metabolic energy expenditure.
+
+When compared to the control condition, the load bearing vest condition resulted in a significantly reduced range of motion at the trunk and pelvis. On both testing occasions 1 and 2, significant differences were observed in lateral trunk bending, trunk rotation and pelvic tilt. Analysis of maximum angles for the load bearing vest condition revealed reduced maximum trunk lean to the right side. This may well be a consequence of holster position, which in all but one subject was on the right side. Maximum trunk rotation was significantly reduced for movement in both directions although the difference was only significant for testing occasion 1. It is likely that addition of a load bearing vest increases the transverse plane moment of inertia of the upper body and in order to counterbalance the inertial effect of the vest police reduce rotational movement of their trunk. Reduced rotational amplitudes of the trunk have also been reported in healthy subjects fitted with spinal braces (Wu et al., 2014) and backpacks (LaFiandra et al., 2003). While rotational movement of the trunk were significantly reduced in the load bearing vest condition it is important to note that the differences are relatively small and that range of motion appears to fall within reported values for normal trunk kinematics (Krebs et al., 1992).
+
+Subjective responses to the survey suggest that the load bearing vest was considered by the majority of participants to be more comfortable than the utility belt however results were far from overwhelming with 33% indicating that they would not choose to continue using the load bearing vest if given the option. This finding suggests that a single standardised uniform may not be the most appropriate option and that individual police officers are likely to be more satisfied if given the opportunity to select a load carriage design that best suits their body build. These results are likely to applicable to other professions in which a standardised uniform and equipment carriage is required, including military personnel and security guards.
+
+Reports of low back pain were slightly lower in the load bearing vest condition but reports of upper back and neck pain increased. Upper neck and back pain could be a result of an increased vertical load applied to the shoulders or a result of frontal plane arm positioning. Kinematic data for both load carriage conditions demonstrated that participants significantly increased the abduction angle of their arms during gait. As this study only focused on kinematics of the arm it is not possible to confirm if participants' arms were passively supported by the bulk of the vest or if police were increasing muscle activity to actively hold their arms away from the vest, increasing load on the shoulder-neck area. Nevertheless, the fact that uniformed police are assuming an abducted arm is an important load carriage design consideration and attempts should be made to reduce the bulk of material under the arms.
+
+Due to the small number of participants in this study it was not possible to investigate how positioning of equipment on the body or individual body types may have affected results. A specific example of this is the choice to use a belt holster or thigh holster. This issue will be addressed by us in a future study. While the questionnaire used in this study did address some activities beyond walking, the major focus of this paper was gait. If new load carriage systems are to be adopted by police it is essential that field investigations be conducted to ensure that new designs do not interfere with operational duties which can include, lifting, running, jumping and grappling (Dempsey et al., 2014). The fact that one female participant dropped out of the study reporting that the anterior bulk of the load bearing vest interfered with her ability to perform operational duties should not be overlooked. This again suggests police authorities may have to re-consider the policy of a standardized uniform for all and investigate options for police with different body builds and desires.
+
+Due to construction of the ballistic protection vest the distance between markers placed on the trunk was relatively small. This may lead to a limitation of the possibility to track the trunk segment. The markers were however placed on the upper part of the trunk where most of the motion takes place.
+
+This study has demonstrated significant differences in gait kinematics of police wearing their standard equipment belt with a ballistic protection vest and in an alternate equipment carriage design in which equipment is carried in a load bearing vest. Although significant kinematic differences were observed in this study, the differences were considered relatively small and are unlikely to influence the currently reported incidences of low back pain. Self-report data suggests a slight preference for the load bearing vest design although given the varied opinions, providing police with the option of a traditional belt or a load bearing vest is considered by the authors as a most appropriate option.
+
+Nerrolyn Ramstrand – study design, data collection, data analysis and drafting of the manuscript.
+
+Roland Zügner – study design, data collection, data analysis and proof-reading of the manuscript.
+
+Louise Bæk Larsen – study design, data analysis and proof-reading of the manuscript.
+
+Roy Tranberg – study design, data collection, data analysis and proof-reading of the manuscript.
+
+The authors are not employees of the Swedish police and declare no conflict of interest.
+
+@&#ACKNOWLEDGEMENTS@&#
+
+The authors wish to acknowledge JanInge Kull from the Swedish police who assisted with recruitment of participants for this study. Jan Inge also made himself available during data collection to ensure that equipment worn by police was appropriately sized and adjusted. We also wish to acknowledge Gunilla Wallin and Patrik Forsemalm who provided us with advice related to study design and interpretation of results. This project was funded by the Swedish Police Agency.
+
+@&#REFERENCES@&#
+

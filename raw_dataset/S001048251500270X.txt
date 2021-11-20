@@ -1,0 +1,418 @@
+@&#MAIN-TITLE@&#Investigations on the role of CH…O interactions and its impact on stability and specificity of penicillin binding proteins
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Importance of CH…O bonds in the structural stability of PBPs are analyzed.
+
+
+                        
+                        
+                           
+                           Significant number of interacting residues shows higher conservation score.
+
+
+                        
+                        
+                           
+                           Interestingly residues with higher conservation score have more stabilizing regions.
+
+
+                        
+                        
+                           
+                           Our study provides detailed structural information about PBPs.
+
+
+                        
+                        
+                           
+                           Results obtained from this study will be useful in designing effective antibiotics.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Gram positive bacteria
+
+Gram negative bacteria
+
+Antibiotic
+
+Resistance
+
+Stabilizing interactions
+
+@&#ABSTRACT@&#
+
+
+                  Penicillin binding proteins are recognized as important antibacterial targets because of their crucial role in the cell wall synthesis of bacteria. Alteration in the binding site of penicillin binding proteins is one of the major problems for beta lactam antibiotics to exert its effect. In the present study the influence of CH…O interactions in the conformational stability of penicillin binding proteins were analyzed in both Gram positive and Gram negative bacteria. CH…O interactions constitute about 20 to 25% of total hydrogen bonds and act as an important driving force in ligand selectivity. From our analysis we observed a total of 13,398 CH…O interactions in Gram positive bacteria and 10,855 CH…O interactions in Gram negative bacteria. It was interesting to observe that CH…O interactions were higher in Gram positive bacteria than in Gram negative bacteria, which augurs well for the discrepancy in cell wall of the bacteria. CH…O interactions are classified into four types depending on the interaction of acceptor residues with the back bone or side chain of CH groups. From our results we observed that major contribution to penicillin binding proteins was observed from side chain atoms of donor residues and back bone atoms of acceptor residues [SM CH…O] in both Gram positive and Gram negative bacteria. Conformational preference of Gram positive bacteria indicated that amino acids lacking side chain and the cyclized amino acids preferred to be in turn regions, whereas aromatic amino acids dominated in Gram negative bacteria. Our analysis gives detailed information about the principles involved in the conformational stability of penicillin binding proteins and the results will be useful for researchers exploring penicillin binding proteins.
+               
+
+@&#INTRODUCTION@&#
+
+Beta lactam group of antibiotics are commonly used to treat bacterial infections. β-Lactam antibiotics acts by targeting the penicillin binding proteins (PBPs) that play a crucial role in cross linking of cell wall synthesis [1,2]. β-Lactam antibiotics mimics the structure of d-alalnyl-d-alanine dipeptide and cross links into the growing peptidoglycan layer, thereby disrupting the cell wall synthesis. PBPs are primarily classified into two major types depending on the molecular weight, (i) high molecular mass [HMM] PBPs (ii) low molecular mass [LMM] PBPs. HMM PBPs are responsible for the polymerization of peptidoglycan which is essential for cell wall synthesis. HMM PBPs are further classified into class A and class B PBPs based on the activity and sequence homology. LMM PBPs act as a signaling peptide in the polymerization reaction of peptidoglycan layer [3]. Indiscriminate use of β-lactam antibiotics leads to the development of antibiotic resistant strains. Three major mechanisms of resistance acquired by bacteria against β-lactam antibiotics include the enzymatic degradation of antibiotics, removal of antibiotics by efflux pumps and the modification of binding site of PBPs. Alteration in the binding site of PBPs is one of the important mechanisms of resistance adopted by bacteria against the β-lactam antibiotics. Alteration in the binding site of PBPs leads to either the decrease in or loss of affinity for β-lactam antibiotics [4]. This intrinsic mechanism of resistance is responsible for the emergence of methicillin-resistance Staphylococcus aureus strains, which is a persistent therapeutic problem worldwide. Previous studies have reported that mutation in the active site (conserved motifs) of PBPs decreases the binding affinity with β-lactam antibiotics [5]. Apart from the regular hydrogen bonds that stabilize the protein structure, there are several weak hydrogen bonds which provide significant amount of the energy to stabilize the protein structures [6]. CH…O hydrogen bonds are recognized as principal hydrogen bonds because of their higher occurrence [7]. CH…O hydrogen bonds are weak hydrogen bonds which are formed when an electronegative carbon atom (donor) and an oxygen atom (the acceptor) share a hydrogen atom. Similar to regular hydrogen bonds, they also include dipole, monopole and van der Waals interactions [8]. Energy of CH…O interactions is found to be approximately −2kcal/mol to −3kcal/mol [9]. Since the importance of CH…O interactions are emphasized by several researchers [10–18], analyzing the CH…O interactions provide valuable information pertaining to its role in the structural stability of PBPs. Even though extensive studies have been made on the structure of PBPs, there is no information on the role of non canonical interactions in the conformational stability of PBPs. Hence, in the present study we have examined the energetic contribution of CH…O interactions to the structural stability of PBPs in both Gram positive and Gram negative bacteria.
+
+A non redundant set of PBPs for both Gram positive and Gram negative bacteria were retrieved from Protein Data Bank (PDB) [19] based on the sequence similarity and the resolution. The criteria used for non-redundancy are as follows [20];
+                           
+                              i)
+                              Resolution of the structures should be less than 2.5Å
+
+If the structure has more than one chain, then chain A is taken for analysis
+
+Similarity between the sequence should be less than 25%
+
+Structures were optimized by adding hydrogen atoms using the program REDUCE with default settings.
+
+The structures which were filtered using the above said criteria are listed below,
+
+Gram positive bacteria, 2BG1, 2JCH, 2JE5, 2XD1, 2XD5, 2Y2G, 2ZC4, 3ZFZ
+
+Gram negative bacteria, 1HD8, 1NJ4, 1PWC, 3A3J, 3OC2, 3U3E, 3UDI, 4KQR
+
+We employed the Hydrogen Bond Analysis Tool (HBAT) [21] to analyze the energetic contribution of CH…O interactions to the conformational stability of PBPs. The following parameter was used to identify the CH…O interactions between the donor and acceptor residues.
+                           
+                              
+                                 d
+                                 
+                                    (
+                                    
+                                       H
+                                       …
+                                       O
+                                    
+                                    )
+                                 
+                                 ≤
+                                 3.0
+                                 
+                                 
+                                 Å
+                                 
+                                 and
+                                 
+                                 θ
+                                 
+                                    (
+                                    
+                                       C
+                                       −
+                                       H
+                                       …
+                                       O
+                                    
+                                    )
+                                 
+                                 ≥
+                                 90
+                              
+                           
+                        where d measured the distance between acceptor and donor residues, θ was the bond angle between C and H atoms and the centre of O atom. CH…O interactions were categorized into four groups based on the type of interactions with the donor and the acceptor residues. Pictorial representations of the parameters are shown in 
+                        Fig. 1 
+                        [21].
+                           
+                              i)
+                              Interaction between the main chain of donor residues with the main chain of acceptor residues (MM CH…O interactions)
+
+Interaction between main chain of donor residues with the side chain of acceptor residues (MS CH…O interactions)
+
+Interaction between side chain of donor residues and the main chain of acceptor residues (SM CH…O interactions) and
+
+the interaction between side chain of donor residues and the side chain of acceptor residues (SS CH…O interactions).
+
+Further in order to understand the percentage energetic contribution of CH…O interaction to free energy, we used FoldX energy function [22–24] to calculate the free energy of all the PBPs analyzed. FoldX function includes all the terms that have been found to be important for protein stability. The free energy of the PBPs was calculated using the following equation:
+                           
+                              
+                                 Δ
+                                 G
+                                 =
+                                 
+                                    
+                                       W
+                                    
+                                    
+                                       vdw
+                                    
+                                 
+                                 ⁎
+                                 Δ
+                                 
+                                    
+                                       G
+                                    
+                                    
+                                       vdw
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       W
+                                    
+                                    
+                                       solvH
+                                    
+                                 
+                                 ⁎
+                                 Δ
+                                 
+                                    
+                                       G
+                                    
+                                    
+                                       solvH
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       W
+                                    
+                                    
+                                       solvP
+                                    
+                                 
+                                 ⁎
+                                 Δ
+                                 
+                                    
+                                       G
+                                    
+                                    
+                                       solvP
+                                    
+                                 
+                                 +
+                                 Δ
+                                 
+                                    
+                                       G
+                                    
+                                    
+                                       wb
+                                    
+                                 
+                                 +
+                                 Δ
+                                 
+                                    
+                                       G
+                                    
+                                    
+                                       hbond
+                                    
+                                 
+                                 +
+                                 Δ
+                                 
+                                    
+                                       G
+                                    
+                                    
+                                       el
+                                    
+                                 
+                                 +
+                                 Δ
+                                 
+                                    
+                                       G
+                                    
+                                    
+                                       Kon
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       W
+                                    
+                                    
+                                       mc
+                                    
+                                 
+                                 ⁎
+                                 T
+                                 ⁎
+                                 Δ
+                                 
+                                    
+                                       S
+                                    
+                                    
+                                       mc
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       W
+                                    
+                                    
+                                       sc
+                                    
+                                 
+                                 ⁎
+                                 T
+                                 ⁎
+                                 Δ
+                                 
+                                    
+                                       S
+                                    
+                                    
+                                       sc
+                                    
+                                 
+                                 
+                                    [
+                                    
+                                       22
+                                    
+                                    ]
+                                 
+                              
+                           
+                        where ∆G
+                        vdw was the sum of the van der Waals contribution of all atoms. ∆G
+                        solvH and ∆G
+                        solvP were the differences in solvation energy for apolar and polar groups. ∆G
+                        hbond was the free energy difference between the formation of an intra-molecular hydrogen bond formation. ∆G
+                        wb was the extra stabilizing free energy provided by a water molecule by making more than one hydrogen bond to the protein. ∆G
+                        el was the electrostatic contribution of charged groups, including helix dipole. ∆G
+                        Smc was the entropy of fixing the backbone in the folded state, which was dependent on intrinsic tendency of a particular amino acid to adopt certain dihedral angles. ∆G
+                        Sc was the entropic change which involves side chain conformation. ∆G
+                        Kon reflects electrostatic interactions. ∆S
+                        tr was the loss of translational and rotational energy involves in the formation of the complex.
+
+Preference of CH…O interacting residues in the formation of secondary structure of proteins was analyzed by utilizing the information available in PDB using DSSP server [25]. DSSP is a database of secondary structure assignments for all protein entries in the PDB. DSSP server predicts conformational preference of residues by analyzing hydrogen bonding pattern, which is geometrically defined as the distance between the backbone carbonyl oxygen (O) and the amino nitrogen (N). An n-turn is defined based on the H-bonds between residues i and i+n (where n is 2, 3 or 4), it includes any residue (i) that is isolated (i.e., no paired). Helices are defined as patterns of adjacent n-turns and strands are defined as patterns of adjacent bridges. A bridge involves a pair of H-bonds and can be either parallel or anti parallel [26]. Based on the tendency of interacting residues, the results were categorized into helix preferrers (H), turn preferrers (T) and strand preferrers (S) [27].
+
+The extent to which the atoms on the protein surface interact with the surrounding aqueous environment is referred to as accessible surface area. Accessible surface area of protein directly correlates with the hydrophobic free energy that plays a crucial role in the stability of structure. Earlier report states that each square Angstrom of accessible surface area removed from contact with aqueous environment gives a free energy of 25cal/mol [28]. Therefore, elucidating the contact between the interacting residues and the aqueous environment provides important implications in understanding the conformation of protein structure. In the present study, we employed the use of ASAview tool [29] to analyze the solvent accessibility pattern of CH…O interacting residues in PBPs. Depending on the nature of interacting residues, it was classified into buried, partially buried and exposed residues [30]. Exposed state endowed to the residue having the cut off value of >15; partially buried value is endowed to the residue having the cut off value of 10–15 and finally buried residue is endowed to the residue with a cut off value of <10 [31].
+
+Preferential contacts between the interacting residues were analyzed and the residues were accordingly grouped into short range contacts, medium range contacts and long range contacts. The distances between the residues involved in CH…O interactions were computed by calculating the distance between the α-carbon of the first residue and the corresponding residues in protein. Composition of the amino acids correlated with this residue was calculated within a sphere of 8Å, the range which was adequate for local and non-local interactions. The contribution from <±4 with respect to Cα atom was represented as short-range contact, ±4 to ±10 as medium-range contacts, and >±10 were treated as long range contacts [31].
+
+Stabilization centers are residues which play a critical role in the stability of protein structures. In the present study we utilized SCide server to identify the stabilization residues in PBPs [32]. Residues are considered to be in the stabilizing regions if they are involved in long range contact and if it is possible to select one to one residues from both flanking tetrapeptides of the two residues such that three residues from each segment make at least seven contacts out of the possible nine.
+
+Functionally important residues were found to be conserved throughout the structure of proteins. We employed ConSurf server for computing the conservation grade of CH…O interacting residues. The server involved the generation of multiple sequence alignment followed by the construction of phylogenetic tree. ConSurf score was generated based on phylogenetic tree analysis. The conservation score was calculated using the following expression:
+                           
+                              
+                                 
+                                    
+                                       P
+                                    
+                                    
+                                       k
+                                    
+                                 
+                                 =
+                                 
+                                    ∑
+                                    
+                                       m
+                                       −
+                                       1
+                                    
+                                    N
+                                 
+                                 
+                                    (
+                                    
+                                       
+                                          A
+                                       
+                                       
+                                          i
+                                          j
+                                       
+                                       
+                                          m
+                                       
+                                    
+                                    (
+                                    k
+                                    )
+                                    
+                                       
+                                          M
+                                       
+                                       
+                                          i
+                                          j
+                                       
+                                    
+                                    )
+                                 
+                              
+                           
+                        where 
+                           
+                              
+                                 A
+                              
+                              
+                                 i
+                                 j
+                              
+                              
+                                 m
+                              
+                           
+                         is the amino acid substitutions; N is the number of sequence in the alignment and M
+                        
+                           ij
+                         is the replacement values.
+
+Finally, the conservation score of the interacting residues were assigned based on the grading scale from 1 to 9 indicating highly variable to highly conserved regions [33].
+
+The statistical difference was measured by independent t-test and Fisher’s exact test for the whole data set using the software package SPSS [34] with respect to hydrogen bond donor/acceptor, short/long range contacts, exposed/buried surface area of the interacting residues and secondary structure residues. p-Values of <0.05 were considered as significant.
+
+Importance of CH…O interacting residues in the binding site of PBPs was analyzed using the program LIGPLOT [35].
+
+@&#RESULTS@&#
+
+CH…O interactions play a crucial role in the conformational specificity and constancy of PBPs. Since it occurs rather frequently, the energetic contribution is significantly higher than other non-canonical interactions. As stated in Ab initio calculations the energy of CH…O interactions ranges from −2 to −3kcal/mol [18]. From our analysis we find an average of 1675 CH…O interactions in Gram positive bacteria and 1357 CH…O interactions in Gram negative bacteria per PBPs. Therefore, the minimum energetic contribution by the CH…O interaction is around −3350kcal/mol in Gram positive bacteria whereas the maximum energetic contribution is −5025kcal/mol. Similarly in Gram negative bacteria the minimum energetic contribution is −2714kcal/mol whereas the maximum energetic contribution is −4071kcal/mol, which makes CH…O interactions as potentially important contributor to the overall stability of PBPs. Contribution of CH…O interactions to the conformational specificity of PBPs is depicted in 
+                        Fig. 2. It was interesting to observe that the number of interactions in Gram positive bacteria is higher than in Gram negative bacteria; this disparity might be due to the structural difference in the bacterial cell wall. We observed that the foremost contribution to PBPs is from side chain atom of donor residues and back bone atom of acceptor residues. There were 37.3%, 13.9% and 3.9% for MM CH…O interactions, SS CH…O interactions and MS CH…O interactions, respectively. We observed interesting results on analyzing the contribution of CH…O interactions in Gram negative bacteria. Our results revealed that the contribution from SM CH…O interactions was high in Gram negative bacteria that is similar to the results observed in Gram positive bacteria even though there were lots of differences between Gram positive and Gram negative cell wall. It was observed that 49% of SM CH…O interactions, 30.1% of MM CH…O interactions, 16.7% of SS CH…O interactions and 4.2% of MS CH…O interactions contributed to the overall stability of PBPs. Free energy is calculated for the entire dataset analyzed. Our analysis showed that free energy contribution in Gram positive bacteria is around 8983kcal/mol, whereas in Gram negative bacteria the contribution is around 5144kcal/mol. On calculating the percentage contribution of CH…O interactions to free energy we find that approximately 49% of free energy is contributed by CH…O interactions in Gram positive bacteria whereas the energetic contribution is 37% in Gram negative bacteria, difference in the percentage may be because of the higher number of CH…O interactions in the maintaining the structural stability of PBPs in Gram positive bacteria. This analysis reveals the importance of CH…O interactions in the structural stability of PBPs.
+
+Conformational preference of CH…O interacting residues in Gram positive bacteria showed that amino acid residues Ser, Asp, Asn, Gly (amino acids without side chain) and cyclized side chain Pro favored turn regions whereas Cys, Ala, Leu and Glu prefers helix regions. Conformational preference of CH…O interacting residues in Gram positive and Gram negative bacteria are tabulated in 
+                        Table 1. Structural preference of CH…O interacting residues in Gram negative bacteria showed that aromatic residues such as Phe, Tyr and Trp preferred to be in turn regions, whereas Ala and Leu prefers in helix regions similar to Gram positive bacteria. Interestingly more than half of the residues involved in CH…O interactions preferred to be in the helix region which reveals the importance of these residues in forming the secondary helical structure.
+
+Residues that are functionally important are identified based on the conservation score generated by ConSurf server. Residues with a score of 9 are considered as highly conserved, and residues with a score of 1 are considered as highly variable. Values in 
+                        Fig. 3 represent the percentage of interacting residues with the highest conservation score of 9. Since the conserved residues plays an important role in the stability and functionally specificity of protein structure, results obtained from this study is useful to understand the importance of CH…O interacting residues in the stability of PBPs. From our analysis we find that more than 59% of residues in Gram positive bacteria and 55% of residues in Gram negative bacteria are highly conserved, revealing their importance in the stability of protein structure.
+
+Apart from analyzing the functional specificities of CH…O interactions, the stabilizing role of interacting residues were also analyzed for both Gram positive and Gram negative bacteria. It was interesting to observe that the residues with higher conservation score also had one or more stabilization centers. This observation indicates that the conserved residues also play an important role in structural stability in addition to this role in biological functions. Pictorial representation of the results for Gram positive and Gram negative bacteria are depicted in 
+                        Fig. 4.
+
+SASA of residues involved in CH…O interactions provides interesting information. In both the bacteria, the number of interacting residues was found to be higher in the exposed region of PBPs. In Gram positive bacteria 51.3% of interacting residues was in the exposed regions whereas 47% was in the buried region of PBPs. In Gram negative bacteria, 60.4% of interacting residues was in the exposed region while 49% was in the buried region of PBPs. Results of solvent accessibility patterns of CH…O interacting residues for both Gram positive and Gram negative bacteria is shown in 
+                        Fig. 5.
+
+Our analysis on sequential separation between the interacting residues shows similar results in both Gram positive and Gram negative bacteria. About 60% of interacting residues in Gram positive bacteria and 59% of interacting residues in Gram negative bacteria were observed to be in short range contact. Hence CH…O interactions might play a significant role in the stability of secondary structural elements. Pictorial representation of the preferential contacts is shown in 
+                        Fig. 6.
+
+The statistical analysis between the groups is measured by multiple comparison analysis using t-test and Fisher’s exact test. These tests are performed using the software package SPSS. p-Value of <0.05 are considered as significant. On analyzing the results from independent t-test we find p values as 0.035, 0.004, 0.022, 0.013 and 0.040 for conserved residues, hydrogen bond donor/acceptor, exposed/buried surface area, secondary structure residues and short/long range contacts of the interacting residues, whereas significance from fisher exact test shows the p value as 0.014 for hydrogen bond donor/acceptor, 0.019 for exposed/buried surface area and 0.005 for short/long range contacts. Further Benjamini and Hochberg algorithm is adopted for controlling the false discovery rate (FDR) of multiple comparisons [36]. The corrected p values is considered as statistically significant if p (i)≤αm/i, where α is the standard significance level, i is the ordinal rank of the p-value, and m is the number of samples being tested. p value obtained by from multiple tests is given as input, with the desired level of significance. p-Values lower than 0.05 are considered to indicate significance. From our analysis we observed that corrected p values are found to be statistically significant at 0.05 significant levels. Since the values obtained are less than the threshold level we infer that there is significant difference between Gram positive and Gram negative bacteria in the given property.
+
+It is interesting to note that all the residues located in the binding pockets of PBPs are involved in CH…O interactions. A diagrammatic view of CH…O interacting residues in the ligand binding site of PDB ID 3ZFZ is shown in 
+                        Fig. 7.
+
+@&#DISCUSSION@&#
+
+Peptidoglycan comprises about 90% of the cell wall in Gram positive bacteria. Gram negative bacteria also have layers of peptidoglycan but these are much thinner comparing to Gram positive bacteria. Bacterial peptidoglycan not only enables the bacteria to resist the intracellular pressure but also provides proper maintenance of cellular morphology. Peptidoglycan biosynthesis is catalyzed by glycosyltransferases to polymerize the glycan chains and transpeptidases to catalyze crosslinking between adjacent glycan chains. Several studies stressed the importance of PBPs in bacterial cell wall synthesis [37–46,49]. The major role of PBPs are peptidoglycan transpeptidase activity, glycosyltransferase activity and carboxypeptidase activity. These activities are believed to play a crucial role in the cell wall peptidoglycan synthesis. As their name implies, PBPs are the primary targets of β-lactam antibiotics, which act as mechanism based inhibitors to mimic the d-alanyl–d-alanine moiety of peptidoglycan precursors. The major mechanisms that confer resistance to bacteria are the alteration of PBPs and synthesis of β-lactamase enzyme [47]. Bacterial resistance by alteration in PBPs emerges by the gradual mutation that occurs in sequence of PBPs. Hence, analyzing the role of CH…O hydrogen bonds in the conformational stability of PBPs provides valuable information regarding the structure of proteins. As proved in earlier studies, CH…O hydrogen bonds play an important role in the function of biological macromolecules [48]. CH…O hydrogen bonds involved in many intermolecular interactions, including protein–protein interactions, protein–ligand interactions and protein–nucleic acid complexes. PBPs involves in interaction with other proteins to carry out the cell division in bacteria. Any alteration in PBPs inhibits the synthesis of peptidoglycan leading to cell lysis and cell death. This hypothesis is supported by affinity chromatography studies which reveal the existence of protein–protein interactions between bifunctional transpeptidase–transglycosylase PBPs, monofunctional transpeptidase, dd-endopeptidases and structural proteins [49]. As proved in previous studies the average energetic contribution of CH…O hydrogen bonds to the protein–protein interface is around 17% whereas the conventional hydrogen bond is around 30% [50]. Though the energetic contribution from CH…O interactions are slightly lower than conventional H-bonds, the relatively higher number of CH…O interactions cumulatively provide significant energy and they ought to be considered while studying the factors that determine the stability of proteins. In the present study, we have analyzed the importance of CH…O hydrogen bonds in both Gram positive and Gram negative bacteria. CH…O interactions constitute the second most important group in the total number of hydrogen bonds [51]. Several researchers have emphasized the importance of CH…O interactions in the stability of protein structure [52,53]. These studies have generally shown CH…O interactions to be weak interactions, typically exhibiting the half the bond energy of the conventional hydrogen bond in gas-phase calculations. However, it is noteworthy that these studies have consistently found that this interaction plays a crucial role in the structure of protein, and in some instances, they can be as strong as conventional hydrogen bonds [53]. It is also estimated that around 40–50% of all protein–protein surface interaction energy arises from CH…O hydrogen bonding [54]. There is a strong support from earlier reports [55] which proves CH…O hydrogen bonds as an important driving force in ligand selectivity. Results from the present study provides detailed structural information of PBPs and correlates the significance of interacting residues with respect to stabilization centers, conservation score, conformational preferences, solvent accessibility surface area and the preferential contacts. From our analysis we observed a total of 13,398 CH…O hydrogen bonds in Gram positive bacteria and 10,855 CH…O hydrogen bonds in Gram negative bacteria. Interestingly we observed that number of CH…O interactions is higher in Gram positive bacteria than Gram negative bacteria. Our results are supported by earlier studies which state that PBPs plays a crucial role in cell wall synthesis of Gram positive bacteria because of their extremely thick cell wall than Gram negative bacteria [56]. Hence from the analysis we infer that stabilizing interactions plays major role in the PBPs of Gram positive bacteria because of their vital importance in the cell wall of bacteria. The energetics of CH…O hydrogen bonds reveals the significant role of CH…O interactions in the conformational specificity and constancy of PBPs. Further our arguments also supported by earlier work [57] which proves that energy of CH…O hydrogen bonds contribute significantly in determining folded structures. Our findings also suggest that major contribution from CH…O hydrogen bonds are observed between SM–CH…O interactions in both Gram positive and Gram negative bacteria. Results obtained are similar to the findings observed in an earlier study from our group in β-lactamases [19]. The donor atom contribution to CH…O hydrogen bonds are mainly from Val and Leu residues in both Gram positive and Gram negative bacteria, whereas Ser dominates in acceptor group. Our analysis on preferential contacts of CH…O interacting residues shows that more than 50% of interacting residues prefer to be in short range contacts in both Gram positive and Gram negative bacteria. These results reveal the importance of CH…O interacting residues in maintaining the local conformational structure of PBPs. Analyzing the conformational preference of amino acids is necessary to understand the conformational preference of residues in protein structure [58]. Amino acids show distinct position-dependent helix-forming propensities near the ends of α-helices. It was also proved that amino acids have strong position-dependent propensities throughout the length of a helix. From our analysis we find that Ala, Leu, Met and Lys as helix preferrers as these residues showing preferences to build α-helices. Our results are in agreement with previous findings [59] which prove Ala and Leu as strong helix preferrers. It is also interesting to observe that His shows negative correlation with helices in Gram negative bacteria which is correlated with Chou and Fasman findings [60]. Met residues are relatively neutral and found to appear in all secondary structural regions. On analyzing the strand regions we observed that preference of Val, Ile and Trp is higher comparing to other residues, our results are consistent with the results observed by Gibrat and colleagues [61]. On analyzing the turn regions we observed that Pro, Gly, Asn and Ser shows strong correlation with the coil regions. In Gram positive bacteria, Ala, Cys, Glu and Leu prefers to be in helix regions. These results are consistent with the previous study, which denotes Ala, Leu and Glu as strong helix preferrers [58]. Similar results are also observed in Gram negative bacteria which shows Ala, Leu and Glu as helix preferrers along with Trp. Interestingly, considerable number of residues were in turn regions of PBPs. Conformational preference of the interacting residues proves the fact that chemical structural of the residues directly correlates with the properties of amino acids [62]. Conformational stability of proteins mainly depends on the folding pattern of structures. Folding pattern of protein not only depends on the structure but also on the segments of residues called conserved residues [63]. Residues that are functionally important are found to be conserved throughout the evolution [64]. It is noteworthy to mention that around 50% of the interacting residues were found to be highly conserved, revealing structural and functional importance of CH…O hydrogen bonds. Residues that are highly conserved and responsible for the stability of the PBPs were found to be Glu, Val, Lys, Ser, His, Asp, Leu, Ala, Tyr and Arg. Since most of the residues were found to be non-polar in nature, they tended to maintain stability at the core region of PBPs. Stabilizing regions provide thermostability to the proteins by involving in long range contacts [65]. Our analysis on Gram positive bacteria and Gram negative bacteria shows that Glu, Ser, Arg, Asp, Met, Ile shows higher stabilizing score. It was also interesting to find that the amino acid residues Glu, Ser, Arg and Asp possessed a higher conservation score of 9, illuminating the importance of these residues in the functional and conformational preference of CH…O hydrogen bonds. The degree to which the residues interact with the surrounding aqueous environment is directly proportional to the rate to which it is exposed to the environment. Environment free energy which encompasses interaction of amino acid with aqueous environment plays an essential role in protein folding [66]. On analyzing the solvent accessibility pattern of CH…O hydrogen bonds we observed that most of the interacting residues are located in the exposed region of PBPs which is supported by the fact that functional residues locate close together in the exposed region of protein and favors ligand binding [67]. As proved in earlier studies CH…O hydrogen bond plays an important role in the field of ligand design. With respect to protein–ligand binding, the first evidence was proposed by Klaholz and Moras, utilizes X-ray crystallography to identify the crucial role CH…O hydrogen bonds in ligand recognition [68]. Recognition of binding site residues is an important task for a structure-based drug design and functional annotation. On analyzing the importance of CH…O hydrogen bonds in the binding site of PBPs, we find that all the residues located in the binding pockets of PBPs are involved in CH…O interactions. Present study provides detailed structural information about the ligand binding residues that allows the design of novel antibiotics with structurally confirmed CH…O hydrogen bonds to the protein. Further statistical analysis shows significant results in the given property of Gram positive and Gram positive bacteria. Hence understanding the principles responsible for the stability of PBPs provides promising strategy for the development of effective antibiotics.
+
+The authors declare there is no conflict of interest.
+
+@&#ACKNOWLEDGMENT@&#
+
+S.R and A.A are grateful to the Indian Council of Medical Research (ICMR), Government of India Agency for the research grant [IRIS ID: 2014-0099] to carry out this research. P.L thanks ICMR for the Research fellowship through the ICMR grant IRIS ID: 2011-03260. We would like to thank the management of VIT University for providing us with necessary facilities to carry out this research project.
+
+@&#REFERENCES@&#
+

@@ -1,0 +1,266 @@
+@&#MAIN-TITLE@&#Adapting the force characteristics of a staple gun to the human hand
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Three modified staple guns are compared with a standard staple gun.
+
+
+                        
+                        
+                           
+                           A linearly increasing staple gun force curve is not optimal for a human hand.
+
+
+                        
+                        
+                           
+                           The muscular exertion is lowered with an adaption of a staple gun force curve.
+
+
+                        
+                        
+                           
+                           The tool efficiency is increased with an adapted force curve.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Hand
+
+Repetitive work
+
+Tool
+
+@&#ABSTRACT@&#
+
+
+                  Three prototype staple guns with modified force characteristics were compared with a commercially available standard staple gun with a linearly increasing force resistance during squeezing. The force characteristics of the prototypes were more or less adapted to the force characteristics of the human hand, and in one of the staple guns the general force level was also reduced by one third. Evaluation instruments were electromyography of the forearm flexors and extensors, subjective rating of forearm exertion and subjects' free comments about the four tools. Twelve professional craftsmen were recruited as test subjects. The results show significantly lower readings for two of the three prototypes compared with the standard gun in electromyography as well as subjective ratings. The squeezing times are also reduced for two of the prototypes. It is concluded that the choice of force characteristics of a staple gun is important both to minimize forearm muscular exertion and to increase tool efficiency.
+               
+
+@&#INTRODUCTION@&#
+
+A staple gun (SG) is a common tool for both professional and domestic use. Different sizes of guns are available on the market, some manually operated (see example in Fig. 1
+                     ) and some externally powered. The former type is the predominant tool for domestic use, but is also commonly employed by professional craftspeople, as it does not need a battery or external power connection.
+
+Repetitive hand work, as performed with an SG, is considered to be a risk factor for work-related musculoskeletal disorders (Luopajärvi et al., 1979; Armstrong et al., 1986; Dimberg, 1987; Silverstein et al., 1987; Kroemer, 1989). Common disorders reported are carpal tunnel syndrome, epicondylitis, peritendinitis of the forearm and tenosynovitis in the wrist and fingers (Kurppa et al., 1979; Armstrong et al., 1982; Shiri et al., 2006). A non-optimal design of manual tool handles may increase risks for musculoskeletal disorders but also decrease productivity with the tool (Fransson and Winkel, 1991; Mital and Kilbom, 1992; Blackwell et al., 1999; Peebles and Norris, 2003; Eksioglu, 2011).
+
+The basic functional principle of a manual SG is to squeeze the handle manually while mechanical energy is accumulated in an internal spring. At the bottom end of the handle movement, the accumulated mechanical energy is released into the staple, which hits the target under the gun.
+
+To the best of our knowledge, in all commercially available manual SGs, the force resistance in the handle, when squeezed, is monotonously increased as the gripping distance is decreased (see example for SG1, Fig. 2
+                     a), and the maximum is reached immediately before the staple is released when the hand is almost clenched. This more-or-less linear increase is from a technical point of view the most obvious solution.
+
+On the other hand, the force capacity of the human hand shows a force maximum about halfway between maximum gripping width and fully clenched fist forming an inverted u-shape. (Fitzhugh, 1973; Greenberg and Chaffin, 1978; Fransson and Winkel, 1991; Oh and Radwin, 1993; Ruiz–Ruiz et al., 2002; Edgren et al., 2004; Eksioglu, 2004). The grip span at force maximum depends on individual anthropometry (Eksioglu, 2004) and varies between 45 and 70 mm in different studies. Eksioglu (2011) also demonstrated shorter endurance times when gripping at non-optimal gripping width. However, various reference points have been applied for the measurement of grip span, and force has been measured either with parallel handles, with angled handles or with a cylindrical grip. With these various conditions taken together, these data are hard to merge to find the generally applicable optimal characteristics for a staple gun.
+
+Whatever the truly optimal characteristic is, there is a mismatch between the force resistance curve in a conventional SG with linearly increasing force and the corresponding human force capacity curve. This mismatch was identified by the manufacturers of the SGs studied in this work. To improve their tools to better fit the force characteristics of the human hand and to reduce the load on the hand/arm, three new prototypes based on their largest professional manually operated SG (see Fig. 1) were developed. The authors were consulted to evaluate these prototypes. The objective of this study was to assess the prototypes in comparison with a conventional SG in terms of muscular load measured by electromyography (EMG), subjective ratings of tool comfort and free comments by the test subjects regarding practical aspects of the investigated tools.
+
+A standard SG (SG1, Isaberg-Rapid, Proline; see Fig. 1) and three prototypes (SG2, SG3 and SG4) were assessed. The exteriors of the prototypes were identical with the standard gun and it was impossible to see any difference. The prototypes were developed by the company (Isaberg-Rapid), which also manufactured the standard SG (SG1). In SG2 and SG3 alternative force characteristics were obtained by small internal mechanical changes of levers and other construction details while SG4 was based on an entirely new technical design. The authors were not involved in this technical development.
+
+The force characteristics of the four guns as a function of gripping distance are shown in Fig. 2a, with a definition of the distance according to Fig. 2b. The force curves were provided by the company and were obtained in a measurement fixture. In SG2 the aim was to reduce the high force peak close to staple release in SG1 while in SG3 a force curve closer to the human hand characteristics with a maximum earlier in the gripping range was intended. It was hard for the technicians to predict the detailed outcome of each technical solution in terms of force characteristics. In SG4 better general efficiency was obtained by new technical solutions, resulting in a generally lowered force graph. The different solutions resulted in minor differences in the point where the major force increase started and the point where the staple is released as can be seen in Fig. 2a.
+
+The manual input energy (E) for the four guns was calculated as the area under the force curves obtained as the sum of the average of two consecutive force samples multiplied by the corresponding distance increment:
+                           
+                              (1)
+                              
+                                 
+                                    E
+                                    =
+                                    Σ
+                                    
+                                       (
+                                       
+                                          F
+                                          i
+                                       
+                                       +
+                                       
+                                          F
+                                          
+                                             i
+                                             +
+                                             1
+                                          
+                                       
+                                       )
+                                    
+                                    /
+                                    2
+                                    ∗
+                                    
+                                       (
+                                       
+                                          D
+                                          i
+                                       
+                                       −
+                                       
+                                          D
+                                          
+                                             i
+                                             +
+                                             1
+                                          
+                                       
+                                       )
+                                    
+                                    
+                                    
+                                       (
+                                       J
+                                       =
+                                       Nm
+                                       )
+                                    
+                                 
+                              
+                           
+                        where D is the gripping distance, F the force and i is the sample index starting at maximum distance, D1 = 80 mm (Di > Di+1, i = 1 – 100). The distance increment was chosen by the company developing the SGs.
+
+The calculated input energies are shown in Table 1
+                        .
+
+Twelve experienced professional craftsmen were voluntarily recruited as test subjects. They were all familiar with the professional use of SGs. Their ages ranged from 18 to 56 years, with their average age being 42 years. Their maximal gripping force in the dominant hand was measured according to the procedure described in Section 2.4. The maximal gripping force ranged from 380 to 650 N, and the average gripping force was 500 N.
+
+
+                        Grip force. For grip force measurements, a rubber ball vigorimeter (Martin) was used.
+
+
+                        EMG. An EMG telemetry system (Mespec 4000, MEGA Electronics Ltd) was used. The raw signals were continuously displayed on an oscilloscope screen for visual quality control. The signals were recorded on a digital DAT-recorder (TEAC RD-101T). Disposable EMG electrodes (Medicotest, Neuroline 72001-K) were used.
+
+Initially the subjects were informed about the aim of the project and that they could leave the tests at any time without notice.
+
+The maximal grip force was measured and stored as the maximal reading of three trials.
+
+EMG surface electrodes were applied on the most prominent bulges of the flexor digitorum superficialis and extensor carpi radialis brevis when clenching the fist. Electrodes were separated by 20 mm and oriented along the muscle fibers. A reference electrode was applied on the lateral epicondyle. EMG measurement quality was visually checked on an oscilloscope at rest, to exclude power-line and other types of interference.
+
+All subjects tested all four SGs once before the real tests. EMG amplitudes were checked and, if necessary, EMG amplification was adjusted for proper signal amplitudes. Before starting the real tests, the subjects were also informed that afterward they would be asked to give free comments regarding their experiences of all the SGs.
+
+The four guns were tested in four possible orders, 1–2–3–4, 2–3–4–1, 3–4–1–2 and 4–1–2–3. The subjects were randomly distributed into one of the four groups, with three subjects in each group.
+
+All subjects fired five staples with each gun into a pine board at their own pace, with a maximum 50 mm of support of the SG from the board, as shown in Fig. 3
+                        . All tests were performed standing, with the SG at hip height.
+
+Directly after each SG test, the subjects rated their perceived exertion in hand and forearm for that SG by a CR-10 subjective rating scale (Borg, 1990). This break also provided some physical rest.
+
+When all SGs were tested, the subjects gave their free comments on the four SGs.
+
+EMG recordings were sampled at 1 kHz and RMS (Root Mean Square) converted over 100 ms windows in a multifunctional analysis system (MUFDAP; Mathiassen and Gloria, 1994). Data were stored as RMS μV. The five squeezes were manually identified and marked, and an average amplitude, EMGmsj, during these squeezes was calculated representing that muscle (m = 1–2), SG (s = 1–4), and individual (j = 1–12). The duration of each squeeze was measured from the flexor EMG recordings. These readings and the average squeezing time representing that SG and subject were stored.
+
+To reduce interindividual amplitude variances and thereby improve statistical power, all readings over all SGs for a specific subject and muscle were normalized to a unity average (= 1.00) yielding data as arbitrary units according the equation:
+                           
+                              (2)
+                              
+                                 
+                                    Normalized
+                                    
+                                    EMG,
+                                    
+                                    
+                                       
+                                          NEMG
+                                       
+                                       
+                                          msj
+                                       
+                                    
+                                    =
+                                    
+                                       
+                                          
+                                             
+                                                EMG
+                                             
+                                             
+                                                msj
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             ∑
+                                             
+                                                s
+                                                =
+                                                1
+                                             
+                                             4
+                                          
+                                          
+                                             
+                                                EMG
+                                             
+                                             
+                                                msj
+                                             
+                                          
+                                       
+                                    
+                                    ∗
+                                    4
+                                 
+                              
+                           
+                        
+                     
+
+Possible significant differences between SGs were tested with a one-way ANOVA analysis. To identify significant differences between single SGs, Tukey's post hoc test was used. The significance level was set to p < 0.05.
+
+@&#RESULTS@&#
+
+Average normalized EMG results are given in Table 2
+                        . There was a significant difference depending on the SG for both flexors and extensors (p < 0.001). For the flexors, SG4 differed significantly from all others (p < 0.001). For the extensors, SG4 differed significantly from SG1 and SG3 (p < 0.001). Other significant pairs are listed in Table 2.
+
+The averages of rated perceived exertion for the four SGs are reported in Table 3
+                        . The ratings differ significantly depending on the SG (p < 0.001). All pairs except 1–3 differ significantly (p < 0.001).
+
+Average squeezing times are listed in Table 4
+                        . The squeezing times differed significantly (p < 0.001) depending on the SG. Three significant pairs were identified, 4–1 (p < 0.001), 4–3 (p < 0.01) and 1–2 (p < 0.05).
+
+All subjects said that SG1 was too heavy at the end, and some commented that they were uncertain when the release would come. The high force demands at the end also made it harder to position the tool with acceptable precision on the target. Regarding SG2, many subjects said that it started to build up force too late in the movement range, but it was fairly easy to operate. SG3 had a too high initial force, and the decreasing force resistance at the end of the movement range was experienced as unpleasant, with uncertainty when the release would occur. All subjects regarded SG4 as the best one: smooth and pleasant to operate, with good control over the whole range and good precision at release.
+
+@&#DISCUSSION@&#
+
+SG4 was the gun causing the least muscular load (Table 2), was rated to have the least perceived hand/forearm exertion (Table 3) and was also the favorite tool for all subjects. These findings are to be expected when considering the force resistance curve in Fig. 2a and that SG4 had much lower calculated input energy compared to the others (Table 1).
+
+In principle, more interesting from an ergonomic point of view is to notice also that SG2 shows significantly lower EMG readings (Table 2) than SG1 despite a somewhat higher total energy input (Table 1). In addition, SG3 with a minor difference in energy input also shows lower EMG readings than SG1, however not reaching significance. Furthermore, the perceived exertions listed in Table 3 support that SG2 and SG3 cause less strain than SG1. A likely explanation for this is the modified force characteristics for these two SGs shown in Fig. 2a. A conclusion of these findings is that the modified force characteristics in SG2 and SG3 are superior to the more or less linear increase in SG1 despite almost equal total mechanical energy input.
+
+From a strict biomechanical point of view, the force curve of the tool should match the user's hand force characteristics as close as possible. The SG showing force characteristics most similar to the human hand is SG3. However, SG2, with a more flat, slightly increasing and more extended force curve, shows better results than SG3. A general impression is that the pronounced peak at 60 mm for SG3 (Fig. 2a) is located too far to the right (e. g. too early in the squeeze phase), which is also supported by the free comments. There is no information on the individual force curve characteristics for these subjects. The general data provided on such characteristics (see Introduction) are hard to apply here, since the definitions of hand grip width and measurement procedures vary substantially.
+
+Another interesting comment is that the decreasing force resistance at the end for SG3 is experienced as unpleasant, causing an uncertainty when the staple will be released. SG4 shows a slight force decrease at the end, however not as pronounced as for SG3. No similar comments of uncertainty were made for SG4. A conclusion might be that a too close resemblance between the force curve of the human hand and of the tool, especially close to the staple release, is negative from a functional point of view. However, it should be kept in mind that these subjects are not used to this new behavior of the tool. A longer period of use may change these views.
+
+The recruited subjects had an average hand grip strength of 500 N, which seems to be in good accordance with data from other male groups (Mathiowetz et al., 1985). The peak force needed for SG1 is 250 N, which, without considering peak position, is equal to 50% MVC (Maximal Voluntary Contraction) for the average subject; in the weakest subject, 66% MVC. Mital and Kilbom (1992) recommend a general maximum gripping force of 100 N for hand tools. Sperling et al. (1993) consider tool grip forces larger than 30% MVC as high and recommend that tool forces should never exceed this limit. Chaffin et al. (2006) recommend a maximum tool force of 90 N to be acceptable for most users. Considering these recommendations, SG1, being the standard SG for professional use, should be considered as an inappropriate tool. The peak force in SG4, 120 N, on the other hand represents 26% MVC for the average subject and 32% MVC for the weakest and thus should be considered as fairly acceptable according to the criteria above. The decreased load will reduce risks for musculoskeletal disorders as mentioned in Introduction. It will also increase the group of potential users, also including users with lower gripping capability.
+
+It is interesting to note that the times for the squeezing phase (Table 4) correlate well with both EMG readings (Table 2) and perceived exertion (Table 3). This correlation implies that a better-optimized tool in terms of load also becomes more effective to use from a time perspective.
+
+EMG was recorded from both a finger flexor and a wrist extensor. Generally, it is well known that surface electrodes on the forearm also pick up EMG from adjacent muscles on the corresponding side, since the muscle bellies here are numerous and comparatively small (Hägg and Milerad, 1997). So it is more relevant to denote the recordings as flexor and extensor recordings only. The prime mover for finger flexion is the flexor digitorum superficialis, and it generates the main forces in the fingers that squeeze the SG handle. The extensors are active mainly for stabilizing the wrist during gripping (Snijders et al., 1987). Also, this load is important to consider, since it likely can cause lateral epicondylitis (“tennis elbow”) at repeated gripping (Hägg and Milerad, 1997).
+
+The authors were not involved in the design of the prototypes. Even if the authors had a better knowledge about the scientific background their participation would not likely have resulted in different prototypes. SG2 and SG3 shed light on what can be gained by changing the force characteristics of a tool of this kind with preserved input energy. Furthermore, the results for SG4 demonstrate that substantial improvement of the mechanical efficiency of this kind of tool is possible by new technical solutions. However, it is not possible to find the optimal force characteristics for an SG based on this work. To find such an optimal curve for different groups of users in terms of gender and hand size, a deeper analysis of the available data sources should be made. However, there are indications that a decreasing force curve at the end may be unfavorable from a functional point of view. Further research should be done to clarify these issues.
+
+Hopefully, the results of this paper will inspire other designers and manufacturers of SGs and similar hand tools to optimize their force characteristics and efficiency to better suit the properties of the human hand.
+
+@&#CONCLUSIONS@&#
+
+The standard technical solution in an SG with a more or less linearly increasing force resistance is far from optimal. A force characteristic of an SG, more adapted to the one of the human hand, will reduce the hand/forearm load even at preserved input energy.
+
+Too steep a decrease of the force characteristic toward the end of the squeezing action may give the user a feeling of uncertainty when the staple will be released.
+
+A reduced hand/forearm load also makes the tool faster to operate which increases the productivity with the tool.
+
+No conflicts of interest are known.
+
+This project was carried out as a master's thesis by Lotta Runeson. All tools were provided by Isaberg Rapid AB, free of charge.
+
+@&#REFERENCES@&#
+

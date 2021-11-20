@@ -1,0 +1,4420 @@
+@&#MAIN-TITLE@&#Dynamics of a geared parallel-rotor system subjected to changing oil-bearing stiffness due to external loads
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           A FE model of a geared rotor system in centrifugal compressor is established.
+
+
+                        
+                        
+                           
+                           Gear mesh and oil bearing are considered in the model.
+
+
+                        
+                        
+                           
+                           We examine variational vibration due to the increasing external loads.
+
+
+                        
+                        
+                           
+                           Results reproduced the vibration phenomenon in the start-up process.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Centrifugal compressor
+
+Geared rotor system
+
+Changing load
+
+Modeling
+
+Vibration
+
+@&#ABSTRACT@&#
+
+
+                  The variable critical speeds and resonances of a geared parallel-rotor system with five shafts effected by changing oil bearing stiffness due to different external loads are investigated in this paper. The rotor system of a modern centrifugal compressor is taken as the research object firstly. A finite element (FE) model of it is established by using rotating beam elements with 6 degrees-of-freedom (DOFs), and linear mesh stiffnesses of the engaged helical gears are involved. The changing stiffness and damping of the oil bearings effected by different loads are calculated based on traditional oil-film fluid formula. Then, the Campbell diagrams of the whole rotor system under different loads on three output shafts are calculated based on the above model. Finally, comparing the obtained critical speeds, the load ranges are revealed to lead possible resonances of the rotor system near the operating speeds.
+               
+
+@&#INTRODUCTION@&#
+
+Integrally geared centrifugal compressor is one of the most attractive developed and important equipments in recent years and used in many patrol processing factories, which has merged the speed-increasing gearbox with the compression sections to create a compact and efficient package [1]. The rotor system of the integrally geared centrifugal compressor is always composed of some paralleled and geared shafts including one input shaft and three or even more output ones supported by the tilting pad journal bearing (TPJB). Due to the complicated dynamic characteristics, dynamic modeling of compression system has received significant attention over the years. However, the studies in this field are still inadequate because of its complexity. Among the limited modeling studies, most works in this field are done for axial compressors and fewer results are available from literatures on centrifugal compressors especially for the integrally geared ones. Morini et al. [2] developed a non-linear one-dimensional modular dynamic model of bio-gas compression system and which is used for the simulation of compression system transient behavior. Jiang [3] presented an analytical model for the centrifugal compressor which can be used to predict the compressor performance curves of outlet pressure, efficiency and losses and obtain surge line for defining stable operation range. Lee [4] conducted an investigation on the suppression of sub-synchronous vibrations due to aerodynamic response and surge in a two-stage centrifugal compressor with airfoil bearings. Gruntfest et al. [5] discussed the rotordynamic instability of an integrally geared compressor that initially had problems with high bearing pad temperatures and investigated its causes. Moore [6] conducted full-load, full-pressure rotordynamic stability measurements on a seven-stage, back-to-back centrifugal compressor. Kim [7] investigated the fundamental aeromechanics of compressor flow instabilities through experiments in a three-stage axial flow compressor, and pointed out that aerodynamically forced vibration in a centrifugal compressor should be considered.
+
+Nowadays, many interesting papers on the dynamic analysis of geared rotor system have been presented. Choi [8] and Park [9] studied analytical modeling method for a helical geared system respectively and the dynamics of gears were investigated. Choi [10] presented a model of geared one-stage rotor bearing system by transfer matrix method where the gear mesh was modeled as a pair of rigid disks connected by a spring-damper. Baguet [11] applied an iterative Newmark scheme to a single stage geared system, and demonstrated the gear-bearing dynamic interactions through the analysis of dynamic gear loads, dynamic bearing loads and bearing displacements. Kang [12] investigated the dynamic behaviors of a two-shaft gear-rotor system with viscoelastic supports. Maliha [13], Eritenel [14] and Walha [15] analyzed the nonlinear behaviors of the geared rotors, and the dynamic gear loads and dynamic bearing forces were calculated. Lee [16] presented a 5-DOFs models for obtaining the unbalance response of a 600kW turbo-chiller rotor-bearing system based on the finite element approach.
+
+To avoid the waste of the energy and the impact load on the starting process of the centrifugal compressor, the compressor is always speeding-up without load until stabilizing at the working speed firstly, which is beyond the first several critical speeds of its rotor system, and then increasing the load to the rated load. During the speeding-up process, it sometimes needs to accelerate through the critical points in order to avoid the increasing vibration. While during the load increasing process, it frequently occurs that the vibration of the system also increases as the rotor system speeding-up across critical speed. That is, when the load increases near to a certain value, the vibration increases significantly, while after this certain load, the vibration decreases to the normal range, which is often called “critical load” by the operations staff. Sometimes, the vibration is so violent that makes the operations staffs have to stop the compressor. This phenomenon is quite common, including the compressor designed by some well-known companies in the world, and confuse the users and designers.
+
+Due to the nonlinear dynamics of the oil film bearing and gear mesh, there is no accurate critical speed for a gear-bearing-rotor system. Most researches focus on the nonlinear dynamics of rotor system, and few works focus on the changing dynamic characteristic caused by the load variation from the critical speeds perspective. But the critical speed of the geared rotor-system after linearization is useful, and the appropriate working speed of the high speed rotating machineries is also designed by critical speed analyzing. Meanwhile, many famous compressor manufacturing companies still treat the rotor system of the whole machine with many geared shafts as different single-rotor systems dividedly nowadays, and make the critical speed of the shaft diverge from the working speed at the design stage without considering the variable load. Sometimes, however, the vibration problems of the rotor system occur when increasing loads even though the rotating speed is steady in the start-up process of centrifugal compressor, which makes the compressor inoperable, or even causes dangerous risk in the machine operation. It is necessary to study the changing dynamic characteristic of the geared rotor system in the centrifugal compressor caused by the loads, and find out the possible cause of “critical load”, which would be a guidance in the integrally geared centrifugal compressor design.
+
+In this paper, the dynamics of an integrally centrifugal compressor with five parallel shafts is investigated, where the changing parameters of TPJBs are considered as the main causes of the severe vibrations mentioned above. Admittedly, the “critical load” may not be caused only by the changing parameters of TPJB, but it is certain that it is one of the most important reasons. Based on the finite element (FE) model of the rotor system, the response reproduced the vibration phenomenon in the starting-up process. These results will provide guides for the integrally centrifugal compressor design.
+
+A schematic of the geared parallel-rotor system is shown in 
+                     Fig. 1, which is a prototype of an integrally geared centrifugal compressor with 5 shafts coupled by helical gears in parallel arrangement. Each shaft is supported by two TPJBs. The test rig is driven by an AC motor connected to the input shaft (I). The dummy impellers or discs are fixed on the three output shafts (O1, O2, O3). These shafts are all connected to a big main gear (M) by different gears. The transmission ratios of the three output shafts are 2.72 (I to O1), 3.25 (I to O2) and 5.10 (I to O3).
+
+The dynamic model of the five shaft geared rotor system is shown in 
+                     Fig. 2. 
+                        
+                           
+                              k
+                           
+                           
+                              i
+                              L
+                           
+                        
+                     , 
+                        
+                           
+                              c
+                           
+                           
+                              i
+                              L
+                           
+                        
+                      and 
+                        
+                           
+                              k
+                           
+                           
+                              i
+                              R
+                           
+                        
+                     , 
+                        
+                           
+                              c
+                           
+                           
+                              i
+                              R
+                           
+                        
+                      are the stiffness parameters and damping parameters of the left TPJBs and right TPJBs on the five shafts respectively, which are dependent on the loading characteristic. 
+                        
+                           
+                              F
+                           
+                           
+                              i
+                           
+                        
+                      is the meshing force. Unlike the traditional one-to-one gear pair׳s transmission, the geared system in Fig. 2 is consisted of a bull-gear (M) and four pinion gears, and the bull-gear meshes with the other four gears at the same time, which cause a much stronger coupling effect. This compact structure can offer several advantages such as smaller floor space, lower energy consumption, and higher power density. However, it also means that much more critical speeds must disperse in a certain interval of speed, which brings much more difficulties in critical speed designing.
+
+The finite element method is used to set up the dynamic model of the geared rotor system shown in 
+                     Fig. 3, and the assumptions and simplifications are introduced as follows: (1) All the shafts are linear elastic. (2) The bearing houses are rigid. (3) A gear pair is represented by linear equivalent stiffness along its pressure line. (4) A shaft section with a larger radius can be simplified as rigid disc.
+
+The beam element shown in Fig. 3 is chosen to describe shafts, which has 12 degrees of freedom (DOFs) and is defined as
+                        
+                           (1)
+                           
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                              
+                              =
+                              
+                                 
+                                    [
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         x
+                                                      
+                                                      
+                                                         i
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         y
+                                                      
+                                                      
+                                                         i
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         z
+                                                      
+                                                      
+                                                         i
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         θ
+                                                      
+                                                      
+                                                         x
+                                                         i
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         θ
+                                                      
+                                                      
+                                                         y
+                                                         i
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         θ
+                                                      
+                                                      
+                                                         z
+                                                         i
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         x
+                                                      
+                                                      
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         y
+                                                      
+                                                      
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         z
+                                                      
+                                                      
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         θ
+                                                      
+                                                      
+                                                         x
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         θ
+                                                      
+                                                      
+                                                         y
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         θ
+                                                      
+                                                      
+                                                         z
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                                 T
+                              
+                           
+                        
+                     
+                  
+
+The dynamic equation of the beam element is described as
+                        
+                           (2)
+                           
+                              
+                                 
+                                    M
+                                 
+                                 
+                                    b
+                                 
+                              
+                              
+                                 
+                                    
+                                       u
+                                       ¨
+                                    
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                              
+                              +
+                              (
+                              
+                                 
+                                    C
+                                 
+                                 
+                                    b
+                                 
+                              
+                              +
+                              Ω
+                              
+                                 
+                                    G
+                                 
+                                 
+                                    b
+                                 
+                              
+                              )
+                              
+                                 
+                                    
+                                       u
+                                       ̇
+                                    
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                              
+                              +
+                              
+                                 
+                                    K
+                                 
+                                 
+                                    b
+                                 
+                              
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                              
+                              =
+                              
+                                 
+                                    F
+                                 
+                                 
+                                    b
+                                 
+                              
+                           
+                        
+                     where 
+                        Ω
+                      is the rotating speed around axes-x; 
+                        
+                           
+                              F
+                           
+                           
+                              b
+                           
+                        
+                      is the force vector of the beam element; 
+                        
+                           
+                              M
+                           
+                           
+                              b
+                           
+                        
+                     , 
+                        
+                           
+                              C
+                           
+                           
+                              b
+                           
+                        
+                     , 
+                        
+                           
+                              G
+                           
+                           
+                              b
+                           
+                        
+                      and 
+                        
+                           
+                              K
+                           
+                           
+                              b
+                           
+                        
+                      are the mass matrix, damping matrix, gyroscopic matrix and stiffness matrix respectively, where 
+                        
+                           
+                              C
+                           
+                           
+                              b
+                           
+                        
+                      is defined as Rayleigh damping and described as
+                        
+                           (3)
+                           
+                              
+                                 
+                                    C
+                                 
+                                 
+                                    b
+                                 
+                              
+                              =
+                              α
+                              ⋅
+                              
+                                 
+                                    M
+                                 
+                                 
+                                    b
+                                 
+                              
+                              +
+                              β
+                              ⋅
+                              
+                                 
+                                    K
+                                 
+                                 
+                                    b
+                                 
+                              
+                           
+                        
+                     where 
+                        α
+                      and 
+                        β
+                      are the scaling factors.
+
+The impellers, wheels and gears are regarded as rigid rotating discs (with gyroscopic effect), and simplified to be lumped mass and moment of inertia acting on the corresponding node, which is shown in 
+                     Fig. 4. The rigid disc has 6 degrees of freedom, which is defined as
+                        
+                           (4)
+                           
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    i
+                                 
+                              
+                              =
+                              
+                                 
+                                    [
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         x
+                                                      
+                                                      
+                                                         i
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         y
+                                                      
+                                                      
+                                                         i
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         z
+                                                      
+                                                      
+                                                         i
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         θ
+                                                      
+                                                      
+                                                         x
+                                                         i
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         θ
+                                                      
+                                                      
+                                                         y
+                                                         i
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      
+                                                         θ
+                                                      
+                                                      
+                                                         z
+                                                         i
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    ]
+                                 
+                                 T
+                              
+                           
+                        
+                     
+                  
+
+The dynamic equation of the rotating rigid discs is described as
+                        
+                           (5)
+                           
+                              
+                                 
+                                    M
+                                 
+                                 
+                                    d
+                                 
+                              
+                              
+                                 u
+                                 ¨
+                              
+                              +
+                              Ω
+                              
+                                 
+                                    G
+                                 
+                                 
+                                    d
+                                 
+                              
+                              
+                                 u
+                                 ̇
+                              
+                              =
+                              
+                                 
+                                    F
+                                 
+                                 
+                                    d
+                                 
+                              
+                           
+                        
+                     where 
+                        Ω
+                      is the rotating speed around axes-x; 
+                        
+                           
+                              F
+                           
+                           
+                              d
+                           
+                        
+                      is the force vector of the rotating rigid discs; 
+                        
+                           
+                              M
+                           
+                           
+                              d
+                           
+                        
+                      and 
+                        
+                           
+                              G
+                           
+                           
+                              d
+                           
+                        
+                      are the mass matrix and gyroscopic matrix respectively and described as
+                        
+                           (6)
+                           
+                              
+                                 
+                                    M
+                                 
+                                 
+                                    d
+                                 
+                              
+                              =
+                              
+                                 [
+                                 
+                                    
+                                       
+                                          
+                                             m
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       
+                                          
+                                             0
+                                          
+                                          
+                                             m
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             m
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      J
+                                                   
+                                                   
+                                                      p
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      J
+                                                   
+                                                   
+                                                      d
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      J
+                                                   
+                                                   
+                                                      d
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 ]
+                              
+                              ,
+                              
+                              
+                                 
+                                    G
+                                 
+                                 
+                                    d
+                                 
+                              
+                              =
+                              
+                                 [
+                                 
+                                    
+                                       
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             
+                                                −
+                                                
+                                                   
+                                                      J
+                                                   
+                                                   
+                                                      p
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      J
+                                                   
+                                                   
+                                                      p
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                    
+                                 
+                                 ]
+                              
+                           
+                        
+                     where m is the mass of the disc; 
+                        
+                           
+                              J
+                           
+                           
+                              p
+                           
+                        
+                      and 
+                        
+                           
+                              J
+                           
+                           
+                              d
+                           
+                        
+                      are the polar moment of inertia and the diametral moment of inertia respectively.
+
+The effective stiffness of the gear mesh refers to the mesh effect of the involved tooth in the whole mesh area and depends on the tooth elastic deformation and the gear contact ratio. The equivalent mesh stiffness can be obtained by a popularly used formula (known as Ishikawa Formula) stated in Eq. (7), where the tooth section is simplified to the combination of the rectangular section and the trapezoid section.
+                        
+                           (7)
+                           
+                              
+                                 
+                                    k
+                                 
+                                 
+                                    g
+                                 
+                              
+                              =
+                              
+                                 
+                                    
+                                       
+                                          F
+                                       
+                                       
+                                          m
+                                          e
+                                          s
+                                          h
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          δ
+                                       
+                                       
+                                          B
+                                          r
+                                       
+                                    
+                                    +
+                                    
+                                       
+                                          δ
+                                       
+                                       
+                                          B
+                                          t
+                                       
+                                    
+                                    +
+                                    
+                                       
+                                          δ
+                                       
+                                       
+                                          s
+                                       
+                                    
+                                    +
+                                    
+                                       
+                                          δ
+                                       
+                                       
+                                          G
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     where 
+                        
+                           
+                              F
+                           
+                           
+                              m
+                              e
+                              s
+                              h
+                           
+                        
+                      is the mesh force acting on the tooth; 
+                        
+                           
+                              δ
+                           
+                           
+                              B
+                              r
+                           
+                        
+                      is the corresponding bending deformation of rectangular section; 
+                        
+                           
+                              δ
+                           
+                           
+                              B
+                              t
+                           
+                        
+                      is the corresponding bending deformation of trapezoid section; 
+                        
+                           
+                              δ
+                           
+                           
+                              s
+                           
+                        
+                      is the corresponding shear deformation; and 
+                        
+                           
+                              δ
+                           
+                           
+                              G
+                           
+                        
+                      is the corresponding elasticity deformation caused by the root tilting. Assume i and j are the nodes of the gear pair, where i is on the driving pinion, which is shown in Fig. 5. 
+                        
+                           
+                              ψ
+                           
+                           
+                              i
+                              j
+                           
+                        
+                      is defined as the angle between the tangent plane of the gear contact surfaces and the axis-z and described as
+                        
+                           (8)
+                           
+                              
+                                 
+                                    ψ
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                              
+                              =
+                              
+                                 {
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      ϕ
+                                                   
+                                                   
+                                                      i
+                                                      j
+                                                   
+                                                
+                                                +
+                                                
+                                                   
+                                                      α
+                                                   
+                                                   
+                                                      i
+                                                      j
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                driving
+                                                
+                                                gear
+                                                
+                                                rotate
+                                                
+                                                counterclockwise
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      ϕ
+                                                   
+                                                   
+                                                      i
+                                                      j
+                                                   
+                                                
+                                                +
+                                                
+                                                   
+                                                      α
+                                                   
+                                                   
+                                                      i
+                                                      j
+                                                   
+                                                
+                                                −
+                                                π
+                                             
+                                          
+                                          
+                                             
+                                                driving
+                                                
+                                                gear
+                                                
+                                                rotate
+                                                
+                                                clockwise
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     where 
+                        
+                           
+                              α
+                           
+                           
+                              i
+                              j
+                           
+                        
+                      is the pressure angle of the gear pair and 
+                        
+                           
+                              φ
+                           
+                           
+                              i
+                              j
+                           
+                        
+                      is the angle between the centerline of the gear pair and the axis-y (
+                     Fig. 5).
+
+The helix angle 
+                        
+                           
+                              β
+                           
+                           
+                              i
+                              j
+                           
+                        
+                      is defined as positive when with a right-hand helix driving gear, whereas negative when with a right-hand helix driving gear.
+
+The dynamic equations of the nodes i and j connected by the spring-damper element for gear mesh without considering the damping effect can be described as
+                        
+                           (9)
+                           
+                              
+                                 
+                                    K
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                              
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                              
+                              =
+                              
+                                 
+                                    F
+                                 
+                                 
+                                    m
+                                 
+                              
+                           
+                        
+                     where 
+                        
+                           
+                              F
+                           
+                           
+                              m
+                           
+                        
+                      is the force vector of the meshing; 
+                        
+                           
+                              u
+                           
+                           
+                              i
+                              j
+                           
+                        
+                      is the displacement vector of nodes i and j, and defined as
+                        
+                           (10)
+                           
+                              u
+                              =
+                              
+                                 
+                                    [
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          i
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          v
+                                       
+                                       
+                                          i
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          w
+                                       
+                                       
+                                          i
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          θ
+                                       
+                                       
+                                          x
+                                          i
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          θ
+                                       
+                                       
+                                          y
+                                          i
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          θ
+                                       
+                                       
+                                          z
+                                          i
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          j
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          v
+                                       
+                                       
+                                          j
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          w
+                                       
+                                       
+                                          j
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          θ
+                                       
+                                       
+                                          x
+                                          j
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          θ
+                                       
+                                       
+                                          y
+                                          j
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          θ
+                                       
+                                       
+                                          z
+                                          j
+                                       
+                                    
+                                    ]
+                                 
+                                 T
+                              
+                           
+                        
+                     
+                  
+
+The mesh stiffness matrix of the gear pair 
+                        
+                           
+                              K
+                           
+                           
+                              i
+                              j
+                           
+                        
+                      in global coordinate system with 12th order can be described as
+                        
+                           (11)
+                           
+                              
+                                 
+                                    K
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                              
+                              =
+                              
+                                 
+                                    k
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                              
+                              ⋅
+                              
+                                 
+                                    a
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                                 
+                                    T
+                                 
+                              
+                              ⋅
+                              
+                                 
+                                    a
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                              
+                              =
+                              
+                                 (
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      k
+                                                   
+                                                   
+                                                      1
+                                                      ,
+                                                      1
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             …
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      k
+                                                   
+                                                   
+                                                      1
+                                                      ,
+                                                      12
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             ⋮
+                                          
+                                          
+                                             ⋱
+                                          
+                                          
+                                             ⋮
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      k
+                                                   
+                                                   
+                                                      12
+                                                      ,
+                                                      1
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             ⋯
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      k
+                                                   
+                                                   
+                                                      12
+                                                      ,
+                                                      12
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 )
+                              
+                           
+                        
+                     where
+                        
+                           
+                              
+                                 
+                                    
+                                       
+                                          
+                                             a
+                                          
+                                          
+                                             i
+                                             j
+                                          
+                                       
+                                       =
+                                       [
+                                       
+                                          
+                                             
+                                                
+                                                   −
+                                                   
+                                                   sin
+                                                   
+                                                   
+                                                      
+                                                         β
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   sin
+                                                   
+                                                   
+                                                      
+                                                         ψ
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                   
+                                                   cos
+                                                   
+                                                   
+                                                      
+                                                         β
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   cos
+                                                   
+                                                   
+                                                      
+                                                         ψ
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                   
+                                                   cos
+                                                   
+                                                   
+                                                      
+                                                         β
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   sgn
+                                                   
+                                                      
+                                                         r
+                                                      
+                                                      
+                                                         i
+                                                      
+                                                   
+                                                   
+                                                   cos
+                                                   
+                                                   
+                                                      
+                                                         β
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   sgn
+                                                   
+                                                      
+                                                         r
+                                                      
+                                                      
+                                                         i
+                                                      
+                                                   
+                                                   
+                                                   sin
+                                                   
+                                                   
+                                                      
+                                                         ψ
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                   
+                                                   sin
+                                                   
+                                                   
+                                                      
+                                                         β
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   sgn
+                                                   
+                                                      
+                                                         r
+                                                      
+                                                      
+                                                         i
+                                                      
+                                                   
+                                                   
+                                                   cos
+                                                   
+                                                   
+                                                      
+                                                         ψ
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                   
+                                                   sin
+                                                   
+                                                   
+                                                      
+                                                         β
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   sin
+                                                   
+                                                   
+                                                      
+                                                         β
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   
+                                                   sin
+                                                   
+                                                   
+                                                      
+                                                         ψ
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                   
+                                                   cos
+                                                   
+                                                   
+                                                      
+                                                         β
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   −
+                                                   
+                                                   cos
+                                                   
+                                                   
+                                                      
+                                                         ψ
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                   
+                                                   cos
+                                                   
+                                                   
+                                                      
+                                                         β
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   sgn
+                                                   
+                                                      
+                                                         r
+                                                      
+                                                      
+                                                         j
+                                                      
+                                                   
+                                                   
+                                                   cos
+                                                   
+                                                   
+                                                      
+                                                         β
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   sgn
+                                                   
+                                                      
+                                                         r
+                                                      
+                                                      
+                                                         j
+                                                      
+                                                   
+                                                   
+                                                   sin
+                                                   
+                                                   
+                                                      
+                                                         ψ
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                   
+                                                   sin
+                                                   
+                                                   
+                                                      
+                                                         β
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   sgn
+                                                   
+                                                      
+                                                         r
+                                                      
+                                                      
+                                                         j
+                                                      
+                                                   
+                                                   
+                                                   cos
+                                                   
+                                                   
+                                                      
+                                                         ψ
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                   
+                                                   sin
+                                                   
+                                                   
+                                                      
+                                                         β
+                                                      
+                                                      
+                                                         i
+                                                         j
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       ]
+                                    
+                                 
+                              
+                           
+                        
+                     
+                  
+
+The symbol sgn is defined as
+                        
+                           (12)
+                           
+                              sgn
+                              =
+                              
+                                 {
+                                 
+                                    
+                                       
+                                          
+                                             1
+                                          
+                                          
+                                             
+                                                d
+                                                r
+                                                i
+                                                v
+                                                i
+                                                n
+                                                g
+                                                
+                                                g
+                                                e
+                                                a
+                                                r
+                                                
+                                                r
+                                                o
+                                                t
+                                                a
+                                                t
+                                                e
+                                                
+                                                c
+                                                o
+                                                u
+                                                n
+                                                t
+                                                e
+                                                r
+                                                c
+                                                l
+                                                o
+                                                c
+                                                k
+                                                w
+                                                i
+                                                s
+                                                e
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                −
+                                                1
+                                             
+                                          
+                                          
+                                             
+                                                d
+                                                r
+                                                i
+                                                v
+                                                i
+                                                n
+                                                g
+                                                
+                                                g
+                                                e
+                                                a
+                                                r
+                                                
+                                                r
+                                                o
+                                                t
+                                                a
+                                                t
+                                                e
+                                                
+                                                c
+                                                l
+                                                o
+                                                c
+                                                k
+                                                w
+                                                i
+                                                s
+                                                e
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+                  
+
+As early as 1980s, many scholars have carried out extensive researches in the dynamic model of TPJB, and many simplified models of TPJB are provided [17,18]. In order to simplify calculating, the complete dynamical matrices for a five-pad TPJB shown in [17] are adopted in this paper, where the moment of inertia of the pad is ignored. The dynamic model of the TPJB is shown in 
+                     Fig. 6.
+
+
+                     Fig. 6(a) shows the geometry parameters of the five-pad TPJB, where 
+                        R
+                      is the shaft radius, 
+                        
+                           
+                              R
+                           
+                           
+                              0
+                           
+                        
+                      is the smallest bearing bore radius, 
+                        
+                           
+                              R
+                           
+                           
+                              v
+                           
+                        
+                      is the curvature radius of the bearing bush, 
+                        
+                           h
+                           ¯
+                        
+                        
+                           (
+                           φ
+                           )
+                        
+                      is the lubricating gap function respect to 
+                        φ
+                     , 
+                        χ
+                      is the embrace angle of the pad, 
+                        Δ
+                        
+                           
+                              R
+                           
+                           
+                              max
+                           
+                        
+                      and 
+                        Δ
+                        
+                           
+                              R
+                           
+                           
+                              min
+                           
+                        
+                      are the largest and smallest radial bearing clearances respectively, where 
+                        Δ
+                        
+                           
+                              R
+                           
+                           
+                              min
+                           
+                        
+                      can be described as
+                        
+                           (13)
+                           
+                              Δ
+                              
+                                 
+                                    R
+                                 
+                                 
+                                    min
+                                 
+                              
+                              =
+                              
+                                 
+                                    R
+                                 
+                                 
+                                    0
+                                 
+                              
+                              −
+                              R
+                           
+                        
+                     
+                  
+
+The eccentricity of the curvature center is defined as
+                        
+                           (14)
+                           
+                              E
+                              =
+                              
+                                 
+                                    R
+                                 
+                                 
+                                    v
+                                 
+                              
+                              −
+                              
+                                 
+                                    R
+                                 
+                                 
+                                    0
+                                 
+                              
+                           
+                        
+                     
+                  
+
+The bore form is described by dimensionless parameters as follows:
+
+Relative bearing clearance
+                        
+                           (15)
+                           
+                              
+                                 
+                                    ψ
+                                 
+                                 
+                                    min
+                                 
+                              
+                              =
+                              Δ
+                              
+                                 
+                                    R
+                                 
+                                 
+                                    min
+                                 
+                              
+                              /
+                              R
+                           
+                        
+                     
+                  
+
+Relative bush curvature
+                        
+                           (16)
+                           
+                              
+                                 
+                                    ψ
+                                 
+                                 
+                                    v
+                                 
+                              
+                              =
+                              (
+                              
+                                 
+                                    R
+                                 
+                                 
+                                    v
+                                 
+                              
+                              −
+                              r
+                              )
+                              /
+                              Δ
+                              
+                                 
+                                    R
+                                 
+                                 
+                                    min
+                                 
+                              
+                              =
+                              1
+                              +
+                              E
+                              /
+                              Δ
+                              
+                                 
+                                    R
+                                 
+                                 
+                                    min
+                                 
+                              
+                           
+                        
+                     
+                  
+
+Lubricant gap function
+                        
+                           (17)
+                           
+                              
+                                 H
+                                 ¯
+                              
+                              (
+                              φ
+                              )
+                              =
+                              
+                                 h
+                                 ¯
+                              
+                              
+                                 (
+                                 φ
+                                 )
+                              
+                              /
+                              Δ
+                              
+                                 
+                                    R
+                                 
+                                 
+                                    min
+                                 
+                              
+                              =
+                              
+                                 
+                                    ψ
+                                 
+                                 
+                                    v
+                                 
+                              
+                              −
+                              (
+                              
+                                 
+                                    ψ
+                                 
+                                 
+                                    v
+                                 
+                              
+                              −
+                              1
+                              )
+                              cos
+                              
+                              φ
+                           
+                        
+                     
+                  
+
+The eccentricity of the bearing journal 
+                        
+                           
+                              e
+                           
+                           
+                              b
+                           
+                        
+                     , the minimum gap height 
+                        
+                           
+                              h
+                           
+                           
+                              0
+                           
+                        
+                      and the static load of the bearing 
+                        
+                           
+                              W
+                           
+                           
+                              T
+                           
+                        
+                      can be described in Fig. 6(b), and their dimensionless parameters can be defined as follows:
+
+The eccentricity of the bearing journal
+                        
+                           (18)
+                           
+                              ε
+                              =
+                              
+                                 
+                                    e
+                                 
+                                 
+                                    b
+                                 
+                              
+                              /
+                              Δ
+                              
+                                 
+                                    R
+                                 
+                                 
+                                    min
+                                 
+                              
+                           
+                        
+                     
+                  
+
+Dimensionless minimum lubricant gap height
+                        
+                           (19)
+                           
+                              
+                                 
+                                    H
+                                 
+                                 
+                                    0
+                                 
+                              
+                              =
+                              
+                                 
+                                    h
+                                 
+                                 
+                                    0
+                                 
+                              
+                              /
+                              Δ
+                              
+                                 
+                                    R
+                                 
+                                 
+                                    min
+                                 
+                              
+                           
+                        
+                     
+                  
+
+The dimensionless static load capacity
+                        
+                           (20)
+                           
+                              
+                                 
+                                    S
+                                 
+                                 
+                                    0
+                                 
+                              
+                              =
+                              
+                                 
+                                    W
+                                 
+                                 
+                                    T
+                                 
+                              
+                              ⋅
+                              
+                                 
+                                    ψ
+                                 
+                                 
+                                    min
+                                 
+                                 
+                                    2
+                                 
+                              
+                              /
+                              (
+                              B
+                              D
+                              η
+                              ω
+                              )
+                           
+                        
+                     where 
+                        B
+                      is the bearing length; 
+                        D
+                      is the bearing bore diameter; 
+                        η
+                      is the dynamic viscosity; and 
+                        ω
+                      is the angular velocity of the shaft. The static operating behavior of the bearing can be explained by the static equilibrium line 
+                        γ
+                        =
+                        γ
+                        (
+                        ε
+                        )
+                      and the dimensionless static load capacity 
+                        
+                           
+                              S
+                           
+                           
+                              y
+                              0
+                           
+                        
+                      in the y-direction and 
+                        
+                           
+                              S
+                           
+                           
+                              z
+                              0
+                           
+                        
+                      in the z-direction on the eccentricity 
+                        ε
+                     .
+
+The non-linear anisotropic spring and damping properties of the lubricant film can be approximated by stiffness and damping coefficients. The dimensionless load capacity components 
+                        
+                           
+                              
+                                 Π
+                                 
+                                    ¯
+                                 
+                              
+                           
+                           
+                              y
+                           
+                        
+                      and 
+                        
+                           
+                              
+                                 Π
+                                 
+                                    ¯
+                                 
+                              
+                           
+                           
+                              z
+                           
+                        
+                      can be developed to the first derivative in a Taylor series in the vicinity of the static position of equilibrium 
+                        
+                           
+                              (
+                              ε
+                              ,
+                              λ
+                              )
+                           
+                           
+                              s
+                              t
+                              a
+                              t
+                           
+                        
+                      and shown as
+                        
+                           (21)
+                           
+                              
+                                 
+                                    
+                                       Π
+                                       
+                                          ¯
+                                       
+                                    
+                                 
+                                 
+                                    y
+                                 
+                              
+                              =
+                              
+                                 
+                                    
+                                       Π
+                                       
+                                          ¯
+                                       
+                                    
+                                 
+                                 
+                                    y
+                                    .
+                                    s
+                                    t
+                                    a
+                                    t
+                                 
+                              
+                              +
+                              
+                                 
+                                    (
+                                    
+                                       
+                                          
+                                             ∂
+                                             
+                                                
+                                                   
+                                                      Π
+                                                      
+                                                         ¯
+                                                      
+                                                   
+                                                
+                                                
+                                                   y
+                                                
+                                             
+                                          
+                                          
+                                             ∂
+                                             Y
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 
+                                    s
+                                    t
+                                    a
+                                    t
+                                 
+                              
+                              Y
+                              +
+                              
+                                 (
+                                 
+                                    
+                                       
+                                          ∂
+                                          
+                                             
+                                                
+                                                   Π
+                                                   
+                                                      ¯
+                                                   
+                                                
+                                             
+                                             
+                                                y
+                                             
+                                          
+                                       
+                                       
+                                          ∂
+                                          Z
+                                       
+                                    
+                                 
+                                 )
+                              
+                              Z
+                              +
+                              
+                                 
+                                    (
+                                    
+                                       
+                                          
+                                             ∂
+                                             
+                                                
+                                                   
+                                                      Π
+                                                      
+                                                         ¯
+                                                      
+                                                   
+                                                
+                                                
+                                                   y
+                                                
+                                             
+                                          
+                                          
+                                             ∂
+                                             Y
+                                             ′
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 
+                                    s
+                                    t
+                                    a
+                                    t
+                                 
+                              
+                              Y
+                              ′
+                              +
+                              
+                                 (
+                                 
+                                    
+                                       
+                                          ∂
+                                          
+                                             
+                                                
+                                                   Π
+                                                   
+                                                      ¯
+                                                   
+                                                
+                                             
+                                             
+                                                y
+                                             
+                                          
+                                       
+                                       
+                                          ∂
+                                          Z
+                                          ′
+                                       
+                                    
+                                 
+                                 )
+                              
+                              Z
+                              ′
+                              =
+                              
+                                 
+                                    S
+                                 
+                                 
+                                    y
+                                    0
+                                 
+                              
+                              +
+                              
+                                 
+                                    γ
+                                 
+                                 
+                                    y
+                                    y
+                                 
+                                 
+                                    ⁎
+                                 
+                              
+                              Y
+                              +
+                              
+                                 
+                                    γ
+                                 
+                                 
+                                    y
+                                    z
+                                 
+                                 
+                                    ⁎
+                                 
+                              
+                              Z
+                              +
+                              
+                                 
+                                    β
+                                 
+                                 
+                                    y
+                                    y
+                                 
+                                 
+                                    ⁎
+                                 
+                              
+                              Y
+                              ′
+                              +
+                              
+                                 
+                                    β
+                                 
+                                 
+                                    y
+                                    z
+                                 
+                                 
+                                    ⁎
+                                 
+                              
+                              Z
+                              ′
+                           
+                        
+                     
+                     
+                        
+                           (22)
+                           
+                              
+                                 
+                                    
+                                       Π
+                                       
+                                          ¯
+                                       
+                                    
+                                 
+                                 
+                                    z
+                                 
+                              
+                              =
+                              
+                                 
+                                    
+                                       Π
+                                       
+                                          ¯
+                                       
+                                    
+                                 
+                                 
+                                    z
+                                    .
+                                    s
+                                    t
+                                    a
+                                    t
+                                 
+                              
+                              +
+                              
+                                 
+                                    (
+                                    
+                                       
+                                          
+                                             ∂
+                                             
+                                                
+                                                   
+                                                      Π
+                                                      
+                                                         ¯
+                                                      
+                                                   
+                                                
+                                                
+                                                   z
+                                                
+                                             
+                                          
+                                          
+                                             ∂
+                                             Y
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 
+                                    s
+                                    t
+                                    a
+                                    t
+                                 
+                              
+                              Y
+                              +
+                              
+                                 (
+                                 
+                                    
+                                       
+                                          ∂
+                                          
+                                             
+                                                
+                                                   Π
+                                                   
+                                                      ¯
+                                                   
+                                                
+                                             
+                                             
+                                                z
+                                             
+                                          
+                                       
+                                       
+                                          ∂
+                                          Z
+                                       
+                                    
+                                 
+                                 )
+                              
+                              Z
+                              +
+                              
+                                 
+                                    (
+                                    
+                                       
+                                          
+                                             ∂
+                                             
+                                                
+                                                   
+                                                      Π
+                                                      
+                                                         ¯
+                                                      
+                                                   
+                                                
+                                                
+                                                   z
+                                                
+                                             
+                                          
+                                          
+                                             ∂
+                                             Y
+                                             ′
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 
+                                    s
+                                    t
+                                    a
+                                    t
+                                 
+                              
+                              Y
+                              ′
+                              +
+                              
+                                 (
+                                 
+                                    
+                                       
+                                          ∂
+                                          
+                                             
+                                                
+                                                   Π
+                                                   
+                                                      ¯
+                                                   
+                                                
+                                             
+                                             
+                                                z
+                                             
+                                          
+                                       
+                                       
+                                          ∂
+                                          Z
+                                          ′
+                                       
+                                    
+                                 
+                                 )
+                              
+                              Z
+                              ′
+                              =
+                              
+                                 
+                                    S
+                                 
+                                 
+                                    z
+                                    0
+                                 
+                              
+                              +
+                              
+                                 
+                                    γ
+                                 
+                                 
+                                    z
+                                    y
+                                 
+                                 
+                                    ⁎
+                                 
+                              
+                              Y
+                              +
+                              
+                                 
+                                    γ
+                                 
+                                 
+                                    z
+                                    z
+                                 
+                                 
+                                    ⁎
+                                 
+                              
+                              Z
+                              +
+                              
+                                 
+                                    β
+                                 
+                                 
+                                    z
+                                    y
+                                 
+                                 
+                                    ⁎
+                                 
+                              
+                              Y
+                              ′
+                              +
+                              
+                                 
+                                    β
+                                 
+                                 
+                                    z
+                                    z
+                                 
+                                 
+                                    ⁎
+                                 
+                              
+                              Z
+                              ′
+                           
+                        
+                     where 
+                        
+                           
+                              
+                                 Π
+                                 
+                                    ¯
+                                 
+                              
+                           
+                           
+                              y
+                              .
+                              s
+                              t
+                              a
+                              t
+                           
+                        
+                      and 
+                        
+                           
+                              
+                                 Π
+                                 
+                                    ¯
+                                 
+                              
+                           
+                           
+                              z
+                              .
+                              s
+                              t
+                              a
+                              t
+                           
+                        
+                      are the dimensionless static load capacities, Y, Z, Y’, and Z’ are the dimensionless displacements and the displacement velocities of the shaft. 
+                        
+                           
+                              γ
+                           
+                           
+                              i
+                              k
+                           
+                           
+                              ⁎
+                           
+                        
+                      and 
+                        
+                           
+                              β
+                           
+                           
+                              i
+                              k
+                           
+                           
+                              ⁎
+                           
+                        
+                      are the dimensionless stiffness and damping coefficients, which can be obtained from the Reynolds differential equation for the bearing in Eq. (23).
+                        
+                           (23)
+                           
+                              
+                                 ∂
+                                 
+                                    ∂
+                                    φ
+                                 
+                              
+                              
+                                 (
+                                 
+                                    
+                                       
+                                          H
+                                       
+                                       3
+                                    
+                                    
+                                       
+                                          ∂
+                                          Π
+                                       
+                                       
+                                          ∂
+                                          φ
+                                       
+                                    
+                                 
+                                 )
+                              
+                              +
+                              
+                                 
+                                    n
+                                    l
+                                 
+                                 
+                                    ∂
+                                    x
+                                 
+                              
+                              
+                                 (
+                                 
+                                    
+                                       
+                                          H
+                                       
+                                       3
+                                    
+                                    
+                                       
+                                          ∂
+                                          Π
+                                       
+                                       
+                                          ∂
+                                          x
+                                       
+                                    
+                                 
+                                 )
+                              
+                              =
+                              6
+                              
+                                 [
+                                 
+                                    
+                                       
+                                          ∂
+                                          
+                                             H
+                                             
+                                                ¯
+                                             
+                                          
+                                       
+                                       
+                                          ∂
+                                          φ
+                                       
+                                    
+                                    −
+                                    2
+                                    ε
+                                    ′
+                                    
+                                    cos
+                                    (
+                                    φ
+                                    −
+                                    γ
+                                    )
+                                    +
+                                    ε
+                                    (
+                                    1
+                                    −
+                                    2
+                                    γ
+                                    ′
+                                    )
+                                    sin
+                                    (
+                                    φ
+                                    −
+                                    γ
+                                    )
+                                 
+                                 ]
+                              
+                           
+                        
+                     where 
+                        H
+                        
+                           (
+                           φ
+                           )
+                        
+                        =
+                        
+                           H
+                           
+                              ¯
+                           
+                        
+                        
+                           (
+                           φ
+                           )
+                        
+                        −
+                        ε
+                        
+                        cos
+                        (
+                        φ
+                        −
+                        γ
+                        )
+                     , 
+                        ε
+                        ′
+                        =
+                        ∂
+                        ε
+                        /
+                        ∂
+                        Ω
+                        t
+                     , 
+                        γ
+                        ′
+                        =
+                        ∂
+                        γ
+                        /
+                        ∂
+                        Ω
+                        t
+                     .
+
+The values of 
+                        
+                           
+                              γ
+                           
+                           
+                              i
+                              k
+                           
+                           
+                              ⁎
+                           
+                        
+                      and 
+                        
+                           
+                              β
+                           
+                           
+                              i
+                              k
+                           
+                           
+                              ⁎
+                           
+                        
+                      are dependent on the static load capacity 
+                        
+                           
+                              S
+                           
+                           
+                              0
+                           
+                        
+                     , the static position of equilibrium 
+                        
+                           
+                              (
+                              ε
+                              ,
+                              λ
+                              )
+                           
+                           
+                              s
+                              t
+                              a
+                              t
+                           
+                        
+                     , the bearing length ratio 
+                        B
+                        /
+                        D
+                      and the bearing bore form, such as the clearance ratio 
+                        
+                           
+                              ψ
+                           
+                           
+                              max
+                           
+                        
+                        /
+                        
+                           
+                              ψ
+                           
+                           
+                              min
+                           
+                        
+                     .
+
+According to Eq. (20), the dimensionally-conditioned coefficients are dependent on the prefactor
+                        
+                           (24)
+                           
+                              
+                                 
+                                    S
+                                 
+                                 
+                                    0
+                                 
+                              
+                              Δ
+                              
+                                 
+                                    R
+                                 
+                                 
+                                    min
+                                 
+                              
+                              /
+                              
+                                 
+                                    W
+                                 
+                                 
+                                    T
+                                 
+                              
+                              =
+                              
+                                 
+                                    
+                                       ψ
+                                    
+                                    3
+                                 
+                                 
+                                    min
+                                 
+                              
+                              /
+                              (
+                              2
+                              B
+                              η
+                              ω
+                              )
+                           
+                        
+                     
+                  
+
+Thus, Eqs. (21) and (22) can be rewritten as
+                        
+                           (25)
+                           
+                              
+                                 {
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      F
+                                                   
+                                                   
+                                                      y
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      F
+                                                   
+                                                   
+                                                      z
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 }
+                              
+                              =
+                              
+                                 {
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      F
+                                                   
+                                                   
+                                                      y
+                                                      0
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      F
+                                                   
+                                                   
+                                                      z
+                                                      0
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 }
+                              
+                              +
+                              
+                                 
+                                    2
+                                    B
+                                    η
+                                    Ω
+                                 
+                                 
+                                    
+                                       
+                                          ψ
+                                       
+                                       
+                                          min
+                                       
+                                       
+                                          3
+                                       
+                                    
+                                 
+                              
+                              
+                                 [
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      γ
+                                                   
+                                                   
+                                                      y
+                                                      y
+                                                   
+                                                   
+                                                      ⁎
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       
+                                          
+                                             0
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      γ
+                                                   
+                                                   
+                                                      z
+                                                      z
+                                                   
+                                                   
+                                                      ⁎
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 ]
+                              
+                              
+                                 {
+                                 
+                                    
+                                       
+                                          
+                                             y
+                                          
+                                       
+                                       
+                                          
+                                             z
+                                          
+                                       
+                                    
+                                 
+                                 }
+                              
+                              +
+                              
+                                 
+                                    2
+                                    B
+                                    η
+                                 
+                                 
+                                    
+                                       
+                                          ψ
+                                       
+                                       
+                                          min
+                                       
+                                       
+                                          3
+                                       
+                                    
+                                 
+                              
+                              
+                                 [
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      β
+                                                   
+                                                   
+                                                      y
+                                                      y
+                                                   
+                                                   
+                                                      ⁎
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       
+                                          
+                                             0
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      β
+                                                   
+                                                   
+                                                      z
+                                                      z
+                                                   
+                                                   
+                                                      ⁎
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 ]
+                              
+                              
+                                 {
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                y
+                                                ̇
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                z
+                                                ̇
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 }
+                              
+                           
+                        
+                     where the stiffness and damping coefficients of the bearing can be described as
+                        
+                           (26)
+                           
+                              
+                                 {
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      c
+                                                   
+                                                   
+                                                      y
+                                                      y
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      c
+                                                   
+                                                   
+                                                      z
+                                                      z
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 }
+                              
+                              =
+                              
+                                 
+                                    2
+                                    B
+                                    η
+                                    Ω
+                                 
+                                 
+                                    
+                                       
+                                          ψ
+                                       
+                                       
+                                          min
+                                       
+                                       
+                                          3
+                                       
+                                    
+                                 
+                              
+                              
+                                 {
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      γ
+                                                   
+                                                   
+                                                      y
+                                                      y
+                                                   
+                                                   
+                                                      ⁎
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      γ
+                                                   
+                                                   
+                                                      z
+                                                      z
+                                                   
+                                                   
+                                                      ⁎
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 }
+                              
+                           
+                        
+                     
+                     
+                        
+                           (27)
+                           
+                              
+                                 {
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      k
+                                                   
+                                                   
+                                                      y
+                                                      y
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      k
+                                                   
+                                                   
+                                                      z
+                                                      z
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 }
+                              
+                              =
+                              
+                                 
+                                    2
+                                    B
+                                    η
+                                 
+                                 
+                                    
+                                       
+                                          
+                                             ψ
+                                          
+                                          3
+                                       
+                                       
+                                          min
+                                       
+                                    
+                                 
+                              
+                              
+                                 {
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         β
+                                                      
+                                                      ⁎
+                                                   
+                                                   
+                                                      y
+                                                      y
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         β
+                                                      
+                                                      ⁎
+                                                   
+                                                   
+                                                      z
+                                                      z
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 }
+                              
+                           
+                        
+                     
+                  
+
+The governing equation of the whole geared rotor system is established at last as follows, in which each node has 6 degrees of freedom,
+                        
+                           (28)
+                           
+                              M
+                              
+                                 X
+                                 ¨
+                              
+                              +
+                              (
+                              C
+                              +
+                              Ω
+                              G
+                              )
+                              
+                                 X
+                                 ̇
+                              
+                              +
+                              KX
+                              =
+                              F
+                           
+                        
+                     where 
+                        M
+                      is the mass matrix; 
+                        C
+                      is the damping matrix; 
+                        G
+                      is the gyroscopic matrix; 
+                        Ω
+                      is the spin speed of rotor; 
+                        K
+                      is the stiffness matrix; 
+                        F
+                      is the force vector including unbalanced force vector and external additional loads; 
+                        X
+                      is the displacement vector of each node, which can be written as Eq. (29), and n is the number of nodes.
+                        
+                           (29)
+                           
+                              X
+                              =
+                              
+                                 
+                                    [
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          1
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          v
+                                       
+                                       
+                                          1
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          w
+                                       
+                                       
+                                          1
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          θ
+                                       
+                                       
+                                          x
+                                          1
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          θ
+                                       
+                                       
+                                          y
+                                          1
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          θ
+                                       
+                                       
+                                          z
+                                          1
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          v
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          w
+                                       
+                                       
+                                          2
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          θ
+                                       
+                                       
+                                          x
+                                          2
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          θ
+                                       
+                                       
+                                          y
+                                          2
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          θ
+                                       
+                                       
+                                          z
+                                          2
+                                       
+                                    
+                                    ,
+                                    …
+                                    ,
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          n
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          v
+                                       
+                                       
+                                          n
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          w
+                                       
+                                       
+                                          n
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          θ
+                                       
+                                       
+                                          x
+                                          n
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          θ
+                                       
+                                       
+                                          y
+                                          n
+                                       
+                                    
+                                    ,
+                                    
+                                       
+                                          θ
+                                       
+                                       
+                                          z
+                                          n
+                                       
+                                    
+                                    ]
+                                 
+                                 T
+                              
+                           
+                        
+                     
+                  
+
+With the proposed 6-DOF modeling method, an unbalance response analysis is performed with a 600 me turbo-chiller rotor bearing system in Ref. [16], which is shown in 
+                     Fig. 7.
+
+When a test unbalance of 19.7 amm is attached to the impeller, the maximum coupled unbalance responses at the motor rotor through the 6-DOFs modeling method in this paper together with the results of Ref. [16] are shown in 
+                     Fig. 8. The unbalance responses in this paper are consistent with the results in the reference.
+
+The FE model of the five-shaft geared rotor system is shown in 
+                     Fig. 9, where 169 beam elements and 174 nodes are included and shown in 
+                     Table 1. The gears, couplings, and impellers are simplified as lumped mass elements.
+
+The parameters of the gears and the bearings on the both sides are same for each shaft and shown in 
+                     
+                     Tables 2 and 3 respectively.
+
+According to Eqs. (26) and (27), the radial stiffness and damping values of each bearing (in the y- and z-direction) respectively are calculated in 
+                     Fig. 10, where the effect of gravity is considered and the force direction is along the y-axis.
+
+
+                     Fig. 10 shows the changing stiffness and damping coefficients of the five-pad TPJB with the varying external force along the y-direction. The stiffness and damping coefficients of each shaft in the x-direction and the y-direction are roughly same when no external force acts on the bearing. With the force increasing, the stiffness and damping coefficients in the two directions are increased, and the coefficients in the direction of force are more obvious than the others. In Fig. 10(a), the stiffness coefficient in the y-direction of the bearing on O3 even increases 4 times when the force is 20kN comparing with no load, while the damping coefficients in Fig. 10(b) increase slowly comparing with the stiffness coefficients.
+
+Supposing the axial bearing stiffness in the x-direction is 
+                        
+                           
+                              k
+                           
+                           
+                              x
+                              x
+                           
+                        
+                        =
+                        
+                           
+                              10
+                           
+                           9
+                        
+                     
+                     N/m. The Campbell diagrams of the geared rotors system with no load and full load (15,600kW) are shown in 
+                     Fig. 11, where the label of horizontal coordinate stands for the speed of the input shaft.
+
+Comparing with the Campbell diagram of the rotor system with no-load shown in Fig. 11(a), the natural frequency lines in Fig. 11(b) change obviously, especially the coupling ones. Fig. 11 also indicates that the critical speeds of the rotor system can be changed by the loads. Through the calculation under different loads, the critical speed line can be got and shown in 
+                     Fig. 12, and some of the results are shown in 
+                     Table 4.
+
+In Fig. 12 and Table 4, the loads have significant influence on the critical speeds, especially for the coupling critical speed. With the load increasing, the critical speeds of the system are also increased, which means that with the critical speed increasing near to the working speed, the vibration problems would appear even though the machine runs smoothly and steadily before loading. In Fig. 12, there is no intersection between the working speed line and critical lines, that is, the vibration problems would not appear after loading.
+
+Due to the gear meshing effort, the five shafts are not independent with each other, but coupled with each other, which causes the whole rotor system׳s unbalance responses much more complicated. In order to describe the vibration problems mentioned above, the unbalance case is defined in 
+                     Table 5 where the unbalances only exist on the two of the five rigid discs.
+
+The rated speed of the input shaft is 4187rpm. Suppose the working speed is 85%, 90%, 95%, and 100% of the rated speed, the vibrations of O2 around the two supporting bearings with increasing loads are shown in 
+                     Fig. 13.
+
+In Fig. 13(a), when the load power increases to about 9100kW, the vibration amplitude increases to 150μm. When the load power goes on increasing, the vibration decreases and reduces to 50μm after full load, and the right supporting vibrated more significantly than the left supporting through the loading process. In Fig. 13(b) and (c), the vibration peak also appears at 11,800kW and 14,500kW respectively. When the working speed is equal to 95% of the rated speed, the right supporting vibrated more obviously than the left supporting before loading to 9100kW, whereas the vibration of the left supporting is more obvious when the load power goes on increasing. In Fig. 13(d), there is no significant vibration peak, which is consistent with the conclusion of Fig. 12.
+
+Furthermore, based on the description method in Fig. 13, a more intuitive presentation of the unbalanced responses around the two supporting bearing of O2 at different speeds and different loads is shown in 
+                     Fig. 14.
+
+As shown in Fig. 14, the increasing loads will not cause severe vibration of O2 when the working speed of the input shaft increases to the rated speed. Whereas when the working speed of the input shaft is between 2000rpm and 2400rpm or between 3000rpm and 4000rpm, some severe vibrations may probably occur.
+
+Similarly, the vibrations around the two supporting bearings of O1 and the two supporting bearings of O3 are shown in 
+                     
+                     Figs. 15 and 16 respectively. Fig. 15 shows that the vibrations of O1 are not sensitive to the changing loads comparing with O2. Whereas Fig. 16 shows that the vibrations of O3 will obviously change with the increasing loads when the working speed of the input shaft is between 1200rpm and 2500rpm.
+
+@&#CONCLUSION@&#
+
+A FE model of a centrifugal compressor’ rotor system is developed in this paper, where the linear mesh stiffness of engaged helical gears, the changing stiffness and damping coefficients of the five-pad TPJB are involved. The dynamic behavior of such rotor system is characterized by its complexity which comes mainly from the coupling between the five shafts by the mesh stiffness of the involved gear pairs and variable bearing coefficients due to the changing of load power.
+
+The external force has significant influence on the stiffness and damping coefficients of the five-pad TPJBs. With the increasing load, the coefficients of the bearings are also increased, and the coefficients in the direction of force are more obvious than others. These phenomena also result in that the critical speeds of the rotor system can be changed by the load power, and make the critical speeds of the system increased with the load increasing and even cause the vibration problems of the rotor system.
+
+The simulated diagrams of response amplitudes vs. load power show that with the load power increasing, vibration peak will appear at some certain working speed, which means the load power can cause the vibration problems even though the machine works well before loading. When the rotor system is working at its rated speed, there is no significant vibration peak, which is consistent with the conclusion of the critical speed analysis.
+
+The results show that the load power can result in the changing dynamic characteristic of the geared rotor system in the integrally geared centrifugal compressor significantly, and explain the causes of ‘critical load’ to a certain extent. It is necessary to consider the load influence to the dynamic characteristic of the system in the designing stage and the presentations in this paper may serve as a reference.
+
+@&#ACKNOWLEDGMENTS@&#
+
+This work was financially supported by National Key Basic Research Program of China (973 program, No: 2012CB026000), and the National Natural Science Foundation of China (Grant no. 51175070).
+
+Supplementary data associated with this article can be found in the online version at doi:10.1016/j.finel.2015.07.008.
+
+
+                     
+                        
+                           
+                              Supplementary Material
+                           
+                           
+                        
+                     
+                  
+
+
+                     
+                        
+                           
+                              Supplementary Material
+                           
+                           
+                        
+                     
+                  
+
+
+                     
+                        
+                           
+                              Supplementary Material
+                           
+                           
+                        
+                     
+                  
+
+
+                     
+                        
+                           
+                              Supplementary Material
+                           
+                           
+                        
+                     
+                  
+
+
+                     
+                        
+                           
+                              Supplementary Material
+                           
+                           
+                        
+                     
+                  
+
+
+                     
+                        
+                           
+                              Supplementary Material
+                           
+                           
+                        
+                     
+                  
+
+
+                     
+                        
+                           
+                              Supplementary Material
+                           
+                           
+                        
+                     
+                  
+
+
+                     
+                        
+                           
+                              Supplementary Material
+                           
+                           
+                        
+                     
+                  
+
+
+                     
+                        
+                           
+                              Supplementary Material
+                           
+                           
+                        
+                     
+                  
+
+
+                     
+                        
+                           
+                              Supplementary Material
+                           
+                           
+                        
+                     
+                  
+
+
+                     
+                        
+                           
+                              Supplementary Material
+                           
+                           
+                        
+                     
+                  
+
+
+                     
+                        
+                           
+                              Supplementary Material
+                           
+                           
+                        
+                     
+                  
+
+
+                     
+                        
+                           
+                              Supplementary Material
+                           
+                           
+                        
+                     
+                  
+
+
+                     
+                        
+                           
+                              Supplementary Material
+                           
+                           
+                        
+                     
+                  
+
+
+                     
+                        
+                           
+                              Supplementary Material
+                           
+                           
+                        
+                     
+                  
+
+
+                     
+                        
+                           
+                              Supplementary Material
+                           
+                           
+                        
+                     
+                  
+
+
+                     
+                        
+                           
+                              Supplementary Material
+                           
+                           
+                        
+                     
+                  
+
+@&#REFERENCES@&#
+

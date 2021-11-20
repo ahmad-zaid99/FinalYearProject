@@ -1,0 +1,230 @@
+@&#MAIN-TITLE@&#Effects of inter-stimulus interval and intensity on the perceived urgency of tactile patterns
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           The feasibility of coding urgency into tactile patterns was examined.
+
+
+                        
+                        
+                           
+                           A stationary laboratory study and a dynamic field study were conducted.
+
+
+                        
+                        
+                           
+                           Patterns at the high 23.5 dB intensity had higher urgency and identification rates.
+
+
+                        
+                        
+                           
+                           Varying ISI at the high 23.5 dB intensity is suitable for providing urgency.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Tactile
+
+Perceived urgency
+
+Dismounted maneuvers
+
+@&#ABSTRACT@&#
+
+
+                  This research examines the feasibility of coding urgency into tactile patterns. Four tactile patterns were presented at either, 12 or 23.5 dB above mean threshold, with an ISI of either 0 (no interval) or 500 msec. Measures included pattern identification and urgency rating on a scale of 1 (least urgent) to 10 (most urgent). Two studies were conducted, a laboratory study and a field study. In the laboratory study, participants received the tactile patterns while seated in front of a computer. For the field study, participants performed dismounted Soldier maneuvers while receiving the tactile patterns. Higher identification rates were found for the 23.5 dB intensity. Patterns presented at the 23.5 dB intensity and no ISI were rated most urgent. No differences in urgency ratings were found for 12 dB based on ISI. Findings support the notion of coding urgency into tactile patterns as a way of augmenting tactile communication.
+               
+
+@&#INTRODUCTION@&#
+
+In recent years, there has been an increased interest in tactile displays because of the need to provide complex information to users who are subject to visual and auditory overload and due to advancements in tactile display technology (Jones and Sarter, 2008). Much of the information that Soldiers are currently being provided with is presented visually and auditorily. Furthermore, as future technologies advance, Soldiers may be provided with even more information regarding combat situations. Wickens (2002) multiple-resource theory (MRT) suggests that offloading information from overtaxed sensory modalities to other modalities can reduce workload. Tactile displays, that provide information to the user by stimulating the skin, may be a viable solution to help mitigate the overload and performance degradation that can result from this abundance of information being provided to Soldiers. If designed and implemented properly, tactile displays may improve Soldiers' situation awareness and survivability on the battlefield.
+
+Several research efforts have shown the potential of tactile display systems for orientation, navigation, and communication in military environments (Van Erp and Self, 2008; White et al., 2012). Building on this work, researchers have explored the use of tactile displays to communicate more complex messages, often referred to as tactile patterns. For example, Pettitt et al. (2006) found that Soldiers were able to receive, interpret, and accurately respond to arm and hand signals coded as tactile patterns faster than with conventional hand and arm signals while negotiating an obstacle course. In another investigation, participants were able to navigate using tactile patterns (e.g., left, right, turn around, move forward) with almost perfect accuracy (Jones et al., 2006). Krausman and White (2006) used the same patterns developed by Jones et al. (2006) and found that identification rates were degraded while negotiating obstacles. Although each of these studies helped shed light on the utility of tactile patterns, they did not address the issue of pattern urgency.
+
+The need for cues that provide varying levels of urgency is revealed in the demand for humans to attend to competing tasks simultaneously in a wealth of domains. These domains include but are not limited to aviation, driving, healthcare, and military operations. Providing levels of urgency levels can indicate the nature and significance of a secondary, interrupting task to aid humans in making a suitable, priority-based decisions on whether and when to shift attention while performing some other, primary ongoing task (Hameed et al., 2009). Thus urgency is an important factor in interruption management. Hameed et al. (2009) demonstrated that both visual and tactile cues are effective means for interruption management with the caveat: that the cues must be tailored to the specific domain requirements. In the aviation domain, the tactile cueing was shown to be useful in directing attention to a secondary gauge reading task without degrading performance in a primary aircraft-monitoring task (Hopp et al., 2005). Also, a series of meta-analyses have also revealed that the auditory, tactile, and combined auditory and visual modalities are all beneficial in interruption management (Lu et al., 2013).
+
+Within the sensory performance literature, studies have shown that varying the parameters of auditory signals can be used to provide users with a sense of urgency. Auditory signals with shorter inter-pulse intervals and higher sound pressure levels are considered to be more urgent (Haas and Edworthy, 1996). In addition, Suied et al. (2008) found that the auditory cues with a shorter time between the onset of one pulse and the onset of the next pulse resulted in higher perceived urgency and response time. In the driving domain, Marshall et al. (2007) determined that parameters such as pulse duration, interpulse interval, and sound type all have an effect on perceived urgency. Previous research has also shown that other sound properties such as pitch, and frequency have an impact on perceived urgency of alarms utilized in helicopters (Arrabito et al., 2004). Tactile parameters such as frequency, amplitude, inter-stimulus interval (ISI), and signal duration have been used to encode tactile patterns (Brewster and Brown, 2004). Rise time, peak displacement amplitude, frequency, and pulse envelope all impact the salience of tactile signals, and previous research has indicated that these parameters can be with time to produce intuitive patterns (Mortimer et al., 2011; Gilson et al., 2007). The present work has been set within a military context because encoding urgency into tactile patterns through the manipulation of the stimulus parameters may enable Soldiers to differentiate critical or time sensitive information, and as a result this may reduce injury and mortality rates. With respect to the current study, varying inter-stimulus intervals and intensity may be a feasible approach for displaying urgency in tactile patterns as well. Because Soldiers may be required to operate in cognitively and/or physically taxing environments, this article describes both a laboratory study and a field studies that were conducted to examine the perceived urgency of tactile patterns. Experiment 1 was a laboratory investigation in a stationary environment to determine the effects of a cognitive task on the perceived urgency of tactile patterns. Experiment 2 was a field investigation in a dynamic environment to determine the effects of a physical task load on the perceived urgency of tactile patterns.
+
+The objective of this laboratory study was to quantify the effects of ISI and stimulus intensity on perceived urgency and the identification of tactile patterns both with and without a cognitive task. Based on studies of auditory urgency, (Haas and Edworthy, 1996), the authors hypothesized that tactile patterns that have no ISI and a relatively high (23.5 dB) intensity would be rated the most urgent and patterns with a longer (500ms) ISI and a relatively lower (12 dB) intensity would be rated the least urgent. Furthermore, it is not known how varying the intensity and ISIs will interact with each other. The authors also hypothesized that the arithmetic task would degrade identification of tactile patterns at varying intensity and ISI levels.
+
+@&#METHOD@&#
+
+Sixteen male Marines from the U.S. Marine Corps Detachment at Aberdeen Proving Ground, Maryland volunteered to participate in this research. Participants were 19–20 years of age.
+
+An Engineering Acoustics Inc. (EAI) C2 tactile system was used, which consists of an adjustable tactile belt display worn around the waist and a receiver unit. The adjustable belt display consists of eight EAI C2 tactors (acoustic transducers) that are approximately 1.2 inches in diameter. Each of the eight tactors is positioned at 45-degree intervals in the adjustable belt. Participants wore an undershirt with six belt loops sewn around the torso level that kept the tactile belt in place for the duration of the experiment (Fig. 1
+                           ).
+
+Four tactile patterns were provided via the tactile system during this experiment: turn right, turn left, move forward, and turn around (Fig. 2
+                           ). These patterns were developed based on the work of Jones et al. (2006). In Fig. 2, for each pattern, the numbers indicate the sequence in which tactors vibrated. Although research employed directional patterns as a simple framework for examining perceived urgency in both static and dynamic environments, patterns should be more specific or representative of their research domain.
+
+Participants received the four patterns with varying intensity and ISIs. All patterns were provided at a frequency of 250 Hz. The intensity of each pattern was presented at either an EAI gain setting of 2 (12 dB) or 4 (23.5 dB), and the ISI of each pattern was either 500ms or 0ms. In a psychophysical test, Gilson et al. (2007) found the gain setting of 4, the maximum intensity setting for this EAI tactile system, to be rated the best level of stimulation. The gain setting of 2 was chosen as the lower intensity level to ensure that participants were able to clearly distinguish it from the higher intensity level. The gain setting refers to the mean ratio of tactor output to the voltage input. Each tactor vibrated for 500ms. Therefore, tactile patterns with an ISI of 500ms had a total duration of 3.5 s, and tactile patterns with an ISI of 0ms had a total duration of 2.0 s (Fig. 3
+                           ).
+
+The two intensity levels and the two ISI levels were combined to form four urgency combinations as shown in Table 1
+                           .
+
+Participants performed an arithmetic task that is part of a computer-based application called Synthetic Work Environment (SYNWORK), which is a computer-based performance assessment tool that is capable of presenting up to four subtasks concurrently: memory, arithmetic, visual monitoring, and an auditory task (Elsmore, 1994). For this experiment, only the arithmetic subtask was used. Although this task may not be representative of a real world task, it does require the use of cognitive resources to be performed accurately. The goal of adding this task was to represent a dual task situation. Many domains require humans to attend to simultaneous tasks. For the arithmetic task, participants added two randomly generated three-digit numbers that appeared on their computer screen and entered the sum using their mouse to click the “+” and “−” boxes below each digit, followed by “Done” to receive the next problem. The software recorded the number of correct and incorrect answers.
+
+@&#EXPERIMENTAL DESIGN@&#
+
+A 2 × 2 × 2 × 4 within-subjects design was used. Independent variables were: ISI, intensity, arithmetic task, and tactile pattern (Table 2
+                        ). Treatment conditions were arranged into 8 blocks, four with the arithmetic task and four without. Each block consisted of 64 tactile patterns; each tactile pattern given four times at each ISI and intensity combination. There was a three to 6 s interval between each pattern presentation. Each block lasted 10 min. The order of presentation of the experimental blocks was counterbalanced using a Williams Square.
+
+Three dependent variables were measured: (a) ratings of perceived urgency of patterns (b) overall percentage of patterns correctly identified and (c) ratings of pattern identification difficulty.
+
+Prior to the experimental trials, participants were trained on the tactile patterns and instructed on how to perform the arithmetic task. After a brief illustration and explanation of the tactile patterns, participants received random tactile patterns and verbalized which pattern they felt until they reached 100% accuracy. In general, only two or three trials were necessary for participants to reach perfect accuracy. The participants were not trained on the varying intensity and ISI levels. For the arithmetic task, the investigator demonstrated how to perform the task, and then the participants performed the arithmetic task for 2 min.
+
+During the experiment, it was explained to the participants that they would receive random tactile patterns at the various urgency combinations (Table 1) and that they were to verbally identify the patterns and provide a rating of perceived urgency. Urgency ratings were based on a scale of 1–10, with 10 indicating extremely high urgency. Responses were recorded by the investigator. A sample response is “Turn Right 7”. In half of the blocks, participants also performed the arithmetic task. Participants were not told that either task was more important. After each block, participants completed a post-block questionnaire to obtain ratings of perceived difficulty of pattern identification using a Likert Scale from 1 (Extremely Easy) to 7 (Extremely Difficult).
+
+Continuous tank noise previously recorded in an M1A2 tank at 50 dBA was presented to participants via headphones to mask the noise generated by the tactors to ensure that ratings of perceived urgency were based solely on the sense of touch and not the sense of hearing.
+
+Separate analyses of variance (ANOVA) were conducted on each of the dependent variables; statistical significance was concluded when p < 0.05. Significant effects were examined post hoc with the least significance difference (LSD) test.
+
+@&#RESULTS@&#
+
+Ratings of perceived urgency were subjected to a four-way ANOVA having two levels of ISI, two levels of intensity, two levels of arithmetic task, and four levels of tactile pattern. The analysis of the ratings of perceived urgency revealed an Inter-Stimulus Interval × Intensity interaction, F(1, 15) = 23.128, p < 0.001, partial Eta
+                        
+                           2
+                         = 0.607, with main effects of both ISI, F(1, 15) = 19.418, p = 0.001, partial Eta
+                        
+                           2
+                         = 0.564, and intensity, F(1, 15) = 47.397, p < 0.001, partial Eta
+                        
+                           2
+                         = 0.760. No other main effects or interactions were found for arithmetic task or tactile pattern.
+
+The Inter-Stimulus Interval × Intensity interaction is shown in Fig. 4
+                        . Post hoc analyses showed that at 12.0 db intensity, mean ratings of perceived urgency were consistent across ISI, however, at the 23.5 dB intensity, patterns with an ISI of 0 were rated as more urgent than at 500ms ISI. Additionally, participants rated the 23.5 dB intensity as more urgent than the 12.0 intensity and the 0ms ISI was considered more urgent than the 500ms ISI. No other significant differences were found.
+
+The percentage of patterns correctly identified was subjected to a four-way ANOVA having two levels of ISI, two levels of intensity, two levels of arithmetic task, and four levels of tactile pattern. The analysis of the overall percentage of correctly identified patterns revealed an Inter-Stimulus Interval × Intensity interaction, F(1, 15) = 7.061, p = 0.018, partial Eta
+                        
+                           2
+                         = 0.320, and a significant Intensity × Pattern × Arithmetic interaction, F(3, 45) = 3.103, p = 0.036, partial Eta
+                        
+                           2
+                         = 0.171. Results also showed a main effect of intensity F(1, 15) = 14.796, p = 0.002, partial Eta
+                        
+                           2
+                         = 0.497. No other main effects or interactions were found.
+
+For the Inter-Stimulus Interval × Intensity interaction (Fig. 5
+                        ), identification rates were higher for the 500ms ISI than at 0 ms at the 12 dB intensity, with no significant differences in identification rates between the ISI levels for the 23.5 dB intensity.
+
+For the Intensity × Pattern × Arithmetic interaction (Fig. 6A and B), for the 12 dB intensity, mean identification rates for “Turn Around” were significantly higher for the no arithmetic condition than for the arithmetic condition. In contrast, identification rates for “Move Forward” were significantly better with the arithmetic task compared to no arithmetic. At the 23.5 dB intensity, mean identification rates for “Turn Right” were higher when the arithmetic task was performed than when it was not performed.
+
+A one-way ANOVA was conducted to compare the effect of the arithmetic task on pattern identification difficulty. A main effect of arithmetic, F(1, 14) = 6.512, p = 0.023, partial Eta
+                        
+                           2
+                         = 0.317, was found for pattern identification difficulty, indicating that mean difficulty ratings were significantly higher when arithmetic was provided.
+
+@&#DISCUSSION@&#
+
+In this laboratory study, intensity and ISI both had an effect on the perceived urgency of tactile patterns. Patterns provided at the 23.5 dB intensity with 0ms ISI were rated the most urgent, and patterns with the 500ms ISI at the 12 dB intensity were rated the least urgent. These findings support our hypotheses regarding ratings of perceived urgency and are consistent with research that found that auditory signals with shorter inter-pulse intervals and higher sound intensity pressure levels yielded greater perceived urgency (Haas and Edworthy, 1996; Haas and Casali, 1995). Although patterns provided with the 500ms ISI at the 12 dB intensity were rated the least urgent, performance data indicated that these patterns had higher identification rates than patterns provided with the 0ms ISI at the 12 dB intensity. It seems that the longer total duration of the 500ms ISI patterns made it more distinct and subsequently easier to identify than the 0ms ISI. When tactile patterns were provided at the greater 23.5 dB intensity, ISI had no effect on identification rates, with approximately 98% of patterns correctly identified.
+
+Another factor that may have contributed to the differences in percentage of patterns correctly identified is cognitive workload. Specifically, patterns presented at the weaker 12 dB intensity may have required more cognitive resources to attend to the pattern and perform the mental rotation necessary for pattern identification. The reduced performance in correctly identifying the “Turn Around” pattern at the 12 dB intensity when the arithmetic task was provided may be due to an unnatural mapping (Suied et al., 2008). The “Turn Around” pattern is the exact opposite of the “Move Forward” pattern. Perhaps a more natural, consistent name for this pattern would be “Move Backward”. It is important to note that although significant effects were found, mean identification rates were still very high (95% and above) in this investigation. Workload may also help explain the differences in pattern identification rates when the arithmetic task was performed. At 12.0 dB, identification rates were higher for the “Turn Around” and “Move Forward” pattern when no arithmetic was performed compared to when arithmetic was performed, suggesting that participants found it difficult to perform the identification task and the arithmetic task concurrently. Questionnaire data supported this finding; Soldiers indicated that it was harder to identify tactile patterns when they performed the arithmetic task. An interesting caveat is that for patterns provided at the strong 23.5 dB intensity, identification rates for the “Turn Right” pattern were better when arithmetic task was performed than when it was not performed. So, although identification rates were not significantly better for all patterns when the arithmetic was performed, these findings partially support the hypothesis that states that identification rates would be degraded when the arithmetic task was provided.
+
+A field study was conducted to examine the effects of urgency of tactile patterns as Soldiers performed dismounted maneuvers (physical task). It was hypothesized that tactile pattern identification would generally be more difficult in a dynamic environment than in a stationary environment. Based on the findings of Experiment 1, it was hypothesized that tactile patterns, provided at the 12 dB intensity would be more difficult to identify than those presented at 23.5 dB while performing a physical task. It was also hypothesized that the tactile patterns that have a 0ms ISI and a 23.5 dB intensity would be rated the most urgent, and that patterns with a 500ms ISI and a 12 dB intensity would be rated the least urgent.
+
+@&#METHOD@&#
+
+Twenty two male Soldiers from the 3rd Heavy Brigade Combat Team/3rd Infantry Division at Ft. Benning, Georgia volunteered to participate in this research. Participants ranged in age from 18 to 29 years of age (mean = 22.4 years; standard deviation = 2.8 years).
+
+The same tactile system and tactile patterns at their varying intensity and ISI levels were used in this experiment. Soldiers wore a basic fighting load and carrying a simulated M4 carbine as they maneuvered through the Individual Movement Technique (IMT) Course at Fort Benning, GA. Soldiers completed 16 obstacles that require various tactical maneuvers such as walking, kneeling, crawling, and rolling (see White and Krausman, 2012 for a full description of the IMT course).
+
+@&#EXPERIMENTAL DESIGN@&#
+
+A 2 × 2 × 4 within-subjects design was used with three independent variables: ISI, stimulus intensity, and pattern. Variable levels were the same as in Experiment 1. Dependent variables were the same as in Experiment 1. Each participant completed 3 runs through the IMT course while receiving tactile patterns. Each run consisted of 32 random tactile pattern presentations. The order of presentation of the experimental trials was counterbalanced.
+
+Participants were trained on both the tactile patterns and the obstacle course. The tactile pattern training procedure was the same for Experiment 1. For the obstacle course, participants were introduced to the specific obstacles and an investigator explained the proper technique to negotiate each obstacle on the IMT course. During the experiment, participants verbally identified tactile patterns and indicated their perceived urgency level under various levels of stimulus intensity (12 dB and 23.5 dB) and ISI (0ms and 500ms) while maneuvering through the course. Urgency ratings were again based on a scale of 1–10, with 10 indicating high urgency. A sample response is “Turn Right 7”. Upon completing the trials, participants completed a questionnaire to rate how difficult it was to identify tactile patterns while maneuvering through the obstacle course using a Likert scale from 1 (Extremely easy) to 7 (Extremely difficult).
+
+Separate analyses of variance (ANOVA) were conducted on each of the dependent variables; statistical significance was concluded when p < 0.05. Significant effects were examined post hoc with the least significance difference (LSD) test.
+
+@&#RESULTS@&#
+
+Ratings of perceived urgency were subjected to a three-way ANOVA having two levels of ISI, two levels of intensity, and four levels of tactile pattern. The analysis of the ratings of perceived urgency revealed an Inter-Stimulus Interval × Intensity interaction, F(1, 21) = 20.99, p < 0.001, partial Eta
+                        
+                           2
+                         = 0.500, and an Intensity × Pattern interaction, F(3, 63) = 8.438, p < 0.001, partial Eta
+                        
+                           2
+                         = 0.287, with main effects of ISI, F(1, 21) = 9.513, p = 0.006, partial Eta
+                        
+                           2
+                         = 0.312, intensity, F(1, 21) = 191.498, p < 0.001, partial Eta
+                        
+                           2
+                         = 0.901, and pattern, F(3, 63) = 5.373, p = 0.002, partial Eta
+                        
+                           2
+                         = 0.204. No other main effects or interactions were found.
+
+The Inter-stimulus Interval × Intensity interaction is shown in Fig. 7
+                        . Post hoc analyses revealed that at the 12.0 dB signal intensity, mean ratings of perceived urgency were consistent across the two levels of ISI. However, at the 23.5 dB intensity, signals with an ISI of 0ms were rated as significantly more urgent than 500ms ISI signals. Additionally, participants rated the more intense 23.5 dB signals at both the 0ms and 500 msec ISI as more urgent than the 12.0 dB level at the 0ms and 500ms ISI. No other significant differences were found.
+
+For the Intensity × Pattern interaction, data indicate that at 23.5 dB, the “Move Forward” pattern was rated as more urgent than the “Turn Around” and “Turn Right” patterns but not the “Turn Left” pattern, and the “Turn Left” and “Turn Around” patterns were rated as more urgent than the “Turn Right” pattern (Fig. 8
+                        ). At the 12.0 dB signal intensity, there were no significant differences between the “Move Forward” “Turn Right” and “Turn Left” patterns. However the “Move Forward” and “Turn Right” patterns presented at the 12 dB intensity were significantly more urgent than the “Turn Around” pattern. No other significant effects were found.
+
+The percentage of patterns correctly identified was subjected to a four-way ANOVA having two levels of ISI, two levels of intensity, and four levels of tactile pattern. The analysis of the percentage of correctly identified patterns revealed an Intensity × Pattern interaction, F(3, 63) = 28.470, p < 0.001, partial Eta
+                        
+                           2
+                         = 0.575, with main effects of intensity, F(1, 21) = 76.315, p < 0.001, partial Eta
+                        
+                           2
+                         = 0.784, and pattern, F(3, 63) = 6.147, p = 0.001, partial Eta
+                        
+                           2
+                         = 0.226. No other interactions or main effects were found.
+
+For the Intensity × Pattern interaction, participants were able to correctly identify a significantly higher percentage of patterns at the higher 23.5 dB intensity level than at the lower 12.0 dB intensity level (Fig. 9
+                        ). For the 12.0 dB patterns, identification rates were significantly lower for the “Turn Around” and “Move Forward” patterns than for the “Turn Left” and “Turn Right” patterns. At 23.5 dB, The “Move Forward”, “Turn Around”, and “Turn Left” patterns yielded significantly higher identification rates than “Turn Right”.
+
+To gain a better understanding of the responses to each pattern, a stimulus-response confusion matrix was created (Table 3
+                        ). As shown in the matrix, identification errors were frequently distributed to either side of the target, which is consistent with earlier work (Cholewiak et al., 2004; Krausman and White, 2008), investigating tactile signal localization on the abdomen. For the current study, the tactile patterns did employ some of the same tactors and as participants moved over the obstacles it is possible that they may have only felt a portion of a particular pattern which resulted in incorrect responses.
+
+The mean rating of difficulty in identifying patterns was 3.09 (SD = 1.48). The mean rating of difficulty in distinguishing urgency levels was 2.45 (SD = 1.41).
+
+@&#DISCUSSION@&#
+
+In this study, patterns were rated most urgent when they were provided at the stronger 23.5 dB intensity with 0ms ISI as expected. ISI had no effect on the ratings of perceived urgency of patterns presented at the weaker 12 dB intensity. 23.5 dB patterns were all rated as more urgent than the pattern presented at the weaker 12 dB intensity and, “Move Forward” was rated as more urgent than the other patterns provided at the 23.5 dB intensity. An interesting finding was that “Turn Left” was rated as more urgent than “Turn Right” at the 23.5 dB intensity. A possible explanation may be hand dominance. Previous research has shown that differences in hand dominance (i.e., right or left handed) may impact individual cognitive abilities (Shimoda et al., 2012). Although hand dominance data was not collected for the present study, based on the findings of Shimoda et al. (2012), hand dominance may help explain the differences in perceived urgency of the “Turn Right” and “Turn Left” patterns. The “Turn Around” pattern was also rated as more urgent than the “Turn Right” patterns.
+
+With respect to identification, patterns presented at the 23.5 dB intensity were correctly identified significantly more often than all patterns presented at the 12 dB intensity. Specifically, identification rates at the 12.0 dB intensity for the front and back pattern only reached 46.6% and 43.2% respectively, compared to identification rates of 92.4% and 92.8% for the front and back patterns respectively at 23.5 dB. Further, at the 12 dB intensity, the “Turn Left” and “Turn Right” patterns were correctly identified more often than the “Move Forward” and “Turn Around” patterns. The results regarding the “Move Forward” pattern are consistent with the findings of Redden et al. (2006) who found that tactile signal localization was degraded when the torso was in contact with a surface such as during crawling and climbing obstacles. For the “Turn Around” pattern, Krausman and White (2008) found that during bumpy, shifty vehicle movements, localization rates for tactile signals provided to the back were degraded. This may also be true of the bumpy movements of the climbing and crawling obstacles on the IMT course. At the 23.5 dB intensity, the “Move Forward,” “Turn Around,” and “Turn Left” patterns were correctly identified more often than the “Turn Right” pattern. Based on the subjective questionnaires, participants felt that it was relatively easy to identify and distinguish between urgency levels. However, participants found it more difficult to identify patterns at the lower 12 dB intensity, which is consistent with the performance data. They also confirmed that it was more difficult to identify patterns when negotiating the more strenuous obstacles such as crawling and climbing.
+
+Ensuring that tactile signals are easily discernible and distinct from other sensory cues and information in the environment is critical, especially in complex, dynamic environments that are replete with information and sensory cues that compete for the user's attention. Changing tactile stimulus parameters such as varying signal pulse rate and timing of stimuli, has proven to be an effective method for translating hand and arm signals into tactile patterns (Pettitt et al., 2006). In the present research we examined the effect of varying tactile signal intensity and inter-stimulus interval on perceived urgency and identification of four tactile patterns while participants performed a cognitive task in the laboratory and a physical task on an obstacle course.
+
+Results from the laboratory study provide valuable information regarding the feasibility of providing a sense of urgency to tactile patterns. Our findings that tactile patterns provided at the 23.5 dB intensity and 0ms ISI were rated the most urgent, and patterns presented at 12.0 dB intensity and 500ms ISI were rated the least urgent are consistent with previous work on auditory urgency (Haas and Edworthy, 1996; Suied et al., 2008; Arrabito et al., 2004). Soldiers were able to identify tactile patterns at two ISI and two intensity levels with nearly 100% accuracy. Pattern identification rates were consistent at 0 and 500ms ISI at 23.5 dB. In contrast, identification rates were higher at 500ms than at 0ms ISI at 12.0 dB intensity. At first glance, it seems that the pattern duration: 2 s at 0ms ISI and 3.5 s at 500ms ISI may help explain the higher identification rates at the 500ms ISI for 12.0 dB patterns. However, for the 23.0 dB patterns, no differences were found between the 0ms and 500ms ISI. Perhaps the higher intensity may help mitigate any differences found due to pattern duration.
+
+In half of the laboratory trials, an arithmetic task was performed while simultaneously receiving tactile patterns, which represents when an operator must attend to multiple tasks or stimuli at the same time. Subjective data from participants showed that the arithmetic task made it more difficult to identify tactile patterns, and in a few instances, lowered identification rates. For example, significantly lower identifications rates were found for the “Turn Around” (12.0 dB) and “Turn Right” (23.5 dB) patterns when the arithmetic task was performed. Since participants essentially performed a mental rotation task (tactile pattern identification) with math may have increased their cognitive workload with a subsequent impact on pattern identification. Although in the present study we did not measure workload, future research should investigate the role of mental rotation in the identification of tactile patterns and its effects on workload when an additional cognitive task is being performed. Also, other levels of difficulty of the additional cognitive task should be examined.
+
+An unexpected result was that identification rates for the “Move Forward” (12.0 dB) pattern were significantly better when performing the math task, which was contrary to our expectation. Instead, we would expect that across patterns, identification rates would be higher when no math is performed because participants could fully devote all cognitive resources to pattern identification. A possible explanation for this finding is that “Move Forward” pattern begins at the sides of the torso and moves forward toward the naval, which is an easily resolved anchor point (Cholewiak et al., 2004). However, we did not see a similar effect for the “Turn Around” pattern, which is the reverse of “Move Forward” and ends at the spine, another easily resolved anchor point (Cholewiak et al., 2004). Additionally, we would expect greater performance differences at 12.0 dB intensity since the tactile stimuli were less pronounced than the stronger 23.5 dB.
+
+Findings from the laboratory study suggest that in stationary or relatively static environments, urgency may be best represented by manipulating signal intensity alone or by manipulating a combination of ISI at higher signal intensities. While overall identification rates were rather high across urgency levels, 95.1% (0ms ISI) and 96.9% (500ms ISI) at 12.0 dB and 98.7% (0ms ISI) and 98.5% (500ms ISI) at 23.5 dB, varying ISI levels at 23.5 dB intensity or higher may be best suited to indicate urgency instationary environments. Higher intensities may be more feasible in a static environment where there is no need for an external or separate power source, such as a battery or portable power source that may not provide enough power to last an entire mission. For operators or Soldiers that are not tethered to a power supply, the issue power and weight is a critical consideration.
+
+In the field experiment the 0ms ISI was rated as significantly more urgent than the 500ms ISI at 23.5 dB, with no differences in urgency ratings between ISI levels at 12.0 dB, which is consistent with urgency ratings provided by participants in the laboratory study. Pattern identification rates were significantly better at the stronger 23.5 dB intensity where 90% of patterns were correctly identified, compared to the 12.0 dB intensity, with approximately 55% of patterns correctly identified. These findings suggest that a higher intensity may be necessary in order to resolve differences in ISI levels for tactile patterns, and to ensure that the information is salient enough to be identified. On the basis of the lower identification rates for 12.0 dB patterns as dismounted maneuvers were performed, and the difficulty resolving differences in ISI for the 12.0 dB patterns, it may be best to provide patterns at 23.5 dB intensity and vary urgency using different levels of ISI with the current tactile system. Another consideration for enhancing the salience of tactile signals would be to examine using concurrently firing tactors to provide redundancy and potentially higher identification rates, perhaps even at lower intensity and may enable users to more easily resolve differences in ISI with patterns or signals of lower intensity (Jones and Ray, 2008).
+
+A limitation of the reported research is that varying the ISI level led to differences in the total pattern length. The two ISI levels were 0 and 500ms, so the duration of each pattern was 2.0 and 3.5 s respectively (Fig. 3). It should be noted here that the variation in ISI subsequently led to a variation in total pattern length, and thereby resulted in a confound between message type (level of ISI) and message length. As a result, it is difficult to determine if the difference in pattern identification in experiment 1 at the 12.0 dB intensity are due to the ISI levels or pattern length. Similar results were not found at the 23.5 dB intensity; however, care should be taken when interpreting the effect of ISI on pattern identification. To avoid the presence of a confound in future research with multiple tactile signal parameters that differ in duration or pulse rate, it may be best to vary one stimulus at a time while holding the other constant so that each parameter can be evaluated separately (Lewis et al., 2014).
+
+For future research that employ the four patterns used in the two reported studies, the “Turn Around” pattern should be renamed to “Move Backward” to ensure that the mappings between the tactile patterns and their names are consistent. Additionally, it may be worth investigating intensities greater than 23.5 using other tactile systems to determine if higher intensities provide any gains in performance. However, if stronger intensity levels are examined, care should be taken to ensure that they are not physically unpleasant or annoying to the user as this increases the likelihood that the signal will be ignored or disabled (Lewis et al., 2014). Although the present research examined how well participants were able to correctly identify patterns, this research should be extended to look beyond identification by examining the response time to tactile stimuli and their varying urgency levels. This measure will reveal how users perform at the varying urgency levels. Another important consideration for incorporating urgency into the designing of tactile signals is the power requirement necessary to consistently send signals at a set intensity or ISI. Needing more power for dismounted Soldiers or civilians in a non-stationary environment often equates to more weight that must be carried. It may also be valuable to investigate the number of ISI levels that can be distinguished by Soldiers while performing dismounted maneuvers or engaging in other physical tasks such as lifting and/or carrying equipment or people such as would be performed during a fire rescue or a hazardous materials incident. Another area that should be examined is how subjective data on participants' preferences of tactile patterns are related to perceived urgency.
+
+Findings from the present research gives us more insight as to the parameters that are important for creating tactile signals/patterns that are easily distinguishable from other information and benefit the user. Augmenting tactile communication by providing urgency to increase the salience of signals and patterns may be beneficial for the Soldier as well as for other situations in which operators find themselves attending to multiple stimuli simultaneously. For example, in remote operations of robots, a robot operator may be required to manage multiple robots concurrently. Using tactile displays may help the operator to maintain situation awareness of the location of each robot and tactile cues of varying urgency may provide information about a robot that needs assistance because they have gone off course, or have found something (e.g., a possible IED) that the robotics operator needs to examine more closely. Incorporating urgency in tactile signals may also help expand the utility of the tactile communication channel for pilots and air traffic controllers who regularly attend to many sources of both auditory and visual stimuli (Ferris and Sarter, 2011). Tactile displays that provide urgency would help capture and direct attention of pilots and air traffic controllers or convey information directly. Future work should also explore the potential for expanding the applications of tactile patterns and urgency to other environments such as medicine, manufacturing, and first responders. As was shown in the current research, no matter the application, care must be taken to ensure that the tactile cues and associated levels of urgency are salient enough to be useful in different environments yet not confusing or annoying, especially when operators perform physical movements or physical tasks.
+
+@&#ACKNOWLEDGMENT@&#
+
+This research was supported by a Technology Program Agreement between the United States Army Research Laboratory and the United States Army Natick Soldier Research, Development, and Engineering Center.
+
+@&#REFERENCES@&#
+

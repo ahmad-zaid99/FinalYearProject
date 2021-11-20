@@ -1,0 +1,119 @@
+@&#MAIN-TITLE@&#Comparison of the effect of different sampling modes on computer analysis of cardiotocograms
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           FHR sampling mode affects usual computer analysis of CTGs.
+
+
+                        
+                        
+                           
+                           Effect of FHR sampling mode on computer analysis depends on parameters definition.
+
+
+                        
+                        
+                           
+                           Alerts in computer analysis of CTGs should take into account the FHR sampling mode.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Fetal heart rate
+
+Fetal monitoring
+
+Cardiotocography
+
+Signal processing
+
+Computer analysis
+
+Electrocardiography
+
+@&#ABSTRACT@&#
+
+
+                  Background
+                  Cardiotocographic (CTG) monitors may provide fetal heart rate (FHR) signals as beat-to-beat (BTB) or alternatively at a fixed sampling rate. The aim of this study was to assess the effect of different sampling modes on the evaluation provided by a commercially available system for computer analysis of CTGs.
+               
+                  Methods
+                  Internal FHR signals were acquired during the last hour of labor in 27 singleton term cephalic pregnancies, using the STAN S31® fetal monitor (Neoventa, Gothemburg, Sweden). BTB and 4Hz sampling outputs of the monitor were compared using the Omniview-SisPorto® system for computer analysis of CTGs (Speculum, Lisbon, Portugal). The following parameters were analyzed: signal loss, signal quality, baseline, accelerations, decelerations, percentage of abnormal short-term variability (%aSTV), abnormal long-term variability (%aLTV), average short-term variability (avSTV) and the system׳s clinical alerts. Statistical inference was performed using the Spearman correlation coefficient, 95% nonparametric confidence intervals, Wilcoxon and McNemar statistical tests, setting significance at 0.05, and a non-parametric measure of disagreement (valued 0–1 from lowest to highest disagreement).
+               
+                  Results
+                  Comparing BTB with 4Hz sampling, the median values for signal quality (95% versus 96%), number of accelerations (5 versus 7) and %aSTV (31 versus 39) were significantly lower in the former. On the other hand, with BTB signals the median value of avSTV was significantly higher (3.1 versus 2.3). Nevertheless, BTB and 4Hz parameters were highly correlated (r=0.89–0.97), and there were no significant differences in the quantification of the number of decelerations or in the clinical alerts elicited by the system.
+               
+                  Conclusions
+                  In conclusion, different sampling modes have a significant effect on the parameters provided by computer analysis of CTGs that are related with the quantification of STV, with a small impact on baseline estimation and on the subsequent quantification of accelerations. However, there does not seem to be significant impact on the quantification of decelerations or on the alerts provided by the system.
+               
+
+@&#INTRODUCTION@&#
+
+Cardiotocography (CTG) consists on the simultaneous recording of fetal heart rate (FHR) and uterine contraction (UC) signals, and is widely used in industrialized countries to monitor the fetal oxygenation during labor. A small number of computer systems for analysis of the CTG have been developed in order to overcome the limitations of visual assessment of tracings by healthcare professionals, and to improve the objectivity and reproducibility of CTG interpretation [14]. These systems comprise the computation of CTG parameters, such as baseline, variability, accelerations and decelerations, which have been shown to be related with the state of fetal oxygenation and with the activity of the autonomic nervous system [4].
+
+Commercially available CTG monitors acquire beat-to-beat (BTB) intervals measured in milliseconds from fetal Doppler or electrocardiographic signals, and then convert and round them off to provide a sequence of instantaneous FHR values, expressed in beats per minute (bpm) [2,3,10]. When data is exported from the CTG monitor, it is usually at a fixed rate of 4Hz, resulting from an interpolation of signals that corresponds to a sampling interval of 0.25s. In this way, FHR data is provided at fixed sampling time instants, making it easier for display and printing purposes. Some studies concluded that different sampling rates may interfere with FHR interpretation [4,5,12,16], namely regarding the identification of features such as decelerations and accelerations, and this may have direct consequences in clinical practice.
+
+In addition to the sampling rate, FHR values are rounded to the nearest quarter of a beat in some CTG monitors [10], while in others they are rounded to full integers [15]. Recently, we observed that different FHR sampling frequencies can significantly affect the quantification of spectral and entropy indices computed from the FHR, namely when comparing BTB sampling in milliseconds (RR) to the commercially-used nearest integer value at 4Hz [9].
+
+The aim of this study was to analyze the effect of these two different sampling modes of the same signal on the evaluation provided by a commercially available system for computer analysis of the CTG.
+
+A total of 27 intrapartum CTG tracings, obtained in singleton term cephalic fetuses, were selected from a previously existing database of consecutively acquired cases, after subsequent exclusion of recordings with more than 15% signal loss and an exam duration of less than 60min [6]. All were acquired in the last hour of labor using a STAN® 21 or 31 monitor (Neoventa®, Gothenburg, Sweden) and a fetal scalp electrode. The median±inter-quartile range (min–max) of the main obstetric characteristics were as follows: gestational age 39 weeks±2 (37–41), 1-min Apgar 9±1 (3–9), 5-min Apgar 10±1 (8–10), newborn weight 3224g±625 (2612–4430), umbilical artery blood (UAB) pH 7.24±0.08 (6.97–7.37). The study was approved by the local institutional ethical committee, conforming to the declaration of Helsinki, and all mothers gave written informed consent to participate.
+
+The scalp electrode provides fetal electrocardiographic (FECG) signals that are subsequently amplified, digitalized at a sample rate of 1600Hz with a 12-bit precision, and then filtered. The R wave interval is then obtained from the FECG and used to calculate the heart period [15]. The BTB interval is usually converted to a more clinically intuitive measure - instantaneous FHR, expressed in bpm and rounded to the nearest integer. In the present work, access to BTB values - RR intervals in milliseconds - was obtained by running the tracing files stored in the STAN monitor through the program STAN Splitter® (Neoventa®, Gothenburg, Sweden). During CTG acquisition, the STAN® monitor was connected via a digital RS232 port to the Omniview-SisPorto® 3.5 program (Speculum®, Lisbon, Portugal), providing FHR signals at a fixed rate of 4Hz, expressed in bpm, rounded to the nearest integer [1]. In order to ensure an accurate alignment of signals (not synchronization as they differ in sampling frequency), a manual procedure based on the visual identification of identical points at the beginning and end of each recording was carried out [9]. An example of the resulting BTB and 4Hz sampled signal is shown in 
+                     Fig. 1, where the differences between the two sampling modes are almost imperceptible by visual analysis, even at larger temporal resolutions. The BTB signals were further interpolated through cubic splines at a frequency of 4Hz (4HzSplines) and subsequently rounded to the nearest integer (4HzSplinesRound), in order to assess separately the effect of FHR precision. This simulation step was necessary given that the 4Hz FHR values are only provided as integer numbers by the STAN monitor.
+
+Computer analysis of CTG tracings was performed using the Omniview-SisPorto® 3.7.0 program, which evaluates the following parameters: signal loss (%); signal quality (%); baseline; number of accelerations; number of mild, intermediate and prolonged decelerations; occurrence of repetitive decelerations; average short-term variability (avSTV) and percentage of abnormal short-term variability (%aSTV); percentage of abnormal long-term variability (%aLTV); and clinical alerts. STV is computed as the difference between consecutive samples of the FHR signal and it is considered abnormal if it is less than 1bpm. Alerts are divided into four levels: Green (normal), Blue (attention), Yellow (suspicious) and Red (pathological). A tracing is considered normal and a green alert is elicited, if the baseline is between 105–160bpm, at least two accelerations are detected, together with at least ten consecutive minutes of normal variability and no decelerations. A blue alert occurs when there is moderate or large signal loss, excessive uterine contractions or signal characteristics compatible with monitoring of the maternal heart rate. A yellow alert is elicited when there is bradycardia or tachycardia, a baseline shift, absence of accelerations or the detection of repetitive decelerations. A red alert occurs if one of the following criteria is satisfied: reduced LTV, reduced STV, prolonged or repetitive decelerations accompanied by low variability. A more detailed description of the alerts can be found in Ayres-de-Campos et al. [1].
+
+Statistical inference was performed using the Spearman correlation coefficient, 95% non-parametric bootstrap confidence intervals for the median, Wilcoxon statistical test for scalar data and McNemar statistical test for nominal and ordinal data, setting significance at 0.05. Disagreement was assessed through the information-based approach d
+                     AB 
+                     [7].
+
+@&#RESULTS@&#
+
+Comparing BTB with 4Hz sampling, median signal quality, number of accelerations and %aSTV were significantly lower in the former. On the other hand, median avSTV was significantly higher in BTB signals (
+                     Fig. 2 and 
+                     Table 1). There were no relevant differences between BTB and 4Hz sampling for the remaining parameters presented in Table 1, with the exception of FHR baseline for which the p-value was below 0.05, but the observed difference is not clinically important (Fig. 2).
+
+Despite the significant differences in quantification of these CTG parameters, there were high correlations between them, with Spearman coefficients ranging between 0.89 and 0.97. The larger disagreement between BTB and 4Hz was observed for the number of accelerations, %aSTV, avSTV and %aLTV. There were no significant differences between the two sampling modes regarding the identification of intermediate, prolonged and repetitive decelerations (McNemar test), and there were also no significant differences in the system׳s alerts (
+                     Table 2), using the McNemar test with the levels grouped as Blue/Green and Yellow/Red.
+
+Based on the UAB pH threshold of 7.20, a similar performance was obtained with both sampling modes in the identification of fetal acidemia (data not shown).
+
+Most CTG parameters were similar between 4Hz signals without (4HzSplines) and with rounded FHR values (4HzSplinesRound), thus supporting that the origin of the differences between BTB and 4Hz seemed to be mostly related to the sampling operation rather than the FHR precision (
+                     Table 3). Only the %aSTV was significantly lower for 4HzSplinesRound, yet presenting a very high correlation and agreement with the corresponding 4HzSplines index (Table 3). The system׳s alerts for 4HzSplines and 4HzSplinesRound signals were the same for all cases. A direct comparison between the confidence intervals obtained from the original 4Hz and 4HzSplines signals (Tables 2 and 3) only suggests a lower signal loss in the simulated signals, which is a consequence of the interpolation operation, thus validating the conclusions derived from the simulated signals.
+
+@&#DISCUSSION@&#
+
+In this study, significant differences were found between BTB and 4Hz sampling on computer analysis of CTG parameters related to the quantification of STV, namely baseline, %aSTV and avSTV, and these had a mild influence on baseline estimation and on the subsequent quantification of accelerations. On the other hand, quantification of decelerations and clinical alerts produced by the Omniview-SisPorto® system were not significantly altered.
+
+Despite the signals provided at 4Hz sampling are also rounded off to the nearest integer, it was observed that the differences between BTB and 4Hz resulted mainly from the sampling rate. A variation of 1 msec in BTB is associated with a precision in FHR of approximately only 0.3bpm in the range 120–145bpm. Although other CTG monitors provide FHR with a 0.25bpm resolution [10], the repetition of some FHR values observed in 4Hz sampling appears to be the main cause for an underestimation of STV, which leads to “artificial” null differences between consecutive FHR values. Therefore, the main consequence of 4Hz sampling is an under-estimation of avSTV, which leads to a higher %aSTV. However, it should be noticed that this may not occur with other STV definitions, such as that considered in Gonçalves et al. [9].
+
+STV assessment is particularly important, as it is related with fetal oxygenation and with the activity of the autonomic nervous system. Despite the existence of several indices for the quantification of STV [4], the comparison between BTB with commercially-available 4Hz sampling and rounding-off to the nearest integer has, to our knowledge, not been previously reported.
+
+The Omniview-SisPorto® system provides a single quantification of accelerations, whereas the quantification of decelerations is subdivided into mild, intermediate and prolonged. Given the small variation of the latter two within the considered sample, only the results pertaining to the mild decelerations were presented. Therefore, the fact that the quantification of accelerations and decelerations are different, together with the relatively small size of the dataset, may explain the fact that 4Hz did not exhibit a significant influence on the number of presented decelerations.
+
+Previous works analyzed the effect of using internal or external monitoring in the computation of FHR indices [8] including the development of techniques for the improvement of the accuracy of the FHR signal acquired externally [11,13]. The present work focused on the comparison of commercially available different sampling frequencies of FHR signals, acquired using a fetal scalp electrode, which is the mode that provides the FHR signal with better accuracy.
+
+The absence of significant differences between the two sampling modes regarding the capacity of Omniview-SisPorto® alerts to identify fetal acidemia is limited by the small sample size and by the reduced number of cases with this adverse outcome. Further studies are needed to confirm this preliminary finding and to analyze whether the commercially-available 4Hz sampling with rounding-off of FHR values may lead to an underperformance of current systems for computer analysis of the CTG, namely on their capacity to identify fetuses with hypoxia/acidosis. Alternative sampling modes and rounding-off of FHR values should also deserve attention.
+
+Diogo Ayres-de-Campos and João Bernardes have been involved in the development of the Omniview-SisPorto® system for FHR analysis (Speculum, Portugal). Royalties are fully converted to institutional research funds.
+
+@&#ACKNOWLEDGMENT@&#
+
+Hernâni Gonçalves is financed by a post-doctoral grant (SFRH/BPD/69671/2010) from the Fundação para a Ciência e a Tecnologia (FCT), Portugal. Paulo Sousa is acknowledged for the support with technical aspects related with signal acquisition and processing.
+
+@&#REFERENCES@&#
+

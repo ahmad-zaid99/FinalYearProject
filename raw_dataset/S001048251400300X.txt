@@ -1,0 +1,476 @@
+@&#MAIN-TITLE@&#Hypodensity extractor: A phantom study
+
+@&#HIGHLIGHTS@&#
+
+
+               
+                  
+                  
+                     
+                        
+                           
+                           Standard CT low-contrast phantom was adjusted for hypodensity extraction purposes.
+
+
+                        
+                        
+                           
+                           Nonlinear approximations of signals were applied for hypodensity extraction.
+
+
+                        
+                        
+                           
+                           Objective, computational and repeatable criteria of assessment were proposed.
+
+
+                        
+                        
+                           
+                           Previously proposed and new hypodensity extractors were examined with procedures.
+
+
+                        
+                        
+                           
+                           Better visible small hypodensities and more correct shape assessment were obtained.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Hypodensity extraction
+
+Low-contrast phantom
+
+Ischemic stroke
+
+Computed tomography
+
+Image assessment
+
+@&#ABSTRACT@&#
+
+
+                  We report on the extraction procedures of low-contrast symptomatic hypodensity optimized for a computed tomography-based diagnosis. The specific application is brain imaging with enhanced perception of hypodense areas which are direct symptoms of acute ischemia. A standard low-contrast phantom, as commonly employed in dosimetry and imaging quality evaluation, was used to derive numeric criteria for assessing the extraction effectiveness. Our proposed procedure is based on multiscale analysis of the image data expanded over the frames of wavelets, curvelets or complex wavelets, followed by nonlinear approximation of the symptom signatures. Apparent subtle density changes in the phantom were evaluated using computational metrics and subjective ratings. We discuss the advantages and disadvantages of our proposed optimized hypodensity extraction procedures.
+               
+
+@&#BACKGROUND@&#
+
+Modeling of imaging capabilities in computed tomography (CT) is continuously explored in dose reduction, simulation, and reconstruction (e.g. 3D modeling). Enhancing the ease of recognition of difficult-to-spot subtle pathological symptoms is the most challenging ongoing task for imaging research. The most convenient method for experiments in these fields is to use phantoms [1–3].
+
+Practical imaging assumes noise as an intrinsic information component, but simulating it in CT experiments is not a trivial task [4–6]. Research [7] suggests that both quantum mottle and anatomical structure contribute significantly to the detection of slight and low-contrast lesions in CT head images. An important recommendation is that the dose should follow the principle “as low as reasonably achievable” [8] with respect to diagnostic information and image understanding with cognitive resonance 
+                     [9].
+
+Image processing can be advantageous in reducing the dose and in reliable image quality enhancement. An important effect for diagnostic CT is improved perception of subtle density changes. In the case of hyperacute ischemic stroke diagnosis, clearly visualized hypodensity distribution with identified local regions of decreased tissue density is a fundamental pathology signature. Our earlier proposition, Stroke Monitor (SM), addresses subtle ischemic stroke extraction methods [10–13]. Experimental verification of the SM confirmed its diagnostic usefulness, however some algorithmic, cognitive, and procedural limitations still exist [14].
+
+Further improvement of computer-aided stroke diagnosis requires more effective hypodensity extractors. However, more objective, computational and repeatable criteria of assessment are necessary to allow optimization of the extractor design. Suggested criteria integrate psycho-visual perception (e.g. subjective rating) of subtle hypodense areas with computational metrics (e.g. respective metrics) of enhanced stroke signatures in contrast to the surrounding tissue. This requires a controlled hypodensity model reliably adjusted to the conditions of the diagnostic process. For ischemia detection, the size and density decrease of hypodense areas should be variables of the model that can be realized with respect to real and reliable phantoms.
+
+We integrate the analysis of real phantom data, acquired from reconstruction with image processing procedures, and adjusted numeric criteria of assessment, to objectify, optimize, and verify the efficiency of subtle CT extraction and perception. A standard phantom used in dosimetry research [15] was used to simulate hypodense changes which are direct ischemic stroke symptoms. The data processing was limited to reconstructed image data. There was no access to the intermediate measured raw data, projections, etc., and reconstruction procedures were not optimized. However the presented methods may be valid for currently employed systems for evaluation purposes.
+
+Hypodensity extraction optimization is due to multiscale representation of pathologic signatures in the spatial, redundant, and locally adjusted domain. The criteria of extractor assessment include numerical measures of hypodensity enhancement and subjective verification of subtle hypodense region. Our proposed methodology may be applicable for other cerebral contusions (e.g. bruising on the brain) or liver cancer where pathologies may manifest similar hypodense symptoms in CT images.
+
+CT imaging plays a crucial role in the evaluation of stroke patients, primarily in differentiating intracerebral hemorrhage or subarachnoid hemorrhage from acute ischemic stroke suspicion (ca. 80% of stroke cases). However, an initial CT scan performed during the hyperacute phase of stroke (0–6h) is often not sufficient for visualizing infarcted cerebral tissues in the hyperacute ischemia stage. Many infarcts do not emerge on CT until hours after the onset of a stroke; 50–60% of stroke cases have normal CT prior to 12h post stroke. Alternatively, appearance and size of penumbra may be quantified with perfusion CT protocol or magnetic resonance modalities, but contrast agent contraindications or restricted accessibility limit their application.
+
+Disruption of cerebral blood flow (CBF) and subsequent tissue damage is a stroke result caused by different mechanisms. A decline in CBF (
+                           <
+                           15
+                           –
+                           20
+                           
+                           ml
+                           /
+                           100
+                           
+                           g
+                           /
+                           min
+                        ) causes brain tissue to take up water. If water content increases by 1%, CT attenuation decreases by 1.3–2.6HU (Hounsfield Unit) [16]. Cytotoxic edema, which occurs initially in the ischemic cortex, reduces its contrast with respect to the adjacent white matter and leads to the loss of anatomic margins. The CT number for water should ideally be zero, but the actual value changes because of variations in the stability of the detector system or X-ray source. Normally, these variations (i.e., standard deviation of the water value) are very small and most scanners should be able to stay within 2HU of zero for water [17]. A dense cranial vault can lower beam energy of the beam and increase attenuation up to 14HU in brain parenchyma. Image noise depends on source details (current, mAs, and voltage, kVp), reconstruction algorithm (filter kernel), scan mode (e.g. helical interpolation, non-helical), slice collimation, reconstructed slice width, and physical factors specific to both the machine and the patient. The total noise, measured as the standard variation of the CT value, is approximately 4HU, which of the same order as the level of early ischemic hypodensity changes.
+
+The SM hypodensity extractor for ischemia was intended to improve the diagnostic value of emergency CT scans by increased perception of hypodensity indicators signs in hyperacute ischemic stroke cases. We applied methodology design, based on nonlinear approximation of signals expanded in a representative set of time-frequency atoms constituting a base or frame in Hilbert subspace. Target approximants of diagnostic information were extracted according to semantic models of local hypodensity. The magnitude of decomposed (transformed) image coefficients was sorted with global or local criteria, representing ordered components of image content. Coefficients thresholding for selection or enhancement is crucial to choose informative components related to pathological symptoms. Effective segmentation of stroke susceptible regions and naturality of customized or even individualized visualization of processing effects are of particular importance. The most important issue is design and implementation of a phantom-based procedure to objectively optimize and verify hypodensity extractors for further improvement of low-contrast change detection (e.g., acute stroke diagnosis). We consider CT-based diagnosis of acute stroke with hypodense symptoms of ischemia as reference application. Phantom-based criteria of optimization were devised to model objects of interest and improve objectivity, repeatability, and reliability of outcomes. Finally, we discuss the clinical importance of our results and possible consequences.
+
+Available CT phantoms were reviewed to obtain low-contrast models containing objects similar to stroke hypodense effects. The commercial Catphan
+                        1
+                     
+                     
+                        1
+                        The Phantom Laboratory Inc., Salem, NY, USA.
+                      modules were considered suitable for further studies, as used in approximately 80 publications reported in PubMed.
+
+We employed a Catphan CTP515 low-contrast phantom module with supra-slice and subslice contrast targets. The phantom was primarily developed for evaluating the performance of medical imaging and radiation therapy [18]. Seven 5mm CT scans of the module came from public domain [19] and were acquired with GE HiSpeed QX/i
+                           2
+                        
+                        
+                           2
+                           GE Medical Systems, Milwaukee, WI, USA.
+                         at 120kVp and 125mA. The construction has a diameter of 15cm and is 40mm thick. It incorporates rods inserted onto a ring made of a material with gradually higher density, which mimics hemorrhagic stroke changes in CT image.
+
+To achieve hypodense ischemia-like lesions, we performed successive subtraction of the mean value, inversion, and restoration of the fixed component in the phantom׳s ROI. The characteristics and energy of the additive white Gaussian noise were preserved. Fig. 1
+                         presents the central section of the phantom model [18], its CT image and the slice after initial processing. There are three groups of nine rods each (with diameters: 15, 9, 8, 7, 6, 5, 4, 3, and 2mm) in the outer ring varying successively in contrast levels: 1%, 0.5%, and 0.3%, and three groups of four short cylindrical objects (diameters 9, 7, 5, and 3mm) in the inner ring varying in length (3, 5, and 7mm) with fixed contrast (1%) for partial effects presentation (not relevant to this study).
+
+According to the phantom׳s product Ref. [18], and [20], the CT contrast of the objects in the outer ring should produce 10HU, 5HU, and 3HU density difference from the background value. Acquisition conditions may result in slightly different values of density change. For example [21] measured 8HU, 4HU, and 2.7 HU, respectively. After applying the described ischemia effects scheme, we found a 7.6HU, 3HU, and 1.8HU density decrease, respectively, from the ROI mean value.
+
+Comparison between single and multi-detector row CT acquisition protocols based on the Catphan CTP515 module was reported in [21]. The authors show contrast-to-noise and visibility correlations based on subjective readers׳ scores. For multi-detector row CTs they suggested sections thinner than 5mm should be restricted to high-contrast structure imaging.
+
+Tanaka et al. [22] investigated varying tube voltage, current per rotation, and slice thickness settings on hypoattenuation mimic detectability, by a specially prepared low-contrast phantom.
+                           3
+                        
+                        
+                           3
+                           Kyoto Kagaku, Kyoto, Japan.
+                         The study suggested that image noise is a predominant factor for low-contrast lesion detection and increasing tube voltage, and tube current with greater slice thickness significantly improves the accuracy of detection for low-contrast objects. However, one limitation of this recommendation is the increased radiation dose. Combining adjacent 10mm sections was also proposed to improve detectability. The advantages of such phantoms include free lesion forming and real structure mapping.
+
+Earlier forms of hypodensity extractors, realized as the SM, use four multiscale analysis procedures with respectively adapted approximation rules: (a) combined two-step tensor wavelets, adjusted to the assumed hypodensity model [12] (MUSE), (b) non-separable 2D kernel curvelet (MUPP), (c) 2D kernel curvelet followed by adjusted tensor wavelets (MUDD), (d) reversed MUDD, i.e., adjusted tensor wavelets followed by 2D kernel curvelet (MUDE). CT scans were processed independently slice-by-slice with initially segmented regions of possible ischemia and form-dependent optimized visualization methods [13]. All of these were applied to the test phantom, and example outcomes are shown in Fig. 2
+                         (b), (c), (f), and (g). Two new hypodensity extractors are proposed here, and these outcomes are shown in Fig. 2 (d) and (h).
+
+The sensitivity and specificity of the resultant hypodensity extraction were limited because of many factors, such as [14] imperfect segmentation and non-linear processing artifacts, brain structure asymmetry, lack of inter-slice correspondence, acquisition artifacts or difficult localization, and unexplained errors. Therefore, we propose improved extractors with the advantage of differentiating the representation of hypodensity distribution across local structures of ischemic cerebral cytotoxic edema. In particular, sparse image of hypodensity was investigated with bases, frames, or dictionaries of atoms with properties of scalability, locality, smoothness, and directivity. Because CT study series are referred to as 2.5D or 3D spatial data, we developed an improved hypodensity extractor with adjusted 3D wavelets with non-separable kernel i.e., curvelets. We also consider complex wavelets with improved directionality, shift invariance, and reduced aliasing in the wavelet domain as an alternative frame representation of hypodensity.
+
+3D curvelets are extensively used in seismic and aerospace research [23]. Other applications include SAR images, video processing, and neuroimaging. However, computational complexity limits their application. Curvelets decompose the signal׳s Fourier domain into dyadic corona where the inverse is calculated across scales and wedges. Curvelet frame preserves the important properties, such as parabolic scaling (
+                           width
+                           =
+                           
+                              
+                                 length
+                              
+                              
+                                 2
+                              
+                           
+                        ), tightness, and sparse representation for surface-like singularities of codimension one.
+
+We used Fast Discrete Curvelet Transform (FDCT) wrapping, out-of-core implementation [24] in the 3D curvelet-based hypodensity extractor (MU3D). Preliminary tests were conducted with various decomposition levels, angles, and denoising threshold parameters. Experimentally adjusted settings for optimum subtle contrast extraction were four scales of decomposition, four angles of directionality, and complex waveshrink [25] denoising procedure with a threshold parameter set to 5.0. Phantom slices were doubled to increase resolution for analysis and averaged after reconstruction. These are preliminary settings and we need further studies to investigate properties of the 3D transformations on CT images. Further optimization may be possible with respect to reliable numeric measures or subjective assessments. The computational complexity of MU3D is reflected in that a standard CT study required approximately 3min processing time on a 2GHz processor with over 200MB RAM.
+
+The second proposed two-step hypodensity extractor (MUCC) incorporates dual-tree complex wavelet (DT CWT) [26,27] decomposition, followed by Low-Redundancy Fast Curvelet Transform (LR-FCT) [28]. First, each slice was separately decomposed by DT CWT into six scales whose coefficients were scaled by factors selected experimentally with respect to extracted signal components: 
+                           3.0
+                           ,
+                           2.0
+                           ,
+                           3.0
+                           ,
+                           1.0
+                           ,
+                           1.0
+                           ,
+                           0.0
+                         (LL band first, etc.,) and reconstructed. Then a, four-level and eight-directions LR-FCT 3D decomposition was used and a built-in thresholding of curvelet coefficients with adjusted extraction and noise parameters NSigma=1, SigmaNoise=50, selected the required image components. Example outcomes from the proposed extractors are presented in Fig. 2(d) and (h).
+
+The image (MU3D) after denoising with 3D curvelets may still contain noise because of limited slice resolution in relation to the curvelet domain data partitioning algorithm. Threshold settings in the complex domain were optimized according to the rules presented in [25]. However, settings were chosen from observed effects and previous experiments with 2D curvelets as a compromise between efficiency of denoising and hypodensity extraction.
+
+@&#EXPERIMENTS AND RESULTS@&#
+
+Using the phantom facilitates assessment of the strength of hypodensity extraction with the stroke-oriented methods in terms of size, shape, and contrast resolution. The following measures were used: contrast-to-noise ratio, contrast modulation, and subjective visibility and circularity scores. The processing methods modified the intensity ranges in the images. Hence, to compare methods, all ROI pixel values were initially normalized to the 
+                        (
+                        0
+                        ,
+                        1
+                        )
+                      interval. In our calculations we considered 27 object regions with adjacent surrounding rings preserving similar areas
+                        4
+                     
+                     
+                        4
+                        The radius of each object circle was known and the ring׳s outer radius was 
+                              
+                                 
+                                    2
+                                 
+                              
+                            larger.
+                      annotated in Fig. 2(e). Previous work [22,29] treated smaller areas inside objects to avoid averaging effects. We followed the approach recommended in [18], where the manufacturer noted that “cupping” and “capping” effects cause variation of CT numbers from one scan region to another. All calculations were performed on each slice separately and then averaged.
+
+Contrast-to-noise ratio (CNR) is a clinically important measure of scanner performance [30], and the detection of small low-contrast objects is strongly dependent on it [21,22]. The ratio is calculated by dividing the difference of CT number mean values for background and object by standard deviation of present noise 
+                           CNR
+                           =
+                           (
+                           
+                              
+                                 
+                                    
+                                       CT
+                                       #
+                                    
+                                    
+                                       ¯
+                                    
+                                 
+                              
+                              
+                                 background
+                              
+                           
+                           −
+                           
+                              
+                                 
+                                    
+                                       CT
+                                       #
+                                    
+                                    
+                                       ¯
+                                    
+                                 
+                              
+                              
+                                 object
+                              
+                           
+                           )
+                           /
+                           
+                              
+                                 SD
+                              
+                              
+                                 noise
+                              
+                           
+                        . Image noise standard deviation, (SD
+                        
+                           noise
+                        ) was estimated from the extended area of the ring, which included regions adjacent to the objects, 
+                           Extendedarea
+                           =
+                           Ring
+                           −
+                           Objects
+                        . The division of regions is outlined in Fig. 2(e) along 0.5% objects.
+
+Object discernibleness is constant for the contrast and size conditions [18]: 1%×5mm≅0.5%×10mm≅0.3%×15mm. In [21], 100% detection of 1% 5 mm objects was observed at CNR=1.0 (larger objects were detectable at lower CNR), this suggests that only the largest object will be clearly visible at 0.3% contrast. Fig. 3
+                         shows the mean CNR calculated across slices for all rods in three object groups. Nonlinear enhancement methods with 3D processing achieve 
+                           CNR
+                           >
+                           1.0
+                         in each group for objects larger than 5mm. MUPP visualization enhanced CNR in every group achieving significant improvement in the 1% contrast group, an improved score for approximately half the objects in the 0.5% group, and a slight improvement for three largest objects in the 0.3% group, without decreasing the quality for smaller objects. MUSE visualization exceeded CT only in the 1% and 0.5% groups, while it suppressed low-contrast objects in the 0.3% group. MUDD visualization exceeded the original CT only in the 1% objects group and was comparable for the five largest objects in the 0.5% group.
+
+In processed images, noise is reduced by multiscale denoising. To compare extraction results, we calculated the modulation (Michelson) contrast (C
+                        
+                           M
+                        ). Similar to the previous calculations, mean values from objects and surrounding rings were taken 
+                           
+                              
+                                 C
+                              
+                              
+                                 M
+                              
+                           
+                           =
+                           (
+                           
+                              
+                                 
+                                    
+                                       CT
+                                       #
+                                    
+                                    
+                                       ¯
+                                    
+                                 
+                              
+                              
+                                 background
+                              
+                           
+                           −
+                           
+                              
+                                 
+                                    
+                                       CT
+                                       #
+                                    
+                                    
+                                       ¯
+                                    
+                                 
+                              
+                              
+                                 object
+                              
+                           
+                           )
+                           /
+                           (
+                           
+                              
+                                 
+                                    
+                                       CT
+                                       #
+                                    
+                                    
+                                       ¯
+                                    
+                                 
+                              
+                              
+                                 background
+                              
+                           
+                           +
+                           
+                              
+                                 
+                                    
+                                       CT
+                                       #
+                                    
+                                    
+                                       ¯
+                                    
+                                 
+                              
+                              
+                                 object
+                              
+                           
+                           )
+                         
+                        [31]. Fig. 4
+                         presents C
+                        
+                           M
+                         for three contrast groups. There is no apparent advantage between MUPP and original CT for contrast objects below 1%, except the 15mm object at 0.5%. MUSE and MUDD achieve better scores than CT in terms of CNR at 1% contrast, whereas they are inferior in terms of C
+                        
+                           M
+                        .
+
+Phantom images were evaluated by a panel of 17 bioengineering students, two medical image processing researchers, and three experienced radiologists. Each object׳s visibility and shape was graded on a four-level scale, for visibility: 0, not visible; 1, weakly visible; 2, noticeable; 3, clearly visible; and circularity: 0, undefined or unseen; 1, irregular; 2, nearly round; 3, perfectly round. All visualizations were presented on a Samsung BX2231 monitor at constant viewing conditions, observers knew the phantom model and were able to change window and level display settings. Averaged scores of the bioengineers (students and engineers) and radiologists groups are presented in Figs. 5 and 6
+                        
+                        , respectively. Radiologists noticed more objects on the phantom׳s CT images than bioengineers in 0.5% (8 to 5) and 0.3% (3 to 1) contrast groups, while the 1% group results were similar. MUPP visibility and circularity was scored as better than CT by bioengineers while numeric measure C
+                        
+                           M
+                         varied, and CNR showed slight improvement. The two largest rods were noticeable for the 0.3% contrast on MUPP scans for bioengineers, and three largest for radiologists, while the other rods were not clearly distinguishable. In the physicians group, the MUPP method showed improved visibility of 1% contrast objects and was comparable for 0.5% and 0.3% contrast, while it improved circularity for both groups of observers. Images incorporating 3D curvelet processing and denoising (MUCC and MU3D), tend to outrank the other methods for both groups of observers, in terms of visibility and circularity. The regular construction of the phantom provides some advantage for these methods. MUDE extracted low-contrast objects with expanding effect, gave lower differences measured in adjacent regions, and poorer calculated scores, but may still attract the viewer׳s attention for some objects. MUPP, MUSE, and MUDD extracted more details or patterns not expected in the phantom image, resulting from wavelet processing or denoising. MU3D and MUCC smoothed regions, limited the noise and improved circularity. MU3D visualizations preserved shape better than MUCC on larger objects, while smaller objects scored higher on MUCC in the bioengineers group. MU3D was slightly worse than MUCC for all objects for the physicians.
+
+@&#DISCUSSION@&#
+
+All methods managed to extract 1% contrast objects, except MUDE, where the spill effect contaminated the images. From Weber curves, the contrast sensitivity just noticeable difference was estimated on 2% level for background-object intensity difference. Six of nine 0.3% contrast objects exceed this value. Thus, one should be able to distinguish them while randomly measured C
+                        
+                           M
+                         contrast on background was estimated below 2%. The complex nature of the processed images raised this level and considering the subjective evaluation and characteristics of the images (e.g. noise) we estimated 
+                           
+                              
+                                 C
+                              
+                              
+                                 M
+                              
+                           
+                           =
+                           4
+                           %
+                         and CNR=0.5 visibility threshold for 15, 9, and 8mm 0.3% contrast objects. We compared these outcomes to the experiments in [22], where increasing voltage and current did not allow the extraction of 2HU changes at CNR level of 1.0. However, our proposed multiscale-based hypodensity extractor was able to achieve that. Table 1
+                         presents our results compared with those previously published in [22] for low-contrast 5mm objects, representing brain infarct and early stroke indicators.
+
+The Kyoto Kagaku phantom low-contrast objects׳ values (2% and 4%) are different from the Catphan module (3% and 5%), however our ischemia effect scheme resulted in similar (2% and 3%) outcomes. Our proposed method (MUCC) extracted 2% object with CNR over 1, which was not previously achievable increasing the tube current. Thus, optimized image processing can indeed increase the imaging capabilities of CT acquisition systems.
+
+Surprisingly, earlier forms of hypodensity extractors, as employed in SM produced inferior results than doing nothing for several cases. SM confirmed its clinical usefulness (because of reduced noise, simplified form of semantic maps, but mostly because of facilitated assessment of asymmetry for distribution of decreased density tissue in successive CT slices) despite the limited effectiveness of the hypodensity extraction. Moreover, a perceptually adverse effect was the significantly simplified visualization of the processed image, which looked artificial (unnatural, non-smoothed), arousing observer doubts and disaffection. This justifies the need to optimize the essential hypodensity extraction procedure and naturality of customized visualization.
+
+We have proved the ability of our proposed extractors to significantly enhance subtle low-contrast hypodensity indicators quantitatively and qualitatively, according to numerical metrics and objectified subjective assessment of expert perception. Spatial and complex wavelets proved to be more effective in representation and selection of important semantic components in CT images.
+
+Realized assessment procedure allows independently evaluation of each proposed method for the extraction of low-contrast objects according to numerical criteria related to the perception ability of crucial diagnostic information.
+
+Construction of the phantom is much simpler than real patient data. It is generally smooth, without the sharp edges observed on some anatomical structure boundaries. The structure of brain contribute significantly to processing, and formulating the link between the obtained results and the practical applicability of the methods is an open task. Real patient CT scans presented problems with inter-slice relationships. CT slice pixels represent averaged brain tissue volume in slice limited by radiation dose, beam form, and real structure thickness. Fig. 7
+                         presents (a) the original CT data, (b) processing by per-slice tensor 2D wavelets with non-separable kernel 2D curvelets (MUDE scheme), (c) processing 2D curvelets (MUPP), and (d) 3D curvelets (MU3D). In the examples, the last step of the SM method, (visualization), was skipped to show the mentioned previously discussed spill effect and the wavelets׳ localization preservation. MUDE is easy to read, although the revealed infarct remains not clearly localized in terms of anatomical boundaries. Ischemic hypodensity in MUPP and MU3D is slightly shaped and weakly noticeable, covered by details or patterns which prevail, however they seem to better preserve spatial infarct localization.
+
+We have a better understanding of the effects of hypodensity extraction and factors of enhanced object perception in developed computer-aided diagnosis (CAD) systems. SM, based on MUDD and MUPP extractors, simplified the perception conditions of asymmetric hypodensity distribution but lost or distorted small hypodense objects, decreasing perception sensitivity. This limits CAD application for hyperacute stroke diagnosis. Our proposed extractors increased perception sensitivity of hypodense objects but also artifacts and other distortions, possibly falsified some asymmetric effects, and reduced simplicity.
+
+@&#CONCLUSIONS@&#
+
+Numerical quality criteria were defined as well as the objectified subjective test procedures to evaluate the efficiency of hypodense low-contrast changes in perception. New hypodensity extractors were proposed and verified to improve the perception of hypodense areas as crucial indicators of ischemia in acute stroke diagnoses.
+
+Radiologists and non-experts (i.e., bioengineers) were asked to express conviction of assessed the different methods for extraction distinctness. The proposed methods achieved better perception of small hypodense objects with more correct shape assessment. They also provide increased sensitivity for decreased object-to-background contrast, compared to subjective rating of unprocessed phantom CTs and those SM processed. The assessment of the capabilities of individual extractors provides objective indicators to select suitable forms of hypodensity extractors depending on the actual needs or accepted diagnostic models (i.e., simplification, sensitivity, size or shape requirements).
+
+Limitations of phantom study are due to exclusion of real brain structure mapping with possible artifacts and distortions which contribute significantly to processing and final extraction effects. Thus, our conclusions do not directly translate to the clinical utility of the extractors. However, increased perception sensitivity of more subtle hypodense image changes could lead to increased diagnostic accuracy for acute stroke cases in clinical practice, following to the CAD paradigm. In particular, perception errors could be potentially reduced. Any reliable statement of any real gain requires research in relation to clinical practice. Increasing the sensitivity of medical imaging may not always lead to a reduction in perception or interpretation errors in imaging diagnostics [32]: “technology doesn׳t solve, but only displaces, the problem of perceptual error to a new and different technology, offering the opportunity to make a whole new, and maybe longer, list of mistakes”. Improved perception may lead to new and different errors because of the changed window of image information. Indeed, clinical efficiency verification of two new forms of hypodensity extractors requires representative clinical trials to answer how it aids radiologists in the reading of images. This will be the subject of future studies.
+
+None declared.
+
+@&#ACKNOWLEDGMENT@&#
+
+This publication was funded by the National Science Centre (Poland), DEC-2011/03/B/ST7/03649.
+
+The authors would like to thank the radiologists who participated in evaluation.
+
+The following settings were used during model creation in the phantom study:
+
+contrast objects distance from center 
+                        d
+                        =
+                        110
+                        px
+                     
+                  
+
+
+                     
+                        degrees
+                        =
+                        [
+                        176.8
+                        ,
+                        158.0
+                        ,
+                        141.5
+                        ,
+                        127.5
+                        ,
+                        114.5
+                        ,
+                        102.5
+                        ,
+                        92.9
+                        ,
+                        85.4
+                        ,
+                        79.7
+                        ]
+                        ±
+                        
+                           
+                              2
+                           
+                           
+                              3
+                           
+                        
+                        π
+                     
+                  
+
+
+                     
+                        radius
+                        =
+                        [
+                        16
+                        ,
+                        10
+                        ,
+                        9
+                        ,
+                        8
+                        ,
+                        7
+                        ,
+                        6
+                        ,
+                        5
+                        ,
+                        4
+                        ,
+                        2
+                        ]
+                      in pixels;
+
+Proposed scheme and algorithm implementations are available on www.mini.pw.edu.pl/~ostrekg/heps.html.
+                  
+
+@&#REFERENCES@&#
+

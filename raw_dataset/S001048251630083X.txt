@@ -1,0 +1,363 @@
+@&#MAIN-TITLE@&#Monitoring of autonomic response to sociocognitive tasks during treatment in children with Autism Spectrum Disorders by wearable technologies: A feasibility study
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Wearable sensors can be used to measure autonomic response in ASD during treatment.
+
+
+                        
+                        
+                           
+                           Correlation between autonomic response and engagement of the children.
+
+
+                        
+                        
+                           
+                           Longitudinal changes in the children's autonomic response during the engagement.
+
+
+                        
+                        
+                           
+                           Physiological data can help clinicians for objectivize and personalize the therapy.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Autism Spectrum Disorders (ASDs)
+
+Electrocardiogram (ECG)
+
+Wearable platform
+
+Heart Rate
+
+Heart Rate Variability (HRV)
+
+Respiratory Sinus Arrhythmia (RSA)
+
+Monitoring
+
+Personalization
+
+@&#ABSTRACT@&#
+
+
+                  Background
+                  Autism Spectrum Disorders (ASD) represent a heterogeneous set of neurodevelopmental disorders characterized by impairments in social domain, where the autonomic nervous system (ANS) plays an important role. Several researchers have studied the ANS in ASD, during specific cognitive or sensory stimuli while few studies have examined response during social interactions. Wearable technologies can be very helpful in monitoring autonomic response in children with ASD in semi-naturalistic setting. The novelty of this study is to use such technologies to acquire physiological signals during therapeutic sessions supported by interactive “serious games” and to correlate the ANS response to the engagement of the child during sociocognitive tasks for an evaluation of the treatment effect and for the personalization of the therapy.
+               
+                  Method
+                  A wearable chest belt for electrocardiographic (ECG) signal recording was used and specific algorithms for the extraction of clinically relevant features (Heart Rate – HR, Root Mean Square of the Successive Differences – RMSSD and Respiratory Sinus Arrhythmia – RSA) were developed. Sociocognitive tasks were mediated by “serious games” implemented on two tablets, which allowed a precise coding of the behaviors of the children. A longitudinal assessment of the physiological response of the children during six months of treatment was performed.
+               
+                  Results
+                  A link between physiological response, i.e. decrease in RMSSD and RSA, and engagement of the children during sociocognitive tasks was found. Longitudinal changes in the children's autonomic response, including a decrease of RSA during the engagement throughout the therapeutic sessions, were found.
+               
+                  Conclusions
+                  These results foster the feasibility of this methodology to be applied in a clinical setting for the monitoring of the ANS response of children with ASD during treatment. A larger sample of patients is needed to confirm these preliminary findings.
+               
+
+@&#INTRODUCTION@&#
+
+Autism Spectrum Disorders (ASD) are a set of pervasive developmental disorders characterized by social/communication deficits and by a limited range of interests with repetitive stereotypical behavior [1]. Early treatment is a crucial step to ameliorate some of the symptoms associated with ASD due to maximal brain plasticity [2]. In addiction, given the heterogeneity of the disorder and its developmental nature, a single treatment may not be appropriate for all children with ASD. Thus the implementation of personalized and evolving protocols for intervention could increase the effectiveness of treatments and better define the question of intensiveness of therapy [3]. This is particularly relevant in high-functioning ASD (HF-ASD), on which this paper is focused.
+
+One of the key aspects of HF-ASD is an impairment in social interactions. In particular the key social difficulties in school-aged children with HF-ASD include reduced ability to understand emotions, lack of social reciprocity, lack of interest in other's people feeling and emotions and limited use of eye gaze and facial expression [4]. Usually during playing or interactive activities with a social partner, these children have difficulties in coordinating actions, while they tend to perform repetitive and stereotypical behaviors not related to the social context [5].
+
+Social behavior is closely linked with variations in autonomic nervous system (ANS). The ANS plays an important role in the regulation of the dynamic changes of behaviors and physiological states during social interaction. The Polyvagal Theory [6] describes the connections between the autonomic system and the changes in social behavior.
+
+Several researchers have studied the autonomic function in clinical populations in the attempt of gaining new insights into the etiology of psychiatric disorders. Some studies have been performed also in ASD, although the research in this field is still in its infancy. The majority of these studies have assessed heart rate (HR), heart rate variability (HRV) or respiratory sinus arrhythmia (RSA) at baseline [7,8] or during specific cognitive or sensory stimuli [9–12]. Few studies have examined RSA or other measures of HRV in response to social events and stimuli [8,13–15]. Overall these studies have shown an altered autonomic function in ASD compared with typically developing controls. In particular patients with ASD seem to have an over arousal compared with age-matched controls at baseline (increased sympathetic activity) and a difficulty in adapting autonomic parameters, in particular RSA and HRV, in response to external stimuli (decreased parasympathetic response).
+
+A possible limitation of these studies is the artificial constraint in which the signals have been recorded. Indeed, participants are usually submitted to the selected artificial stimuli, which may or may not be closely related with naturally occurring situations. These settings may introduce systematic and non-systematic biases in the characterization of the physiological measures. In particular, for the monitoring of autonomic response to social situations it should be important to use an ecological setting as close as possible to that observed in a therapeutic scenario or in real-life situations. In a very recent study, Neuhaus et al. [16] recorded autonomic data during social interactions and showed that the responses were different according to the different social partners. These data suggest that the settings can influence the physiological response enhancing or constraining the social skills of the children.
+
+The monitoring of physiological parameters in children in such ecological settings is obviously much more challenging than recording the same parameters under controlled conditions. To successfully accomplish this aim, it is necessary that the equipment for the acquisition does not interfere with the activities performed by the child during the recording.
+
+At this aim, wearable systems and wireless technologies provide a useful support, allowing monitoring patients in an unobtrusive way [17]. These solutions are particularly suitable for the recording of physiological parameters in young children with neuropsychiatric conditions, thanks to their good tolerability by patients, as previously demonstrated [18]. Wearable solutions used during therapeutic sessions can also be effective in providing objective measures about the physiological response of the child, thus helping clinicians in the personalization of the treatment. To be efficient in the recording, wearable devices should be easy to use, comfortable to wear, efficient in power consumption and featuring very low failure rates. Another crucial point for the interpretation of the signal extracted from the wearable devices, which needs to be linked to the behaviors of the children during the social interaction, is the detailed behavioral coding of the interaction task [16].
+
+The present study describes the application of a wearable solution combined with wireless technologies for the monitoring of the autonomic response in children with ASD during treatment. Therapeutic sessions were supported by the use of the so-called “serious games”, which were simultaneously run on two tablets guiding the child-therapist interaction. Indeed in recent years, computer based approaches have been shown to be effective in improving the learning cognitive and social skills (i.e. sociocognitive) of children with various learning disability conditions [19,20].
+
+This study has been carried out within the framework of MICHELANGELO, a project funded by the European Commission (FP7-ICT G.A. #288241) (http://www.michelangelo-project.eu/). In this project a technological platform for the monitoring of behavioral and physiological parameters of children with ASD was developed, which allows acquiring in a synchronized way a video registration of the sessions, electroencephalographic signals (EEG) and electrocardiographic activity (ECG). This paper focuses in particular on the acquisition and the analysis of the ECG signals obtained in the six months exploratory study of the project at IRCCS Stella Maris Scientific Foundation. ECG recordings were obtained by a single-lead system realized by the Institute of Clinical Physiology (IFC) of the National Research Council (CNR) of Italy and analyzed in order to obtain measures of the physiological response of the ASD children during treatment and to link them to the behavior.
+
+This is a feasibility study whose aims were:
+                        
+                           (i)
+                           to test the tolerability of wearable sensors technologies by young children with ASD during treatment;
+
+to evaluate the possibility to detect some modifications in physiological parameters induced by sociocognitive tasks in a semi-naturalistic setting, i.e. during an interaction of the children with the therapists mediated by “serious games”;
+
+to observe whether some longitudinal modifications, specific for each child, could be registered in the physiological response to treatment over the therapy sessions.
+
+If successful, this protocol could be applied to investigate the relationship between dynamic changes in the behavior of the child autonomic response, indicating the child's level of engagement during the treatment, overcoming artificial and constrained situations characterizing common assessment protocols.
+
+@&#METHODS@&#
+
+ECG signals were collected through an unobtrusive wearable device, which is part of the technological platform developed within the MICHELANGELO project. The whole platform includes three modules whose synergy is fundamental to gather the information required for a complete analysis: the biosignal sensor unit, the video mobile unit and a Central Unit (CU). The biosignal sensor unit consists of EEG and ECG wearable hardware. The video mobile unit is made up of two wired cameras for the scene recording, allowing the observation of the child's actions and behaviors together with the therapist's instructions. The CU consists of a workstation enabling the researchers to observe the child's behavior during the treatment session, and to manage the physiological signals both on-line and off-line. The CU also guarantees the synchronization, the storage and retrieval of acquired data. The ECG wearable technology, belonging to the biosignal sensor unit, consists of the IFC-CNR wireless ECG chest belt [21] (
+                        Fig. 1), a wearable device previously validated on healthy controls through a comparison with a gold standard Holter device (ELA medical, Milan, Italy) [21]. The single lead acquisition allows a smaller amount of data to be acquired and managed and well suits the need for the QRS complex detection, which is the fundamental information required for the algorithms.
+
+The device is based on the CE certified Shimmer® [22] wireless base module the block diagram of which (baseboard) is shown in 
+                        Fig. 2. The module, extremely small (50×25×23mm) and lightweight (30g), includes the electronics for signal conditioning (transducing, amplification and single pre-processing blocks), a power supply based on a 3V Li-ion battery with 280mAh, a 2GB SD Card for data storage and data transmission modules. The output signal is sampled at 200Hz and has an A/D resolution of 12 bits.
+
+The sensor wireless communication is performed through a Chipcon CC2420 radio transceiver and gigaAnt 2.4GHz Rufa™ antenna (central station transmission ranges up to 30m). The CC2420 is specifically designed for low-power and low-current applications and it is controlled by an SPI connection over the USART1. For the communication via an integrated 2.4GHz antenna, the platform uses a Roving Networks™ RN-41 Class 2 Bluetooth® module, connected to the MSP430 MCU, core element of the baseboard, directly via the USART1 serial connection.
+
+The module is extremely suitable for the low-power operation due to several power modes, including transmission at 60mA, reception at 40mA, idle state at 1.4mA and deep sleep at 50µA.
+
+Specifically concerning the ECG daughterboard, it features low-power auto-calibrating CMOS operational amplifiers with an ECG amplifier gain of 175. Electrodes are connected without need for cables or supplies. Current consumption of the board is commonly 0.18mA.
+
+The electronic board and its enclosure are plugged into a chest belt provided with two biocompatible, dry electrodes directly attached to the body without need for skin preparation, gels or adhesives employment. Moreover, they guarantee a comfortable contact with the thorax for long-term monitoring, adapting themselves to the body shape. The electronic board acquires the ECG signals and transmits data via Bluetooth to the CU for visualization, storage on disk and analysis.
+
+The communication protocol used was the Asynchronous Connection-Less (ACL) protocol. The PC sent commands through the controller interface, a software written in C# designed to setup the Bluetooth connection, to handle ECG data acquired and to display the ECG waveform on the PC screen.
+
+The communication through the serial port was accomplished by using the Communication Control in Visual Studio 8.0. The protocol was designed to be robust against wireless communication errors. The frame format was based on 128 bytes; each byte, received through the serial port, was stored in a buffer, processed and displayed on the PC monitor. The ECG signal was also stored in the CU, together with timestamps, for post-processing analysis.
+
+Five children with HF-ASD (all males, age range=6–8yr, mean age=7.2±0.83yr) participated in the study. The IRCCS Stella Maris Scientific Foundation's Ethics Committee approved the study and all the parents signed a written consent form to participate. The work has been carried out in accordance with The Code of Ethics of the World Medical Association (Declaration of Helsinki) for experiments involving humans. The ASD diagnosis was formulated according to the DSM-V criteria [1] and confirmed by the Autism Diagnostic Observation Schedule-2 (ADOS-2) [23] and Autism Diagnostic Interview-Revised (ADI-R) [4]. The ADOS-2 diagnostic algorithm also provides an algorithm for computing the comparison score, a measure of the severity of autism-related symptoms. The comparison score ranges from 1–10, where 1 indicates minimal-to-no evidence of autism-related symptoms and 10 indicates a high level of impairment (
+                           Table 1). A multidisciplinary team - including a senior child psychiatrist, and 2 clinical child psychologists experienced in ASD - conducted the diagnostic assessment during a 5-day extensive evaluation. The Wechsler Intelligent Scale for Children – IV (WISC-IV) was used to assess the Full Scale Intelligence Quotient (FSIQ) (Table 1).
+
+Participants performed one treatment session a week for six months at IRCCS Stella Maris Scientific Foundation. One session a month was registered with the technological platform described, including the chest belt for ECG signal acquisition, described above. Within each session, for about 20min, the therapist proposed the children some sociocognitive tasks supported by the use of “serious games” developed within the MICHELANGELO project. During all the session the children remained seated on a chair in order to limit movement for signal registration. The “serious games” were developed mapping two of the pivotal skill in ASD: imitation (IM) and joint attention (JA) [24]. The IM and JA stimuli are mapped into eleven games: seven IM and four JA games, all based on Early Start Denver Model (ESDM) treatment. Importantly the games were implemented on two tablets, one managed by the therapist and the other by the child, in order to drive them to cooperate to achieve the goal of the game. In addition the therapist had the flexibility to create new stimuli. Each of the games had different levels of difficulty ranging from the application of one stimulus to a combination of different stimuli so that the therapist could dynamically personalize the complexity of the tasks according to the child performances.
+
+The two tablets were connected to the CU, which acted as a bridge between them and sent data regarding the type of tasks performed by the child and the related timestamp, which are stored in a logfile. During the child-therapist interaction mediated by the tablets, ECG data were continuously acquired by the ECG chest belt and transmitted by Bluetooth to the CU for visualization, storage on disk and analysis.
+
+For each session the ECG signal acquired and the logfile generated by the “serious games” were extracted for further analysis. The use of the “serious games” within the therapeutic sessions allowed a detailed coding of the behaviors of the children, synchronized with ECG data, for exploring correlation between engagement in sociocognitive tasks and physiological response.
+
+After data collection, the data analysis toolbox running in the CU is able to off-line analyze and process the collected data off-line by combining different data as a whole data source. The toolbox is developed as a research tool in order to investigate the link between sociocognitive task performed by the children with the “serious games” and autonomic response during treatment sessions. Dedicated algorithms developed in Matlab™ were developed allowing to carry out the whole signal analysis from the pre-processing step to the features extraction and event detection.
+
+The signals collected from the ECG chest belt are sampled at 200Hz and pre-processed through a stepwise filtering process aimed at removing typical ECG artifacts and interferences. A cubic spline 3rd order interpolation between the fiducial isoelectric points of the ECG [25] was applied to remove artifacts due to body movements and respiration. The power line interference and muscular noise are removed using an IIR notch filter at 50Hz and an IIR low pass filter at 40Hz. The final step of the pre-processing phase implements the Pan-Tompkins method to detect the QRS complexes [26], from which the tachogram and the HRV can be extracted according to the International Guidelines of HRV [27]. The tachogram is a vector whose elements represent the beat-to-beat interval between two adjacent R peaks in the ECG and it is commonly used to extract features for a further quantitative analysis. At this step the tachogram signal might not be yet suitable for a proper features extraction due to the presence of possible residual movement artifacts and outliers, which can be easily detected by visual inspection. Artifact were visually identified and removed. In order to prevent the signal from excessive shortening, the user should operate a careful artifacts selection choosing the interval to remove as tight as possible. Outliers were replaced by division or summation. Division was applied when the outlier was determined by a failure to detect an R-peak while summation while it was caused by faulty detections of two or more peaks within a period representing the R–R interval. Finally the features extraction leads to statistical time domain parameters as described in the following paragraphs.
+
+
+                           
+                              
+                                 1)
+                                 
+                                    Heart rate. Heart rate measures the number of contractions of the heart occurring per time unit and it is typically expressed as beats per minute (bpm). The algorithm loads a two column.csv file containing the ECG signal and the timestamp for each sample and proceeds with the QRS detection and the R wave location obtained with the implementation of both a filter and a threshold. The inter-beat interval (IBI) is allocated as a vector whose elements contain the time, in seconds, occurring between each R wave and the previous one. HR is computed dividing 60 by each element of the IBI.
+
+
+                                    Root mean square of the successive differences. The evaluation of consecutive RR intervals in the ECG signal is the starting point for HRV analysis revealing the activity of ANS with information on both sympathetic and parasympathetic influences on HR [27]. A time domain measure of the HRV was chosen at this scope: the RMSSD is defined as the square root of the mean squared difference between adjacent R peaks as in (1).
+
+The algorithm is partially close to the one used for the HR extraction since the RMSSD calculus is also based on the IBI vector. The diff command performs successive differences for each couple of the IBI elements and, after its absolute value is calculated, the result is allocated in differences, which is element-by-element squared and divided by its own length. The square root eventually leads up to the RMSSD extraction as:
+                                       
+                                          (1)
+                                          
+                                             
+                                                
+                                                   RMSSD
+                                                
+                                                
+                                                   =
+                                                
+                                                
+                                                   
+                                                      
+                                                         
+                                                            1
+                                                         
+                                                         
+                                                            
+                                                               N
+                                                            
+                                                            
+                                                               −
+                                                               1
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         
+                                                            ∑
+                                                         
+                                                         
+                                                            
+                                                               i
+                                                            
+                                                            
+                                                               =
+                                                               1
+                                                            
+                                                         
+                                                         
+                                                            
+                                                               N
+                                                            
+                                                            
+                                                               −
+                                                               1
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         
+                                                            
+                                                               (
+                                                               
+                                                                  
+                                                                     R
+                                                                  
+                                                                  
+                                                                     
+                                                                        R
+                                                                     
+                                                                     
+                                                                        
+                                                                           i
+                                                                        
+                                                                        
+                                                                           +
+                                                                           1
+                                                                        
+                                                                     
+                                                                  
+                                                                  
+                                                                     −
+                                                                  
+                                                                  
+                                                                     R
+                                                                  
+                                                                  
+                                                                     
+                                                                        R
+                                                                     
+                                                                     
+                                                                        i
+                                                                     
+                                                                  
+                                                               
+                                                               )
+                                                            
+                                                            
+                                                               2
+                                                            
+                                                         
+                                                      
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+
+RMSSD changes might have very fast variations in the time domain and for this reason a moving average was applied to the RMSSD vector in order to smooth out fluctuations that could prevent plots from being easily interpreted especially when studying the correspondence between the physiological parameters and the behavioral event markers. At this aim, a sample window with 2 data points, with no overlap among adjacent windows, was used to average RMSSD values.
+
+
+                                    Respiratory sinus arrhythmia. A measure of the parasympathetic ANS activity exerted from the vagus can be derived from the RSA giving extra information about heart rate variability [11,28]. heart periods go through rhythmical fluctuations at the respiratory frequency producing RR interval shortening during inspiration and lengthening during expiration. the natural logarithm of the squared millisecond was the measure unit used in the current study. the RSA component from the tachogram signal is extracted using the empirical model decomposition (EMD), which is usually selected for nonlinear and nonstationary time series analysis [29]. the EMD decomposes the tachogram into its components allowing the identification of the respiratory pattern associated with one of the oscillatory modes in the signal called intrinsic mode function (IMF). the first IMF (IMF1) associated with the highest frequency contributing to HRV, was selected to extract the RSA feature.
+
+The algorithm used operates through six steps:
+                                       
+                                          (1)
+                                          Extrema (maxima and minima) recognition for the series X.
+
+Upper and lower envelope generation via cubic spline interpolation among all the extrema (maxima and minima, respectively).
+
+Local mean series calculation through averaging, point by point, of the two envelopes.
+
+IMF candidate (h=X−m) identification through subtraction of m from the data.
+
+h-properties assessment:
+                                                
+                                                   •
+                                                   if h is not a IMF (i.e. it does not satisfy the previously defined properties), replace X with h and repeat the procedure from Step 1;
+
+if h is a IMF, evaluate the residue r=X−h.
+
+Repetition of the procedure (Step 1–5) by sifting the residual signal till when the residue r satisfies a predefined stopping criterion.
+
+The program produces plots and also stores data for a further numerical analysis. The plots show the trend of the parameters over time. The main interest of the analysis was to evaluate how the therapeutic stimuli could influence the cardiac activity emerging from the ECG signal. A physiological event is detected each time a parameter undergoes or exceeds established values. A crucial step lies in the definition of thresholds, which denote the occurrence of a physiological event in the feature of interest. The consideration, which is at the basis of our choice, is the refusal to adopt the same thresholds for different patients since the parameter's baseline is heavily affected by subjective and environmental factors. The need for customized reference values led to the definition of a method able to be adapted at each acquisition for each patient. The values for “higher HR” and “lower HR” events thresholds are respectively calculated by the 90th and the 5th percentile of the overall HR for each patient. The physiological event of “lower RMSSD”, denoting more effective participation from the child [9], was identified under a 20ms threshold. The value indicating “lower RSA” ranged from 6.3 to 6.5 ln(ms2) [30] according to each child.
+
+The percentage of physiological events was evaluated as the ratio of occurrences of the events during the total activity/inactivity time. Moreover means and SDs of the three features in correspondence of the markers generated by the games during the sociocognitive tasks were computed.
+
+Qualitative data analysis included the evaluation of the correlation between physiological events and tasks performed by the child.
+
+Quantitative analysis was obtained compared physiological events or mean values and SDs during activity and inactivity time of the same child.
+
+Moreover in a preliminary longitudinal analysis we evaluated for each child how physiological events during activity changed from T0 (first session of the treatment) to T1 (at 6 months). For the longitudinal analysis we computed the percentage of physiological events to the total time of activity at T0 and at T1 for each child.
+
+No statistical analysis has been performed due to the small number of patients.
+
+@&#RESULTS@&#
+
+The children did not show sensory-motor and/or behavioral issues in wearing the devices and completing all the tasks, administered within a friendly and supportive environment without any difficulties or constraints. The acceptability of the device improved throughout the treatment sessions.
+
+ECG patterns showed similar changes in the five patients in response to involvement in a sociocognitive task. 
+                     
+                     
+                     Figs. 3–5 show the HR, RMSSD and RSA trends from an exemplifying session of Patient 4. The figures provide information relative to the correlation between physiological events and tasks performed by the child. Physiological events detected both during child activity (i.e. performing a task) as well as child inactivity are reported together with markers corresponding to specific actions performed by the child during IM or JA games throughout the session. The plots reveal a correspondence between physiological events of “higher HR” and “lower RMSSD” and “lower RSA” when the child is involved in a task. In that condition it was also interesting to notice that patients displayed a remarkable RSA suppression from basal values (Fig. 4). Furthermore, “lower HR” values turned out to be more frequent during child's inactivity. An increased mean HR and a significant greater percent number of physiological events of “higher HR” were usually observed when children performed a task compared to inactivity (Fig. 3). On the contrary, a remarkable suppression of RMSSD and RSA was observed during the tasks (Figs. 4 and 5): as a consequence more “lower HRV” and “lower RSA” events were detected.
+
+
+                     
+                     Table 2 showed the percentage of physiological events detected for a sample session of each child during child activity. A higher level of physiological events of “higher HR”, “lower RMSSD” and “lower RSA” was observed during child activity. Furthermore “lower HR” values were more frequent during child's inactivity.
+
+A preliminary longitudinal study shows that almost all the patients displayed an increased percentage of physiological events of “lower RSA” during activity from T0 to T1 (
+                     Fig. 6). A similar result, although less evident al least for Patient 3 and Patient 5, was also observed for “lower RMSSD” during activity from T0 to T1 (
+                     Fig. 7). Changes in the percentage of “higher HR” physiological events during activity were more inconsistent across patients as three of them showed an increase while two showed a decrease from T0 to T1 (
+                     Fig. 8).
+
+@&#DISCUSSION@&#
+
+The aim of this study was to propose a method for ECG analysis of data collected from the integrated unobtrusive technological platform described above [21]. This study was conceived as a feasibility study, whose main aim was not to test the functioning of the technology developed in a statistically viable way but rather to test the feasibility of using wearable technologies combined with “serious games” in the clinical practice for the monitoring of autonomic response to sociocognitive tasks in children with ASD during treatment. The results of the study suggest the employability of the system for the acquisition of ECG signals in a semi-naturalistic setting where young children are not subjected to artificial and constrained situation of conventional clinical environment [31]. In fact, the adoption of a semi-naturalistic setting, employed in our approach, allows recreating a more realistic situation with typical social interactions and cues. With this setting, the signals acquired from the heart and the autonomic system overall are much more similar to what is generated while the child interacts in common life situations. Moreover, the acquisition of physiological signals during the treatment could provide more information about the response of the child with respect to that merely obtained from a behavioral observation in a common clinical assessment. This can be extremely important to objectivize the effect of the treatment and to implement more effective and individualized therapies. The ECG signal holds many important features that could characterize the psychophysiological state of a person, which can be used as markers of engagement and disengagement and of the interaction between child and therapist in real time [32]. The main finding in the ECG analysis was a correlation between the detected physiological events and the involvement in of the children in the task during the therapeutic sessions. The results suggested that the method proposed can provide information about the physiological response of the children during sociocognitive tasks. The comparison between activity and inactivity with each session, showed a decrease in RMSSD and RSA during activity, that is during the involvement of the children in sociocognitive tasks, which can be interpreted as a higher level of participation of the children. Meanwhile, a number of evidences highlighted that a decrease in RMSSD and RSA [33–38] could indicate a positive response to attention demanding stimuli and is positively associated with cognitive function, including better processing speed, working memory, learning, and receptive language skills. A decrease in RSA was also positive associated with positive response to social events [39], so the decreased in RSA value compared to baseline observed during child activity could indicate a good social interaction during the interactive games.
+
+During the sociocognitive tasks we also found an increase of “high HR” events. This result agrees with previous literature, which reported an increase of HR during cognitive performances [40–42]. Given the consistency with the results of previous studies, the system proposed seems to be able to detect the level of engagement of children with ASD during a semi-naturalistic treatment session.
+
+The preliminary longitudinal study evidenced that all the patients increased the percentage of “lower RSA” events value during activity from the beginning to the end of the treatment, possibly suggesting an improvement of the level of cognitive engagement in the tasks as well as social response of the children throughout the sessions. The increase of cognitive performances is confirmed by the similar trend observed for the “lower RMSSD” parameters.
+
+As far as the HR is concerned, the results are more inconsistent among participants, which might suggest that RSA and RMSSD are better indicators of the treatment effectiveness on cognitive engagement or social functioning of patients in ASD. However the different trend seen in HR could suggest that the children could carry on a different level of arousal [43], possibly driving to an individualized response to the treatment.
+
+Overall, the results of this study foster the application of the system proposed in a clinical scenario. The main interest of this work was to develop efficient tools for the acquisition and analysis of ECG signals in ASD children proving the feasibility of the technological approach described rather than evaluating the efficiency of the therapy. The preliminary results suggest the system proposed could be useful to show some longitudinal changes in the physiological response during the treatment, specific for each child. In the future the proposed system could supply useful feedback to the therapist in the treatment of ASD, possibly introducing the implementation of algorithms for real-time feature extraction, providing the therapist with cues about the status of the child. This important information, to be applied when the system is used in a clinical setting, could improve the efficacy of the treatment sessions, driving the therapist to empower some particular tasks that could cause an engagement of the child, or to change the therapy in case the child appears to be disengaged or stressed by the task proposed.
+
+In addition, the system proposed could be introduced for the monitoring of the children at home with the support of the parents. Both the wearable ECG platform and the tablets are portable devices, which can be used at home by parents, after an adequate training. This goes in the direction of increasing the intensiveness of the treatment, which can result in an increase of its effectiveness.
+
+Being just a pilot study, the preliminary results obtained should be confirmed by a further data collection on a larger sample population, in order to evaluate the possibility to accurately characterize physiological patterns likely to be linked to different behaviors or emotional states and to longitudinally monitor the effect of the treatment either at clinics or at home through an objective measurement of the physiological response of the child.
+
+@&#LIMITATIONS@&#
+
+Some limitations need to be considered when interpreting the results. A first limitation is the small sample size, which prevents to perform a statistical analysis of the data. The study was designed as a feasibility study, thus only a small number of patients was recruited to test the applicability of the technology and the methodology. A statistical analysis could have given unreliable results in such a small sample and was also beyond the aims of the paper.
+
+However it is worth mentioning that one of the benefit of the methodology proposed could be to the identification of individualized pattern of response for a personalization of the therapy, which is extremely important for a heterogeneous disorder as ASD. For this reason from a clinical prospective it could interesting to observe individual pattern of response and individual longitudinal changes across patients.
+
+The findings of the study need to be replicated with larger sample to assess the functioning of the system in a statistically viable way. Larger sample will also allow for the evaluation of how different could be the physiological response of subgroups of children with ASD.
+
+Another possible limitation could be the specificity of our results. We discussed that the changes in HR and HRV are due to the sociocognitive performances of the children. However, we did not control for effects of physical movement on autonomic activity during the tasks, so it could be question whether the physiological modifications observed could be due to motor movements. However in our protocol the children were seated in a chair throughout the interaction playing with the tablet and thus relatively restrained in their physical activity, In addition, Porges et al. [44] found that low intensity motor movements did not influence RSA or HRV in school-age children. Considering this evidence and the setting in which data were acquired, motor movements were unlikely to have had a major impact on our results. In the future wearable accelerometers positioned on the wrists on the child and synchronized with the ECG sensor could be useful to monitor low intensity movements and to distinguish physical activity from sociocognitive engagement.
+
+@&#CONCLUSIONS@&#
+
+The methodology adopted for this pilot study and described here demonstrated its feasibility in a cohort of patients with HF-ASD. Therefore, in the future it could be applied in a larger number of patients to support the therapist for evaluating the engagement of children with ASD during therapy not only by behavioral observations but also with more objective data, in order to assess the progress of the children throughout the treatment and to properly personalize the therapy. Despite its application on a small cohort, being a pilot study, the protocol adopted seems to be effective in enhancing sociocognitive skills in patients with ASD, according to the overall longitudinal variations of children's cardiac autonomic parameters. However, this research also highlights the need for an individualization of the treatment, due to the variability experienced by the children enrolled in this pilot, and this should be taken into account when planning a personalized therapeutic approach in a similar population.
+
+@&#SUMMARY@&#
+
+The heterogeneous range of developmental impairments connected with Autism Spectrum Disorders (ASD) justifies the need for a more intensive and personalized treatment. At this scope non-invasive methods for the achievement of biofeedback may support therapists in this challenging purpose. The electrical activity of the heart can be examined to derive useful features related with the child's response to therapeutic stimuli. In this study a multisensorial wearable platform was employed to collect electrocardiographic signals (ECG) in children with ASD during therapies in a semi-naturalistic setting. The Heart Rate, the Root Mean Square of the Successive Differences (RMSSD) and the Respiratory Sinus Arrhythmia (RSA) were extracted by the implementation of dedicated algorithms, well suited to the output data from the system. The tool could merge physiological features with information concerning events recorded during the therapy consisting in imitation and joint attention tasks. Results, supported by previous findings, showed a correlation between physiological and behavioral markers confirming that the cardiac activity is highly influenced from the emotional state of the patient as a response to the treatment.
+
+Quantitative feedbacks about the improvements achieved by the children represent an appropriate solution in the managing of ASD diseases. The portability of the devices employed, their unobtrusiveness and reliability could encourage the adoption of this system as a guide for the monitoring of ASD children in different scenarios ranging from the home to the clinical settings.
+
+Simone Di Palma developed the algorithms and analyzed ECG data and contributed in writing the paper.
+
+Alessandro Tonacci participated in the acquisition and analysis of the data and contributed in writing the paper.
+
+Antonio Narzisi performed the therapeutic sessions and contributed in writing the paper.
+
+Claudio Domenici participated in the discussion and interpretation of the results.
+
+Giovanni Pioggia was responsible of the technological protocol and of the implementation of the wearable chest strap.
+
+Filippo Muratori was responsible of the recruitment and the diagnosis of children with ASD.
+
+Lucia Billeci participated in the acquisition of the data, developed the study design, contributed in the discussion and interpretation of the results and in writing the paper.
+
+The work is part of MICHELANGELO, a project funded by the European Commission (FP7-ICT G.A. # 288241) (http://www.michelangelo-project.eu/). No further conflicts of interest are present.
+
+@&#ACKNOWLEDGMENT@&#
+
+The work was funded by MICHELANGELO, an European Commission project (FP7-ICT G.A. #288241) (http://www.michelangelo-project.eu/).
+
+Silvio Bonfiglio (FIMI, Italy), Giovanni Baldus, Daniele Corda, Gennaro Tartarisco (CNR, Italy), Federico Cruciani, Cristiano Paggetti (I+, Italy),Valentina Bono, Koushik Maharatna (University of Southampton, UK), Maryrose Francisa, Angele Giuliano (Across Limits, Malta), Mark Donnelly, Leo Galway (University of Ulster, UK), Fabio Apicella, Chiara Lucentini (Stella Maris Scientific Institute, Italy), Salvatore Maria Anzalone, Mohamed Chetouani (Université Pierre et Marie Curie, France), David Cohen, Jean Xavier (Groupe Hospitalier Pitié-Salpêtrière, France).
+
+@&#REFERENCES@&#
+

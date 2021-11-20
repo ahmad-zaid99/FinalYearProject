@@ -1,0 +1,3099 @@
+@&#MAIN-TITLE@&#Elastic–plastic dynamic fracture analysis for stationary curved cracks
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           The numerical solutions presented in this paper provide attractive features of the integral 
+                                 
+                                    
+                                       
+                                          J
+                                          ^
+                                       
+                                    
+                                    
+                                       F
+                                    
+                                 
+                              .
+
+
+                        
+                        
+                           
+                           The present results may be useful for future research in elastic–plastic dynamic fracture.
+
+
+                        
+                        
+                           
+                           The integral 
+                                 
+                                    
+                                       
+                                          J
+                                          ^
+                                       
+                                    
+                                    
+                                       F
+                                    
+                                 
+                               has been found to maintain very nearly path independence.
+
+
+                        
+                        
+                           
+                           The present study recommends that the integral 
+                                 
+                                    
+                                       
+                                          J
+                                          ^
+                                       
+                                    
+                                    
+                                       F
+                                    
+                                 
+                               may be easily correlated to establish failure criteria.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Circular arc crack
+
+Finite element method
+
+Path independent integral
+
+Elastic–plastic deformation
+
+Dynamic load
+
+@&#ABSTRACT@&#
+
+
+                  It has been a great challenge for many scientists and engineers to compute elastic–plastic solutions for dynamically loaded cracked structures due to the fact that the solutions are much more complicated and computationally time consuming than corresponding static problems. The path independent integral 
+                        
+                           
+                              
+                                 J
+                                 ^
+                              
+                           
+                           
+                              F
+                           
+                        
+                     , originally developed for a two-dimensional dynamically loaded stationary circular arc crack in a homogeneous and isotropic material, is evaluated in the present study by taking elastic–plastic material properties to quantify the crack problem. All the numerical results presented in this study were evaluated using general purpose finite element commercial software ANSYS together with the post-processing program (using FORTRAN) developed by the authors. Numerical results thus obtained are compared with good agreement within the limits of computational accuracy and the path invariant property of 
+                        
+                           
+                              
+                                 J
+                                 ^
+                              
+                           
+                           
+                              F
+                           
+                        
+                      is well preserved over the integration contours.
+               
+
+arbitrary region around the process zone
+
+body force vector
+
+physical component of body force vector 
+                           
+                              
+                                 B
+                              
+                              i
+                           
+                        
+                     
+
+Rice's path independent integral
+
+crack driving force for circular arc crack under multiple loads
+
+positive unit outward normal
+
+physical component of positive unit outward normal 
+                           
+                              
+                                 n
+                              
+                              
+                                 β
+                              
+                           
+                        
+                     
+
+plane polar coordinate
+
+radius of the crack
+
+traction vector
+
+physical component of the traction vector 
+                           
+                              
+                                 T
+                              
+                              i
+                           
+                        
+                     
+
+displacement vector
+
+covariant derivative of 
+                           
+                              
+                                 u
+                              
+                              
+                                 i
+                              
+                           
+                         with respect to 
+                           j
+                        
+                     
+
+physical component of 
+                           
+                              
+                                 u
+                              
+                              
+                                 i
+                                 ,
+                                 j
+                              
+                           
+                        
+                     
+
+mechanical strain energy density function
+
+contravariant stress tensor
+
+physical component of the stress tensor 
+                           
+                              
+                                 σ
+                              
+                              
+                                 i
+                                 j
+                              
+                           
+                        
+                     
+
+strain tensor
+
+covariant derivative of 
+                           
+                              
+                                 ε
+                              
+                              
+                                 i
+                                 j
+                              
+                           
+                         with respect to 
+                           β
+                        
+                     
+
+physical component of 
+                           
+                              
+                                 ε
+                              
+                              
+                                 i
+                                 j
+                                 ,
+                                 β
+                              
+                           
+                        
+                     
+
+thermal strain tensor
+
+initial strain tensor
+
+arbitrary curve surrounding 
+                           A
+                        
+                     
+
+angle
+
+material density symbols not listed are defined as they appear in text.
+
+@&#INTRODUCTION@&#
+
+Even though failure due to presence of crack or crack like defects has been observed both in huge structures such as airplanes and automobiles and in the micron level structures such as flip-chip and wire bond packages in semiconductor industry since the creation of the earliest man-made structures, however, the formulations of various fracture theories and the understanding of this phenomenon rapidly accelerated during the 20th century. It should be understood clearly that catastrophic consequences of structural failure are sometimes hard to avoid because the factors involved in predicting fracture are very complex. Almost all structural members are subjected to both static and dynamic loads. When the loads that do not cause much inertia effect, it can be treated as static loads, however, when loads fall outside this range, the inertia effect becomes significant and the loading rate may also have an effect on material properties, so that the dynamic response ought to be considered. Today, in the area of science of the strength and fracture of solids (both static and dynamic), the basic criteria of fracture have been formulated, analytical and numerical models have been developed, and solutions have been obtained for various problems of theoretical and practical importance.
+
+The most widely used quantitative parameters in fracture mechanics analysis to define crack tip severity are stress intensity factor and J-integral for investigating linear, non-linear and more complicated fracture response, respectively. Details of theories and parameters can be found in a number of text books. High levels of plastic deformations ahead of a crack tip require the use of elastic–plastic fracture mechanics (EPFM) for estimating crack tip severity. In EPFM, the crack extension force is normally described by the Rice′s path independent J-integral [1]. The integral has been formulated for linear or non-linear elastic materials in the case of a straight crack where the crack extension has also been considered to be straight. It can be accurately estimated far away from the tip region of high stress/strain gradients and is therefore advantageous in computational fracture mechanics. Since the work of Rice, Eshelby and Cherepanov [1–3], the subject of the so-called path-independent integrals has received much attention both in linear elastic and more complex non-linear elastic–plastic fracture mechanics applications due to its many advantages. Over the years numerous extensions of J integral have also come out in order to undertake various loading conditions on different geometries, however, all such extensions are mainly restricted to straight or arbitrarily kinked crack geometry.
+
+On the other hand it is very well-known that the integrity of engineering structures and the associated fracture behavior due to presence of cracks depend significantly on factors including crack geometry and material property. The nature of construction and use of various engineering components under various modes of non-uniform loadings make the appearance of curved cracks more likely than that of straight cracks. Curved cracks are also found when the cracks lie along the interfaces of inhomogeneous materials with distinct interfaces. The curved cracks may as well be frequently encountered in the propagation of straight cracks subjected to mixed mode loading. Even though, extensive research has been carried out on the path independence character of J for a straight crack, only limited work has been reported so far to bring forward stress intensity factors and conservative integrals for curved cracks commonly encountered in practical engineering problems [4–11].
+
+Contrary to the advances in static fracture mechanics, significantly fewer reliable facts with established criteria and solved problems (for both stress intensity factors and J integral) are found in dynamic fracture mechanics. Due to the complexity of dynamics itself and the nature of fracture mechanics, the finding of methods for determining dynamic fracture mechanics response in structures is a challenge for engineers and researchers. Some of the publications in the literature focus on the category of dynamic problems which concern cracks reaching a point of instability while advancing rapidly; however the present study is about the other category of dynamic problems, in which stationary cracks are subjected to rapidly applied loads, such as an impact loading. In the case of a sudden or impact loading that may approach from a number of sources and which affects not only the structural behavior but also can affect the material properties, fracture can occur unexpectedly. In reality, an inertia effect from dynamic load can cause plastic behavior [12]. In a problem, where the stress–strain and the load–displacement behavior are time-dependent due to either dynamic loading or creep, the concepts of time dependent fracture mechanics must be used. When the loading rates are very high, the crack tip stresses are influenced by the material inertia, propagation of stress waves, strain rate and kinetic energy which are neglected in a typical static analysis [13].
+
+Ductile materials are preferable for use in structures which are subjected to impact loading due to their ability to absorb a large amount of energy in the case of shock loading. The elastic–plastic material behavior in dynamic fracture mechanics field is a research field which was begun after the 1980s. The pioneering investigations in this area were carried out by Freund [14], Kanninen and Poplar [15], Atluri [16], Kishimoto et. al. [17], and Nakamura et. al. [18]. The number of the analysis of the propagation of stress waves in an elastic–plastic dynamic fracture problem has increased since the 1990s and the same subject is still being studied by many researchers [19–22]. As determining a fracture characterizing parameter like stress intensity factor or the J integral for rapid loading can be very difficult due to several factors, it seems challenging to investigate the elastic–plastic dynamic fracture mechanics concept under rapid loading conditions to obtain practically meaningful crack tip parameters. In spite of a large number of publications in the area of mechanics of fast and impact fracture for straight crack problems no attempt has been reported in the context of curved crack under dynamic load, to the best of the authors' knowledge. Moreover, the use of path independent integral as a fracture characterizing parameter under rapidly varying load is also limited in the literature even for straight crack. In the present work, an attempt has been made for examining the transient dynamic elasto-plastic path independence behavior of the integral 
+                        
+                           
+                              
+                                 J
+                                 ^
+                              
+                           
+                           
+                              F
+                           
+                        
+                      
+                     [9] which was developed for a two-dimensional stationary circular arc crack in a homogeneous and isotropic material subjected to rapidly varying load.
+
+The purpose of the present study is to examine the performance of integral 
+                        
+                           
+                              
+                                 J
+                                 ^
+                              
+                           
+                           
+                              F
+                           
+                        
+                      under rapidly varying mechanical load for a center circular cracked plate undergoing elastic–plastic deformation, 
+                     Fig. 1. The curved crack borders are assumed traction-free. Recalling the path independent integral expression 
+                        
+                           
+                              
+                                 J
+                                 ^
+                              
+                           
+                           
+                              F
+                           
+                        
+                      
+                     [9], the energy release rate is given by
+                        
+                           (1)
+                           
+                              
+                                 
+                                    
+                                       J
+                                       ^
+                                    
+                                 
+                                 
+                                    F
+                                 
+                              
+                              =
+                              
+                                 
+                                    ∫
+                                 
+                                 
+                                    
+                                       
+                                          Γ
+                                       
+                                       
+                                          A
+                                       
+                                    
+                                 
+                              
+                              (
+                              W
+                              
+                                 
+                                    
+                                       n
+                                       ^
+                                    
+                                 
+                                 
+                                    β
+                                 
+                              
+                              −
+                              
+                                 
+                                    
+                                       T
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                 
+                              
+                              
+                                 
+                                    
+                                       u
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                    ;
+                                    β
+                                 
+                              
+                              )
+                              d
+                              Γ
+                              −
+                              
+                                 
+                                    ∫
+                                 
+                                 
+                                    A
+                                 
+                              
+                              
+                                 1
+                                 r
+                              
+                              
+                                 
+                                    
+                                       σ
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                    β
+                                 
+                              
+                              
+                                 
+                                    
+                                       u
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                    ;
+                                    r
+                                 
+                              
+                              d
+                              A
+                              +
+                              [
+                              
+                                 
+                                    ∫
+                                 
+                                 
+                                    A
+                                 
+                              
+                              
+                                 
+                                    
+                                       σ
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                              
+                              
+                                 
+                                    
+                                       ε
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                    j
+                                    ;
+                                    β
+                                 
+                                 
+                                    t
+                                    h
+                                 
+                              
+                              d
+                              A
+                              +
+                              
+                                 
+                                    ∫
+                                 
+                                 
+                                    A
+                                 
+                              
+                              
+                                 
+                                    
+                                       σ
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                              
+                              
+                                 
+                                    
+                                       ε
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                    j
+                                    ;
+                                    β
+                                 
+                                 
+                                    O
+                                 
+                              
+                              d
+                              A
+                              
+                                 
+                                    ∫
+                                 
+                                 
+                                    A
+                                 
+                              
+                              ρ
+                              
+                                 
+                                    
+                                       
+                                          u
+                                          ¨
+                                       
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                 
+                              
+                              
+                                 
+                                    
+                                       u
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                    ;
+                                    β
+                                 
+                              
+                              d
+                              A
+                              −
+                              
+                                 
+                                    ∫
+                                 
+                                 
+                                    A
+                                 
+                              
+                              
+                                 
+                                    
+                                       B
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                 
+                              
+                              
+                                 
+                                    
+                                       u
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                    ;
+                                    β
+                                 
+                              
+                              d
+                              A
+                              ]
+                           
+                        
+                     In the above equation, the capped (^) quantities with subscript (i.e. 
+                        
+                           
+                              
+                                 n
+                                 ^
+                              
+                           
+                           
+                              β
+                           
+                        
+                     , 
+                        
+                           
+                              
+                                 T
+                                 ^
+                              
+                           
+                           
+                              i
+                           
+                        
+                     , 
+                        
+                           
+                              
+                                 σ
+                                 ^
+                              
+                           
+                           
+                              i
+                              β
+                           
+                        
+                     , 
+                        
+                           
+                              
+                                 σ
+                                 ^
+                              
+                           
+                           
+                              i
+                              j
+                           
+                        
+                     , 
+                        
+                           
+                              
+                                 u
+                                 ¨
+                              
+                           
+                           i
+                        
+                      and 
+                        
+                           
+                              
+                                 B
+                                 ^
+                              
+                           
+                           
+                              i
+                           
+                        
+                     ) represent the corresponding physical components of the tensors (i.e. 
+                        
+                           
+                              n
+                           
+                           
+                              β
+                           
+                        
+                     , 
+                        
+                           
+                              T
+                           
+                           i
+                        
+                     , 
+                        
+                           
+                              σ
+                           
+                           
+                              i
+                              β
+                           
+                        
+                     , 
+                        
+                           
+                              σ
+                           
+                           
+                              i
+                              j
+                           
+                        
+                     , 
+                        
+                           
+                              
+                                 u
+                                 ¨
+                              
+                           
+                           i
+                        
+                      and 
+                        
+                           
+                              B
+                           
+                           i
+                        
+                     ) while the quantities with cap (^) and subscript semi-colon (;) (i.e. 
+                        
+                           
+                              
+                                 u
+                                 ^
+                              
+                           
+                           
+                              i
+                              ;
+                              β
+                           
+                        
+                     , 
+                        
+                           
+                              
+                                 u
+                                 ^
+                              
+                           
+                           
+                              i
+                              ;
+                              r
+                           
+                        
+                     , 
+                        
+                           
+                              
+                                 ε
+                                 ^
+                              
+                           
+                           
+                              i
+                              j
+                              ;
+                              β
+                           
+                           
+                              t
+                              h
+                           
+                        
+                      and 
+                        
+                           
+                              
+                                 ε
+                                 ^
+                              
+                           
+                           
+                              i
+                              j
+                              ;
+                              β
+                           
+                           
+                              o
+                           
+                        
+                     ) represent the physical components of the covariant derivatives (i.e. 
+                        
+                           
+                              u
+                           
+                           
+                              i
+                              ,
+                              β
+                           
+                        
+                     , 
+                        
+                           
+                              u
+                           
+                           
+                              i
+                              ,
+                              r
+                           
+                        
+                     , 
+                        
+                           
+                              ε
+                           
+                           
+                              i
+                              j
+                              ,
+                              β
+                           
+                           
+                              t
+                              h
+                           
+                        
+                      and 
+                        
+                           
+                              ε
+                           
+                           
+                              i
+                              j
+                              ,
+                              β
+                           
+                           
+                              o
+                           
+                        
+                     ). The superscript corresponds to contravariant and subscript, the covariant tensor properties. Further, 
+                        W
+                      represents the strain energy density, 
+                        
+                           
+                              n
+                           
+                           
+                              β
+                           
+                        
+                      represents the unit outward positive normal vector on 
+                        d
+                        Γ
+                      in 
+                        β
+                      direction, 
+                        
+                           
+                              T
+                           
+                           i
+                        
+                      the surface traction, 
+                        
+                           
+                              σ
+                           
+                           
+                              i
+                              β
+                           
+                        
+                      and 
+                        
+                           
+                              σ
+                           
+                           
+                              i
+                              j
+                           
+                        
+                      the stress tensors, 
+                        
+                           
+                              B
+                           
+                           i
+                        
+                      the body force vector, 
+                        
+                           
+                              u
+                           
+                           
+                              i
+                           
+                        
+                      the displacement vector, 
+                        
+                           
+                              
+                                 u
+                                 ¨
+                              
+                           
+                           i
+                        
+                      material acceleration, ρ the density and 
+                        
+                           
+                              ε
+                           
+                           
+                              i
+                              j
+                           
+                        
+                      the strain tensor.
+
+The first two integral expressions in the right hand side of Eq. (1) represent the F-integral for circular arc crack [6]. For infinite crack radius the area integral vanishes leading to the well-known Rice′s J-integral [1]. The area integral expressions within the square brackets in Eq. (1) represent the correction terms to preserve path independence of 
+                        
+                           
+                              
+                                 J
+                                 ^
+                              
+                           
+                           
+                              F
+                           
+                        
+                      integral due to thermal strain, initial strain, material inertia and body force effects. The path independent character of the above equation was established from continuum mechanics approach under deformation plasticity theory. This condition, within the framework of plasticity, is not in general satisfied since the strain energy density (W) is no longer a unique function of the instantaneous strains but depends on the strain history at a particular point. Nonetheless, previous numerical studies have demonstrated that if the applied loads/displacements are monotonically increasing and if the stress histories for materials near the tip are nearly proportional, then even under incremental plastic deformation similar integrals calculated on different contours preserve sufficiently accurate path independent character [23–27]. The earlier encouraging results provide us confidence to investigate the property of the path area forms of integral in (1) under incremental plasticity theory, with a view to extend the application of such integral to a much broader range of material response.
+
+For the numerical investigation of path independence under rapidly varying mechanical load (only), neglecting thermal or initial strain and body force effects, the 
+                        
+                           
+                              
+                                 J
+                                 ^
+                              
+                           
+                           
+                              F
+                           
+                        
+                      turns into
+                        
+                           (2)
+                           
+                              
+                                 
+                                    
+                                       J
+                                       ^
+                                    
+                                 
+                                 
+                                    F
+                                 
+                              
+                              
+                                 
+                                    ∫
+                                 
+                                 
+                                    
+                                       
+                                          Γ
+                                       
+                                       
+                                          A
+                                       
+                                    
+                                 
+                              
+                              (
+                              W
+                              
+                                 
+                                    
+                                       n
+                                       ^
+                                    
+                                 
+                                 
+                                    β
+                                 
+                              
+                              −
+                              
+                                 
+                                    
+                                       T
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                 
+                              
+                              
+                                 
+                                    
+                                       u
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                    ;
+                                    
+                                    β
+                                 
+                              
+                              )
+                              d
+                              Γ
+                              
+                                 
+                                    ∫
+                                 
+                                 
+                                    A
+                                 
+                              
+                              
+                                 1
+                                 r
+                              
+                              
+                                 
+                                    
+                                       σ
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                    β
+                                 
+                              
+                              
+                                 
+                                    
+                                       u
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                    ;
+                                    
+                                    r
+                                 
+                              
+                              d
+                              A
+                              +
+                              
+                                 
+                                    ∫
+                                 
+                                 
+                                    A
+                                 
+                              
+                              ρ
+                              
+                                 
+                                    
+                                       
+                                          u
+                                          ¨
+                                       
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                 
+                              
+                              
+                                 
+                                    
+                                       u
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                    ;
+                                    
+                                    β
+                                 
+                              
+                              d
+                              A
+                           
+                        
+                     It may be noted that in the present study transient dynamic response of the specimen was considered incorporating the effect of material inertia via the second area integral term in Eq. (2).
+
+The expression for 
+                        
+                           
+                              
+                                 J
+                                 ^
+                              
+                           
+                           
+                              F
+                           
+                        
+                      has been developed in polar coordinate system. Generally, the finite element commercial packages provide output data in the Cartesian system, which can directly be used in the estimation of 
+                        
+                           
+                              
+                                 J
+                                 ^
+                              
+                           
+                           
+                              F
+                           
+                        
+                      when this integral is expressed in global Cartesian form. The details of transformations are available in [11].
+
+The line integral in Eq. (2) on transformation to Cartesian coordinates becomes
+                        
+                           (3)
+                           
+                              
+                                 ∫
+                                 
+                                    
+                                       
+                                          Γ
+                                       
+                                       
+                                          A
+                                       
+                                    
+                                 
+                              
+                              
+                                 (
+                                 W
+                                 
+                                    
+                                       
+                                          n
+                                          ^
+                                       
+                                    
+                                    
+                                       β
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       
+                                          T
+                                          ^
+                                       
+                                    
+                                    
+                                       i
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          u
+                                          ^
+                                       
+                                    
+                                    
+                                       i
+                                       ;
+                                       β
+                                    
+                                 
+                                 )
+                                 d
+                                 Γ
+                                 ⇔
+                              
+                              
+                                 ∫
+                                 
+                                    
+                                       
+                                          Γ
+                                       
+                                       
+                                          A
+                                       
+                                    
+                                 
+                              
+                              
+                                 
+                                    [
+                                    
+                                       −
+                                       W
+                                       
+                                       cos
+                                       β
+                                       −
+                                       
+                                          {
+                                          
+                                             
+                                                
+                                                   σ
+                                                
+                                                
+                                                   x
+                                                   y
+                                                
+                                             
+                                             
+                                                (
+                                                
+                                                   
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               u
+                                                            
+                                                            
+                                                               x
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         x
+                                                      
+                                                   
+                                                   sin
+                                                   β
+                                                   −
+                                                   
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               u
+                                                            
+                                                            
+                                                               x
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         y
+                                                      
+                                                   
+                                                   cos
+                                                   β
+                                                
+                                                )
+                                             
+                                             +
+                                             
+                                                
+                                                   σ
+                                                
+                                                
+                                                   y
+                                                   y
+                                                
+                                             
+                                             
+                                                (
+                                                
+                                                   
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               u
+                                                            
+                                                            
+                                                               y
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         x
+                                                      
+                                                   
+                                                   sin
+                                                   β
+                                                   −
+                                                   
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               u
+                                                            
+                                                            
+                                                               y
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         y
+                                                      
+                                                   
+                                                   cos
+                                                   β
+                                                
+                                                )
+                                             
+                                          
+                                          }
+                                       
+                                    
+                                    ]
+                                 
+                                 d
+                                 x
+                              
+                              −
+                              
+                                 ∫
+                                 
+                                    
+                                       
+                                          Γ
+                                       
+                                       
+                                          A
+                                       
+                                    
+                                 
+                              
+                              
+                                 
+                                    [
+                                    
+                                       W
+                                       
+                                       sin
+                                       β
+                                       +
+                                       
+                                          {
+                                          
+                                             
+                                                
+                                                   σ
+                                                
+                                                
+                                                   x
+                                                   x
+                                                
+                                             
+                                             
+                                                (
+                                                
+                                                   
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               u
+                                                            
+                                                            
+                                                               x
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         y
+                                                      
+                                                   
+                                                   cos
+                                                   β
+                                                   −
+                                                   
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               u
+                                                            
+                                                            
+                                                               x
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         x
+                                                      
+                                                   
+                                                   sin
+                                                   β
+                                                
+                                                )
+                                             
+                                             −
+                                             
+                                                
+                                                   σ
+                                                
+                                                
+                                                   x
+                                                   y
+                                                
+                                             
+                                             
+                                                (
+                                                
+                                                   
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               u
+                                                            
+                                                            
+                                                               y
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         x
+                                                      
+                                                   
+                                                   sin
+                                                   β
+                                                   −
+                                                   
+                                                      
+                                                         ∂
+                                                         
+                                                            
+                                                               u
+                                                            
+                                                            
+                                                               y
+                                                            
+                                                         
+                                                      
+                                                      
+                                                         ∂
+                                                         y
+                                                      
+                                                   
+                                                   cos
+                                                   β
+                                                
+                                                )
+                                             
+                                          
+                                          }
+                                       
+                                    
+                                    ]
+                                 
+                                 d
+                                 y
+                              
+                           
+                        
+                     
+                  
+
+The 1st area integral in Eq. (2) becomes
+                        
+                           (4)
+                           
+                              
+                                 ∫
+                                 A
+                              
+                              
+                                 1
+                                 r
+                              
+                              
+                                 
+                                    
+                                       
+                                          σ
+                                          ^
+                                       
+                                    
+                                    
+                                       i
+                                       β
+                                    
+                                 
+                                 
+                                    
+                                       
+                                          u
+                                          ^
+                                       
+                                    
+                                    
+                                       i
+                                       ;
+                                       r
+                                    
+                                 
+                                 d
+                                 A
+                                 ⇔
+                              
+                              
+                                 ∫
+                                 A
+                              
+                              
+                                 
+                                    
+                                       
+                                          
+                                             1
+                                             r
+                                          
+                                          
+                                             [
+                                             
+                                                (
+                                                
+                                                   
+                                                      σ
+                                                   
+                                                   
+                                                      x
+                                                      y
+                                                   
+                                                
+                                                
+                                                cos
+                                                β
+                                                −
+                                                
+                                                   
+                                                      σ
+                                                   
+                                                   
+                                                      x
+                                                      x
+                                                   
+                                                
+                                                
+                                                sin
+                                                β
+                                                )
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         
+                                                            ∂
+                                                            
+                                                               
+                                                                  u
+                                                               
+                                                               
+                                                                  x
+                                                               
+                                                            
+                                                         
+                                                         
+                                                            ∂
+                                                            x
+                                                         
+                                                      
+                                                      cos
+                                                      β
+                                                      +
+                                                      
+                                                         
+                                                            ∂
+                                                            
+                                                               
+                                                                  u
+                                                               
+                                                               
+                                                                  y
+                                                               
+                                                            
+                                                         
+                                                         
+                                                            ∂
+                                                            y
+                                                         
+                                                      
+                                                      sin
+                                                      β
+                                                   
+                                                   )
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          
+                                             
+                                                +
+                                                (
+                                                
+                                                   
+                                                      σ
+                                                   
+                                                   
+                                                      y
+                                                      y
+                                                   
+                                                
+                                                
+                                                cos
+                                                β
+                                                −
+                                                
+                                                   
+                                                      σ
+                                                   
+                                                   
+                                                      x
+                                                      y
+                                                   
+                                                
+                                                
+                                                sin
+                                                β
+                                                )
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         
+                                                            ∂
+                                                            
+                                                               
+                                                                  u
+                                                               
+                                                               
+                                                                  y
+                                                               
+                                                            
+                                                         
+                                                         
+                                                            ∂
+                                                            x
+                                                         
+                                                      
+                                                      cos
+                                                      β
+                                                      +
+                                                      
+                                                         
+                                                            ∂
+                                                            
+                                                               
+                                                                  u
+                                                               
+                                                               
+                                                                  y
+                                                               
+                                                            
+                                                         
+                                                         
+                                                            ∂
+                                                            y
+                                                         
+                                                      
+                                                      sin
+                                                      β
+                                                   
+                                                   )
+                                                
+                                             
+                                             ]
+                                          
+                                          d
+                                          A
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+                  
+
+The second area integral in Eq. (2) becomes
+                        
+                           (5)
+                           
+                              
+                                 ∫
+                                 A
+                              
+                              
+                                 ρ
+                                 
+                                    
+                                       
+                                          
+                                             u
+                                             ¨
+                                          
+                                          ^
+                                       
+                                    
+                                    
+                                       i
+                                    
+                                 
+                              
+                              
+                                 
+                                    
+                                       u
+                                       ^
+                                    
+                                 
+                                 
+                                    i
+                                    ;
+                                    β
+                                 
+                              
+                              d
+                              A
+                              ⇔
+                              
+                                 ∫
+                                 A
+                              
+                              
+                                 ρ
+                                 
+                                    (
+                                    
+                                       −
+                                       
+                                          
+                                             
+                                                u
+                                                ¨
+                                             
+                                          
+                                          x
+                                       
+                                       
+                                          
+                                             ∂
+                                             
+                                                
+                                                   u
+                                                
+                                                
+                                                   x
+                                                
+                                             
+                                          
+                                          
+                                             ∂
+                                             x
+                                          
+                                       
+                                       sin
+                                       β
+                                       +
+                                       
+                                          
+                                             
+                                                u
+                                                ¨
+                                             
+                                          
+                                          x
+                                       
+                                       
+                                          
+                                             ∂
+                                             
+                                                
+                                                   u
+                                                
+                                                
+                                                   x
+                                                
+                                             
+                                          
+                                          
+                                             ∂
+                                             y
+                                          
+                                       
+                                       cos
+                                       β
+                                       −
+                                       
+                                          
+                                             
+                                                u
+                                                ¨
+                                             
+                                          
+                                          y
+                                       
+                                       
+                                          
+                                             ∂
+                                             
+                                                
+                                                   u
+                                                
+                                                
+                                                   y
+                                                
+                                             
+                                          
+                                          
+                                             ∂
+                                             x
+                                          
+                                       
+                                       sin
+                                       β
+                                       +
+                                       
+                                          
+                                             
+                                                u
+                                                ¨
+                                             
+                                          
+                                          y
+                                       
+                                       
+                                          
+                                             ∂
+                                             
+                                                
+                                                   u
+                                                
+                                                
+                                                   y
+                                                
+                                             
+                                          
+                                          
+                                             ∂
+                                             y
+                                          
+                                       
+                                       cos
+                                       β
+                                    
+                                    )
+                                 
+                                 d
+                                 A
+                              
+                           
+                        
+                     
+                  
+
+This section addresses some of the basic finite element issues associated with the present computational model used in the estimation of the relevant quantities of the integrals. The purpose of this brief description is to acquaint the readers, who are not very conversant with the basic features of FEM techniques in the ANSYS commercial package [28].
+
+General purpose finite element program ANSYS has been used in order to obtain stress, displacement and displacement derivative quantities. These quantities used in the integral calculations are extrapolated from the elements' integration points and averaged at the nodes. Also this software makes available the facility to draw contour paths directly through the nodes only, not through the integration paths. As ANSYS generally provides output data directly in Cartesian coordinate system, the integral expression in Eq. (2) was converted to Cartesian system.
+
+For discretization purpose the present numerical studies employ 8-noded iso-parametric element PLANE82 and PLANE183 for elastic and elastic–plastic deformations, respectively. These elements model the curved boundaries very well the details of which are available in ANSYS manual. Brief features of these elements are that they are two-dimensional with two degrees of freedom at each node. These elements are well suited for both plane stress and plane strain analyses. No singular elements have been chosen at the crack tip in the current study.
+
+The incremental theory of plasticity, including the constitutive relations, flow rule and yield criterion needs to be incorporated in a simulation program for analyzing elastic–plastic dynamic problems. The elastic–plastic material model for the current analyses are based on bilinear and non-linear (Mises) representation in which incremental theory of plasticity with (constant) isotropic hardening was employed with the von Mises yield surface. The non-linear isotropic hardening law, available directly in ANSYS, is defined by a function with four material constants and is based on the Voce's equation 
+                              R
+                              =
+                              k
+                              +
+                              
+                                 
+                                    R
+                                 
+                                 
+                                    0
+                                 
+                              
+                              
+                                 
+                                    ε
+                                 
+                                 
+                                    p
+                                    l
+                                 
+                              
+                              +
+                              
+                                 
+                                    R
+                                 
+                                 
+                                    ∝
+                                 
+                              
+                              (
+                              1
+                              −
+                              
+                                 
+                                    e
+                                 
+                                 
+                                    −
+                                    b
+                                    
+                                       
+                                          ε
+                                       
+                                       
+                                          p
+                                          l
+                                       
+                                    
+                                 
+                              
+                              )
+                            under small scale yielding, 
+                           Fig. 2, [28–29]. Where, k=yield stress of material; R
+                           0=threshold stress; R
+                           ∞=final stress; 
+                              
+                                 
+                                    ε
+                                 
+                                 
+                                    p
+                                    l
+                                 
+                              
+                           = equivalent plastic stress increment; b=hardening index.
+
+Four different elastic–plastic material models chosen [11,13] are
+                              
+                                 1.
+                                 Young's modulus (E), 2.1E5MPa; Poisson's ratio (ν), 0.3; Yield stress (σ
+                                    y), 350MPa; and tangent modulus (E
+                                    T), 210MPa.
+
+
+                                    E, 2.07E5MPa; ν, 0.3; σ
+                                    y, 345MPa; and E
+                                    T, 0MPa.
+
+
+                                    E, 2.0E5MPa; ν, 0.3; σ
+                                    y, 200MPa; and E
+                                    T, 7150MPa.
+
+
+                                    E, 2.1E5MPa; ν, 0.3; σ
+                                    y, 184MPa; threshold stress (
+                                       
+                                          
+                                             R
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                    ), 355MPa; final stress (
+                                       
+                                          
+                                             R
+                                          
+                                          
+                                             ∞
+                                          
+                                       
+                                    ), 480MPa; and hardening index, 0.11.
+
+The question of whether or not inertial effects (dynamic problem) are significant in any problem depends on the loading conditions, the material characteristics, and the geometrical configuration of the body. Generally the main decisive factor that separates the dynamic problem from a static one is the comparison made between the rapidity of loading and the natural frequency of the structure. In the present study, the first natural frequency obtained through the modal analysis part of ANSYS for the plate structure, shown in 
+                           
+                           
+                           Fig. 5, is 1.0Hz. The equation solver used by the ANSYS is based on the size of the problem and in this investigation the program chosen default solver was used. This procedure approximates a solution within a specified convergence tolerance. The problem was solved using transient dynamic analysis using the governing equation 
+                              [
+                              m
+                              ]
+                              {
+                              
+                                 x
+                                 ¨
+                              
+                              }
+                              +
+                              [
+                              c
+                              ]
+                              {
+                              
+                                 x
+                                 ̇
+                              
+                              }
+                              +
+                              [
+                              k
+                              ]
+                              {
+                              x
+                              }
+                              =
+                              F
+                              (
+                              t
+                              )
+                           . Here, 
+                              [
+                              k
+                              ]
+                              ,
+                              
+                              [
+                              c
+                              ]
+                              
+                              and
+                              
+                              [
+                              m
+                              ]
+                            are the assembled stiffness, damping and mass matrices, respectively and 
+                              F
+                              (
+                              t
+                              )
+                            is the external force vector. 
+                              X
+                              
+                              and
+                              
+                              
+                                 X
+                                 ¨
+                              
+                            are the displacement and acceleration of any selected point at a particular time with respect to the reference system. The analysis of a dynamic problem involves the necessity of a time stepping algorithm. In the case of a dynamic problem in which the number of DOF's is very high for the finite element model, the execution times can be exceedingly large. The problem is compounded by the existence of many time steps in a dynamic analysis. The dynamic response analyses of the above equation were carried out by using Newmark time-integration method provided in ANSYS. The set of simultaneous non-linear dynamic equilibrium equations is solved at each time increment. An automatic incrementation scheme provided in ANSYS was also used in order to control the accuracy of the solution.
+
+For the present analysis the damping effect was neglected and thus the middle term in the transient equilibrium equation was not used. So, correspondingly in the solution control option of ANSYS in place of ALPHA and BETA, zero values were put. Alpha damping and beta damping are used to define Rayleigh damping constants α and β. The damping matrix (c) is calculated by using these constants to multiply the mass matrix (m) and stiffness matrix (k) i.e. (c)=α(m)+β(k). Although damping is not considered in many applications concerning dynamic analysis, it may be a useful addition for some problems where numerical noise appears and the results excessively oscillate. Inclusion of damping term without significantly decreasing the peak amplitude of the response filters out the numerical noise and tends to provide much smoother results [13].
+
+Full solution method i.e. where the full structural matrices (instead of reduced structural matrices which are used for reduced and mode superposition methods) are considered to solve transient dynamic equilibrium equation directly, was used in the present analysis. Only material nonlinearity (no geometric nonlinearity) has been considered throughout the study. The other solution control functions are implicit to ANSYS, and default parameters have been used in the present study.
+
+For the numerical estimation of the integrals, the values of W, σ, Δx(=x
+                        i+1−x
+                        i), Δy, 
+                           
+                              
+                                 
+                                    u
+                                    ¨
+                                 
+                              
+                              x
+                           
+                           ,
+                           
+                              
+                                 
+                                    u
+                                    ¨
+                                 
+                              
+                              y
+                           
+                        are directly available from conventional ANSYS outputs while, r and β at any node may be obtained from the corresponding x- and y-coordinates. The calculation procedure for the derivatives of the displacement vector is based on the node shifting technique available with the post-processing part of ANSYS. A flow chart in Fig. 3 illustrates overall numerical procedure used in the analysis.
+
+The computation method for the derivatives of the displacement vector is based on the node shifting technique available with the post-processing part of ANSYS, Fig. 4(a). Here differentiation is based on a central difference method without weighting. The most important feature of this technique is to calculate the length by which a node has to be shifted (typically, 1% of the total contour length, though user choice is also possible depending on the accuracy to be achieved). Then, to compute the differential quantities shift any node by half of this length in both positive and negative x- and y-directions. Then, one has to take the ratio between nodal displacement differences obtained from the positive–negative shifts and the chosen length of node shift. In the case of nodes located on crack borders for each contour, the differential quantities have been approximately computed at the nearby nodes. Such approximation resulted in insignificant discrepancy for the differential quantities.
+
+For mechanical loads the strain energy density W is available via the post-processing part of the ANSYS solution. Here, the strain energy of all elements and the corresponding elemental volumes are stored in an intermediate file using the ETABLE command and thereafter the average strain energy density of an individual element is computed using SEXP command. Element result data may be interpreted as averaged data over all elements connected to a node. Having defined the path, the nodal or element data may be mapped onto the path.
+
+As the formulation of Rice's J in ANSYS does not include crack curvature and dynamic loading, a separate post-processing code using FORTRAN has been prepared to process the ANSYS results for the computation of line and area integrals in Eq. (2). Dynamic analysis requires much more time as compared to the static one. The line integral calculation procedure is based on the standard linear integration scheme and therefore, comprises summing up of the quantities of each portion of dΓ between two adjacent nodes i and i+1, lying on a contour, Fig. 4(c). The area integrals have been computed based on nodal averaged values and therefore, comprises summing up of the nodal quantities for each element, then averaged and multiplied by the elemental area dA, Fig. 4(d). These quantities are then summed over all the elements lying within an individual integration loop, Fig. 4(b). The area of each element has been computed from nodal coordinates of the un-deformed geometry, available from ANSYS solution. As an example let us consider the 1st term (in Eq. (4)) of the area integral due to crack curvature:
+                              
+                                 
+                                    
+                                       1
+                                       r
+                                    
+                                    
+                                       [
+                                       
+                                          (
+                                          
+                                             
+                                                
+                                                   σ
+                                                
+                                                
+                                                   x
+                                                   y
+                                                
+                                             
+                                             cos
+                                             β
+                                             
+                                                
+                                                   ∂
+                                                   
+                                                      
+                                                         u
+                                                      
+                                                      
+                                                         x
+                                                      
+                                                   
+                                                
+                                                
+                                                   ∂
+                                                   x
+                                                
+                                             
+                                             cos
+                                             β
+                                          
+                                       
+                                       ]
+                                    
+                                    d
+                                    A
+                                    =
+                                    0.25
+                                    ⁎
+                                    
+                                       [
+                                       
+                                          
+                                             
+                                                
+                                                   1
+                                                   r
+                                                
+                                             
+                                             
+                                                i
+                                             
+                                          
+                                          
+                                             {
+                                             
+                                                (
+                                                
+                                                   
+                                                      
+                                                         σ
+                                                      
+                                                      
+                                                         x
+                                                         y
+                                                      
+                                                   
+                                                   i
+                                                
+                                                
+                                                   
+                                                      cos
+                                                   
+                                                   2
+                                                
+                                                
+                                                   
+                                                      β
+                                                   
+                                                   
+                                                      i
+                                                   
+                                                
+                                                
+                                                   
+                                                      (
+                                                      
+                                                         
+                                                            
+                                                               ∂
+                                                               
+                                                                  
+                                                                     u
+                                                                  
+                                                                  
+                                                                     x
+                                                                  
+                                                               
+                                                            
+                                                            
+                                                               ∂
+                                                               x
+                                                            
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                   
+                                                      i
+                                                   
+                                                
+                                             
+                                             }
+                                          
+                                       
+                                    
+                                    +
+                                    
+                                       
+                                          
+                                             1
+                                             r
+                                          
+                                       
+                                       
+                                          i
+                                          +
+                                          1
+                                       
+                                    
+                                    
+                                       {
+                                       
+                                          (
+                                          
+                                             
+                                                
+                                                   
+                                                      σ
+                                                   
+                                                   
+                                                      x
+                                                      y
+                                                   
+                                                
+                                                
+                                                   i
+                                                   +
+                                                   1
+                                                
+                                             
+                                             
+                                                
+                                                   cos
+                                                
+                                                2
+                                             
+                                             
+                                                
+                                                   β
+                                                
+                                                
+                                                   i
+                                                   +
+                                                   1
+                                                
+                                             
+                                             
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         
+                                                            ∂
+                                                            
+                                                               
+                                                                  u
+                                                               
+                                                               
+                                                                  x
+                                                               
+                                                            
+                                                         
+                                                         
+                                                            ∂
+                                                            x
+                                                         
+                                                      
+                                                   
+                                                   )
+                                                
+                                                
+                                                   i
+                                                   +
+                                                   1
+                                                
+                                             
+                                          
+                                       
+                                       }
+                                    
+                                    +
+                                    
+                                       
+                                          
+                                             1
+                                             r
+                                          
+                                       
+                                       
+                                          i
+                                          +
+                                          2
+                                       
+                                    
+                                    
+                                       {
+                                       
+                                          (
+                                          
+                                             
+                                                
+                                                   
+                                                      σ
+                                                   
+                                                   
+                                                      x
+                                                      y
+                                                   
+                                                
+                                                
+                                                   i
+                                                   +
+                                                   2
+                                                
+                                             
+                                             
+                                                
+                                                   cos
+                                                
+                                                2
+                                             
+                                             
+                                                
+                                                   β
+                                                
+                                                
+                                                   i
+                                                   +
+                                                   2
+                                                
+                                             
+                                             
+                                                
+                                                   (
+                                                   
+                                                      
+                                                         
+                                                            ∂
+                                                            
+                                                               
+                                                                  u
+                                                               
+                                                               
+                                                                  x
+                                                               
+                                                            
+                                                         
+                                                         
+                                                            ∂
+                                                            x
+                                                         
+                                                      
+                                                   
+                                                   )
+                                                
+                                                
+                                                   i
+                                                   +
+                                                   2
+                                                
+                                             
+                                          
+                                       
+                                       }
+                                    
+                                    
+                                       
+                                          +
+                                          
+                                             
+                                                
+                                                   1
+                                                   r
+                                                
+                                             
+                                             
+                                                i
+                                                +
+                                                3
+                                             
+                                          
+                                          
+                                             {
+                                             
+                                                (
+                                                
+                                                   
+                                                      
+                                                         
+                                                            σ
+                                                         
+                                                         
+                                                            x
+                                                            y
+                                                         
+                                                      
+                                                      
+                                                         i
+                                                         +
+                                                         3
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         cos
+                                                      
+                                                      2
+                                                   
+                                                   
+                                                      
+                                                         β
+                                                      
+                                                      
+                                                         i
+                                                         +
+                                                         3
+                                                      
+                                                   
+                                                   
+                                                      
+                                                         (
+                                                         
+                                                            
+                                                               
+                                                                  ∂
+                                                                  
+                                                                     
+                                                                        u
+                                                                     
+                                                                     
+                                                                        x
+                                                                     
+                                                                  
+                                                               
+                                                               
+                                                                  ∂
+                                                                  x
+                                                               
+                                                            
+                                                         
+                                                         )
+                                                      
+                                                      
+                                                         i
+                                                         +
+                                                         3
+                                                      
+                                                   
+                                                
+                                             
+                                             }
+                                          
+                                       
+                                       ]
+                                    
+                                    ⁎
+                                    d
+                                    A
+                                 
+                              
+                           
+                        
+
+Similarly all other terms in the right hand side of Eq. (4) are calculated for the same element dA. Thereafter for the whole area within the contour Γ, these elemental area integrals are summed up in order to arrive to the total integral value due to the crack curvature. Analogous methodology is applicable for the inertia area integral term in Eq. (5).
+
+The numerical test on the performance of the integral 
+                        
+                           
+                              
+                                 J
+                                 ^
+                              
+                           
+                           
+                              F
+                           
+                        
+                      has been carried out under rapidly varying mechanical load with center circular cracked plate as for this plate in a simplified condition analytical stress intensity factor values are available, Fig. 5. In most of the studies here material properties used are correspond to a structural steel (as specified in Section 3.1.2) with Young's modulus, E=210GPa; Poisson's ratio, ν=0.3, yield stress σ
+                     y=350MPa, tangent modulus E
+                     T=210MPa and density ρ=7850kg/m3. The dimensions of the plate are same which was used by Lorentzon and Eriksson [6]. The applied loading was assumed linear up to the maximum load (i.e. ramp loading) for all the studies. Due to symmetry only half section of the plate considered in this investigation has been illustrated in 
+                     Fig. 6. In this figure r
+                     
+                        c
+                     
+                     =0.12m and β=45° while the symmetry conditions have been imposed on the boundary AB.
+
+The reliability of the present numerical model is initially tested by mesh convergence study. It is then further established by comparing the SIF results derived from the numerically calculated contour integral values with the available analytical SIF solution.
+
+A mesh convergence study with respect to maximum equivalent stress against increasing mesh fineness has been carried out for the specimen. No crack tip singular elements have been chosen. Sharp crack tip model was employed in both static and dynamic analyses; however, there was no difficulty in getting converged solutions. Here, the numerical results are obtained for the plate geometry under following load in plane strain condition.
+                           
+                              
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       y
+                                       y
+                                    
+                                 
+                                 =
+                                 1000
+                                 
+                                 MPa
+                                 
+                                 on
+                                 
+                                 BC
+                                 
+                                 and
+                                 
+                                 AD
+                                 ;
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       x
+                                       x
+                                    
+                                 
+                                 =
+                                 1000
+                                 
+                                 MPa
+                                 
+                                 on
+                                 
+                                 CD
+                              
+                           
+                        
+                     
+
+Stable solutions were obtained with a grid of 20290 elements with 60733 nodes for the above ramp load applied within 0.03s. The dynamic amplification factor (i.e. the ratio of maximum displacement under dynamic loading to the maximum displacement under static loading) calculated was about 1.67 which clearly indicates that the analysis is truly dynamic in nature [30]. The same grid was used in static solution. As a point of reference, the problem of a circular arc crack in an infinitely extended plate subjected to equi-biaxial static tensile load, 
+                        Fig. 7 has been considered. The analytical solution of an infinite plate subjected to a uniform stress field has been obtained in [4]. For equi-biaxial tensile load, equations for the SIF are
+                           
+                              
+                                 
+                                    
+                                       K
+                                    
+                                    
+                                       I
+                                    
+                                 
+                                 =
+                                 σ
+                                 
+                                    
+                                       π
+                                       a
+                                    
+                                 
+                                 
+                                    {
+                                    
+                                       
+                                          
+                                             cos
+                                             (
+                                             β
+                                             /
+                                             2
+                                             )
+                                          
+                                          
+                                             1
+                                             +
+                                             
+                                                
+                                                   sin
+                                                
+                                                2
+                                             
+                                             (
+                                             β
+                                             /
+                                             2
+                                             )
+                                          
+                                       
+                                    
+                                    }
+                                 
+                                 ,
+                                 
+                                 
+                                    
+                                       K
+                                    
+                                    
+                                       I
+                                       I
+                                    
+                                 
+                                 =
+                                 σ
+                                 
+                                    
+                                       π
+                                       a
+                                    
+                                 
+                                 
+                                    {
+                                    
+                                       
+                                          
+                                             sin
+                                             (
+                                             β
+                                             /
+                                             2
+                                             )
+                                          
+                                          
+                                             1
+                                             +
+                                             
+                                                
+                                                   sin
+                                                
+                                                2
+                                             
+                                             (
+                                             β
+                                             /
+                                             2
+                                             )
+                                          
+                                       
+                                    
+                                    }
+                                 
+                              
+                           
+                        Here, 
+                           a
+                           =
+                           R
+                           
+                           sin
+                           β
+                        , the projected half length of the curved crack and the effective value of SIF is defined as 
+                           
+                              
+                                 K
+                              
+                              
+                                 e
+                                 f
+                                 f
+                              
+                           
+                           =
+                           
+                              
+                                 
+                                    
+                                       K
+                                    
+                                    
+                                       I
+                                    
+                                    
+                                       2
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       K
+                                    
+                                    
+                                       I
+                                       I
+                                    
+                                    
+                                       2
+                                    
+                                 
+                              
+                           
+                        .
+
+Using the procedure described in Section 3, the path-area combination in Eq. (2) has been computed on 10 different contours under static tensile load for plane strain case, neglecting the 2nd area integral in Eq. (2). Solutions obtained have been employed to compute the SIF values using the standard Rice–Irwin relation 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                           =
+                           (
+                           1
+                           −
+                           
+                              
+                                 v
+                              
+                              2
+                           
+                           /
+                           E
+                           )
+                           
+                              
+                                 K
+                              
+                              2
+                           
+                        . Also, the effective SIF (K
+                        
+                           eff
+                        ) has been obtained directly from the available exact solutions of K
+                        
+                           I
+                         and K
+                        
+                           II
+                         for a bi-axially loaded plate specimen, Fig. 7 and our numerically computed results have been normalized with respect to K
+                        
+                           eff
+                        . These normalized results on various contours have been presented in 
+                        Fig. 8.
+
+Interestingly, there is no oscillation in the numerical results for the present finite element discretization. The outer contours show better results as compared to the contours near the tip. Close to the crack tip the high strain gradients along with inaccurate field quantities may explain the discrepancy between the results. Path independence is very much well preserved at least for the three outermost contours reaching almost saturation value. From this comparison it may be ascertained that the selection of integration domains yielded necessary resolution compared to the analytical results. This close agreement has been considered sufficient to continue further investigations for the dynamic elastic–plastic loading cases.
+
+In this section we present some dynamic elastic–plastic numerical results in order to illustrate the performance and solution accuracy of the integral quantities in 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         initially developed for rapidly varying load. Of course, the results presented here are in no way meant to be conclusive for proposing any fracture criteria.
+
+An understanding of the plastic zone size and shape at the crack tip is of fundamental importance in the fracture behavior of metallic materials and informative for the path invariance character of computed contour integrals because at high plasticity the elastic–plastic fracture becomes invalid and general yielding occurs. Keeping this viewpoint in mind and as it is also interesting to show stress contours as the stress wave propagates from the boundaries, where the ramp loading is applied, inwards towards the curved crack, 
+                        Fig. 9 demonstrates the effective stress contour plots at the crack tip at specific time intervals. The red regions, showing the spread of plastic zone near the curved crack tip has been illustrated with respect to time. The shapes of these plastic zones are distinctly unusual compared to the shapes of plastic zones in conventional straight crack geometry [15]. Unlike the straight crack geometry, the plastic zone in plane strain case is a twin lobe butterfly shape with asymmetric plastic plateau, the plastic zone rise along top crack face and it spreads in the direction of crack curvature.
+
+In the current study, before evaluating the performance of the new integral 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         under various dynamic conditions it may be interesting to scrutinize numerically the applicability of Rice's J in the present study. Therefore, the line integral originally developed for straight crack geometry and the total integral 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         in Eq. (2) have been estimated separately on different contours for the case when equi-biaxial tensile load of 150MPa was applied within 0.07s and the computed results are compared in 
+                        Fig. 10. Here, the normalization for the individual contour values has been carried out with respect to the average value of eight contours of both Rice's J and total 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         separately. The striking aspect is that the Rice's J shows noteworthy level of path dependence even in case of the outer contours. On the other hand, addition of the correction terms due to curvature effect and dynamic loading provides a well behaved domain independent character of 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         throughout the computational range. Thus it is observed that contribution from the area integrals due to curvature and dynamic loading effect is sufficiently high and thus ascertaining that the integral is significantly different from the Rice's J-integral.
+
+Now, the path invariance character of Eq. (2) under plane strain elastic–plastic deformation subjected to equi-biaxial dynamic tensile loads of 150MPa is examined here for two different loading rates in 
+                        Fig. 11. The elastic–plastic material properties for the bilinear material considered (1st material in Section 3.1.2) are Young's modulus (E), 2.1E5 MPa; Poisson's ratio (ν), 0.3; yield stress (σ
+                        y), 350MPa; and tangent modulus (E
+                        T), 210MPa. The applied loading was assumed linear up to a maximum load of 150MPa and analyses were carried out for two different applied loading rates in which the peak load was applied in 0.05s and 0.1s. Here, the normalization of 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         for the individual contour values has been carried out with respect to the average value of eight contours for each loading rate. It is observed from this illustration that there is no oscillation in the present numerical results. Overall path independence is well preserved for both the loading rates.
+
+
+                        
+                        Fig. 12 shows the dynamic elastic–plastic path independence behavior for the integral 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         for four different material models. The four different elastic–plastic material models are corresponding to material number 1–4 as specified in Section 3.1.2. The ramp loading used was 150MPa and applied in 0.05s for all the cases. In this plot, the normalization of 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         for the individual contour values has been carried out with respect to the average value of seven contours for each material. In all the cases integral 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         found to be independent of contour. This shows that the integral 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         is valid for both bilinear and non-linear materials. It may be noted that in the present analysis, transient dynamic response of the specimen was considered, however the effect of strain rate on crack tip stress–strain fields was neglected.
+
+The stress–strain results of dynamic fracture problems, in which the inertia effects are taken into account, can be much higher than the corresponding static solutions. These differences between the dynamic and static fracture problems results may be significantly more in case of rapid loading. To check this proposition, the influence of dynamic effects was evaluated by comparing the dynamic 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         integral values with equivalent static values in 
+                        Fig. 13 for the 1st bilinear material in Section 3.1.2. The plane strain normalized values of path-area form of integrals, Eq. (2) on outermost contour for both static and dynamic loading have been plotted against normalized load. Here, normalization in 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         values and load has been obtained with respect to maximum 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         value and maximum applied load, respectively. In this numerical test the contour results increase monotonically with increase in load and the rate of rise in the integral value is more for the dynamic loading case. Differences between the dynamic and the static 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         curves become smaller for lower loads. This is in accordance with the earlier studies [13].
+
+
+                        
+                        Fig. 14 illustrates the time variation of the normalized integral 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         for the outermost contour at different peak loads for the 1st bilinear material as specified in Section 3.1.2. In this study the normalization of 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         for the individual contour values has been carried out with respect to the maximum value of integral in highest applied peak load. For all the three cases the peak load was reached at same time. The figure shows that the value of the integral is increasing with time and there is oscillation in the integral value for all the three cases. The peak and depression is significantly higher for the peak load of 250MPa and it is minimum for 150MPa. Below 150MPa it was also observed that the curve was more or less free from oscillation. The amplitude of the stress wave increases with the rapidity of loading, though the applied load is linearly increasing with time. It may be pointed out that the acceleration at 250MPa is maximum which may in turn rapidly vary the material inertia and thereby changing the integral value. Introduction of damping effect may reduce the oscillation in the integral value.
+
+In general, the dynamic elastic–plastic 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         values are considerably higher as compared to its corresponding elastic solutions. In order to test out this proposition normalized integral 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         has been plotted against applied load in 
+                        Fig. 15 for the 1st bilinear material in Section 3.1.2. In this plot the normalization of integral 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         has been carried out with respect to the maximum value of integral in elastic–plastic condition and normalization of load is carried out with respect to maximum load. The figure shows that the value of the integral is increased with load in both the cases and it also illustrates that the value of the integral in elastic–plastic condition is surprisingly only a little higher than the elastic state. The rate of increase is higher at higher applied load and it is more for the elastic–plastic material. This may be due to the higher stress–strain values for elastic–plastic deformation at higher load. Though it appears in this figure that the differences between the two curves are not very significant; however it is expected that with increase in plasticity in the material the differences should increase [12].
+
+
+                        
+                        Fig. 16 illustrates the performance of integral for different loading rates for the same applied peak load of 250MPa under elastic–plastic deformation for the above bilinear material. Here, the normalization of 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         values has been carried out with respect to the maximum value of integral in fastest loading rate and normalization of load is carried out with respect to maximum load. The figure shows that oscillation is maximum in the value of the integral in fastest loading rate whereas for slowest loading rate, the curve is much smooth, though average value of the integral is similar for all the three types for loading rates. In the present situation though the load increases with time linearly, but integral value oscillates due to the formation of stress waves in the material which may depend on specimen geometry and material properties. The amplitude of the oscillations is less for slower loading, as kinetic energy of the specimen gets time to be dissipated. Thus inertia effects are most significant for faster loading and are minimum for slower loading [31].
+
+For illustrating the integral behavior for both plane strain and plane stress deformation, the time variation normalized integral values of elastic–plastic 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         computed on outermost contour have been plotted in 
+                        Fig. 17. Here the 
+                           
+                              
+                                 
+                                    J
+                                    ^
+                                 
+                              
+                              
+                                 F
+                              
+                           
+                         values have been evaluated at ramp load of 150MPa applied within 0.07s. In the plane stress condition oscillation in the integral value is more as compared to plane strain. Initially the oscillations are less; however, the oscillations become higher with increasing time. This behavior may be attributed to the less overall stiffness of the geometry in case of plane stress. However, it still seems further investigation is required towards this direction.
+
+@&#CONCLUSION@&#
+
+Finding the solution for tricky problems on dynamic elastic–plastic cracked specimen for very fast loading is really challenging task for both numerical and experimental points of view. Analysis of curved crack under rapidly varying load is almost absent in the literature to the best of the authors' knowledge. The numerical solution of the equation of motion of the circular arc cracked specimen subjected to elastic–plastic dynamic loading together with the post-processing scheme provides attractive features of the integral 
+                        
+                           
+                              
+                                 J
+                                 ^
+                              
+                           
+                           
+                              F
+                           
+                        
+                      presented in this paper. The reliability of the numerical model is at first tested by convergence studies and then compared with analytical solution. The integral 
+                        
+                           
+                              
+                                 J
+                                 ^
+                              
+                           
+                           
+                              F
+                           
+                        
+                      has been found to maintain very nearly path independence for both static and dynamic loading conditions due to elastic and elastic–plastic deformation and in some cases marginal path dependence has been reflected for higher loading rate and inner contours. The causes for such limited path dependency have been explained at the appropriate places. For dynamically loaded cracked body the stress waves reflect from boundary as well as crack borders affecting the crack tip stress fields and therefore the tip parameters. The effect of strain rate has been neglected in the formulation of 
+                        
+                           
+                              
+                                 J
+                                 ^
+                              
+                           
+                           
+                              F
+                           
+                        
+                     . Consideration of the effect of strain rate may further enhance the solution. The path dependency may also occur due to inherent numerical errors in computations. Some of the reasons for path dependency have been described in [31]. Also, contrary to the present computational scheme, the results will be more accurate if the integration is carried out through the Gauss points where the products of stress and displacement gradients are more accurate. Furthermore, inclusion of the damping parameters in the equation of motion may reduce the oscillations in the numerical value of the integral. Nevertheless, the observations from the current analyses recommend that the integral 
+                        
+                           
+                              
+                                 J
+                                 ^
+                              
+                           
+                           
+                              F
+                           
+                        
+                      may be easily correlated to establish material failure criteria based on crack initiation or crack instability. Finally, additional prospects of such investigations with the present integral are now under considerations by the authors.
+
+@&#ACKNOWLEDGMENT@&#
+
+The authors are most grateful to the reviewers of this paper, particularly for some positive comments and constructive criticism, thereby leading to a more improved presentation.
+
+@&#REFERENCES@&#
+

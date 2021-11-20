@@ -1,0 +1,209 @@
+@&#MAIN-TITLE@&#The effects of a convex rear-view mirror on ocular accommodative responses
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           We examined the ocular accommodative responses while viewing an object in a convex rear-view mirror.
+
+
+                        
+                        
+                           
+                           Viewing an object in a convex mirror caused a false recognition of its position.
+
+
+                        
+                        
+                           
+                           It would cause large accommodative fluctuations and blurred vision for the user.
+
+
+                        
+                        
+                           
+                           The ocular accommodative responses should be considered as a new indicator of automotive safety.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Convex rear-view mirror
+
+Ocular accommodative response
+
+Infrared optometer
+
+@&#ABSTRACT@&#
+
+
+                  Convex mirrors are universally used as rear-view mirrors in automobiles. However, the ocular accommodative responses during the use of these mirrors have not yet been examined. This study investigated the effects of a convex mirror on the ocular accommodative systems. Seven young adults with normal visual functions were ordered to binocularly watch an object in a convex or plane mirror. The accommodative responses were measured with an infrared optometer. The average of the accommodation of all subjects while viewing the object in the convex mirror were significantly nearer than in the plane mirror, although all subjects perceived the position of the object in the convex mirror as being farther away. Moreover, the fluctuations of accommodation were significantly larger for the convex mirror. The convex mirror caused the 'false recognition of distance', which induced the large accommodative fluctuations and blurred vision. Manufactures should consider the ocular accommodative responses as a new indicator for increasing automotive safety.
+               
+
+@&#INTRODUCTION@&#
+
+Convex mirrors are used to reduce blind spots and to increase the field of view in many situations. Some of them are used for crime prevention in automated teller machines or stores, allowing the users to see what is happening behind them or in their blind spots. Others are used to confirm safe traffic conditions at intersections or on the vehicles (Moukhwas, 1987). In automobiles, convex type mirrors are often use and designed as rear-view mirrors to confirm the safety of rear or side blind areas without requiring the occupant to change his/her head position (Case et al., 1980). Rear-view mirrors can be grouped into outer rear-view mirrors and inner rear-view mirrors. Outer rear-view mirrors, which are also called wing mirrors or side-view mirrors, include fender mirrors and door mirrors. The UNECE (United Nations Economic Commission for Europe) Transport Division has been providing secretariat services to the World Forum for Harmonization of Vehicle Regulations (WP 29) for more than 50 years. In this forum, the global uniformity of wheeled vehicle equipment or parts has also been discussed. However, the rear-view mirrors are currently different in each country and for each manufacturer, because they are not fully standardized. The advantages of using convex mirrors in driving are an increased field of view and the reduction of blind spots. However, the image size is smaller than that seen in a plane mirror in the same location. Then, when overtaking other automobiles, drivers may overestimate their distance from a following car and make dangerous decisions. Therefore, in some countries (United States, Canada, India, Korea and so on), these mirrors need to be labeled with the safety warning “Objects in mirror are closer than they appear”, to warn the driver of the convex mirror's distorting effects on distance perception.
+
+In addition to above features of convex mirrors, we cannot see objects clearly, and perceive blurred vision when we observe them carefully through a convex mirror. We supposed that this blurred vision derives from the temporary disorder of ocular accommodation that occurs when looking in a convex mirror. There have so far been a few reports written about the optical specificity of the convex mirror (e.g., Hahnel and Hecht, 2012; Higashiyama et al., 2001; Higashiyama and Shimono, 2004; Smith and Atchinson, 1997; van der Horst, 2004). All of these reports were written about the relation between human perceptions of the distance from the mirror to the object and the parameters such as mirror curvature. However, no study has yet reported objective evaluations of viewing through convex mirrors.
+
+The present study investigated the effects of a convex mirror on human ocular accommodative systems using an infrared optometer.
+
+@&#METHODS@&#
+
+The subjects consisted of 7 young adults (3 males and 4 females) ranging from 18 to 31 years of age (average age, 22.6 years) with normal visual function. None had a refractive error outside the range of −0.49 D to +0.63 D spherical (mean refractive error, right: −0.27 and left: +0.06) or greater than −0.94 D cylindrical (mean cylinder, right: −0.57 D and left: −0.64 D) with an autorefractometer (AR-1100, NIDEK). Each had a visual acuity value of 0.0 or better without correction by a log MAR visual acuity chart. All subjects provided informed consent after an explanation of the procedures. The research followed the tenets of the Declaration of Helsinki.
+
+Two types of mirrors, plane (55 mm × 220 mm) and convex (55 mm × 220 mm), were used. The convex mirror was same as an inner rear-view mirror for a car. It had a radius of curvature of 1.00 m and is commonly marketed in the auto parts stores. As the object which the subjects were ordered to watch, we use a black starburst drawn by MAXSON® lettering on a green luminous body made in a light-emitting diode. This luminance of target was 3 cd/m2 and the diameter was 3 cm. The experimental arrangement is shown in Fig. 1
+                        . The target was set at a distance of 2.30 m from eyes of the subjects through the convex or the plane mirror. The convex and the plane mirror were in turn set at 0.30 m from their eyes and the target at 2.00 m from the mirror. The visual line of the right eye intersected perpendicular to the target surface, and corresponded to the optical axis of the infrared optometer. The dichroic mirror, which could transmit only infrared ray and reflex all visible light, was used to measure accommodative responses without effects of optical line.
+
+@&#PROCEDURE@&#
+
+The subjects were ordered to watch the target through two types of mirrors binocularly. During this time, the steady-state accommodative responses of the right eye of each of the subjects were measured using an infrared optometer (modified AA-2000, NIDEK) for 50 s. The analogue signals obtained were converted to digital signals at a sampling rate of 12.5 points per second. The digital signals of two accommodative responses were superimposed on the monitor. This experimental system has been presented in previous reports (Iwasaki, 1993; Iwasaki et al., 2009). The current experiment was done in a dark room where the subject could see nothing but the target. The subjects were restrained by the chin rest of the infrared optometer and were requested to keep watching the target through each mirror binocularly. The measurements were performed twice for each subject on each mirror, a total of 28 times. The measurement order of the mirrors was randomly presented to each subject.
+
+The mean accommodative position was taken as the average of the refractive value for 50 s. The mean accommodative position was compared between the two types of mirror. The differences were checked using the Wilcoxon signed rank test. The fluctuation in accommodation was taken as the amplitude of the waveform, and the fluctuation of each subject between the two types of mirrors was compared by a variance test (F-test).
+
+Soon after the experiment, all subjects were asked to comment on the estimated distance and visibility while viewing the target through each mirror. The subjects answered orally, and their answers were recorded.
+
+@&#RESULTS@&#
+
+We investigated the differences of ocular accommodative responses between the convex mirror using and the plane mirror using by an infrared optometer. The accommodative response waveforms for 50 s from all of the subjects are shown in Fig. 2
+                        . In the figures, the abscissa is the elapsed time and the ordinate is the ocular accommodative response measured with an infrared optometer. There were remarkable differences in the waveforms between viewing through the plane mirror (slight line) and viewing through the convex mirror (bold line). In this figure, when we considered that there were some differences, all subjects accommodated around the real distance of the object in the plane mirror, but they accommodated in a closer position in the convex mirror. Moreover, the waveforms clearly define that the fluctuations of accommodations in the convex mirror were more intensive than that in the plane mirror in all subjects. The averages of the accommodative responses are shown in Table 1
+                        . There was a significant difference in the average accommodative response between the two types of mirrors; 1.59 D (0.63 m) in convex mirror and 0.37 D (2.70 m) in plane mirror (p = 0.0022, by the Wilcoxon signed rank test). Each subject's average for the convex mirror was also significantly lower than that for the plane mirror (p < 0.0001 by the Wilcoxon signed rank test, respectively). It is worth noting that in this study, the subjects focused more nearly when using a convex mirror, despite the smaller reflected image than that observed in the plane mirror. The fluctuations of ocular accommodation of each subject were significantly higher while viewing through the convex mirror than through the plane mirror (p < 0.0001 by F-test, respectively). This result means it is more difficult for the subjects to focus on the target through the convex mirror than the plane mirror.
+
+When asked what they felt while viewing through each mirror, all subjects perceived the position of the target through the convex mirror to be farther away than through the plane mirror because it appeared smaller in the convex mirror. Moreover, they each felt uncomfortable and complained of blurred vision while viewing through the convex mirrors.
+
+@&#DISCUSSION@&#
+
+Although there were a few differences among individuals, the average accommodative response while viewing through the plane mirror was 0.37 D (2.70 m), which was almost the same distance as the optical calculated refraction image; 0.43 D (2.30 m). Meanwhile, the average accommodative response while viewing through the convex mirror was nearer; 1.59 D (0.63 m), despite the fact that all subjects felt that the object was located further away because of the small size of the reflected image. In other words, although they felt that it was located more than 2.00 m from the convex mirror, their actual average accommodation in the convex mirror was at a very near point; 0.63 m. These results are interesting. That is, the observers experienced the ‘false recognition of the distance’ in the convex mirror.
+
+The optics of the convex mirror is shown in Fig. 3
+                      (Smith and Atchinson, 1997). In this figure, the CAB had a radius of curvature, 2f, where f is the focal distance and 1/(2f) is the curvature, κ. O is the center of the curvature. Consider the rays of light originating at an end-point P of an object, PQ. The ray of light, PN, which is parallel to the mirror principal axis, AO, is reflected at point N in the direction of point T, so that points T and N are aligned with the focal point F. The rays of light, PO and QO, return along the same course after being reflected by the mirror. It follows that the line NF intersects the line PO at point P′. The line P′Q′, which is perpendicular to the line AO, is called the virtual image of the object PQ.
+
+In this situation, it can be readily shown that
+                        
+                           (1)
+                           
+                              
+                                 Z
+                                 =
+                                 
+                                    
+                                       y
+                                       f
+                                    
+                                    /
+                                    
+                                       
+                                          (
+                                          
+                                             f
+                                             +
+                                             y
+                                          
+                                          )
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+                  
+
+and
+                        
+                           (2)
+                           
+                              
+                                 b
+                                 =
+                                 
+                                    
+                                       a
+                                       x
+                                    
+                                    /
+                                    f
+                                 
+                                 =
+                                 
+                                    
+                                       a
+                                       f
+                                    
+                                    /
+                                    
+                                       
+                                          (
+                                          
+                                             f
+                                             +
+                                             y
+                                          
+                                          )
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     where x = Q′F, y = QA, z = AQ′, a = PQ, b = P′Q′, and f = x + z. In this case, ‘y’ is called the real distance of the object and ‘z’ is called its virtual distance. Therefore, ‘a’ is called the real size of the object and ‘b’ is called its virtual size.
+
+The left panel of Fig. 4
+                      illustrates the virtual distance as a function of the real distance (i.e., Equation (1)), and the right panel illustrates the virtual size of a 1 m real object as a function of the real distance (i.e., Equation (2)). In each panel, ‘2f’ is the radius of the curvature of the convex mirror.
+
+A plane mirror is a special case in which the focal distance is infinitely large. If ‘f’ is infinitely large in Equations (1) and (2), the virtual distance for the plane mirror is given by
+                        
+                           (3)
+                           
+                              
+                                 z
+                                 =
+                                 y
+                              
+                           
+                        
+                     and then, the virtual size for the plane mirror is given by
+                        
+                           (4)
+                           
+                              
+                                 b
+                                 =
+                                 a
+                              
+                           
+                        
+                     
+                  
+
+Equation (3) implies that the distance from the mirror surface to the virtual image is exactly the same as that from the mirror surface to the real object, and Equation (4) implies that the virtual size in the plane mirror is exactly the same as the real size. Equations (3) and (4) are illustrated in Fig. 4, together with the equations for convex mirrors.
+
+
+                     Fig. 4 shows that as the curvature increases, the virtual distance of an object is more packed in depth (see the left panel), and the size of an object is shorter and smaller than the real size (see right panel). Fig. 4 also shows that, although the real distance increases in a convex mirror of the same curvature, the virtual distance does not increase at the same rate, and stops increasing at the fairly near point. For instance, if the real distance is more than 2 m in a convex mirror with a 1 m curvature, the distance and the size of the virtual image stay the same; about 0.4 m and 0.1 m, respectively. This is the reason why we chose 2 m as the distance from the mirror to the object in our experiment.
+
+When we used these optical equations in the present experiment using the convex mirror, the distance from the subject's right eyes to the optical refraction image of the target was 0.70 m, which was almost the same distance as the average accommodative response while viewing an object in the convex mirror; 0.63 m. These results indicate that the subjects focused on the optical refraction image of the target, independent of their perceptions. That is, we found that, despite the false recognition of the distance, the observers involuntarily tried to accommodate the position of the optical refraction image in both the plane mirror and the convex mirror.
+
+Furthermore, the accommodative fluctuation in the convex mirror was significantly larger than that in the plane mirror. In general, the fluctuation of ocular accommodation exists physiologically, and is termed ‘accommodative microfluctuation’ (Campbell et al., 1959). It can be a waveform of about 1.0 Hz, and ranges to 0.30 D as detected by an optometer while an observer is viewing an object at rest or an infinite distance. The large fluctuation indicates that the observer is involuntarily seeking the focal point. The larger the fluctuation becomes, the more difficult it is for the observer to see and focus on the object. Therefore, in the present study, our results indicate that it is more difficult for the subjects to focus on an object in the convex mirror than in the plane mirror. The intensifying fluctuations in the convex mirror may have been caused by the ‘false recognition of the distance’. This hypothesis is supported by previous reports, which proved that mental activities such as “think far” or “think near” affect the accommodation (Malmstrom et al., 1980; Post et al., 1985). Therefore, it can be said that the accommodation of the human eye has a system of reflective response that is optimized to see an object sharply, as well as a system of estimated response to focus on the object's expected position. Higashiyama et al. (2001) reported that the distance in the convex mirror was perceived to be larger than that in the plane mirror. Contrary to this result, Hecht and Brauer (2007) reported that the convex mirror did not lead to any systematic overestimation of distances because of the significant variation in the distance estimations with convex mirrors. We suppose that the variation in the distance estimations was caused by their intensive fluctuations in convex mirrors. In other words, it may be difficult for the observers to estimate the distance to the target in the convex mirror because they could not steadily focus on the target.
+
+The present experimental system was designed to simulate actual driving. However, we have not yet examined the influence of variations such as the position of the mirror or the objects, the radius curvature of the convex mirror, or the user's habituation effects (Weber, 1931; Rowland and Silver, 1970; Flannagan et al., 1996). Moreover, we examined only subjects who had no visual dysfunction despite there are a lot of drivers who have presbyopia. Therefore, further examinations of these variations and in subjects of other ages are required to explain the detailed relationship between convex mirrors and human accommodative systems.
+
+@&#CONCLUSIONS@&#
+
+In this study, we examined, for the first time, the human ocular accommodative responses while viewing an object in a convex mirror. The results indicated that viewing an object in a convex mirror causes a false recognition of its position, which would induce large accommodative fluctuations and blurred vision for the user with normal visual function. These results show that drivers who use convex mirrors to confirm the safety of rear or side blind areas should therefore familiarize themselves with the shortcomings of such mirrors in order to avoid traffic accidents. In addition, automobile manufacturers and the transport ministry should consider the human ocular accommodative responses as a new indicator of automotive safety when they either design or set up the tools for confirming safe driving; not only rear-view or side mirrors, but also speed meters and a display of car navigation, would be helpful for increasing safe driving.
+
+@&#ACKNOWLEDGMENTS@&#
+
+This work was supported by a UOEH Research Grant for Promotion of Occupational Health.
+
+@&#REFERENCES@&#
+

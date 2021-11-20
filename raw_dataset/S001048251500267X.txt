@@ -1,0 +1,124 @@
+@&#MAIN-TITLE@&#Enteroscopic findings of Celiac Disease and their correlation with mucosal histopathologic changes
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Celiac Disease is the most common inflammatory disease of the small bowel.
+
+
+                        
+                        
+                           
+                           Variety of endoscopic changes can be found in Celiac Disease patients.
+
+
+                        
+                        
+                           
+                           According to endoscopic and histopathologic data: Celiac Disease is a patchy mucosal disease and every patient with Celiac Disease exhibited at least one or more endoscopic changes through the proximal jejunum.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Celiac Disease
+
+Single Balloon Enteroscopy
+
+Endoscopy
+
+Mucosal changes
+
+Diagnosis
+
+Classification
+
+@&#ABSTRACT@&#
+
+
+                  Background and aims
+                  Single Balloon Enteroscopy enables us to examine the small bowel for various diseases. It provides a view of the intestinal mucosa with biopsy capability, which may be helpful in search of a mucosal disease such as Celiac Disease. Celiac Disease is a proximal enteropathy developed in genetically susceptible individuals to wheat protein gluten. Examination of the duodenum and proximal jejunum are mostly diagnostic. We aimed to review enteroscopic findings of the patients with Celiac Disease.
+               
+                  Patients and methods
+                  Consecutive adult patients (>18y) who needed intestinal or duodenal biopsy for the diagnosis of the Celiac Disease were included. Single Balloon Enteroscopy system was used to enter the proximal jejunum. All of the patients had biopsies in order to diagnose Celiac Disease.
+               
+                  Results
+                  Single Balloon Enteroscopy was performed in 33 patients. Twenty two (66.7%) subjects were diagnosed as Celiac Disease. The most common endoscopic abnormality in Celiac Disease was mucosal atrophy in 20 patients (90.9%), continuous involvement was the most common presentation (36.4%). All of the patients with Celiac Disease exhibited at least one endoscopic change.
+               
+                  Conclusions
+                  This study confirmed the patchy nature of the disease with mostly diffuse involvement of the small bowel. However, any endoscopic abnormality can be found in every patient with Celiac Disease. Analysis of images from either conventional upper endoscopy or capsule endoscopy may aid the diagnosis.
+               
+
+@&#INTRODUCTION@&#
+
+Celiac Disease (CD) is an inflammatory disease of the small intestine in genetically predisposed patients due to permanent intolerance to ingested gluten [1,2]. A small bowel biopsy showing characteristic changes is considered the gold standard for the diagnosis of the disease with the support of the endoscopic and immunological markers [3]. Reported CD prevalence among different countries varies between 1:70 and 1:200. Clinical symptoms and laboratory markers range from asymptomatic to malabsorbtion according to degree of intestinal damage. Non-diarrhea associated forms (silent, oligosymptomatic or atypical CD) are the major mode of presentation. Anemia, osteoporosis, arthritis, infertility, hypertransaminasemia could be associated with CD and correct diagnosis could be a challenge. The only treatment of CD is a lifelong gluten free diet, which makes a reliable diagnosis very important [1–3].
+
+The rate of detection of CD is increasing due to public awareness and widely available serological testing, which, however, may cause formation of a difficult group of individuals with a clinical suspicion for CD and positive serology. This group quickly expands with the serological screening of first degree relatives with CD and patients with dyspepsia or irritable bowel syndrome where probability is quite high [4]. Second step in the diagnosis of the patients with CD is obviously endoscopy and histological examination of the intestine. This brings us to uncertain nature of the disease regarding the extent and how much small intestine is involved.
+
+CD is believed to be the disease of the proximal intestinal disease, although it could involve the entire small bowel. Mucosal changes associated with CD can readily be visible during the endoscopy procedure. These mucosal changes reflect the degree of intestinal inflammation and include reduced duodenal folds, mucosal fissures and a nodular pattern with a mosaic appearance [1]. However, sensitivity of the endoscopic findings associated with villous atrophy is far from ideal [1]. Moreover, patchiness of the mucosal changes associated with CD leads to a significant sampling error [5,6]. Can we improve the diagnostic accuracy going deeper in the proximal jejunum?
+
+The objective was to evaluate the findings of Single Balloon Enteroscopy examination of the proximal small bowel in order to classify the findings and extent of the disease through the small intestine with the aid of histological findings of the proximal jejunum in a series of patients with clinical and serological indicators of the CD.
+
+The study was a single-center prospective study of patients with diagnosed as Celiac Disease (CD). From October 2008 until October 2009, we included consecutive adult patients (>18y) who needed intestinal or duodenal biopsy for the diagnosis of Celiac Disease. Patients with comorbid diseases, symptoms and signs of intestinal obstruction, a history of small- or large-bowel strictures, inflammatory bowel disease, a known motility disorder of the gastrointestinal tract, or any previous bowel surgery, small intestinal bacterial overgrowth were excluded. Patients giving informed consent underwent SBE. The study was conducted according to the guidelines stated in the Declaration of Helsinki and was approved by the local Ethical Committee.
+
+The study used the SBE System (Olympus co; Tokyo, Japan). The technique used have been described in detail by Tsujikawa [7], however we evaluated the proximal jejunum instead of performing whole enteroscopy, which was mostly unnecessary in this group of patients. Maneuvers are basically the sequences of push and pulls of the endoscope and the overtube in a concerted fashion, which enables the deep enteroscopy. Mucosal changes were noted in order to classify the involvement site. No bowel preparation or pro-kinetic medications were used. Conscious sedation was achieved using intravenous midazolam. Same endoscopist (TK) performed all the enteroscopy procedures. All patients had biopsies of the bulb, the fourth portion of the duodenum, at the beginning and the most distal reached point of the jejunum.
+
+The histopathological grading of the Celiac Disease was according to the Marsh classification as modified by Oberhuber et al. [8]. Biopsies were fixed in buffered formalin and paraffin-embedded. Same GI pathologist (CS) evaluated the biopsy specimens. The histologic criteria for diagnosis of Celiac Disease used for this study required the presence of increased IELs with or without villous atrophy and/or crypt hyperplasia in at least 1 site (bulb, duodenum) without any other obvious cause. Patients diagnosed as CD formed the study group and others diagnosed as normal were used as a control group for the comparison of the endoscopic variables.
+
+Descriptive statistics were used to summarize the data; the categorical variables were expressed as percentages and continuous variables were expressed as means and ranges. The X2 or Fisher׳s exact test was used to test associations between two categorical variables. The strength of linear relationship between variables was measured using the Spearman correlation coefficients. The level of significance for statistical testing was defined as p<0.05. Sensitivities were reported with 95% confidence intervals.
+
+@&#RESULTS@&#
+
+Thirty three patients were enrolled into the study during the designated period. The mean age (+SD) was 35.7 (+12.9) years, with three times as many females as males (25 vs 8). The most common referral indications for clinical evaluation were iron deficiency anemia in 14 patients (27.4%) and diarrhea in 10 patients (19.6%) (
+                        Table 1). Among the 33 patients included in the study 22 had Celiac Disease.
+
+Endoscopic findings were assessed as compatible with Celiac Disease in 22 patients. Mean time for completion of examination was 14min (Range 10–18min). Mean depth of maximum insertion from the pylorus was 70cms (50–100cms). All of the patients were recovered uneventfully.
+
+The most common endoscopic abnormality encountered in patients with CD was mucosal atrophy in 20 patients (90.9%), proceeded with scalloping (n: 12, 54.5%) and nodularity (n:10, 45.5%). All of the CD patients exhibited at least one or more endoscopic abnormality (
+                        Table 2a). Normal endoscopic findings were reported only in normal patients (p<0.001). Interestingly, atrophy and nodularity seen during endoscopy examination could discriminate normal mucosa from diseased one (p: 0.010 and p: 0.032 respectively). Whereas, scalloping and loss of plicae are not associated with positive CD diagnosis (p: 0.067 and p: 0.056 respectively).
+
+We could classify the endoscopic findings according to extent of disease (
+                        Table 2b). Endoscopic findings were continuous from duodenal bulb to the maximum depth of insertion in 8 CD patients (36.4%). Three patients (13.6%) had diffuse proximal involvement, i.e. duodenal bulb and the fourth portion, whereas 6 patients (27.3%) had distal involvement, i.e. marked changes beyond fourth portion of the duodenum. Patchy distribution was seen in 5 patients (22.7%), of whom 2 patients (9.1%) had proximal and one patient (4.5%) had distal involvement. Duodenum bulb was assessed as endoscopically normal in two patients (6.0%) with CD, but biopsy revealed subtotal villous atrophy in the bulb.
+
+Villous atrophy of varying degree was seen on enteroscopy in 20 (90.9%) patients. Enteroscopic finding of mucosal atrophy and enteroscopic diagnosis of CD correctly detected (p=0.0001) and correlated (R=0.645, p=0.0001) with the histologic atrophy. However, endoscopy neither identified (p>0.05) nor correlated (p>0.05) with the increased IELs. Further analysis of the endoscopic findings is outlined in 
+                        Table 3. Endoscopic finding of atrophy was well correlated with any type of histologic atrophy (p=0.004), moreover, nodularity was highly correlated with severe, i.e. total, atrophy (p<0.0001). Sensitivity, specificity, PPV and NPV of the endoscopic changes for the diagnosis of CD are shown in 
+                        Table 4.
+
+@&#DISCUSSION@&#
+
+Celiac Disease is one of the most common inflammatory disease of the small bowel with a worldwide prevalence as high as 1/47 [9].
+
+The clinical presentation has changed over the years from childhood disease with the features of malabsorbtion to more subtle, seemingly unrelated, presentations ranging from iron deficiency anemia to osteoporosis. Detection of the disease specific antibodies is the first step in the diagnosis of CD. The current standard of care for diagnosing Celiac Disease is the presence of mucosal alterations, which includes increased IELs, mucosal atrophy and inflammatory reaction in lamina propria, along with supporting clinical symptoms and serologic studies [10]. The mucosal changes are not unique for Celiac Disease and other diseases may show the very same histologic features; these include Crohn׳s disease, common variable immunodeficiency, autoimmune enteritis, postviral enteritis, cow or soy milk allergy, nonsteroidal anti-inflammatory drugs, giardiasis, tropical sprue and tuberculosis [11,12].
+
+In order to examine the proximal small bowel [13,14] which is the most common site for involvement in CD we used SBE. We believe this procedure is easy, safe, fast and comfortable. It takes little bit longer than a standard upper endoscopy with no need to increase sedatives or putting the patient on the risk of aspiration. A question may arise on the safety issue about the pancreatitis risk that was well documented in double balloon enteroscopy studies [15]. We did not encounter any adverse outcome, especially pancreatitis after the procedure.
+
+We tried to characterize the mucosal changes and to determine the extent of the disease. We found endoscopic markers of atrophy, such as loss of folds, mosaic mucosa or nodularity, in majority (Sensitivity: 90.9%) of patients with Celiac Disease. If we add scalloping finding we found endoscopic changes in 22 patients, almost in every patient with CD. Endoscopic diffuse involvement was seen in 8 (36.4%) patients with the same severity at the proximal and distal portions of the small bowel. Patchy distribution of the Celiac Disease was also confirmed in this study. Patchy involvement was seen in 5 patients (22.7%). Proximal patchy involvement was more common compared to distal one. These changes are the indirect signs of villous atrophy seen as macroscopic changes during upper endoscopy [16]. We have seen these changes in majority of the patients, but histology did not confirm the villous atrophy in 4 patients. This indicates that these signs may help targeting the biopsy but not specific for the villous atrophy or biopsy site may not be “right on” the site we intend to take because of the low maneuverability in the jejunum. It is well known histologic changes differ in the very same material [17]. The sensitivity of these signs has been reported to range from 6% to 98.7% in the different studies [18–22]. It was suggested that anatomic location of the bulb makes it more vulnerable than the more distal duodenum to injury by gluten, which justified the multiple endoscopic biopsies from duodenum and bulbar mucosa [16]. Unfortunately this theory also applies to potential injury of the bulbar mucosa by aforementioned reasons. Brunner glands, lymphoid nodules, helicobacter pylori infection and subsequent gastric metaplasia of the bulb mucosa can distort the architecture [11,12]. That is why bulb biopsy may lead to inadequate diagnostic interpretations. According to Gonzalez et.al. biopsies from duodenum bulb or second portion may show gastric metaplasia in up to 25% of the patients, suggesting an acid injury, which may interfere with the evaluation of the IELs especially for Marsh 1 and 2 patients [23]. The water immersion technique may improve endoscopic diagnosis of CD up to 100% of affected patients [16,24,25].
+
+As a common sense, and also this work has shown, IELs cannot be assessed by white light endoscopy or serologic markers cannot predict increased IELs, although both endoscopic and serologic markers are found to be good at detecting histologic atrophy.
+
+In our study SBE was useful for the characterization of the small bowel atrophy of the CD patients. Other endoscopic findings (shown in Table 2a) helped to differentiate the other causes of proximal intestinal mucosal inflammation from CD like duodenitis.
+
+All of the patients were also examined with Narrow Band Imaging (NBI) during the SBE session. However NBI did not improve the detection of any mucosal changes compared to the examination under the white light. Same observation was previously reported for the double balloon enteroscopy using Fujinon intelligent chromoendoscopy (FICE) to further characterize the changes in a small group of CD patients [26]. Although analysis of the images acquired during endoscopy procedure with or without NBI may aid the diagnosis of patients. For that kind of evaluation we believe endoscopic changes that are not compatible with Celiac Disease should be taken into account because these changes are more common than CD. However, we have seen any endoscopic mucosal change in every patient of our cohort, which is due to patchiness and widespread involvement in the bowel. This finding is important for the minimally invasive or physiologic endoscopy, i.e., capsule endoscopy evaluation of the CD patients. Moreover, computer aided image evaluation may correctly select the patients thus, making endoscopic biopsy obsolete.
+
+In the light of these findings we propose an endoscopic classification of CD (
+                     Fig. 1). Although complete enteroscopy was not performed, we believe it was not necessary, any of the patient with CD would fall any category in this classification. Duodenum is an important border in this classification, since our data and aforementioned literature support the biopsy of the duodenum is sufficient for the diagnosis of CD. Associations with disease presentation and distribution pattern should be examined in the future studies.
+
+Limitations of our study are: the endoscopist who performed the examination was aware of the indication, although not aware of the clinical characteristics of the patients. This high pretest probability of intestinal atrophy may cause a bias for this study.
+
+In summary, the natural course of undiagnosed Celiac Disease makes it crucial to correctly diagnose. For the diagnosis of CD we can rely on the endoscopic markers that may be seen in any CD patient with varying degree of severity and distribution.
+
+Authors declare no conflict of interest.
+
+@&#REFERENCES@&#
+

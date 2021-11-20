@@ -1,0 +1,183 @@
+@&#MAIN-TITLE@&#Individual differences in BEV drivers’ range stress during first encounter of a critical range situation
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           We examined drivers' range stress (RS) during first encounter of critical range.
+
+
+                        
+                        
+                           
+                           Route familiarity and trust in the range estimation system were related to lower RS.
+
+
+                        
+                        
+                           
+                           System competence and personality variables were also related to RS.
+
+
+                        
+                        
+                           
+                           This research has implications for designing strategies aimed at reducing RS.
+
+
+                        
+                        
+                           
+                           This research advances understanding of user experience in low-resource systems.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Battery electric vehicle
+
+Range anxiety
+
+Range stress
+
+Individual differences
+
+@&#ABSTRACT@&#
+
+
+                  It is commonly held that range anxiety, in the form of experienced range stress, constitutes a usage barrier, particularly during the early period of battery electric vehicle (BEV) usage. To better understand factors that play a role in range stress during this critical period of adaptation to limited-range mobility, we examined individual differences in experienced range stress in the context of a critical range situation. In a field experiment, 74 participants drove a BEV on a 94-km round trip, which was tailored to lead to a critical range situation (i.e., small available range safety buffer). Higher route familiarity, trust in the range estimation system, system knowledge, subjective range competence, and internal control beliefs in dealing with technology were clearly related to lower experienced range stress; emotional stability (i.e., low neuroticism) was partly related to lower range stress. These results can inform strategies aimed at reducing range stress during early BEV usage, as well as contribute to a better understanding of factors that drive user experience in low-resource systems, which is a key topic in the field of green ergonomics.
+               
+
+@&#INTRODUCTION@&#
+
+For several years to come battery electric vehicle (BEV) drivers will probably have to deal with situations where they face long-distance trips that are nearly as long as the total available range of their BEV. This is because it will take considerable time before BEVs offer a usable range equivalent to that of combustion vehicles at a comparable price (i.e., even with the projected developments in battery technology). Moreover, larger batteries of BEVs result in a larger ecological footprint (Hawkins et al., 2012; Karabasoglu and Michalek, 2013; Yuan et al., 2015) and reduce the potential of BEVs to enhance sustainability of road transport. Hence, to ensure that BEVs can make a large contribution to sustainable transport, the best strategy may not be increasing battery range to match combustion vehicles but rather tailoring it to a level that fits users' mobility needs (i.e., travel patterns). However, in this context human factors issues around the range-related user experience must be addressed. For instance, what circumstances ensure an optimal BEV user experience (i.e., trips free of range anxiety), including trips with a distance almost equal to the range of the BEV?
+
+Range anxiety is a phenomenon that is frequently named among barriers to widespread adoption of BEVs (e.g., Birrell et al., 2014; McIlroy et al., 2014; Nilsson, 2014). Yet, the term range anxiety is used with many meanings and lacks a clear psychological foundation. It is used to refer to different psychological states such as experienced discomfort or workload, avoidance behaviors, or even anticipation of such states (e.g., before buying a BEV). Our research focuses on user experience while driving in relatively highly critical range situations, as such situations represent the most prototypical context for range anxiety and constitute a significant usage barrier. Previously, we suggested that the concept of stress provides a good psychological foundation for the phenomenon of range anxiety in such a context (Rauh et al., 2015). In the following we therefore use the term range stress when writing about the present study, and the term range anxiety when writing about the phenomenon of range anxiety in general.
+
+Research has shown that practical experience with BEVs is typically linked to an adaptation process (Burgess et al., 2013; Pichelmann et al., 2013; Franke et al., 2015a, in press; Wikström et al., 2014). Following this adaptation process, range stress occurs relatively infrequently in experienced BEV drivers (Franke et al., 2012b; Franke and Krems, 2013), even under conditions of high range demand (i.e., daily long-distance mobility profiles; Franke et al., 2014; Franke et al., in press).
+
+However, this pattern of results also implies that for inexperienced BEV users, it is particularly challenging to deal with limited range. Indeed first results show that inexperienced BEV drivers experience more range stress than experienced BEV drivers in a standardized critical range situation (Rauh et al., 2015). Clearly, offering a good range-related user experience from the earliest stage is vital. Range stress in the early stage of BEV usage (e.g., during a first extended test drive or while testing a BEV for longer trips in a car-sharing setting) might particularly contribute to a less positive first impression of BEVs and, hence, constitute a purchase barrier.
+
+Therefore, a crucial question for human factors research is: Which factors should be targeted to avoid range stress in the early period of BEV usage? Or stated differently: Which factors are related to lower experienced range stress during the first encounter of a critical range situation? Better understanding of factors underlying individual differences in range stress could (1) contribute to a theoretical understanding of user interaction with limited resources and could (2) inform the development of strategies aimed at enhancing the range-related user experience in early-stage BEV usage.
+
+The objective of the present research was to better understand factors involved in range stress experienced by BEV drivers during their first encounters with critical range situations. To this end, data from a field experiment were analyzed in which inexperienced BEV drivers drove a BEV in a critical range situation. Participants rated their experienced range stress during the trip (i.e., while encountering the critical range situation). To our knowledge, this study is the first to examine individual differences in experienced range stress during critical range situations in early stage BEV usage.
+
+In many fields of everyday life, abiding by notions of environmental sustainability requires that we manage natural resources efficiently. In other words, we must utilize resources such that current usage does not compromise future usage of resources (see World Commission on Environment and Development, 1987; or the earlier notions of von Carlowitz, 1713). If we apply these goals to the transport sector we must (1) maximize the usage of renewable energy for propulsion as well as production of transport systems, and (2) maximize energy efficiency, as well as minimize degradation of natural resources during production and usage of transport systems. This explains why electric vehicles are highly appealing. They have a great potential to enhance sustainability of our transport system.
+
+However, the user is a critical parameter in the equation of the net sustainability of electric mobility systems (Franke et al., 2012a), and research shows that it is relatively challenging for users to efficiently deal with range resources in BEVs (Carroll, 2010; Franke et al., 2012b; Franke and Krems, 2013).
+
+Green ergonomics (Thatcher, 2013; Hanson, 2013) offers a useful approach to address such challenges because it is concerned with the design of “low-resource systems” (Thatcher, 2013). According to Thatcher (2013), green ergonomics interventions have great potential to enhance eco-efficiency of products. Dealing with limited resources can increase workload (i.e., in monitoring and controlling resources), and green ergonomics can provide interventions (e.g., interface design) that reduce this cognitive burden (Thatcher, 2013). Also in the field of limited-range BEVs, it has been argued that increasing battery capacity is only one method of solving the challenge of limited range, and strategies focusing on human factors should not be disregarded (Franke et al., 2012b). In particular, a better understanding of how users handle stress-inducing critical range situations will help derive ergonomics interventions that enhance the range-related user experience.
+
+The objective of the present research was to better understand factors involved in BEV drivers’ experience of range stress during first encounter of a critical range situation. The following hypotheses were tested:
+
+Uncertainty has been widely discussed as a key stressor (e.g., Greco and Roger, 2003; Paterson and Neufeld, 1987). Different types of uncertainty (e.g., Lipshitz and Strauss, 1997; Milliken, 1987; Monat et al., 1972), which have diverse effects on experienced stress and coping, have been identified. Yet, it can be concluded that higher uncertainty about the (future) state of the environment (i.e., state uncertainty, see Milliken, 1987), which makes anticipation and anticipatory coping more difficult, can lead to higher experienced stress. Consequently, if drivers are more familiar with the road that lies ahead (i.e., if they can better anticipate the future state of the environment), they should experience less range stress. Accordingly, we expect [H1] that higher route familiarity is related to lower experienced range stress.
+
+Interestingly, reducing route uncertainty is also employed in many system concepts that aim to enhance the range-related user experience and reduce range stress of BEV drivers. These efforts typically aim at including as much information as possible on route characteristics in range prediction and route guidance (e.g., Demestichas et al., 2012; Neaimeh et al., 2013).
+
+A range estimation system can be conceived as a kind of automated system that takes over the task of predicting distance-to-empty based on detected state of charge (i.e., energy in the battery), and additional information that helps characterize past, present and future energy consumption. However, this prediction algorithm cannot guarantee complete accuracy for every situation. This may in turn induce uncertainty and mistrust.
+
+Much research has focused on user interaction with automated systems (Parasuraman, 1997; Hoff and Bashir, 2014). Trust in automation is a key variable in this regard (Hoff and Bashir, 2014; Lee and See, 2004; Xu et al., 2015), and has been found to contribute to a better user experience (Lee and See, 2004). Hence, trustworthiness is a key design criterion for any automated system.
+
+The quality of the range estimation system is a prerequisite for a good range-related user experience of BEV drivers. In particular, it has been pointed out that range displays must be reliable and trustworthy (e.g., Birrell et al., 2014; Strömberg et al., 2011; Neumann and Krems, in press). In connection with the above-mentioned research, it is important to note that subjectively experienced trustworthiness is the crucial factor in determining user experience and behavior (see e.g., Muir, 2007). However, the relationship between experienced trustworthiness of a range estimation system and experienced range stress has not yet been empirically tested. Consequently, we expect [H2] that higher trust in the range estimation system is related to lower experienced range stress.
+
+A fundamental proposition of the transactional model of stress (Lazarus and Folkman, 1984) holds that stress is a result of a misfit between a person's abilities and the demands imposed by the environment. Hence, abilities (skills, knowledge) are crucial for stress resistance. Therefore, relevant knowledge regarding the technical characteristics of a system should help drivers cope with unfamiliar critical system states (e.g., low-range situations) thereby reducing experienced range stress. Consequently, we expect [H3] that higher system knowledge regarding relevant aspects of BEV technology is related to lower experienced range stress.
+
+While technical background knowledge is important, previous research has pointed out that subjective competence in particular helps drivers deal with range, and is important for stress resistance (Franke et al., 2012b; Franke and Krems, 2013). Subjective range competence is conceptualized as confidence in one's skills to control range-inﬂuencing factors as well as predicting remaining range under different conditions (Franke and Krems, 2013). Users who can subjectively control and predict range should experience higher sense of mastery and lower uncertainty regarding a critical range situation. Consequently, we expect [H4] that higher subjective range competence is related to lower experienced range stress.
+
+It can be expected that, similar to the finding that comfortable range – a psychological construct related to range stress resistance (Rauh et al., 2015) – is partly driven by personality factors (Franke et al., 2012b; Franke and Krems, 2013), direct experience of range stress is also partly a matter of personality. High emotional stability (i.e., low neuroticism) is a personality dimension that is commonly linked to lower experienced stress (McCrae, 1990; Gunthert et al., 1999; Schneider, 2004). Consequently, we expect [H5] that higher emotional stability is related to lower experienced range stress.
+
+A variable that has been repeatedly found to explain individual differences in comfortable range is general control beliefs in dealing with technology (Franke et al., 2012b; Franke and Krems, 2013). Internal control beliefs reflect the degree to which people believe that they can control events that affect them (Rotter, 1966). In line with this thinking, control beliefs in dealing with technology have been suggested as a more domain-specific construct in the field of human–machine interaction, where control beliefs also play a crucial role (Beier, 1999). Control beliefs are also a central variable in the transactional model of stress (Lazarus and Folkman, 1984). It appears probable that control beliefs also play a role in the direct experience of range stress. Consequently, we expect [H6] that higher internal control beliefs in dealing with technology are related to lower experienced range stress.
+
+@&#METHOD@&#
+
+Participants were recruited via an online screening questionnaire publicized at the Technische Universität Chemnitz (e.g., intranet news page). For insurance reasons, only members of the university could be recruited. Participants were not compensated for their participation. Therefore, it can be assumed that the sample represents drivers who are particularly interested in electric vehicles (i.e., including potential customers). The 74 drivers (54 male, 20 female), who completed the experiment, were on average 31 years old (Min = 24, Max = 61, SD = 7.19), possessed a driver license for M = 13 years (Min = 7, Max = 34, SD = 6.05) and drove M = 1100 km (Min = 100, Max = 6000, SD = 922) per month with a conventional car. Participants had M = 17.70 km (Min = 0.00, Max = 200.00, SD = 43.80) practical BEV driving experience.
+
+The present research was part of a larger field experiment that examined user experience of critical range situations, and included the manipulation of two independent variables (IVs) in a 2 × 2 between-subjects design: the first variable, IV1, coping information, which participants received (minimal vs. comprehensive information on strategies to cope with critical range situations), and the second variable, IV2, available range safety buffer, which participants experienced while driving (critical vs. highly critical range situation based on correct vs. exaggerated information on trip distance). In addition, individual difference variables were assessed to identify factors involved in user experience in critical range situations. These variables are the focus of the present research. Partial correlations were used to control for possible influences of the two IVs (see section 5).
+
+We instructed participants to drive a round-trip with a BEV, during which they would experience a critical range situation due to the relation of available driving range to trip length (i.e., range situation involving small available range buffers).
+
+The BEV used in this study (BMW ActiveE) had a maximum available driving range between 130 and 160 km, depending on driving style (Ramsbrock et al., 2013). However, the present study took place in winter with an average ambient temperature of M = −0.55 °C (SD = 2.10). Therefore, available driving range at the beginning of the trip was on average M = 113.93 km (SD = 7.70). Range information was displayed via a digital remaining-range display in km (the mean estimated driving range was displayed, which was based on charge level and average energy consumption over the last 30 km, as stated in the user manual). Furthermore, an onboard navigation system displayed the route and remaining km participants had to drive (i.e., planned trip distance to home).
+
+Before starting the trip, all participants received a short briefing on the route (i.e., a map of the route was shown) and use of the BEV, including an explanation of technical parameters, relevant displays and specific functions such as regenerative braking, followed by a short (3 km) accompanied training trip. Afterwards, participants made a 94.3-km unaccompanied round-trip. The whole trip consisted of four sections (Sec A – Sec D). Sec A (13.4 km) consisted of a part within an urban area followed by a part with hilly country roads including some small villages. Sec B (22.8 km) and Sec C (24.9 km) also included hilly country roads and small villages. Sec D (33.2 km) consisted of a German Autobahn (i.e., multi-laned highway, 17.0 km) and an urban area. The route was designed to lead to a critical range situation during the test drive with Sec A and Sec B being mostly uphill (start of Sec A 298 m above sea level, end of Sec B 600 m). Participants experienced a situation where displayed remaining range was only slightly above or even less than remaining trip length (i.e., they experienced a small or even negative range safety buffer during the trip). The minimum experienced range safety buffer value (i.e., displayed remaining range – displayed remaining trip distance) of drivers over the whole trip was M = −0.89 km (SD = 10.24). Participants were requested to stop after Sec A, Sec B and Sec C at predefined locations. During each stop they had to call the experimenter and fill out questionnaires assessing experienced range stress in the experienced critical range situation. In the analyses, only stress measures of Sec A and Sec B were used because the route was only particularly stress inducing on the first two sections (Sec A + Sec B). This is because Sec A and Sec B were mostly uphill and therefore energy consumption was particularly high, which resulted in the pattern that remaining range decreased faster than remaining trip length (i.e., range buffer decreased while driving). After Sec B, participants drove downhill (end of Sec B 600 m above sea level, end of Sec D 298 m) thus benefitting from regenerative braking and reduced consumption; this resulted in a slower decrease of available range (i.e., range buffer partly increased). Moreover, while “distance-to-home” increased on Sec A and Sec B, it started to decrease after Sec B (i.e., on the home-bound section of the trip).
+
+Six items assessed the extent to which participants were familiar with the route before the trip. Route familiarity was assessed for three route sections that could have yielded different ratings because they belonged to typical trip routes in the area. Two items were administered for each section: (1) “I was already familiar with the route section between x and y before the trip”, and (2) “Regarding the route section between x and y, I knew how the route profile (e.g., elevation and speed profile) would look like” (6-point Likert scale, verbal anchors: completely disagree, largely disagree, slightly disagree, slightly agree, largely agree, completely agree, score values 1–6). Reliability, as indicated by Cronbach's alpha, was excellent (see Table 1
+                           ). We interpreted Cronbach's alpha according to common practice (see e.g. Westland, 2015) as poor (.5 ≤ α < .6), questionable (.6 ≤ α < .7), acceptable (.7 ≤ α < .8), good (.8 ≤ α < .9), or excellent (≥.9).
+
+The 12-item Trust in Automated Systems scale (Jian et al., 2000), which was translated into German during a previous research project (Beggiato and Krems, 2013; Beggiato, 2015), was administered after driving to assess trust in the range estimation system. The instructions were adapted to specify the system as follows: “For the following statements the term ‘system’ relates to the km-based range display and the calculation algorithm behind it (= the range estimation system of the ActiveE)” (7-point Likert scale, score values 1–7). Reliability was excellent (see Table 1).
+
+Three items, slightly adapted from Franke and Krems (2013), assessed participants’ system knowledge regarding relevant aspects of BEV technology (i.e., units of electricity, electric vehicle propulsion technology, specific features of technical components in the BEV) before the trip. The items used the same 6-point Likert scale as used for route familiarity. Reliability was acceptable (see Table 1).
+
+The 4-item Subjective Range Competence scale from Franke and Krems (2013) was used (same 6-point Likert scale as used for route familiarity). Reliability was almost acceptable (see Table 1).
+
+Emotional stability (i.e., low neuroticism) was assessed using the 2-item neuroticism scale of the BFI-10 (Rammstedt and John, 2007; 5-point Likert scale, score values 1–5). High values were scored to indicate high emotional stability. Reliability was questionable (see Table 1). Yet, the relatively low internal consistency of such a short personality scale is not uncommon (Romero et al., 2012) and is not necessarily problematic (Yarkoni, 2010).
+
+The 8-item KUT (Beier, 1999) was used (6-point Likert scale, score values 1–6, high values indicate high internal control beliefs). Reliability was good (see Table 1).
+
+Two scales assessed range stress after Sec A and Sec B of the test drive: (1) the 16-item PASA questionnaire (Gaab, 2009) and (2) a single-item indicator. The PASA assesses situational stress (score values −5 to +5, higher values indicate higher experienced stress). The instruction framed the items on the current range situation (relation of remaining trip distance to remaining range). Reliability was excellent (see Table 1). A mean score was computed from scores of Sec A and Sec B (labelled PASA.RangeStress).
+
+The PASA conceptualizes stress as the product of primary and secondary appraisal according to the transactional stress model of Lazarus and Folkman (1984). Stress-resistance factors can have different effects on primary versus secondary appraisal. Accordingly, we also computed scores of these two subscales for our analyses (labelled PASA.PrimApp and PASA.SecApp, score values 1–6). High values indicate stress-inducing appraisal for PASA.PrimApp and stress-reducing appraisal for PASA.SecApp. Both subscales showed good to excellent reliability (see Table 1). A mean score was computed from scores of Sec A and Sec B.
+
+Second, a single-item indicator (labelled SI.RangeStress) queried range stress [item text “How stressed do you currently feel by the development of range (the relation of remaining trip distance to remaining range)?”] on a scale from 0 “no stress at all” to 10 “highest possible stress”. We developed this item based on an earlier version of this item used in a previous experiment (Rauh et al., 2015). Wording of the item was slightly revised based on experiences from this experiment and then tested for comprehensibility before the current experiment. Test-retest reliability was very good (see Table 1). A mean score was computed from the scores of Sec A and Sec B. This single-item indicator also highly correlated with the PASA (stress index = .68, primary appraisal = .76, secondary appraisal = −.40) indicating that the single item highly reflected the 16-item scale, yet reflected primary appraisal more.
+
+@&#RESULTS@&#
+
+To control for possible influences of the two independent variables manipulated in the field experiment (see section 4.2), we computed partial correlations with these two variables as control variables to test our hypotheses. As we had directional hypotheses, we computed one-tailed tests with an alpha of .05. Effect sizes were interpreted according to Cohen's conventions (1992); i.e., weak effect is r = .10; moderate effect is r = .30; strong effect is r = .50. To obtain a complete picture we additionally computed zero-order Pearson correlations. Unfortunately, there were some problems with normal distribution of the assessed variables (e.g., route familiarity was skewed, emotional stability was leptokurtic), which can be a problem for parametric correlation analysis. Hence, we additionally computed Spearman rank correlations to obtain an indication whether the distribution problems may have biased the results considerably. In the following, our interpretation focuses on the partial correlation. The other figures are only discussed if they revealed substantially different results. That is, they are only discussed if the zero-order Pearson correlation and the Spearman correlation differed considerably in terms of (a) effect magnitude (defined as a difference in correlation coefficient > |.1|) or (b) significance (defined as a change from p ≥ .05 to p < .05 or reverse). However, this was only the case for [H4].
+
+Regarding [H1], higher route familiarity was linked to lower range stress, as expected (see Table 2
+                        ). Both stress indicators (PASA.RangeStress and SI.RangeStress) showed significant effects that were moderate (PASA.RangeStress) or almost moderate (SI.RangeStress). The effect was similar for primary versus secondary appraisal.
+
+Regarding [H2], higher trust in the range estimation system was linked to lower range stress, as expected (see Table 3
+                        ). Both stress indicators showed significant moderate to strong effects. The effect was nearly equal for primary versus secondary appraisal.
+
+Regarding [H3], higher system knowledge was linked to lower range stress, as expected (see Table 4
+                        ). However, only the PASA showed a moderate and significant effect. The effect was similar for primary versus secondary appraisal.
+
+Regarding [H4], higher subjective range competence was linked to lower range stress, as expected (see Table 5
+                        ). However, only the PASA showed a moderate and significant effect. The effect was stronger for secondary compared to primary appraisal. Noteworthy is that the effect was stronger for Spearman correlation compared to zero-order and partial correlation. However, this does not alter the overall picture of results for [H4].
+
+Regarding [H5], higher emotional stability was linked to lower range stress, as expected (see Table 6
+                        ). However, only SI.RangeStress showed a moderate and significant effect. The effect was only significant for primary but not for secondary appraisal. Hence, the effect of emotional stability (as assessed with BFI-10) on range stress is not very pronounced. Particularly, there appears to be no relationship to secondary appraisal.
+
+Regarding [H6], higher internal control beliefs in dealing with technology were linked to lower range stress, as expected (see Table 7
+                        ). Both stress indicators showed significant effects. However, only SI.RangeStess yielded a moderate effect. The effect was somewhat stronger for secondary compared to primary appraisal.
+
+@&#DISCUSSION@&#
+
+The objective of the present research was to better understand individual differences in range stress experienced by BEV drivers during their first encounter of a critical range situation. In general, our hypotheses were supported. All correlation coefficients (H1–H6) were in the expected direction. Higher route familiarity (H1), trust in the range estimation system (H2), system knowledge (H3), subjective range competence (H4) and internal control beliefs (H6) were all significantly related to lower experienced range stress as indicated by the PASA. Only the effect of emotional stability (H5) was not significant. Regarding the single-item range stress indicator, significant effects were found for H1, H2, H6, and also for H5.
+
+As a first methodological conclusion, the single-item indicator (SI.RangeStress) performed relatively well in comparison to the 16-item PASA scale. However, it performed less well for the two competence-related stress resistance factors (i.e., system knowledge and subjective range competence), where the relationship to the PASA stress score seemed to be particularly driven by a more positive secondary appraisal (see Tables 5 and 6 and results in section 4.3.7 that the single-item range stress indicator seems to more strongly reflect primary appraisal). This interpretation is also supported by results of H5 where, on the one hand, the PASA stress score did not yield a significant effect but only the primary appraisal subscale and, on the other hand, the single-item indicator yielded a significant effect. In sum, assessment of range stress with a single-item indicator (i.e., let respondents rate experienced stress directly) appears feasible if a highly economic questionnaire design is needed. However, a comprehensive theory-driven questionnaire scale is more robust and better supports the examination of factors that reduce stress by influencing secondary appraisal. Hence, a task for further development of the single-item measure for range stress is to reformulate the item so that it better covers the facet of secondary appraisal. Moreover, a second item could be developed that explicitly addresses secondary appraisal yielding a still highly economic two-item measure that covers both facets of range stress.
+
+Another methodological implication pertains to system trust. If research aims to compare the potential of different concepts or prototype systems for range estimation, with the aim to reduce drivers’ range stress, it may not be possible to test the different variants in an extended field trial (i.e., field trial that can provide data on the frequency of range stress in everyday use). In such a case, assessment of system trust using the scale we have used here may be a good alternative. Moreover, trust can already be assessed based on user experience in a simulated environment (i.e., driving simulator study with different system layouts). Thus, from a user-centered perspective, system trust is a useful benchmark variable (i.e., design criterion) when optimizing electric vehicle range estimation (or range prediction) algorithms.
+
+Our results show that first encounters with critical range are experienced quite differently by different BEV drivers, and that several factors can explain drivers’ individual range stress resistance. Results of route familiarity (H1) clearly show how important it is for drivers to be able to easily anticipate (i.e., know) how a road will unfold. This provides strong evidence for the development of technical approaches to reduce range anxiety by reducing route uncertainty (see section 3.1).
+
+Findings for system trust (H2) point in a similar direction and provide a first empirical analysis that directly tests the frequently raised claim that perceived reliability and trustworthiness of range displays (i.e., the range estimation system) is of crucial importance for range-related user experience. Further, our findings regarding trust also represent a general contribution to the growing body of literature on trust in automated systems which currently receives increased attention with the rise of highly automated driving (Eskandarian, 2012).
+
+Study results on system knowledge (H3) and subjective range competence (H4) demonstrate the importance of prior knowledge and self-efficacy in reducing experienced stress during first encounter of a critical range situation. Every strategy that aims to lower range stress in the early period of BEV usage should (also) aim to increase drivers' background knowledge regarding relevant system characteristics as well as enhancing drivers’ subjective competence (i.e., self-efficacy) in managing range. However, further research is needed to precisely define the knowledge needed.
+
+Finally, results regarding the two personality facets – emotional stability (H5) and control beliefs (H6) – show that fractions of range stress exist that are probably not amenable to intervention. The contribution of stable personality characteristics, which influence the extent of stress experienced in a given situation, must be acknowledged. Interestingly, the facet of emotional stability (i.e., low neuroticism) played a less prominent role than expected. While this could also be due to the minimalistic assessment of this construct (i.e., use of only the two-item scale of the BFI-10; Rammstedt and John, 2007), it could also point to a pattern that range stress – as a domain-specific form of psychological stress – might be somewhat different from other forms of psychological stress.
+
+@&#LIMITATIONS@&#
+
+The present study used a sample that only partially represents the population of BEV early adopters, or the general population of car drivers (due to insurance reasons, see section 4.1). However, our participants’ socio-demographic profiles were indeed similar to typical BEV early adopters, and participants were all highly interested in driving BEVs. Moreover, because of the study design inferences about causal relationships cannot be drawn. This must be considered when interpreting our results.
+
+@&#CONCLUSION@&#
+
+The objective of the present research was to better understand individual differences in BEV drivers' experienced range stress during their first encounter of a critical range situation. We found evidence that many different factors contribute to individual differences in stress resistance in this early period of adaptation to BEV range. Our results provide empirical support and grounds to pursue certain strategies aimed at reducing range stress (i.e., range anxiety) as well as identify further variables that play a role in drivers’ experienced range stress. We have examined a specific case where operators have to interact with limited energy resources (i.e., environmental resources) in a demanding situation. Identifying factors that can enhance user experience in such environments will contribute to ergonomic design of low-resource systems and enable user-system interaction patterns that improve sustainability of the whole system. However, the ultimate goal of green ergonomics is to develop a general theory of user behavior in low-resource systems. The present research only represents one step in this long-term research agenda.
+
+@&#ACKNOWLEDGMENTS@&#
+
+This research was funded by the German Federal Ministry for the Environment, Nature Conservation, Building and Nuclear Safety (16SBS014B). Statements in this paper reflect the authors' views and do not necessarily reflect those of the funding body or of the project partners. We are grateful for the support of our consortium partners, BMW Group (particularly Dr. R. Vilimek, Dr. A. Keinath, Dr. J. Ramsbrock) and Stadtwerke Leipzig, who made our research possible.
+
+@&#REFERENCES@&#
+

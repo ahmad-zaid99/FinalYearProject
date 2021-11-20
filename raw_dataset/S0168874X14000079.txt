@@ -1,0 +1,614 @@
+@&#MAIN-TITLE@&#Finite element analysis for large displacement J-integral test method for Mode I interlaminar fracture in composite materials
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Comparison of analytical exact method with finite element simulations.
+
+
+                        
+                        
+                           
+                           Exact method and finite element can be used to calculate fracture toughness.
+
+
+                        
+                        
+                           
+                           A constant value of fracture toughness is observed remotely from the crack tip.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Composite
+
+Crack
+
+J-integral
+
+Fracture
+
+Double cantilever beam
+
+Collapsed elements
+
+@&#ABSTRACT@&#
+
+
+                  The presence of surface and internal cracks in monolithic and composite materials is known to reduce the fracture strength of the material. Due to the inherent complexity of composites, a wide array of fracture analysis has been developed to quantify the stress field at the crack tip. In this paper, an expression of instantaneous evaluation of J-Integral (Paris and Paris, 1988 [1]; Williams, 1987 [2]; Nilsson, 2006 [3]) is compared to finite element output as a method of analysis for the Mode I interlaminar fracture toughness of composite materials for large displacements of the double cantilever beam using empirical data. The outputs of the proposed exact method and finite element method are also compared with two ASTM methods; Modified Beam Theory (MBT) and Modified Compliance Calibration (MCC) methods. The results show close alignment with MBT method and MCC method, and therefore, suggest that the exact (J-integral) method may be used as an alternative over relatively costly and time consuming testing procedures for evaluating fracture toughness of fiberglass-epoxy composites. In addition, finite element simulations show relatively constant value of fracture toughness as compared to exact method, MBT method, and MCC method if extracted remotely from the crack tip.
+               
+
+@&#INTRODUCTION@&#
+
+Design and application of composite materials have become widely popular, partly due to a significant development in material science, growing need for advanced performance in materials, and a burgeoning field of numerical analysis. Composites are characterized by their constituent mechanical properties, but in general are valued for their high stiffness, high strength and low density. Their applications range from aerospace, aircraft and automotive industries to biomedical and recreational applications [4].
+
+Due to the inherent complexity of composite materials and their susceptibility to delamination, the application of fracture mechanics toward composites is a topic of great interest. Numerous attempts to quantify fracture mechanics when used to analyze the failure of composites have been made, particularly toward the quantitative establishment of the fracture toughness of the material (GIC) and the energy released per unit area of crack extension (G) during loading [4]. Previous research has analyzed the applicability of fracture mechanics toward defining fracture toughness in laminates through the use of simple beam theory with applied correction factors for nonlinear load deflection curves [5]. Williams also successfully applied large displacement analysis to compute the interlaminar toughness of fiber composites [2]. Irwin and Kies produced work on laboratory fracture tests with the aim to determine the strain energy release rate and the effective work rate for the onset of unstable fracturing [6]. They concluded that inspection procedures can lead to upper bounds on the lengths of cracks, which can lead to the calculation of the energy release rate. Irwin and Kies also completed extensive research on fracture dynamics and wave propagation of cracks [7]. They stated that the studies of component parts of fracturing were achievable only when the cracks were large enough to be observed.
+
+Previous empirical data has shown lower fracture strengths compared to theoretical predictions. This has been attributed to the presence of naturally occurring flaws and cracks in the material [8]. The presence of small inherent cracks within materials is of particular concern due to the amplification of applied stress at crack tips. The subsequent fatigue failure from an applied stress upon cracks may be quantified through the study of the specified crack propagation. There are numerous analytical methods concerning crack propagation, all based upon elastic analysis at the crack tips due to a unique stress-strain field in the geometric region. An analysis of this stress field for large scale yielding in an attempt to quantify the crack tip singularity requires numerical techniques that rely upon a direct relationship between accuracy and distance from the crack tip [9]. A path independent integral, otherwise known as the J-integral, was formulated by Rice to complete such an analysis without focusing attention directly at the crack tip [10]. The use of the J-integral simplifies the complex analysis of concentrated strain fields in the vicinity of cracks in linear and nonlinear materials. An analytical closed form data reduction method of the J-integral for the double cantilever beam (DCB) test with minimal rotations and displacements was presented by Paris et al. [1] and was later verified by Gunderson et al. [11]. The J-integral reduced from DCB test data was found to be successful with only three known parameters, the applied load, beam angle, and the initial beam width. In another study, J-integral expressions were derived for arbitrary loading conditions for DCB tests [3].
+
+Crack-tip stress distribution associated with Mode I interlaminar fracture toughness is one of the most widely encountered engineering situations [12]. Mode I is characterized by an opening or tensile mode, where the crack surfaces move directly apart as shown in 
+                     Fig. 1. Mode I interlaminar fracture toughness, GIC, of a composite materials is commonly determined through the DCB test, also known as the ASTM standard method [13]. In a DCB test, for specific geometry of the specimen and loading, experimental data points are collected by visually measuring the crack length and noticing values on opening displacement indicator. Different data reduction methods such as Modified Beam Theory method, compliance method, area method or exact (J-Integral) method are then used to calculate energy release rate using the experimental data points. These data reduction methods are based upon linear-elastic fracture mechanics (LEFM) theory [14–16]. The modified beam method determines fracture energy through displacement, load, and crack length. In compliance method, the fracture energy release rate is proportional to the differentiative of compliance (with respect to crack length), which is defined as the displacement per corresponding load [17]. A large statistical sampling of loads, displacements, and crack length measurements are required to form a third order polynomial approximation to be used in compliance development. The area method defines the fracture energy to be proportional to the area under the load–displacement curve while inversely proportional to the increase in crack length for a given width of a specimen [17]. However, this approach is only valid for linear load-deformation responses [4]. All methods rely upon theory proposed by Griffith, where the work required to extend a crack is compared to the release of stored elastic energy during crack propagation [18].
+
+Historically, fracture mechanics has relied upon empirical data and observations made in laboratory settings. With the recent advances in numerical techniques, finite element method has emerged as one of the cost effective verification techniques in various fields [19,20]. The application of finite element analysis toward fracture mechanics is a new and growing field. Many studies are now employing finite element method on fracture mechanics problems [21–23]. Biel and Stigh used finite element method to study the accuracy of the different data reduction methods, including the J-integral method [24,25]. Carlberger, Stigh, Marzi, and Biel applied the J-integral method to study the behavior of adhesively bonded joints [26,27]. In other studies [28–30], the idea of evaluating J-integral along the specimen׳s contour was applied to end-notch flexure specimen. J-integral method was also applied to study the delamination properties of arc-shaped specimens [31].
+
+The prime motives of the study presented here come from the fact that the results reported by Gunderson et al. [11] did not include comparison of analytical solution [1] with finite element analysis and MCC. Furthermore, correction factors for loading end blocks effects were omitted. Finally, large displacement effects [2,3] were not included in the study. In this paper, a finite element approach with the inclusion of correction factors for loading end blocks effects is adopted to verify the methodology developed by Paris and Paris [1], Williams [2], and Nilsson [3] for instantenous evaluation of J intergral for DCB tests using only three parameters; the beam angle at the loading points, beam width, and the applied load. The exact (J-integral) method is compared with finite element output, MBT method, and MCC method.
+
+An undeformed DCB specimen is shown in 
+                     Fig. 2, where a
+                     
+                        o
+                      is the initial crack length, b is the width of the specimen, h is the thickness of the specimen, L is the total length, and P is the applied load.
+
+
+                     
+                     Fig. 3 shows a deformed DCB specimen, where θ is the opening angle and δ is total load point displacement.
+
+The path independent J-integral [10] is expressed as follows:
+                        
+                           (1)
+                           
+                              
+                                 
+                                    J
+                                 
+                                 
+                                    I
+                                 
+                              
+                              =
+                              
+                              
+                                 ∫
+                                 Γ
+                              
+                              
+                                 (
+                                 
+                                    W
+                                    
+                                    d
+                                    y
+                                    −
+                                    T
+                                    ⋅
+                                    
+                                       
+                                          ∂
+                                          u
+                                       
+                                       
+                                          ∂
+                                          x
+                                       
+                                    
+                                    d
+                                    s
+                                 
+                                 )
+                              
+                           
+                        
+                     where Γ is a contour around the crack in Cartesian co-ordinate system, W is strain energy density and is equal to ∫σ
+                     
+                        ij
+                     
+                     
+                     dε
+                     
+                        ij
+                     , 
+                        T
+                      is the traction tensor acting on the contour, 
+                        u
+                      is displacement vector, and ds is the length of an element along the contour.
+
+Noticing free surfaces AD and BC of DCB specimen in 
+                     Fig. 4 and neglecting local stretch at the points where load is applied, Eq. (1) for DCB specimen for surfaces AB and CD reduces to
+                        
+                           (2)
+                           
+                              
+                                 
+                                    J
+                                 
+                                 
+                                    I
+                                 
+                              
+                              b
+                              =
+                              
+                              2
+                              
+                                 ∫
+                                 0
+                                 x
+                              
+                              
+                                 (
+                                 
+                                    T
+                                    ⋅
+                                    
+                                       
+                                          d
+                                          y
+                                       
+                                       
+                                          d
+                                          x
+                                       
+                                    
+                                    
+                                    d
+                                    x
+                                 
+                                 )
+                              
+                              =
+                              
+                              2
+                              
+                                 ∫
+                                 0
+                                 x
+                              
+                              
+                                 (
+                                 T
+                                 ⋅
+                                 δ
+                                 θ
+                                 
+                                 d
+                                 x
+                                 )
+                              
+                           
+                        
+                     where 
+                        (
+                        d
+                        y
+                        /
+                        d
+                        x
+                        )
+                        =
+                        δ
+                        θ
+                      is the relative rotation of each section of the arm along the beam axis (Fig. 4). Adding all angle increments along the length of the bean, the total slope at the point of load application is θ/2 and 
+                        
+                           ∫
+                           0
+                           x
+                        
+                        T
+                        
+                        d
+                        x
+                      is applied force P. Substituting these values in above equation gives
+                        
+                           (3)
+                           
+                              
+                                 
+                                    J
+                                 
+                                 
+                                    I
+                                 
+                              
+                              =
+                              
+                              
+                                 
+                                    P
+                                    θ
+                                 
+                                 b
+                              
+                           
+                        
+                     Eq. (3) was reported by Paris and Paris [1] for small displacements. For large displacements as presented in [2,3], Eq. (3) changes to
+                        
+                           (4)
+                           
+                              
+                                 
+                                    J
+                                 
+                                 
+                                    I
+                                 
+                              
+                              =
+                              
+                              
+                                 
+                                    2
+                                    P
+                                 
+                                 b
+                              
+                              
+                              sin
+                              
+                                 (
+                                 
+                                    
+                                       θ
+                                       2
+                                    
+                                 
+                                 )
+                              
+                              
+                           
+                        
+                     The above result does not require the knowledge of crack length, load–displacement record, and material properties other than the assumption of elastic–plastic behavior.
+
+In the empirical study [11], both the energy release rate and the J-integral were evaluated simultaneously for large displacements of the DCB specimens to ensure proper comparison of the two approaches. The specimens were tested at a rate of 5mm/min. A digital video camcorder was used to visually record the delamination length while transducers measured the beam angle, applied load, and load point displacement. The DCB specimen material was fiberglass/epoxy (LTM24ST on 7725 glass). In order to reduce the analysis cost, a single set of empirical data was chosen as a comparison in present study.
+
+@&#METHODS@&#
+
+In the present study, three data reduction methods (MBT, MCC, and Exact method) were used to calculate energy release rate from the experimental data. In addition, a finite element analysis was performed. The values of J
+                     1 and G
+                     1 obtained from each method were compared. The details of each method are given below:
+
+The energy release rate, G
+                        
+                           I
+                        , for a DCB specimen with large displacements as recommended in the ASTM standard is shown in the following equation:
+                           
+                              (5)
+                              
+                                 
+                                    
+                                       G
+                                    
+                                    
+                                       I
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       3
+                                       P
+                                       δ
+                                    
+                                    
+                                       2
+                                       b
+                                       (
+                                       a
+                                       +
+                                       Δ
+                                       )
+                                    
+                                 
+                                 
+                                    F
+                                    N
+                                 
+                                 
+                              
+                           
+                        where Δ is a correction factor for rotation at the delamination front and determined experimentally through a curve fit on a plot of the cube root of compliance C versus crack length a as shown in 
+                        Fig. 5. The compliance C is defined as the ratio of load point displacement to the applied load, δ/P.
+
+The term F/N is a correction factor for loading blocks effects. The values of F and N are calculated using following expressions:
+                           
+                              (6)
+                              
+                                 F
+                                 =
+                                 1
+                                 −
+                                 
+                                 
+                                    3
+                                    
+                                       10
+                                    
+                                 
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             δ
+                                             a
+                                          
+                                       
+                                       )
+                                    
+                                    2
+                                 
+                                 −
+                                 
+                                    3
+                                    2
+                                 
+                                 
+                                    (
+                                    
+                                       
+                                          
+                                             δ
+                                             t
+                                          
+                                          
+                                             
+                                                
+                                                   a
+                                                
+                                                2
+                                             
+                                          
+                                       
+                                    
+                                    )
+                                 
+                              
+                           
+                        
+                        
+                           
+                              (7)
+                              
+                                 N
+                                 =
+                                 1
+                                 −
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             
+                                                L
+                                                '
+                                             
+                                             a
+                                          
+                                       
+                                       )
+                                    
+                                    3
+                                 
+                                 −
+                                 
+                                    9
+                                    8
+                                 
+                                 
+                                    [
+                                    
+                                       1
+                                       −
+                                       
+                                          
+                                             (
+                                             
+                                                
+                                                   
+                                                      L
+                                                      '
+                                                   
+                                                   a
+                                                
+                                             
+                                             )
+                                          
+                                          2
+                                       
+                                    
+                                    ]
+                                 
+                                 
+                                    (
+                                    
+                                       
+                                          
+                                             δ
+                                             t
+                                          
+                                          
+                                             
+                                                
+                                                   a
+                                                
+                                                2
+                                             
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 −
+                                 
+                                    9
+                                    
+                                       35
+                                    
+                                 
+                                 
+                                    
+                                       (
+                                       
+                                          
+                                             δ
+                                             a
+                                          
+                                       
+                                       )
+                                    
+                                    2
+                                 
+                              
+                           
+                        where L' and t are shown in 
+                        Fig. 6.
+
+Another data reduction method suggested in [13] for calculating G
+                        
+                           I
+                         is MCC method in which delamination length normalized by specimen thickness, a/h, is plotted against cube root of compliance, C
+                        1/3. By knowing the slope of the lease square fit line of the plot, A
+                        1, Mode I interlaminar fracture toughness is calculated as follows:
+                           
+                              (8)
+                              
+                                 
+                                    
+                                       G
+                                    
+                                    
+                                       I
+                                    
+                                 
+                                 =
+                                 
+                                 
+                                    
+                                       3
+                                       
+                                          
+                                             P
+                                          
+                                          2
+                                       
+                                       
+                                          
+                                             C
+                                          
+                                          
+                                             2
+                                             /
+                                             3
+                                          
+                                       
+                                    
+                                    
+                                       2
+                                       
+                                          
+                                             A
+                                          
+                                          
+                                             1
+                                          
+                                       
+                                       b
+                                       h
+                                    
+                                 
+                              
+                           
+                        Once the crack growth initiates, the value of G
+                        
+                           I
+                         is referred to as critical energy release rate and it is commonly denoted as G
+                        
+                           IC
+                        .
+
+As shown in above section (J-integral Theory), the J-integral, when applied to large displacement DCB specimen, yields Eq. (4).Like energy release rate, at crack propagation, the value of J-integral (J
+                        
+                           I
+                        ) is represented by J
+                        
+                           IC
+                        .
+
+Crack propagation and subsequent energy release analysis in a DCB specimen was analyzed in ABAQUS/Standard (commercial finite element software) by the use of a quasi-static rate-independent J-integral. The analysis was performed in two dimensions with the Z plane being unitized. The encastre (fixed) boundary and point loading conditions were assigned as shown in 
+                        Fig. 7. The problem domain was discretized using plain strain, second order, reduced-integration, continuum quadrilateral elements as shown in 
+                        Fig. 8. A mesh density study was performed revealing that a total of 30 contour integrals around the crack tip would be appropriate for results accuracy. These contours integrals were defined with an incremental distance of 0.03125mm (from the crack tip) for the first 12 contours and 0.0625mm for the remaining contours as shown in 
+                        Fig. 9. The value of J-integral, as depicted in 
+                        Fig. 10, was relatively stabilized beyond 0.2mm away from the crack tip in the delamination direction. Hence, J-integral values were extracted from the 7th contour integral (passing at a distance of 0.21875mm from the crack tip) for all cases as shown in Fig. 9. A strain field singularity in the contour integral was introduced by modeling collapsed quadrilateral elements at the crack tip and moving the mid-side nodes on the sides connected to the crack tip to the 1/4 point nearest the crack tip [32]. The DCB material was assigned following mechanical properties: Young׳s modulus, 21.68GPa and Poisson׳s ratio, 0.33. These values were extracted from the experimental data of DCB specimen. An array of twenty five experimental distances were analyzed.
+
+@&#RESULTS AND DISCUSSION@&#
+
+
+                     
+                     Fig. 11 shows the delamination resistance curve for each method. G
+                     
+                        I
+                      and J
+                     
+                        I
+                      increase monotonically and then stabilize as delamination increases. 
+                     Table 1 lists average values of G
+                     
+                        IC
+                      and J
+                     
+                        IC
+                      for each method used. It can be seen that the values are very close to each other. The average percentage difference between (any) two methods in the present study is displayed in 
+                     Table 2.
+
+A small error between G
+                     
+                        IC
+                      and J
+                     
+                        IC
+                      values in Table 2 shows that G
+                     
+                        IC
+                      and J
+                     
+                        IC
+                      can be used in place of each other for this DCB specimen material. The finite element output verifies that Eq. (3) can be used to calculate J-integral instantaneously if load and beam slope at the load point are known along with the beam width. Eq. (4) removes the need to acquire visual measurements of the delamination length and avoids problems associated with locating the crack tip and crack tunneling. In addition, the correction factors, which account for deviation from linear beam theory including geometric nonlinearity associated with large deformation and root rotation, are avoided. It may be noted that the fluctuation in J-integral value in finite element output is extremely small, which may be attributed to the extraction of results from contour integrals in the zone where J-integral values were stabilized.
+
+In order to validate the accuracy of finite element analysis performed in this study, output of finite element simulations for beam deflection and opening angle were compared with the experimental data. 
+                     Fig. 12 shows the experimental and finite element plots of deflection at load point versus delamination length and beam angle. A close alignment of finite element output with the experimental data is evident. Comparison of the finite element analysis and empirical data for load versus beam deflection are shown in 
+                     Fig. 13. The finite element output is in agreement with the empirical data.
+
+@&#CONCLUSION@&#
+
+The large displacement DCB interlaminar toughness test using the exact (J-integral) method developed in [1–3] is compared with the finite element method, Modified Beam Theory method, and Modified Compliance Calibration method through empirical data. Both the exact method (Eq. (4)) and finite element analysis show good agreement. The exact method allows for an instantaneous calculation of J
+                     
+                        I
+                      for fiberglass/epoxy (LTM24ST on 7725 glass) material if the applied load, beam width, and beam angle at the loading point are known. Furthermore, the method does not require acquisition of (visually measured) delamination length and removes the need for large displacement and end block correction factors, which potentially could reduce the cost and time associated with interlaminar fracture toughness testing for fiberglass/epoxy composite materials. It is also established that J-integral values determined through finite element analysis for this DCB test and material system remain constant if extracted from contour integrals remote from the crack tip. Significant plasticity at the crack tip is accommodated provided a contour passes through the material experiencing only elastic deformation.
+
+@&#ACKNOWLEDGMENT@&#
+
+Authors would like to thank anonymous referees for providing useful, constructive, and insightful feedback that resulted in a significant improvement of the original manuscript. Authors would also like to extend their gratitude to Ohio University for providing Faculty Research Fund and University of Alaska Anchorage for awarding Faculty Development Grant for this work.
+
+@&#REFERENCES@&#
+

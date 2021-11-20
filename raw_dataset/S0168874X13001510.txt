@@ -1,0 +1,3433 @@
+@&#MAIN-TITLE@&#Modified crack closure integral technique for extraction of SIFs in meshfree methods
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Adoption of modified crack closure integral (MCCI) in meshfree methods for evaluation of stress intensity factors (SIFs).
+
+
+                        
+                        
+                           
+                           Comparison of MCCI technique with M-Integral technique, displacement method, etc.
+
+
+                        
+                        
+                           
+                           Case studies on mixed-mode crack problems involving remote loading, crack face loading and thermal loading.
+
+
+                        
+                        
+                           
+                           Effect of enrichment functions, order of Gauss integration, domain of influence and nodal density on accuracy of SIFs.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Element-free Galerkin
+
+Crack closure integral
+
+Stress intensity factor
+
+Meshfree methods
+
+@&#ABSTRACT@&#
+
+
+                  A new approach for extracting stress intensity factors (SIFs) by the element-free Galerkin (EFG) class of methods through a modified crack closure integral (MCCI) scheme is proposed. Its primary feature is that it allows accurate calculation of mode I and mode II SIFs with a relatively simple and straightforward analysis even when a coarser nodal density is employed. The details of the adoption of the MCCI technique in the EFG method are described. Its performance is demonstrated through a number of case studies including mixed-mode and thermal problems in linear elastic fracture mechanics (LEFM). The results are compared with published theoretical solutions and those based on the displacement method, stress method, crack closure integral in conjunction with local smoothing (CCI–LS) technique, as well as the M-integral method. Its advantages are discussed.
+               
+
+@&#INTRODUCTION@&#
+
+Meshfree methods (MMs) were developed to overcome some of the difficulties of solid mechanics in analyzing certain type of problems using traditional computational tools like the finite element methods (FEMs) and boundary element methods (BEMs) [1]. One class of problems, for example, involves the propagation of a crack front where extensive remeshing is often required. Unlike mesh-based methods, MMs do not require discretization. Furthermore, the shape functions of MMs are higher order continuous [2] than that of the FEM. These shape functions are well suited for applications involving crack analysis. The EFG method [3–6], which is one of the formulations of MMs and widely applied for solid mechanics problems, is of concern here.
+
+The shape functions of the EFG method are obtained from a moving least-squares (MLS) approximation [7]. Their continuity is dependent on the continuity of the weight functions used. To model a discontinuity in the geometry arising out of a crack, the weight functions are appropriately modified. There exist several strategies to model strong discontinuities [8–12]. However, most methods need large nodal densities to obtain an accurate solution. One approach, which does not require large nodal densities, involves partition-of-unity enrichment of targeted nodal shape functions. The pertinent examples include Heaviside/jump functions and the Williams' crack-tip displacement solutions [13] to model the discontinuity and capture the singularity at the crack tip respectively. These were adopted from the eXtended finite element method (XFEM) [14–16] and gave rise to development of the eXtended element-free Galerkin (XEFG) method [17]. Although this method does not require large nodal densities, it introduces additional nodal degrees of freedom in the global system of equations.
+
+SIFs play a pivotal role in the application of LEFM principles. Although there are a variety of techniques available in FEM and BEM such as the displacement method [18], stress method [19], the stiffness derivative procedure [20], J-integral [21] and crack closure integral (CCI) [22–25] to extract the SIFs, only few techniques find their adoption in MMs. The displacement and stress methods are the earliest and simplest methods to extract the SIFs. Nevertheless, their accuracy depends on the density of the mesh. Also, crack opening displacement (COD) required for the displacement method is not directly available in the XEFG method. The J-integral is accurate but relatively computationally expensive when it comes to the extraction of the SIFs in a mixed-mode problem. The interaction integral/M-integral [26], derived from the J-integral, is widely used for extracting the mixed-mode SIFs in MMs. However, they require knowledge of the auxiliary displacement and stress field solutions which are material dependent. The CCI approach is rarely used within the framework of MMs despite the fact that it is simple to implement, accurate and offers computationally easier ways of mode separation. Previously, CCI was calculated by inserting a high stiffness spring [27] or enclosing an auxiliary FE zone around the crack tip [28]. Lately, the CCI has been combined with a local smoothing technique to compute SIFs accurately in isotropic [29] and functionally graded materials [30].
+
+The MCCI or virtual crack closure technique (VCCT) has been in existence for a long time and it has been exploited abundantly in FEM and, to a lesser extent, in BEM to extract the SIFs. Its adoption in MMs is not that straightforward because it requires the knowledge of crack closure forces. In this paper, a novel method to extract the nodal forces in the presence of regular nodal discretization in EFG methods is described. The closure nodal forces at the crack tip and at nodes ahead of it are multiplied with the opening displacements at the corresponding nodes behind the tip to obtain the strain energy release rates (SERRs). To bring out the special issues associated with the adoption, a number of case studies, involving crack face and thermal loadings, are solved. Thereby the procedural details, effectiveness and accuracy obtainable are presented. In order to emphasize the effectiveness and accuracy of the method, the results obtained by the method are compared with those obtained by the popular M-integral technique, analytical solutions and, wherever possible, by the CCI–LS [29].
+
+The outline of the paper is as follows: The formulation of the EFG method and various crack modeling techniques are presented in Section 2. In Section 3, the MCCI technique to extract the SIFs for EFG methods is presented. Additionally, other popular techniques such as M-integral, CCI–LS, displacement and stress methods are briefly described in Section 4. Section 5 gives a detail analysis on accurate extraction of nodal forces. In Section 6, the MCCI and other techniques are applied to a variety of problems to demonstrate the superiority of the proposed approach. This is followed by concluding remarks in Section 7.
+
+In MMs, the domain is discretized with nodes. Each node interacts with other nodes through weight functions which may vary in size and profile. 
+                     Fig. 1(a) shows a geometry discretized with nodes with regular circular weight functions. In the EFG method, any scalar field variable, u(x), can be represented as
+                        
+                           (1)
+                           
+                              u
+                              (
+                              x
+                              )
+                              =
+                              
+                                 ∑
+                                 
+                                    I
+                                    =
+                                    1
+                                 
+                                 n
+                              
+                              
+                                 
+                                    
+                                       Φ
+                                    
+                                    
+                                       I
+                                    
+                                 
+                                 (
+                                 x
+                                 )
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       I
+                                    
+                                 
+                              
+                           
+                        
+                     where Φ
+                     
+                        I
+                     (x) in Eq. (1) are the nodal shape functions and are approximants and not interpolants as in the case of FEM. u
+                     
+                        I
+                      are the nodal field values.
+
+The moving least squares (MLS) technique [7] is used to develop the shape functions in the EFG method. The polynomial basis, 
+                        p
+                        =
+                        [
+                        1
+                        
+                        x
+                        
+                        y
+                        ]
+                     , is used here. The cubic B-spline with circular domain of influence (d
+                     
+                        I
+                     ), as shown in Fig. 1(b), is used as the weight function.
+                        
+                           (2)
+                           
+                              w
+                              (
+                              r
+                              )
+                              =
+                              
+                                 {
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   2
+                                                   3
+                                                
+                                                −
+                                                4
+                                                
+                                                   
+                                                      r
+                                                   
+                                                   2
+                                                
+                                                +
+                                                4
+                                                
+                                                   
+                                                      r
+                                                   
+                                                   3
+                                                
+                                                ,
+                                             
+                                          
+                                          
+                                             
+                                                r
+                                                ≤
+                                                
+                                                   1
+                                                   2
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   4
+                                                   3
+                                                
+                                                −
+                                                4
+                                                r
+                                                +
+                                                4
+                                                
+                                                   
+                                                      r
+                                                   
+                                                   2
+                                                
+                                                −
+                                                
+                                                   4
+                                                   3
+                                                
+                                                
+                                                   
+                                                      r
+                                                   
+                                                   3
+                                                
+                                                ,
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   1
+                                                   2
+                                                
+                                                <
+                                                r
+                                                ≤
+                                                1
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                0
+                                                ,
+                                             
+                                          
+                                          
+                                             
+                                                r
+                                                >
+                                                1
+                                             
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     where r is the radial distance of point x from node I, and is obtained as a function of the characteristic size, d
+                     
+                        I
+                     , of node I.
+
+In this paper, the crack is modelled by two approaches (1) modification of the weight function (2) and by the Extended element-free Galerkin method (XEFG) based on extrinsic partition-of-unity (PU) enrichment.
+
+The first technique to account for strong discontinuities, in MMs, was the visibility method (
+                           Fig. 2(a)). The shape functions of the nodes closer to the crack tip are discontinuous, using the visibility method, leading to a poor crack tip stress field. To overcome this difficulty, the diffraction method was developed where the weight function for a node close to the crack tip ‘diffracts’ around the crack tip (Fig. 2(b)).
+
+The modified distance in the diffracted region is given by
+                              
+                                 (3)
+                                 
+                                    r
+                                    =
+                                    
+                                       
+                                          (
+                                          
+                                             
+                                                
+                                                   
+                                                      
+                                                         s
+                                                      
+                                                      
+                                                         1
+                                                      
+                                                   
+                                                   +
+                                                   
+                                                      
+                                                         s
+                                                      
+                                                      
+                                                         2
+                                                      
+                                                   
+                                                   (
+                                                   x
+                                                   )
+                                                
+                                                
+                                                   
+                                                      
+                                                         s
+                                                      
+                                                      
+                                                         0
+                                                      
+                                                   
+                                                   (
+                                                   x
+                                                   )
+                                                
+                                             
+                                          
+                                          )
+                                       
+                                       λ
+                                    
+                                    
+                                       
+                                          s
+                                       
+                                       
+                                          0
+                                       
+                                    
+                                    (
+                                    x
+                                    )
+                                 
+                              
+                           where x is the sampling point, x
+                           
+                              I
+                            is the node and x
+                           
+                              c
+                            is the crack tip. s
+                           0(x)=||x−x
+                           
+                              I
+                           ||, s
+                           1(x)=||x
+                           
+                              I
+                           −x
+                           
+                              c
+                           || and s
+                           2(x)=||x−x
+                           
+                              c
+                           ||. The parameter λ is mostly set to either 1 or 2. In this work, it is set at 2.
+
+The displacement approximation [17] in XEFG method is obtained by partition-of-unity enrichment of the MLS shape functions. The Heaviside function is used to describe the displacement discontinuity. The local region around the crack tip is enriched with Williams' expansion. The displacement variable, u(x), is expressed as
+                              
+                                 (4)
+                                 
+                                    u
+                                    (
+                                    x
+                                    )
+                                    =
+                                    
+                                       
+                                          ∑
+                                          
+                                             I
+                                             ∈
+                                             w
+                                             (
+                                             x
+                                             )
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                Φ
+                                             
+                                             
+                                                I
+                                             
+                                          
+                                          (
+                                          x
+                                          )
+                                       
+                                    
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          I
+                                       
+                                    
+                                    +
+                                    
+                                       
+                                          ∑
+                                          
+                                             I
+                                             ∈
+                                             
+                                                
+                                                   w
+                                                
+                                                
+                                                   j
+                                                
+                                             
+                                             (
+                                             x
+                                             )
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                Φ
+                                             
+                                             
+                                                I
+                                             
+                                          
+                                          (
+                                          x
+                                          )
+                                       
+                                    
+                                    {
+                                    
+                                       
+                                          a
+                                       
+                                       
+                                          I
+                                       
+                                    
+                                    H
+                                    (
+                                    f
+                                    (
+                                    x
+                                    )
+                                    )
+                                    }
+                                    +
+                                    
+                                       
+                                          ∑
+                                          
+                                             I
+                                             ∈
+                                             
+                                                
+                                                   w
+                                                
+                                                
+                                                   b
+                                                
+                                             
+                                             (
+                                             x
+                                             )
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                Φ
+                                             
+                                             
+                                                I
+                                             
+                                          
+                                          (
+                                          x
+                                          )
+                                       
+                                    
+                                    
+                                       ∑
+                                       
+                                          k
+                                          =
+                                          1
+                                       
+                                       4
+                                    
+                                    
+                                       
+                                          
+                                             b
+                                          
+                                          
+                                             I
+                                             k
+                                          
+                                       
+                                       
+                                          
+                                             Ψ
+                                          
+                                          
+                                             k
+                                          
+                                          
+                                             enr
+                                          
+                                       
+                                       (
+                                       r
+                                       ,
+                                       θ
+                                       )
+                                    
+                                 
+                              
+                           where f(x) is the signed distance function from the crack line. The set w includes all the normal nodes, w
+                           
+                              b
+                            includes the nodes that are branch enriched and w
+                           
+                              j
+                            includes the nodes that are jump enriched that influence the point x. The normal and enriched nodes are shown in 
+                           Fig. 3.
+
+The Heaviside/jump enriched function H(f(x)) and branch enriched function Ψ
+                           enr(r,θ) are given by
+                              
+                                 (5)
+                                 
+                                    H
+                                    (
+                                    f
+                                    (
+                                    x
+                                    )
+                                    )
+                                    =
+                                    
+                                       
+                                          
+                                             
+                                                1
+                                                
+                                                if
+                                                
+                                                f
+                                                (
+                                                x
+                                                )
+                                                ≥
+                                                0
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                −
+                                                1
+                                                
+                                                if
+                                                
+                                                f
+                                                (
+                                                x
+                                                )
+                                                <
+                                                0
+                                             
+                                          
+                                       
+                                    
+                                    
+                                       
+                                          Ψ
+                                       
+                                       
+                                          enr
+                                       
+                                    
+                                    (
+                                    r
+                                    ,
+                                    θ
+                                    )
+                                    =
+                                    
+                                       [
+                                       
+                                          
+                                             r
+                                          
+                                          
+                                          Sin
+                                          
+                                          
+                                             θ
+                                             2
+                                          
+                                          ,
+                                          
+                                             r
+                                          
+                                          
+                                          Cos
+                                          
+                                          
+                                             θ
+                                             2
+                                          
+                                          ,
+                                          
+                                             r
+                                          
+                                          
+                                          Sin
+                                          
+                                          
+                                             θ
+                                             2
+                                          
+                                          
+                                          Sin
+                                          
+                                          θ
+                                          ,
+                                          
+                                             r
+                                          
+                                          
+                                          Cos
+                                          
+                                          
+                                             θ
+                                             2
+                                          
+                                          
+                                          Sin
+                                          
+                                          θ
+                                       
+                                       ]
+                                    
+                                 
+                              
+                           where r and θ are polar coordinates with respect to the crack tip. The COD is expressed in terms of the jump and branch enrichment functions:
+                              
+                                 (6)
+                                 
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          C
+                                          O
+                                          D
+                                       
+                                       
+                                          +
+                                       
+                                    
+                                    −
+                                    
+                                       
+                                          u
+                                       
+                                       
+                                          C
+                                          O
+                                          D
+                                       
+                                       
+                                          −
+                                       
+                                    
+                                    =
+                                    2
+                                    
+                                       {
+                                       
+                                          
+                                             
+                                                ∑
+                                                
+                                                   I
+                                                   ∈
+                                                   
+                                                      
+                                                         w
+                                                      
+                                                      
+                                                         j
+                                                      
+                                                   
+                                                   (
+                                                   x
+                                                   )
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      I
+                                                   
+                                                
+                                                (
+                                                x
+                                                )
+                                             
+                                          
+                                          
+                                             
+                                                a
+                                             
+                                             
+                                                I
+                                             
+                                          
+                                          +
+                                          
+                                             
+                                                ∑
+                                                
+                                                   I
+                                                   ∈
+                                                   
+                                                      
+                                                         w
+                                                      
+                                                      
+                                                         b
+                                                      
+                                                   
+                                                   (
+                                                   x
+                                                   )
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      I
+                                                   
+                                                
+                                                (
+                                                x
+                                                )
+                                             
+                                          
+                                          
+                                             ∑
+                                             
+                                                j
+                                                =
+                                                1
+                                             
+                                             4
+                                          
+                                          
+                                             
+                                                
+                                                   b
+                                                
+                                                
+                                                   I
+                                                   j
+                                                
+                                             
+                                             
+                                                
+                                                   Ψ
+                                                
+                                                
+                                                   j
+                                                
+                                             
+                                             (
+                                             r
+                                             ,
+                                             π
+                                             )
+                                          
+                                       
+                                       }
+                                    
+                                 
+                              
+                           where 
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    C
+                                    O
+                                    D
+                                 
+                                 
+                                    +
+                                 
+                              
+                            and 
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    C
+                                    O
+                                    D
+                                 
+                                 
+                                    −
+                                 
+                              
+                            are top and bottom crack face displacement vector respectively and 
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    C
+                                    O
+                                    D
+                                 
+                              
+                              =
+                              {
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    C
+                                    O
+                                    D
+                                 
+                              
+                              ,
+                              
+                                 
+                                    v
+                                 
+                                 
+                                    C
+                                    O
+                                    D
+                                 
+                              
+                              }
+                           .
+
+The shape functions of the EFG method are non polynomial in nature. Moreover, the presence of enrichment functions in XEFG method necessitates higher order of Gauss integration, especially in a small region around the crack.
+
+Therefore, a small region, as shown in 
+                        Fig. 4, is divided into many smaller triangles to facilitate sub-domain integration. Essentially this helps to increase the number of Gauss points by dividing the regular rectangular cells into smaller triangles. Also, crisscrossing of the crack edge by rectangular background mesh is avoided by sub-triangulation.
+
+The SERR associated with a crack extension is equal to the work done in closing a crack that is extended back to its original configuration. It can be calculated through Irwin's crack closure integral (
+                     Fig. 5), given by
+                        
+                           (7)
+                           
+                              
+                                 
+                                    G
+                                 
+                                 
+                                    I
+                                 
+                              
+                              =
+                              
+                                 
+                                    lim
+                                 
+                                 
+                                    Δ
+                                    a
+                                    →
+                                    0
+                                 
+                              
+                              
+                                 1
+                                 
+                                    2
+                                    Δ
+                                    a
+                                 
+                              
+                              
+                                 ∫
+                                 0
+                                 
+                                    Δ
+                                    a
+                                 
+                              
+                              
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       y
+                                       y
+                                    
+                                 
+                                 (
+                                 x
+                                 )
+                                 
+                                    
+                                       v
+                                    
+                                    
+                                       C
+                                       O
+                                       D
+                                    
+                                 
+                                 (
+                                 x
+                                 −
+                                 Δ
+                                 a
+                                 )
+                                 
+                                 d
+                                 x
+                              
+                              
+                                 
+                                    G
+                                 
+                                 
+                                    I
+                                    I
+                                 
+                              
+                              =
+                              
+                                 
+                                    lim
+                                 
+                                 
+                                    Δ
+                                    a
+                                    →
+                                    0
+                                 
+                              
+                              
+                                 1
+                                 
+                                    2
+                                    Δ
+                                    a
+                                 
+                              
+                              
+                                 ∫
+                                 0
+                                 
+                                    Δ
+                                    a
+                                 
+                              
+                              
+                                 
+                                    
+                                       τ
+                                    
+                                    
+                                       x
+                                       y
+                                    
+                                 
+                                 (
+                                 x
+                                 )
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       C
+                                       O
+                                       D
+                                    
+                                 
+                                 (
+                                 x
+                                 −
+                                 Δ
+                                 a
+                                 )
+                                 
+                                 d
+                                 x
+                              
+                           
+                        
+                     where Δa is the crack tip elemental length in FEM.
+
+Although the displacement method is a simple technique available to obtain the SIFs, their accuracy can be significantly improved by calculations involving energy release rates. This was clearly shown in the context of FEM [25]. There are many techniques available to calculate the SERR using Eq. (7). Direct numerical Gauss integration, universal crack closure integral (UCCI) [31], CCI–LS technique [29,32], MCCI/VCCT [22–25] etc., are some of the ways through which SERR, and thereby SIFs, can be obtained. The MCCI technique is particularly convenient as it is relatively simple to implement. This technique was successfully applied in the realm of fracture mechanics in composites [33]. Also, mixed-mode SIFs are easily separated.
+
+The MCCI/VCCT, in the FEM, requires the calculation of crack closure forces and corresponding CODs to find the SIFs in the context of the LEFM. This paper proposes a new approach for extracting crack closure forces, for the application of the MCCI technique, within the framework of the EFG method. The CODs are extracted from the crack face nodal displacement solution. Consequently the SERR, which is a function of nodal forces and CODs, is obtained.
+
+Consider a crack at an arbitrary inclination, θ, to the X-axis, as shown in 
+                     Fig. 6. A regular nodal discretization where the nodes align with the crack line near the crack tip is used.
+
+The main issue related to the adoption of the MCCI technique in the EFG method is to calculate the crack closure forces at nodes along the crack plane. This is done by splitting the domain of influence (d
+                     
+                        I
+                     ) for a node j, along the direction of the crack front, as shown in 
+                     Fig. 7(a). The stiffness matrix for one of the regions, either the upper or the lower one is obtained. This matrix is multiplied with the nodal displacement vector to obtain the crack closure/nodal reaction force.
+
+
+                     Fig. 7(b) shows the upper section of the node j. The stiffness matrix for the upper region, denoted by a Ω+ sign, is established by the following equation:
+                        
+                           (8)
+                           
+                              
+                                 
+                                    K
+                                 
+                                 
+                                    I
+                                    J
+                                 
+                                 
+                                    Ω
+                                    +
+                                 
+                              
+                              =
+                              
+                                 ∫
+                                 A
+                              
+                              
+                                 
+                                    
+                                       B
+                                    
+                                    
+                                       I
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 D
+                                 
+                                    
+                                       B
+                                    
+                                    
+                                       J
+                                    
+                                 
+                                 t
+                                 d
+                                 A
+                                 ;
+                                 
+                                 I
+                                 ,
+                                 J
+                                 ∈
+                                 
+                                    
+                                       w
+                                    
+                                    
+                                       Ω
+                                       +
+                                    
+                                 
+                                 (
+                                 x
+                                 )
+                              
+                           
+                        
+                     where B is a strain–displacement matrix and t is the thickness. Here, it is also a function of the crack front orientation. The set w
+                     Ω+(x) includes only those nodes which are on and above the crack line. Similarly, the stiffness matrix 
+                        (
+                        
+                           
+                              K
+                           
+                           
+                              I
+                              J
+                           
+                           
+                              Ω
+                              −
+                           
+                        
+                        )
+                      for the lower section is established by considering the nodes on and below the crack line.
+
+The strain–displacement matrix, B, for classical EFG methods including the visibility and the diffraction method is given by
+                        
+                           (9)
+                           
+                              B
+                              =
+                              
+                                 
+                                    B
+                                 
+                                 
+                                    std
+                                 
+                              
+                              =
+                              
+                                 [
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      1
+                                                      ,
+                                                      x
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             
+                                                ..
+                                                .
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      i
+                                                      ,
+                                                      x
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             
+                                                ..
+                                                .
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      n
+                                                      ,
+                                                      x
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       
+                                          
+                                             0
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      1
+                                                      ,
+                                                      y
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                ..
+                                                .
+                                             
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      i
+                                                      ,
+                                                      y
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                ..
+                                                .
+                                             
+                                          
+                                          
+                                             0
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      n
+                                                      ,
+                                                      y
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      1
+                                                      ,
+                                                      y
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      1
+                                                      ,
+                                                      x
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                ..
+                                                .
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      i
+                                                      ,
+                                                      y
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      i
+                                                      ,
+                                                      x
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                ..
+                                                .
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      n
+                                                      ,
+                                                      y
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      n
+                                                      ,
+                                                      x
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 ]
+                              
+                           
+                        
+                     where i indicates the node number, either in the top section or the bottom section, in the domain of influence of the current node j at which the force is extracted. However, for the XEFG method, the B matrix also comprises of extra terms due to the enrichment. Therefore B, for enriched EFG method, is given by
+                        
+                           (10)
+                           
+                              B
+                              =
+                              [
+                              
+                                 
+                                    B
+                                 
+                                 
+                                    std
+                                 
+                              
+                              |
+                              
+                                 
+                                    B
+                                 
+                                 
+                                    enr
+                                 
+                              
+                              ]
+                              
+                                 
+                                    B
+                                 
+                                 
+                                    i
+                                    ,
+                                    k
+                                 
+                                 
+                                    enr
+                                 
+                              
+                              =
+                              
+                                 [
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      i
+                                                      ,
+                                                      x
+                                                   
+                                                
+                                                
+                                                   
+                                                      Ψ
+                                                   
+                                                   
+                                                      k
+                                                   
+                                                
+                                                +
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      i
+                                                   
+                                                
+                                                
+                                                   
+                                                      Ψ
+                                                   
+                                                   
+                                                      k
+                                                      ,
+                                                      x
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             0
+                                          
+                                       
+                                       
+                                          
+                                             0
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      i
+                                                      ,
+                                                      y
+                                                   
+                                                
+                                                
+                                                   
+                                                      Ψ
+                                                   
+                                                   
+                                                      k
+                                                   
+                                                
+                                                +
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      i
+                                                   
+                                                
+                                                
+                                                   
+                                                      Ψ
+                                                   
+                                                   
+                                                      k
+                                                      ,
+                                                      y
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      i
+                                                      ,
+                                                      y
+                                                   
+                                                
+                                                
+                                                   
+                                                      Ψ
+                                                   
+                                                   
+                                                      k
+                                                   
+                                                
+                                                +
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      i
+                                                   
+                                                
+                                                
+                                                   
+                                                      Ψ
+                                                   
+                                                   
+                                                      k
+                                                      ,
+                                                      y
+                                                   
+                                                
+                                             
+                                          
+                                          
+                                             
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      i
+                                                      ,
+                                                      x
+                                                   
+                                                
+                                                
+                                                   
+                                                      Ψ
+                                                   
+                                                   
+                                                      k
+                                                   
+                                                
+                                                +
+                                                
+                                                   
+                                                      Φ
+                                                   
+                                                   
+                                                      i
+                                                   
+                                                
+                                                
+                                                   
+                                                      Ψ
+                                                   
+                                                   
+                                                      k
+                                                      ,
+                                                      x
+                                                   
+                                                
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 ]
+                              
+                           
+                        
+                     where 
+                        
+                           
+                              B
+                           
+                           
+                              i
+                              ,
+                              k
+                           
+                           
+                              enr
+                           
+                        
+                      matrix comprises of the derivatives of the regular shape functions and the enrichment functions of the enriched nodes.
+
+The integral in Eq. (8) is calculated by numerical integration. Since circular domains of influence are used here, either the top or the bottom section of the domain of influence is sub-divided into smaller triangles (
+                     Fig. 8) to carry out accurate Gauss integration. The Gauss points to suit integration of 8th order complete polynomial [34], are indicated by star markers. X−Y is the global axis and x−y is the local axis at the crack tip; +x indicates the direction of crack extension.
+
+Even if the domain of influence is not circular, the top or the bottom regions of the crack line can be sub-divided for accurate calculation of the stiffness matrix. It is recommended to use higher order integration to calculate the crack forces accurately. The Gauss integration is carried out using
+                        
+                           (11)
+                           
+                              
+                                 ∫
+                                 A
+                              
+                              
+                                 
+                                    
+                                       B
+                                    
+                                    
+                                       I
+                                    
+                                    
+                                       T
+                                    
+                                 
+                                 D
+                                 
+                                    
+                                       B
+                                    
+                                    
+                                       J
+                                    
+                                 
+                                 t
+                                 d
+                                 A
+                                 =
+                                 
+                                    
+                                       ∑
+                                       i
+                                    
+                                    
+                                       
+                                          
+                                             B
+                                          
+                                          
+                                             I
+                                          
+                                          
+                                             T
+                                          
+                                       
+                                       (
+                                       
+                                          
+                                             ξ
+                                          
+                                          
+                                             i
+                                          
+                                       
+                                       )
+                                       D
+                                       
+                                          
+                                             B
+                                          
+                                          
+                                             J
+                                          
+                                       
+                                       (
+                                       
+                                          
+                                             ξ
+                                          
+                                          
+                                             i
+                                          
+                                       
+                                       )
+                                       
+                                          
+                                             w
+                                          
+                                          
+                                             i
+                                          
+                                       
+                                       det
+                                       J
+                                       (
+                                       
+                                          
+                                             ξ
+                                          
+                                          
+                                             i
+                                          
+                                       
+                                       )
+                                    
+                                 
+                              
+                              t
+                           
+                        
+                     where ξ
+                     
+                        i
+                      is the Gauss point, w
+                     
+                        i
+                      is the Gauss weight and det J(ξ
+                     
+                        i
+                     ) is the determinant of the Jacobian of the background triangular element at ξ
+                     
+                        i
+                     .
+
+The nodal force vector is calculated by
+                        
+                           (12)
+                           
+                              F
+                              =
+                              
+                                 
+                                    K
+                                 
+                                 
+                                    Ω
+                                    +
+                                 
+                              
+                              
+                                 
+                                    U
+                                 
+                                 
+                                    Ω
+                                    +
+                                 
+                              
+                           
+                        
+                     where U
+                     Ω+ is the nodal displacement vector of the nodes contained in Ω+.
+
+The nodal force vector is also extracted at node j+1 by following the same procedure as mentioned above. The obtained forces are transformed to the local crack tip coordinates (
+                     Fig. 9) through the following relation:
+                        
+                           (13)
+                           
+                              
+                                 
+                                    {
+                                    F
+                                    }
+                                 
+                                 
+                                    x
+                                    y
+                                 
+                              
+                              =
+                              [
+                              T
+                              ]
+                              
+                                 
+                                    {
+                                    F
+                                    }
+                                 
+                                 
+                                    X
+                                    Y
+                                 
+                              
+                              T
+                              =
+                              
+                                 [
+                                 
+                                    
+                                       
+                                          
+                                             
+                                                cos
+                                                
+                                                θ
+                                             
+                                          
+                                          
+                                             
+                                                −
+                                                
+                                                sin
+                                                
+                                                θ
+                                             
+                                          
+                                       
+                                       
+                                          
+                                             
+                                                sin
+                                                
+                                                θ
+                                             
+                                          
+                                          
+                                             
+                                                cos
+                                                
+                                                θ
+                                             
+                                          
+                                       
+                                    
+                                 
+                                 ]
+                              
+                           
+                        
+                     where {F}
+                        xy
+                     ={F
+                     
+                        x
+                     ,F
+                     
+                        y
+                     }, {F}
+                        XY
+                     ={F
+                     
+                        X
+                     ,F
+                     
+                        Y
+                     } and θ is the angle at which the crack front is inclined to the 
+                        X
+                      axis. In the XEFG method, contributions of additional forces due to branch enrichment are also taken into account.
+
+The SERR are subsequently given by
+                        
+                           (14)
+                           
+                              
+                                 
+                                    G
+                                 
+                                 
+                                    I
+                                 
+                              
+                              =
+                              
+                                 1
+                                 
+                                    2
+                                    
+                                       
+                                          χ
+                                       
+                                       
+                                          j
+                                          ,
+                                          j
+                                          -
+                                          2
+                                       
+                                    
+                                 
+                              
+                              [
+                              
+                                 
+                                    F
+                                 
+                                 
+                                    j
+                                 
+                                 
+                                    y
+                                 
+                              
+                              
+                                 
+                                    v
+                                 
+                                 
+                                    C
+                                    O
+                                    D
+                                 
+                                 
+                                    j
+                                    -
+                                    2
+                                 
+                              
+                              +
+                              
+                                 
+                                    F
+                                 
+                                 
+                                    j
+                                    +
+                                    1
+                                 
+                                 
+                                    y
+                                 
+                              
+                              
+                                 
+                                    v
+                                 
+                                 
+                                    C
+                                    O
+                                    D
+                                 
+                                 
+                                    j
+                                    -
+                                    1
+                                 
+                              
+                              ]
+                              
+                                 
+                                    G
+                                 
+                                 
+                                    I
+                                    I
+                                 
+                              
+                              =
+                              
+                                 1
+                                 
+                                    2
+                                    
+                                       
+                                          χ
+                                       
+                                       
+                                          j
+                                          ,
+                                          j
+                                          -
+                                          2
+                                       
+                                    
+                                 
+                              
+                              [
+                              
+                                 
+                                    F
+                                 
+                                 
+                                    j
+                                 
+                                 
+                                    x
+                                 
+                              
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    C
+                                    O
+                                    D
+                                 
+                                 
+                                    j
+                                    -
+                                    2
+                                 
+                              
+                              +
+                              
+                                 
+                                    F
+                                 
+                                 
+                                    j
+                                    +
+                                    1
+                                 
+                                 
+                                    x
+                                 
+                              
+                              
+                                 
+                                    u
+                                 
+                                 
+                                    C
+                                    O
+                                    D
+                                 
+                                 
+                                    j
+                                    -
+                                    1
+                                 
+                              
+                              ]
+                           
+                        
+                     where χ
+                     
+                        j,j−2 is the distance between jth and j−2th nodes (
+                     Fig. 10). The denominator in Eq. (14), χ
+                     
+                        j,j−2, is analogous to the virtual crack extension length, Δa, used for MCCI/VCCT analysis, in the context of the FEM, where it is the length along the crack plane in which the crack is assumed to extend.
+
+A general MCCI equation for extracting SERR, involving calculation of forces at n nodal points along the crack line can be written as
+                        
+                           (15)
+                           
+                              
+                                 
+                                    G
+                                 
+                                 
+                                    I
+                                 
+                              
+                              =
+                              
+                                 1
+                                 
+                                    2
+                                    
+                                       
+                                          χ
+                                       
+                                       
+                                          j
+                                          ,
+                                          j
+                                          −
+                                          n
+                                       
+                                    
+                                 
+                              
+                              
+                                 ∑
+                                 
+                                    i
+                                    =
+                                    0
+                                 
+                                 
+                                    n
+                                    −
+                                    1
+                                 
+                              
+                              
+                                 
+                                    
+                                       F
+                                    
+                                    
+                                       j
+                                       +
+                                       i
+                                    
+                                    
+                                       y
+                                    
+                                 
+                                 
+                                    
+                                       v
+                                    
+                                    
+                                       C
+                                       O
+                                       D
+                                    
+                                    
+                                       j
+                                       −
+                                       n
+                                       +
+                                       i
+                                    
+                                 
+                              
+                              
+                                 
+                                    G
+                                 
+                                 
+                                    I
+                                    I
+                                 
+                              
+                              =
+                              
+                                 1
+                                 
+                                    2
+                                    
+                                       
+                                          χ
+                                       
+                                       
+                                          j
+                                          ,
+                                          j
+                                          −
+                                          n
+                                       
+                                    
+                                 
+                              
+                              
+                                 ∑
+                                 
+                                    i
+                                    =
+                                    0
+                                 
+                                 
+                                    n
+                                    −
+                                    1
+                                 
+                              
+                              
+                                 
+                                    
+                                       F
+                                    
+                                    
+                                       j
+                                       +
+                                       i
+                                    
+                                    
+                                       x
+                                    
+                                 
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       C
+                                       O
+                                       D
+                                    
+                                    
+                                       j
+                                       −
+                                       n
+                                       +
+                                       i
+                                    
+                                 
+                              
+                           
+                        
+                     
+                  
+
+As n increases in Eq. (15), the accuracy of the SERR increases. This is clearly demonstrated through a case study in Section 6.1.1.
+
+In presence of crack face loading, the newly formed crack faces are also subjected to loading as shown in 
+                        Fig. 11. Therefore, additional work has to be done to close the extended crack. The SERRs, in such a case, are then given by
+                           
+                              (16)
+                              
+                                 
+                                    
+                                       G
+                                    
+                                    
+                                       I
+                                    
+                                 
+                                 =
+                                 
+                                    1
+                                    
+                                       2
+                                       
+                                          
+                                             χ
+                                          
+                                          
+                                             j
+                                             ,
+                                             j
+                                             −
+                                             2
+                                          
+                                       
+                                    
+                                 
+                                 [
+                                 (
+                                 
+                                    
+                                       F
+                                    
+                                    
+                                       j
+                                    
+                                    
+                                       y
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       F
+                                    
+                                    
+                                       j
+                                       −
+                                       2
+                                    
+                                    
+                                       y
+                                    
+                                 
+                                 )
+                                 
+                                    
+                                       v
+                                    
+                                    
+                                       C
+                                       O
+                                       D
+                                    
+                                    
+                                       j
+                                       −
+                                       2
+                                    
+                                 
+                                 +
+                                 (
+                                 
+                                    
+                                       F
+                                    
+                                    
+                                       j
+                                       +
+                                       1
+                                    
+                                    
+                                       y
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       F
+                                    
+                                    
+                                       j
+                                       −
+                                       1
+                                    
+                                    
+                                       y
+                                    
+                                 
+                                 )
+                                 
+                                    
+                                       v
+                                    
+                                    
+                                       C
+                                       O
+                                       D
+                                    
+                                    
+                                       j
+                                       −
+                                       1
+                                    
+                                 
+                                 ]
+                                 
+                                    
+                                       G
+                                    
+                                    
+                                       I
+                                       I
+                                    
+                                 
+                                 =
+                                 
+                                    1
+                                    
+                                       2
+                                       
+                                          
+                                             χ
+                                          
+                                          
+                                             j
+                                             ,
+                                             j
+                                             −
+                                             2
+                                          
+                                       
+                                    
+                                 
+                                 [
+                                 (
+                                 
+                                    
+                                       F
+                                    
+                                    
+                                       j
+                                    
+                                    
+                                       x
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       F
+                                    
+                                    
+                                       j
+                                       −
+                                       2
+                                    
+                                    
+                                       x
+                                    
+                                 
+                                 )
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       C
+                                       O
+                                       D
+                                    
+                                    
+                                       j
+                                       −
+                                       2
+                                    
+                                 
+                                 +
+                                 (
+                                 
+                                    
+                                       F
+                                    
+                                    
+                                       j
+                                       +
+                                       1
+                                    
+                                    
+                                       x
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       F
+                                    
+                                    
+                                       j
+                                       −
+                                       1
+                                    
+                                    
+                                       x
+                                    
+                                 
+                                 )
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       C
+                                       O
+                                       D
+                                    
+                                    
+                                       j
+                                       −
+                                       1
+                                    
+                                 
+                                 ]
+                              
+                           
+                        where, with reference to Fig. 10, there are now crack face load F
+                           j−1 and F
+                           j−2, due to distributed load t
+                        c, acting at nodes j−1 and j−2 respectively.
+
+The mechanical strain, 
+                           
+                              
+                                 ε
+                              
+                              
+                                 i
+                                 j
+                              
+                              
+                                 m
+                              
+                           
+                        , when thermal strain is present, is related to the total strain, 
+                           
+                              
+                                 ε
+                              
+                              
+                                 i
+                                 j
+                              
+                              
+                                 t
+                              
+                           
+                        , by
+                           
+                              (17)
+                              
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       i
+                                       j
+                                    
+                                    
+                                       m
+                                    
+                                 
+                                 =
+                                 (
+                                 
+                                    
+                                       ε
+                                    
+                                    
+                                       i
+                                       j
+                                    
+                                    
+                                       t
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       α
+                                    
+                                    ⁎
+                                 
+                                 Δ
+                                 T
+                                 
+                                    
+                                       δ
+                                    
+                                    
+                                       i
+                                       j
+                                    
+                                 
+                                 )
+                              
+                           
+                        where α
+                        ⁎ is the coefficient of thermal expansion and ΔT is the temperature difference. Therefore, the resulting stiffness matrix is given by
+                           
+                              (18)
+                              
+                                 
+                                    
+                                       K
+                                    
+                                    
+                                       I
+                                       J
+                                    
+                                    
+                                       m
+                                       e
+                                       c
+                                       h
+                                    
+                                 
+                                 =
+                                 
+                                    
+                                       K
+                                    
+                                    
+                                       I
+                                       J
+                                    
+                                    
+                                       t
+                                       o
+                                       t
+                                       a
+                                       l
+                                    
+                                 
+                                 −
+                                 
+                                    
+                                       K
+                                    
+                                    
+                                       I
+                                       J
+                                    
+                                    
+                                       t
+                                       h
+                                       e
+                                       r
+                                       m
+                                       a
+                                       l
+                                    
+                                 
+                                 
+                                    
+                                       K
+                                    
+                                    
+                                       I
+                                       J
+                                    
+                                    
+                                       t
+                                       o
+                                       t
+                                       a
+                                       l
+                                    
+                                 
+                                 =
+                                 
+                                    ∫
+                                    A
+                                 
+                                 
+                                    
+                                       
+                                          B
+                                       
+                                       
+                                          I
+                                       
+                                       
+                                          T
+                                       
+                                    
+                                    D
+                                    
+                                       
+                                          B
+                                       
+                                       
+                                          J
+                                       
+                                    
+                                    t
+                                    d
+                                    A
+                                    ;
+                                    
+                                    I
+                                    ,
+                                    J
+                                    ∈
+                                    
+                                       
+                                          w
+                                       
+                                       
+                                          Ω
+                                          +
+                                       
+                                    
+                                    (
+                                    x
+                                    )
+                                 
+                                 
+                                    
+                                       K
+                                    
+                                    
+                                       I
+                                       J
+                                    
+                                    
+                                       t
+                                       h
+                                       e
+                                       r
+                                       m
+                                       a
+                                       l
+                                    
+                                 
+                                 =
+                                 
+                                    ∫
+                                    A
+                                 
+                                 
+                                    
+                                       
+                                          B
+                                       
+                                       
+                                          I
+                                       
+                                       
+                                          T
+                                       
+                                    
+                                    D
+                                    
+                                       
+                                          α
+                                       
+                                       ⁎
+                                    
+                                    
+                                       {
+                                       
+                                          
+                                             
+                                                
+                                                   
+                                                      Δ
+                                                      T
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   
+                                                      Δ
+                                                      T
+                                                   
+                                                
+                                             
+                                             
+                                                
+                                                   0
+                                                
+                                             
+                                          
+                                       
+                                       }
+                                    
+                                    t
+                                    d
+                                    A
+                                 
+                              
+                           
+                        
+                     
+
+The resulting mechanical stiffness matrix, 
+                           
+                              
+                                 K
+                              
+                              
+                                 I
+                                 J
+                              
+                              
+                                 m
+                                 e
+                                 c
+                                 h
+                              
+                           
+                        , is then multiplied with the nodal displacement vector to obtain the residual nodal forces.
+
+The M-integral/interaction integral [26] which is based upon the J-integral [21] is frequently used to calculate the mixed-mode SIFs, in fracture problems, within the realm of MMs. In the presence of a crack face [35] and a thermal loading [36], this integral is given by
+                        
+                           (19)
+                           
+                              M
+                              =
+                              
+                                 ∫
+                                 A
+                              
+                              
+                                 (
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       i
+                                       j
+                                    
+                                 
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       i
+                                       ,
+                                       1
+                                    
+                                    
+                                       a
+                                       u
+                                       x
+                                    
+                                 
+                                 +
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       i
+                                       j
+                                    
+                                    
+                                       a
+                                       u
+                                       x
+                                    
+                                 
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       i
+                                       ,
+                                       1
+                                    
+                                 
+                                 −
+                              
+                              
+                                 
+                                    σ
+                                 
+                                 
+                                    i
+                                    k
+                                 
+                              
+                              
+                                 
+                                    ε
+                                 
+                                 
+                                    i
+                                    k
+                                 
+                                 
+                                    a
+                                    u
+                                    x
+                                 
+                              
+                              
+                                 
+                                    δ
+                                 
+                                 
+                                    1
+                                    j
+                                 
+                              
+                              )
+                              
+                                 
+                                    q
+                                 
+                                 
+                                    ,
+                                    j
+                                 
+                              
+                              d
+                              A
+                              +
+                              
+                                 ∫
+                                 A
+                              
+                              
+                                 
+                                    
+                                       σ
+                                    
+                                    
+                                       i
+                                       j
+                                    
+                                    
+                                       a
+                                       u
+                                       x
+                                    
+                                 
+                                 α
+                                 
+                                    
+                                       (
+                                       Δ
+                                       T
+                                       )
+                                    
+                                    
+                                       ,
+                                       1
+                                    
+                                 
+                              
+                              
+                                 
+                                    δ
+                                 
+                                 
+                                    i
+                                    j
+                                 
+                              
+                              )
+                              q
+                              d
+                              A
+                              −
+                              
+                                 ∫
+                                 
+                                    
+                                       
+                                          Γ
+                                       
+                                       
+                                          c
+                                          +
+                                       
+                                    
+                                    +
+                                    
+                                       
+                                          Γ
+                                       
+                                       
+                                          C
+                                          −
+                                       
+                                    
+                                 
+                              
+                              
+                                 
+                                    
+                                       t
+                                    
+                                    
+                                       j
+                                    
+                                 
+                                 
+                                    
+                                       u
+                                    
+                                    
+                                       j
+                                       ,
+                                       1
+                                    
+                                    
+                                       a
+                                       u
+                                       x
+                                    
+                                 
+                                 q
+                                 d
+                                 Γ
+                              
+                           
+                        
+                     
+                     
+                        
+                           
+                              σ
+                           
+                           
+                              i
+                              j
+                           
+                           
+                              a
+                              u
+                              x
+                           
+                        
+                        ,
+                        
+                           
+                              ε
+                           
+                           
+                              i
+                              k
+                           
+                           
+                              a
+                              u
+                              x
+                           
+                        
+                        ,
+                        
+                        and
+                        
+                        
+                           
+                              u
+                           
+                           
+                              i
+                           
+                           
+                              a
+                              u
+                              x
+                           
+                        
+                      are auxiliary state values that correspond to the established theoretical solutions. Eq. (19) is numerically calculated, by Gauss quadrature, over the area A. For 2D problem, the M-integral is also equal to
+                        
+                           (20)
+                           
+                              M
+                              =
+                              
+                                 
+                                    (
+                                    2
+                                    
+                                       
+                                          K
+                                       
+                                       
+                                          I
+                                       
+                                    
+                                    
+                                       
+                                          K
+                                       
+                                       
+                                          I
+                                       
+                                       
+                                          a
+                                          u
+                                          x
+                                       
+                                    
+                                    +
+                                    2
+                                    
+                                       
+                                          K
+                                       
+                                       
+                                          I
+                                          I
+                                       
+                                    
+                                    
+                                       
+                                          K
+                                       
+                                       
+                                          I
+                                          I
+                                       
+                                       
+                                          a
+                                          u
+                                          x
+                                       
+                                    
+                                    )
+                                 
+                                 
+                                    
+                                       
+                                          E
+                                       
+                                       ⁎
+                                    
+                                 
+                              
+                           
+                        
+                     where E
+                     ⁎ is E for plane stress and E/(1−υ
+                     2) for plane strain. K
+                     
+                        I
+                      is evaluated by setting 
+                        
+                           
+                              K
+                           
+                           
+                              I
+                           
+                           
+                              a
+                              u
+                              x
+                           
+                        
+                      to unity and 
+                        
+                           
+                              K
+                           
+                           
+                              I
+                              I
+                           
+                           
+                              a
+                              u
+                              x
+                           
+                        
+                      to zero. Similarly K
+                     
+                        II
+                      is evaluated by setting 
+                        
+                           
+                              K
+                           
+                           
+                              I
+                              I
+                           
+                           
+                              a
+                              u
+                              x
+                           
+                        
+                      to unity and 
+                        
+                           
+                              K
+                           
+                           
+                              I
+                           
+                           
+                              a
+                              u
+                              x
+                           
+                        
+                      to zero.
+
+Recently, a method based on the CCI in conjunction with a local smoothing technique (CCI–LS) was used to calculate the SIFs in XEFG method [29]. Although, this method is simple and yields accurate results, the accuracy of the SIFs depend on the Gauss quadrature order used for background integration cells. The results obtained by the proposed MCCI technique are compared with the results of the CCI–LS technique to demonstrate the superiority of the MCCI technique.
+
+In addition to M-integral and CCI–LS methods, the SIFs obtained by the displacement and stress methods are compared with those of the MCCI technique. In the displacement method and stress method, the computed COD behind the crack tip and stress ahead of the crack tip are compared with the corresponding theoretical crack tip solution to obtain the SIFs. More details on these methods can be found in [29].
+
+Consider a bar of uniform cross section, A, of unit area and of unit length, L, as shown in 
+                     Fig. 12. The bar is subjected to a point tensile load, P, of 10MPa at its end. This problem is solved using 1D analysis with displacement (u
+                     
+                        x
+                     ) set to zero at the origin.
+
+The bar is discretized with different nodal distributions. The domain of influence (d
+                     
+                        I
+                     ) of each node is constant and is set at 1.75(L/(n−1)) where n is the total number of nodes. Here n is equal to 11.
+
+The force at the node of interest, j, can be extracted in two ways (I or II) as shown in 
+                     Fig. 13. Either way, the stiffness matrix is established by the following relation
+                        
+                           (21)
+                           
+                              K
+                              =
+                              
+                                 ∫
+                                 l
+                              
+                              
+                                 
+                                    
+                                       B
+                                    
+                                    T
+                                 
+                                 DB
+                                 A
+                                 d
+                                 x
+                              
+                           
+                        
+                     where l=l
+                     −=l
+                     +=1.75(L/(n−1)). D is the Young's modulus, A is the area of the cross section and B is the standard strain–displacement matrix given by
+                        
+                           (22)
+                           
+                              
+                                 
+                                    B
+                                 
+                                 
+                                    I
+                                 
+                              
+                              =
+                              
+                                 
+                                    Φ
+                                 
+                                 
+                                    I
+                                    ,
+                                    x
+                                 
+                              
+                           
+                        
+                     
+                  
+
+The goal, here is to extract the force accurately at node located at x=0.5 ( i.e., the center of the bar). Four nodal discretization configurations, as shown in 
+                     Fig. 14, are considered for the analysis. The effect of location of the adjacent nodes to the node, j, (darkened node) on the force extraction is also studied. The first configuration (a) consists of equally spaced nodes while others ((b), (c) and (d)) have the adjacent nodes, to node of interest, altered from the regular locations. The altered node locations are indicated.
+
+The force (F) at the node, j, is extracted using Eq. (12). 
+                     Table 1 shows the force obtained for different configurations for an applied load P. It is clear that the error in calculated forces F
+                     
+                        I
+                      and F
+                     
+                        II
+                      is zero for configuration (a) with equally spaced nodes. Although the error increases with an increase in the unstructured distribution of nodes (configuration (b), (c) and (d)) near the node j, the averaged magnitude of the computed force (F) had a relatively lower error. Therefore, for all subsequent analysis, the average magnitude of the force was used for the analysis, given by
+                        
+                           (23)
+                           
+                              F
+                              =
+                              
+                                 1
+                                 2
+                              
+                              (
+                              
+                                 
+                                    K
+                                 
+                                 
+                                    l
+                                    −
+                                 
+                              
+                              
+                                 
+                                    U
+                                 
+                                 
+                                    l
+                                    −
+                                 
+                              
+                              −
+                              
+                                 
+                                    K
+                                 
+                                 
+                                    l
+                                    +
+                                 
+                              
+                              
+                                 
+                                    U
+                                 
+                                 
+                                    l
+                                    +
+                                 
+                              
+                              )
+                           
+                        
+                     
+                  
+
+@&#RESULTS@&#
+
+In this section, the new technique was applied to a number of crack problems including crack face pressure loading and thermal-mechanical loading. The SERR, and in turn SIFs, computed using the proposed method and other standard methods were compared with the solutions available in the literature.
+
+The SIFs were extracted using the four techniques: MCCI, M-integral, displacement method and stress method. The MCCI technique was employed here by calculating crack closure forces at the two nodes, in the direction along the crack line, and multiplying with the corresponding crack opening displacements. The M-integral was calculated using a square domain with edge length of 0.25a. For displacement and stress methods, the COD and stress were evaluated at 0.02a behind the crack tip and at 0.02a ahead of the crack tip respectively.
+
+The dimensions of the plate: w=1m (width) and L/w=2 (length to width) with an edge crack is shown in 
+                        Fig. 15(a). The plate, discretized with 41×81 nodes (Fig. 15(b)), was subjected to a traction of 1MPa. The crack length, a/w, was varied from 0.1 to 0.8. The domain of influence was set at 1.75 times the regular nodal spacing (δ). The materials are assumed to be isotropic with Young's modulus E=210GPa and Poisson's ratio υ=0.3. A Gauss integration of 8th order is used, in the background triangular cells, to solve the cases described.
+
+
+                        
+                        
+                        Tables 2 and 3 show the mode I SIFs obtained using the four techniques by visibility and diffraction respectively. The results obtained by the MCCI approach and M-integral methods are in good agreement with the reference results [37] for a/w≤0.6; and [38] for a/w>0.6. For better understanding, % error in SIFs obtained using visibility, diffraction and the XEFG method is plotted in 
+                        
+                        
+                        Figs. 16, 17 and 18 respectively.
+
+The stress method gives poor results in all cases. The displacement method too fails for the visibility and diffraction methods (Figs. 16 and 17). However, the displacement method gives good results for the XEFG method (Fig. 18) because of the enrichment functions. Notably, the MCCI approach gives good results, for visibility and diffraction methods, despite involving computed COD which has poor accuracy. The results obtained by the CCI–LS technique using 37 point Gauss quadrature to suit 13th order of polynomial in the background integration cells, for the XEFG method (Fig. 18), are comparable with the results by MCCI approach.
+
+Another notable feature is that the proposed technique performs better even for shorter cracks where the popular M-integral gives inaccurate results with errors around 20% for the visibility and diffraction methods. For the XEFG method, the maximum error obtained by the CCI–LS, MCCI technique and the M-integral is less than 2.1%, 2.5% and 2.9% respectively (
+                        Table 4).
+
+One of the important parameters to be determined is the number of nodes along the crack plane which need to be involved for the accurate estimation of SIFs. 
+                           Fig. 19 shows the accuracy of the SIF plotted against the number of nodes (force points) at which the forces are extracted, for a/w=0.5. The SERR was calculated using Eq. (15).
+
+It is clear from Fig. 19 that at least two nodes are required to calculate the SIFs accurately (within 2% error). The error keeps decreasing marginally as the number of nodes, at which forces are extracted, are added. In all the subsequent analysis, we present the results based on the force extracted at two nodes. This is conservative and minimizes the computational effort.
+
+Typically, nodal density is increased to improve the accuracy of the computed SIFs [3,17]. In this subsection, the effect of increasing the density of nodes, on the accuracy of the SIFs is studied. 
+                           
+                           
+                           Figs. 20, 21 and 22 show the effect of increasing the number of nodes in a regular manner for the visibility, diffraction and the XEFG methods respectively.
+
+As the nodal density increases, the accuracy of the SIFs obtained through the displacement and the stress methods using the visibility and diffraction methods increases steadily. It is seen that the M-integral does not give accurate results for very low nodal density. However its accuracy improves and is consistent for subsequent nodal densities.
+
+The MCCI technique, even with low nodal density (11×21 nodes), gives accurate results. It is interesting to note that it gives accurate results even if the COD solution is poor. This error is perhaps compensated by the errors in the closure forces.
+
+In the case of the XEFG method (Fig. 22), the SIFs obtained by the displacement method are accurate because of the presence of enrichment functions. No technique shows monotonic convergence behavior. However, the errors in the SIFs obtained by the M-integral, CCI–LS and the MCCI technique are always less than approximately 2%.
+
+The sampling points (Gauss points) are increased around the crack tip to improve the accuracy of the SIFs [12]. The influence of increasing the Gauss quadrature order in the triangular cells around the crack (Fig. 4) on the accuracy using different techniques was investigated here. 
+                           
+                           Figs. 23 and 24 show the % error in SIFs obtained using the visibility and the diffraction method with a discretization of 21×41 nodes. It is clear that none of the SIF extraction techniques are affected significantly by the integration order in these two crack modeling methods.
+
+However in the XEFG method, the SIFs obtained by the stress method and the CCI–LS method are significantly affected by the integration order (
+                           Fig. 25). The displacement method is affected slightly. As the number of integration points increase, the accuracy of the SIFs increases. The CCI–LS requires relatively higher order of Gauss quadrature for accurate computation of the SIFs. The M-integral and the MCCI technique are least affected by it.
+
+
+                           
+                           Fig. 26 shows different domain of influence (d
+                           
+                              I
+                           ) for a node at the crack tip. A larger d
+                           
+                              I
+                            encompasses more nodes and a study was undertaken to explore the minimum number of nodes at which the force may be extracted, with varying d
+                           
+                              I
+                           , to calculate the SIF accurately.
+
+
+                           
+                           
+                           Figs. 27 and 28 show the effect of d
+                           
+                              I
+                            on the minimum number of nodes, along the crack plane, at which the closure forces should be extracted to calculate the SIF with different degree of accuracy by the visibility and the diffraction method respectively. It is observed that as d
+                           
+                              I
+                           /δ increases, closure forces should be computed at more nodes along the crack plane for accurate calculation of SIFs.
+
+To keep the absolute error in the computed SIF within certain level, the number of nodes at which the closure forces are to be calculated have been decided from these plots using the selected domain size d
+                           
+                              I
+                           .
+
+A similar trend has also been observed with the XEFG method as shown in 
+                           Fig. 29.
+
+For all the case studies presented here, d
+                           
+                              I
+                            is set to 1.75 times the nodal spacing. A higher value will result in smearing of the effect of field solution, especially near the crack tip. However, d
+                           
+                              I
+                            should be large enough to avoid any ill-conditioning of the moment matrix.
+
+The effect of nodal refinement around the crack tip on the accuracy of the SIFs is examined in this subsection A typical nodal arrangement is shown in 
+                           Fig. 30.
+
+
+                           
+                           Table 5 and 
+                           Fig. 31 show the effect of refinement on the accuracy of the SIFs using the visibility, diffraction and the XEFG method for crack sizes varying from 0.1
+                           w to 0.8
+                           w. (a) and (b) corresponds to 13×13 and 17×17 nodes around the crack tip respectively. The nodes associated with a refinement is distributed regularly in the selected region as shown in Fig. 30.
+
+It is clear from Fig. 31 that as the refinement increase, the accuracy gets slightly better. The MCCI technique performs consistently well using all the crack modeling techniques.
+
+While refining the zone with regular nodal arrangement around the crack tip, care must be taken to ensure that an intermediate node coincides with the crack tip and a row of nodes align with the direction of crack extension, x (Fig. 9).
+
+
+                        
+                        Fig. 32 shows a geometry with dimensions 2
+                        w=1m, L/2w=2 and a/w=0.5 subjected to tensile traction 1MPa. The plate is discretized with 41×81 nodes. The crack is inclined at an angle β (in degrees) to the X-axis.
+
+
+                        
+                        Fig. 33 shows the nodal discretization. A sub-region around the crack tips was refined with 13×13 nodes with d
+                        
+                           I
+                         of 1.75δ where δ is the inter nodal distance between the refined nodes.
+
+The results obtained by four techniques are compared with the reference results available in [37]. 
+                        
+                        Figs. 34 and 35 show the mode I and mode II SIFs obtained by all the SIF extraction techniques in conjunction with the visibility and the diffraction method respectively. The stress method and the displacement method yield poor results. The M-integral and the MCCI results are in good agreement with the theoretical results.
+
+The results based on the XEFG method are shown in 
+                        Fig. 36. The displacement method gives satisfactory mode I SIF but not for the mode II SIF. The M-integral and the MCCI technique consistently give accurate results for all EFG methods.
+
+
+                        
+                        Fig. 37 shows a hollow cylinder of inner radius r
+                        1=1m and r
+                        2/r
+                        1=2. There is an inner radial crack of length a. The inner cylinder is subjected to normal p. This problem has been examined in [29]. The geometry is discretized with 25 nodes (radial) by 144 nodes (circumferential), as illustrated in 
+                        Fig. 38. The region around the crack tip is refined with 13×13 nodes. d
+                        
+                           I
+                         varies along the radius in such a way that each node has an average of 1.75 times the regular nodal spacing.
+
+The modified M-integral including the load on the crack faces is used for the SIF calculation. The MCCI, too, is calculated here by taking into account the loading on the crack face (Eq. (16)). The displacement method does not require any changes in the way the SIF is computed. 
+                        
+                        
+                        Figs. 39, 40 and 41 show the % error in SIFs calculated using the MCCI, M-integral and displacement method for the visibility, diffraction and the XEFG method.
+
+The results obtained by various methods are compared with reference results [37]. It is observed that the displacement method gives inaccurate results with almost 35% error for the visibility and diffraction methods. In the XEFG method, the results are accurate based on the displacement method. Although the M-integral gives slightly erroneous results for a/(r
+                        2−r
+                        1)=0.2, it is still accurate for higher crack lengths. The proposed MCCI technique seems to perform significantly better in all the three cases (Figs. 39–41)
+
+
+                        
+                        Fig. 42 shows a plate with dimensions w=1m and L/w=2. The geometry is fixed and thermally insulated on the top and bottom edges. A linearly variable temperature field, with extreme value |T
+                        0|=100°C, is applied as illustrated in Fig. 42. The same problem has been examined earlier in [29].
+
+The crack to width ratio (a/w) was varied from 0.1 to 0.7 and the geometry was discretized with 41×161 nodes. The crack tip region was locally refined with 13×13 nodes. The SIFs obtained were normalized with respect to 
+                           E
+                           α
+                           
+                              
+                                 T
+                              
+                              
+                                 0
+                              
+                           
+                           
+                              w
+                           
+                           /
+                           (
+                           1
+                           −
+                           υ
+                           )
+                        . Assuming plane strain conditions, the results were compared with those of Hellen et al. [39]. The coefficient of thermal expansion (α) is 13×10−6/°C. E and υ are Young's modulus and Poisson's ratio respectively.
+
+The computed mode I SIFs are compared with some reference results in [39] in 
+                        
+                        Figs. 43 and 44 based on the visibility and diffraction method. In 
+                        Fig. 45, the SIFs based on the XEFG method are compared with results of Refs. [29,39].
+
+The MCCI was calculated by considering the mechanical reaction force arising due to thermal load, according to Eq. (18). The modified M-integral that takes into consideration of the thermal loading effect was used for calculating the SIF. The stress method was excluded from the results as it gave poor results. In the XEFG method, the displacement method yielded good results. The MCCI and the M-integral gave satisfactory results though they are in better agreement with the published J-integral results.
+
+In all the cases, the energy based approaches (MCCI and M-integral) give better results than the displacement method. This observation is in agreement with the observations reported in [40,41] in connection with the FEM and BEM respectively.
+
+@&#CONCLUSIONS@&#
+
+A simple and an accurate way of extracting mixed-mode stress intensity factors within the framework of EFG method, based on the visibility and diffraction approaches, and the XEFG method is presented. It involves computing crack closure forces only at two nodes, the crack tip and a node ahead of it, and extraction of opening displacements at two nodes behind the crack tip. The effectiveness and special issues associated with the adoption of the MCCI/VCCT have been brought out through solutions to a comprehensive range of crack problems including crack face and thermal loadings. The study has facilitated a comparison between the classical displacement and stress methods and the MCCI/VCCT, with the popular M-integral method, CCI–LS technique and analytical solutions. The accuracy of the displacement method is acceptable only when it is employed in conjunction with the enrichment functions. The accuracy of the MCCI/VCCT is consistently good and is comparable to that of the M-integral method. These case studies establish this approach as a viable technique for extracting the SIFs for practical problems.
+
+@&#REFERENCES@&#
+

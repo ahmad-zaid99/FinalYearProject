@@ -1,0 +1,229 @@
+@&#MAIN-TITLE@&#The role of organisational support in teleworker wellbeing: A socio-technical systems approach
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Organisational social support was associated with positive wellbeing outcomes.
+
+
+                        
+                        
+                           
+                           Teleworker support was associated with increased job satisfaction and reduced psychological strain.
+
+
+                        
+                        
+                           
+                           Both forms of organisational support reduced teleworker social isolation.
+
+
+                        
+                        
+                           
+                           Social isolation mediated the relationship between organisational support and telework outcomes.
+
+
+                        
+                        
+                           
+                           Differences in some of these relationships were observed between low-intensity and hybrid teleworkers.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Telework
+
+Telecommuting
+
+Socio-technical systems
+
+Organisational support
+
+Job satisfaction
+
+Job stress
+
+Social isolation
+
+@&#ABSTRACT@&#
+
+
+                  The prevalence of telework and other forms of mobile working enabled by digital technology is increasing markedly. Following a socio-technical systems approach, this study aims to examine the role of organisational social support and specific support for teleworkers in influencing teleworker wellbeing, the mediating role of social isolation, potentially resulting from a person-environment mismatch in these relationships, and possible differences in these relationships between low-intensity and hybrid teleworkers. Teleworkers' (n = 804) perceptions of support and telework outcomes (psychological strain, job satisfaction, and social isolation) were collected using an on-line survey of teleworking employees distributed within 28 New Zealand organisations where knowledge work was undertaken. Organisational social support and teleworker support was associated with increased job satisfaction and reduced psychological strain. Social isolation mediated the relationship between organisational social support and the two outcome variables, and some differences were observed in the structural relationships for hybrid and low-intensity teleworker sub-samples. These findings suggest that providing the necessary organisational and teleworker support is important for enhancing the teleworker-environment fit and thereby ensuring desirable telework outcomes.
+               
+
+@&#INTRODUCTION@&#
+
+There is little doubt that the nature of work is changing and mobile working enabled by advanced technology is an important mega-trend in the future of work. One such arrangement, telework, also known as telecommuting, remote working, agile working and anywhere working, is becoming increasingly popular and a common feature in work life due to advances in digital technology and changing attitudes towards where and when work is undertaken. To date, ergonomics research has paid little attention to this phenomenon, despite mobile work being identified as an important future of work/future of ergonomics concern for the discipline (Drury, 2008).
+
+Telework has grown in popularity due largely to advances in Information and Communication Technologies (ICT) (e.g. broadband Internet, mobile devices, social media, cloud computing, and networking tools). As well as providing organisations and individuals with flexibility about when and where work takes place, telework and other forms of anywhere working have been viewed as a corollary of the push for organisations to move to network-based operating structures where employees are no longer tied to geographic locations (Bayrak, 2012). The requirement for organisations in some countries to consider requests from employees to switch to flexible working arrangements has been another key driver for telework adoption. Furthermore, telework popularity has risen as a result of speculations promoted by advocates of flexible working that telework arrangements can modernise workplace practice (Troup and Rose, 2012).
+
+Telework has been defined as “… a flexible work arrangement whereby workers work in locations, remote from their central offices or production facilities, with no personal contact with co-workers, but the ability to communicate with co-workers using ICT” (Di Martino and Wirth, 1990). This non-standard form of organisational dynamic presents unique challenges to teleworkers, managers and organisations (Rasmussen and Corbett, 2008; Bosua et al., 2013; Dahlstrom, 2013). Telework typically takes place in the home, but may also occur on the road, in a co-working centre, smart centre or digital work hub, or in other remote contexts. In most cases, the teleworker is isolated physically from their organisation, raising questions about how teleworkers relate to their colleagues and their organisation, and how best to provide support to ensure teleworker satisfaction, wellbeing, safety and performance.
+
+A number of meta-analyses have been conducted in recent years in an attempt to understand the potential benefits and drawbacks of teleworking. Gajendran and Harrison (2007), for example, found positive outcomes for teleworkers, including increased job satisfaction, performance, autonomy and reduced work-family conflict (WFC). More recently, a meta-analysis by Martin and MacDonnell (2012) found positive relationships between telework and organisational outcomes, including perceived productivity, improved retention and organisational commitment, and improved performance within the organisation. However, the literature suggests that not all telework arrangements are effective and that negative outcomes are observed under some conditions (Mahler, 2012; Sardeshmukh et al., 2012; Tremblay and Thomsin, 2012), including social isolation (Golden et al., 2008), co-worker dissatisfaction (Golden, 2007), and the so-called ‘telework divide’, where negative impacts have been observed for those barred from telework (Mahler, 2012). Moreover, telework appears to be a time-dependent concept (Neufeld and Fang, 2005; Bélanger et al., 2012), with negative effects observed in some studies where telework intensity exceeds two or three days per week (Gajendran and Harrison, 2007).
+
+
+                     Bélanger et al. (2012) argue that socio-technical systems theory can be utilised to theorise and analyse how multiple factors jointly contribute to telework outcomes (Bélanger et al., 2012). From a socio-technical systems perspective (Trist, 1981; Eason et al., 1996; Lyytinen and Newman, 2008), and in line with Bélanger et al.'s (2012) conceptual model, organisational support in the telework context should address technical, person, and organisational sub-systems elements. The better the ‘fit’ between these sub-system elements, the more effective telework will be in terms of desired outcomes for the individual and organisation, whereas mismatches between system elements may result in work system failures and undesired outcomes. For example, person-environment fit problems (Haines et al., 2002) such as social isolation can occur where there is inadequate support for teleworkers, who are dependent upon technology and management support for coordinating their activities and collaborating with co-workers (Baker et al., 2006a, 2006b).
+
+The major contribution of the present study, therefore, is to examine the role of organisational social support and specific teleworker support as predictors of desirable teleworker outcomes, considering the relative influence of each. The study examines the role of both forms of support in reducing psychological strain and enhancing job satisfaction. Based on the socio-technical systems approach and the notion of person-environment fit (Haines et al., 2002), the study also examines the mediating role of social isolation in the relationship between organisationally-derived support and these telework outcomes. The study considers the relationships between these study variables for two distinct teleworker cohorts: low intensity teleworkers, who may be day extenders, using technology to telework a few hours per week, verses hybrid teleworkers, who work one or more days per week remotely.
+
+Job satisfaction comprises individual perceptions of task activities, achievement, rewards, working conditions, and management practices. Stated more succinctly, it is a positive emotional state coming from an individual's subjective experience of their job (Locke, 1976). It is well understood that social interaction in the workplace is an important determinant of job satisfaction (Sims et al., 1976). It would, therefore, follow that a reduced frequency of interactions between teleworkers and their co-workers, due to the remote working arrangements, should impact negatively on telework job satisfaction. Given these concerns, it is argued that organisational support is of key importance in enhancing teleworker satisfaction and wellbeing, helping to reduce the potential loss of satisfaction and wellbeing due to lower levels of social interaction associated with telework.
+
+Perceived organisational support (POS) is the degree to which employees believe that their organisation values their contributions and cares about their well-being (Eisenberger et al., 1997), while perceived social support refers to how much employees perceive that they are supported by their co-workers and supervisor (O'Driscoll, 2000). Both constructs are understood to be predictors of wellbeing outcomes in the workplace and are therefore considered to be important to telework outcomes. Importantly, specific support of teleworkers is thought to have an important influence on telework outcomes as telework differs from work undertaken in the central workplace in important ways and therefore requires a different management approach in order to yield productive outcomes (Bosua et al., 2013). Indeed, Lautsch et al. (2009) reported that teleworkers supervised with an information sharing approach were more likely to enjoy lower work-family conflict and increased work performance. Other authors have noted the importance of relationship-oriented behaviour when managing teleworkers, as opposed to task-oriented behaviour (Dahlstrom, 2013). For example, Kowalski and Swanson (2005) report that management support, communication and trust are critical success factors for telework. Trust appears to be a key determinant of telework effectiveness, impacting on telework attitudes and performance in the telework environment (Baker et al., 2006a, 2006b). Other telework support factors examined in empirical research include: teleworker interaction with colleagues and manager (Neufeld and Fang, 2005); job resources, support and feedback for teleworkers (Sardeshmukh et al., 2012). Each of these studies reported a relationship between support for teleworkers and either positive telework outcomes, including satisfaction (Golden, 2006; Golden and Veiga, 2005), or absence of negative telework outcomes. Furthermore, Babin and Boles (1996) found that supervisor support reduced stress and increased job satisfaction.
+
+The little research that has been conducted looking at technical support for teleworkers suggests this form of support is essential for positive telework outcomes. Indeed, technical support is necessary to ensure effective coordination with the central office and co-workers (Bosua et al., 2013). Furthermore, research has indicated that the more that an individual teleworks the more support is sought and the greater level of formal support is required with regard to technology and training (Baker et al., 2006a, 2006b; Bayrak, 2012). As a result, it is expected that teleworker job satisfaction will increase as organisational social support and teleworker support increase.
+                              
+                                 Hypothesis 1
+                                 Organisational social support will be positively related to job satisfaction.
+
+Teleworker support will be positively related to job satisfaction.
+
+Psychological strain and stress are often used interchangeably in the context of wellbeing research. Job stress has been described as the harmful physical and emotional responses that occur where the requirements (or demands) of the job do not match the capabilities, resources, or needs of the worker (NIOSH, 1999). Telework is characterised by both positive and negative impacts on teleworker psychological strain/stress. On the one hand, teleworking can increase workload through day extending (Towers et al., 2006), role ambiguity and reduce access to social support and feedback (Sardeshmukh et al., 2012). However, the argument for telework as a positive factor in reducing job stress appears more compelling from a Job Demands-Resources theory perspective, as the psychological demands on individuals can be reduced through avoidance of social and environmental stressors, while resources are increased through greater autonomy about where and when to work (Demerouti et al., 2001). Indeed, there is evidence that teleworking reduces exposure to commuting to work (Stephens and Szajna, 1998), increases opportunities for leisure and restoration due to (greater) flexibility and control over when work takes place (Mann and Holdsworth, 2003), and provides reduced work pressure and increased autonomy. Furthermore, teleworkers often enjoy fewer interruptions and distractions than their office-bound colleagues (Mann et al., 2000), thereby providing greater opportunity to concentrate and complete tasks to schedule. In further support of the contention that telework has a positive influence on wellbeing, a study by Fonner and Roloff (2010) found high-intensity teleworkers avoided stressors associated with collocated work environments, including overabundance of meetings and interruptions, and were more satisfied with their job as a result (Hartig et al., 2007).
+
+Telework involves working at home or another remote location without the usual structure and guidance provided by supervisors and other agents in the workplace, and teleworkers may receive less feedback and social support than the on-site employees enjoy. From a socio-technical systems perspective, it can be argued that organisational sources of support will influence the fit between teleworker, their work tasks and their environment, and thereby teleworker perceptions of their ability to manage the demands of telework. Having reliable technology and support for teleworking communications are good examples of how support can influence teleworker stress and strain. Given the important role of organisational support in previous research on telework (Neufeld and Fang, 2005; Lautsch et al., 2009; Aboelmaged and Subbaugh, 2012; Sardeshmukh et al., 2012), and the known positive influence of various forms of support from the workplace on wellbeing outcomes, including job stress, it is expected that teleworker psychological strain will decrease as organisational social support and teleworker support increases.
+                              
+                                 Hypothesis 3
+                                 Organisational social support will be negatively related to psychological strain.
+
+Teleworker support will be negatively related to psychological strain.
+
+Social isolation has been identified as a negative consequence of telework and has been associated with negative teleworker and organisational outcomes. In the workplace context, this phenomenon has been referred to as ‘professional isolation’: a state of mind or belief that one is out of touch with others in the workplace (Golden et al., 2008). Such isolation occurs where an individual's need to feel socially connected in the workplace is thwarted (Baumeister and Leary, 1995). In a study that compared telework with traditional work arrangements (Morganson et al., 2010), higher levels of workplace inclusion (a related construct to social isolation) were reported for office workers, with home-based workers reporting lower workplace inclusion. However, extant research has found not all teleworkers experience social or professional isolation (Duxbury and Neufeld, 1999).
+
+Looking at the evidence for why telework might result in feelings of isolation, a number of studies have found that remote working arrangements, such as telework, can place constraints on the workplace environment, social interactions, and accumulation of social capital among teleworkers (Baker et al., 2006b). Early research in this field indicated that teleworkers may be less able to effectively manage interpersonal relationships and interactions with others (Golden et al., 2008). Moreover, their ability to coordinate complex or ambiguous tasks may be impacted by remote working relationships, impacting on work performance.
+
+In the commentary above we have reviewed evidence for the beneficial role of organisational social support and teleworker support in determining telework outcomes, resulting in our predictions that organisationally-derived support would increase job satisfaction and reduce psychological stress experienced by teleworkers. Given the important influence of various forms of support from the workplace on wellbeing outcomes such as social isolation and work-family conflict (Griggs et al., 2013; Nohe and Sonntag, 2014), it is reasonable to expect that organisationally-derived support will have a positive influence on perceived social isolation. Telework support would also be predicted to influence social isolation by providing effective and reliable communication channels between the teleworker and co-workers, line-manager and the organisation (Bosua et al., 2013). Each form of support would be expected to enhance the potential for the development of personal relationships and sharing of task-related knowledge between mobile workers and co-workers. We therefore predict that organisationally-derived sources of support will be negatively related to social isolation:
+                              
+                                 Hypothesis 5
+                                 Organisational social support will be negatively related to social isolation.
+
+Teleworker support will be negatively related to social isolation.
+
+It has long been accepted in organisational theory that social interaction in the workplace, including friendship, rich communication, feedback and information sharing, is an important determinant of job satisfaction (Sims et al., 1976). While the quality of digital technologies that support teleworking improves teleworker connectivity constantly, a reduction in the quality and frequency of interactions between teleworkers and their co-workers, due to the remote working arrangements of the latter, should impact negatively on telework job satisfaction from this perspective. Indeed, the lack of social interaction in some telework roles can lead to feelings of isolation, resulting in decreased job satisfaction and commitment (Cooper and Kurland, 2002; Perez et al., 2002; Morganson et al., 2010), along with reduced performance (Golden et al. (2008). Teleworkers may feel ‘out of the loop’, unsure about their place in the organisation, concerned about missed opportunities at the office, and can experience co-worker jealousy (Gajendran and Harrison, 2007). Given evidence from previous research that social isolation promotes reduced satisfaction and increases workplace stress, we predict:
+                              
+                                 Hypothesis 7
+                                 Social isolation will be negatively related to job satisfaction.
+
+Social isolation will be positively related to psychological strain.
+
+As noted earlier, socio-technical systems thinking includes the notion of person-environment fit (Bélanger et al., 2012; Haines et al., 2002). Social isolation, in the teleworking context, is considered a potential product of a person-environment mismatch, due to insufficient or ineffective support for the teleworker, resulting in inadequate or poor social interaction, task support, and feelings of isolation, with potential impacts of such isolation being low job satisfaction and high strain. In support of this assertion, research has found organisational support to have an important role in telework (Neufeld and Fang, 2005; Lautsch et al., 2009; Aboelmaged and Subbaugh, 2012; Sardeshmukh et al., 2012), having a positive influence on wellbeing outcomes such as social isolation. In turn, research suggests that social isolation can lead to decreased perceived job satisfaction and increased stress (Cooper and Kurland, 2002; Perez et al., 2002; Morganson et al., 2010), As prior empirical research indicates that organisationally-derived support can reduce negative aspects of telework, including social isolation, and that social isolation promotes reduced satisfaction and increased stress, we predict:
+                              
+                                 Hypothesis 9
+                                 Social isolation will mediate the relationship between organisational social support and job satisfaction.
+
+Social isolation will mediate the relationship between organisational social support and psychological strain.
+
+Social isolation will mediate the relationship between teleworker support and job satisfaction.
+
+Social isolation will mediate the relationship between teleworker support and psychological strain.
+
+The relationship between stress/strain and job satisfaction is well established in the research literature (e.g. Cooper et al., 1989; Burke, 2001; Cass et al., 2003; Wang et al., 2014), although there is considerable debate about the direction of causality in this relationship, with job satisfaction reported in different studies to be either an antecedent, mediator, or outcome of job stress. No studies were found that explored this relationship within the telework literature. In the present study, psychological strain is predicted to negatively influence teleworker job satisfaction due to its impact on the emotional state of teleworkers and their subjective experience of their job (Locke, 1976). We therefore predict that:
+                              
+                                 Hypothesis 13
+                                 Psychological strain will have a negative influence on job satisfaction
+
+It can be argued that low-intensity teleworkers (i.e. those individuals who work remotely less than one full day per week) and hybrid teleworkers (who telework one day or more) have different organisational support needs and experience different telework outcomes. Arguably, individuals working remotely for just a few hours per week are likely to be day-extenders, using digital devices to work into the evening or at weekends. Regardless, low-intensity teleworkers work remotely for just a relatively short period, and are therefore less likely to be as dependent on social and technical support as those who work remotely for longer periods. Moreover, these individuals are less likely to experience social isolation. Indeed, there is some evidence that telework is a time-dependent concept (Neufeld and Fang, 2005; Bélanger et al., 2012), with negative effects observed in some studies where telework intensity exceeds two or three days per week (Gajendran and Harrison, 2007). These findings and assertions are in-line with social-technical systems thinking, and person-environment fit (Haines et al., 2002), as mismatches between these sub-system elements are less likely to become evident over a brief period of remote working. In line with these contentions, we predict that:
+                              
+                                 Hypothesis 14
+                                 There will be differences across all relationships in the path model between low-intensity and hybrid teleworkers.
+
+The proposed research model is shown in Fig. 1
+                           , which illustrates the predicted influence of two antecedents, organisational social support and teleworker support, on social isolation, psychological strain and job satisfaction.
+
+@&#METHOD@&#
+
+Participating New Zealand organisations were recruited through the partner databases and contacts of the New Zealand Work Research Institute, the Human Resource Institute of NZ (HRINZ), and Cisco New Zealand. The human resource manager or another senior manager was approached at each organisation with a formal request to participate in the study. Of the 45 organisations invited to participate in the study, 28 accepted our invitation. Each participating organisation undertook a high degree of knowledge work and had staff who teleworked at least some of the time. Data was collected using an on-line questionnaire survey comprising a range of well-validated, standardised measures. Within each of the 28 participating organisations, requests to participate in the on-line questionnaire survey were distributed (via email) to staff. Surveys were completed on-line with responses being relayed directly to the researchers for analysis.
+
+The study achieved a total respondent sample of 804 teleworker respondents, from 28 participating organisations. Some 47% of respondents were female. The mean age of respondents was 30.9 (sd = 11.4). Most (77%) were married or living with a partner and were full-time employees (87%). The majority (89.4%) had permanent employment status. Respondents were most commonly non-managerial employees (58%), although the sample represented all organisational levels, with 8% first-line managers/supervisors, 26% middle managers, and 8% senior managers. Respondents were relatively experienced, with 84% having one or more years in their current role and 45% having three or more years. Some 88.8% worked in a team either all the time or frequently.
+
+
+                        Table 1
+                         shows the industry sectors most commonly represented in the study. While just over two-thirds of participating organisations came from four broad industry categories (highlighted in Table 1), a wide range of sectors were represented in the study.
+
+Respondents were asked what proportion of their working week was spent teleworking/working remotely. The sample was largely split between low and moderate intensity teleworkers, with some 509 teleworking between 1 and 7 h per week (low-intensity teleworkers) and 295 teleworking 8 h or more (hybrid teleworkers). Of these, just 6% teleworked more than 3 days per week. The large majority of respondents teleworked from home (80%), with most also having an office or permanent workstation available at their employer's workplace. Only a small proportion of respondents had a written formal agreement with their employer to telework (22%), with the majority of teleworking employees relying on informal arrangements (50%), or verbal agreements to telework with their manager (27%).
+
+Measures used in the questionnaire are detailed below, with examples of scale items provided where appropriate.
+
+
+                        Organisational social support was operationalized as a second order reflective scale, comprising two different types of support mechanism available for employees. 
+                           Perceived social support
+                         was measured using two subscales developed by O'Driscoll (2000), which measured support from both supervisor and peers (alpha = 0.85 and 0.94 respectively). Scale items include: ‘…how often has your immediate supervisor provided you with the following over the past 6 months: helpful information and advice … clear and helpful feedback…’ 
+                           Perceived organisational support
+                         was measured using the 7-item Positive Organisational Support scale (Eisenberger et al., 1986; alpha = 0.96). Scale items include: ‘Help is available from my organisation when I have a problem’ and ‘My organisation really cares about my wellbeing’. The second order reflective scale has a composite reliability of 0.84.
+
+
+                        Teleworker support was operationalised as a second order reflective scale comprising three different types of support mechanism specifically associated with teleworker support. 
+                           Manager support for telework
+                         was measured using a 4-item scale developed by Lee and Kim (1992, cited in Aboelmaged and Subbaugh, 2012). Scale items include: ‘My manager provides resources to enable telework’ and ‘My manager encourages employees to telework’ (alpha = 0.92). 
+                           Manager trust
+                        
+                        (in teleworker) was measured using two items from a scale developed by Baker et al. (2006a, 2006b), together with two bespoke items. Sample items include ‘My manager doesn't think I slack off when I'm teleworking’ and ‘My manager worries that I am not getting the job done when I telework’ (alpha = 0.82). Level of ICT (technical) support was measured using an 8 item scale developed by Day et al. (2012). Sample items include ‘New information technology and systems in this organisation are implemented on a timely basis’ and ‘Technical support from this organisation is available when I need it’ (alpha = 0.91). This second order reflective scale also has a composite reliability coefficient of 0.84.
+
+
+                        Social isolation was measured using a 7 item scale developed by Golden et al. (2008). Sample items include ‘I feel left out on activities and meetings that could enhance my career’ and ‘I miss face-to-face contact with co-workers’ (alpha = 0.91).
+
+
+                        Job satisfaction was measured using six items from Warr et al. (1979). This scale has a good internal reliability (alpha = 0.84). Sample items include ‘your immediate manager or supervisor’ and ‘the freedom you have to choose your own methods of working’.
+
+
+                        Psychological strain was measured using Goldburg's (1972) 12-item General Health Questionnaire (GHQ-12). Sample items include ‘Felt capable of making decisions about things?’ and ‘been able to enjoy your normal day-to-day activities?’. EFA resulted in a three factor solution (composite reliability coefficient of 0.77).
+
+@&#ANALYSIS@&#
+
+SPSS for Windows was used for initial statistical analysis. Partial Least Squares–Structural Equations Modelling (PLS-SEM, see Hair et al., 2013) was the primary statistical method used to analyze the path model. SmartPLS v2.0 software (Ringle et al., 2005) was used to test the proposed hypotheses (see explanation by Hair et al., 2013). Mediation analysis was undertaken using the PROCESS Macro by Hayes (2013).
+
+Sub-sample analysis was conducted to test the effect of telework intensity on the path relationships based on our proposed hypotheses by following the procedures specified by Sosik et al. (2009, 25). They recommended (a) establish the relationship between the predictor and dependent variables, (b) subdivide the data based on the values of the moderating variable (in this case, categories of telework intensity), (c) review the original two-variable relationship for each of the sub-sample, and (d) compare the relationship found in each sub-sample.
+
+We split the data into low telework intensity based on 0 to less than 8 h of telework per week (n = 509) and those with hybrid telework intensity of greater than 8 h of telework per week (n = 295). We determined the significance of the path coefficients for each hypothesized relationships between low and hybrid telework samples by using the formulae specified by Chin (2010) to compute the t-statistics for testing the significance between samples by using the path coefficients and standard errors for the paths to compute the t-value (see Sosik et al., 2009, 25).
+
+We undertook several steps to ensure the proposed path model was valid and reliable (see Hair et al., 2013). Composite reliability coefficients, Fornell and Larker's criterion for discriminant reliability and Stone-Geisser Q tests were all undertaken (see Chin, 2010). The tests satisfied the minimum guidelines required for PLS analysis. Bootstrapping procedure (for 500 bootstrap samples) within the SmartPLS software was used to determine the significance of the path relationships. This procedure provided extra confidence that the findings were not sample-specific by using repeated random samples drawn from the data. In addition, a global goodness of fit index (Tenenhaus et al., 2005) was calculated to determine the goodness of fit as the path model, unlike covariance structural equations modelling such as AMOS, does not compute goodness of fit indices.
+
+@&#RESULTS@&#
+
+Descriptive statistics and intercorrelations between the variables are reported in Table 2
+                     . As shown in Fig. 2
+                     , the model tested the relationship from organisational social support and teleworker support to social isolation, psychological strain and job satisfaction.
+
+Path analysis was firstly undertaken on the full sample. Results indicated that the data fitted the model at a high level (Wetzels et al., 2009), based on the global goodness of fit index (Tenenhaus et al., 2005) of 0.45. The model explained 51.4% of job satisfaction. As indicated in Table 3
+                     , with the exception of one hypothesis (Teleworker Support → Social Isolation), the remaining hypotheses on direct effects were supported.
+
+Sub-sample analyses, for the low-intensity (n = 295) and hybrid (n = 509) samples, showed the model to have a global goodness of fit index (Tenenhaus et al., 2005) of 0.47 and 0.45 respectively. The model explains 48.2% and 54.6% of Job Satisfaction in each sample respectively. Taking into consideration the sample size and standard errors of the path coefficients (see discussion in the methods section), it was noted that differences were found for two hypothesised relationships: Organizational Social Support → Social Isolation and Organizational Social Support → Job Satisfaction. There were no statistically significant differences in the remaining path coefficients between the two samples (see Table 3). Organisational social support had greater impact on both social isolation and job satisfaction for the low intensity sample.
+
+Mediation analyses were undertaken by using the PROCESS macro from Hayes (2013) with 10,000 sub-samples. As the results showed that social support is the only variable which has direct and indirect relationships (see Table 3), mediation analyses was only conducted for this particular variable. As shown in Table 4
+                        , the results satisfied the requirement for indirect mediation effect of social isolation as the lower and upper limit confidence interval did not go through zero (Hayes, 2013).
+
+@&#DISCUSSION@&#
+
+In this paper, we investigated whether perceived organisational social support and teleworker support influenced teleworkers' perceptions of two outcomes important for individual wellbeing, performance, engagement and retention: job satisfaction and psychological strain. Furthermore, we considered the potential mediating role of social isolation in the relationship between organisationally-derived forms of support and these employee outcomes. We were also interested in whether there would be differences in these structural relationships between low-intensity and hybrid teleworkers. In line with socio-technical systems thinking that telework effectiveness is impacted by the fit between teleworkers, their technology, environment, and organisation, our study found that organisational social support (including perceived supervisor, co-worker and organisational support) was positively related to job satisfaction and negatively related to psychological strain. These findings indicate the key role of organisationally-derived sources of social support in enhancing teleworker-task-environment fit (Haines et al., 2002), and are unsurprising given the demonstrated role of social support and management efforts in improving telework effectiveness (Neufeld and Fang, 2005; Lautsch et al., 2009; Aboelmaged and Subbaugh, 2012; Sardeshmukh et al., 2012). Interestingly, organisational social support was found to have greatest influence on job satisfaction for low intensity teleworkers, presumably because hybrid teleworkers were already high in satisfaction due to the known benefits of the teleworking role.
+
+Teleworker support was found to positively influence job satisfaction and reduce psychological strain, although only a weak, yet statistically significant, relationship was observed between teleworker support and psychological strain. One explanation for this finding is that many wellbeing enhancers associated with telework are independent of organisational factors such as manager support and technology support, including reduced commute time and stress, reduced travel costs, increased non-work time, and the restorative benefits of working in the home environment.
+
+As expected, our study found organisational support reduced social isolation, the proximal telework outcome included in our model. However, teleworker support did not influence this outcome, presumably because specific forms of teleworker support (technology support, manager support for telework) are designed to help the functioning of the employee as a remote worker rather than addressing the social aspects of their role. The influence of organisational social support on social isolation was found to be greatest for the low-intensity sample, possibly because such support was insufficient to influence isolation in higher intensity teleworkers who work remotely for extended periods of time.
+
+Consistent with previous research (Cooper and Kurland, 2002; Perez et al., 2002; Morganson et al., 2010), social isolation decreased perceived job satisfaction and increased psychological strain, and in-line with our hypothesis, was found to partially mediate the organisational social support-telework outcome relationships. Thus, insufficient provision of organisational social support reduces job satisfaction and increases psychological strain, due to the resulting social isolation of telework. In the teleworking context, social isolation is considered a potential product of a person-environment mismatch (Bélanger et al., 2012; Haines et al., 2002), due to insufficient or ineffective support for the teleworker, resulting in inadequate social interaction, task support, and feelings of isolation. This indicates that opportunities for social interaction with co-workers through the provision of regular face-to-face contact opportunities would seem important for reducing the extent of isolation experienced when teleworking (Mann and Holdsworth, 2003).
+
+Contributions of the research include further insights into the factors, notably organisationally-derived support, that contribute to positive telework outcomes, and reduce the negative impacts of telework such as social isolation and stress. The inclusion of both general forms of organisational social support and specific teleworker support appears to be important to effective teleworking. The fact that teleworker support was perceived to influence satisfaction and stress among the sample, despite the fact that most teleworkers teleworked informally, and were therefore likely to receive only minimal specific support for teleworking, suggests that such support is very influential and important to telework effectiveness. The application of socio-technical systems thinking and its emphasis on fit between sub-system components for effective telework, are further contributions, particularly in a field where theoretical guidance is lacking from empirical studies (Bélanger et al., 2012). Ergonomics researchers are encouraged to extend this field of inquiry to examine other factors and interactions important in the implementation of flexible work arrangements such as telework.
+
+In common with most research in this field, our study was limited by a cross-sectional design and correlational findings, meaning causation cannot be inferred in the relationship between the variables included in the study. Future research should employ longitudinal study designs, with a focus on outcomes of telework over multiple data points under different levels of telework intensity. From the perspective that telework is a time-dependent construct, the small proportion of respondents in our sample who teleworked more than three days per week reduced our ability to determine the potential effects of very high-intensity teleworking, with some research suggesting that negative effects are observed where telework intensity exceeds two or three days per week (Gajendran and Harrison, 2007). Further research should include such high-intensity teleworkers, examining outcomes for these workers, and considering the optimal telework intensity for positive telework outcomes in different contexts. Future studies should also consider the role of a broader range of variables in supporting effective telework for different levels of telework intensity. Examples include the role of type of work, the sector of industry, and the position of the worker in the organisation. Another important variable for future research is work-family conflict, which is known to benefit from telework arrangements (Madsen, 2006; Gajendran and Harrison, 2007; Fonner and Roloff, 2010), and is enhanced through social support (Griggs et al., 2013; Nohe and Sonntag, 2014). Research should consider whether such conflict would increase where either very low or very high levels of telework are undertaken (Gajendran and Harrison, 2007).
+
+@&#CONCLUSIONS@&#
+
+This study has added to the small literature that identifies organisational measures for enhancing individual and organisational outcomes of telework. It is clear that negative outcomes such as work isolation and job-related stress are a risk under this flexible work arrangement, and both social and technical support are important in negating these outcomes. Our findings suggest that organisations wishing to benefit from telework would be well advised to pay close attention to the support given to their teleworking staff. The more teleworking an individual is doing the more support they will need, and this requirement should be reflected in organisational policy and practices around telework. As teleworking and other forms of mobile working are considered a mega-trend and are increasingly prevalent among knowledge workers, understanding the work experience of teleworkers, factors that enhance their performance and wellbeing, and how best to ensure the effective management of teleworkers, will be increasingly important and should be the subject of the future of ergonomics research agenda.
+
+@&#ACKNOWLEDGEMENTS@&#
+
+The authors acknowledge the funding support of Cisco Australia and New Zealand for this project. We thank those organisations and individual managers and teleworkers who participated in this study.
+
+@&#REFERENCES@&#
+

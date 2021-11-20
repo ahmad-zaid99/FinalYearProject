@@ -1,0 +1,680 @@
+@&#MAIN-TITLE@&#Predicting tool operator capacity to react against torque within acceptable handle deflection limits in automotive assembly
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Tool, workstation, and task parameters were measured for 35 tools, representing 69 installations in an automotive assembly plant.
+
+
+                        
+                        
+                           
+                           The dynamic forces acting against the human tool operator and resulting handle reaction deflections were predicted using a biodynamic tool operator model.
+
+
+                        
+                        
+                           
+                           The proportion of threaded fastener tool operators capable of maintaining published psychophysically derived deflection limits were ascertained.
+
+
+                        
+                        
+                           
+                           While handle deflection did not exceed the limit for most installations, changes in tool speed and operator position improved the six jobs that did.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Power hand tool
+
+Upper limb biomechanics
+
+Tool operator biodynamic model
+
+Work related musculoskeletal disorders
+
+Nutrunner
+
+Dynamic strength
+
+@&#ABSTRACT@&#
+
+
+                  The proportion of tool operators capable of maintaining published psychophysically derived threaded fastener tool handle deflection limits were predicted using a biodynamic tool operator model, interacting with the tool, task and workstation. Tool parameters, including geometry, speed and torque were obtained from the specifications for 35 tools used in an auto assembly plant. Tool mass moments of inertia were measured for these tools using a novel device that engages the tool in a rotating system of known inertia. Task parameters, including fastener target torque and joint properties (soft, medium or hard), were ascertained from the vehicle design specifications. Workstation parameters, including vertical and horizontal distances from the operator were measured using a laser rangefinder for 69 tool installations in the plant. These parameters were entered into the model and tool handle deflection was predicted for each job. While handle deflection for most jobs did not exceed the capacity of 75% females and 99% males, six jobs exceeded the deflection criterion. Those tool installations were examined and modifications in tool speed and operator position improved those jobs within the deflection limits, as predicted by the model. We conclude that biodynamic tool operator models may be useful for identifying stressful tool installations and interventions that bring them within the capacity of most operators.
+               
+
+@&#INTRODUCTION@&#
+
+Industrial power hand tools, such as nutrunners, are available in a variety of shapes, sizes, and capabilities (Radwin and Haney, 1996). In automotive manufacturing, these types of tools are used for a multitude of operations in different locations and orientations relative to the operator. Previous studies have shown that numerous factors affect the forces acting against the operator and hence the effort to operate them (Radwin et al., 1995; Radwin, et al., 1996; Lin et al., 2001). Tool geometry, mass, mass moment of inertia about the spindle axis, and center of gravity (CG) directly affect handle force (Lin et al., 2001, 2003a.) Torque build-up time has been found to affect handle displacement and operator discomfort (Armstrong et al., 1999; Lindqvist, 1993; Oh and Radwin, 1998; Radwin et al., 1989). Threaded fastener torque build-up time is dependent on the fastener joint rate. These properties have an effect on both static and dynamic handling of the tool by an operator. A dynamic model is necessary to estimate handle reactions because static models cannot account for the impulsive nature of these tools, particularly shutoff torque-controlled tools often used in automotive manufacturing.
+
+Our laboratory developed a biodynamic human operator model for predicting the dynamic forces acting against the tool operator and the associated handle reaction based on tool inertial properties, operator position, and torque build-up (Lin, 2001; Lin et al., 2001, 2003a, 2003b). By using the model to predict the tool handle response based on individual biodynamic parameters (i.e. mass moment of inertia, stiffness, and damping) for a sample of 25 subjects (13 males, 12 females) for various postures encountered in power tool operation as measured by Lin et al. (2001), the distribution (i.e. mean and standard deviation) of the predicted deflections of male and female operators can be ascertained.
+
+There are few established criteria for a tool operator's capacity to act against threaded fastener nutrunner reaction forces. Often in practice, target torque is used as the defining metric. Ku et al., (2007) found that predicted handle forces and predicted handle deflection for jobs where injuries were reported were significantly greater than those jobs free of injuries, whereas target torque did not show statistically significant differences among injury and non-injury jobs. Some researchers have applied psychophysical criteria (Kihlberg et al., 1993; Kihlberg et al., 1994).
+
+
+                     Kihlberg et al. (1995) reported that 90% of operators accepted right angle nutrunner handle displacements less than 3 cm (discomfort of 2 on a 0–10 scale). Lin and McCory (2009) found that for pistol grip tools on a horizontal surface, an angular displacement of 13° had discomfort of 2 or less for 91% (649/715) of the operators, and for a pistol grip tools on a vertical surface, an angular displacement of 9° had discomfort 2 or less for 91% (654/720) of the operators. They also found that for 80% (572/712) of the operators, a displacement of 2.6 cm for right angle tools on a horizontal surface had a discomfort less than or equal to 2, which agreed with Kihlberg et al. (1995). We therefore considered applying the biodynamic operator model for predicting a population of tool operators’ capacities to constrain tool deflection within these boundaries.
+
+The objective of this paper was to evaluate jobs by predicting tool deflection using our biodynamic model and comparing these deflections against values from psychophysical studies in the literature. The study was conducted in an assembly plant during actual production. The methods used for measuring parameters for the biodynamic power hand tool operator model to evaluate the capacity to react against power hand tool reaction forces are explained. In-plant procedures, including custom instruments for measuring tool mass moment of inertia are also described. These parameters were measured and the biodynamic model was used for predicting the capacity of a population of tool operators. When the analysis demonstrated that deflection limits were exceeded, the study explored changing model parameters in order to improve the job. The use of the model for identifying and quantifying specific ergonomic improvements are demonstrated.
+
+@&#METHODS@&#
+
+The operator is modelled as a single degree of freedom mechanical system for predicting the response to impulsive torque reaction forces produced by rotating spindle tools such as nutrunners or drills. This system consists of the tool with mass moment of inertia (J
+                     tool), torsional stiffness of the operator (k
+                     subject), rotational damping element for the operator (c
+                     subject), and effective mass moment of inertia of the tool operator (J
+                     subject). The angular deflection response θ(t) was determined by tool torque build-up T(t) as the input. The equation of angular motion describing this system of tool operation is:
+                        
+                           
+                              
+                                 
+                                    (
+                                    
+                                       
+                                          J
+                                          
+                                             s
+                                             u
+                                             b
+                                             j
+                                             e
+                                             c
+                                             t
+                                          
+                                       
+                                       +
+                                       
+                                          J
+                                          
+                                             t
+                                             o
+                                             o
+                                             l
+                                          
+                                       
+                                    
+                                    )
+                                 
+                                 
+                                    
+                                       
+                                          ⅆ
+                                          2
+                                       
+                                       θ
+                                    
+                                    
+                                       ⅆ
+                                       
+                                          t
+                                          2
+                                       
+                                    
+                                 
+                                 +
+                                 
+                                    c
+                                    
+                                       s
+                                       u
+                                       b
+                                       j
+                                       e
+                                       c
+                                       t
+                                    
+                                 
+                                 
+                                 
+                                    
+                                       ⅆ
+                                       θ
+                                    
+                                    
+                                       ⅆ
+                                       t
+                                    
+                                 
+                                 +
+                                 
+                                    k
+                                    
+                                       s
+                                       u
+                                       b
+                                       j
+                                       e
+                                       c
+                                       t
+                                    
+                                 
+                                 θ
+                                 =
+                                 T
+                                 
+                                    (
+                                    t
+                                    )
+                                 
+                              
+                           
+                        
+                     
+                  
+
+Using the central difference method, the response of the system is approximated as a function of stiffness, damping constant, mass moment of inertia, and the input torque, where Δt is a time resolution unit, and 1 ms was used for the calculation:
+                        
+                           
+                              
+                                 
+                                    θ
+                                    
+                                       i
+                                       +
+                                       1
+                                    
+                                 
+                                 =
+                                 
+                                    {
+                                    
+                                       
+                                          1
+                                          
+                                             
+                                                
+                                                   
+                                                      J
+                                                      
+                                                         s
+                                                         u
+                                                         b
+                                                         j
+                                                         e
+                                                         c
+                                                         t
+                                                      
+                                                   
+                                                   +
+                                                   
+                                                      J
+                                                      
+                                                         t
+                                                         o
+                                                         o
+                                                         l
+                                                      
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         
+                                                            (
+                                                            
+                                                               Δ
+                                                               t
+                                                            
+                                                            )
+                                                         
+                                                      
+                                                      2
+                                                   
+                                                
+                                             
+                                             +
+                                             
+                                                
+                                                   
+                                                      c
+                                                      
+                                                         s
+                                                         u
+                                                         b
+                                                         j
+                                                         e
+                                                         c
+                                                         t
+                                                      
+                                                   
+                                                
+                                                
+                                                   2
+                                                   Δ
+                                                   t
+                                                
+                                             
+                                          
+                                       
+                                    
+                                    }
+                                 
+                                 
+                                    [
+                                    
+                                       
+                                          {
+                                          
+                                             
+                                                
+                                                   2
+                                                   
+                                                      (
+                                                      
+                                                         
+                                                            J
+                                                            
+                                                               s
+                                                               u
+                                                               b
+                                                               j
+                                                               e
+                                                               c
+                                                               t
+                                                            
+                                                         
+                                                         +
+                                                         
+                                                            J
+                                                            
+                                                               t
+                                                               o
+                                                               o
+                                                               l
+                                                            
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         (
+                                                         Δ
+                                                         t
+                                                         )
+                                                      
+                                                      2
+                                                   
+                                                
+                                             
+                                          
+                                          }
+                                       
+                                       
+                                          θ
+                                          i
+                                       
+                                       +
+                                       
+                                          {
+                                          
+                                             
+                                                
+                                                   
+                                                      c
+                                                      
+                                                         s
+                                                         u
+                                                         b
+                                                         j
+                                                         e
+                                                         c
+                                                         t
+                                                      
+                                                   
+                                                
+                                                
+                                                   2
+                                                   Δ
+                                                   t
+                                                
+                                             
+                                             −
+                                             
+                                                
+                                                   2
+                                                   
+                                                      (
+                                                      
+                                                         
+                                                            J
+                                                            
+                                                               s
+                                                               u
+                                                               b
+                                                               j
+                                                               e
+                                                               c
+                                                               t
+                                                            
+                                                         
+                                                         +
+                                                         
+                                                            J
+                                                            
+                                                               t
+                                                               o
+                                                               o
+                                                               l
+                                                            
+                                                         
+                                                      
+                                                      )
+                                                   
+                                                
+                                                
+                                                   
+                                                      
+                                                         
+                                                            (
+                                                            
+                                                               Δ
+                                                               t
+                                                            
+                                                            )
+                                                         
+                                                      
+                                                      2
+                                                   
+                                                
+                                             
+                                          
+                                          }
+                                       
+                                       
+                                          θ
+                                          
+                                             i
+                                             −
+                                             1
+                                          
+                                       
+                                       +
+                                       
+                                          T
+                                          i
+                                       
+                                    
+                                    ]
+                                 
+                              
+                           
+                        
+                     
+                  
+
+Handle deflection is the angular deflection θ(t) times the radius of rotation about the tool spindle depending on the tool handle geometry.
+
+Based on the tool, workstation and task parameters measured for each threaded fastener operation, the biodynamic tool operator model was used to predict the response for a population of 25 operators having mechanical parameters k
+                     subject, c
+                     subject, and J
+                     subject that were previously published (Lin et al., 2003b). The average and standard deviation of the deflections were calculated by applying the biodynamic tool operator model for the 25 members of the sample population in particular positions while operating the tool as described in Lin et al. (2005). The distribution of resulting tool handle deflections were used to calculate the percent male and female operators capable of maintaining tool psychophysically acceptable deflections of 9° for pistol grip tools on vertical surface, 13° for pistol grip tools on horizontal surface (Lin and McCory, 2009), 9° for right angle tools on vertical surface, and 3 cm for right angle tool on horizontal surface (Kihlberg et al., 1995).
+
+The parameters needed for applying the biodynamic model for predicting handle deflection for specific tool operations can be grouped into three categories, (1) tool, (2) workstation, (3) and task. The specific parameters for each category are given in Table 1
+                     . The procedures and measures used to obtain each of these parameters for the tools and workstations included in the study are now described.
+
+Common tool forms include pistol grip, straight and right angle tools. The coordinate axes definitions used in the model for each of the tool form are shown in Fig. 1
+                        . The origin of the tool is located at the center of the tip of the rotating spindle (e.g. the tip of the driver or the center of the socket). The reference point for grip, or center of the grip, is located under the middle finger of the primary grip. The center of grip lies in the geometric center of the cylinder created by hand grip.
+
+Tool parameters such as geometry are simply measured using a tape measure. Additional tool properties such as maximum RPM and maximum torque are obtained from the manufacturer tool catalog.
+
+Previously we measured the tool mass moment of inertia (MOI) using the oscillation method (Ku et al., 2007). Although this method is simple, each tool has to be suspended and swung about the spindle axis, which is tedious to set up accurately, affected by friction, and not practical for measuring a large quantity of tools that are being used on an assembly line. In the current study MOI was obtained using a novel instrument based on the principles of conservation of momentum by engaging the tool in a rotating system of known inertia. In this method, the initial constant velocity of a system of known inertia, and the velocity immediately upon engagement of the known and unknown inertias are compared to find the unknown tool inertia. The custom apparatus measured the MOI of a tool about its spindle, and the effective inertia of the tool's internal rotating components is shown in Fig. 2
+                        .
+
+The device has two main stages (Fig. 3
+                        ). The first stage consists of a DC electric motor with speed control, and a precision flywheel with removable ring segments to adjust the MOI. The second stage is the tool spinner to which the tool is attached. Stage 1 and Stage 2 are separated by an electromechanical clutch (Fig. 4
+                        ) which allows the flywheel to reach a preset speed while Stage 2 remains stationary. Typical Stage 1 angular velocity for testing hand tools is 30 rad/sec. or 300 RPM. Optical encoders (Fig. 4) are mounted on both stages to measure angular velocity independently. Data from the two encoders is sent through a USB data acquisition device and collected a laptop PC. Custom software was written that monitors the angular velocity of the two stages, records this data during measurement of the tool, and computes the MOI of the once the measurement is complete.
+
+When Stage 1 is rotating at a constant angular velocity it has a constant angular momentum due to the inertia of the flywheel and the other rotating components. When the motor power is cut, the clutch engages, and the angular velocity of Stage 1 drops while the velocity of Stage 2 increases until both stages reach the same angular velocity. At the instant that the two stages reach the same angular velocity the angular momentum of both stages together is very nearly the same as the angular momentum of Stage 1 just before the clutch engages. A sample plot of the angular velocities of the two stages during a measurement is shown in Fig. 5
+                        .
+
+The MOI of the tool (J
+                        
+                           tool
+                        ) is computed using the principle of conservation of angular momentum shown in the following equation:
+                           
+                              
+                                 
+                                    
+                                       J
+                                       
+                                          S
+                                          t
+                                          a
+                                          g
+                                          e
+                                          1
+                                       
+                                    
+                                    
+                                       ω
+                                       1
+                                    
+                                    =
+                                    
+                                       (
+                                       
+                                          
+                                             J
+                                             
+                                                S
+                                                t
+                                                a
+                                                g
+                                                e
+                                                1
+                                             
+                                          
+                                          +
+                                          
+                                             J
+                                             
+                                                S
+                                                t
+                                                a
+                                                g
+                                                e
+                                                2
+                                             
+                                          
+                                          +
+                                          
+                                             J
+                                             
+                                                t
+                                                o
+                                                o
+                                                l
+                                             
+                                          
+                                       
+                                       )
+                                    
+                                    
+                                       ω
+                                       2
+                                    
+                                 
+                              
+                           
+                        Where:
+                           
+                              
+                                 J
+                                 
+                                    stage1
+                                  is the total MOI of the Stage 1 components
+
+
+                                 J
+                                 
+                                    stage2
+                                  is the total MOI of the Stage 2 components without the tool installed
+
+
+                                 J
+                                 
+                                    tool
+                                  is the MOI of the entire tool or the MOI of the internal components depending on which measurement is being taken,
+
+
+                                 ω
+                                 1 is the angular velocity of Stage 1 before the clutch is engaged,
+
+
+                                 ω
+                                 2 is the angular velocity of Stage 1 and Stage 2 at the instant they reach the same velocity,
+
+
+                                 J
+                                 
+                                    stage1
+                                  and J
+                                 
+                                    stage2
+                                  are known values of the device which were measured during calibration of the device, and ω
+                                 1 and ω
+                                 2 are measured for each run of the device.
+
+The value for J
+                        
+                           tool
+                         can be solved using the following equation:
+                           
+                              
+                                 
+                                    
+                                       J
+                                       
+                                          t
+                                          o
+                                          o
+                                          l
+                                       
+                                    
+                                    =
+                                    
+                                       
+                                          
+                                             J
+                                             
+                                                S
+                                                t
+                                                a
+                                                g
+                                                e
+                                                1
+                                             
+                                          
+                                          
+                                             ω
+                                             1
+                                          
+                                          −
+                                          
+                                             (
+                                             
+                                                
+                                                   J
+                                                   
+                                                      S
+                                                      t
+                                                      a
+                                                      g
+                                                      e
+                                                      1
+                                                   
+                                                
+                                                +
+                                                
+                                                   J
+                                                   
+                                                      S
+                                                      t
+                                                      a
+                                                      g
+                                                      e
+                                                      2
+                                                   
+                                                
+                                             
+                                             )
+                                          
+                                          
+                                             ω
+                                             2
+                                          
+                                       
+                                       
+                                          
+                                             ω
+                                             2
+                                          
+                                       
+                                    
+                                 
+                              
+                           
+                        
+                     
+
+The components were attached to an aluminum framework with polycarbonate safety shields. A safety guard (Fig. 2) sits on top of the main frame. The guard allows for easy installation and removal of the tool through sliding polycarbonate doors, and the remaining sides, top and bottom have fixed polycarbonate safety shields. The entire device was attached to a platform which allows the device to be easily transported to the various assembly lines in the plant. During the device operation, the platform truck was supported on four floor locks to prevent shaking.
+
+The horizontal distance (H) between the fastener and the assembly line worker's ankles and the vertical distance (V) between the fastener and the floor was measured using a laser rangefinder (Leica Disto Plus) mounted on a height adjustable tripod. Typically on an auto assembly line, the workers stand on a moving platform alongside the vehicle as it moves down the line. Consequently, the tool operator assumes a fixed position and distance from the fastener while operating the power hand tool. Although the distance between the tool operator and the fastener are fixed, the analyst stood on the stationary floor while the tool operator and the vehicle passes by on the moving line. A procedure was developed for finding H and V while the operator was holding the hand tool on the moving assembly line. For each workstation the laser distance finder was sited so that the operator's ankles and the fastener were both visible and the tripod height was adjusted so that the laser was level with the fastener.
+
+To find H, the analyst shined the laser on the fastener while the fastener was “upstream” of the distance finder. As the assembly line proceeded moving, the threaded fastener of interest moved closer and closer to the laser distance finder. A minimum horizontal distance was achieved when the laser was perpendicular to the fastener. As the assembly line kept moving, the fastener moved further away and the distance finder automatically displays the minimum or horizontal distance. To find the corresponding distance V, the tripod head was then rotated downward so that the laser beam pointed at the ground and the distance was measured. A tape measure was used for certain workstations where it was impossible to use the laser distance finder.
+
+Target torques were gathered from the job data sheets located at each job station. For each individual job, investigators made notes of the materials being fastened together and, if possible, obtained samples of each material for further analysis.
+
+Threaded fastener joints were classified as one of three main categories (hard, medium, and soft) based on the angle the bolt head turns after it is seated on the fastening surface. Using the joint classification system (GMPT/Atlas Copco Fastening Seminar, 1998), a modified classification was developed to simplify the process of joint hardness identification. This method relied on identifying the materials fastened, bolt material, and use of washers to classify joint hardness. Hard joints were defined as metal being fastened to metal without any material in between. Medium joints were metal fastened to metal with plastic in between or hard plastic being fastened to metal. Soft joints were any joint that involved rubber. The orientation of the tool relative to the fastener was also noted.
+
+Tool, workstation and task parameters were measured for assembly tasks involving threaded fastener operations. The study was limited to pneumatic shut-off hand tools with no reaction bars. Electric tools and tools attached to reaction bars were not included. Mechanical parameters for 35 unique tool models representing 69 plant tool installations were tested. Backup tools from each of the lines that met these criteria were tested, and their mechanical properties were recorded.
+
+@&#RESULTS@&#
+
+A summary of the parameters measured for each of the tasks and associated tools are provided in Table 2
+                        . Most pistol grip tools were operated against a vertical surface (N = 57), while only two tasks used pistol grip tools against a horizontal surface. One pistol grip tool that was used on a horizontal surface had the greatest target torque of 50 N. Right angle tools operated against a vertical surface tended to have less target torques (mean = 6.5 Nm) than right angle tools operated against a horizontal surface (mean = 11.6 Nm). No in-line tools were used on the assembly line.
+
+The analysis reveals that all, except for six tasks involving right angle tools on horizontal surfaces, can be performed within the psychophysical acceptable deflection limits by at least 75 percent of the females and 99 percent of the males. The model predicted that deflection for all pistol grip nutrunners operated on vertical surfaces were less than 9°, and those operated on horizontal surfaces were less than 13° for at least 75% of the females and 99% of the males. Similarly all right angle tools operated on vertical surfaces deflected less than 9° for at least 75% of the females and 99% of the males.
+
+The predicted tool deflection (cm) for right angle tools operated against a horizontal surface is shown in Fig. 6
+                        . Six of the nine right angle tool jobs presented in Fig. 6 exceed the deflection criterion for at least 75% of the females and 99% of the males. The parameters entered into the model for these tools are provided in Table 3
+                        .
+
+We proceeded to investigate which biodynamic tool operator model task and workstation parameters might be changed in order to improve the task so that deflection for a larger proportion of the population is capable of less than 3 cm without changing the target torque. Modifications considered included changing the horizontal and vertical distances from the operator, or substituting a tool with a greater free running speed to reduce torque build-up time. These parameters were re-entered into the model and changed until tool deflection distances met the criteria for at least 75% of the females and 99% of the males. The outcome is summarized in Table 4
+                        .
+
+@&#DISCUSSION@&#
+
+We have selected practical criteria for acceptable installations when 99 percent of the males and 75 percent of the females have the capacity to do the task. We observed that most threaded fastener operations studied met the dynamic strength criteria applied for each tool form and task. It was the largest tools, the right angle nutrunners, which had the greatest torque reaction forces and consequently the least operators capable. By applying the biodynamic model, in each case, modifications were identified to improve the operation such that practically all operators had the capacity to perform the task.
+
+The tool deflection predictions using the biodynamic tool operator model are akin to dynamic strength values used for evaluating the capacity of the tool operator to maintain defection within the boundaries recommended from psychophysical studies. Lin et al. (2001) identified mechanical parameters for various postures encountered in power tool operation for 25 subjects (13 males, 12 females). The effective values of stiffness, mass, and damping change with various workstation parameters were reported by Lin et al. (2003a) and its use was described in Lin et al. (2005). Since the operator mechanical properties were measured for young health adults exerting maximum effort against a rotating handle, the model parameters may be likened to dynamic strength measurements for a population and may be utilized for predicting the capacity for a tool operator to operate a torque reaction power hand tool.
+
+It is noteworthy that these psychophysical criteria are compared against the tool operator population's maximum capacities, which may not necessarily protect all individuals from fatigue or an injury since some individuals in the tail of the distribution will require maximum effort. This is not unlike the strength criteria often applied for lifting tasks. Use of a power hand tool that demands exertions beyond an operator's dynamic strength capabilities can cause loss of control, muscle fatigue, and may result in an accident or an injury. Only further study will reveal if applying these criteria will protect most workers from injuries.
+
+The results show that while target torque is the main component in determining operator hand force and deflection, physical properties of the tool, joint, and operator posture also have a large effect. A greater target torque produces a greater hand force, hand deflection, and operator load. A softer joint also produces a greater hand force, hand deflection, and operator load. The other parameters involved such as operator posture and tool body inertia cannot be considered individually. Although target torque was greatest (50 Nm) for a task where a pistol grip nutrunner was used on a horizontal surface for a hard joint, as shown in Table 2, the model predicted that more than 99 percent of the males and 75 percent of the female operators had capacity to do the task. Alternatively, target torque for Job 96 was 10 Nm (Table 3), hand deflection was within the limits while target torque for Job 82 had equivalent target torque but hand deflection exceeded the limits (Fig. 6). Consequently, the operator, tool, and fastening joint must all be considered together.
+
+All model parameters should be seen as a total dynamic system. In general, the handle deflection for softer joints was greater than for harder joints. This is likely due to the slower torque build up in a softer joint which reduces the effect that the tool inertia has on reacting to the fastener torque. Since greater inertia tools generally produced greater torque, there was no direct correlation between tool inertia and operator hand force and deflection. However, using a high inertia tool at a low target torque has a similar effect to adding a reaction bar to a tool. Therefore, wherever practical, a tool with a high operating torque range set at its lowest setting should be used.
+
+The use of a biodynamic tool operator model has allowed us to identify tool installations that might not be optimal as well as specific tool and workstation modifications that can improve the capacity of operators to do the job. These tool and job changes are not directly observable without use of a biodynamic model. Radwin et al. (2014) also found that force predictions using the model might also be useful for improving tool accuracy as well as for reducing stress on the body. The model also enables engineers and job designers to test “what-if” scenarios for identifying changes that are the most effective.
+
+@&#ACKNOWLEDGEMENTS@&#
+
+This work was supported by a grant from the United Auto Workers – General Motors National Joint Committee on Health and Safety.
+
+@&#REFERENCES@&#
+

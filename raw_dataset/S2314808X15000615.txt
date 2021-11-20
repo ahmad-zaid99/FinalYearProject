@@ -1,0 +1,112 @@
+@&#MAIN-TITLE@&#Niacin improves adiponectin secretion, glucose tolerance and insulin sensitivity in diet-induced obese rats
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           High-fat diet-fed obese rats supplemented with niacin were studied.
+
+
+                        
+                        
+                           
+                           Visceral adiposity, lipid profile and adiponectin concentration were superior.
+
+
+                        
+                        
+                           
+                           Glucose tolerance and insulin sensitivity show marked improvement.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Niacin
+
+Glucose tolerance
+
+Insulin sensitivity
+
+Adiponectin
+
+Obesity
+
+@&#ABSTRACT@&#
+
+
+                  The present study examined the effect of dietary niacin supplementation on fat mass, glucose control, insulin sensitivity, lipid profile, and adiponectin level in diet-induced obese rats. Male Sprague-Dawley rats (n = 21) were initially divided into 2 groups of seven and fourteen rats; the group of 14 rats was fed with a high-fat diet (HFD) and the other group of 7 rats consumed the control diet. Eight weeks after the diet regimen started, half of the rats from the HFD group were shifted to the niacin-supplemented diet (HFND; 1 mg niacin/kg diet) while the remaining rats continued on the HFD for another 6 weeks. Results obtained showed that HFD-fed obese rats exhibited significant increase in body weight gain, reduced glucose tolerance, insulin sensitivity and increased adiposity, as well as altered lipid profile after 8 weeks of feeding compared with the controls. However, niacin-supplemented rats showed reduced weight gain and body weight compared with HFD-induced obese rats even in the absence of a significant difference in the food intake among the groups in the experiment. In addition, the rats showed an improved time-course glucose control and insulin sensitivity as demonstrated by a significantly lower area under curve (AUC) values for the glucose curves. The plasma levels of cholesterol, triglycerides and low density lipoprotein (LDL) returned towards control values in rats supplemented with niacin compared with obese rats. The findings suggest that niacin exerts beneficial effect on adiposity, glucose tolerance and insulin sensitivity, and plasma lipids, and that it specifically modulates the level of serum adiponectin under obese condition.
+               
+
+@&#INTRODUCTION@&#
+
+Obesity is characterized by excessive accumulation or increase in adipose tissue mass [1]. The adipose tissue secretes numerous bioactive substances [2] collectively known as adipocytokines. Adiponectin is the most abundant of these adipocytokines and is known to have anti-inflammatory, anti-atherogenic and insulin-sensitizing properties [3,4]. It modulates a number of metabolic processes, including glucose regulation and fatty acid oxidation [5], and plays an important role in the suppression of metabolic derangements that cause insulin resistance and type 2 diabetes mellitus (T2DM) [6].
+
+Interestingly, although adiponectin is secreted by adipose tissue, the plasma level of adiponectin correlates inversely with adiposity and directly with insulin sensitivity [7–10]. It has been found that the plasma level of adiponectin in obese individuals was lower than in non-obese ones [7]; furthermore, low adiponectin concentrations in the plasma correlate with T2DM [11]. However, weight loss and some lipid-modifying drugs, such as omega-3 fatty acids, statins and niacin, are known to increase adiponectin concentration [4,12].
+
+Niacin (also called nicotinic acid) is an old lipid-modifying drug that has favourable effects on all traditionally measured lipid parameters [13,14]. Niacin increases high density lipoprotein (HDL), but reduces low density lipoprotein (LDL), cholesterol (CHOL), and triglycerides (TRIG). Animal studies have shown that niacin stimulates adiponectin secretion in adipocytes [15,16]. A single dose of niacin given orally or through intra-peritoneal injection acutely increases serum adiponectin concentrations in rats and mice within minutes, and this effect is dependent upon activation of the niacin receptor [15]. Others have also demonstrated that niacin treatment results in increased adiponectin mRNA [16,17]. Additionally, niacin enhanced PPARγ in rabbit adipocytes [18]; PPARγ is a transcription factor that plays a central role in adipocyte biology, and it regulates adiponectin gene expression, processing, and secretion [19].
+
+Given that niacin increases adiponectin level, it is conceivable that niacin could improve insulin sensitivity; however, previous studies reported otherwise [20–23]. For instance, Grundy et al. [20] suggested niacin may cause some negative effects on glucose and insulin metabolism by exacerbating glucose control and insulin sensitivity leading to hyperglycaemia. Other studies have also demonstrated that treatment with niacin produced hyperglycaemia and insulin resistance [24]. Meanwhile, past reports on the adverse effect of niacin on glucose and insulin sensitivity are limited with hyperlipidaemic or non-obese subjects. The present study was therefore carried out to investigate the effect of niacin on adiposity, glucose tolerance, insulin sensitivity and adiponectin level in HFD-induced obese rats.
+
+The experiment was carried out with male Sprague-Dawley rats (n = 21) obtained from the Animal House of the College of Medicine, University of Lagos, Lagos, Nigeria. They were divided into 2 groups of seven and fourteen rats, housed in transparent plastic cages, in environmentally controlled room under standard temperature (24 ± 2 0C) and humidity (45–64%), with alternating 12-h light–dark cycles. Generally, the study was conducted in accordance with the internationally accepted guidelines for laboratory animal use and care [19] and approved by the Experimentation Ethics Committee on Animal Use of the College of Medicine of the University of Lagos (2014/08). The group of 14 rats was fed with a high-fat diet (HFD) and the group of 7 rats consumed the control diet. Eight weeks after the diet regimen started, half of the rats from the HFD group were shifted to the niacin-supplemented diet (NSD; 1 mg niacin/kg diet) while the remaining rats continued on the HFD for another 6 weeks. Water and food were available ad libitum to the rats throughout the experimental period, and their diet intake and body weights were recorded weekly. The composition of the experimental diets employed in this study is shown in Table 1
+                        .
+
+Oral glucose tolerance test (OGTT) was performed at the end of the 14-week experimental period. For this purpose, the animals were fasted for about 16 h prior to the time the test commenced. Subsequently, a zero time (baseline) blood sample was drawn and designated 0 min glucose level. Thereafter, each rat was given an oral glucose load of 2g/kg BW [20] of glucose solution (D-Glucose: Sigma Cat. No. G-7528). Blood sample was drawn from tail vein after the glucose load at intervals of 30, 60, 120 and 180 min for measurement of glucose level. The glucose level was measured with a portable Acu-Chek glucose meter (Roche Diagnostics, Germany).
+
+Rats that were used for insulin tolerance test (ITT) were fasted for 4 h. Basal blood glucose levels (0 min) were measured followed by injection of insulin (0.5 U/kg BW; Human Insulatard, Novo Nordisk) into the peritoneum, and blood glucose levels were measured at 15, 30, 60, 120 and 180 min by portable glucose meter using tail vein blood. Total area under the curves (AUC) in response to glucose or insulin administration was calculated using GraphPad Prism version 5.00 for Windows, GraphPad Software, San Diego, California USA.
+
+Total visceral fat was measured as the sum of epididymal, omental and retroperitoneal fat deposits, and was used as an index of obesity in the animals. For this purpose, epididymal, omental and retroperitoneal fat pads were quickly excised from the animals at the time of their sacrifice for determining total visceral fat [25].
+
+Serum concentrations of TRIG, CHOL, LDL and HDL were determined with an automatic blood chemical analyser (BT 2000 Plus, Germany). Insulin and adiponectin were assayed using the ELISA Kits (Elabscience, Wuhan, China) according to the manufacturer's instruction. All the reagents and samples were stored at room temperature before conducting the experiment.
+
+Data are expressed as mean ± standard error of mean (SEM) and analysed using the ANOVA followed by SNK post-hoc test. A “p” value below 0.05 was considered to be statistically significant. All the analyses were carried out using the GraphPad Instat Version 3.05 for Window Vista, GraphPad Software, San Diego, California, USA.
+
+@&#RESULTS@&#
+
+As indicated in Table 2
+                        , there was no significant difference in the body weight among the groups at the commencement of the experiment. During the first 8 weeks of the experimental period, there was a significant (p < 0.01) increase in body weight of HFD-fed groups 176.29 ± 5.26 g and 166.4 ± 9.61 g (239.01% and 238.62% increase, respectively) compared with 131.14 ± 5.91 (157.13% increase) of the control group. Supplementation with niacin thereafter however attenuated the gain in body weight (332.23% gain), which was notably less than that of HFD only group (425.63% gain) rats at the end of the experiment. With a value of 212.4 ± 8 g at the end of the 14-week experimental period, the final body weight of the niacin-supplemented rats was significantly (p < 0.001) lower when compared with the HFD-induced obese rats (273.33 ± 4.47 g). Meanwhile, no significant difference was observed in the food intake among the groups at weeks 4, 8 and 14 of the experiment.
+
+Niacin supplementation improved the glucose clearance in HFD-obese rats (Fig. 1
+                        ). Before the glucose load, the blood glucose levels at 0 min were significantly different among groups. The glucose challenge of 2 g/kg dramatically raised the blood glucose level in all groups at 30 and peaked at 60 min. Only control rats had their blood glucose level returned to the baseline before 180 min while it remained above the baseline level in both HFD and niacin-supplemented groups. Fig. 3 shows the area under curve for the OGTT (AUCGTT); compared with control rats, the AUCGTT of the obese rats was significantly (p < 0.05) higher; however, niacin supplementation significantly (p < 0.05) reduced the AUCGTT in the obese rats.
+
+The effect of niacin supplementation on insulin tolerance in experimental rats is presented in Fig. 2
+                        . After an intra-peritoneal injection of insulin, there was a significant decrease in the blood glucose levels of all groups. The blood glucose level of the control group decreased continuously, and the lowest level was attained at the 120 min time interval. However, obese rats and niacin-supplemented rats produced a lesser degree of fall in their blood glucose level as compared with the control group. This observation was reinforced with the AUC data for ITT (AUCITT) shown in Fig. 3
+                        . The AUCITT for the obese group of rats was significantly (p < 0.001) higher than the control rats; however, niacin-supplemented rats showed a significantly (p < 0.001) lower AUCITT compared with obese rats.
+
+There was a significant increase in the weight of epididymal (p < 0.05), omental (p < 0.01) and retroperitoneal (p < 0.05) fat pads in obese rats compared with the control. The weight of the omental fat pad was significantly lower (p < 0.01) in the niacin-supplemented group compared with the obese rats. However, there was no significant difference in the weight of the epididymal and retroperitoneal fat pads of niacin-supplemented rats when compared with their obese counterparts, although the niacin-supplemented values were marginally lower (Table 3
+                        ).
+
+The level of plasma CHOL in the obese group was significantly higher (p < 0.01) than control rats. However, niacin-supplemented rats showed a significant (p < 0.05) decrease in CHOL concentration compared with HFD-obese rats. Similarly, obese rats showed a significant (p < 0.05) increase in TRIG concentration, indicating hypertriglyceridemia as compared with normal rats. Supplementation with niacin however failed to attenuate the development of hypertriglyceridemia. HFD-fed obese rats showed a significant (p < 0.001) increase in LDL concentration compared with control rats; however, niacin supplementation reversed the adverse changes in LDL level. Plasma HDL concentration was significantly (p < 0.05) reduced in the HFD-fed obese rats as compared with control rats. Supplementation with niacin produced a significant (p < 0.001) increase in HDL concentration (Fig. 4
+                        ).
+
+HFD-fed obese rats showed a significant increase (p < 0.01) in the insulin concentration accompanied by a significant decrease (p < 0.001) in adiponectin concentration compared with control rats. Supplementation with niacin reversed these responses in obese rats. The level of serum insulin was significantly lower (p < 0.05) while adiponectin level was significantly higher (p < 0.01) in the niacin-supplemented group as compared to obese rats (Table 4
+                        ).
+
+@&#DISCUSSION@&#
+
+The results of the present study demonstrate impaired metabolic processes, such as glucose intolerance, insulin insensitivity and dyslipidemia in HFD-obese rats. Supplementation with niacin however significantly improved most of the above-stated metabolic deficits. Even though there was no sign of toxicity and food intake remained within the range of control values, supplementation with niacin attenuated weight gain in obese rats and visceral adiposity as a consequence of lowered fat accretion [26].
+
+Many studies have demonstrated that obesity influences glucose metabolism, insulin sensitivity and inflammation [26], showing a link between increased adiposity and the development of diabetes mellitus. In the present study, supplementation with niacin modulates the apparent hyperglycaemia and glucose intolerance in HFD-obese rats [27–29]. In contrast, some other studies have also reported a decrease in glucose with niacin therapy especially in a non-obese condition [30,31]. Yang et al. [29] have reported that niacin treatment has modest improvement on glucose control as it lowers the accumulative AUC during oral glucose tolerance test in a rodent model of obesity and type 2 diabetes. However, Li et al. [32] also found that nicotinamide-treated rats had impaired glucose tolerance and insulin sensitivity when compared with the control rats. The inconsistent results observed between studies with obese subjects and non-obese suggest that responses to niacin treatment may be dependent on specific pathophysiological conditions.
+
+One of the underlying factors for glucose control is insulin, its level and sensitivity. In this study, niacin supplementation also enhanced insulin sensitivity in obese rats. Increased glucose tolerance and reduction in the concentration of plasma insulin can be related to increased insulin sensitivity and lower degree of disorder of lipid metabolism [33]. Excess blood lipid has serious impact on whole body metabolic function and profound negative effect on insulin signalling within the muscle tissue [34]. Dyslipidemia, which is characterized by elevated TG, low HDL and increased LDL, usually precedes glucose intolerance and decrease insulin sensitivity through the inhibition of insulin-mediated glucose transporters in skeletal muscle and by contributing to hyperinsulinaemia [35]. Controlling dyslipidemia by niacin in the present study therefore appears to be an attractive target for improving the aspect of metabolic deficits that result from deleterious hormonal effects of adipose tissues. An approach to restore insulin sensitivity is a critical focus to achieving glucose homeostasis under obese conditions.
+
+Adiponectin is a novel adipocyte-specific protein that has been suggested to play a role in the development of insulin resistance and atherosclerosis. Furthermore, reduced expression of adiponectin has been associated with some degree of insulin resistance in animal studies, indicating a role for hypoadiponectinaemia in relation to insulin resistance [36]. In this study, niacin supplementation significantly increased the level of serum adiponectin in HFD-induced obese rats. This suggests that the niacin-mediated improvements in glucose control and insulin sensitivity may in part be due to the alteration of adiponectin signalling. There is a consensus in literature that adiponectin generally exerts insulin sensitizing, anti-inflammatory and anti-apoptotic actions on a number of different cell types [36]. Because a negative correlation exists between various hormones (including insulin) associated with insulin resistance and obesity on one hand, and adiponectin secretion on the other hand [37], niacin may indirectly moderate insulin secretion via its effect on adiponectin.
+
+In conclusion, the present results suggest that niacin improves adiposity, lipid profile, insulin sensitivity, glucose tolerance and modulates adiponectin level in obese rats. More research is needed to determine the modulatory effects of niacin on adipokines as it greatly influences insulin sensitivity, glucose metabolism and inflammation, and may provide a molecular link between increased adiposity and glucose intolerance/diabetes mellitus.
+
+@&#ACKNOWLEDGEMENT@&#
+
+The authors wish to thank Sunday Ogunnowo who provided technical assistance during the experiments.
+
+@&#REFERENCES@&#
+

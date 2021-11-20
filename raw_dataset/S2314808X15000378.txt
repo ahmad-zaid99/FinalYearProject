@@ -1,0 +1,147 @@
+@&#MAIN-TITLE@&#Preventing male infertility by marjoram and sage essential oils through modulating testicular lipid accumulation and androgens biosynthesis disruption in a rat model of dietary obesity
+
+@&#HIGHLIGHTS@&#
+
+
+               
+               
+                  
+                     
+                        
+                           
+                           Male infertility is mostly associated with increased occurrence of obesity.
+
+
+                        
+                        
+                           
+                           Obese men have poorer outcomes after medicinal treatments.
+
+
+                        
+                        
+                           
+                           This encouraged us to examine the effect of sage and marjoram oil extracts.
+
+
+                        
+                        
+                           
+                           Both oils showed marked improving effect against male infertility.
+
+
+                        
+                        
+                           
+                           Responsible mechanism based on preventing relevant hormonal and metabolic changes.
+
+
+                        
+                     
+                  
+               
+            
+
+@&#KEYPHRASES@&#
+
+Obesity
+
+Male infertility
+
+Aromatase
+
+Essential oils
+
+Marjoram
+
+Sage
+
+@&#ABSTRACT@&#
+
+
+                  Obesity has been recognized as a leading cause for male infertility. This study aimed to investigate reproductive disorders caused by obesity and the possible prevention through the use of marjoram and sage oil extracts. Obesity was achieved in adult male rats by feeding high fat diet (HFD) for 12 weeks, while marjoram (0.16 ml/kg b.wt) and sage (0.05 ml/kg b.wt) oils were given orally for the same duration. HFD-fed rats exhibited marked obesity features indicated by increased adiposity index, with higher weight gain compared to control rats. This goes with increased lipid accumulation in testis and serum of the obese rats. Increased serum levels of leptin, prolactinL (PRL) and estrogen (E2), with reduced serum androgens; dehydroepiandrosterone (DHEA), testosterone (T) and T/E2 ratio were also observed. Additionally, the results showed significant reduction in epididymal sperm count, as well as in steriodogenic enzymes; 3β-hydroxysteroid dehydrogenase (3β-HSD), alkaline phosphatase (ALP), and acid phosphatase (ACP), with marked elevation in aromatase activity in testis of the obese rats. Histopathological alterations, including degenerative changes in seminiferous tubules, with sloughing, vacuolization and reduction of spermatogenic cells were also detected. Oral administration of marjoram or sage oil extracts, along with HFD seemed to prevent overall mentioned alterations, as evident by reduced testicular lipid accumulation, elevated androgens and sperm count, in addition to improved testicular structure. Results thus suggested that both oils should be considered in future therapeutic approaches for controlling adverse impact of obesity on male fertility.
+               
+
+@&#INTRODUCTION@&#
+
+Obesity is a growing health problem that represents a major cause for number of chronic diseases. The most common, includes cardiovascular disease, type-2 diabetes, osteoarthritis and some types of cancer [1]. Besides, a direct relation between obesity and male infertility has been postulated [2]. This relation has merited deep investigation over the past decade owing to the concurrent trends of rising obesity with increasing male infertility [3]. Researchers have found higher prevalence of oligospermia in overweight and obese men, with a significant association between sperm count and body mass index (BMI) [4]. Obese men have been shown to exhibit reduced androgens and sex hormone-binding globulin (SHBG) levels with elevated levels of circulating estradiol [5]. Obesity was also found to affect the GnRH-LH/FSH pulse that may impair Lyedig and Sertoli cell functions with subsequent effects on sperm maturation [6].
+
+In recent years, a dramatic increase has occurred in the use of natural plants for maintaining health and preventing diseases. Of these, aromatic plants are characterized by the presence of volatile compounds with pleasant odor known as essential oils (EOs). Aromatic plants are particularly cultivated for the use in food processing, flavoring and other culinary purposes. However, they were identified also for their high curative activities [7]. One of the most familiar aromatic plants is marjoram (Origanum majorana, family Lamiaceae) which is particularly native to the Mediterranean region [8]. In folk medicine, marjoram extracts are used for coughs, cramps, depression, dizziness, gastrointestinal disorders, migraine and nervous headaches [9]. Besides, marjoram has been used as analgesic, antiseptic, antiviral, bactericidal and laxative agent [10]. Marjoram or its EOs seemed also to be effective in enhancing metabolism and maintaining healthy weight [11].
+
+Sage (Salvia officinalis) is another aromatic plant belonging to family Lamiaceae. It is commonly used as a spice and condiment in food preparation, particularly in the Mediterranean cuisine [12]. Sage and its isolated oils are largely responsible for various therapeutic effects mainly indicated in the treatment of muscle pain and digestive disorders [13], as well as in promoting energy expenditure and fat oxidation, which may aid in body weight reduction [12]. Sage has shown also to possess antispasmodic, antidepressant and sedative activities [14].
+
+Although much research supporting medicinal activities of both marjoram and sage oil extracts, little is known regarding their effects on obesity and related diseases, particularly male infertility. Therefore, the present study was carried out to investigate the therapeutic effectiveness of administrating marjoram and sage oil extracts in reducing negative impact of obesity on male fertility. This was achieved in terms of evaluating number of reproductive indices, including lipid profile, reproductive hormones, testicular enzymes and histopathological changes in testicular tissue.
+
+This study was performed on male Wister albino rats initially weighing 170–180 g. Rats were permitted adequate standard rodent diet (purchased from Meladco fed Company, Aubor city, Cairo, Egypt) and given water ad libitum for one week of acclimation period before the experimental work. The animals care and experiments were complied with “Research Ethics Committee” Mansoura University, Egypt, in accordance with principles of the Institute of Laboratory Animal Resources, National Research Council “NRC” (NRC 1995).
+
+Marjoram (O. majorana) oil extract was obtained from the Agriculture Research Center, Cairo, Egypt, while sage (S. officinalis) oil extract was obtained from “Nature's Alchemy” distributed by Lotus Brands, USA.
+
+Dehydroepiandrosterone, NAD, glycerol and bovine serum albumin were purchased from Sigma Company for Chemicals, Cairo, Egypt. All other reagents are of analytical grade and purchased from local suppliers.
+
+@&#EXPERIMENTAL DESIGN@&#
+
+After the acclimation period, rats were randomly divided into seven groups (6 animals/each): group 1, rats were fed standard diet all over the period of the experiment; group 2, rats were fed standard diet and received sunflower oil as vehicle orally at a dose 1 ml/kg b.wt; group 3, rats were fed standard diet and received marjoram oil orally (0.16 ml/kg b.wt) diluted in sunflower oil (1:2) [9]; group 4, rats were fed standard diet and received sage oil (0.05 ml/kg b.wt) diluted in sunflower oil (1:2) [15]; group 5, rats were fed HFD consisted of normal laboratory diet in powder form mixed with melted animal abdominal fat (30%) and extra pure cholesterol (2%) [16,17]; groups 6 and 7, rats were fed HFD and received marjoram and sage oils at the same way and doses as described in the above groups. All animals were received their respective treatments daily for 12 weeks. Animal's weights were recorded at the start and at the end of the experiment in order to obtain the body weight gain.
+
+At the end of the experimental period, overnight fasted rats were sacrificed under ether anesthesia. Blood samples were collected, centrifuged at 855 × g for 10 min and sera were separated for further biochemical analysis. Immediately after collecting blood, the two testes, epididymes, vas deferens and seminal vesicle from each rat were removed and weighed. The right testis was taken for biochemical measurements, while the left testis was fixed in 10% neutral formaldehyde for histopathological examination. Adiposity index was determined by the sum of visceral, epididymal and retroperitoneal fat weights divided by body weight × 100 and expressed as adiposity percentage [18].
+
+One portion of the right testis was weighed, homogenized in cold distilled water and centrifuged at 855 × g for 10 min. Supernatant was used for analyzing biochemical parameters, except for 3β-hydroxysteroid dehydrogenase (3β-HSD). A second portion from the testis was weighed and homogenized at 4 °C in 20% spectroscopic grade glycerol, containing 5 mmol potassium phosphate and 1 mmol EDTA. Resulting homogenate was centrifuged at 10,000 × g for 30 min at 4 °C, and the supernatant was collected for assay of 3β-HSD activity [19].
+
+Serum testosterone (T) and dehydroepiandrosterone (DHEA) levels were evaluated, according to the methods of Tietz [20] and Longcope [21] using kits provided by Rock Diagnostics GmbH-D-68298. Estrogen (E2) and prolactin (PRL) were estimated by Enzyme linked Flurorescent Assay (ELFA) technique using kits of Biomerieux, as described by Dupont et al. [22] and Sapin and Simon [23]. Leptin was estimated by ELISA technique using commercially available kit (DRG instruments, Gmbh, Germany), according to the method of Considine and Siha [24]. Serum T/E2 ratio was calculated as T in ng/ml divided by E2 in ng/ml [25].
+
+Testicular supernatant (1 ml) was mixed with 1 ml of sodium pyrophosphate buffer (pH 8.9), 40 μL of ethanol, containing 30 mg of dehydroepiendostero and 960 μL of 25% bovine serum albumin making a final incubation mixture of 3 ml. Next, 100 μL of 0.5 μM NAD was added for evaluating 3β-HSD activity at 340 nm against a blank (without NAD) [19].
+
+The quantitative measurement of aromatase activity was performed by a solid phase enzyme-linked immunosorbent assay (ELISA), based on the sandwich principle, as described by Roselli [26]. Samples were incubated in microtiter plate wells pre-coated with biotin-conjugated antibody specific to aromatase. After incubation, a sandwich complex was formed and the unbound material was washed off. Next, Avidin peroxidase enzyme complex was added for detection of the bounded aromatase at 450 nm.
+
+Total lipids (TLs) [27], phospholipids (PLs) [28] and acid phosphatase (ACP) [29] were measured using kits supplied by Bio-diagnostic Company, Cairo, Egypt. Total cholesterol (TC) [30] and alkaline phosphatase (ALP) [30] were estimated using kits supplied by BioMed Company, Cairo, Egypt, while triglycerides (TGs) [31] was measured using kit supplied by Spectrum Company, Cairo.
+
+The epididymis was homogenized in 5 ml of 0.9% NaCl. Sperm counting was done using hemocytometer [32] and total number of sperm per gram of epididymis was then calculated.
+
+Following fixation, testes were dehydrated, cleared in xylene, infiltrated and embedded in paraffin wax. Embedded tissues were sectioned at thickness of 5 μm for routine staining in hematoxyline (H) and eosin (E) using the method of Bancroft and Gamble [33].
+
+Recorded data were expressed as Mean ± SE. Statistical analysis were performed using One-way ANOVA, followed by Least Significant Difference (LSD) test to determine differences among means of investigated groups. Differences were considered statistically significant at P < 0.05 
+                        [34]. Values of significance have been denoted by distinct superscript lowercase letters in the tables.
+
+@&#RESULTS@&#
+
+As shown in Tables (1–3) administration of marjoram or sage EOs to normal rats did not produce any significant changes in all tested parameters in comparison to normal rats, indicating their non-toxic effects at applied dose. Feeding male rats on high fat diet (HFD) consecutively for 12 weeks was effective in promoting obesity, as indicated by an increased adiposity index with higher weight gain, however sex organs (testis, epididymis, seminal vesicle and vas deferens) weights showed non-significant changes compared to control rats. Administration of marjoram or sage oil extracts to animals fed on HFD showed significant reduction in the body weight gain and adiposity index (Table 1
+                        ). Obese rats also showed significant increase in serum levels of leptin, PRL and E2, accompanied with marked reduction in serum androgens; DHEA, T and T/E2 ratio. Additionally, the results showed significant reduction in epididymal sperm count, along with marked elevation in serum and testicular TLs, TC, TGs and PLs. However, administration of HFD-fed rats with marjoram or sage oils significantly decreased serum leptin, PRL, E2 and various lipid indices in serum and testicular tissue, but increased levels of serum T, DHEA and T/E2 ratio, with elevation of epididymal sperm count compared to HFD fed rats (Table 2
+                        ).
+
+Results also revealed significantly decreased activities of 3β-HSD, ACP and ALP, coupled with elevation of aromatase activity in testis of the obese rats compared to the control group. Administration of marjoram or sage oil extract to HFD-fed rats significantly improved all motioned enzymatic changes compared to HFD fed rats (Table 3
+                        ). Taken together, data obtained can thus indicate potential activity of both marjoram and sage essential oils against obesity and associated biochemical changes, however marjoram seemed most effective, although differences between the two oils were not statistically significant.
+
+Testis from control group (Fig. 1
+                        ) showed normal structural organization of seminiferous tubules (ST). Normal sperm (SP) number and Leydig cells (LC) appearance were also observed. Likewise, vehicle (Fig. 2), marjoram (Fig. 3) and sage (Fig. 4) groups have shown normal testicular architecture. Rats fed on HFD (Fig. 5) revealed degenerative changes in seminiferous tubules with sloughing, vacuolization (V) and reduction of spermatogenic cells (SG). Rats fed HFD and received marjoram (Fig. 6) or sage (Fig. 7) oil exhibited marked recovery, where the seminiferous tubules (ST) appeared with almost regular distribution of spermatogenic cells and increased number of sperms (SP) compared with that of HFD group, especially with majoram + HFD treated group.
+
+@&#DISCUSSION@&#
+
+Obesity is a major health problem of increasing prevalence worldwide. Generally, obesity occurs due to a combination of genetic, cultural, environmental, and behavioral factors [35]. Although the complex etiology of obesity, dietary factors particularly, increased consumption of high fat diet (HFD) constitutes a major risk for its development [36]. Feeding HFD can promote body weight gain through development of positive energy balance, leading to an increase in adipose tissue mass. Earlier studies have taken place in using various animals to demonstrate an obesity model-like condition in human. Among which, rodent models of diet-induced obesity provide the best parallels in relation to human obesity [37]. Similar pattern was noted in the present study, where rats fed on HFD experienced marked obesity characterized by significantly increased adiposity index, with elevation in the body weight gain compared with the normal rats.
+
+In this line, a lot of research continued for investigating the relation between obesity and the growing incidence of male infertility. Data from different population studies suggested a potential link between male obesity and the prevalence of hypogonadism [2]. In particular, men with increased BMI are significantly more likely to be infertile than normal weight men [38]. In human and animals, determination of sperm numbers, morphology and motility remains the primary clinical tool for the assessment of male infertility. Studies designed to measure sperm parameters for obese men tended to show a negative association between semen quality and BMI [39]. As support, the present study demonstrated marked reduction in the sperm count of HFD-fed rats and further extended to show no difference in the weight of testis, epididymis, seminal vesicle and vas deferens, indicating that obesity has no effect on weight of sex organs. The latter has corroborated other data showing no changes in the average weight of testis and other sex organs in different animal models of diet-induced obesity [40]. In this context, other studies indicated that obesity tends to affect male reproductive potential by disrupting histological structure of the testis [41]. Results from the present study confirmed this, as evidenced by degenerative changes in seminiferous tubules, sloughing, vaculation and reduction of spermatogenic cells, supporting the relation between obesity and impaired spermatogenesis.
+
+Although several mechanisms have been proposed for the effect of obesity on male fertility, most studies have focused on alterations in the hormonal profile as the main cause. Among these alterations, obesity has postulated to increase testosterone (T) conversion into estrogen (E2) via aromatization with subsequent reduction in T levels [42]. The aromatization of T is the key step in E2 synthesis and is catalyzed by the aromatase enzyme [43]. Aromatase enzyme is a member of cytochrome P450 superfamily found mainly in the gonadal and the adipose tissues [44]. It was noted that the increase in E2 levels in obese males is due to increased conversion of T owing to high aromatase availability with excess of adipose tissue [45]. Consequently, a relation was found between the rise in aromatase activity and the increased E2 with decline of both T and T/E2 ratio, which is particularly responsible for developing infertility in the obese males, as notably demonstrated in the current study and by other investigations [39].
+
+Increased E2 production in obese men exerts a negative feedback effect on LH secretion via presence of E2 receptors (ER-α and –b) on to the hypothalamic – pituitary unit [46], thereby suppresses the hypothalamic pituitary testicular (HPT) axis and leads to reduction in serum DHEA which is important for producing male androgens [47]. Current decline of DHEA could be therefore relevant to the observed reduction of T levels in the present obesity model. Reduction of T may corroborate also to higher PRL levels with obesity [39]. PRL is a hormone produced by the pituitary gland in mammals. It is a key hormone in controlling milk production, however apart from lactation, PRL is closely involved in several physiological actions, such as reproduction [48]. Synthesis and release of PRL is controlled by dopaminergic inhibition mechanism, however an altered dopaminergic system may present in obese men with rise of PRL secretion [49]. Normal serum concentrations of PRL have been shown to exert permissive roles on the male reproductive tract, however excessive PRL concentration is correlated with hypogonadism, impotence and infertility [50] probably through interfering with production of FSH and LH which in turn will affect the testicular function with decrease in T release [50]. In consistence, the present study showed increased PRL levels following induction of obesity which in turn may indicate hyperprolactinemia as part of endocrine alterations responsible for obesity-linked male infertility.
+
+Additional mechanisms may come through increased leptin production under obese conditions. Leptin is a protein hormone that is synthesized and secreted by adipocytes. Its physiological role is to regulate appetite and body weight, but due to excess adipose tissue in the obese subjects levels of leptin are often elevated leading to adverse effects, particularly on the male fertility [51]. The most important of these effects is that increased levels of leptin may act as inhibitory signal for T synthesis through membrane receptors on testicular Leydig cells [52]. Leptin receptors are also present on the plasma membrane of sperms, suggesting that leptin may directly affect sperm production independent of changes in testosterone production [53].
+
+Despite leptin's action in the testis, other studies suggested a relation between leptin and the increased body fat accumulation which in turn may affect T production. This may be related to the fact that excessive leptin levels may cause impaired leptin signaling in adipose tissue for regulating lipid metabolism. Thus, promoting lipid deposition in the body tissues, leading to increased BMI and obesity [39]. Elevated BMI and fat accumulation may lead to lowered T production [4], indicating a negative relation between leptin and serum T [54]. Accordingly, the present findings of increased serum leptin and lipid profile (TL, TC, TGs, PLs) in both serum and testis may be relevant to the observed decline of T levels in the obese rats.
+
+Apart from the role of endocrine disruption, other pathogenic cascades could be implicated in promoting male infertility with obesity. This may occur via defects of critical steroidogenic enzymes, including 3β-HSD, ALP and ACP. 3β-HSD controls T biosynthesis reactions through catalyzing conversion of DHEA to androstenedione in mitochondria, thereafter the process of biosynthesis of T is continued while moving into the endoplasmic reticulum in Leydig cells [55]. ALP helps in ionic movement across the cell membrane and is also associated with secretory and absorption process of the cell [56]. Decline in ALP activity may indicate a state of decreased steroidogenesis where the inter and interacellular transport were reduced as the metabolic reactions for steroidogenesis slowed down [57]. ACP is an enzyme capable of hydrolyzing orthophosphoric acid esters in an acid medium. The testicular ACP gene is up-regulated by androgens and is down-regulated by estrogens [58]. Activities of ACP have been shown to rise when testicular steroidogenesis is increased. A decrease in ACP activity would thus reflect decreased testicular steroidogenesis and this may be correlated with the reduced secretion of gonadotrophins [57]. Accordingly, the present findings of decreased testicular activities of ACP, ALP, and 3β-HSD may be closely related to impaired testosterone production observed in the HFD-fed rats.
+
+To overcome infertility problems, synthetic compounds or drugs are often tried. Apart from these compounds, traditional medicinal plants or their extracts are increasingly used, nowadays, to prevent or treat obesity and its related reproductive disorders [59]. In this context, much attention has been given to aromatic plants, such as marjoram and sage for the presence of essential oils (EOs) in their extracts [60]. In the present study, administration of marjoram or sage oil extracts to HFD-fed rats was effective in preventing the increase in body weight gain and adiposity index compared to the obese rats. An improved lipid profile in both serum and testis was also observed, in parallel with increased serum androgens (T and DHEA) and decline in E2, leptin and PRL levels thus indicating enhanced fertility, as clearly evidenced by normalized epididymal sperm count and testicular structure.
+
+Although these promising findings, the precise mechanism remains unclear, however it can be related to the active constituents of the EOs used in the current study. EOs are a mixture of volatile and natural substances, characterized by a strong odor and produced by aromatic plants as secondary metabolites. The variety of pharmacological activities of EOs attracted the interest of many researchers to investigate its potential as drugs for treatment of various diseases [7]. Different pharmacological activities of these oils are related to their active constituents, mainly terpenoids [61]. Terpenoids are natural products belonging to the chemical group of terpenes that are the main constituents of EOs. Several bioactive terpenoids contained in herbal or dietary plants can modulate the activity of peroxisome proliferator-activated receptors (PPARs) [62] which are ligand-dependent transcription factors, belonging to the nuclear receptors. In mammals, three subtypes of PPARs, α, δ, and γ, have been identified which are known to play a multitude of essential roles in energy homeostasis and reproductive functions [63]. PPAR α is highly expressed in liver, cardiac muscle, and digestive tract, and regulate the expression of target genes involved in lipid metabolism. Activators of PPAR α have the potential to decrease circulating lipid levels and are commonly used to treat hyper-triglyceridemia and other dyslipidemic states [64]. PPARδ is expressed in many tissues including adipose tissue and it has been demonstrated that PPAR δ activation attenuates obesity and type-2 diabetes [65].
+
+Marjoram oil extract is a rich source of terpenoids, as thymol, carvacrol [66], terpinen-4-ol, α-terpinene and γ-terpinene [67]. Among these, the monoterpenoid carvacrol was appointed as an activator of PPARα and γ. An effect that may be related to the observation that carvacrol supplementation to HFD-fed mice tended to reduce body weight gain, visceral fats and plasma lipids compared with mice fed HFD, probably through regulating adipose tissue genes expression and proteins associated with the signaling cascades that lead to adipogenesis [68]. Similarly, the oil extract of sage was found to contain different terpenoids, such as 12-O-methyl carnosic, 20-hydroxyferruginol, viridiflorol, oleanolic acid and α-linolenic acid. In particular, methyl carnosic acid and α-linolenic acid were able to significantly activate PPARγ, which seems effective in regulating genes involved in energy expenditure, as well as lipid and glucose metabolism [69]. As such, it can suggest that improved obesity status and associated hyperlipidemia by marjoram and sage oils presented here is mainly dependent on the dual activation of PPARα and PPARγ by terpenoid constituents abundantly present in such oils.
+
+Given the above data, it seems possible to establish a link between reduced obesity and hyperlipidemic status by marjoram and sage EOs and enhanced fertility in the current study. Apparently, increased total body fat in obese states is associated with low levels of T and sperm number [6]. In contrast, obese men who lost weight through natural methods (diet and/or exercise) experienced a high increase in T levels, with decreased serum concentration of leptin [4]. A similar study also indicated that obese patients who underwent gastric bypass surgery with subsequent weight reduction exhibited an increase in T and a decrease in E2 levels [70], probably as a result of reduced activity of aromatase which is highly expressed in adipose tissue and is a key regulator in E2 production [71]. Thus, it can suggest that reduced adiposity by marjoram and sage ESo could particularly affect adipose tissue specific hormones with a relevant role in regulating T biosynthesis and male fertility.
+
+In conclusion, the present data conclusively proved a relation between HFD – induced obesity and development of disrupted testicular function and structure. Altered hormonal profile, including androgens, E2, leptin and PRL could explain such relation. Administration of marjoram and sage oil extracts conferred marked preventive activity against altered hormones, in parallel with improved testicular status. Thus, indicating the highest capacity of each oil extract to prevent cases of male infertility, especially associated with obesity.
+
+@&#ACKNOWLEDGMENT@&#
+
+Authors are thankful to Zoology Department,Faculty of Science, Mansoura University for providing necessary facilities to carry out this work.
+
+@&#REFERENCES@&#
+
