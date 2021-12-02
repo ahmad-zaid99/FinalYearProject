@@ -21,16 +21,31 @@ def first_400(words) :
         i = i + 1
     return res
 
+def first_1000(words) :
+    l = len(words)
+    res = ""
+    i = 0
+    cnt = 0
+    while(i<l and cnt<1000) :
+        w = words[i]
+        w = w.strip()
+        if re.search("([=/*\+])+", w) is None :
+            res = res + " " + w
+            cnt = cnt+1
+        i = i + 1
+    return res
+
 def remove_stop_words(paragraph):
-    all_words = []
+    
     paragraph = re.sub("[\(\[].*?[\)\]]", "", paragraph)
-    sentences = nltk.sent_tokenize(paragraph)
-    for i in range(len(sentences)):
-        words = nltk.word_tokenize(sentences[i])
-        words = [word for word in words if word not in set(stopwords.words('english'))]
-        words = [word for word in words if len(word)>1]
-        sentences[i] = words
-        all_words += words
+    all_words = paragraph.split(' ')
+    # sentences = nltk.sent_tokenize(paragraph)
+    # for i in range(len(sentences)):
+    #     words = nltk.word_tokenize(sentences[i])
+    #     words = [word for word in words if word not in set(stopwords.words('english'))]
+    #     words = [word for word in words if len(word)>1]
+    #     sentences[i] = words
+    #     all_words += words
     #print(all_words)
     return all_words
 
@@ -103,52 +118,53 @@ for file in os.listdir():
             if not l :
                 break
             l = l.strip()
+            
+            if len(l)>1 :
+                if l=="@&#HIGHLIGHTS@&#" :
+                    tag="highlights"
+                    flag=False
+                elif l=="@&#INTRODUCTION@&#" :
+                    tag="introduction"
+                    flag=False
+                elif l=="@&#METHOD@&#" :
+                    tag="method"
+                    flag=False
+                elif l=="@&#RESULTS@&#" :
+                    tag="results"
+                    flag=False
+                elif l=="@&#ABSTRACT@&#" :
+                    tag="abstract"
+                    flag=False
+                elif l=="@&#CONCLUSIONS@&#" :
+                    tag="conclusions"
+                    flag=False
+                elif re.search("@&#.*@&#",l) is not None :
+                    tag="none"
 
-            if l=="@&#HIGHLIGHTS@&#" :
-                tag="highlights"
-                flag=False
-            elif l=="@&#INTRODUCTION@&#" :
-                tag="introduction"
-                flag=False
-            elif l=="@&#METHOD@&#" :
-                tag="method"
-                flag=False
-            elif l=="@&#RESULTS@&#" :
-                tag="results"
-                flag=False
-            elif l=="@&#ABSTRACT@&#" :
-                tag="abstract"
-                flag=False
-            elif l=="@&#CONCLUSIONS@&#" :
-                tag="conclusions"
-                flag=False
-            elif re.search("@&#.*@&#",l) is not None :
-                tag="none"
-
-            if tag == "highlights" :
-                if flag==True :
-                    highlights = highlights + "\n" + l
-                flag = True
-            elif tag == "introduction" :
-                if flag==True :
-                    introduction = introduction + " " + l
-                flag = True
-            elif tag == "method" :
-                if flag==True :
-                    method = method + " " + l
-                flag = True
-            elif tag == "results" :
-                if flag==True :
-                    results = results + " " + l
-                flag = True
-            elif tag == "abstract" :
-                if flag==True :
-                    abstract = abstract + " " + l
-                flag = True
-            elif tag == "conclusions" :
-                if flag==True :
-                    conclusions = conclusions + " " + l
-                flag = True
+                if tag == "highlights" :
+                    if flag==True :
+                        highlights = highlights + "\n" + l
+                    flag = True
+                elif tag == "introduction" :
+                    if flag==True :
+                        introduction = introduction + " " + l
+                    flag = True
+                elif tag == "method" :
+                    if flag==True :
+                        method = method + " " + l
+                    flag = True
+                elif tag == "results" :
+                    if flag==True :
+                        results = results + " " + l
+                    flag = True
+                elif tag == "abstract" :
+                    if flag==True :
+                        abstract = abstract + " " + l
+                    flag = True
+                elif tag == "conclusions" :
+                    if flag==True :
+                        conclusions = conclusions + " " + l
+                    flag = True
 
 
         wordlist_introduction = remove_stop_words(introduction)
@@ -160,6 +176,7 @@ for file in os.listdir():
         wordlist_conclusions = remove_stop_words(conclusions)
         conclusions = first_400(wordlist_conclusions)
         wordlist_abstract = remove_stop_words(abstract)
+        abstract = first_1000(wordlist_abstract)
 
         # OPEN OUTPUT FILE
 
@@ -169,7 +186,8 @@ for file in os.listdir():
 
         # WRITE SECTIONS IN TEXT FILE
 
-        handle_abstract(wordlist_abstract, out_file)
+        #handle_abstract(wordlist_abstract, out_file)
+        write_400(abstract, out_file)
 
         write_400(introduction, out_file)
 
@@ -178,6 +196,7 @@ for file in os.listdir():
         write_400(results, out_file)
 
         write_400(conclusions, out_file)
+
 
         handle_highlights(highlights, out_file)
 
