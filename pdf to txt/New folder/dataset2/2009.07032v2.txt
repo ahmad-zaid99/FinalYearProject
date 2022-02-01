@@ -1,0 +1,43 @@
+ 2.1 Neural Abstractive Summarization Neural approaches to abstractive summarization conceptualize the task as a sequence-to-sequence problem, where the encoder maps the sequence of tokens in the source document x = [x1, ..., xn]to a sequence of continuous representations  z = [z1, ..., zn], and the decoder autoregressively generates the target summary y = (y1, ..., ym) token-by-token, hence modeling the conditional probability p(y1, ..., ym|x1, ..., xn).
+(2016) were among the first to apply the neural encoderdecoder architecture to text summarization.
+Other work develops abstractive models trained end-to-end with reinforcement learning based on multiple encoders and hierarchical attention (Celikyilmaz et al., 2018) or a coverage mechanism where the decoder attends over previously generated words (Paulus et al., 2018).
+Although the majority of summarization systems are composed of LSTM units, Narayan et al.
+(2018) and (PerezBeltrachini et al., 2019) propose abstractive models based on convolutional neural networks.
+Liu and Lapata (2019) combine a pretrained encoder based on BERT (Devlin et al., 2019) with a randomly initialized decoder, demonstrating substantial gains on summarization performance.
+(2019) pretrain an encoder-decoder framework to reconstruct (masked) fragments within a sentence and then fine-tune it on summarization datasets.
+(2020) present BART, an encoder-decoder Transformer (Vaswani et al., 2017), pretrained by reconstructing a text corrupted with several arbitrary noising functions.
+(2020) design UNILMv2, a Transformer-based neural network pretrained as a pseudo-masked language model.
+The models are typically neural networks and function f can be in principle defined using the output of any network layer (e.g., a hidden or softmax layer).
+Specific instantiations of this general framework include minimizing the teacher/student difference based on output logits, intermediate hidden representations, attention maps, and derivatives of the loss to the input (Ba and Caruana, 2014; Romero et al., 2014; Zagoruyko and Komodakis, 2017; Czarnecki et al., 2017).
+(2019) use it to transfer knowledge from BERT to smaller models, helping them approach or exceed the quality of much larger pretrained neural networks.
+4.1 Summarization Datasets We evaluated our model on two singledocument summarization datasets, namely the CNN/DailyMail news highlights (Hermann et al., 2015) and XSum (Narayan et al., 2018), and one multi-document summarization dataset, i.e., WikiCatSum (Perez-Beltrachini et al., 2019).
+The summaries also vary with respect to the type of rewriting operations they exemplify (e.g., CNN/DailyMail showcases more cut and paste operations while XSum is genuinely abstractive).
+CNN/DailyMail contains news articles and associated highlights, i.e., a few bullet points written by journalists which give a brief overview of the article.
+(2015) for training, validation, and testing (90,266/1,220/1,093 CNN documents and 196,961/12,148/10,397 DailyMail documents).
+Input documents were truncated to 512 tokens.
+Input documents were also truncated to 512 tokens.
+Aside from the summaries, the dataset contains the input webpages whose length is truncated to the first 800 tokens.
+4.2 Implementation Details For all datasets, we evaluated our self-knowledge distillation framework in two settings.
+UNILMv2 is a Transformer-based neural network (Vaswani et al., 2017) with 12 Transformer layers and 12 attention heads.
+In the non pretrained setting, we adopt a Transformer encoder-decoder model with 6 layers, 768 hidden size and 2,048 feed-forward filter size.
+In all knowledge distillation experiments, student models have the same neural network architecture with their teachers and are trained with the same hyperparameters as the teacher models.
+During decoding we used beam search (size 5), and tuned α for the length penalty (Wu et al., 2016) between 0.6 and 1 on the validation set; we decode until an end-of-sequence token is emitted.
+5.1 Automatic Evaluation We evaluated summarization quality automatically using ROUGE (Lin, 2004).
+We report unigram and bigram overlap (ROUGE-1 and ROUGE-2) as a means of assessing informativeness and the longest  common subsequence (ROUGE-L) as a means ofassessing fluency.
+Table 1 summarizes our results on the CNN/DailyMail and XSum (single document) datasets.
+We present the LEAD baseline (which simply selects the first three sentences in a document for CNN/DailyMail and the first sentence for XSum).
+We also report the results of See et al.’s (2017) pointer generator network (PTRNET), and an abstractive system from Liu and Lapata (2019) based on Transformers (TransformerAbs; see Section 4.2 for details).
+With regard to LARGE-size models, we report the results of three very strong summarization systems finetuned with UNILMLARGE (Bao et al., 2020), BARTLARGE (Lewis et al., 2020), and T511B (Raffel et al., 2019).
+Our BASE-size models include BERTSUMBASE (Liu and Lapata, 2019), a summarizer based on a BASE-size BERT encoder and a randomly initialized decoder, MASSBASE (Song et al., 2019) and UNILMBASE which are both finetuned with BASE-size pretrained models.
+Overall, we obtain competitive results with SKD and BASE-size pretrained models and even manage to outperform UNILMLARGE and T511B on the CNN/DailyMail dataset.
+CV-S2S and CV-S2D (Perez-Beltrachini et al., 2019) are convolutional encoder-decoder models.
+The former is a standard convolutional decoder, while the latter adopts a hierarchical convolutional decoder which first generates target sentence vectors, and then generates target words based on sentence vectors.
+TF-S2S is a standard Transformer encoder-decoder model trained on WikiCatSum (Perez-Beltrachini et al., 2019).
+Column All in Table 2 shows average ROUGE across domains.
+5.2 Factual Consistency Evaluation Besides ROUGE, we also use FactCC (Krysci ´ nski ´ et al., 2019) to evaluate the factual correctness of the generated summaries.
+FactCC is a BERT-based classifier trained to identify conflicts between a source document and a generated summary.
+We performed experiments with the publicly released version of FactCC.2 Our results on the CNN/DailyMail and XSum datasets are presented in Table 3.
+All +Noisy SKD students are significantly (p < 0.05) more factually correct compared to their teachers (TransformerAbs and UNILMv2BASE), using a paired student t-test.
+For CNN/DailyMail and XSum, human participants were presented with the output of two systems (and the original document) and asked to decide which one was better according to the following criteria: Succinctness (Does the summary avoid repetition?
+We used the same test documents (20 in total) from Liu and Lapata (2019) for both CNN/DailyMail and XSum.
+On both CNN/DailyMail and XSum datasets participants perceive the student (+Noisy SKD) as significantly (p < 0.05) more succinct and informative compared to the teacher (UNILMv2BASE).

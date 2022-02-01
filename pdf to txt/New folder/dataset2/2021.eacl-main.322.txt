@@ -1,0 +1,5 @@
+Both are English–German (EN–DE) APE corpora; they are further categorized according to their subtask depending on whether the target MT system is a phrase-based statistical MT (PBSMT) system or a neural MT (NMT) system.
+We tokenized all words in our datasets into sub-word units by using SentencePiece (Kudo and Richardson, 2018).
+We implemented a Transformer-based APE model, the “sequential” model proposed by Lee et al.
+(2019), which again follows almost the same setting of the “base” Transformer described in the original paper Vaswani et al.
+Moreover, the results also surpass current state-of-the-art (except the ensemble models) APE models (Correia and Martins, 2019; Lopes et al., 2019), which are built on top of BERT (Devlin et al., 2019), thus contain more model parameters, and exploit a huge amount of monolingual data.

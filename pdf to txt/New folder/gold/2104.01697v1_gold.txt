@@ -1,0 +1,14 @@
+The input to our model is a document D consisting of n tokens and k (predicted) event mentions {m1, m2, . . . , mk}.
+We use OneIE (Lin et al., 2020) to identify event mentionsalong with their subtypes.
+For other symbolic features, we train a joint classification model based on SpanBERT.
+Given a document D, our model first forms a contextualized representation for each input token using a Transformer encoder (Joshi et al., 2020).
+Let X = (x1, ..., xn) be the output of the encoder, where xi ∈ Rd.
+Then, for each mention mi, its trigger’s representation ti is defined as the average of its token embeddings:
+Next, by using K trainable embedding matrices, we convert the symbolic features of mi into K vectors {h(1)i, h(2)i, . . . , h(K)i}, where h(u)i ∈ Rl.
+Data and Experiments Setup We evaluate our methods on two English datasets: ACE2005 (Walker et al., 2006) and KBP2016 (Ji et al., 2016; Mitamura et al., 2016).
+We report results in terms of F1 scores obtained using the CoNLL and AVG metrics.
+We use SpanBERT (spanbert-base-cased) as the Transformer encoder (Wolf et al., 2020a; Joshi et al., 2020).
+We refer to models that use only trigger features as [Baseline].
+We use OneIE (Lin et al., 2020) to extract event mentions and their types.
+The test AVG score on ACE 2005 is only 56.5.
+In contrast, our best model achieves an AVG score of 59.76 (Table 3).

@@ -1,0 +1,9 @@
+The input to our model is a document D consisting of n tokens and k (predicted) event mentions {m1, m2, .
+For other symbolic features, we train a joint classification model based on SpanBERT.
+2.2 Single-Mention Encoder Given a document D, our model first forms a contextualized representation for each input token using a Transformer encoder (Joshi et al., 2020).
+Let X = (x1, ..., xn) be the output of the encoder, where xi ∈ Rd.
+Then, for each mention mi, its trigger’s representation ti is defined as the average of its token embeddings: ti =Xeij=sixjei − si + 1 Next, by using K trainable embedding matrices, we convert the symbolic features of mi into K vectors {h(1)i, h(2)i, .
+2.3 Mention-Pair Encoder and Scorer Given two event mentions mi and mj , we define their trigger-based pair representation as: tij = FFNNtti, tj , ti ◦ tj (2) where FFNNt is a feedforward network mapping from R3×d → Rp, and ◦ is element-wise multiplication.
+We use SpanBERT (spanbert-base-cased) as the Transformer encoder (Wolf et al., 2020a; Joshi et al., 2020).
+Other features are predicted by a simple Transformer model.
+The symbolic features contain information complementary to that in the SpanBERT contextual embeddings.

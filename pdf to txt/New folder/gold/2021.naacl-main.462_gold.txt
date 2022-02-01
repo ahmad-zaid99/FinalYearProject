@@ -1,0 +1,8 @@
+Round-trip translation detection: We collected 11, 748 distinct movie reviews from the Sentiment Treebank (Socher et al., 2013) (19.1 words/review).
+We chose 9, 000/1, 000 reviews for training/developing and used the remaining pairs for testing.
+In addition to Google, we chose Fairseq4 (Ng et al., 2019), the winner in the WMT’19 shared task.
+We compare TSRT5 with existing methods using the accuracy metric (accuracy and F-score are equivalent in this balanced corpus).
+The round-trip translation (Nguyen-Son et al., 2019a) based on BLEU and BERT (Devlin et al., 2019) improves by approximately 10%.
+BERT surpasses round trips in only short length ranges, while TSRT outperforms the others in all ranges.
+Human recognition: We selected 100 random reviews from the test set for human recognition7.
+The average accuracy was 53.3% (55.0% for the native speakers and 52.0% for the nonnative speakers), which was close to random.

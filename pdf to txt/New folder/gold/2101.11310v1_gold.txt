@@ -1,0 +1,20 @@
+Four approaches to perturb a target word t 2 T are considered in our experiments.
+Synonym Substitution (WS) This TF-based substitution embeds t as t using a pre-trained embedding matrix V .
+Ct is selected by computing the cosine similarity between t and all available wordembeddings w 2 V .
+BERT (Devlin et al., 2019)—a bi-directional encoder (Vaswani et al., 2017) trained through masked language modeling and next-sentence prediction—makes this fairly trivial.
+Heuristic Substitution To evaluate the relative performance of the techniques we described before, we employ several heuristic attacks as baselines.
+Part-of-Speech and Document Encoding TF employs two checking components: first, it removes any c that has a different POS tag than t.
+Given document D, target t, and perturbation candidate document D0, Ct would be ranked via an embedding similarity score:
+Preprocessing & Sampling All three corpora were tokenized using spaCy5 (Honnibal and Montani, 2017).
+Every author timeline was divided into chunks for a maximum of 100 tweets (i.e., some contain less) to form our documents, implying a maximum of 25 instances per author (some contain one, 2,500 is the API history limit).
+From the test set, the last6 200 instances were sampled for the attack (110 male, 90 female). While fairly small, this sample does reflect a realistic attack duration and timeline size, as they would be executed for a single profile.
+For the extension of TF, we re-implemented code7 by Jin et al. (2020) to work with Scikit-learn8 (Pedregosa et al., 2011).
+For their synonym substitution component, we similarly used counter-fitted embeddings by Mrkˇsi´c et al. (2016) trained on Simlex-999 (Hill et al., 2015).
+The USE (Cer et al., 2018) implementation uses TensorFlow9 (Abadi et al., 2016a) as back-end, and all BERTvariants were implemented in Hugging Face’s10 Transformers library (Wolf et al., 2020) with Py- Torch11 (Paszke et al., 2019) as back-end.
+To summarize (and see Table 2), the experiment is conducted as follows: the substitute target model (f0)—LR for all experiments—is fit on a given corpus.
+The real target model (f, either LR or NGrAM) is always fit on the corpus of Volkova et al. (2015).
+To evaluate the attacks, a 200-instance sample is used.
+Target words are ranked via omission scores from f0, fed to either our Heuristics, TF, MB, or DB attacks
+Filtering can be applied through POS/USE for semantic similarity and POS compatibility checks (Check), or not (Check)
+To evaluate the semantic preservation of the attacked sentences, we calculate both METEOR (Banerjee and Lavie, 2005; Lavie and Denkowski, 2009) using nltk, and BERTScore (Zhang et al., 2020a) between D and DADV.
+For the human evaluation, we sampled 20 document pieces (one or more tweets) for each attack type in the best performing experimental configuration.

@@ -1,0 +1,53 @@
+We follow the BERT notation conventions and denote the vocabulary embedding size as E, the number of encoder layers as L, and the hidden size as H. Following Devlin et al. (2019), we set the feed-forward/filter size to be 4H and the number of attention heads to be H=64.
+In BERT, as well as subsequent modeling improvements such as XLNet (Yang et al., 2019) and RoBERTa (Liu et al., 2019), theWordPiece embedding size E is tied with the hidden layer size H, i.e., E  H.
+As experiments with context length indicate (Liu et al., 2019), the power of BERT-like representations comes from the use of context to provide the signal for learning such context-dependent representations.
+As such, untying the WordPiece embedding size E from the hidden layer size H
+allows us to make a more efficient usage of the total model parameters as informed by modeling needs, which dictate that H  E.
+If E  H, then increasing H increases the size of the embedding matrix, which has sizeV E.
+Therefore, for ALBERT we use a factorization of the embedding parameters, decomposing them into two smaller matrices.
+Instead of projecting the one-hot vectors directly into the hidden space of size H, we first project them into a lower dimensional embedding space of size E, and then project it to the hidden space.
+By using this decomposition, we reduce the embedding parameters from O(V  H) to O(V  E + E  H).
+We choose to use the same E for all word pieces because they are much more evenly distributed across documents compared to whole-word embedding, where having different embedding size (Grave et al. (2017); Baevski & Auli (2018); Dai et al. (2019) ) for different words is important.
+For ALBERT, we propose cross-layer parameter sharing as another way to improve parameter efficiency.
+The default decision for ALBERT is to share all parameters across layers.
+In addition to the masked language modeling (MLM) loss (Devlin et al., 2019), BERT uses an additional loss called next-sentence prediction (NSP).
+NSP is a binary classification loss for predicting whether two segments appear consecutively in the original text, as follows: positive examples are created by taking consecutive segments from the training corpus; negative examples are created by pairing segments from different documents; positive and negative examples are sampled with equal probability.
+The NSP objective was designed to improve performance on downstream tasks, such as natural language inference, that require reasoning about the relationship between sentence pairs.
+That is, for ALBERT, we use a sentence-order prediction (SOP) loss, which avoids topic prediction and instead focuses on modeling inter-sentence coherence.
+The SOP loss uses as positive examples the same technique as BERT (two consecutive segments from the same document), and as negative examples the same two consecutive segments but with their order swapped.
+As a result, ALBERT models consistently improve downstream task performance for multi-sentence encoding tasks.
+Due to the design choices discussed above, ALBERT models have much smaller parameter size compared to corresponding BERT models.
+For example, ALBERT-large has about 18x fewer parameters compared to BERT-large, 18M versus 334M.
+An ALBERT-xlarge configuration with H = 2048 has only 60M parameters and an ALBERT-xxlarge configuration with H = 4096 has 233M parameters, i.e., around 70% of BERTlarge’s parameters.
+Note that for ALBERT-xxlarge, we mainly report results on a 12-layer network because a 24-layer network (with the same configuration) obtains similar results but is computationally more expensive.
+To keep the comparison as meaningful as possible, we follow the BERT (Devlin et al., 2019) setup in using the BOOKCORPUS (Zhu et al., 2015) and EnglishWikipedia (Devlin et al., 2019) for pretraining baseline models.
+These two corpora consist of around 16GB of uncompressed text.
+We format our inputs as “[CLS] x1 [SEP] x2 [SEP]”, where x1 = x1;1; x1;2    and x2 = x1;1; x1;2    are two segments.
+3 We always limit the maximum input length to 512, and randomly generate input sequences shorter than 512 with a probability of 10%. 
+Like BERT, we use a vocabulary size of 30,000, tokenized using SentencePiece (Kudo & Richardson, 2018) as in XLNet (Yang et al., 2019).
+We generate masked inputs for the MLM targets using n-gram masking (Joshi et al., 2019), with the length of each n-gram mask selected randomly.
+We set the maximum length of n-gram (i.e., n) to be 3 (i.e., the MLM target can consist of up to a 3-gram of complete words, such as “White House correspondents”).
+All the model updates use a batch size of 4096 and a LAMB optimizer with learning rate 0.00176 (You et al., 2019).
+We train all models for 125,000 steps unless otherwise specified. 
+Training was done on Cloud TPU V3.
+The number of TPUs used for training ranged from 64 to 512, depending on model size.
+The improvement in parameter efficiency showcases the most important advantage of ALBERT’s design choices, as shown in Table 2: with only around 70% of BERT-large’s parameters, ALBERT-xxlarge achieves significant improvements over BERT-large, as measured by the difference on development set scores for several representative downstream tasks: SQuAD v1.1 (+1.9%), SQuAD v2.0 (+3.1%), MNLI (+1.4%), SST-2 (+2.2%), and RACE (+8.4%).
+Because of less communication and fewer computations, ALBERT models have higher data throughput compared to their corresponding BERT models.
+If we use BERT-large as the baseline, we observe that ALBERT-large is about 1.7 times faster in iterating through the data while ALBERT-xxlarge is about 3 times slower because of the larger structure.
+Table 3 shows the effect of changing the vocabulary embedding size E using an ALBERT-base configuration setting (see Table 1), using the same set of representative downstream tasks. Under the non-shared condition (BERT-style), larger embedding sizes give better performance, but not by much.
+Under the all-shared condition (ALBERT-style), an embedding of size 128 appears to be the best.
+Based on these results, we use an embedding size E = 128 in all future settings, as a necessary step to do further scaling.
+Table 4 presents experiments for various cross-layer parameter-sharing strategies, using an ALBERT-base configuration (Table 1) with two embedding sizes (E = 768 and E = 128).
+We compare the all-shared strategy (ALBERT-style), the not-shared strategy (BERT-style), and intermediate strategies in which only the attention parameters are shared (but not the FNN ones) or only the FFN parameters are shared (but not the attention ones).
+The all-shared strategy hurts performance under both conditions, but it is less severe for E = 128 (- 1.5 on Avg) compared to E = 768 (-2.5 on Avg).
+In addition, most of the performance drop appears to come from sharing the FFN-layer parameters, while sharing the attention parameters results in no drop when E = 128 (+0.1 on Avg), and a slight dro
+p when E = 768 (-0.7 on Avg).
+We compare head-to-head three experimental conditions for the additional inter-sentence loss: none (XLNet- and RoBERTa-style), NSP (BERT-style), and SOP (ALBERT-style), using an ALBERTbase configuration.
+The results on the intrinsic tasks reveal that the NSP loss brings no discriminative power to the SOP task (52.0% accuracy, similar to the random-guess performance for the “None” condition).
+In contrast, the SOP loss does solve the NSP task relatively well (78.9% accuracy) and the SOP task even better (86.5% accuracy).
+Even more importantly, the SOP loss appears to consistently improve downstream task performance for multi-sentence encoding tasks (around +1% for SQuAD1.1, +2% for SQuAD2.0, +1.7% for RACE), for an Avg score improvement of around +1%.
+While ALBERT-xxlarge has less parameters than BERT-large and gets significantly better results, it is computationally more expensive due to its larger structure.
+An important next step is thus to speed up the training and inference speed of ALBERT through methods like sparse attention (Child et al., 2019) and block attention (Shen et al., 2018).
+
+
+

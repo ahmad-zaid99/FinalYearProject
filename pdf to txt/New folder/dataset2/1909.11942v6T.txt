@@ -1,0 +1,46 @@
+ 3.1 MODEL ARCHITECTURE CHOICES The backbone of the ALBERT architecture is similar to BERT in that it uses a transformer encoder (Vaswani et al., 2017) with GELU nonlinearities (Hendrycks & Gimpel, 2016).
+We follow the BERT notation conventions and denote the vocabulary embedding size as E, the number of encoder layers as L, and the hidden size as H. Following Devlin et al.
+There are three main contributions that ALBERT makes over the design choices of BERT.
+Factorized embedding parameterization.
+In BERT, as well as subsequent modeling improvements such as XLNet (Yang et al., 2019) and RoBERTa (Liu et al., 2019), theWordPiece embedding size E is tied with the hidden layer size H, i.e., E  H. This decision appears suboptimal for both modeling and practical reasons, as follows.
+From a modeling perspective,WordPiece embeddings are meant to learn context-independent representations, whereas hidden-layer embeddings are meant to learn context-dependent representations.
+As experiments with context length indicate (Liu et al., 2019), the power of BERT-like representations comes from the use of context to provide the signal for learning such context-dependent representations.
+As such, untying the WordPiece embedding size E from the hidden layer size H allows us to make a more efficient usage of the total model parameters as informed by modeling needs, which dictate that H  E. From a practical perspective, natural language processing usually require the vocabulary size V to be large.1 If E  H, then increasing H increases the size of the embedding matrix, which has sizeV E.
+Therefore, for ALBERT we use a factorization of the embedding parameters, decomposing them into two smaller matrices.
+Instead of projecting the one-hot vectors directly into the hidden space of size H, we first project them into a lower dimensional embedding space of size E, and then project it to the hidden space.
+By using this decomposition, we reduce the embedding parameters from O(V  H) to O(V  E + E  H).
+This parameter reduction is significant when H  E. We choose to use the same E for all word pieces because they are much more evenly distributed across documents compared to whole-word embedding, where having different embedding size (Grave et al.
+For ALBERT, we propose cross-layer parameter sharing as another way to improve parameter efficiency.
+The default decision for ALBERT is to share all parameters across layers.
+(2018) (Universal Transformer, UT) and Bai et al.
+(2019) (Deep Equilibrium Models, DQE) for Transformer networks.
+(2018) show that UT outperforms a vanilla Transformer.
+(2019) show that their DQEs reach an equilibrium point for which the input and output embedding of a certain layer stay the same.
+Our measurement on the L2 distances and cosine similarity show that our embeddings are oscillating rather than converging.
+In addition to the masked language modeling (MLM) loss (Devlin et al., 2019), BERT uses an additional loss called next-sentence prediction (NSP).
+That is, for ALBERT, we use a sentence-order prediction (SOP) loss, which avoids topic prediction and instead focuses on modeling inter-sentence coherence.
+The SOP loss uses as positive examples the same technique as BERT (two consecutive segments from the same document), and as negative examples the same two consecutive segments but with their order swapped.
+As a result, ALBERT models consistently improve downstream task performance for multi-sentence encoding tasks.
+We present the differences between BERT and ALBERT models with comparable hyperparameter settings in Table 1.
+Due to the design choices discussed above, ALBERT models have much smaller parameter size compared to corresponding BERT models.
+For example, ALBERT-large has about 18x fewer parameters compared to BERT-large, 18M versus 334M.
+An ALBERT-xlarge configuration with H = 2048 has only 60M parameters and an ALBERT-xxlarge configuration with H = 4096 has 233M parameters, i.e., around 70% of BERTlarge’s parameters.
+Note that for ALBERT-xxlarge, we mainly report results on a 12-layer network because a 24-layer network (with the same configuration) obtains similar results but is computationally more expensive.
+This improvement in parameter efficiency is the most important advantage of ALBERT’s design choices.
+4.1 EXPERIMENTAL SETUP To keep the comparison as meaningful as possible, we follow the BERT (Devlin et al., 2019) setup in using the BOOKCORPUS (Zhu et al., 2015) and EnglishWikipedia (Devlin et al., 2019) for pretraining baseline models.
+Like BERT, we use a vocabulary size of 30,000, tokenized using SentencePiece (Kudo & Richardson, 2018) as in XLNet (Yang et al., 2019).
+The experimental setup described in this section is used for all of our own versions of BERT as well as ALBERT models, unless otherwise specified.
+4.3 OVERALL COMPARISON BETWEEN BERT AND ALBERT We are now ready to quantify the impact of the design choices described in Sec.
+The improvement in parameter efficiency showcases the most important advantage of ALBERT’s design choices, as shown in Table 2: with only around 70% of BERT-large’s parameters, ALBERT-xxlarge achieves significant improvements over BERT-large, as measured by the difference on development set scores for several representative downstream tasks: SQuAD v1.1 (+1.9%), SQuAD v2.0 (+3.1%), MNLI (+1.4%), SST-2 (+2.2%), and RACE (+8.4%).
+Because of less communication and fewer computations, ALBERT models have higher data throughput compared to their corresponding BERT models.
+If we use BERT-large as the baseline, we observe that ALBERT-large is about 1.7 times faster in iterating through the data while ALBERT-xxlarge is about 3 times slower because of the larger structure.
+Next, we perform ablation experiments that quantify the individual contribution of each of the design choices for ALBERT.
+4.4 FACTORIZED EMBEDDING PARAMETERIZATION Table 3 shows the effect of changing the vocabulary embedding size E using an ALBERT-base configuration setting (see Table 1), using the same set of representative downstream tasks.
+Under the non-shared condition (BERT-style), larger embedding sizes give better performance, but not by much.
+Under the all-shared condition (ALBERT-style), an embedding of size 128 appears to be the best.
+Based on these results, we use an embedding size E = 128 in all future settings, as a necessary step to do further scaling.
+4.5 CROSS-LAYER PARAMETER SHARING Table 4 presents experiments for various cross-layer parameter-sharing strategies, using an ALBERT-base configuration (Table 1) with two embedding sizes (E = 768 and E = 128).
+We compare the all-shared strategy (ALBERT-style), the not-shared strategy (BERT-style), and intermediate strategies in which only the attention parameters are shared (but not the FNN ones) or only the FFN parameters are shared (but not the attention ones).
+4.6 SENTENCE ORDER PREDICTION (SOP) We compare head-to-head three experimental conditions for the additional inter-sentence loss: none (XLNet- and RoBERTa-style), NSP (BERT-style), and SOP (ALBERT-style), using an ALBERTbase configuration.
+Even more importantly, the SOP loss appears to consistently improve downstream task performance for multi-sentence encoding tasks (around +1% for SQuAD1.1, +2% for SQuAD2.0, +1.7% for RACE), for an Avg score improvement of around +1%.
+The authors would like to thank Beer Changpinyo, Nan Ding, Noam Shazeer, and Tomer Levinboim for discussion and providing useful feedback on the project; Omer Levy and Naman Goyal for clarifying experimental setup for RoBERTa; Zihang Dai for clarifying XLNet; Brandon Norick, Emma Strubell, Shaojie Bai, Chas Leichner, and Sachin Mehta for providing useful feedback on the paper; Jacob Devlin for providing the English and multilingual version of training data; Liang Xu, Chenjie Cao and the CLUE community for providing the training data and evaluation benechmark of the Chinese version of ALBERT models.

@@ -1,0 +1,89 @@
+@&#MAIN-TITLE@&#Adaptation of Back-translation to Automatic Post-Editing for Synthetic Data Generation
+
+
+
+@&#ABSTRACT@&#
+
+Automatic Post-Editing (APE) aims to correct errors in the output of a given machine translation (MT) system. Although data-driven approaches have become prevalent also in the APE task as in many other NLP tasks, there has been a lack of qualified training data due to the high cost of manual construction. eSCAPE, a synthetic APE corpus, has been widely used to alleviate the data scarcity, but it might not address genuine APE corpora’s characteristic that the post-edited sentence should be a minimally edited revision of the given MT output. Therefore, we propose two new methods of synthesizing additional MT outputs by adapting back-translation to the APE task, obtaining robust enlargements of the existing synthetic APE training dataset1. Experimental results on the WMT English-German APE benchmarks demonstrate that our enlarged datasets are effective in improving APE performance.
+
+
+@&#METHOD@&#
+
+Automatic Post-Editing (APE) seeks to automatically correct errors included in the output of a blackbox  machine translation (MT) system to improve the final translation quality, thereby reducing the effort required for manual post-editing (Allen and Hogan, 2000; Chatterjee et al., 2015; Bojar et al., 2016; Chatterjee et al., 2018). In general, APE can be considered as a task of sequence-to-sequence supervised learning, which requires a considerable amount of human-annotated data. However, constructing an APE corpus—a set of triplets (Table 1), each of which includes a source text (src), a machine-translated text (mt), and a manually postedited text (pe)—is labor-intensive work because post-editors should create pe in principle by minimally editing mt while preserving the meaning of src. In fact, the sizes of currently available ‘genuine’ APE corpora provided by WMT (Bojar et al., 2016, 2017; Chatterjee et al., 2018, 2019, 2020) are too small to train deep APE models effectively.
+
+To overcome the lack of genuine APE corpora, several previous studies have proposed methods to construct synthetic training datasets (Junczys-Dowmunt and Grundkiewicz, 2016; Negri et al., 2018; Lee et al., 2020), and they appear to be partially helpful in mitigating the data scarcity problem. One such study is eSCAPE (Negri et al., 2018), which has been shown to be effective in training deep models and adopted in a number of APE works (do Carmo et al., 2020). Utilizing parallel corpora, which comprise pairs of a source sentence (src) and a reference sentence (ref ), eSCAPE was constructed as a set of synthetic APE triplets in the form of (src, mt, ref ) where mt is a machine translation of src, and ref serves as an alternative to pe of a genuine APE triplet.
+
+Despite the effectiveness of eSCAPE, we argue that it may have two major drawbacks: (1) eSCAPE’s method relies heavily on parallel resources, so its scalability is restricted to the quantity of available parallel resources and can be even more limited in low-resource scenarios; (2) the relation between mt and ref may not thoroughly reflect the actual relation between mt and pe because ref is not guaranteed to be a minimally edited revision of mt, potentially leading to the discrepancy between the distribution of translation errors in genuine data and that of translation errors in the synthetic data (Figure 1).
+                           
+In this paper, we propose two automatic methods that are inspired by back-translation from the MT task (Sennrich et al., 2016), employing the APE process in the forward direction and the backward direction with applying the eSCAPE resource to them to create additional synthetic mt. Our approach not only extends the existing resource, but also aims to better simulate the characteristics of real APE data by making our synthetic mt better approximate the error distribution of the WMT APE benchmark dataset.
+
+@&#METHODS@&#
+
+Beyond the eSCAPE corpus, to yield a more convincing error distribution as well as to supply APE models with more APE resources made out of limited parallel resources, we propose synthetic-data generation methods that can be seen as adaptations of back-translation to the APE task in terms of creating synthetic mt, which is one of the two sources of APE.
+
+We produce new synthetic mt so that ref can better act as its minimally post-edited text, whereas this ref may not do so for the original mt. Specifically, we suggest two strategies, both of which apply the APE process: ‘forward generation’ and ‘backward generation’; each one of them performs APE in the forward direction and the backward direction, respectively. As described in Figure 2, the former partially corrects mt to reduce the distance between mt and ref, while the latter injects the right quantity of translation errors into ref.
+
+3.1 Forward Generation
+The ‘Forward Generation’ (FG) method lets an APE model take src and mt as input to produce mtFG as output by partially correcting mt through the forward path of APE; the training objective of an FG model is identical to that of a normal APE model (Eq. 1). The output mtFG then forms a new synthetic triplet (src, mtFG, ref ) together with src and ref. We use such triplets to construct a new set of synthetic triplets eSCAPEFG. Considering that mt generally requires a lot of excessive correction to match ref, this approach’s motivation is that mtFG, in itself a product of the APE process, will generally be closer to ref than the original mt. However, if the distance between mtFG and ref is excessively small, indicating that the two texts are almost identical, APE models trained on eSCAPEFG may not learn error-correction patterns sufficiently. Thus, unlike the standard training procedure, we force the FG model’s training process to stop earlier before convergence, making the remaining errors in its output mtFG ample. We therefore use simple arrangements (§4) to find one optimal value for this stop point.                  
+3.2 Backward Generation
+Borrowing the idea of back-translation, the ‘Backward Generation’ (BG) method reverses the APE process during training by moving mt to the position of ref and vice versa; hence, a BG model is trained on (src,ref ) 7! mt to maximize the following conditional probability:
+p(y) =
+YTy
+j=1
+p(yj jx; z; y<j; ): (2)
+In other words, the model learns to generate mtBG to contain translation errors that occur in mt conditioned on a pair of src and ref. The output mtBG then composes a new synthetic triplet (src, mtBG, ref ) together with src and ref. We use such triplets to construct another set of synthetic triplets eSCAPEBG.
+
+In contrast to FG, the concept of BG is to corrupt a clean text (ref ) by learning until the distance between the BG output and ref becomes similar to the edit distance of real APE data. However, if we let the BG model fully converge, the output mtBG may not have a big difference from the original mt; on the other hand, if the model has been barely trained, mtBG would be almost the same as ref. In both instances, APE models trained on eSCAPEBG may not learn error-correction patterns sufficiently. We use the same arrangements (§4) as in FG to find an optimal value for the BG model’s stop point.
+
+@&#EXPERIMENTS@&#
+
+Metric. Following the evaluation setting used in the WMT APE shared task, we adopt TER (Snover et al., 2006) as the primary metric to measure the distance between the model’s prediction and the reference text; and BLEU (Koehn et al., 2007) as the secondary metric to measure the degree of ngram match. In addition, all evaluations in our experiments are case-sensitive. Dataset. We use two kinds of APE datasets: human-made APE datasets, which are provided by WMT, and eSCAPE. Both are English–German (EN–DE) APE corpora; they are further categorized according to their subtask depending on whether the target MT system is a phrase-based
+statistical MT (PBSMT) system or a neural MT (NMT) system. The WMT datasets are in the IT domain, whereas eSCAPE was made out of domaingeneral parallel corpora. Detailed data statistics are presented in Table 2. We tokenized all words in our datasets into sub-word units by using SentencePiece (Kudo and Richardson, 2018).
+
+Model Configuration. We implemented a Transformer-based APE model, the “sequential” model proposed by Lee et al. (2019), which is one of the best performing models. We use this model both as generation models that create synthetic mt with our two proposed methods and also as the final APE models to examine the effectiveness of those synthesized data as additional training data. We follow the hyperparameter setting described in Lee et al. (2019), which again follows almost the same setting of the “base” Transformer described in the original paper Vaswani et al. (2017). However, we adjust the warm-up rate to 15,000 and the batch size to 25,000. We used OpenNMT-py2 to implement and execute all models.
+
+Synthetic Data Generation. To prevent our data generation model from generating what it has already seen during the training phase, we adopt the n-fold jack-knifing technique, which splits the whole dataset into n 􀀀 1 folds for training and 1 left-out fold for generation and validation, into our data generation process. Specifically,
+1. Split eSCAPE into n = 8 folds: ffig8i
+=1.
+2. Construct a training set,
+Di = Append
+
+ffjg8j
+=1 n ffig
+
+.
+3. Train a data generation model (FG or BG)Mi
+on Di and use 2,000 randomly extracted heldout
+samples from fi for validation.
+4. At a given model checkpoint, generate fmti with
+Mi by supplying it with the pair of two sources
+in fi.
+5. Construct mtFG=BG = Append
+
+ffmtig8i
+=1
+
+.
+
+To examine the optimal stop point (§3.1, §3.2), we saved a model checkpoint every 25K training steps up to 150K steps, where the model converges with respect to its validation perplexity; thus, we obtained 6 sets of synthetic mt for each one of the two methods. Finally, for each method, we trained 6 APE models by using each new set of triplets including synthetic mt; and choose one set of synthetic mt that reports the best performance on the WMT validation dataset.
+
+
+Evaluation With assistance from the FG and BG methods, we have a set of synthetic APE triplets S = feSCAPE, eSCAPEFG, eSCAPEBGg available for training. In our experiments, we trained several APE models on various combinations of synthetic triplets in S together with the WMT training datasets and then compared the evaluation results to investigate how each data configuration affects the model’s APE performance. Finally, after training the models until their perplexities on the WMT development dataset converge, we evaluated them on the WMT test datasets. We considered two baselines: (1) TER between mt and pe of the test datasets and (2) the performance of the APE model that is trained only on eSCAPE; the former implies that no post-editing has occurred yet, and it is used as the official baseline for the WMT APE shared task.
+
+
+@&#RESULTS@&#
+
+Table 3 shows the evaluation results. We observed that when eSCAPEFG or eSCAPEBG is used instead of eSCAPE, the APE model’s performance does not make a big difference from the eSCAPE
+baseline. One possible reason that we expect is the gap between those synthetic mt and mt in the WMT dataset; in other words, synthetic mt is not produced by an existing MT system. Nevertheless, we found that when we augment eSCAPE with eSCAPEFG and/or eSCAPEBG, the trained APE model shows consistent improvements in its APE performance and most of the improvements upon the eSCAPE baseline are statistically significant. Moreover, the results also surpass current state-of-the-art (except the ensemble models) APE models (Correia and Martins, 2019; Lopes et al., 2019), which are built on top of BERT (Devlin et al., 2019), thus contain more model parameters, and exploit a huge amount of monolingual data. We expect that these results are because, in addition to an increase in the total quantity of training samples, the integration of multiple synthetic datasets, each of which focuses on different aspects of APE from the other—eSCAPE contains actual MT outputs; on the other hand, synthetic triplets better satisfy the minimal-edit criterion—appears to have an effect on the models’ APE performance. We found that our proposed methods derive a large number of new mt (Table 4) from eSCAPE and also yield a more similar TER distribution to that of WMT data than that of eSCAPE in terms of not only the mean TER (Table 4) but also the decrease in KL-divergence (Figure 3).
+
+@&#CONCLUSION@&#
+
+In this paper, we tried to alleviate the drawbacks of eSCAPE by suggesting two new methods that adapt back-translation to the APE task, consequently increasing the data quantity and address the minimum editing characteristic. According to our experimental results, although APE models trained on each one of our two synthetic datasets show just comparable performances to the eSCAPE baseline, those trained on integrations of multiple synthetic datasets show consistent improvements over the baseline, implying that our new synthetic datasets are beneficial enlargements of eSCAPE. However, we manually selected the optimal stop points for both of our proposed generation schemes, so we will automate these selection processes in our future work.
+
+
+@&#ACKNOWLEDGEMENTS@&#
+
+We appreciate all of the reviewers giving their invaluable comments on this paper. This work was supported by Institute of Information & communications Technology Planning & Evaluation (IITP) grant funded by the Korea government (MSIT) (No.2019-0-01906, Artificial Intelligence Graduate School Program (POSTECH)).
+
+@&#REFERENCES@&#
+

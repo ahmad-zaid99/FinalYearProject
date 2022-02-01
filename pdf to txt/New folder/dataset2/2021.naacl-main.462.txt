@@ -1,0 +1,6 @@
+We compare TSRT5 with existing methods using the accuracy metric (accuracy and F-score are equivalent in this balanced corpus).
+BERT and TSRT have the same optimized hyperparameters6 .
+The round-trip translation (Nguyen-Son et al., 2019a) based on BLEU and BERT (Devlin et al., 2019) improves by approximately 10%.
+BERT surpasses round trips in only short length ranges, while TSRT outperforms the others in all ranges.
+In the top three detectors, while BERT and round-trip translation yield unstable results, TSRT remains consistent.
+We used BERT as the identification baseline.

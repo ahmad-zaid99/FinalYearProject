@@ -1,0 +1,21 @@
+We solve both these problems by a granular tokenization mechanism which extends the concept of semiotic classification to a granular level wherein each unique unnormalized token to normalized token mapping can have a class of its own.
+The solution is divided into 4 stages: i) Tokenization of unnormalized data, ii) Data preparation, iii) Classifying unnormalized tokens into correct classes, iv) Normalizing tokens using the corresponding class.
+Typically TN approaches either assume presegmented text by the rule-based standard (Ebden and Sproat, 2014) which identifies multiword sequences as single segment like dates (Jan. 3, 2016) according to pre-defined semiotic classes or train a neural network for tokenization together with a normalization model (Zhang et al., 2019).
+The segmentation is done by splitting the sentences on spaces and then further splitting the text when there is a change in the unicode class.
+Eg: after splitting on spaces a token like ‘C3PO’ will be further split into [‘C’,‘3’,‘PO’].
+The same tokenization mechanism was used for all the languages tested.
+While collecting training data, first the unnormalized data is tokenized according to the granular tokenization mechanism described above and then each token is annotated with its corresponding normalized form.
+Thus, we obtain unnormalized token to normalized token mappings. Eg: a date occurrence ‘1/1/2020’ tokenized as [‘1’,‘/’,‘1’,‘/’,‘2020’] is annotated as [‘first’,‘of’, ‘January’,‘’,‘twenty twenty’].
+From our experiments, we observe that for TN the diversity in data is more important than the quantity of data.
+Hence, while collecting the data we try to ensure decent coverage of different semiotic classes by having at least 25% of tokens which need normalization (i.e. non-self).
+We model TN as a sequence tagging problem where the input is a sequence of unnormalized tokens and the output is the sequence of classes which can generate the normalized text.
+To classify the sequence of unnormalized tokens to their corresponding classes we experimented with 4 classifiers.
+We first train a first order Conditional Random Fields (CRFs) (Lafferty et al., 2001) and then train neural network (NN) based architectures like Bi-LSTMs (Hochreiter and Schmidhuber, 1997), BiLSTM-CRFs (Huang et al., 2015) and Transformers (Vaswani et al., 2017).
+We used word embeddings from Mikolov et al. (2018) for NN systems.
+i) CRF: The features used for each unnormalized token in the model are - part of speech tag, list of classes which accept the token as an input, next token in sequence, suffix of the token (from length 1-4), prefix of the token (from length 1-4), is the token in upper case, is the token numeric and is the token capitalized, ii) Bi-LSTM & BiLSTM-CRFs: Using word embeddings and list of classes which accept the token as input features, iii) Transformer: A Transformer with 6 heads with word embeddings as input features.
+First, we run the Proteno tokenizer over the unnormalized section of the dataset and got unnormalized token to normalized token mappings using elementary rules.
+By doing so, we were able to correctly match only a portion of the dataset due to its different tokenization. And then, from this subset, 300k tokens (24.7k sentences) were randomly sampled to keep the data size comparable to that used for Tamil.
+This is 1.5% of the data used by Pramanik and Hussain (2019) which used first 20M tokens and 3% of data used by Zhang et al. (2019) which used first 10M tokens.
+Train and test data were split by the ratio of 60:40.
+Word Error Rate (WER) is used as the evaluation metric for the different classifiers.
+WER is measured as Levenshtein Distance (Levenshtein, 1966) between the model prediction and the desired normalization.

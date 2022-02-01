@@ -1,0 +1,16 @@
+We follow the standard CL evaluation method in (Lange et al., 2019).
+Since B-CL works in the CL setting, we employ a set of 19 ASC datasets (reviews of 19 products) to produce sequences of tasks.
+The datasets are from 4 sources: (1) HL5Domains (Hu and Liu, 2004) with reviews of 5 products; (2) Liu3Domains (Liu et al., 2015) with reviews of 3 products; (3) Ding9Domains (Ding et al., 2008) with reviews of 9 products; and (4) SemEval14 with reviews of 2 products - SemEval 2014 Task 4 for laptop and restaurant.
+We use 18 baselines, including both non-continual learning and continual learning methods.
+We have 3 baselines under NL, (1) BERT, (2) Adapter-BERT and (3) W2V (word2vec embeddings).
+For BERT, we use trainable BERT to perform ASC (see Sec. 3); Adapter-BERT adapts the BERT as in (Houlsby et al., 2019), where only the adapter blocks are trainable; W2V uses embeddings trained on the Amazon review data in (Xu et al., 2018) using FastText (Grave et al., 2018).
+We adopt the ASC classification network in (Xue and Li, 2018), which takes both aspect term and review sentence as input.
+The 3 baselines under WDF are also (4) BERT, (5) Adapter-BERT and (6) W2V.
+Unless otherwise stated, for the task sharing module, we employ 2 layers of fully connected network with dimensions 768 in TCL.
+The dynamic routing is repeated for 3 iterations.
+For the task-specific module, We employ the embedding with 2000 dimensions as the final and hidden layer of the TSM.
+The task ID embeddings have 2000 dimensions.
+The training of BERT, Adapter-BERT and B-CL follow that of (Xu et al., 2019).
+All runs use the batch size 32.
+For the CL baselines, we train all models with the learning rate of 0.05.
+

@@ -1,0 +1,12 @@
+Once the metric is established, a classification can be performed either based on hard-decision (words below a certain threshold are considered cognates) or by learning a classifier over the distance measures and other features (Kondrak, 2001; Mann and Yarowsky, 2001; Inkpen et al., 2005; Ciobanu and Dinu, 2014a; List et al., 2016); Mulloni and Pekar (2006) have evaluated an alternative approach, in which explicit rules of transformation are derived based on edit operations.
+(2020) employ a mixture of-experts approach for lexical translation induction, combining neural and probabilistic methods, and Nishimura et al.
+The researchers also applied RNNs on the same dataset, but reported negative results.
+5.1 NMT-based Neural Model Our proto-word reconstruction setup follows an encoder-decoder with attention architecture, similar to contemporary neural machine translation (NMT) systems (Bahdanau et al., 2015; Cho et al., 2014).
+We use a standard character-based encoderdecoder architecture with attention (Bahdanauet al., 2015).
+Both encoder and decoder are GRU networks with 150 cells.
+The encoder reads the forms of the words in the daughter languages, and output a contextualized representation of each character.
+At each decoding step, the decoder attends to the encoder’s representations via a dotproduct attention.
+Input representation Each character (a letter in the orthographic case, and a phoneme in the phonetic case) is represented by an embedding vector of size 100.
+A possible approach would encode each language’s characters using a unique embedding table.
+We instead share the character embedding table across all languages (including Latin), but concatenate to each character vector also a language embedding vector.
+The final representation of a character c in language ` is then W E[c] + UE[`] where E is a shared embedding matrix, c is a character id, ` is a language id, and W and U are a linear projection layers.

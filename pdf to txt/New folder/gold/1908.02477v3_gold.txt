@@ -1,0 +1,17 @@
+The different experiments described in the paper were performed on a large dataset of our creation, which contained cognates and their proto-words in both orthographic and phonetic (IPA) forms.
+The dataset’s departure point is Ciobanu and Dinu (2014b), which consists of 3,218 complete cognate sets in six different languages: French, Italian, Spanish, Portuguese, Romanian and Latin 4.
+We augmented the dataset’s items with a freely available resource, Wiktionary, whose data were manually checked against DIEZ and Donkin (1864) to ensure their etymological relatedness with the Latin source.
+The entries were transcribed into IPA using the transcription module of the eSpeak library5, which offers transcriptions for all languages in our dataset, including Latin.
+l dataset contains 8,799 cognate sets (not all of them complete), which were randomly splitted into train, evaluation and test sets: 7,038 cognate sets (80%) were used for training, 703 (8%) for evaluation and 1,055 (12%) for testing.
+Overall, the dataset contains 41,563 distinct words for a total of 83,126 words counting both the orthographic and the phonetic datasets.
+Our proto-word reconstruction setup follows an encoder-decoder with attention architecture, similar to contemporary neural machine translation (NMT) systems (Bahdanau et al., 2015; Cho et al., 2014).
+We use a standard character-based encoderdecoder architecture with attention (Bahdanauet al., 2015). 
+Both encoder and decoder are GRU networks with 150 cells. 
+The encoder reads the forms of the words in the daughter languages, and output a contextualized representation of each character. 
+At each decoding step, the decoder attends to the encoder’s representations via a dotproduct attention.
+The output of the attention is then fed into a MLP with 200 hidden units, which outputs the next Latin character to generate.
+Input representation Each character (a letter in the orthographic case, and a phoneme in the phonetic case) is represented by an embedding vector of size 100.
+The final representation of a character c in language ` is then W E[c] + UE[`] where E is a shared embedding matrix, c is a character id, ` is a language id, and W and U are a linear projection layers.
+We use the standard edit distance with equal weight of 1 for deletion, insertion and substitution.
+We report test set average edit distance and average normalized edit distance (divided by word length), as well as the percentage of instances with less than k edit operations between the reconstruction and the gold, for k = 0 to 4.
+In this work, we introduce a new dataset for the task of proto-word reconstruction in the Romance language family, and used it to evaluate the ability of neural networks to capture the regularities of historic language change.

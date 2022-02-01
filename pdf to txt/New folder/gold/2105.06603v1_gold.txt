@@ -1,0 +1,18 @@
+We propose a new model, TOpic-ADversarial Network, for zero-shot stance detection, that uses the domain-transfer architecture from Zhang et al. (2017) coupled with a successful stance model (Augenstein et al., 2016) with an additional topicspecific attention layer, to produce topic-invariant representations that generalize to unseen topics (see Figure 1).
+In domain-adaptation, adversarial learning forces the model to learn domain-invariant (i.e., topic-invariant) features that can then be transferred to a new domain.
+To do this, a classifier and a discriminator (adversary) are trained jointly from the same feature representation to maximize the classifier’s performance while simultaneously minimizing the discriminator’s.
+We encode each example x = (d, t, y) using bidirectional conditional encoding (BiCond) (Augenstein et al., 2016), since computing representations conditioned on the topic have been shown to be crucial for zero-shot stance detection (Allaway and McKeown, 2020).
+Specifically, we first encode the topic as ht using a BiLSTM (Hochreiter and Schmidhuber, 1997) and then encode the text using a second BiLSTM conditioned on ht.
+We use a non-linear transformation over the hidden states of each BiLSTM for reconstruction.
+We use a two-layer feedforward neural network with a ReLU activation to predict stance labels ` ∈ {−1, 0, 1}.
+Our topic discriminator is also a two-layer feed-forward neural network with ReLU and predicts the topic t of the input x, given the output of the transformation layer vfdt.
+Our model, TOAD, is trained by combining the individual component losses.
+For both the stance classifier and topic-discriminator we use cross-entropy loss (Ls and Lt respectively).
+Data In our experiments, we use the SemT6 dataset (see Table 1) used in cross-target studies (Mohammad et al., 2016).
+For each topic t ∈ T, we train one model with t as the zero-shot test topic.
+Baselines We compare against a BERT (Devlin et al., 2019) baseline that encodes the document and topic jointly for classification, as in Allaway and McKeown (2020) and BiCond – bidirectional conditional encoding (§2.2) without attention (Augenstein et al., 2016).
+Additionally, we compare against published results from three prior models: SEKT – using a knowledge graph to improve topic transfer (Zhang et al., 2020), VTN – adversarial learning with a topic-oriented memory network, and CrossN – BiCond with an additional topic-specific self-attention layer (Xu et al., 2018).
+Hyperparameters We tune the hyperparameters for our adversarial model using uniform sampling on the development set with 20 search trials.
+We use pre-trained 100-dimensional GloVe vectors (Pennington et al., 2014) in our models.
+Our implementations of BERT and BiCond are trained in the same setting as TOAD (i.e., 5 topics for train/dev, 1 topic for test).
+We note that since TOAD is trained using significantly more data, our experiments evaluate not only model architectures but also the benefit of the zero-shot setting for topic-transfer.

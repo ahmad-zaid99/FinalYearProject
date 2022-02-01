@@ -1,0 +1,29 @@
+ Our attack framework extends TextFooler (TF, Jin et al., 2020) in several ways.
+First, a substitute gender classifier is trained, from which the logit output given a document is used to rank words by their prediction importance through an omission score (Section 3.1).
+3.1 TargetWord Importance We are given a target classifier f, substitute classifier f0, a document D consisting of tokens Di, and a target label y.
+The omission score is then given by oy(D) 􀀀 oy(Dni), and used in an importance score I of token Di, asas: IDi = 8>>>>< >>>>: oy(D) 􀀀 oy(Dni); if f0(D) = f0(Dni) = y: oy(D) 􀀀 oy(Dni) + oy(D) 􀀀 oy(Dni); if f0(D) = y; f0(Dni) = y; y 6= y: (1) With IDi calculated for all words in D, the top k ranked tokens are chosen as target words T. 3.2 Lexical Substitution Attacks Four approaches to perturb a target word t 2 T are considered in our experiments.
+Synonym Substitution (WS) This TF-based substitution embeds t as t using a pre-trained embedding matrix V .
+Ct is selected by computing the cosine similarity between t and all available wordembeddings w 2 V .
+Masked Substitution (MB) The embeddingbased substitutions can be replaced by a language model predicting the contextually most likely token.
+BERT (Devlin et al., 2019)—a bi-directional encoder (Vaswani et al., 2017) trained through masked language modeling and next-sentence prediction—makes this fairly trivial.
+By replacing t with a mask, BERT produces a top-k most likely Ct for that position.
+Dropout Substitution (DB) A method to circumvent the former (i.e., BERT’s masked prediction limitations for lexical substitution), was presented by Zhou et al.
+They apply dropout (Srivastava et al., 2014) to BERT’s internal embedding of target word t before it is passed to the transformer—zeroing part of the weights with some probability.
+The assumption is that Ct (BERT’s top-k) will contain candidates closer to the original t than the masked suggestions.
+Random spaces: splits a token into two at a random position.
+Part-of-Speech and Document Encoding TF employs two checking components: first, it removes any c that has a different POS tag than t. If multiple D0 exist so that f0(D0) = y, it selects the document D0 which has the highest cosine similarity to the Universal Sentence Encoder (USE) embedding (Cer et al., 2018) of the original document D. If not, the D0 with the lowest target word omission score is chosen (as per TF’s method).
+BERT Similarity Zhou et al.
+(2019) use the concatenation of the last four layers in BERT as a sentence’s contextualized representation h. We apply this in both Masked (MB) and Dropout (DB) BERT to re-rank all possible D0 by embedding them.
+Given document D, target t, and perturbation candidate document D0, Ct would be ranked via an embedding similarity score: 4.1 Data We use three author profiling sets (see Table 1 for statistics) that are annotated for binary gender classification (male or female): first, that of Volkova et al.
+Preprocessing & Sampling All three corpora were tokenized using spaCy5 (Honnibal and Montani, 2017).
+Other than lowercasing, allocating special tokens to user mentions and hashtags (# and text were split), and URL removal, no additional preprocessing steps were applied.
+For their synonym substitution component, we similarly used counter-fitted embeddings by Mrkˇsi´c et al.
+The USE (Cer et al., 2018) implementation uses TensorFlow9 (Abadi et al., 2016a) as back-end, and all BERTvariants were implemented in Hugging Face’s10 Transformers library (Wolf et al., 2020) with Py- Torch11 (Paszke et al., 2019) as back-end.
+The simplicity of this classifier also makes it a substitute model that can realistically be run by an author.
+(2018), was proposed as a highly effective—simple—model that outperforms more complex (neural) alternatives on author profiling with little to no tuning.
+It uses tfidf-weighted uni and bi-gram token features, character hexa-grams, and sublinearly scaled tf (1 + log(tf)).
+If we assume an author does not have access to the data, the substitute classifier is trained on any other data than the Volkova et al.
+To evaluate the semantic preservation of the attacked sentences, we calculate both METEOR (Banerjee and Lavie, 2005; Lavie and Denkowski, 2009) using nltk, and BERTScore (Zhang et al., 2020a) between D and DADV.
+METEOR captures flexible uni-gram token overlap including morphological variants, and BERTScore calculates similarities with respect to the sentence context.
+5.4 Transformer Performance Looking at the Top-1, Check and Check brackets (Table 3), other than the BERT-based models having higher success of transferability than TF, they also retain obfuscation success; deteriorating the target model’s performance to lower than chance level (55%) for the settings not using additional checks.
+Additionally, the BERT similarity ranking (described in Section 3.3) applied to the Masked substitution candidates could have some beneficial effect.

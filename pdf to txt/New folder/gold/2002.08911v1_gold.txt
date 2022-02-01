@@ -1,0 +1,23 @@
+Caliskan et al. [2017] introduce the Word Embedding Assocation Test, WEAT, based on the Implicit Association Test, IAT, to measure biases in word embeddings.
+WEAT measures social biases using multiple tests that pair target concepts, e.g., gender, with attributes, e.g., careers and families.
+generalize WEAT to biases in sentence embeddings, introducing the Sentence Encoder Association Test (SEAT).
+Tan and Celis [2019] generalize SEAT to contextualized word representations, e.g., the encoding of a word in context in the sentence.
+These advances are incorporated into the grounded metrics developed here, by measuring thebias of word embeddings, sentence embeddings, as well as contextualized word embeddings.
+Our new dataset contains 10,228 images; see table 1 for a breakdown of the number of images per bias test.
+To compensate for the lack of diversity in COCO and Conceptual Captions, we collected another version of the dataset where the images are top-ranked hits on Google Images.
+First, it gives us an indication of where COCO and Conceptual Captions are lacking: the fact that images cannot be collected for all identities in the tests means these datasets are particularly biased in those ways.
+Second, since COCO and Conceptual Captions form part of the training sets for VisualBERT and ViLBERT respectively, this ensures that biases are not a property of poor out-ofdomain generalization.
+Two sets of target words, X and Y , and two sets of attribute words, A and B, are used to probe the system.
+The average cosine similarity between pairs of word embeddings is used as the basis of an indicator of bias, as in: s(w, A, B) = meana∈Acos(w, a) − meanb∈Bcos(w, b) (1) where s measures how close on average the embedding for word w is compared to the words in attribute A and attributeB.
+We subdivide the attributes A and B into two categories, Ax and Bx, which depict the attributes with the category of target x, and Ay and By, with the category of target y.
+o be concrete, for the trivial hypothetical dataset in table 2, this corresponds to S(1, {5, 7}, {10, 12}) − S(4, {5, 7}, {10, 12}), which compares the bias relative to man and woman against lawyer or teacher across all target images.
+(3), we compute the association between target concept and attributes, except that we include only images that correspond to the target concept’s category: s(X, Y, A, B) = X x∈X s(x, Ax, Bx) − X y∈Y s(y, Ay, By) To be concrete, for the trivial hypothetical dataset in table 2, this corresponds to S(1, {5}, {10}) − S(4, {7}, {12}), which computes the bias of man and woman against lawyer and teacher relative to only images that actually depict lawyers and teachers who are men when comparing to target man and lawyers and teachers who are women when comparing to target woman.
+To be concrete, for the trivial hypothetical dataset in table 2, this corresponds to 1/2 (|S(1, {5}, {10}) − S(1, {7}, {12})| + |S(2, {7}, {12})−S(2, {5}, {10})|), which compares the bias relative to man against lawyer or teacher and woman against lawyer or teacher relative to images that are either evidence for these occupations as men and women.
+We evaluate VisualBERT [Li et al., 2019] on images from COCO, ViLBERT [Lu et al., 2019] on images Conceptual Captions, and both models on images we collected from Google Images.
+Images features are computed in the same manner as in the original publications for both VisualBERT and ViLBERT.
+Overall, the results are consistent with prior work on biases in both humans and models such as BERT.
+The experiments were run on VisualBERT COCO, VisualBERT Google Images, ViLBERT Conceptual Captions and ViLBERT Google Images.
+Measuring bias in such data would require collecting a new dataset, but could use our metrics, Grounded-WEAT and Grounded-SEAT, to answer the same three questions.
+
+
+

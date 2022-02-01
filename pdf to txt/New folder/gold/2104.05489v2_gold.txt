@@ -1,0 +1,18 @@
+• Regularization: in order to preserve knowledge stored in the model, regularization is a constraint added to model output (Li and Hoiem, 2018), hidden space (Zenke et al., 2017) and parameters (Lopez-Paz and Ranzato, 2017; Zenke et al., 2017; Aljundi et al., 2018) to prevent them from changing too much while learning new tasks.
+This key observation motivates us to propose an information-disentanglement based regularization for continual text classification to retain shared knowledge while adapting specific knowledge to streams of tasks (Section 4.1).
+Formally, for a given sentence x, we first use a multi-layer encoder B(:), e.g., BERT (Devlin et al., 2019), to get the hidden representations r which contain both task generic and task specific information.
+Then we introduce two disentanglement networks G(:) and S(:) to extract the generic representation g and specific representation s from r.
+To extract task generic information g from hidden representations r, we leverage the next sentence prediction task (Devlin et al., 2019) 1 to learn the generic information extractor G(:).
+More specifically, we insert a [SEP] token into each training example during tokenization to form a sequence pair labeled IsNext, and switch the first sequence and the second sequence to form a sentence pair labeled NotNext.
+Following MBPA++ (de Masson d'Autume et al., 2019), we use five text classification datasets (Zhang et al., 2015; Chen et al., 2020) to evaluate our methods, including AG News (news classification), Yelp (sentiment analysis), DBPedia (Wikipedia article classification), Amazon (sentiment analysis), and Yahoo! Answer (Q&A classification).
+Due to the limitation of resources, for most of our experiments, we create a reduced dataset by randomly sampling 2000 training examples and 2000 validation examples per class for every task.
+Beyond that, to have a comparison with previous State-of-the-art, we also conduct experiments on the same training set and test set as MbPA++ (de Masson d'Autume et al., 2019) and LAMOL (Sun et al., 2019), which contains 115,000 training examples and 7,600 test examples for each task.
+During training, we evaluate our model on validation sets from all seen tasks, following Kirkpatrick et al. (2017).
+The first 3 task sequences are a cyclic shift of ag yelp yahoo, which are three classification tasks in different domains (news classification, sentiment analysis, Q&A classification).
+We use pretrained BERT-base-uncased from HuggingFace Transformers (Wolf et al., 2020) as our base feature extractor.
+The task generic encoder and task specific encoder are both one linear layer followed by activation function Tanh, their output size are both 128 dimensions.
+The predictors built on encoders are all one linear layer followed by activation function softmax. All experiments are conducted on NVIDIA RTX 2080 Ti with 11GB memory with the batch size of 8 and the maximum sequence length of 256 (use the first 256 tokens if one’s length is beyond that).
+We use AdamW (Loshchilov and Hutter, 2019) as optimizer.
+For all modules except the task id predictor, we set the learning rate lr = 3e􀀀5; for task id predictor, we set its learning rate lrtask = 5e􀀀4.
+The weight decay for all parameters are 0.01.
+For experience replay, we set the store ratio  = 0:01, i.e. we store 1% of seen examples into the episodic memory module.

@@ -1,0 +1,23 @@
+A training epoch starts with all neurons being equally active, which are progressively polarized within the epoch.
+Specifically, s is annealed as follows: s =1smax+ (smax − 1smax)b − 1B − 1, (11) where b is the batch index and B is the total number of batches in an epoch.
+We have 3 baselines under NL, (1) BERT, (2) Adapter-BERT and (3) W2V (word2vec embeddings).
+For BERT, we use trainable BERT to perform ASC (see Sec.
+3); Adapter-BERT adapts the BERT as in (Houlsby et al., 2019), where only the adapter blocks are trainable; W2V uses embeddings trained on the Amazon review data in (Xu et al., 2018) using FastText (Grave et al., 2018).
+The 3 baselines under WDF are also (4) BERT, (5) Adapter-BERT and (6) W2V.
+We replace their original MLP or CNN image classification network with CNN for text classification (Kim, 2014).
+From the 6 systems, we created 6 baselines using W2V embeddings with the aspect term added before the sentence so that the CL methods can take both aspect and the review sentence, and 6 baselines using BERT (Frozen) (which replaces W2V embeddings).
+Following the BERT formulation in Sec.
+Adapter-BERT is not applicable to them as their architecture cannot use an adapter.
+The dynamic routing is repeated for 3 iterations.
+For the task-specific module, We employ the embedding with 2000 dimensions as the final and hidden layer of the TSM.
+The task ID embeddings have 2000 dimensions.
+A fully connected layer with softmax output is used as the classification heads in the last layer of the BERT, together with the categorical cross-entropy loss.
+The training of BERT, Adapter-BERT and B-CL follow that of (Xu et al., 2019).
+We adopt BERTBASE (uncased).
+For the SemEval datasets, 10 epochs are used and for all other datasets, 30 epochs are used based on results from validation data.
+We early-stop training when there is no improvement in the validation loss for 5 epochs.
+We discuss the detailed observations below: (1) For non-continual learning (NL) baselines, BERT and Adapter-BERT perform similarly.
+However, WDF is much worse than NL for BERT (with fine-tuning) and Adapter-BERT (with adapter-tuning).
+This is because BERT with finetuning learns highly task specific knowledge (Merchant et al., 2020).
+(3) Unlike BERT and Adapter-BERT, our BCL can do very well in both forgetting avoidance and knowledge transfer (outperforming all baselines).
+“-KSM;-TSM” means without knowledge sharing and task specific modules, simply deploying an Adapter-BERT.

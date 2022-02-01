@@ -1,0 +1,9 @@
+ Overall Architecture Fig 1(a) shows the overall architecture of our proposed two-stage framework.
+We first train an in-domain intent classifier to extract intent representations using two objectives then use the detection algorithms MSP (Hendrycks and Gimpel, 2017), LOF (Lin and Xu, 2019) or GDA (Xu et al., 2020) to detect OOD.
+In the training stage, we first train a BiLSTM in domain intent classifier similar to Lin and Xu (2019) using labeled in-domain data.
+Self Supervised Contrastive Learning To simultaneously model semantic features of both in-domain and OOD data, we propose a selfsupervised contrastive learning framework to utilize unlabeled data.
+Following (Chen et al., 2020a; He et al., 2020a; Chen et al., 2020b; Winkens et al., 2020; Jiang et al., 2020), we formulate the contrastive loss for a positive pair of examples (i,j) as:`i,j  lij = − log exp (sim (zi, zj ) /τ )P2Nk=1 1[k6=i] exp (sim (zi, zk) /τ )(1) where zi represents the feature vector of i-th sentence sample extracted by concatenating the first and final hidden states of BiLSTM, and 1[k6=i] ∈ {0, 1} is an indicator function evaluating to 1 if k 6= i. τ denotes a temperature parameter.
+Previous work (Chen et al., 2020a) has shown the necessity of more data augmentations, thus we propose an adversarial neural augmentation as follows.
+Adversarial Neural Augmentation To improve the diversity of data augmentation and avoid handcrafted engineering, we apply adversarial attack (Goodfellow et al., 2015; Kurakin et al., 2016; Miyato et al., 2016; Jia and Liang, 2017; Zhang et al., 2019; Ren et al., 2019b) to generate pseudo positive samples.
+It should be noted that samples obtained by adversarial attack is in the form of embedding to ensure end-to-end training.
+GDA (Gaussian Discriminant Analysis)(Xu et al., 2020) is a generative distance-based classifier for out-ofdomain detection with Euclidean and Mahalanobis distances.

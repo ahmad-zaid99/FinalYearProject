@@ -1,0 +1,49 @@
+2.1 Neural Abstractive Summarization Neural approaches to abstractive summarization conceptualize the task as a sequence-to-sequence problem, where the encoder maps the sequence of tokens in the source document x = [x1, ..., xn]to a sequence of continuous representations  z = [z1, ..., zn], and the decoder autoregressively generates the target summary y = (y1, ..., ym) token-by-token, hence modeling the conditional probability p(y1, ..., ym|x1, ..., xn).
+(2016) were among the first to apply the neural encoderdecoder architecture to text summarization.
+ Other work develops abstractive models trained end-to-end with reinforcement learning based on multiple encoders and hierarchical attention (Celikyilmaz et al., 2018) or a coverage mechanism where the decoder attends over previously generated words (Paulus et al., 2018).
+Although the majority of summarization systems are composed of LSTM units, Narayan et al. (2018) and (PerezBeltrachini et al., 2019) propose abstractive models based on convolutional neural networks.
+Liu and Lapata (2019) combine a pretrained encoder based on BERT (Devlin et al., 2019) with a randomly initialized decoder, demonstrating substantial gains on summarization performance.
+(2019) pretrain an encoder-decoder framework to reconstruct (masked) fragments within a sentence and then fine-tune it on summarization datasets.
+(2020) present BART, an encoder-decoder Transformer (Vaswani et al., 2017), pretrained by reconstructing a text corrupted with several arbitrary noising functions.
+(2020) design UNILMv2, a Transformer-based neural network pretrained as a pseudo-masked language model.
+The models are typically neural networks and function f can be in principle defined using the output of any network layer (e.g., a hidden or softmax layer).
+Specific instantiations of this general framework include minimizing the teacher/student difference based on output logits, intermediate hidden representations, attention maps, and derivatives of the loss to the input (Ba and Caruana, 2014; Romero et al., 2014; Zagoruyko and Komodakis, 2017; Czarnecki et al., 2017).
+(2019) use it to transfer knowledge from BERT to smaller models, helping them approach or exceed the quality of much larger pretrained neural networks.
+Aside from distilling large models into smaller ones (Kim and Rush, 2016; Mou et al., 2016) or ensembles of models into single models (Kuncoro et al., 2016; Liu et al., 2019), knowledge distillation has been further used in multi-task learning, e.g., to teach a multi-task student from single-task teachers (Clark et al., 2019).
+4.1 Summarization Datasets We evaluated our model on two singledocument summarization datasets, namely the CNN/DailyMail news highlights (Hermann et al., 2015) and XSum (Narayan et al., 2018), and one multi-document summarization dataset, i.e., WikiCatSum (Perez-Beltrachini et al., 2019).
+(2015) for training, validation, and testing (90,266/1,220/1,093 CNN documents and 196,961/12,148/10,397 DailyMail documents).
+Input documents were truncated to 512 tokens.
+We used the splits of Narayan et al. (2018) for training, validation, and testing (204,045/11,332/11,334) and followed the pre-processing introduced in their work.
+Input documents were also truncated to 512 tokens. 
+Aside from the summaries, the dataset contains the input webpages whose length is truncated to the first 800 tokens. WikiCatSum contains 62,545 samples for the Company domain, 59,973 samples for the Film domain, and 60,816 samples for the Animal domain.
+4.2 Implementation Details For all datasets, we evaluated our self-knowledge distillation framework in two settings. 
+In the first setting, our models are non-pretrained while in the second setting we take advantage of pretrained language models which have demonstrated impressive improvements in summarization (Lewis et al., 2020; Liu and Lapata, 2019; Bao et al., 2020).
+Specifically, we adopt UNILMv2 (Bao et al., 2020) as the pretrained model. 
+UNILMv2 is a Transformer-based neural network (Vaswani et al., 2017) with 12 Transformer layers and 12 attention heads.
+In the non pretrained setting, we adopt a Transformer encoder-decoder model with 6 layers, 768 hidden size and 2,048 feed-forward filter size.
+In all knowledge distillation experiments, student models have the same neural network architecture with their teachers and are trained with the same hyperparameters as the teacher models.
+The best teacher and student model are selected by evaluating perplexity on the development set.
+For noisy distillation models, word drop probability pd was set to 0.1.
+The candidate length k for word replacement was 10 and word replacement probability pr was 0.1.
+Sentence drop probability ps was 0.05.
+During decoding we used beam search (size 5), and tuned α for the length penalty (Wu et al., 2016) between 0.6 and 1 on the validation set; we decode until an end-of-sequence token is emitted.
+5.1 Automatic Evaluation We evaluated summarization quality automatically using ROUGE (Lin, 2004).
+We report unigram and bigram overlap (ROUGE-1 and ROUGE-2) as a means of assessing informativeness and the longest  common subsequence (ROUGE-L) as a means ofassessing fluency.
+We also report the results of See et al.’s (2017) pointer generator network (PTRNET), and an abstractive system from Liu and Lapata (2019) based on Transformers (TransformerAbs; see Section 4.2 for details).
+We present a variant without noise (+SKD), a variant with noise in the teacher training signal (+Noisy T), and a third variant where the student is additionally trained on noisy data (+Noisy S).
+With regard to LARGE-size models, we report the results of three very strong summarization systems finetuned with UNILMLARGE (Bao et al., 2020), BARTLARGE (Lewis et al., 2020), and T511B (Raffel et al., 2019).
+Our BASE-size models include BERTSUMBASE (Liu and Lapata, 2019), a summarizer based on a BASE-size BERT encoder and a randomly initialized decoder, MASSBASE (Song et al., 2019) and UNILMBASE which are both finetuned with BASE-size pretrained models.
+Overall, we obtain competitive results with SKD and BASE-size pretrained models and even manage to outperform UNILMLARGE and T511B on the CNN/DailyMail dataset.
+CV-S2S and CV-S2D (Perez-Beltrachini et al., 2019) are convolutional encoder-decoder models.
+The former is a standard convolutional decoder, while the latter adopts a hierarchical convolutional decoder which first generates target sentence vectors, and then generates target words based on sentence vectors.
+TF-S2S is a standard Transformer encoder-decoder model trained on WikiCatSum (Perez-Beltrachini et al., 2019).
+Column All in Table 2 shows average ROUGE across domains.
+5.2 Factual Consistency Evaluation Besides ROUGE, we also use FactCC (Krysci ´ nski ´ et al., 2019) to evaluate the factual correctness of the generated summaries.
+FactCC is a BERT-based classifier trained to identify conflicts between a source document and a generated summary.
+We performed experiments with the publicly released version of FactCC.2 Our results on the CNN/DailyMail and XSum datasets are presented in Table 3.
+All +Noisy SKD students are significantly (p < 0.05) more factually correct compared to their teachers (TransformerAbs and UNILMv2BASE), using a paired student t-test.
+ For CNN/DailyMail and XSum, human participants were presented with the output of two systems (and the original document) and asked to decide which one was better according to the following criteria: Succinctness (Does the summary avoid repetition?
+ We used the same test documents (20 in total) from Liu and Lapata (2019) for both CNN/DailyMail and XSum.
+On both CNN/DailyMail and XSum datasets participants perceive the student (+Noisy SKD) as significantly (p < 0.05) more succinct and informative compared to the teacher (UNILMv2BASE).
+Crowdworkers were presented with the output of two systems (again UNILMv2BASE and +Noisy SKD) and asked to decide which one was better according to the information contained in the gold summary.
+Evaluation was conducted on AMT, we randomly selected 20 samples from the test set and elicited three responses per HIT.

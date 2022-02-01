@@ -1,16 +1,21 @@
+
+# importing modules
+
 import re
 import os
 import nltk
 from nltk import sent_tokenize
 
 
+# function for finding keywords and extracting sentences
+
 def fun(paragraph, result) :
     
-    #paragraph = re.sub("[\(\[].*?[\)\]]", "", paragraph)
     sentences = nltk.sent_tokenize(paragraph)
 
-    reg = '(?:encoder|decoder|epoch|iteration|gpu|token|tokenizer|embedding|encoding|nltk|pgnet|cnn|rnn|neural network|rouge|bert|bart|xlnet|roberta|electra|gpt|t5|text-to-text|elmo|ulmfit|transformer|flair|stanfordnlp)'
-
+    # define reg expression
+    reg = '(?:encoder|decoder|epoch|iteration|gpu|token|tokenizer|embedding|encoding|nltk|pgnet|cnn|rnn|neural|rouge|bert|bart|xlnet|roberta|electra|gpt|t5|text-to-text|elmo|ulmfit|framework|transformer|flair|stanfordnlp|classifier|lstm)'
+    # model, dataset, width
     for i in range(len(sentences)) :
     
         sentence = sentences[i].lower()
@@ -18,31 +23,31 @@ def fun(paragraph, result) :
             result.append(sentences[i])
         
 
+# set path to folder containg txt files
 
-    
-    
-
-
-path = "C:\\Users\\91843\\Downloads\\SEND_Ahmed\\SEND_Ahmed"
+path = "C:\\FinalYearProject\\pdf to txt\\New folder"
 
 os.chdir(path)
 
-f2 = open("dataset2/abcdef.txt", 'w', encoding='utf8')
+#f2 = open("dataset2/abcdef.txt", 'w', encoding='utf8')
 
 
+# loop through all txt files in the folder
 for file in os.listdir():
     if file.endswith(".txt") :
         f1=open(file, encoding='utf8')
 
         result = []
 
-        method = ""
-        results = ""
         implementation = ""
 
         flag = True
         tag = "none"
-            
+
+
+        # separate contents by headings
+        # check for keywords in contents other than abstract, introduction, conclusion 
+
         while(True):
             l = f1.readline()
             if not l :
@@ -50,41 +55,21 @@ for file in os.listdir():
             l = l.strip()
             
             if len(l)>1 :
-                
-                if l=="@&#METHOD@&#" or l=="@&#METHODS@&#" :
-                    tag="method"
-                    flag=False
-                elif l=="@&#RESULTS@&#" or l=="@&#RESULT@&#" :
-                    tag="results"
-                    flag=False
-                elif l=="@&#IMPLEMENTATION@&#" or l=="@&#IMPLEMENTATIONS@&#" :
-                    tag="implementation"
-                    flag=False
-                elif l=="@&#EXPERIMENT@&#" or l=="@&#EXPERIMENT@&#" or l=="@&#EXPERIMENTATION@&#" or l=="@&#EXPERIMENTATIONS@&#":
-                    tag="implementation"
-                    flag=False
-                elif l=="@&#MODEL@&#" or l=="@&#MODELS@&#" :
-                    tag="implementation"
+                if l=="@&#INTRODUCTION@&#" or l=="@&#ABSTRACT@&#" or l=="@&#CONCLUSION@&#" or l=="@&#CONCLUSIONS@&#" :
+                    tag="none"
+                elif l=="@&#DISCUSSION@&#" or l=="@&#DISCUSSIONS@&#" :
+                    tag="none"
                     flag=False
                 elif re.search("@&#.*@&#",l) is not None :
-                    tag="none"
+                    tag="implementation"
+                    flag=False
 
 
-                if tag == "method" :
-                    if flag==True :
-                        method = method + " " + l
-                    flag = True
-                elif tag == "results" :
-                    if flag==True :
-                        results = results + " " + l
-                    flag = True
-                elif tag == "implementation" :
+                if tag == "implementation" :
                     if flag==True :
                         implementation = implementation + " " + l
                     flag = True
         
-        fun(method, result)
-        fun(results, result)
         fun(implementation, result)
 
         out_file_path = "dataset2/" + file
@@ -92,17 +77,14 @@ for file in os.listdir():
 
         if len(result)>0 :
             for sen in result :
-                # out_file.write(file+"\n")
-                f2.write(sen+"\n")
                 out_file.write(sen+"\n")
 
         # for sen in result :
         #     out_file.write(file+"\n")
         #     f2.write(sen+"\n")
-        if len(result)>0 :
-            f2.write("\n")
+        
         f1.close()
         out_file.close()
-f2.close()
+
 
 

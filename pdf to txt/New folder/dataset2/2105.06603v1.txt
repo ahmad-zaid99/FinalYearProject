@@ -1,0 +1,20 @@
+To do this, a classifier and a discriminator (adversary) are trained jointly from the same feature representation to maximize the classifier’s performance while simultaneously minimizing the discriminator’s.
+2.2 Model Components (a) Topic-oriented Document Encoder We encode each example x = (d, t, y) using bidirectional conditional encoding (BiCond) (Augenstein et al., 2016), since computing representations conditioned on the topic have been shown to be crucial for zero-shot stance detection (Allaway and McKeown, 2020).
+Specifically, we first encode the topic as ht using a BiLSTM (Hochreiter and Schmidhuber, 1997) and then encode the text using a second BiLSTM conditioned on ht.
+To compute a document-level representation vdt, we apply scaled dot-product attention (Vaswani et al., 2017) over the output of the text BiLSTM, using the topic representation ht as the query.
+This encourages the text encoder to produce representations that are indicative of stance on  the topic and so would improve classification performance.
+To prevent the adversary corrupting the encoder to reduce its own performance, we add a document reconstruction term (Lrec d) to our loss function, as in Zhang et al.
+(2017), as well as a topic reconstruction term (Lrect), to ensure the output of neither BiLSTM is corrupted.
+We use a non-linear transformation over the hidden states of each BiLSTM for reconstruction.
+(c) Stance Classifier We use a two-layer feedforward neural network with a ReLU activation to predict stance labels ` ∈ {−1, 0, 1}.
+Since stance is inherently dependent on a topic, and the output of the transformation layer should be topic-invariant, we add a residual connection between the topic encoder ht and the stance classifier.
+(d) Topic Discriminator Our topic discriminator is also a two-layer feed-forward neural network with ReLU and predicts the topic t of the input x, given the output of the transformation layer vfdt.
+For both the stance classifier and topic-discriminator we use cross-entropy loss (Ls and Lt respectively).
+The hyperparameter ρ gradually increases across epochs, following Ganin and Lempitsky (2015).
+Baselines We compare against a BERT (Devlin et al., 2019) baseline that encodes the document and topic jointly for classification, as in Allaway and McKeown (2020) and BiCond – bidirectional conditional encoding (§2.2) without attention (Augenstein et al., 2016).
+We select the best hyperparameter setting using the average rank of the stance classifier F1 (higher is better) and topic discriminator F1 (lower is better).
+Our implementations of BERT and BiCond are trained in the same setting as TOAD (i.e., 5 topics for train/dev, 1 topic for test).
+These results are statistically significant (p < 0.005)when compared to both the BERT baseline and to TOAD without the adversary 1.
+We also observe that TOAD is statistically indistinguishable from BERT on three additional topics (HC, LA, CC) while having only 0.5% as many parameters (600k versus 110mil).
+As a result of this small size, TOAD can be trained using only the CPU and, because of it’s recurrent architecture, would gain less from the increased parallel computation of a GPU (compared to a transformer-based model).
+Therefore, TOAD has a potentially much lower environmental impact than BERT with similar (or better) performance on five out of six zero-shot topics.

@@ -1,0 +1,36 @@
+ Models that compute word embeddings are widespread [Mikolov et al., 2013; Devlin et al., 2018; Peters et al., 2018; Radford et al., 2018].
+[2017] introduce the Word Embedding Assocation Test, WEAT, based on the Implicit Association Test, IAT, to measure biases in word embeddings.
+[2019] generalize WEAT to biases in sentence embeddings, introducing the Sentence Encoder Association Test (SEAT).
+Tan and Celis [2019] generalize SEAT to contextualized word representations, e.g., the encoding of a word in context in the sentence.
+These advances are incorporated into the grounded metrics developed here, by measuring thebias of word embeddings, sentence embeddings, as well as contextualized word embeddings.
+Second, since COCO and Conceptual Captions form part of the training sets for VisualBERT and ViLBERT respectively, this ensures that biases are not a property of poor out-ofdomain generalization.
+[2017] base the Word Embedding Assocation Test (WEAT) on an IAT test administered to humans.
+The average cosine similarity between pairs of word embeddings is used as the basis of an indicator of bias, as in: s(w, A, B) = meana∈Acos(w, a) − meanb∈Bcos(w, b) (1) where s measures how close on average the embedding for word w is compared to the words in attribute A and attributeB.
+The space of embeddings has structure that may make all targets, e.g., both men’s names and women’s names, closer to one profession than the other.
+The difference between the target distances reveals which target sets are more associated with which attribute sets: s(X, Y, A, B) = X x∈X s(x, A, B) − X y∈Y s(y, A, B) (2) The effect size, i.e., the number of standard deviations in which the peaks of the distributions of embedding distances differ, of this metric is computed as d = meanx∈Xs(x, A, B) − meany∈Y s(y, A, B) std devw∈X∪Y s(w, A, B) (3) May et al.
+[2019] extend this test to measure sentence embeddings, by using sentences in the target and attribute sets.
+Tan and Celis [2019] extend the test to measure contextual effects, by extracting the embedding of single target and attribute tokens in the context of a sentence rather than the encoding of the entire sentence.
+In the ungrounded setting, only 4 embeddings can be computed because the attributes are independent of the target category.
+This leads to 12 possible grounded embeddings1 ; see table 2.
+We find that three such tests, described next, have intuitive explanations and measure different but complementary aspects of bias in word embeddings.
+These questions are relevant to both bias and to the quality of word embeddings.
+For example, attempting to measure the impact of vision separately from language on joint embeddings can indicate if there is an over-reliance on one modality over another.
+4.1 Experiment 1: Do joint embeddings contain biases?
+An advantage of grounded over ungrounded embeddings is that we can show scenarios that clearly counter social stereotypes.
+For example, the model may think that men are more likely to have some professions, but are the embeddings different when visual input to the contrary is provided?
+In practice, systems built on top of grounded embeddings will not be used with balanced images, and so while in a sense more elegant, this construction may completely misstate the biases one would see in the real world.
+4.3 Experiment 3: To what degree do biases come from language vs. vision in joint embeddings?
+In other words, if the model does not change its biases regardless of the images being shown, then vision does not play a role in encoding biases.
+Note that we are not saying that the embeddings do not consider vision, but merely that it may or may not have an effect on biases specifically.
+This provides a finer-grained metric for the relevance of vision to embeddings.
+We evaluate VisualBERT [Li et al., 2019] on images from COCO, ViLBERT [Lu et al., 2019] on images Conceptual Captions, and both models on images we collected from Google Images.
+Images features are computed in the same manner as in the original publications for both VisualBERT and ViLBERT.
+Overall, the results are consistent with prior work on biases in both humans and models such as BERT.
+The experiments were run on VisualBERT COCO, VisualBERT Google Images, ViLBERT Conceptual Captions and ViLBERT Google Images.
+Following Tan and Celis [2019], each experiment examines the bias in three types of embeddings: word embeddings, sentence embeddings, and contextualized word embeddings.
+While there is broad agreement between these different ways of using embeddings, they are not identical in terms of which biases are discovered.
+Methods to mitigate biases will hopefully address all three embedding types and all of the three questions we restate below.
+Do joint embeddings contain biases?
+It appears as if more biases exist in the grounded embeddings compared to the ungrounded ones.
+To what degree do biases come from language vs. vision in joint embeddings?
+It could be that joint embeddings largely ignore vision, or that the biases in language are so powerful that vision does not contribute to them given that on any one example it appears unable to override the existing biases (experiment 2).

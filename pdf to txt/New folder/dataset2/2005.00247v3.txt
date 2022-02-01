@@ -1,0 +1,11 @@
+2.1.2 Multi-Task Learning (MTL) All tasks are trained simultaneously with the aim of learning a shared representation that will enable the model to generalize better on each task (Caruana, 1997; Collobert and Weston, 2008; Nam et al., 2014; Liu et al., 2016, 2017; Zhang and Yang, 2017; Ruder, 2017; Ruder et al., 2019; Sanh et al., 2019; Pfeiffer et al., 2020b, inter alia).
+While  represents the weights of a pretrained model (e.g., a transformer), the parameters n, where n 2 f1; : : : ;Ng, are used to encode task-specific representations in intermediate layers of the shared model.
+For NLP tasks, adapters have been introduced for the transformer architecture (Vaswani et al., 2017).
+At each transformer layer l, a set of adapter parameters l is introduced.
+(2019) experiment with different architectures, finding that a twolayer feed-foward neural network with a bottleneck works well.
+They place two of these components within one layer, one after the multi-head attention (further referred to as bottom) and one after the feed-forward layers of the transformer (further referred to as top).1 Bapna and Firat (2019) and Stickland and Murray (2019) only introduce one of these components at the top position, however, Bapna and Firat (2019) include an additional layer norm (Ba et al., 2016).
+In all experiments, we use BERT-base-uncased (Devlin et al., 2019) as the pretrained language model.
+We train for a maximum of 30 epochs with early stopping.
+For AdapterFusion, we empirically find that a learning rate of 5e 􀀀 5 works well, and use this in all experiments.4 We train for a maximum of 10 epochs with early stopping.
+To provide a fair comparison to Stickland and Murray (2019) we primarily experiment with BERT-baseuncased.
+We additionally validate our best model configurations — ST-A and Fusion with ST-A — with RoBERTa-base, for which we present our results in Appendix Table 4.

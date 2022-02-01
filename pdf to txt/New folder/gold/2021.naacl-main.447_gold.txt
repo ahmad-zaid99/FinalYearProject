@@ -1,0 +1,12 @@
+We first train an in-domain intent classifier to extract intent representations using two objectives then use the detection algorithms MSP (Hendrycks and Gimpel, 2017), LOF (Lin and Xu, 2019) or GDA (Xu et al., 2020) to detect OOD.
+In the training stage, we first train a BiLSTM in domain intent classifier similar to Lin and Xu (2019) using labeled in-domain data.
+Datasets We perform experiments on two variants of the OOD benchmark dataset CLINC3 (Larson et al., 2019), namely CLINC-OOS+ and CLINC-Small.
+They both contain 150 in-domain intents across 10 domains where CLINC-OOS+ contains 100 samples for each intent and CLINCSmall has 50 training samples for each intent.
+To construct the unlabeled data, we mix up 10% of in-domain data and all of the OOD data in the training set.
+The total amount of unlabeled data is equal to 1500 in CLINC-OOS+ and 750 in CLINCSmall, where the number of OOD data is 250 and 100, respectively.
+etrics We report both in-domain metrics: Accuracy(ACC) and F1-score(F1), and OOD metrics: Recall and F1-score(F1). OOD Recall and F1-score are the main metrics in this paper. 
+We compare our proposed self-supervised methods to two types of OOD detection methods, which are supervised and fully unsupervised.
+Our method consistently outperforms all the unsupervised baselines in all settings, even close to the supervised oracles.
+Under the GDA setting, our proposed method outperforms the unsupervised method by 3.94%(OOD F1), 3.54%(OOD Recall) in CLINC-OOS+ and 4.48%(OOD F1),4.12%(OOD Recall) in CLINC-Small.
+Considering the effect of adversarial augmentation, our GDA+DS outperforms the standard contrastive learning (GDA+S2S(w/o adv)) by 1.95%(OOD F1), 2.32%(OOD Recall) in CLINC-OOS+ and 1.35%(OOD F1), 1.72%(OOD Recall) in CLINCSmall.
+

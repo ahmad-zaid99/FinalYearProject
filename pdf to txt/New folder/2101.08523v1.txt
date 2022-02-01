@@ -1,0 +1,70 @@
+@&#MAIN-TITLE@&#Adv-OLM: Generating Textual Adversaries via OLM
+
+
+
+@&#ABSTRACT@&#
+
+Deep learning models are susceptible to adversarial examples that have imperceptible perturbations in the original input, resulting in adversarial attacks against these models. Analysis of these attacks on the state of the art transformers in NLP can help improve the robustness of these models against such adversarial inputs. In this paper, we present Adv-OLM, a black-box attack method that adapts the idea of Occlusion and Language Models (OLM) to the current state of the art attack methods. OLM is used to rank words of a sentence, which are later substituted using word replacement strategies. We experimentally show that our approach outperforms other attack methods for several text classification tasks.
+
+
+@&#INTRODUCTION@&#
+
+In recent times, deep learning models have become pervasive across different domains. Many of the recent deep models have shown SOTA performance on a variety of NLP tasks (Wang et al., 2018). Consequently, deep models are being deployed in a variety of production systems for real-life applications. Hence, it becomes imperative to ensure the reliability and robustness of such models as it might pose a threat to security. Recent studies have pointed out the vulnerability of deep models to adversarial attacks (Goodfellow et al., 2014). Adversarial attack comprises generating adversarial samples by performing small perturbations to the original input, making them imperceptible to humans while fooling the deep learning models to give incorrect predictions. Adversarial attack on textual data is much more difficult due to the discrete nature of the text. The basic requirement of imperceptibility of perturbation by human judges is much more challenging in a language data setting. Therefore, the adversarial sample needs to be grammatically correct and semantically sound. Perturbations at word or character level that are perceptible to human judges have been explored in-depth (Ebrahimi et al., 2017; Belinkov and Bisk, 2017; Jia and Liang, 2017; Gao et al., 2018). Work on defense against misspellings based attacks (Pruthi et al., 2019) and use of optimization algorithms for attacks like genetic algorithm (Alzantot et al., 2018; Wang et al., 2019) and particle swarm optimization (Zang et al., 2020) have also been explored. With the rise of pre-trained language models, like BERT (Devlin et al., 2018) and other transformer-based models, generating human imperceptible adversarial examples has become more challenging. Wallace et al. (2019), Jin et al. (2019), and Pruthi et al. (2019) have explored these models from different perspectives.
+                           
+Adversarial examples can be generated using black-box, where no knowledge about the model is accessible, and white-box, where information about the technical details of models are known. Generation of textual adversarial samples in a black-box setting consists of two steps 1) Finding words to replace in a sample (Word Ranking) 2) Replacing the chosen word (Word Replacement). Word Ranking is necessary to ensure that the word that contributes the most to the output prediction is considered as the candidate for replacement in the next step. Other constraints like generating semantically similar adversarial samples, human imperceptibility, and minimal perturbation percentage are also considered. Previous work has obtained word ranking by performing deletion of words (e.g., BAE-R (Garg and Ramakrishnan, 2020), TextFooler (Jin et al., 2019)), and replacement of words with [UNK] token (e.g., BERTAttack (Li et al., 2020)) and then ranking the words based on the output logits difference.   
+
+Recently in the model explainability domain, the method of Occlusion and Language Models (OLM) (Harbecke and Alt, 2020) has been proposed, the authors argue that the data likelihood of the samples obtained after either deleting the token or replacement with [UNK] token is very low, which makes these methods unsuitable for determining relevance of the word towards the output probability. The authors propose the use of language models for calculating the relevance of the words in a sentence. Taking inspiration from OLM, we propose Adv-OLM, a black box attack method, that adapts the idea of OLM (as the Work Ranking Strategy) to find the relevant words to replace. We empirically show that OLM provides a better set of ranked words compared to the existing word ranking strategies for the generation of adversarial examples.
+We summarize our contributions as follows:
+• We propose a new method Adv-OLM, to rank words for generating adversarial examples.
+• We empirically show that Adv-OLM has a higher success rate and lower perturbation percentage than previous attacking methods.
+
+                     
+
+@&#METHODS@&#
+
+We are given a corpus consisting of n input samples, X = fx1; : : : ; xng with corresponding labels Y = fy1; : : : ; yng and a trained classification model f(f : X ! Y) that maps an input samples to its correct label. We assume a black-box setting where the attacker can only query the classifier for output label probabilities for the given input. For an input sample x 2 X, the task is to construct an adversarial sample x0 such that, f(x) = y; f(x0) = y0 with y 6= y0, and Similarity(x0; x)  .
+Here, Similarity : X  X ! (0; 1) can be both the semantic and syntactic similarity function, and  is the minimum similarity threshold. Ideally, the amount of perturbation should be minimized. The first step is to rank the words of the sample x. Based on the ranking, starting from the most important word, the word is replaced by some candidate word that keeps the perturbed sample x0 semantically similar and grammatically sound but changes the output prediction.
+
+Adv-OLM uses the idea of Occlusion and Language Models to performWord Ranking using both OLM and OLM-S methods. OLM uses a language model to sample some candidate instances for a word and then replaces the word. Let xi be a word of the input x and xni be the incomplete input without this word. Then the OLM relevance score r given the prediction function f and label y is (Here fy is the logit value corresponding to the label y.)    
+
+rf;y(xi) = fy(xi) 􀀀 fy(xni) (1)
+Here, fy(xni) is not accurately defined and needs to be approximated since xni is the incomplete input. A language model pLM generates input by predicting the masked word as ^ xi that is as natural as possible for the model and thus approximates to:
+fy(xni) 
+X
+^ xi
+pLM( ^ xijxni)fy(xni [ ^ xi) (2)
+where, fy(xni [ ^ xi) is the prediction of the classification model after the language model’s prediction ^ xi is added to the incomplete input xni. The other method OLM-S calculates the sensitivity of a position in the text and has nothing to do with the word present at that position in the original input. The sensitivity score of OLM-S is calculated
+sf;y(xi) =
+qP
+^ xi
+pLM( ^ xijxni)(fy(xni [ ^ xi) 􀀀 )2 where  is the mean value from Equation 2. The sensitivity score sf;y(xi) is used for word ranking in OLM-S.
+After performing the Word Ranking step using the relevance scores generated by OLM and OLMS, the next step is to replace highly scored words with semantically similar words that form grammatically correct sentences (Word Replacement) such that the output prediction changes. Word replacement strategy is kept similar to existing methods. TextFooler uses Synonym Extraction, POS checking and semantic similarity checking whereas BAER uses a Language Model for word replacement.
+
+@&#EXPERIMENT@&#
+
+We experiment with different benchmark datasets for text classification and entailment: IMDB, AG News, Yelp Polarity and MNLI . The statistics of the final dataset are shown in Table 1. Test set was randomly choosen stratified set. For evaluating the effectiveness of our proposed approach, we experiment with SOTA text classifiers i.e. transformer based models like BERT (Devlin et al., 2018), ALBERT (Lan et al., 2019), RoBERTa (Liu et al., 2019) and DistilBERT (Sanh et al., 2019). We replaced the existing word ranking strategies (i.e. Original (delete)) of previous attack methods: Textfooler (Jin et al., 2019) and BAE-R (Garg and Ramakrishnan, 2020) with word rankings generated using OLM and OLM-S while keeping rest of the attack procedure same. The comparison is provided between the attacks generated through original word ranking, and OLM adapted word ranking (including comparison with PWWS attack method (Ren et al., 2019)) in table 2, table 3 and table 4. PWWS (Probability Weighted Word Saliency) method considers the word saliency along with the classification probability. The change in value of the classification probability is used to measure the attack effect of the proposed substitute word, while word saliency shows how well the original word affects the classification. We use the default language model (BERT) employed in the OLM and OLM-S, and kept the number of samples generated by the OLM language model as 30 in all the experiments.
+
+The following evaluation metrics are used:
+• Attacked Acc.: Accuracy of the model after attack. Lower the better.
+• Success Rate: Ratio of number of successful attacks and the total number of attempted attacks1. Higher the better.
+• Perturbed Percentage: Ratio of number of words that were modified by the attack and the total number of words in the input example. Lower the better.
+We use TextAttack’s (Morris et al., 2020) fine tuned models on these datasets and used it to execute the attacks, including Adv-OLM (Appendix B). Number of queries in Adv-OLM: From equations 2 and 3, it is clear that unlike other methods of deletion and [UNK] token replacement, which perform only a single query, we need to perform multiple queries. We set the number of samples generated by the OLM language model to 30 for our experiment. In the worst case, we would have all 30 samples of the token as unique, which will query the model 30 times. However, experimentally it was not the case. To study this, we varied the number of samples and evaluated the OLM ranking step’s number of queries. In fig 2, we plotted the number of queries for OLM averaged over the input samples against the number of samples. We can see that there is not a significant difference in the total number of samples in our case (OLM + Textfooler queries) when compared with PWWS.
+
+@&#RESULTS@&#
+
+Results are shown in Tables 2, 3 and 4. Table 2 provides the results on AG News and Yelp datasets on fine-tuned BERT and ALBERT model. Our method performs better on both datasets by increasing the success rate by about 1-3% than the previous methods and also decreasing the perturbation percentage. Table 3 gives the results of attacking a fine-tuned BERT on MNLI. Although we did not perform better than original BAE-R, we were still able to outperform TextFooler. Due to the unavailability of MNLI fine-tuned ALBERT model in TextAttack, we did not perform an attack on ALBERT. It can also be seen from Table 2 that the perturbation percentage for AG’s News exceed more than 20%, which seems to be a perceptible change, but since the average length of the article is only 40.41, making the space for finding relevant words less, the perturbation percentage becomes very high.
+
+To compare attacks across different transformerbased models, we evaluate the performance of Adv-OLM on IMDB dataset. Table 4 provides the results of different attack methods on BERT, ALBERT, RoBERTa, DistilBERT and BiLSTM. Adv-OLM was able to outperform previous attack methods on BERT, ALBERT, RoBERTa by increasing the success rate up to 10% for BAE-R and up to 6% for TextFooler. Perturbation percentage was also reduced by 1-2%. On DistilBERT, Adv-OLM showed no change in the success rate, but the perturbation percentage was lowered slightly. We also performed an attack on a non-transformer based BiLSTM model which did not show any improvements in the success rate. For BAE-R, it even showed a decrease in the success rate for Adv-OLM. One possible reason for this might be that in both OLM and OLM-S word sampling is performed using a transformer-based BERT language model. We also have qualitative results on IMDB dataset (Figure 1a, 1b in Appendix).
+
+Experimentally it was observed that better words were ranked when OLM/OLM-S was used as the Word Ranking strategy (Figure 1b). When comparing with the original methods, Adv-OLM has more number of queries, which is due to the fact that for word rankings, OLM/OLM-S queries the model a number of times, thus increasing the overall queries. However, the difference in the number of Adv-OLM queries with the existing attacking methods is not very significant since the model is queried only for unique words from the samples generated from the language model.
+
+@&#CONCLUSION@&#
+
+In this work, we present Adv-OLM, a black box attacking method that uses OLM based word ranking strategy, improving the attack performance significantly over previous methods. We also studied how replacing a single variable in a complex system with a new existing method can improve upon the previously existing attack strategies. For future work, we would like to experiment with other language models in the OLM algorithm. We plan to study the effect of using different transformers for the language model and the target model.
+
+@&#ACKNOWLEDGEMENTS@&#
+
+
+
+@&#REFERENCES@&#
+

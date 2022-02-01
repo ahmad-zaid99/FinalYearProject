@@ -1,0 +1,98 @@
+Figure 1: Detailed architecture for a Hierarchical Transformer Encoder or HT-Encoder: The main inductive bias incorporated in this model is to encode the full dialog context hierarchically in two stages.
+This is done by the two encoders, 1) Shared Utterance Encoder (M layers) and 2) Context Encoder (N layers), as shown in the figure.
+Shared encoder first encodes each utterance (u1, u2, .
+The same parameterized Shared Encoder is used for encoding all utterances in the context.
+In the second Context Encoder the full context is encoded using a single transformer encoder for extracting dialog level features.
+The attention mask in context encoder decides how the context encoding is done and is a choice of the user.
+Only the final utterance in the Context Encoder gets to attend over all the previous utterances as shown.
+This allows the model to have access to both utterance level features and dialog level features till the last layer of the encoding process.
+, wi|ui| ], wij is the word embedding for j th word in i th utterance.
+2.1 Hierarchical Transformer Encoders (HT-Encoder) Like the original HRED architecture, HT-Encoder also has two basic components, a shared utterance encoder and the context encoder.
+Shared utterance encoder, or the Shared Encoder in short, is the first phase of the encoding process where each utterance is processed independently to obtain utterance level representations.
+In the second phase, the Context Encoder is used to process the full context together.
+We propose two different types of Hierarchical Encoding schemes for the transformer model.
+(2016) employed a hierarchical encoder for dialog contexts, they obtained a single representative embedding, usually the final hidden state of an RNN, for each utterance.
+Similarly, in HIER-CLS, the context encoder utilizes only a single utterance embedding for each utterance.
+We do this by taking the contextual embedding of the first token (often termed as the “CLS” token in transformer based models) of each utterance.
+HIER: Recent works have shown the importance of contextual word embeddings.
+In HIER, we consider contextual embedding of all utterance tokens as input to the context encoder.
+We simply concatenate the whole sequence of contextual embeddings and forward it to the context encoder.
+2.2 Conversion Algorithm: Standard Encoder to HT-Encoder In this section, we show how the two-step process of hierarchical encoding can be achieved using a single standard transformer encoder.
+If we want to have an M layer utterance encoder followed by an N layer context encoder, we start with an (M +N) layer standard encoder.
+Then by applying two separate masks as designed below, we convert the standard encoder into an HT-encoder.
+Within the self-attention mechanism of a transformer encoder, which token gets to attend to which other tokens is controlled by the attention mask.
+If we apply a block-diagonal mask, each block of size same as the length of utterances (as shown in Figure 2 bottom-left), to the concatenated sequence of tokenized utterances, we effectively achieve the same process of utterance encoding.
+We call this block-diagonal mask for utterance encoding the UT-mask.
+Similarly, another attention mask (CT-Mask) can explain the context encoding phase that allows tokens to attend beyond the respective utterance boundaries.
+From here, it can be quickly concluded that if we apply the UT-Mask for the first few layers of the encoder and the CT-Mask in the remaining few layers, we effectively have a hierarchical encoder.
+The CT-Mask also gives us more freedom on what kind of global attention we want to allow during context encoding.
+Positional encoding is applied once before utterance encoder (local PE) and once more before context encoder (global PE).
+UT-Mask and Local Positional Encoding The steps for obtaining the UT-Mask and positional encoding for the utterance encoder are given below and is accompanied by Figure 2.
+wij is the jth token of ith utterance.
+PI has the same dimensions as CI , and it stores the position of each token wij in context C, relative to utterance ui .
+P : I 7→ Rd is the positional encoding function that takes an index (or indices) and returns their d dim positional embedding.
+, lT − 1] CIR = repeat(CI , len(CI ), 0) A = 12CIR == (CTIR + CIR)) Pc = P[PI , :] CT-Masks for Models The attention masks for context encoding depends on the choice for model architecture.
+2.3 Model Architectures We propose several model architectures to test the effectiveness of the proposed HIER-Encoder in various experimental settings.
+Using the HIER encoding scheme described in Section 2.1, we test two model architectures for response generation, namely HIER and HIER++.
+HIER: HIER is the most straightforward model architecture with an HT-Encoder replacing the encoder in a Transformer Seq2Seq.
+First, in the utterance encoding phase, each utterance is encoded independently with the help of the UT-Mask.
+In the second half of the encoder, we apply a CT-Mask as depicted by the figure’s block attention matrix.
+Block Bij is a matrix which, if all ones, means that utterance i can attend to utterance j’s contextual token embeddings.
+The local and global positional encodings are applied, as explained in Section 2.2.
+A standard transformer decoder follows the HTEncoder for generating the response.
+A linear feedforward layer (FFN) acts as the embedding layer for converting their 44-dimension multi-hot dialog act representation.
+The output embedding is added to the input token embeddings of the decoder in HIER++ model.
+Similar to HDSA, we also use ground truth dialog acts during training, and predictions from a fine-tuned BERT model during validation and testing.
+HIER-CLS: As described in Section 2.1, the encoding scheme of HIER-CLS is more akin to the HRED (Chen et al., 2019) and HIBERT (Zhang et al., 2019) models.
+SET: HIER without the context encoder.
+It shows the importance of context encoding.
+Effectively, this model is only the shared utterance encoder (SET) applied to each utterance independently.
+MAT: HIER without the utterance encoder.
+This model only uses the context encoder as per the context attention mask of Figure 3a.
+As this is equivalent to a simple transformer encoder with a special attention mask, we call it the Masked Attention Transformer or MAT.
+SET++: An alternative version of SET with dialog-act input to the decoder similar to HIER++.
+The HIER-Joint model comprises an HT-Encoder and three transformer decoders for decoding belief state sequence, dialog act sequence, and response.
+As belief state labels can help dialog-act generation, and similarly, both belief and act labels can assist response generation, we pass the token embedding from the belief decoder and act decoder to the response decoder.
+Act decoder receives mean token embedding from the belief decoder too.
+Token-MoE (Pei et al., 2019) is a token level mixture-of-experts (MoE) model.
+It builds upon the base architecture of LSTM-Seq2Seq with soft attention.
+In the decoding phase, they employ k expert decoders and a chair decoder network which combines the outputs from the experts.
+AttnLSTM (Budzianowski et al., 2018) uses an LSTM Seq2Seq model with attention on encoded context utterance, oracle belief state and DB search results.
+HRED (Serban et al., 2017) model is based on the same idea of hierarchical encoding in RNN Seq2Seq networks (results source: Peng et al.,2019, 2020b).
+The transformer based baseline (Vaswani et al., 2017) concatenates the utterances in dialog context to obtain a single source sequence and treats the task as a sequence transduction problem.
+HDSA (Chen et al., 2019) uses a dialog act graph to control the state of the attention heads of a Seq2Seq transformer model.
+Using this method they train a domain-aware multi-decoder (DAMD) network for predicting belief, action and response, jointly.
+SimpleTOD (HosseiniAsl et al., 2020) and SOLOIST (Peng et al., 2020a) are both based on the GPT-2 (Radford et al., 2019) architecture.
+The main difference between these two architectures is that SOLOIST further pretrains the GPT-2 model on two more dialog corpus before fine-tuning on MultiWOZ dataset.
+3.1 Task Settings: Following the literature (Zhang et al., 2020a; Peng et al., 2020a), we now consider four different settings for evaluating the strength of hierarchical encoding.
+No Annotations First, to simply gauge the benefit of using a Hierarchical encoder in a Transformer Seq2Seq model, we compare the performance of HIER to other baselines including HRED and vanilla Transformer without any belief states and dialog act annotations.
+Some of the baselines generate dialog act as an intermediate step in their architecture whereas others use a fine-tuned BERT model.
+We did hyperparameter search using the Optuna library (Akiba et al., 2019) by training the model upto 5 epochs.
+Final models were trained 8 upto 30 epochs with early stopping.
+By comparing the performance of Transformer, SET and MAT baselines against that of HIER we can see that in each case HIER is able to improve in terms of BLEU, Success and overall Score.
+HIER being better than SET and MAT implies that only the UT-Mask or the CT-Mask is not sufficient, the full scheme of HT-Encoder is necessary for the improvement.
+This is reflected upto some extent in Entity-F1 score (H-Mean of entity recall and precision), but it too ignores tokens other than task related entities.
+In the Context-to-Response generation task with oracle policy (Table 3), our HIER++ and HIERCLS models show very strong performance and beat the HDSA model (in terms of Inform and Success rates) and even the GPT-2 based baseline SimpleTOD (in terms of BLEU and Success rate).
+This shows that without the intricacies of the baselines, just by applying a hierarchical encoder based model we are able to perform almost at the level of the state-of-the-art model.
+Compared to HIER, SimpleTOD utilizes GPT-2’s pretraining, and DAMD uses attention over previous belief states and action sequences.
+Whereas, HIER’s access to oracle policy is only through the average embedding of its tokens.
+While the above experiments focus on proving the base performance of the proposed response generation models (HIER, HIER++, HIER-CLS, and ablations), HT-Encoder can be applied to any model that uses a standard transformer encoder.
+Hence, in a final experiment (Table 6), we integrate HT-Encoder with an existing state-of-the-art model Marco.
+We replace the standard transformer in Marco with an HT-Encoder and rerun the contextto-response generation experiment.
+Introducing HT-Encoder into Marco helps improve in terms of inform (minor), success and the combined score metric.
+The results of this experiment show that HT-Encoder is suitable for any model architecture.
+Overall, our experiments show how useful the proposed HT-Encoder module can be for dialog systems built upon transformer encoder decoder architecture.
+We believe that our proposed approach for hierarchical encoding in transformers and the algorithm for converting the standard transformer encoder makes it an invaluable but accessible resource for future researchers working on dialog systems or similar problem statements with transformer-based architectures.
+(2017) proposed using neural networks for extracting features like intent, belief states, etc.
+Marco (Wang et al., 2020) and HDSA (Chen et al., 2019) used a finetuned BERT model as their act predictor as it often triumphs other ways to train the dialog policy network (even joint learning).
+HDSA is a transformer Seq2Seq model with act-controllable self-attention heads (in the decoder) to disentangle the individual tasks and domains within the network.
+Hierarchical Encoders The concept of Hierarchical Encoders have been used in many different context in the past.
+Many open domain dialog systems have used the hierarchical recurrent encoding scheme of HRED for various tasks and architectures.
+Hierarchical Encoder was first proposed by (Sordoni et al., 2015a) for using in a query suggestion system.
+They used it encode the user history comprising multiple queries using an Hierarchical LSTM network.
+HRED captures the high level features of the conversation in a context RNN.
+Another area in which researchers have proposed the use of hierarchical encoder is for processing of paragraph or long documents.
+(2015) used a hierarchical LSTM network for training an autoencoder that can encode and decode long paragraphs and documents.
+(2019) proposed HIBERT where they introduced hierarchy into the BERT architecture to remove the limitation on length of input sequence.
+HIBERT samples a single vector for each sentence or document segment (usually contextual embedding of CLS or EOS token) from the sentence encoder to be passed onto the higher level transformer encoder.
+Liu and Lapata (2019) applies a similar approach for encoding documents in a multi document summarization task.
