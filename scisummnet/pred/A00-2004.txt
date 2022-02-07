@@ -1,0 +1,17 @@
+Our segmentation algorithm takes a list of tokenized sentences as input.
+A tokenizer (Grefenstette and Tapanainen, 1994) and a sentence boundary disambiguation algorithm (Palmer and Hearst, 1994; Reynar and Ratnaparkhi, 1997) or EAGLE (Reynar et al., 1997) may be used to convert a plain text document into the acceptable input format.
+A stemming algorithm (Porter, 1980) is then applied to the remaining tokens to obtain the word stems.
+Thus, in the context of text segmentation where a segment has typically < 100 informative tokens, one can only use the metric to estimate the order of similarity between sentences, e.g. a is more similar to b than c. Furthermore, language usage varies throughout a document.
+Figure 2 shows an example of image ranking using a 3 x 3 rank mask with output range {0, 8).
+For segmentation, we used a 11 x 11 rank mask.
+The output is expressed as a ratio r (equation 2) to circumvent normalisation problems (consider the cases when the rank mask is not contained in the image).
+Figure 4 illustrates the more subtle effects of our ranking scheme. r(x) is the rank (1 x 11 mask) of (x) which is a sine wave with decaying mean, amplitude and frequency (equation 3).
+Our evaluation strategy is a variant of that described in (Reynar, 1998, 71-73) and the TDT segmentation task (Allan et al., 1998).
+Low error probability indicates high accuracy.
+Given the co-occurrence frequencies f (wi, wi), the transition probability matrix t is computed by equation 10.
+This is due to the use of a different part-of-speech tagger and shallow parser.
+Both algorithms used a 11 x 11 ranking mask.
+The second experiment investigates the effect of different ranking mask size on the performance of C99 (table 7).
+Execution time increases with mask size.
+A 1 x 1 ranking mask reduces all the elements in the rank matrix to zero.
+Interestingly, the increase in ranking mask size beyond 3 x 3 has insignificant effect on segmentation accuracy.

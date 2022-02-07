@@ -1,21 +1,25 @@
-from email import message_from_string
 import os
 import nltk
 
 
 
-path = "C:\\FinalYearProject\\pdf to txt\\New folder\\dataset2"
+# path = "C:\\FinalYearProject\\pdf to txt\\New folder\\dataset2"
+path = "C:\\FinalYearProject\\scisummnet\\pred"
 os.chdir(path)
 
-avg = 
+avg = 0
+cnt = 0
 
 for file in os.listdir():
     if file.endswith(".txt") :
-        f1=open(file, encoding='utf8')
+        # f1=open(file, encoding='utf8')
+        f1=open(file)
 
-        file2 = "gold/" + file[:len(file)-4] + "_gold" + ".txt"
+        # file2 = "gold/" + file[:len(file)-4] + "_gold" + ".txt"
+        file2 = "C:/FinalYearProject/scisummnet/gold/" + file[:len(file)-4] + "_gold" + ".txt"
 
-        f2 = open(file2, encoding='utf8')
+        # f2 = open(file2, encoding='utf8')
+        f2 = open(file2)
 
         f1_str = f1.readlines()
         hypothesis = []
@@ -30,11 +34,19 @@ for file in os.listdir():
         references = [reference]
         BLEUScore = nltk.translate.bleu_score.sentence_bleu(references, hypothesis)
 
+        # if BLEUScore>0.1 :
+        avg+=BLEUScore
+        cnt+=1
+
         print(BLEUScore)
 
 
 
         f2.close()
         f1.close()
+
+avg = avg/cnt
+print("Average BLEU Score = ",avg)
+
 
 
