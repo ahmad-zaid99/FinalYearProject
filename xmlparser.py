@@ -15,7 +15,13 @@ def check(sent) :
 
     # print(sent)
 
+    sent = re.sub("\([a-zA-Z, &. \d;]*[12]\d{3}\)", "", sent)
+    sent = re.sub("&[^ ]*;", "", sent)
+
     sent  = sent.lower()
+
+    if len(re.findall("[\d\.]*\d+", "I have 29 cats and 39 dogs.")) > 2 :
+        return True
 
     if re.search(reg, sent) is not None :
         return True
@@ -51,7 +57,7 @@ for file in os.listdir():
                 head = heading.attrib['title']
             head = head.lower()
 
-            reg1 = "(?:introduction|acknowledgement|conclusion|background|future)"
+            reg1 = "(?:introduction|acknowledgement|conclusion|background|future|related|previous)"
 
             if flag and re.search(reg1,head) is not None :
                 flag = False

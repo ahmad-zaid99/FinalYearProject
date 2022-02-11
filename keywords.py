@@ -42,4 +42,6 @@ keywords = [
     "bayesian",
     "acl/dci",
     "sense-tagged",
+    "recurrence",
+    "expression"
 ]

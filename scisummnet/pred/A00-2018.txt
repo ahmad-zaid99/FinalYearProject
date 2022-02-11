@@ -3,6 +3,7 @@ Thus the probability of a parse is given by the equation where 1(c) is the label
 In this notation the above equation takes the following form: Next we describe how we assign a probability to the expansion e of a constituent.
 M(c) is the constituent from which the head lexical item h is obtained according to deterministic rules that pick the head of a constituent from among the heads of its children.
 So, for example, in a second-order Markov PCFG, L2 would be conditioned on L1 and M. In our complete model, of course, the probability of each label in the expansions is also conditioned on other material as specified in Equation 1, e.g., p(e t, h, H).
+Note that the As on both ends of the expansion in Expression 2 are conditioned just like any other label in the expansion.
 Also, remember that H is a placeholder for any other information beyond the constituent c that may be useful in assigning c a probability.
 To compute a probability in a log-linear model one first defines a set of &quot;features&quot;, functions from the space of configurations over which one is trying to compute probabilities to integers that denote the number of times some pattern occurs in the input.
 For example, in computing the probability of the head's pre-terminal t we might want a feature schema f (t, 1) that returns 1 if the observed pre-terminal of c = t and the label of c = 1, and zero otherwise.
