@@ -1,3 +1,4 @@
+To be explicit, we calculate for a given sequence of words w1 of length T. t1 tr are elements of the tagset, the additional tags t_1, to, and t7-,±1 are beginning-of-sequence and end-of-sequence markers.
 ;] as a token.
 As a first step, we use the maximum likelihood probabilities P which are derived from the relative frequencies: for all t1, t2, t3 in the tagset and w3 in the lexicon.
 N is the total number of tokens in the training corpus.
@@ -14,10 +15,12 @@ The suffix is a strong predictor for word classes, e.g., words in the Wall Stree
 The probability distribution for a particular suffix is generated from all words in the training set that share the same suffix of some predefined maximum length.
 This calculates the probability of a tag t given the last m letters i of an n letter word: P(t1/7„,+1,,..ln).
 The recursion formula is set A = A2 = A3 = 0 foreach trigram t1,t2,t3 with f (ti,t2,t3) >0 depending on the maximum of the following three values: for i = m ... 0, using the maximum likelihood estimates P from frequencies in the lexicon, weights Oi and the initialization For the Markov model, we need the inverse conditional probabilities P(1,2_1+1, ... /Tilt) which are obtained by Bayesian inversion.
+It turned out to be a good choice to set all 0, to the standard deviation of the unconditioned maximum likelihood probabilities of the tags in the training corpus, i.e., we set for all i = 0 ... m — 1, using a tagset of s tags and the average (11) This usually yields values in the range 0,03 ... 0.10.
 4) Another freedom concerns the choice of the words in the lexicon that should be used for suffix handling.
 Accepting that unknown words are most probably infrequent, one can argue that using suffixes of infrequent words in the lexicon is a better approximation for unknown words than using suffixes of frequent words.
 Tags are usually not informative about capitalization, but probability distributions of tags around capitalized words are different from those not capitalized.
 These flags are added to the contextual probability distributions.
+Each state that receives a 6 value smaller than the largest 6 divided by some threshold value 0 is excluded from further processing.
 While the Viterbi algorithm is guaranteed to find the sequence of states with the highest probability, this is no longer true when beam search is added.
 Empirically, a value of 0 = 1000 turned out to approximately double the speed of the tagger without affecting the accuracy.
 The tagger currently tags between 30,000 and 60,000 tokens per second (including file I/O) on a Pentium 500 running Linux.

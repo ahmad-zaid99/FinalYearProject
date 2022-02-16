@@ -1,0 +1,13 @@
+Due to sparse data, some of the features later in the list may need to be ignored; thus the probability of an unknown feature value would be estimated as where P refers to an empirically observed probability.
+Of course, if features 1 through i only co-occur a few times in the training, this value may not be reliable, so the empirical probability is usually smoothed: The values for Ai can then be determined according to the number of occurrences of features 1 through i together in the training.
+One way to think about equation 1 (and specifically, the notion that j will depend on the values of Ii fn) is as follows: We begin with the prior probability of f. If we have data indicating P(fIfi), we multiply in that likelihood, while dividing out the original prior.
+If we have data for P( fl f2), we multiply that in while dividing out the P (f in) term.
+If knowledge about feature fi makes f more likely than with just fi_i, the term where fi is added will be greater than one and the running probability will be adjusted upward.
+This gives us the new probability shown in equation 3, which is exactly equivalent to equation 1 since everything except the last numerator cancels out of the equation.
+The value of j is chosen such that features Ii fi are sufficiently represented in the training data; sometimes all n features are used, but often that would cause sparse data problems.
+As we said before, equation 3 represents, for each feature the probability of f based on fi and all its predecessors, divided by the probability of f based only on the predecessors.
+In the chain case, this means that the denominator is conditioned on every feature from 1 to i &#8212; 1, but if we use a feature tree, it is conditioned only on those features along the path to the root of the tree.
+However, if the independence assumptions made in the derivation of equation 4 are good ones, the partition function will be close to 1.0.
+In the training phase of our experiment, we gathered statistics on the occurrence of function tags in sections 2-21 of the Penn treebank.
+To test, then, we simply took the output of our parser on the test corpus (treebank section 23), and applied a postprocessing step to add function tags.
+In this case, that means excluding those constituents that were already wrong in the parser output; the parser we used attains 89% labelled precision-recall, so roughly 11% of the constituents are excluded from the function tag accuracy evaluation.

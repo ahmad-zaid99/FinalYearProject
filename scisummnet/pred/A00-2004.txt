@@ -7,12 +7,18 @@ Figure 2 shows an example of image ranking using a 3 x 3 rank mask with output r
 For segmentation, we used a 11 x 11 rank mask.
 The output is expressed as a ratio r (equation 2) to circumvent normalisation problems (consider the cases when the rank mask is not contained in the image).
 Figure 4 illustrates the more subtle effects of our ranking scheme. r(x) is the rank (1 x 11 mask) of (x) which is a sine wave with decaying mean, amplitude and frequency (equation 3).
+An unusually large reduction in 6D suggests the optiinal clustering has been obtained3 (see n = 10 in the threshold, p+c x to dD (c= 1.2 works well in practice) The running time of each step is dominated by the computation of sk.
 Our evaluation strategy is a variant of that described in (Reynar, 1998, 71-73) and the TDT segmentation task (Allan et al., 1998).
 Low error probability indicates high accuracy.
+We consider the status of in potential boundaries as a bit string (1 -4 topic boundary).
+The terms p(iniss) awl p(fa) in equation 6 corresponds to p(samelk) and p(difflk) = 1 -p(samelk).
+Equation 7, 8 and 9 gives the general form of p(samelk), B(r,?) and Berm, respectively'.
 Given the co-occurrence frequencies f (wi, wi), the transition probability matrix t is computed by equation 10.
+Equation 11 defines our spread activation scheme. s denotes the word similarity matrix, x is the number of activation steps and norm(y) converts a matrix y into a transition matrix. x = 5 was used in the experiment.
 This is due to the use of a different part-of-speech tagger and shallow parser.
 Both algorithms used a 11 x 11 ranking mask.
 The second experiment investigates the effect of different ranking mask size on the performance of C99 (table 7).
 Execution time increases with mask size.
 A 1 x 1 ranking mask reduces all the elements in the rank matrix to zero.
 Interestingly, the increase in ranking mask size beyond 3 x 3 has insignificant effect on segmentation accuracy.
+C99, K98 and R98 are all polynomial time algorithms.

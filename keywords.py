@@ -43,5 +43,9 @@ keywords = [
     "acl/dci",
     "sense-tagged",
     "recurrence",
-    "expression"
+    "expression",
+    "dsyntr",
+    "tagger",
+    "probability",
+    "lexixal"
 ]

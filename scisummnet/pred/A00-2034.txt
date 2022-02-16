@@ -1,0 +1,22 @@
+Several researchers have suggested using them for improving lexical acquisition.
+Alternations provide a means of reducing redundancy in the lexicon since the alternating scFs need not be enumerated for each individual verb if a marker is used to specify which verbs the alternation applies to.
+The resulting SCF lexicon lists each verb with the scFs it takes.
+A conditional probability is attached to each of the classes in the set.
+The cost of describing each argument head (n) is calculated using the log of the probability estimate for the classes on the TCM that n belongs to (ca).
+The probability estimates are shown for the classes along the TCM.
+To compare the preferences we compare the probability distributions across WordNet using a measure of distributional similarity.
+Since the probability distributions may be at different levels of WordNet, we map the Tcms at the target slots to a common tree cut, a &quot;base cut&quot;.
+The probability estimate for a hypernym class is obtained by combining the probability estimates for all its hyponyms on the original cut.
+The UBC is at the classes B, C and D. To quantify the similarity between the probability distributions for the target slots we use the a-skew divergence (asp) proposed by Lee (1999).
+1 This measure, defined in equation 2, is a smoothed version of the Kulback-Liebler divergence. p1(x) and p2(x) are the two probability distributions which are being compared.
+We experiment with a SCF lexicon produced from 19.3 million words of parsed text from the BNC (Leech, 1992).
+We used the causative and conative alternations, since these have enough candidates in our lexicon for experimentation.
+From these, verbs were selected which had 75% or more agreement, i.e. three or more judges giving the same yes or no decision for the verb.
+For the causative alternation we were left with 46 positives and 53 negatives.
+Both thresholds outperform the random baseline of 50%.
+There verbs have a high probability mass (around 0.7) under the entity class in both target slots, since both people and types of food occur under this class.
+In cases like these, the probability distributions at the RBC, and frequently the UBC, are not sufficiently distinctive.
+A sample of 12 verbs (6 positive and 6 negative) remained after the selection process outlined above.
+For this small sample we obtained a significant result (p = 0.02) with a mean accuracy of 67% and a median accuracy of 83%.
+This is significant to the 95% level, a lower level than that for the classbased experiments.
+The mean produces an accuracy of 58% whilst the median produces an accuracy of 50%.

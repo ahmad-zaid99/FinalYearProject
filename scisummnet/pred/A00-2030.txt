@@ -1,0 +1,11 @@
+Although each model differed in its detailed probability structure, we believed that the essential elements of all three models could be generalized in a single probability model.
+The detailed probability structure differs, however, in that it was designed to jointly perform part-of-speech tagging, name finding, syntactic parsing, and relation finding in a single process.
+At each step in the process, a choice is made from a statistical distribution, with the probability of each possible selection dependent on particular features of previously generated elements.
+We now briefly summarize the probability structure of the model.
+The probability of a complete tree is the product of the probabilities of generating each element in the tree.
+The search is kept tractable through a combination of CKY-style dynamic programming and pruning of low probability elements.
+For purposes of pruning, and only for purposes of pruning, the prior probability of each constituent category is multiplied by the generative probability of that constituent (Goodman, 1997).
+We can think of this prior probability as an estimate of the probability of generating a subtree with the constituent category, starting at the topmost node.
+The probability of generating a constituent of the specified category, starting at the topmost node.
+The probability of generating the structure beneath that constituent, having already generated a constituent of that category.
+Our system for MUC-7 consisted of the sentential model described in this paper, coupled with a simple probability model for cross-sentence merging.

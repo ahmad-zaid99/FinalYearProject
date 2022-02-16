@@ -1,0 +1,30 @@
+These rules can be stated independently of the formulation of purely semantic rules that determine lexical and syntactic choices.
+Once the sentence planner has constructed the DSyntR of a complete sentence, it sends it to the realizer which generates the English sentence.
+We have developed a &quot;schema language&quot; for easy representation of DCK, called DICKENS (DomaIn Communication Knowledge ENcoding Schemas).
+Other special commands support conditional branching and iteration.
+It receives propositions from the text planner and sends the DSyntR of complete sentences to the realizer for processing.
+It has two main tasks: first, it chooses lexical and syntactic realizations by consulting the Conceptual/English dictionary; second, it determines sentence scope by merging the DSyntR of individual propositions.
+Each proposition is mapped into the DSyntR of a clause (i.e., its root is a verb).
+Lexicalization can take pragmatic factors into account.
+It can also refer to a history of lexicalizations if lexical variation is desired.
+After a DSyntR has been constructed, certain syntactic paraphrase operations are performed if necessary, for example passivization if a grammatical object is the theme of the sentence, or if the subject is absent.
+Joyce performs the following syntactic clausecombining operations: Relative clause formation, adjectival attachment (the process by which an adjective from a copula-construction is embedded in an NP), and conjunction.
+The stylistic constraints are constraints against the sentence becoming too long (an upper bound on the number of clauses that can be combined into one sentence), and a constraint on recursive embedding of relative clauses.
+The sentence planner maintains a &quot;current&quot; DSyntR.
+Each incoming proposition is translated into a DSyntR, which the sentence planner then attempts to merge with the current DSyntR.
+If none of the clause combination strategies work, or if stylistic heuristics interfere, or if the incoming proposition is a conceptual-break, the current DSyntR is sent to the realizer and the new DSyntR becomes the current one.
+The process of clause combination can be very easily modeled at the DSyntR level: relative clause formation and conjunction reduce to simple tree composition operations.
+Not all arguments must be filled by a :make-proposition command; the sentence planner will choose lexical and syntactic realizations accordingly.
+The text planner sends an insecure-flow proposition to the sentence planner, which translates it into a DSyntR tree (which represents the clause In the Black Box an insecure flow occurs) and returns control to the text planner.
+ceives the enter proposition, it translates it into the DSyntR tree shown in Figure 9, which could be expressed as the clause information enters the Black Box through P6.
+The sentence planner then tries to combine the new DSyntR with the current one (which was derived from the previous proposition).
+This fails (since the two clauses have different verbs and different actants), so the current DSyntR is sent to the realizer, which prints out the first sentence.
+The new DSyntR becomes the current one.
+The sentence planner generates the clausal DSyntR tree shown in Figure 10 (the information is classified).
+It then attempts to combine the new clause with the &quot;current DSyntR&quot;, first using the adjectival attachment strategy.
+It then returns control to the text planner, since another clause could be merged with the current DSyntR.
+The only effect of this schema is to send a conceptual-break message to the sentence planner, which thereupon sends its current DSyntR to the realizer.
+Note that this combination is not a linguistic one but a conceptual one, since it relies on facts about sending data in this domain, rather than on the syntax or lexical semantics about the verb send.
+(Realization components, on the other hand, can be tested for their syntactic and perhaps lexical coverage.)
+Several new lexical items were entered into the English lexicon.
+Note that those parts of Joyce that deal with facts of English (including clause combination) needed no attention (other than updating the lexicon).

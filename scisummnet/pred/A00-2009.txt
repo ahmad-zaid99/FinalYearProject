@@ -11,6 +11,7 @@ Note that Naive_Bayes (0,0) includes no words to the left or right; this classif
 Once the individual classifiers are trained they are evaluated using previously held-out test data.
 The crucial step in building an ensemble is selecting the classifiers to include as members.
 The approach here is to group the 81 Naive Bayesian classifiers into general categories representing the sizes of the windows of context.
+There are three such ranges; narrow corresponds to windows 0, 1 and 2 words wide, medium to windows 3, 4, and 5 words wide, and wide to windows 10, 25, and 50 words wide.
 The most accurate classifier in each of the nine range categories is selected for inclusion in the ensemble.
 Each of the nine member classifiers votes for the most probable sense given the particular context represented by that classifier; the ensemble disambiguates by assigning the sense that receives a majority of the votes.
 The line data was created by (Leacock et al., 1993) by tagging every occurrence of line in the ACL/DCI Wall Street Journal corpus and the American Printing House for the Blind corpus with one of six possible WordNet senses.
@@ -18,13 +19,16 @@ In that work, as well as in this paper, a subset of the corpus is utilized such 
 The uniform distribution is created by randomly sampling 349 sense-tagged examples from each sense, resulting in a training corpus of 2094 sense-tagged sentences.
 The interest data was created by (Bruce and Wiebe, 1994) by tagging all occurrences of interest in the ACL/DCI Wall Street Journal corpus with senses from the Longman Dictionary of Contemporary English.
 The previous studies and this paper use the entire 2,368 sense-tagged sentence corpus in their experiments.
+The senses and their fresense count product 2218 written or spoken text 405 telephone connection 429 formation of people or things; queue 349 an artificial division; boundary 376 a thin, flexible object; cord 371 total 4148 Table 1: Distribution of senses for line - the experiments in this paper and previous work use a uniformly distributed subset of this corpus, where each sense occurs 349 times. sense count money paid for the use of money 1252 a share in a company or business 500 readiness to give attention 361 advantage, advancement or favor 178 activity that one gives attention to 66 causing attention to be given to 11 total 2368 Table 2: Distribution of senses for interest - the experiments in this paper and previous work use the entire corpus, where each sense occurs the number of times shown above. quency distribution are shown in Table 2.
 Unlike line, the sense distribution is skewed; the majority sense occurs in 53% of the sentences, while the smallest minority sense occurs in less than 1%.
 Eighty-one Naive Bayesian classifiers were trained and tested with the line and interest data.
 Four folds were used to train the Naive Bayesian classifier while the remaining fold was randomly divided into two equal sized test sets.
 The first, devtest, was used to evaluate the individual classifiers for inclusion in the ensemble.
 Thus the training data for each word consists of 80% of the available sensetagged text, while each of the test sets contains 10%.
 The average accuracy of the individual Naive Bayesian classifiers across the five folds is reported in Tables 3 and 4.
+The standard deviations were between .01 and .025 and are not shown given their relative consistency.
 Each classifier is based upon a distinct representation of context since each employs a different combination of right and left window sizes.
+The size and range of the left window of context is indicated along the horizontal margin in Tables 3 and 4 while the right window size and range is shown along the vertical margin.
 The classifier that achieves the highest accuracy in each range category is included as a member of the ensemble.
 In case of a tie, the classifier with the smallest total window of context is included in the ensemble.
 The most accurate single classifier for line is Naive_Bayes (4,25), which attains accuracy of 84% The accuracy of the ensemble created from the most accurate classifier in each of the range categories is 88%.
