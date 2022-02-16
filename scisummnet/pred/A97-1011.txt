@@ -1,0 +1,10 @@
+If, in addition, the verb does not take indirect objects, i.e. there is no SVO0 in the same verb (LINK NOT 0 SV00), the CI-OBJ reading will be discarded.
+(Hays, 1964), have brought the strict projectivity (context-free) requirement into the dependency framework.
+Our notation makes a difference between valency (rule-based) and subcategorisation (lexical): the valency tells which arguments are expected; the subcategorisation tells which combinations are legitimate.
+The overall result is that the rules in the new framework are much more careful than those of ENGCG.
+The PC has a Pentium 90 MHz processor and 16 MB of memory.
+These include the tokeniser, lexical analyser and morphological disambiguator.
+A similar measure is used in (Eisner, 1996) except that every word has a head, i.e. the precision equals recall, reported as 79.2%.
+It seems the parser leaves some amount of the words unlinked (e.g. 10-15% of subjects) but what it has recognised is generally correct (precision 95-98% for subjects).
+Dekang Lin (1996) has earlier used this kind of evaluation, where precision and recall were for subjects 87% and 78%, and for complements (including objects) 84% and 72 %, respectively.
+Voutilainen and Juha Heikkild created the original ENGCG lexicon.

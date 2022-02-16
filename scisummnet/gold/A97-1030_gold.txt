@@ -1,0 +1,9 @@
+In this case, Nominator consults a small authority file which contains information on about 3000 special 'name words' and their relevant lexical features.
+Also listed are exception words, such as upper-case lexical items that are unlikely to be single-word proper names (e.g., Very, I or TV) and lower-case lexical items (e.g., and and van) that can be parts of proper names.
+In addition, the authority file contains about 20,000 first names.
+The precision and recall of Nominator, operating without a database of pre-existing proper names, is in the 90's while the processing rate is over 40Mg of text per hour on a RISC/6000 machine.
+A linguist manually identified 2426 occurrences of proper names, which reduced to 1354 unique tokens.
+Of these, Nominator correctly identified the boundaries of 91% (1230/1354).
+The precision rate was 92% for the 1409 names Nominator identified (1230/1409).
+In terms of semantic disambiguation, Nominator failed to assign an entity type to 21% of the names it identified.
+The payoff of this choice is a very high precision rate &#8212; 99% &#8212; for the assignment of semantic type to those names that were disambiguated.

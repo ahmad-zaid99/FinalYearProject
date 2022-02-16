@@ -1,0 +1,32 @@
+The tagger works by automatically recognizing and remedying its weaknesses, thereby incrementally improving its performance.
+The tagger initially tags by assigning each word its most likely tag, estimated by examining a large tagged corpus, without regard to context.
+The initial tagger has two procedures built in to improve performance; both make use of no contextual information.
+This very simple algorithm has an error rate of about 7.9% when trained on 90% of the tagged Brown Corpus' [Francis and Kueera 82], and tested on a separate 5% of the corpus.2 Training consists of compiling a list of the most common tag for each word in the training corpus.
+The tagger then acquires patches to improve its performance.
+Patch templates are of the form: The initial tagger was trained on 90% of the corpus (the training corpus).
+5% was held back to be used for the patch acquisition procedure (the patch corpus) and 5% for testing.
+Once the initial tagger is trained, it is used to tag the patch corpus.
+A list of tagging errors is compiled by comparing the output of the tagger to the correct tagging of the patch corpus.
+This list consists of triples < taga,tagb,number >, indicating the number of times the tagger mistagged a word with taga when it should have been tagged with tagb in the patch corpus.
+For example, when the initial tagger tags the patch corpus, it mistags 159 words as verbs when they should be nouns.
+If the patch change the tag from verb to noun if one of the two preceding words is tagged as a determiner is applied, it corrects 98 of the 159 errors.
+First, tag the text using the basic lexical tagger.
+If a template is bad, then no rules which are instantiations of that template will appear in the final list of patches learned by the tagger.
+This makes it easy to experiment with extensions to the tagger.
+The tagger was tested on 5% of the Brown Corpus including sections from every genre.
+First, the test corpus was tagged by the simple lexical tagger.
+It is significant that with only 71 patches, an error rate of 5.1% was obtained'.
+Of the 71 patches, 66 resulted in a reduction in the number of errors in the test corpus, 3 resulted in no net change, and 2 resulted in a higher number of errors.
+91], an error rate of 3-4% on one domain, Wall Street Journal articles and 5.6% on another domain, texts on terrorism in Latin American countries, is quoted.
+[Church 88] reports an accuracy of &quot;95-99% correct, depending on the definition of correct&quot;.
+When trained and tested on the same samples used in our experiment, we found the error rate to be about 4.5%.
+[DeRose 88] quotes a 4% error rate; however, the sample used for testing was part of the training corpus.
+[Garside et al. 87] reports an accuracy of 96-97%.
+Their probabilistic tagger has been augmented with a handcrafted procedure to pretag problematic &quot;idioms&quot;.
+This procedure, which requires that a list of idioms be laboriously created by hand, contributes 3% toward the accuracy of their tagger, according to [DeRose 88].
+The idiom list would have to be rewritten if one wished to use this tagger for a different tag set or a different corpus.
+It is interesting to note that the information contained in the idiom list can be automatically acquired by the rule-based tagger.
+For example, their tagger had difficulty tagging as old as.
+In the rule-based tagger, the most common tag for as is subordinating conjunction.
+To remedy this, the system acquires the patch: if the current word is tagged as a subordinating conjunction, and so is the word two positions ahead, then change the tag of the current word to gualifier.6 The rule-based tagger has automatically learned how to properly tag this &quot;idiom.&quot; Regardless of the precise rankings of the various taggers, we have demonstrated that a simple rule-based tagger with very few rules performs on par with stochastic taggers.
+6This was one of the 71 patches acquired by the rule-based tagger.

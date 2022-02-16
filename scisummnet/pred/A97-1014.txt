@@ -1,0 +1,15 @@
+A phrase or a lexical item can perform multiple functions in a sentence.
+In such cases, an additional edge is drawn from the embedded VP node to the controller, thus changing the syntactic tree into a graph.
+However, some other standard analysts turn out to be problematic, mainly due to the partial, idealised character of competence grammars, which often marginalise or ignore such important. phenomena. as 'deficient' (e.g. headless) constructions, appositions, temporal expressions, etc.
+Most linguistic theories treat NPs as structures headed by a unique lexical item (noun).
+In (5), either a lexical nominalisation rule for the adjective Gliickliche is stipulated, or the existence of an empty nominal head.
+Since a precise structural description of non-constituent coordination would require a. rich inventory of incomplete phrase types, we have agreed on a sort of unde.rspe.cified representations: the coordinated units are assigned structures in which missing lexical material is not represented at the level of primary links.
+3 shows the representation of the sentence: (6) sic wurde von preuBischen Truppen besetzt she was by Prussian troops occupied und 1887 dem preuliischen Staat angegliedert and 1887 to-the Prussian state incorporated 'it was occupied by Prussian troops and incorporated into Prussia in 1887' The category of the coordination is labeled CVP here, where C stands for coordination, and VP for the actual category.
+For a phrase Q with children of type T„..., Ta and grammatical functions G„...,GA., we use the lexical probabilities and the contextual (trigram) probabilities The lexical and contextual probabilities are determined separately for each type of phrase.
+To keep the human annotator from missing errors made by the tagger, we additionally calculate the strongest competitor for each label G. If its probability is close to the winner (closeness is defined by a threshold on the quotient), the assignment is regarded as unreliable, and the annotator is asked to confirm the assignment.
+For evaluation, the already annotated sentences were divided into two disjoint sets, one for training (90% of the corpus), the other one for testing (10%).
+The tagger rates 90% of all assignments as reliable and carries them out fully automatically.
+Accuracy for these cases is 97%.
+Accuracy of the unreliable 10% of assignments is 75%, i.e., the annotator has to alter the choice in 1 of 4 cases when asked for confirmation.
+Overall accuracy of the tagger is 95%.
+Owing to the partial automation, the average annotation efficiency improves by 25% (from around 4 minutes to 3 minutes per sentence).
