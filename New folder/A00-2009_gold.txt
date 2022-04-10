@@ -1,0 +1,27 @@
+For a Naive Bayesian classifier, the joint probability of observing a certain combination of contextual features with a particular sense is expressed as: The parameters of this model are p(S) and FilS)&#8226; The sufficient statistics, i.e., the summaries of the data needed for parameter estimation, are the frequency counts of the events described by the interdependent variables (Fi, S).
+All other lexical items are included in their original form; no stemming is performed and non-content words remain.
+This representation of context is a variation on the bag-of-words feature set, where a single window of context includes words that occur to both the left and right of the ambiguous word.
+The first step in the ensemble approach is to train a separate Naive Bayesian classifier for each of the 81 possible combination of left and right window sizes.
+Naive_Bayes (1,r) represents a classifier where the model parameters have been estimated based on frequency counts of shallow lexical features from two windows of context; one including 1 words to the left of the ambiguous word and the other including r words to the right.
+The approach here is to group the 81 Naive Bayesian classifiers into general categories representing the sizes of the windows of context.
+The line data was created by (Leacock et al., 1993) by tagging every occurrence of line in the ACL/DCI Wall Street Journal corpus and the American Printing House for the Blind corpus with one of six possible WordNet senses.
+In that work, as well as in this paper, a subset of the corpus is utilized such that each sense is uniformly distributed; this reduces the accuracy of the majority classifier to 17%.
+The uniform distribution is created by randomly sampling 349 sense-tagged examples from each sense, resulting in a training corpus of 2094 sense-tagged sentences.
+The interest data was created by (Bruce and Wiebe, 1994) by tagging all occurrences of interest in the ACL/DCI Wall Street Journal corpus with senses from the Longman Dictionary of Contemporary English.
+The previous studies and this paper use the entire 2,368 sense-tagged sentence corpus in their experiments.
+Unlike line, the sense distribution is skewed; the majority sense occurs in 53% of the sentences, while the smallest minority sense occurs in less than 1%.
+Eighty-one Naive Bayesian classifiers were trained and tested with the line and interest data.
+Four folds were used to train the Naive Bayesian classifier while the remaining fold was randomly divided into two equal sized test sets.
+Thus the training data for each word consists of 80% of the available sensetagged text, while each of the test sets contains 10%.
+The average accuracy of the individual Naive Bayesian classifiers across the five folds is reported in Tables 3 and 4.
+The most accurate single classifier for line is Naive_Bayes (4,25), which attains accuracy of 84% The accuracy of the ensemble created from the most accurate classifier in each of the range categories is 88%.
+The single most accurate classifier for interest is Naive_Bayes(4,1), which attains accuracy of 86% while the ensemble approach reaches 89%.
+A decomposable probabilistic model is induced from the sense-tagged corpora using a backward sequential search where candidate models are evaluated with the log-likelihood ratio test.
+The selected model was used as a probabilistic classifier on a held-out set of test data and achieved accuracy of 78%.
+A nearest-neighbor classifier was employed and achieved an average accuracy of 87% over repeated trials using randomly drawn training and test sets.
+The first compares a range of probabilistic model selection methodologies and finds that none outperform the Naive Bayesian classifier, which attains accuracy of 74%.
+The second compares a range of machine learning algorithms and finds that a decision tree learner (78%) and a Naive Bayesian classifier (74%) are most accurate.
+They evaluate the disambiguation accuracy of a Naive Bayesian classifier, a content vector, and a neural network.
+The context of an ambiguous word is represented by a bag-of-words where the window of context is two sentences wide.
+They report no significant differences in accuracy among the three approaches; the Naive Bayesian classifier achieved 71% accuracy, the content vector 72%, and the neural network 76%.
+The two most accurate methods in this study proved to be a Naive Bayesian classifier (72%) and a perceptron (71%).

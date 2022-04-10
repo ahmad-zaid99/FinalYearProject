@@ -15,7 +15,6 @@ The terms p(iniss) awl p(fa) in equation 6 corresponds to p(samelk) and p(difflk
 Equation 7, 8 and 9 gives the general form of p(samelk), B(r,?) and Berm, respectively'.
 Given the co-occurrence frequencies f (wi, wi), the transition probability matrix t is computed by equation 10.
 Equation 11 defines our spread activation scheme. s denotes the word similarity matrix, x is the number of activation steps and norm(y) converts a matrix y into a transition matrix. x = 5 was used in the experiment.
-This is due to the use of a different part-of-speech tagger and shallow parser.
 Both algorithms used a 11 x 11 ranking mask.
 The second experiment investigates the effect of different ranking mask size on the performance of C99 (table 7).
 Execution time increases with mask size.

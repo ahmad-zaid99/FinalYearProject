@@ -1,0 +1,8 @@
+using binary rules for inference is not enough.
+We are further motivated by the fact thatsome (mostly supervised) works in IE found learn ing unary templates useful for recognizing relevant named entities (Riloff, 1996; Sudo et al, 2003; Shinyama and Sekine, 2006), though they did notattempt to learn generic knowledge bases of entail ment rules.This paper investigates acquisition of unary entailment rules from regular non-comparable cor pora
+The first ap proach directly assesses the relation between twogiven templates based on the similarity of their in stantiations in the corpus.
+The second approach,which was also mentioned in (Iftene and Balahur Dobrescu, 2007), derives unary rules from learned binary rules.
+we chose the structure of unary templates to be paths as well, where oneend of the path is the template?s variable.
+How ever, paths with one variable have more expressive power than paths between two variables, since the combination of two unary paths may generate a binary template that is not a path.
+whenever a verb is encountered we generate templates that are paths between v and the verb?s modifiers, either ob jects, prepositional complements or infinite or gerund verb forms (paths ending at stop words, e.g. pronouns, are not generated).
+We use the Catvar database to identify verb derivations (Habash and Dorr, 2003).

@@ -1,4 +1,3 @@
-The Brill tagger output is post-processed to &quot;enrich&quot; some closed class categories of its tag set, such as subject versus object pronoun and definite versus indefinite determiner.
 For example, in the newspaper domain, concentrate is usually used as a noun, as in orange juice concentrate but in TOEFL essays it is a verb 91% of the time.
 The system computes mutual information comparing the proportion of observed occurrences of bigrams in the general corpus to the proportion expected based on the assumption of independence, as shown below: Here, P(AB) is the probability of the occurrence of the AB bigram, estimated from its frequency in the general corpus, and P(A) and P(B) are the probabilities of the first and second elements of the bigram, also estimated from the general corpus.
 The measures for bigrams and trigrams are similar to those given above except that the probability in the numerator is estimated from the wordspecific corpus and the probabilities in the denominator come from the general corpus.
@@ -24,7 +23,6 @@ With the human judgements as the gold standard, the estimated overall rate of in
 ALEK's estimated recall is the proportion of sentences in the E-set times its precision, divided by the overall estimated error rate (.083 x .912) / .245 = .310.
 Conclusion and pollution have precision in the low to middle 90's while individual's precision is 57%.
 Overall, ALEK's predictions are about 78% accurate.
-Tagger: Incorrect analysis by the part-of-speech tagger.
 This system was tested on 79 sentences containing determiner and agreement errors, and 101 grammatical sentences.
 We calculate that their precision was 78% with 54% recall.
 We thank Susanne Wolff for evaluating the test sentences, and Robert Kantor, Ken Sheppard and 3 anonymous reviewers for their helpful suggestions.

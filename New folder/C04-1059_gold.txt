@@ -1,0 +1,30 @@
+Our language model adaptation is an unsupervised data augmentation approach guided by query models.
+Our approach focuses on query model building, using different levels of knowledge representations from the hypothesis set or from the translation model itself.
+Three bag-of-words query models are proposed and explained in the following sections.
+In our sentence retrieval process, the standard tf/idf (term frequency and inverse document frequency) term weighting scheme is used.
+All sentences are ranked according to their similarity with the query, and the most similar sentences are used as the data for building the specific language model.
+2.2.1 First-best Hypothesis as a Query Model The first-best hypothesis is the Viterbi path in the search space returned from the statistical machine translation decoder.
+2.2.2 N-Best Hypothesis List as a Query Model Similar to the first-best hypothesis, the n-best hypothesis list is converted into a bag-of-words representation.
+Translation Model as a Query Model To fully leverage the available knowledge from the translation system, the translation model can be used to guide the language model adaptation process.
+The word-proximity and word ordering information can be easily extracted from the first best hypothesis, the n-best hypothesis list, and the translation lattice built from the translation model.
+After extraction of the information, structured query models are proposed using the structured query language, described in the Section 3.1.
+The InQuery implementation (Lemur 2003) is applied.
+Given the representation power of the structured query language, the Top-1 hypothesis, Top-N Best hypothesis list, and the translation lattice can be converted into three Structured Query Models respectively.
+For first-best and n-best hypotheses, we collect related target n-grams of a given source word according to the alignments generated in the Viterbi decoding process.
+The second simplification is that every source word is equally important, thus each n-gram subset is t v will have an equal contribution to the final retrieval results.
+Experiments are carried out on a standard statistical machine translation task defined in the NIST evaluation in June 2002.
+There are 878 test sentences in Chinese, and each sentence has four human translations as references.
+NIST score (NIST 2002) and Bleu score (Papineni et. al. 2002) of mteval version 9 are reported to evaluate the translation quality.
+Our baseline system (Vogel et al, 2003) gives scores of 7.80 NIST and 0.1952 Bleu for Top-1 hypothesis, which is comparable to the best results reported on this task.
+For the baseline system, we built a translation model using 284K parallel sentence pairs, and a trigram language model from a 160 million words general English news text collection.
+Experiments are carried out on the adapted language model using the three bag-of words query models: 1TQ , TNQ and TMQ , and the corresponding structured query models.
+AFE APW NYT XIE 170,969K 539,665K 914,159K 131,711K Table-1: Number of words in the different GigaWord corpora As the Lemur toolkit could not handle the two large corpora (APW and NYT) we used only 200 million words from each of these two corpora.
+Table-2 shows the size of 1TQ , TNQ and TMQ in terms of number of tokens in the 878 queries: 1TQ TNQ TMQ || Q 25,861 231,834 3,412,512 Table-2: Query size in number of tokens As words occurring several times are reduced to word-frequency pairs, the size of the queries generated from the 100-best translation lists is only 9 times as big as the queries generated from the first-best translations.
+1-Best/NIST Scores 7.7500 7.8000 7.8500 7.9000 7.9500 8.0000 AFE APW NYT XIE Top1 Top10 Top100 Top1000 Baseline 1-Best/BLEU-Scores 0.1900 0.1920 0.1940 0.1960 0.1980 0.2000 0.2020 0.2040 AFE APW NYT XIE Top1 Top10 Top100 Top1000 Baseline Figure-2: NIST and Bleu scores 1TQ We see that each corpus gives an improvement over the baseline.
+The best NIST score is 7.94, and the best Bleu score is 0.2018.
+Results for Query TNQ Figure-3 shows the results for the query model TNQ . The best results are 7.99 NIST score, and 0.2022 Bleu score.
+Figure-4 shows the results of this query model TMQ . The best results are 7.91 NIST score and 0.1995 Bleu.
+All the three query models showed improvements over the baseline system in terms of NIST and Bleu scores.
+Lattice/NIST-Scores 7.7500 7.8000 7.8500 7.9000 7.9500 8.0000 AFE APW NYT XIE Top1 Top10 Top100 Top1000 Baseline Lattice/BLEU-Scores 0.1900 0.1920 0.1940 0.1960 0.1980 0.2000 0.2020 0.2040 AFE APW NYT XIE Top1 Top10 Top100 Top1000 Baseline Figure-4: NIST and Bleu scores from TMQ 4.4 Structured Query Models.
+The effect is more pronounced for Bleu then for NIST score.
+Adding word order information to the queries obviously helps to reduce the noise in the retrieved data by selecting sentences, which are closer to the good translations, The best results using the adapted language models are NIST score 8.12 for using the 2000 most similar sentences, whereas Bleu score goes up to 0.2068 when using 4000 sentences for language model adaptation.

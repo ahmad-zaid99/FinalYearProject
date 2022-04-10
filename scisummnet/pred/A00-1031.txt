@@ -24,10 +24,8 @@ Each state that receives a 6 value smaller than the largest 6 divided by some th
 While the Viterbi algorithm is guaranteed to find the sequence of states with the highest probability, this is no longer true when beam search is added.
 Empirically, a value of 0 = 1000 turned out to approximately double the speed of the tagger without affecting the accuracy.
 The tagger currently tags between 30,000 and 60,000 tokens per second (including file I/O) on a Pentium 500 running Linux.
-We evaluate the tagger's performance under several aspects.
 First of all, we determine the tagging accuracy averaged over ten iterations.
 Second, learning curves are presented, that indicate the performance when using training corpora of different sizes, starting with as few as 1,000 tokens and ranging to the size of the entire corpus (minus the test set).
-An important characteristic of statistical taggers is that they not only assign tags to words but also probabilities in order to rank different assignments.
 The tests are performed on partitions of the corpora that use 90% as training set and 10% as test set, so that the test data is guaranteed to be unseen during training.
 Therefore, we expect even 'By definition, this quotient is oo if there is only one possible tag for a given word. higher results when testing on every 10th sentence instead of a contiguous set of 10%.
 In the following, accuracy denotes the number of correctly assigned tags divided by the number of tokens in the corpus processed.
@@ -35,25 +33,18 @@ The tagger is allowed to assign exactly one tag to each token.
 We distinguish the overall accuracy, taking into account all tokens in the test corpus, and separate accuracies for known and unknown tokens.
 The latter are interesting, since usually unknown tokens are much more difficult to process than known tokens, for which a list of valid tags can be found in the lexicon.
 The German NEGRA corpus consists of 20,000 sentences (355,000 tokens) of newspaper texts (Frankfurter Rundschau) that are annotated with parts-ofspeech and predicate-argument structures (Skut et al., 1997).
-Figure 3 shows the learning curve of the tagger, i.e., the accuracy depending on the amount of training data.
 Training length is the number of tokens used for training.
 Average percentages of unknown tokens are shown in the bottom line of each diagram.
-We exploit the fact that the tagger not only determines tags, but also assigns probabilities.
 If there is an alternative that has a probability &quot;close to&quot; that of the best assignment, this alternative can be viewed as almost equally well suited.
 So, the distance of the probabilities of a best tag tbest and an alternative tag tau is expressed by p(tbest)/P(talt)7 which is some value greater or equal to 1 since the best tag assignment has the highest probability.
 The table shows the percentage of unknown tokens, separate accuracies and standard deviations for known and unknown tokens, as well as the overall accuracy. percentage known unknown overall unknowns acc. acc. acc. reliable assignments are much higher than for unreliable assignments.
-This distinction is, e.g., useful for annotation projects during the cleaning process, or during pre-processing, so the tagger can emit multiple tags if the best tag is classified as unreliable.
 50,000 sentences (1.2 million tokens).
-Figure 6 shows the learning curve of the tagger, i.e., the accuracy depending on the amount of training data.
 Training length is the number of tokens used for training.
 As for the NEGRA corpus, tagging accuracy is very high for known tokens even with small amounts of training data.
-We exploit the fact that the tagger not only determines tags, but also assigns probabilities.
 Average part-of-speech tagging accuracy is between 96% and 97%, depending on language and tagset, which is at least on a par with state-of-the-art results found in the literature, possibly better.
 For the Penn Treebank, (Ratnaparkhi, 1996) reports an accuracy of 96.6% using the Maximum Entropy approach, our much simpler and therefore faster HMM approach delivers 96.7%.
 The accuracy for known tokens is significantly higher than for unknown tokens.
 For the German newspaper data, results are 8.7% better when the word was seen before and therefore is in the lexicon, than when it was not seen before (97.7% vs. 89.0%).
 Accuracy for known tokens is high even with very small amounts of training data.
 As few as 1000 tokens are sufficient to achieve 95%-96% accuracy for them.
-It is important for the tagger to have seen a word at least once during training.
-Stochastic taggers assign probabilities to tags.
 For a subset that is determined during processing by the tagger we achieve accuracy rates of over 99%.

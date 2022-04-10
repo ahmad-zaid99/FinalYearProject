@@ -53,5 +53,5 @@ for file in os.listdir():
         f1.close()
 
 avg = avg/cnt
-print(cnt)
+# print(cnt)
 print("Average BLEU Score = ", avg)

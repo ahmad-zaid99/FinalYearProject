@@ -69,8 +69,6 @@ Early experiments also revealed that an ensemble based on a majority vote of all
 The accuracy for interest was approximately 81% and line was disambiguated with slightly less than 80% accuracy.
 The lesson taken from these results was that an ensemble should consist of classifiers that represent as differently sized windows of context as possible; this reduces the impact of redundant errors made by classifiers that represent very similarly sized windows of context.
 The ultimate success of an ensemble depends on the ability to select classifiers that make complementary errors.
-This is discussed in the context of combining part—of—speech taggers in (Brill and Wu, 1998).
-They provide a measure for assessing the complementarity of errors between two taggers that could be adapted for use with larger ensembles such as the one discussed here, which has nine members.
 In this paper ensemble disambiguation is based on a simple majority vote of the nine member classifiers.
 An alternative strategy is to weight each vote by the estimated joint probability found by the Naive Bayesian classifier.
 However, a preliminary study found that the accuracy of a Naive Bayesian ensemble using a weighted vote was poor.

@@ -1,0 +1,27 @@
+We collected a paired dataset from the English Wikipedia and Simple English Wikipedia.
+We processed the dataset as follows: Article Pairing 65,133 articles from SimpleWikipedia3 and Wikipedia4 were paired by fol lowing the ?language link? using the dump filesin Wikimedia.5 Administration articles were fur ther removed.
+Plain Text Extraction We use JWPL (Zesch etal., 2008) to extract plain texts from Wikipedia ar ticles by removing specific Wiki tags.
+Pre-processing including sentence boundary detection and tokenization with the Stanford 1http://simple.wikipedia.org 2http://en.wikipedia.org 3As of Aug 17th, 2009 4As of Aug 22nd, 2009 5http://download.wikimedia.org Parser package (Klein and Manning, 2003), and lemmatization with the TreeTagger (Schmid, 1994).
+In order to achieve the best sentence alignment on our dataset, we tested three similarity measures: (i) sentence-level TF*IDF (Nelken and Shieber, 2006), (ii) word overlap (Barzilay and Elhadad, 2003) and (iii)word-based maximum edit distance (MED) (Lev enshtein, 1966) with costs of insertion, deletionand substitution set to 1.
+We manually adjusted the similarity threshold to obtain a recallvalue as close as possible to 55.8% which was pre viously adopted by Nelken and Shieber (2006).
+Similarity Precision Recall TF*IDF 91.3% 55.4% Word Overlap 50.5% 55.1% MED 13.9% 54.7%
+sentence-levelTF*IDF clearly outperforms the other two mea sures
+We henceforth chose sentence-level TF*IDF to align our dataset.
+We use the Stanford Parser for parsing the dependencies.
+We first apply dropping and then reordering to each non-terminal node in the parse tree from topto bottom.
+We use the same features for both drop ping and reordering: the node?s direct constituent and its children?s constituents pattern
+for each non-terminal node we must decide whether a substitution should take place at this node or at itsdescendants.
+Following the work of Yamada and Knight (2001), we train our model by maximizing P (s|c) over the training corpuswith the EM algorithm described in Alg.
+The training is a supervised learning 1357 process with the parse tree of c as input and the two strings s1 and s2 as the desired output.
+With this improvement, we can train on the PWKP dataset within 1 hour excluding the parsing time taken by the Stanford Parser.
+For decoding, we construct the decoding tree similarly to the construction of the training tree.
+We train the language model with SRILM (Stolcke, 2002).
+All the articles from the Simple Wikipedia are used as the training corpus, amounting to about 54 MB.
+Both TSM and CSS produce shorter sentences than SW.
+Moses is very close to CW.
+TSM obtains a very high BLEU score (0.38) but not as high as Moses (0.55).
+the original complex sentences (CW) from Normal Wikipedia get a rather high BLEU (0.50), when compared to the simple sentences.
+This is confirmed by MT evaluation measures: if we set CW as both source and reference, the BLEU score obtained by Moses is 0.78.
+TSM gets 0.55 in the same setting which is significantly smaller than Moses and demonstrates that TSM is able to generate simplifications with a greater amount of variation from the original sentence.
+We train a trigram LM using the simple sentences in PWKP and calculate the PPL with SRILM.
+TSM gets the best PPL score.

@@ -1,0 +1,32 @@
+The set of lexical categories is obtained from CCGbank (Hockenmaier and Steedman, 2002; Hockenmaier, 2003), a corpus of CCG normal-form deriva tions derived semi-automatically from the PennTreebank.
+The grammars of Chen and Vijay Shanker (2000) contain between 2,000 and 9,000 tree frames, depending on the parameters used inthe extraction process, significantly more elemen tary structures than the number of lexical categories derived from CCGbank.
+A value of k = 20was used in this work, and sections 2-21 of CCG bank were used as training data.Table 2 gives the per-word accuracy (acc) on sec tion 00 for various values of ?, together with the average number of categories per word.
+The figures for ? = 0.01k=100 correspond to a value of 100 for thetag dictionary parameter k. The set of categories as signed to a word is considered correct if it contains the correct category.
+To give one example, the number of categories in the tag dictionary?s entry for the wordis is 45 (only considering categories which have appeared at least 10 times in the training data).
+However, a very large amount of memory is still needed to store the packed charts for the complete training data even though the representation is very compact; in Clark and Curran (2003) we report a memory usage of 30 GB.
+The constraints SUPERTAGGING/PARSING USAGE CONSTRAINTS DISK MEMORY ? = 0.01 ? 0.05 ? 0.1 17 GB 31 GB CCGbank constraints 13 GB 23 GB Eisner constraints 9 GB 16 GB ? = 0.05 ? 0.1 2 GB 4 GB Table 3: Space requirements for model training dataprevent any constituent which is the result of a forward (backward) composition serving as the primary functor in another forward (backward) composition or a forward (backward) application.
+The training sen tences are parsed using a number of nodes from a 64-node Beowulf cluster.3 The time taken to parse the training sentences depends on the supertagging and parsing constraints, and the number of nodes used, but is typically around 30 minutes.
+The first row of the table corresponds to using the least restrictive ? value of 0.01, and reverting to ? = 0.05, and finally ? = 0.1, if the chart size exceeds some threshold.
+The threshold was set at 300,000 nodes in the chart.
+Packed charts are created for approximately 94% of the sentences in sec tions 2-21 of CCGbank.
+The coverage is not 100% because, for some sentences, the parser cannot pro vide an analysis, and some charts exceed the node limit even at the ? = 0.1 level.
+The results show that the memory and disk usage are reduced by approx imately 25% using these constraints.
+The combination of the two types of normal form constraints reduces the memory requirements by 48% over the original approach.
+In Clark andCurran (2004) we show that the parsing model re sulting from training data generated in this way produces state-of-the-art CCG dependency recovery: 84.6 F-score over labelled dependencies.
+The final row corresponds to a more restrictive setting on the supertagger, in which a value of ? = 0.05 is used initially and ? = 0.1 is used if thenode limit is exceeded.
+However, the memory requirement for training the model is now only 4 GB, a reduction of 87% compared with the original approach.
+SUPERTAGGING/PARSING TIME SENTS WORDS CONSTRAINTS SEC /SEC /SEC ? = 0.01?0.1 3 523 0.7 16 CCGbank constraints 1 181 2.0 46 Eisner constraints 995 2.4 55 ? = 0.1?0.01k=100 608 3.9 90 CCGbank constraints 124 19.4 440 Eisner constraints 100 24.0 546 Parser beam 67 35.8 814 94% coverage 49 49.0 1 114 Parser beam 46 52.2 1 186 Oracle 18 133.4 3 031 Table 4: Parse times for section 23 The problem with this approach is that, for some sentences, the number of categories in the chart still gets extremely large and so parsing is unacceptably slow.
+We first used a value of ? = 0.01, and then reverted to ? = 0.05, and finally ? = 0.1.
+The parser uses the 5 levels given in Table 2, starting with ? = 0.1 and moving through the levels to ? = 0.01k=100 . The advantage of this approach is that parsing speeds are much higher.
+All experiments were run on a 2.8 GHZ Intel Xeon P4 with 2 GB RAM.
+Table 4 gives parse times for the 2,401 sentences in section 23 of CCGbank.
+The final two columns give the number of sentences, and the number of ? CATS/ 0.1 FIRST 0.01 FIRST WORD PARSES % PARSES % 0.1 1.4 1689 88.4 0 0.0 0.075 1.5 43 2.3 7 0.4 0.05 1.7 51 2.7 39 2.0 0.01 2.9 79 4.1 1816 95.1 0.01k=100 3.5 33 1.7 33 1.7 NO SPAN 15 0.8 15 0.8 Table 5: Supertagger ? levels used on section 00words, parsed per second.
+For all of the figures re ported on section 23, unless stated otherwise, the parser is able to provide an analysis for 98.5% of the sentences.
+The first value of ? is 0.01; if the parser cannot find a spanning analysis, this ischanged to ? = 0.01k=100; if the node limit is ex ceeded (for these experiments set at 1,000,000), ? is changed to 0.05.
+The table shows that the normal-form constraints have a significant impact on the speed, reducing theparse times for the old strategy by 72%, and reduc ing the times for the new strategy by 84%.
+The new strategy also has a spectacular impact on the speed compared with the old strategy, reducing the times by 83% without the normal-form constraints and 90% with the constraints.
+The 94% coverage row corresponds to using only the first two supertagging levels; the parser ignores the sentence if it cannot get an analysis at the ? = 0.05 level.
+The percentage of sentences without an analysis is now 6%, but the parser is extremely fast,processing almost 50 sentences a second.
+The oracle row shows the parser speed when it is provided with only the correct lexical categories.The parser is extremely fast, and in Clark and Cur ran (2004) we show that the F-score for labelled dependencies is almost 98%.
+The final parser beam row combines thebeam search with the fast, reduced coverage config uration of the parser, producing speeds of over 50 sentences per second.
+did find that LTAG supertagging increased pars ing speed, but at a significant cost in coverage: only 1,324 sentences out of a test set of 2,250 received a parse.

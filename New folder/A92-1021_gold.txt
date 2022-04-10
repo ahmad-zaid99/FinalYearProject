@@ -1,0 +1,4 @@
+This very simple algorithm has an error rate of about 7.9% when trained on 90% of the tagged Brown Corpus' [Francis and Kueera 82], and tested on a separate 5% of the corpus.2 Training consists of compiling a list of the most common tag for each word in the training corpus.
+Patch templates are of the form: The initial tagger was trained on 90% of the corpus (the training corpus).
+5% was held back to be used for the patch acquisition procedure (the patch corpus) and 5% for testing.
+If the patch change the tag from verb to noun if one of the two preceding words is tagged as a determiner is applied, it corrects 98 of the 159 errors.

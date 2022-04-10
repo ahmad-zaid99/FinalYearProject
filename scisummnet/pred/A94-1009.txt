@@ -1,14 +1,10 @@
-The experiments were conducted using two taggers, one written in C at Cambridge University Computer Laboratory, and the other in C++ at Sharp Laboratories.
-Both taggers implement the FB, Viterbi and BW algorithms.
 Writing these as f(i, j), f(i) and f(i, w) respectively, the transition probability from tag i to tag j is estimated as f (i, j)/ f (i) and the lexical probability as f(i, w)/ f (i).
 For example, CLAWS (Garside et al., 1987) normalises the lexical probabilities by the total frequency of the word rather than of the tag.
 Any transitions not seen in the training corpus are given a small, non-zero probability.
 The lexicon lists, for each word, all of tags seen in the training corpus with their probabilities.
 For words not found in the lexicon, all open-class tags are hypothesised. with equal probabilities.
 These words are added to the lexicon at the end of first iteration when re-estimation is being used, so that the probabilities of their hypotheses subsequently diverge from being uniform.
-To measure the accuracy of the tagger, we compare the chosen tag with one provided by a human annotator.
 Various methods of quoting accuracy have been used in the literature, the most common being the proport ion of words (tokens) receiving the correct tag.
-The former figure looks more impressive, but the latter gives a better measure of how well the tagger is doing, since it factors out the trivial assignment of tags to non-ambiguous words.
 DO Un-degraded lexical probabilities, calculated from f (i, w) / f (i).
 D1 Lexical probabilities are correctly ordered, so that the most frequent tag has the highest lexical probability and so on, but the absolute values are otherwise unreliable.
 D2 Lexical probabilities are proportional to the overall tag frequencies, and are hence independent of the actual occurrence of the word in the training corpus.
@@ -35,7 +31,5 @@ When the lexicon is degraded (D2), the pattern is always classical.
 With a good lexicon but either degraded transitions or a test corpus differing from the training corpus, the pattern tends to be early maximum.
 In the case of early maximum, the few iterations where the accuracy is improving correspond to the creation of entries for unknown words and the fine tuning of ones for known ones, and these changes outweigh those produced by the re-estimation.
 Without a lexicon, some initial biasing of the transitions is needed if good results are to be obtained.
-Merialdo's conclusion is that taggers should be trained using as much hand-tagged text as possible to begin with, and only then applying BW re-estimation with untagged text.
 The step forward taken in the work here is to show that there are three patterns of reestimation behaviour, with differing guidelines for how to use BW effectively, and that to obtain a good starting point when a hand-tagged corpus is not available or is too small, either the lexicon or the transitions must be biased.
 Some preliminary experiments with using measures such as perplexity and the average probability of hypotheses show that, while they do give an indication of convergence during re-estimation, neither shows a strong correlation with the accuracy.
-Perhaps what is needed is a &quot;similarity measure&quot; between two models M and M', such that if a corpus were tagged with model M, M' is the model obtained by training from the output corpus from the tagger as if it were a hand-tagged corpus.

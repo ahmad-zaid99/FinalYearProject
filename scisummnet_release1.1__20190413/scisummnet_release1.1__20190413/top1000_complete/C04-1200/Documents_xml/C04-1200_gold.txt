@@ -1,0 +1,19 @@
+First it selects sentences that contain both the topic phrase and holder candidates.
+Next, the holder-based regions of opinion are delimited.
+Then the sentence sentiment classifier calculates the polarity of all sentiment-bearing words individually.
+Finally, the system combines them to produce the holder?s sentiment for the whole sentence.
+The basic approach is to assemble a small amount of seed words by hand, sorted by polarity into two lists?positive and negative?and then to grow this by adding words obtained from WordNet (Miller et al 1993; Fellbaum et al 1993).
+obtain finally 5880 positive adjectives, 6233 negative adjectives, 2840 positive verbs, and 3239 negative verbs.
+Given a new word, we use WordNet again to obtain a synonym set of the unseen word to determine how it interacts with our sentiment seed lists.
+We used the synonym and antonym lists obtained from Wordnet instead of learning word sets from a corpus, since the former is simpler and does not require manually annotated data for training.
+To compute the probability P(w|c) of word w given a sentiment class c, we count the occurrence of w?s synonyms in the list of c. The intuition is that the more synonyms occuring in c, the more likely the word belongs.
+Manual analysis showed that such sentiments can be found most reliably close to the Holder; without either Holder or Topic/Claim nearby as anchor points, even humans sometimes have trouble reliably determining the source of a sentiment.
+We therefore included in the algorithm steps to identify the Topic (through direct matching, since we took it as given) and any likely opinion Holders (see Section 2.2.1).
+We used BBN?s named entity tagger IdentiFinder to identify potential holders of an opinion.
+A more sophisticated approach would employ a parser to identify syntactic relationships between each Holder and all dependent expressions of sentiment.
+We built three models to assign a sentiment category to a given sentence, each combining the individual sentiments of sentiment-bearing words, as described above, in a different way.
+Of the test data, the algorithm classified 93.07% of adjectives and 83.27% of verbs as either positive and negative.
+Since Model 0 considers not probabilities of words but only their polarities, the two word- level classifier equations yield the same results.
+Consequently, Model 0 has 8 combinations and Models 1 and 2 have 16 each.
+The system?s best model performed at 81% accuracy with the manually provided holder and at 67% accuracy with automatic holder detection.
+The best overall performance is provided by Model 0.

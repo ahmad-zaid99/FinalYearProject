@@ -18,8 +18,12 @@ os.chdir(path)
 model_out_list = []
 reference_list = []
 
+count = 0
+
 for file in os.listdir():
     if file.endswith(".txt"):
+
+        count += 1
 
         model_out_R = ""
         reference_R = ""
@@ -72,6 +76,7 @@ avg_rouge_score = rouge.get_scores(model_out_list, reference_list, avg=True)
 
 print("Average ROUGE SCORE ", avg_rouge_score)
 
+# print(count)
 # avg = avg/cnt
 # print(cnt)
 # print("Average BLEU Score = ", avg)

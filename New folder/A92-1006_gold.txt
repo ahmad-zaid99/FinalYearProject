@@ -1,0 +1,7 @@
+Once the sentence planner has constructed the DSyntR of a complete sentence, it sends it to the realizer which generates the English sentence.
+We therefore found McKeown's schema-based approach (McKeown 1985) to be the most promising.
+It receives propositions from the text planner and sends the DSyntR of complete sentences to the realizer for processing.
+It has two main tasks: first, it chooses lexical and syntactic realizations by consulting the Conceptual/English dictionary; second, it determines sentence scope by merging the DSyntR of individual propositions.
+Each proposition is mapped into the DSyntR of a clause (i.e., its root is a verb).
+Each incoming proposition is translated into a DSyntR, which the sentence planner then attempts to merge with the current DSyntR.
+If none of the clause combination strategies work, or if stylistic heuristics interfere, or if the incoming proposition is a conceptual-break, the current DSyntR is sent to the realizer and the new DSyntR becomes the current one.

@@ -1,0 +1,21 @@
+We collected data from 3 different websites that provide almost real-time sentiment detection for tweets: Twendz, Twitter Sen timent and TweetFeel.
+Two of the websites provide 3 class detection: positive, negative and neutral and one of them just 2-class detection.
+Our goal is to categorize a tweet into one of the three sentiment categories: positive, neutral ornegative.
+Similar to (Pang and Lee, 2004; Wil son et al, 2005), we implement a 2-step sentimentdetection framework.
+In addition to POS tags, we map the word to its prior subjectivity (weak and strong subjectivity), also used by (Wiebe and Riloff, 2005), and polarity (positive, negative andneutral).
+We obtained the prior subjectivity and polarity information from subjectivity lexicon of about 8,000 words used in (Riloff and Wiebe, 2003)2.
+We decided to create a single clas sifier by combining the objectivity sentences from Twendz and Twitter Sentiment (objectivity class) and the subjectivity sentences from all 3 sources.As we do not know the quality of the labels pro vided by these sources, we perform a cleaning process over this data to assure some reasonable quality.
+The second step of our sentiment detection approach is polarity classification, i.e., predict ing positive or negative sentiment on subjectivetweets.
+In our case, each source is treated as a labeler; ? Number of labels provided by the labelers:if the labels are informative, i.e., the prob ability of them being correct is higher than 0.5, the more the number of labels, the higher is the performance of a classifier built from them (Sheng et al, 2008); ? Labeler bias: the labeled data provided by the labelers might be only a subset of the real data distribution.
+For the subjectivity detection, afterthe cleansing processing (see Section 3), the train ing data contains about 200,000 tweets (roughly 100,000 tweets were labeled by the sources as subjective ones and 100,000 objective ones), and for polarity detection, 71046 positive and 79628negative tweets.
+For test data, we manually labeled 1,000 tweets as positive, negative and neu tral.
+We also built a development set (1,000 tweets) to tune the parameters of the classification algorithms.
+The set of sentences predicted as subjec tive is then classified as negative or positive in terms of polarity using the unigrams that 40compose the sentences.
+We used the imple mentation provided by LingPipe (LingPipe, 2008); ? Unigrams: Pang et al (Pang et al, 2002) showed unigrams are effective for sentiment detection in regular reviews.
+We built a polarity classifier using this approach (Unigrams-TS).
+We tried different learning al gorithms available on Weka and SVM obtainedthe best results for Unigrams and TwitterSA.
+Another advantage of our approach is since it uses only 20 features, the training and test times are much faster than using thousands of features like Unigrams.
+with only 2,000 tweets as training data, TwitterSA obtained 20% of error rate whereas Unigrams 34.5%.
+The best performance was ob tained by TwitterSA(maxconf), which combines results of the 3 classifiers, respectively trained from each source, by taking the output by themost confident classifier, as the final prediction.
+for a training size with 2,000 tweets, the error rate for Unigrams was 46% versus 23.8% for our approach.
+Our approach, on the other hand, was not much influenced by the noise (22.9% on noisy data and around 20% on the sample of same sizeof the general data).

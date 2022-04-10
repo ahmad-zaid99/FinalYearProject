@@ -35,7 +35,7 @@ keywords = [
     "trigrams",
     "lexical",
     "(\d|[1-9]\d|100)(?:(?<!100)\.\d+)?%",
-    "tagger",
+    # "tagger",
     "tdt",
     "mask",
     "bag-of-words",
@@ -44,8 +44,5 @@ keywords = [
     "sense-tagged",
     "recurrence",
     "expression",
-    "dsyntr",
-    "tagger",
-    "probability",
-    "lexixal"
+    "dsyntr"
 ]
