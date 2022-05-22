@@ -1,5 +1,3 @@
-# NLP Keywords
-
 keywords = [
     "encoder",
     "decoder",

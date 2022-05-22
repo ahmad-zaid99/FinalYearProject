@@ -1,0 +1,36 @@
+Writing these as f(i, j), f(i) and f(i, w) respectively, the transition probability from tag i to tag j is estimated as f (i, j)/ f (i) and the lexical probability as f(i, w)/ f (i).
+For example, CLAWS (Garside et al., 1987) normalises the lexical probabilities by the total frequency of the word rather than of the tag.
+Any transitions not seen in the training corpus are given a small, non-zero probability.
+The lexicon lists, for each word, all of tags seen in the training corpus with their probabilities.
+For words not found in the lexicon, all open-class tags are hypothesised.
+These words are added to the lexicon at the end of first iteration when re-estimation is being used, so that the probabilities of their hypotheses subsequently diverge from being uniform.
+Various methods of quoting accuracy have been used in the literature, the most common being the proport ion of words (tokens) receiving the correct tag.
+A model was trained from a handtagged corpus in the manner described above, and then degraded in various ways to simulate the effect of poorer training, as follows:
+DO Un-degraded lexical probabilities, calculated from f (i, w) / f (i).
+D1 Lexical probabilities are correctly ordered, so that the most frequent tag has the highest lexical probability and so on, but the absolute values are otherwise unreliable.
+D2 Lexical probabilities are proportional to the overall tag frequencies, and are hence independent of the actual occurrence of the word in the training corpus.
+D3 All lexical probabilities have the same value, so that the lexicon contains no information other than the possible tags for each word.
+Corpus LOBB-J was used to train the model, and LOB-B, LOBL and LOB-B-G were passed through thirty iterations of the BW algorithm as untagged data.
+As an additional test, we tried assigning the most probable tag from the DO lexicon, completely ignoring tag-tag transitions.
+As an example of how these figures relate to overall accuracies, LOB-B contains 32.35% ambiguous tokens with respect to the lexicon from LOB-B-J, and the overall accuracy in the DO+TO case is hence 98.69%.
+A possible explanation is that in this case the test data does not overlap with the training data, and hence the good quality lexicons (DO and D1) have less of an influence.
+Several follow-up experiments were used to confirm the results: using corpora from the Penn treebank, using equivalence classes to ensure that all lexical entries have a total relative frequency of at least 0.01, and using larger corpora.
+Their accuracy is not even as good as that achieved by picking the most frequent tag (although this of course implies a lexicon of DO or D1 quality).
+It follows that if BaumWelch re-estimation is to be an effective technique, the initial data must have either biasing in the transitions (the TO cases) or in the lexical probabilities (cases DO+T1 and D1-FT1), but it is not necessary to have both (D2/D3+TO and DO/Did-T1).
+So perhaps it is worth investing effort in hand-tagging training corpora after all, rather than just building a lexicon and letting reestimation sort out the probabilities.
+During the first experiment, it became apparent that Baum-Welch re-estimation sometimes decreases the accuracy as the iteration progresses.
+There seem to be three patterns of behaviour: Classical A general trend of rising accuracy on each iteration, with any falls in accuracy being local.
+Initial maximum Highest accuracy on the first iteration, and falling thereafter.
+Early maximum Rising accuracy for a small number of iterations (2-4), and then falling as in initial maximum.
+Clearly, if the expected pattern is initial maximum, we should not use BW at all, if early maximum, we should halt the process after a few iterations, and if classical, we should halt the process in a &quot; standard&quot; way, such as comparing the perplexity of successive models.
+The tests were conducted in a similar manner to those of the first experiment, by building a lexicon and transitions from a hand tagged training corpus, and then applying them to a test corpus with varying degrees of degradation.
+Firstly, four different degrees of degradation were used: no degradation at all, D2 degradation of the lexicon, Ti degradation of the transitions, and the two together.
+Two tests were conducted with each combination of the degradation and similarity, using different corpora (from the Penn treebank) ranging in size from approximately 50000 words to 500000 words.
+The re-estimation was allowed to run for ten iterations.
+the iteration at which it occurred, and the pattern of re-estimation (I = initial maximum, E = early maximum, C = classical).
+When the lexicon is degraded (D2), the pattern is always classical.
+With a good lexicon but either degraded transitions or a test corpus differing from the training corpus, the pattern tends to be early maximum.
+In the case of early maximum, the few iterations where the accuracy is improving correspond to the creation of entries for unknown words and the fine tuning of ones for known ones, and these changes outweigh those produced by the re-estimation.
+Without a lexicon, some initial biasing of the transitions is needed if good results are to be obtained.
+The step forward taken in the work here is to show that there are three patterns of reestimation behaviour, with differing guidelines for how to use BW effectively, and that to obtain a good starting point when a hand-tagged corpus is not available or is too small, either the lexicon or the transitions must be biased.
+Some preliminary experiments with using measures such as perplexity and the average probability of hypotheses show that, while they do give an indication of convergence during re-estimation, neither shows a strong correlation with the accuracy.

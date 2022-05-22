@@ -1,0 +1,120 @@
+In this section, we introduce some basic con cepts and then discuss the ten distributional similarity measures used in this study.
+The co-occurrence types of a target word are the contexts, c, in which it occurs and these have associated frequencies which may be used to form probability estimates.
+In our work, theco-occurrence types are always grammatical de pendency relations.
+For example, in Sections 3 to 5, similarity between nouns is derived fromtheir co-occurrences with verbs in the direct object position.
+In Section 6, similarity between verbs is derived from their subjects and objects.
+The k nearest neighbours of a target word w are the k words for which similarity with w is greatest.
+Our use of the term similarity measure encompasses measures which should strictly bereferred to as distance, divergence or dissimilar ity measures.
+An increase in distance correlates with a decrease in similarity.
+However, eithertype of measure can be used to find the k near est neighbours of a target word.Table 1 lists ten distributional similarity mea sures.
+The cosine measure (Salton and McGill, 1983) returns the cosine of the angle between two vectors.
+The Jensen-Shannon (JS) divergence measure (Rao, 1983) and the ?-skew divergence measure (Lee, 1999) are based on the Kullback-Leibler (KL) divergence measure.
+The KL divergence,or relative entropy, D(p||q), between two prob ability distribution functions p and q is defined (Cover and Thomas, 1991) as the ?inefficiency of assuming that the distribution is q when the true distribution is p?: D(p||q) = ? c p log p q .However, D(p||q) = ? if there are any con texts c for which p(c) > 0 and q(c) = 0.
+Thus,this measure cannot be used directly on maxi mum likelihood estimate (MLE) probabilities.One possible solution is to use the JS diver gence measure, which measures the cost of usingthe average distribution in place of each individual distribution.
+Another is the ?-skew diver gence measure, which uses the p distribution tosmooth the q distribution.
+The value of the pa rameter ? controls the extent to which the KL divergence is approximated.
+We use ? = 0.99 since this provides a close approximation to the KL divergence and has been shown to provide good results in previous research (Lee, 2001).
+The confusion probability (Sugawara et al, 1985) is an estimate of the probability that one word can be substituted for another.
+Words w1 and w2 are completely confusable if we are equally as likely to see w2 in a given context as we are to see w1 in that context.
+Jaccard?s coefficient (Salton and McGill,1983) calculates the proportion of features be longing to either word that are shared by both words.
+In the simplest case, the features of a word are defined as the contexts in which it has been seen to occur.
+simja+mi is a variant (Lin, 1998) in which the features of a word are thosecontexts for which the pointwise mutual infor mation (MI) between the word and the context is positive, where MI can be calculated usingI(c, w) = log P (c|w)P (c) . The related Dice Coeffi cient (Frakes and Baeza-Yates, 1992) is omitted here since it has been shown (van Rijsbergen, 1979) that Dice and Jaccard?s Coefficients are monotonic in each other.
+Lin?s Measure (Lin, 1998) is based on his information-theoretic similarity theorem, whichstates, ?the similarity between A and B is measured by the ratio between the amount of in formation needed to state the commonality of A and B and the information needed to fully describe what A and B are.?
+The final three measures are settings in the additive MI-based Co-occurrence Retrieval Model (AMCRM) (Weeds and Weir, 2003; Weeds, 2003).
+We can measure the precisionand the recall of a potential neighbour?s re trieval of the co-occurrences of the target word,where the sets of required and retrieved co occurrences (F (w1) and F (w2) respectively) are those co-occurrences for which MI is positive.
+Neighbours with both high precision and high recall retrieval can be obtained by computing Measure Function cosine simcm(w2, w1) = ? c P (c|w1).P (c|w2) ??
+c P (c|w1)2 ? c P (c|w2)2 Jens.-Shan.
+distjs(w2, w1) = 12 ( D ( p||p+q2 ) +D ( q||p+q2 )) where p = P (c|w1) and q = P (c|w2) ?-skew dist?(w2, w1) = D (p||(?.q + (1?
+?).p)) where p = P (c|w1) and q = P (c|w2) conf.
+prob.
+simcp(w2|w1) = ? c P (w1|c).P (w2|c).P (c) P (w1) Jaccard?s simja(w2, w1) = |F (w1)?F (w2)| |F (w1)?F (w2)| where F (w) = {c : P (c|v) > 0} Jacc.+MI simja+mi(w2,W1) = |F (w1)?F (w2)| |F (w1)?F (w2)| where F (w) = {c : I(c, w) > 0} Lin?s simlin(w2, w1) = ? F (w1)?F (w2) (I(c,w1)+I(c,w2)) ? F (w1) I(c,w1)+ ? F (w2) I(c,w2) where F (w) = {c : I(c, w) > 0} precision simP(w2, w1) = ? F (w1)?F (w2) I(c,w2) ? F (w2) I(c,w2) where F (w) = {c : I(c, w) > 0} recall simR(w2, w1) = ? F (w1)?F (w2) I(c,w1) ? F (w1) I(c,w1) where F (w) = {c : I(c, w) > 0} harm.
+mean simhm(w2, w1) = 2.simP (w2,w1).simR(w2,w1) simP (w2,w1)+simR(w2,w1) where F (w) = {c : I(c, w) > 0} Table 1: Ten distributional similarity measures their harmonic mean (or F-score).
+We have described a number of ways of calculating distributional similarity.
+We now con sider whether there is substantial variation ina word?s distributionally nearest neighbours ac cording to the chosen measure.
+We do this by calculating the overlap between neighbour setsfor 2000 nouns generated using different mea sures from direct-object data extracted from the British National Corpus (BNC).
+3.1 Experimental set-up.
+The data from which sets of nearest neighbours are derived is direct-object data for 2000 nouns extracted from the BNC using a robust accurate statistical parser (RASP) (Briscoe and Carroll, 2002).
+For reasons of computational efficiency,we limit ourselves to 2000 nouns and directobject relation data.
+Given the goal of comparing neighbour sets generated by different mea sures, we would not expect these restrictions to affect our findings.
+The complete set of 2000 nouns (WScomp) is the union of two sets WShigh and WSlow for which nouns were selected on the basis of frequency: WShigh contains the 1000 most frequently occurring nouns (frequency > 500), and WSlow contains the nouns ranked 3001-4000 (frequency ? 100).
+By excludingmid-frequency nouns, we obtain a clear sepa ration between high and low frequency nouns.The complete data-set consists of 1,596,798 cooccurrence tokens distributed over 331,079 co occurrence types.
+From this data, we computedthe similarity between every pair of nouns according to each distributional similarity mea sure.
+We then generated ranked sets of nearest neighbours (of size k = 200 and where a word is excluded from being a neighbour of itself) for each word and each measure.For a given word, we compute the overlap between neighbour sets using a comparison tech nique adapted from Lin (1998).
+Given a word w, each word w?
+in WScomp is assigned a rankscore of k ? rank if it is one of the k near est neighbours of w using measure m and zero otherwise.
+If NS(w,m) is the vector of such scores for word w and measure m, then theoverlap, C(NS(w,m1),NS(w,m2)), of two neigh bour sets is the cosine between the two vectors: C(NS(w,m1),NS(w,m2)) = ? w? rm1(w ?, w)?
+rm2(w ?, w) ?k i=1 i2 The overlap score indicates the extent to which sets share members and the extent to whichthey are in the same order.
+To achieve an over lap score of 1, the sets must contain exactly the same items in exactly the same order.
+An overlap score of 0 is obtained if the sets do not contain any common items.
+If two sets share roughly half their items and these shared items are dispersed throughout the sets in a roughlysimilar order, we would expect the overlap be tween sets to be around 0.5.
+cm js ? cp ja ja+mi lin cm 1.0(0.0) 0.69(0.12) 0.53(0.15) 0.33(0.09) 0.26(0.12) 0.28(0.15) 0.32(0.15) js 0.69(0.12) 1.0(0.0) 0.81(0.10) 0.46(0.31) 0.48(0.18) 0.49(0.20) 0.55(0.16) ? 0.53(0.15) 0.81(0.10) 1.0(0.0) 0.61(0.08) 0.4(0.27) 0.39(0.25) 0.48(0.19) cp 0.33(0.09) 0.46(0.31) 0.61(0.08) 1.0(0.0) 0.24(0.24) 0.20(0.18) 0.29(0.15) ja 0.26(0.12) 0.48(0.18) 0.4(0.27) 0.24(0.24) 1.0(0.0) 0.81(0.08) 0.69(0.09) ja+mi 0.28(0.15) 0.49(0.20) 0.39(0.25) 0.20(0.18) 0.81(0.08) 1.0(0.0) 0.81(0.10) lin 0.32(0.15) 0.55(0.16) 0.48(0.19) 0.29(0.15) 0.69(0.09) 0.81(0.10) 1.0(0.0) Table 2: Cross-comparison of first seven similarity measures in terms of mean overlap of neighbour sets and corresponding standard deviations.
+P R hm cm 0.18(0.10) 0.31(0.13) 0.30(0.14) js 0.19(0.12) 0.55(0.18) 0.51(0.18) ? 0.08(0.08) 0.74(0.14) 0.41(0.23) cp 0.03(0.04) 0.57(0.10) 0.25(0.18) ja 0.36(0.30) 0.38(0.30) 0.74(0.14) ja+mi 0.42(0.30) 0.40(0.31) 0.86(0.07) lin 0.46(0.25) 0.52(0.22) 0.95(0.039)Table 3: Mean overlap scores for seven simi larity measures with precision, recall and the harmonic mean in the AMCRM.
+3.2 Results.
+Table 2 shows the mean overlap score between every pair of the first seven measures in Table 1 calculated over WScomp.
+Table 3 shows the mean overlap score between each of these measures and precision, recall and the harmonic mean inthe AMCRM.
+In both tables, standard devia tions are given in brackets and boldface denotes the highest levels of overlap for each measure.
+For compactness, each measure is denoted by its subscript from Table 1.
+Although overlap between most pairs of measures is greater than expected if sets of 200 neighbours were generated randomly from WScomp (in this case, average overlap would be 0.08 and only the overlap between the pairs (?,P) and (cp,P) is not significantly greaterthan this at the 1% level), there are substantial differences between the neighbour sets gen erated by different measures.
+For example, for many pairs, neighbour sets do not appear to have even half their members in common.
+We have seen that there is a large variation inneighbours selected by different similarity mea sures.
+In this section, we analyse how neighboursets vary with respect to one fundamental statis tical property ? word frequency.
+To do this, we measure the bias in neighbour sets towards high frequency nouns and consider how this varies depending on whether the target noun is itself a high frequency noun or low frequency noun.
+4.1 Measuring bias.
+If a measure is biased towards selecting high frequency words as neighbours, then we would ex pect that neighbour sets for this measure wouldbe made up mainly of words from WShigh.
+Fur ther, the more biased the measure is, the more highly ranked these high frequency words will tend to be.
+In other words, there will be highoverlap between neighbour sets generated con sidering all 2000 nouns as potential neighbours and neighbour sets generated considering just the nouns in WShigh as potential neighbours.
+In the extreme case, where all of a noun?s k nearestneighbours are high frequency nouns, the over lap with the high frequency noun neighbour set will be 1 and the overlap with the low frequency noun neighbour set will be 0.
+The inverse is, ofcourse, true if a measure is biased towards se lecting low frequency words as neighbours.
+If NSwordset is the vector of neighbours (and associated rank scores) for a given word, w, andsimilarity measure, m, and generated considering just the words in wordset as potential neigh bours, then the overlap between two neighboursets can be computed using a cosine (as be fore).
+If Chigh = C(NScomp,NShigh) and Clow =C(NScomp,NSlow), then we compute the bias towards high frequency neighbours for word w us ing measure m as: biashighm(w) = Chigh Chigh+Clow The value of this normalised score lies in the range [0,1] where 1 indicates a neighbour set completely made up of high frequency words, 0 indicates a neighbour set completely made up oflow frequency words and 0.5 indicates a neighbour set with no biases towards high or low fre quency words.
+This score is more informative than simply calculating the proportion of high high freq.
+low freq.
+target nouns target nouns cm 0.90 0.87 js 0.94 0.70 ? 0.98 0.90 cp 1.00 0.99 ja 0.99 0.21 ja+mi 0.95 0.14 lin 0.85 0.38 P 0.12 0.04 R 0.99 0.98 hm 0.92 0.28 Table 4: Mean value of biashigh according to measure and frequency of target noun.
+and low frequency words in each neighbour set because it weights the importance of neighbours by their rank in the set.
+Thus, a large numberof high frequency words in the positions clos est to the target word is considered more biased than a large number of high frequency words distributed throughout the neighbour set.
+4.2 Results.
+Table 4 shows the mean value of the biashigh score for every measure calculated over the set of high frequency nouns and over the set of low frequency nouns.
+The standard deviations (not shown) all lie in the range [0,0.2].
+Any deviation from 0.5 of greater than 0.0234 is significant at the 1% level.
+For all measures and both sets of target nouns, there appear to be strong tendencies toselect neighbours of particular frequencies.
+Further, there appears to be three classes of mea sures: those that select high frequency nouns as neighbours regardless of the frequency of thetarget noun (cm, js, ?, cp andR); those that select low frequency nouns as neighbours regard less of the frequency of the target noun (P); and those that select nouns of a similar frequency to the target noun (ja, ja+mi, lin and hm).This can also be considered in terms of distri butional generality.
+By definition, recall preferswords that have occurred in more of the con texts that the target noun has, regardless of whether it occurs in other contexts as well i.e., it prefers distributionally more general words.
+The probability of this being the case increasesas the frequency of the potential neighbour increases and so, recall tends to select high fre quency words.
+In contrast, precision prefers words that have occurred in very few contextsthat the target word has not i.e., it prefers distributionally more specific words.
+The prob ability of this being the case increases as the frequency of the potential neighbour decreases and so, precision tends to select low frequencywords.
+The harmonic mean of precision and re call prefers words that have both high precision and high recall.
+The probability of this beingthe case is highest when the words are of sim ilar frequency and so, the harmonic mean will tend to select words of a similar frequency.
+In this section, we consider the observed fre quency effects from a semantic perspective.The concept of distributional generality in troduced in the previous section has parallels with the linguistic relation of hyponymy, where a hypernym is a semantically more general term and a hyponym is a semantically more specificterm.
+For example, animal is an (indirect1) hypernym of dog and conversely dog is an (indi rect) hyponym of animal.
+Although one can obviously think of counter-examples, we would generally expect that the more specific term dog can only be used in contexts where animal can be used and that the more general term animal might be used in all of the contexts where dogis used and possibly others.
+Thus, we might ex pect that distributional generality is correlated with semantic generality ? a word has high recall/low precision retrieval of its hyponyms?co-occurrences and high precision/low recall re trieval of its hypernyms?
+co-occurrences.
+Thus, if n1 and n2 are related and P(n2, n1) >R(n2, n1), we might expect that n2 is a hy ponym of n1 and vice versa.
+However, having discussed a connection between frequency and distributional generality, we might also expect to find that the frequency of the hypernymic term is greater than that of the hyponymicterm.
+In order to test these hypotheses, we ex tracted all of the possible hyponym-hypernym pairs (20, 415 pairs in total) from our list of 2000 nouns (using WordNet 1.6).
+We then calculatedthe proportion for which the direction of the hy ponymy relation could be accurately predicted by the relative values of precision and recall andthe proportion for which the direction of the hy ponymy relation could be accurately predictedby relative frequency.
+We found that the direc tion of the hyponymy relation is correlated in the predicted direction with the precision-recall 1There may be other concepts in the hypernym chain between dog and animal e.g. carnivore and mammal.values in 71% of cases and correlated in the pre dicted direction with relative frequency in 70% of cases.
+This supports the idea of a three-waylinking between distributional generality, rela tive frequency and semantic generality.
+We now consider the impact that this has on a potential application of distributional similarity methods.
+In its most general sense, a collocation is a habitual or lexicalised word combination.
+How ever, some collocations such as strong tea arecompositional, i.e., their meaning can be determined from their constituents, whereas oth ers such as hot dog are not.
+Both types areimportant in language generation since a sys tem must choose between alternatives but onlynon-compositional ones are of interest in language understanding since only these colloca tions need to be listed in the dictionary.
+Baldwin et al (2003) explore empiricalmodels of compositionality for noun-noun com pounds and verb-particle constructions.
+Based on the observation (Haspelmath, 2002) that compositional collocations tend to be hyponyms of their head constituent, they propose a model which considers the semantic similarity between a collocation and its constituent words.McCarthy et al (2003) also investigate sev eral tests for compositionality including one (simplexscore) based on the observation that compositional collocations tend to be similar inmeaning to their constituent parts.
+They ex tract co-occurrence data for 111 phrasal verbs (e.g. rip off ) and their simplex constituents(e.g. rip) from the BNC using RASP and cal culate the value of simlin between each phrasal verb and its simplex constituent.
+The test simplexscore is used to rank the phrasal verbs according to their similarity with their simplexconstituent.
+This ranking is correlated with hu man judgements of the compositionality of the phrasal verbs using Spearman?s rank correlationcoefficient.
+The value obtained (0.0525) is dis appointing since it is not statistically significant(the probability of this value under the null hy pothesis of ?no correlation?
+is 0.3).2 However, Haspelmath (2002) notes that a compositional collocation is not just similar to one of its constituents ? it can be considered tobe a hyponym of its head constituent.
+For ex ample, ?strong tea?
+is a type of ?tea?
+and ?to2Other tests for compositionality investigated by Mc Carthy et al (2003) do much better.
+Measure rs P (rs) under H0 simlin 0.0525 0.2946 precision -0.160 0.0475 recall 0.219 0.0110 harmonic mean 0.011 0.4562 Table 5: Correlation with compositionality for different similarity measures rip up?
+is a way of ?ripping?.
+Thus, we hypothesised that a distributional measure which tends to select more generalterms as neighbours of the phrasal verb (e.g. re call) would do better than measures that tend to select more specific terms (e.g. precision) or measures that tend to select terms of a similar specificity (e.g simlin or the harmonic mean of precision and recall).
+Table 5 shows the results of using different similarity measures with the simplexscore test and data of McCarthy et al (2003).
+We now see significant correlation between compositionality judgements and distributional similarity of thephrasal verb and its head constituent.
+The cor relation using the recall measure is significant at the 5% level; thus we can conclude that if the simplex verb has high recall retrieval of the phrasal verb?s co-occurrences, then the phrasal is likely to be compositional.
+The correlation score using the precision measure is negative since we would not expect the simplex verb to be a hyponym of the phrasal verb and thus, ifthe simplex verb does have high precision re trieval of the phrasal verb?s co-occurrences, it is less likely to be compositional.
+Finally, we obtained a very similar result (0.217) by ranking phrasals according to their inverse relative frequency with their simplex constituent (i.e., freq(simplex)freq(phrasal) ).
+Thus, it would seem that the three-way connection betweendistributional generality, hyponymy and rela tive frequency exists for verbs as well as nouns.

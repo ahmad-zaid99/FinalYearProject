@@ -1,0 +1,14 @@
+If a tagged corpus prepared by a human annotator is available, the transition and lexical probabilities can be estimated from the frequencies of pairs of tags and of tags associated with words.
+>Alternatively, a procedure called BaumWelch (BW) re-estimation may be used, in which an untagged corpus is passed through the FB algorithm with some initial model, and the resulting probabilities used to determine new values for the lexical and transition probabilities.
+96% accuracy correct assignment of tags to word token, compared with a human annotator, is quoted, over a 500000 word corpus.
+In the above example, 8 iterations were sufficient.
+The initial model set up so that some transitions and some tags in the lexicon are favoured, and hence having a higher initial probability.
+Convergence of the model is improved by keeping the number of parameters in the model down.
+Writing these as f(i, j), f(i) and f(i, w) respectively, the transition probability from tag i to tag j is estimated as f (i, j)/ f (i) and the lexical probability as f(i, w)/ f (i).
+Various methods of quoting accuracy have been used in the literature, the most common being the proport ion of words (tokens) receiving the correct tag.
+For example, the LOB tagset used 134 tags, while the Penn treebank tagset has 48.
+As an example of how these figures relate to overall accuracies, LOB-B contains 32.35% ambiguous tokens with respect to the lexicon from LOB-B-J, and the overall accuracy in the DO+TO case is hence 98.69%.
+The general pattern of the results is similar across the three test corpora, with the only difference of interest being that case D3+TO does better for LOB-L than for the other two cases, and in particular does better than cases DO+T1 and Dl+Tl.
+Several follow-up experiments were used to confirm the results: using corpora from the Penn treebank, using equivalence classes to ensure that all lexical entries have a total relative frequency of at least 0.01, and using larger corpora.
+Firstly, four different degrees of degradation were used: no degradation at all, D2 degradation of the lexicon, Ti degradation of the transitions, and the two together.
+Two tests were conducted with each combination of the degradation and similarity, using different corpora (from the Penn treebank) ranging in size from approximately 50000 words to 500000 words.

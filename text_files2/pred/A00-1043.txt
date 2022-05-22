@@ -1,0 +1,27 @@
+The program achieved a success rate of 81.3%, meaning that 81.3% of reduction decisions made by the system agreed with those of humans.
+We collected 500 sentences and their corresponding reduced forms written by humans, and found that humans reduced the length of these 500 sentences by 44.2% on average.
+It provides lexical relations between words, including synonymy, antonymy, meronymy, entailment (e.g., eat -> chew), or causation (e.g., kill --* die).
+These lexical links are used to identify the focus in the local context.
+The other source we rely on is the large-scale lexicon we described earlier.
+The information in the lexicon is used to mark the obligatory arguments of verb phrases.
+For example, for the verb &quot;convince&quot;, the lexicon has the following entry: This entry indicates that the verb &quot;convince&quot; can be followed by a noun phrase and a prepositional phrase starting with the preposition &quot;of' (e.g., he convinced me of his innocence).
+To measure the importance of a phrase in the local context, the system relies on lexical links between words.
+We link the words in the extracted sentence with words in its local context, if they are repetitions, morphologically related, or linked in WordNet through one of the lexical relations.
+The formula for computing the context importance score for a word w is as follows: Here, i represents the different types of lexical relations the system considered, including repetition, inflectional relation, derivational relation, and the lexical relations from WordNet.
+We assigned a weight to each type of lexical relation, represented by Li in the formula.
+NU (w) in the formula represents the number of a particular type of lexical links the word w has with words in the local context.
+For example, we can compute the probability that the &quot;when&quot; temporal clause is removed when the main verb is &quot;give&quot;, represented as Prob(&quot;when-clause is removed&quot; I &quot;v=give&quot;), or the probability that the to-infinitive modifier of the head noun &quot;device&quot; is removed, represented as Prob(&quot;to-infinitive modifier is removed&quot; I&quot;n=device&quot;).
+For example, the probability that the &quot;when&quot; temporal clause is removed when the main verb is &quot;give&quot;, Prob(&quot;when-clause is removed&quot; I &quot;v=give&quot;), is computed as the product of Prob( &quot;v=give&quot; I &quot;when-clause is removed&quot;) (i.e., the probability that the main verb is &quot;give&quot; when the &quot;when&quot; clause is removed) and Prob(&quot;when-clause is removed&quot;) (i.e., the probability that the &quot;when&quot; clause is removed), divided by Prob(&quot;v=give&quot;) (i.e., the probability that the main verb is &quot;give&quot;).
+Besides computing the probability that a phrase is removed, we also compute two other types of probabilities: the probability that a phrase is reduced (i.e., the phrase is not removed as a whole, but some components in the phrase are removed), and the probability that a phrase is unchanged at all (i.e., neither removed nor reduced).
+The system can capture this human practice, since the probability that that-clause of the verb say or report being unchanged at all will be relatively high, which will help the system to avoid removing components in the that-clause.
+A subtree (i.e., a phrase) is removed only if it is not grammatically obligatory, not the focus of the local context (indicated by a low importance score), and has a reasonable probability of being removed by humans.
+Two out of the five decisions agree (they are D--÷B and D->E), so the success rate is 2/5 (40%).
+Using five-fold validation (i.e., chose different 100 sentences for testing each time and repeating the experiment five times), The program achieved an average success rate of 81.3%.
+If we consider the baseline as removing all the prepositional phrases, clauses, to-infinitives and gerunds, the baseline performance is 43.2%.
+For the decisions on removing or keeping a clause, the system has a success rate of 78.1%; for the decisions on removing or keeping a to-infinitive, the system has a success rate of 85.2%.
+One reason for this is that our probability model can hardly capture the dependencies between a particular adjective and the head noun since the training corpus is not large enough, while the other sources of information, including grammar or context information, provide little evidence on whether an adjective or an adverb should be removed.
+On average, the system reduced the length of the 500 sentence by 32.7% (based on the number of words), while humans reduced it by 41.8%.
+The probabilities we computed from the training corpus covered 58% of instances in the test corpus.
+When the corpus probability is absent for a case, the system makes decisions based on the other two sources of knowledge.
+We randomly checked 50 sentences, and found that 8% of the errors made by the system are due to parsing errors.
+Therefore, we take this into account when marking the obligatory components using subcategorization knowledge from the lexicon (step 2) - we not only look at the PPs that are attached to a verb phrase, but also PPs that are next to the verb phrase but not attached, in case it is part of the verb phrase.

@@ -1,0 +1,77 @@
+A Naive Bayesian classifier assumes that all the feature variables representing a problem are conditionally independent given the value of a classification variable.
+For a Naive Bayesian classifier, the joint probability of observing a certain combination of contextual features with a particular sense is expressed as: The parameters of this model are p(S) and FilS)• The sufficient statistics, i.e., the summaries of the data needed for parameter estimation, are the frequency counts of the events described by the interdependent variables (Fi, S).
+These zero values are smoothed by assigning them a very small default probability.
+Once all the parameters have been estimated, the model has been trained and can be used as a classifier to perform disambiguation by determining the most probable sense for an ambiguous word, given the context in which it occurs.
+All other lexical items are included in their original form; no stemming is performed and non-content words remain.
+This representation of context is a variation on the bag-of-words feature set, where a single window of context includes words that occur to both the left and right of the ambiguous word.
+An early use of this representation is described in (Gale et al., 1992), where word sense disambiguation is performed with a Naive Bayesian classifier.
+The first step in the ensemble approach is to train a separate Naive Bayesian classifier for each of the 81 possible combination of left and right window sizes.
+Naive_Bayes (1,r) represents a classifier where the model parameters have been estimated based on frequency counts of shallow lexical features from two windows of context; one including 1 words to the left of the ambiguous word and the other including r words to the right.
+Note that Naive_Bayes (0,0) includes no words to the left or right; this classifier acts as a majority classifier that assigns every instance of an ambiguous word to the most frequent sense in the training data.
+Once the individual classifiers are trained they are evaluated using previously held-out test data.
+The crucial step in building an ensemble is selecting the classifiers to include as members.
+The approach here is to group the 81 Naive Bayesian classifiers into general categories representing the sizes of the windows of context.
+There are three such ranges; narrow corresponds to windows 0, 1 and 2 words wide, medium to windows 3, 4, and 5 words wide, and wide to windows 10, 25, and 50 words wide.
+The most accurate classifier in each of the nine range categories is selected for inclusion in the ensemble.
+Each of the nine member classifiers votes for the most probable sense given the particular context represented by that classifier; the ensemble disambiguates by assigning the sense that receives a majority of the votes.
+The line data was created by (Leacock et al., 1993) by tagging every occurrence of line in the ACL/DCI Wall Street Journal corpus and the American Printing House for the Blind corpus with one of six possible WordNet senses.
+In that work, as well as in this paper, a subset of the corpus is utilized such that each sense is uniformly distributed; this reduces the accuracy of the majority classifier to 17%.
+The uniform distribution is created by randomly sampling 349 sense-tagged examples from each sense, resulting in a training corpus of 2094 sense-tagged sentences.
+The interest data was created by (Bruce and Wiebe, 1994) by tagging all occurrences of interest in the ACL/DCI Wall Street Journal corpus with senses from the Longman Dictionary of Contemporary English.
+The previous studies and this paper use the entire 2,368 sense-tagged sentence corpus in their experiments.
+The senses and their fresense count product 2218 written or spoken text 405 telephone connection 429 formation of people or things; queue 349 an artificial division; boundary 376 a thin, flexible object; cord 371 total 4148 Table 1: Distribution of senses for line - the experiments in this paper and previous work use a uniformly distributed subset of this corpus, where each sense occurs 349 times.
+sense count money paid for the use of money 1252 a share in a company or business 500 readiness to give attention 361 advantage, advancement or favor 178 activity that one gives attention to 66 causing attention to be given to 11 total 2368 Table 2: Distribution of senses for interest - the experiments in this paper and previous work use the entire corpus, where each sense occurs the number of times shown above.
+Unlike line, the sense distribution is skewed; the majority sense occurs in 53% of the sentences, while the smallest minority sense occurs in less than 1%.
+Eighty-one Naive Bayesian classifiers were trained and tested with the line and interest data.
+Four folds were used to train the Naive Bayesian classifier while the remaining fold was randomly divided into two equal sized test sets.
+The first, devtest, was used to evaluate the individual classifiers for inclusion in the ensemble.
+Thus the training data for each word consists of 80% of the available sensetagged text, while each of the test sets contains 10%.
+The average accuracy of the individual Naive Bayesian classifiers across the five folds is reported in Tables 3 and 4.
+The standard deviations were between .01 and .025 and are not shown given their relative consistency.
+Each classifier is based upon a distinct representation of context since each employs a different combination of right and left window sizes.
+The size and range of the left window of context is indicated along the horizontal margin in Tables 3 and 4 while the right window size and range is shown along the vertical margin.
+The classifier that achieves the highest accuracy in each range category is included as a member of the ensemble.
+In case of a tie, the classifier with the smallest total window of context is included in the ensemble.
+The most accurate single classifier for line is Naive_Bayes (4,25), which attains accuracy of 84% The accuracy of the ensemble created from the most accurate classifier in each of the range categories is 88%.
+The single most accurate classifier for interest is Naive_Bayes(4,1), which attains accuracy of 86% while the ensemble approach reaches 89%.
+The increase in accuracy achieved by both ensembles over the best individual classifier is statistically significant, as judged by McNemar's test with p = .01.
+These experiments use the same sense-tagged corpora for interest and line as previous studies.
+Summaries of previous results in Tables 5 and 6 show that the accuracy of the Naive Bayesian ensemble is comparable to that of any other approach.
+A decomposable probabilistic model is induced from the sense-tagged corpora using a backward sequential search where candidate models are evaluated with the log-likelihood ratio test.
+The selected model was used as a probabilistic classifier on a held-out set of test data and achieved accuracy of 78%.
+The interest data was included in a study by (Ng accuracies are associated with the classifiers included in the ensemble, which attained accuracy of 89% when evaluated with the test data.
+A nearest-neighbor classifier was employed and achieved an average accuracy of 87% over repeated trials using randomly drawn training and test sets.
+The first compares a range of probabilistic model selection methodologies and finds that none outperform the Naive Bayesian classifier, which attains accuracy of 74%.
+The second compares a range of machine learning algorithms and finds that a decision tree learner (78%) and a Naive Bayesian classifier (74%) are most accurate.
+They evaluate the disambiguation accuracy of a Naive Bayesian classifier, a content vector, and a neural network.
+The context of an ambiguous word is represented by a bag-of-words where the window of context is two sentences wide.
+When the Naive Bayesian classifier is evaluated words are not stemmed and capitalization remains.
+However, with the content vector and the neural network words are stemmed and words from a stop-list are removed.
+They report no significant differences in accuracy among the three approaches; the Naive Bayesian classifier achieved 71% accuracy, the content vector 72%, and the neural network 76%.
+All learning algorithms represent the context of an ambiguous word using the bag-of-words with a two sentence window of context.
+The two most accurate methods in this study proved to be a Naive Bayesian classifier (72%) and a perceptron (71%).
+The former take an ensemble approach where the output from two neural networks is combined; one network is based on a representation of local context while the other represents topical context.
+The latter utilize a Naive Bayesian classifier.
+and Voorhees, 1998) report accuracy of 87% while (Leacock et al., 1998) report accuracy of 84%.
+The Naive Bayesian classifier has emerged as a consistently strong performer in a wide range of comparative studies of machine learning methodologies.
+A similar finding has emerged in word sense disambiguation, where a number of comparative studies have all reported that no method achieves significantly greater accuracy than the Naive Bayesian classifier (e.g., (Leacock et al., 1993), (Mooney, 1996), (Ng and Lee, 1996), (Pedersen and Bruce, 1997)).
+In many ensemble approaches the member classifiers are learned with different algorithms that are trained with the same data.
+For example, an ensemble could consist of a decision tree, a neural network, and a nearest neighbor classifier, all of which are learned from exactly the same set of training data.
+This paper takes a different approach, where the learning algorithm is the same for all classifiers but the training data is different.
+This is especially true in this domain since the Naive Bayesian classifier has a history of success and since there is no generally agreed upon set of features that have been shown to be optimal for word sense disambiguation.
+Shallow lexical features such as co—occurrences and collocations are recognized as potent sources of disambiguation information.
+For example, (Ng and Lee, 1996) report that local collocations alone achieve 80% accuracy disambiguating interest, while their full set of features result in 87%.
+The most accurate classifier from each of nine possible category ranges is selected as a member of the ensemble.
+This is based on preliminary experiments that showed that member classifiers with similar sized windows of context often result in little or no overall improvement in disambiguation accuracy.
+This was expected since slight differences in window sizes lead to roughly equivalent representations of context and classifiers that have little opportunity for collective improvement.
+For example, an ensemble was created for interest using the nine classifiers in the range category (medium, medium).
+The accuracy of this ensemble was 84%, slightly less than the most accurate individual classifiers in that range which achieved accuracy of 86%.
+Early experiments also revealed that an ensemble based on a majority vote of all 81 classifiers performed rather poorly.
+The accuracy for interest was approximately 81% and line was disambiguated with slightly less than 80% accuracy.
+The lesson taken from these results was that an ensemble should consist of classifiers that represent as differently sized windows of context as possible; this reduces the impact of redundant errors made by classifiers that represent very similarly sized windows of context.
+The ultimate success of an ensemble depends on the ability to select classifiers that make complementary errors.
+In this paper ensemble disambiguation is based on a simple majority vote of the nine member classifiers.
+An alternative strategy is to weight each vote by the estimated joint probability found by the Naive Bayesian classifier.
+However, a preliminary study found that the accuracy of a Naive Bayesian ensemble using a weighted vote was poor.
+For interest, it resulted in accuracy of 83% while for line it was 82%.
+The simple majority vote resulted in accuracy of 89% for interest and 88% for line.

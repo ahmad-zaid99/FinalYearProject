@@ -1,0 +1,10 @@
+This representation has the following salient features: Lexemes which are in the lexicon are in uppercase, those that are not are in lowercase.
+For lexemes not in the lexicon it is necessary to specify the word class This illustrates that function words (do) need not be included in the input DSyntS, and that syntactic issues such as subject-verb and noun-determiner agreement are handled automatically.
+The tree in Figure 2 yields (3): Note that REALPRO does not perform the task of lexical choice: the input to REALPRO must specify all meaning-bearing lexemes, including features for free pronominalization.
+REALPRO is really a realizer shell, which allows for a (run-time) configuration using specially formatted Linguistic Knowledge Bases (LKBs) which state grammar rules, lexical entries, and feature defaults.
+The lexicon is an LKB which is used by all components.
+However, the user may want to extend the lexicon if a lexeme with irregular morphology is not in it yet.
+(Recall that not all words in the input representation need be in the lexicon.)
+For example, in order to generate saw (rather than the default seed) for the past tense of to see, the following entry would be added to the lexicon.
+Length 5 10 15 20 30 40 50 Sec .11 .17 .20 .28 .44 .58 .72 We also tested the system on the syntactically rather varied and complex input of Figure 2 (which is made up of 20 words).
+The average runtime for this input is 0.31 seconds, which is comparable to the runtime reported above for the 20 word sentence.

@@ -1,0 +1,30 @@
+Three bag-of-words query models are proposed and explained in the following sections.
+2.2 Bag-of-words Query Models.
+We first define ?bag-of-words?
+2.2.1 First-best Hypothesis as a Query Model The first-best hypothesis is the Viterbi path in the search space returned from the statistical machine translation decoder.
+Ignoring word order, the hypothesis is converted into a bag-of-words representation, which is then used as a query: }|),{(),,( 1211 TiiilT VwfwwwwQ ?== L where iw is a word in the vocabulary 1TV of the Top 1 hypothesis.
+2.2.2 N-Best Hypothesis List as a Query Model Similar to the first-best hypothesis, the n-best hypothesis list is converted into a bag-of-words representation.
+Words which occurred in several translation hypotheses are simply repeated in the bag-of-words representations.
+}|),{( ),,;;,,( ,2,1,,12,11,1 1 TNiii lNNNlTN Vwfw wwwwwwQ N ?= = LLL where TNV is the combined vocabulary from all n best hypotheses and if is the frequency of iw ?s occurrence in the n-best hypothesis list.
+These are then converted into a bag-of-words representation as follows: }|),{( ),,;;,,( ,2,1,,2,1, 1111 TMiii nsssnsssTM Vwfw wwwwwwQ IIII ?= = LLL where is is a source n-gram, and I is the number of n-grams in the source sentence.
+However, it is not modeled in the query models presented so far, which are simple bag-of-words representations.
+An example is shown below, where #phrase indicates the use of the ordered distance operator with varying n: #q=#sum( #wsum(2 eu 2 #phrase(european union) ) #wsum(12 #phrase(the united states) 1 american 1 #phrase(an american) ) #wsum(4 are 1 is ) #wsum(8 markets 3 market)) #wsum(7 #phrase(the main) 5 primary ) );
+Experiments are carried out on a standard statistical machine translation task defined in the NIST evaluation in June 2002.
+Our baseline system (Vogel et al, 2003) gives scores of 7.80 NIST and 0.1952 Bleu for Top-1 hypothesis, which is comparable to the best results reported on this task.
+4.3 Bag-of-Words Query Models.
+Table-2 shows the size of 1TQ , TNQ and TMQ in terms of number of tokens in the 878 queries: 1TQ TNQ TMQ || Q 25,861 231,834 3,412,512 Table-2: Query size in number of tokens As words occurring several times are reduced to word-frequency pairs, the size of the queries generated from the 100-best translation lists is only 9 times as big as the queries generated from the first-best translations.
+The queries generated from the translation model contain many more translation alternatives, summing up to almost 3.4 million tokens.
+1-Best/NIST Scores 7.7500 7.8000 7.8500 7.9000 7.9500 8.0000 AFE APW NYT XIE Top1 Top10 Top100 Top1000 Baseline 1-Best/BLEU-Scores 0.1900 0.1920 0.1940 0.1960 0.1980 0.2000 0.2020 0.2040 AFE APW NYT XIE Top1 Top10 Top100 Top1000 Baseline Figure-2: NIST and Bleu scores 1TQ We see that each corpus gives an improvement over the baseline.
+4.3.2 Results for Query TNQ Figure-3 shows the results for the query model TNQ .
+The best results are 7.99 NIST score, and 0.2022 Bleu score.
+100-Best/NIST-Scores 7.7500 7.8000 7.8500 7.9000 7.9500 8.0000 AFE APW NYT XIE Top1 Top10 Top100 Top1000 Baseline 100-Best/BLEU-Scores 0.1900 0.1920 0.1940 0.1960 0.1980 0.2000 0.2020 0.2040 AFE APW NYT XIE Top1 Top10 Top100 Top1000 Baseline Figure-3: NIST and Bleu scores from TNQ Using the translation alternatives to retrieve the data for language model adaptation gives an improvement over using the first-best translation only for query construction.
+4.3.3 Results for Query TMQ The third bag-of-words query model uses all translation alternatives for source words and source phrases.
+The best results are 7.91 NIST score and 0.1995 Bleu.
+The best bag-of-words query model is TNQ built from the N-Best list.
+Lattice/NIST-Scores 7.7500 7.8000 7.8500 7.9000 7.9500 8.0000 AFE APW NYT XIE Top1 Top10 Top100 Top1000 Baseline Lattice/BLEU-Scores 0.1900 0.1920 0.1940 0.1960 0.1980 0.2000 0.2020 0.2040 AFE APW NYT XIE Top1 Top10 Top100 Top1000 Baseline Figure-4: NIST and Bleu scores from TMQ 4.4 Structured Query Models.
+), the 100 best hypotheses list (?100 Best?
+The given baseline results are the best results achieved from the corresponding bag-of-words query models.
+Structured query/NIST-Scores 7.7500 7.8000 7.8500 7.9000 7.9500 8.0000 8.0500 8.1000 8.1500 Baseline Top100 Top500 Top1000 Top2000 Top4000 1-Best 100-Best TM-Lattice Structured query/BLEU-Scores 0.1920 0.1940 0.1960 0.1980 0.2000 0.2020 0.2040 0.2060 0.2080 Baseline Top100 Top500 Top1000 Top2000 Top4000 1-Best 100-Best TM-Lattice Figure-5: NIST and Bleu scores from the structured query models The really interesting result is that the structured query model TMQ gives now the best translation results.
+Adding word order information to the queries obviously helps to reduce the noise in the retrieved data by selecting sentences, which are closer to the good translations, The best results using the adapted language models are NIST score 8.12 for using the 2000 most similar sentences, whereas Bleu score goes up to 0.2068 when using 4000 sentences for language model adaptation.
+Table-3 Translation examples 4.6 Oracle Experiment Finally, we run an oracle experiments to see how much improvement could be achieved if we only selected better data for the specific language models.
+The oracle experiment suggests that better initial translations lead to better language models and thereby better 2nd iteration translations.

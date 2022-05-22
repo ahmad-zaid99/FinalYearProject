@@ -1,0 +1,24 @@
+){ estimate with Maximum Likelihood Estimation the prior probability )~(cP using contexts containing all Cc ~~ ?
+; calculate the posterior probability )|~( DcP with EM-NBC (generally EM-NBC-Ensemble), where ),,1(,)),(,),(),(( 21 niCccfcfcf inEEE LL =?=D 3.
+?= c c c e e ceP if,0 if,|| 1 )|( Next, we estimate the parameters by iteratively updating them, until they converge (cf., Figure 3).
+= Ee E efcPcf )()()( (2) In this way, we can transform the frequency vector in English ))(),..,(),(( 21 mefefef into a vector in Chinese ))(),..,(),(( 21 nEEE cfcfcf=D .
+Prior Probability Estimation At Step 2, we approximately estimate the prior probability )~(cP by using the document frequencies of the translation candidates.
+EM Algorithm EM-NBC At Step 2, we use an EM-based Na?ve Bayesian Classifier (EM-NBC) to select the candidates c~ whose posterior probabilities are the largest: ??
+EM-NBC-Ensemble To further improve performance, we use an ensemble (i.e., a linear combination) of EM-NBCs (EM-NBC-Ensemble), while the classifiers are constructed on the basis of the data in different contexts with different window sizes.
+; 1.
+create a frequency vector )),(,),(),(( 21 mefefef L ),,1(, miEei L=?using contexts containing e~ ; transforming the vector into 21 )),c(f,),c(f),c(f( nEEE L ),,1(, niCci L=?, using a translation dictionary and the EM algorithm; create a TF-IDF vector 11 )),cidf())c(f,),cidf()c(f( nnEE L=A ),,1(, niCci L=?
+){ create a frequency vector )),(,),(),(( 21 ncfcfcf L ),,1(, niCci L=?using contexts containing c~ ; create a TF-IDF vector 11 ))cidf())c(f,),cidf()c(f( nnL=B ),,1(, niCc i L=?
+There were about 1 http://encarta.msn.com/Default.asp 3000 Base NPs extracted.
+The dictionary contains about 76000 Chinese words, 60000 English words, and 118000 translation links.
+In the experiment, we randomly selected 1000 Base NPs from the 3000 Base NPs.
+Best translation result for each method Accuracy (%) Top 1 Top 3 Coverage (%) EM-NBC-Ensemble 61.7 80.3 Prior 57.6 77.6 MT-NBC-Ensemble 59.9 78.1 EM-KL-Ensemble 45.9 72.3 EM-NBC 60.8 78.9 EM-TF-IDF 61.9 80.8 MT-TF-IDF 58.2 77.6 EM-TF 55.8 77.8 89.9 Table 1 shows the results in terms of coverage and top n accuracy.
+The p-values of the sign tests are 0.00056 and 0.00133 for EM-NBC-Ensemble, 0.00002 and 0.00901 for EM-TF-IDF, respectively.
+The key components are (1) distance calculation by KL divergence (2) EM, (3) prior probability, and (4) ensemble.
+The variants, thus, respectively make use of (1) the baseline method ?Prior?, (2) an ensemble of Na?ve Bayesian Classifiers based on Major Translation (MT-NBC-Ensemble), (3) an ensemble of EM-based KL divergence calculations (EM-KL-Ensemble), and (4) EM-NBC.
+Figure 7 and Table 1 show the results.
+Figure 7 and Table 1 show the results.
+We analyzed the reasons for incorrect translations and found that the incorrect translations were due to: (1) no existence of dictionary entry (19%), (2) non-compositional translation (13%), (3) ranking error (68%).
+Translation results Accuracy (%) Top 1 Top 3 Coverage (%) Our Method 61.7 80.3 89.9 Nagata et als 72.0 76.0 10.5 We next used Nagata et als method to perform translation.
+Translation results Accuracy% Top 1 Top 3 Coverage % Back-off (Ensemble) 62.9 79.7 Back-off (TF-IDF) 62.2 79.8 91.4 helps to further improve the results whether EM-NBC-Ensemble or EM-TF-IDF is used.
+We followed the Back-off strategy as in Section 4.3 to translate the 1000 Base NPs.
+Translation results Accuracy%Data Top 1 Top 3 Coverage % Web (EM-NBC-Ensemble) 62.9 79.7 91.4 Non-web (EM-NBC-Ensemble) 56.9 74.7 79.3 Web (EM-IF-IDF) 62.2 79.8 91.4 Non-web (EM-TF-IDF) 51.5 71.4 78.5 The results in Table 5 show that the use of web data can yield better results than non-use of it, although the sizes of the non-web data we used were considerably large in practice.

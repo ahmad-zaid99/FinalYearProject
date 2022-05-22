@@ -1,0 +1,34 @@
+Fung and Yee (1998), for example, proposed to represent the contexts of a word or phrase with a real-valued vector (e.g., a TF-IDF vector), in which one element corresponds to one word in the contexts.
+In this paper, we confine ourselves to translation of noun-noun pairs from English to Chinese; our method, however, can be extended to translations of other types of Base NPs between other language pairs.
+We use heuristics for translation candidate collection.
+EM-NBC-Ensemble We view the translation selection problem as that of classification and employ EM-NBC-Ensemble to perform the task.
+For the ease of explanation, we first describe the algorithm of using only EM-NBC and next extend it to that of using EM-NBC-Ensemble.
+; calculate the posterior probability )|~( DcP with EM-NBC (generally EM-NBC-Ensemble), where ),,1(,)),(,),(),(( 21 niCccfcfcf inEEE LL =?=D 3.
+Algorithm of EM-NBC-Ensemble Context Information As input data, we use ?contexts?
+EM Algorithm EM-NBC At Step 2, we use an EM-based Na?ve Bayesian Classifier (EM-NBC) to select the candidates c~ whose posterior probabilities are the largest: ??)~|(log)()~(logmaxarg )|~(maxarg ~ ~ ~ ~ ccPcfcP cP Cc E Cc Cc D (3) Equation (3) is based on Bayes?rule and the assumption that the data in D are independently generated from CcccP ?),~|( . In our implementation, we use an equivalent ??)~|(log)()~(logminarg ~ ~ ccPcfcP Cc E Cc ?(4) where 1??is an additional parameter used to emphasize the prior information.
+If we ignore the first term in Equation (4), then the use of one EM-NBC turns out to select the candidate whose frequency vector is the closest to the transformed vector D in terms of KL divergence (cf., Cover and Tomas 1991).
+EM-NBC-Ensemble To further improve performance, we use an ensemble (i.e., a linear combination) of EM-NBCs (EM-NBC-Ensemble), while the classifiers are constructed on the basis of the data in different contexts with different window sizes.
+The idf value of a Chinese word c is calculated in advance and as )/)(log()( Fcdfcidf ?= (6) where )cdf( denotes the document frequency of c and F the total document frequency.
+create a frequency vector )),(,),(),(( 21 mefefef L ),,1(, miEei L=?using contexts containing e~ ; transforming the vector into 21 )),c(f,),c(f),c(f( nEEE L ),,1(, niCci L=?, using a translation dictionary and the EM algorithm; create a TF-IDF vector 11 )),cidf())c(f,),cidf()c(f( nnEE L=A ),,1(, niCci L=?
+for each ( Cc ~~ ? ){ create a frequency vector )),(,),(),(( 21 ncfcfcf L ),,1(, niCci L=?using contexts containing c~ ; create a TF-IDF vector 11 ))cidf())c(f,),cidf()c(f( nnL=B ),,1(, niCc i L=?; calculate ),cos()c~tfidf( BA= ; }
+There were about 1 http://encarta.msn.com/Default.asp 3000 Base NPs extracted.
+In the experiments, we.used the HIT English-Chinese word translation dictionary2 . The dictionary contains about 76000 Chinese words, 60000 English words, and 118000 translation links.
+In the experiment, we randomly selected 1000 Base NPs from the 3000 Base NPs.
+We next used our method to perform translation on the 1000 phrases.
+In translation selection, we employed EM-NBC-Ensemble and EM-TF-IDF.
+Best translation result for each method Accuracy (%) Top 1 Top 3 Coverage (%) EM-NBC-Ensemble 61.7 80.3 Prior 57.6 77.6 MT-NBC-Ensemble 59.9 78.1 EM-KL-Ensemble 45.9 72.3 EM-NBC 60.8 78.9 EM-TF-IDF 61.9 80.8 MT-TF-IDF 58.2 77.6 EM-TF 55.8 77.8 89.9 Table 1 shows the results in terms of coverage and top n accuracy.
+For EM-NBC-Ensemble, we set the ? !in (4) to be 5 on the basis of our preliminary experimental results.
+For EM-TF-IDF, we used the non-web data described in Section 4.4 to estimate idf values of words.
+We used contexts with window sizes of ?1, ?3, ?5, ?7, ?9, ?11.
+In MT-TF-IDF, we use TF-IDF vectors transformed with Major Translation.
+Our experimental results indicate that both EM-NBC-Ensemble and EM-TF-IDF significantly outperform Prior and MT-TF-IDF, when appropriate window sizes are chosen.
+The p-values of the sign tests are 0.00056 and 0.00133 for EM-NBC-Ensemble, 0.00002 and 0.00901 for EM-TF-IDF, respectively.
+We next removed each of the key components of EM-NBC-Ensemble and used the remaining components as a variant of it to perform translation selection.
+We see that EM-NBC-Ensemble outperforms all of the variants, indicating that all the components within EM-NBC-Ensemble play positive roles.
+Comparing the results between MT-NBC-Ensemble and EM-NBC-Ensemble and the results between MT-TF-IDF and EM-TF-IDF, we see that the uses of the EM Algorithm can indeed help to improve translation accuracies.
+We analyzed the reasons for incorrect translations and found that the incorrect translations were due to: (1) no existence of dictionary entry (19%), (2) non-compositional translation (13%), (3) ranking error (68%).
+Translation results Accuracy (%) Top 1 Top 3 Coverage (%) Our Method 61.7 80.3 89.9 Nagata et als 72.0 76.0 10.5 We next used Nagata et als method to perform translation.
+Translation results Accuracy% Top 1 Top 3 Coverage % Back-off (Ensemble) 62.9 79.7 Back-off (TF-IDF) 62.2 79.8 91.4 helps to further improve the results whether EM-NBC-Ensemble or EM-TF-IDF is used.
+The data comprised of the Wall Street Journal corpus in English (1987-1992, 500MB) and the People?s Daily corpus in Chinese (1982-1998, 700MB).
+We followed the Back-off strategy as in Section 4.3 to translate the 1000 Base NPs.
+Translation results Accuracy%Data Top 1 Top 3 Coverage % Web (EM-NBC-Ensemble) 62.9 79.7 91.4 Non-web (EM-NBC-Ensemble) 56.9 74.7 79.3 Web (EM-IF-IDF) 62.2 79.8 91.4 Non-web (EM-TF-IDF) 51.5 71.4 78.5 The results in Table 5 show that the use of web data can yield better results than non-use of it, although the sizes of the non-web data we used were considerably large in practice.

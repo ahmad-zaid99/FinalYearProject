@@ -1,0 +1,20 @@
+Second, some predicate expressions are unary by nature.
+We applied the lexical similarity measures pre sented in Section 2 for unary rule learning.
+We also omitted 3 events with less than 10mentions, and were left with 26 events (6380 argu ment mentions).
+We executed each method over the Reuters RCV1 corpus 3 , learning for each template r in the corpus the top100 rules in which r is entailed by another tem plate l, ?l?
+We also mea sured F1, their harmonic average, and report macro average Recall, Precision and F1 over the 26 event types.
+Figure 1 presents Recall, Precision and F1 of themethods for different cutoff points.
+BInc?s re call increases moderately compared to other unarylearning approaches, but it is still substantially bet ter than not using rules (a relative recall increase of 50% already at K=10).
+X marry?.When only one argument is annotated for a specific event mention (28% of ACE predicate mentions, which account for 15% of all annotated arFigure 1: Average Precision, Recall and F1 at dif ferent top K rule cutoff points.
+854 5.2 Analysis.
+From the false positives analysis (Table 2) we see that 39% of the errors are due to incorrect rules.
+due to parse errors) and context mismatch contribute together 46% of theerrors.
+The rule-set net effect on system precision is better estimated by removing these errors and fixing the annotation errors, which yields 72% precision.
+Binary DIRT Balanced Inclusion Correct 16 (70) 38 (91) Partial Template 27 (2665) 6 (81) Incorrect 157 (2584) 156 (787) Total 200 (5319) 200 (959) Table 1: Rule type distribution of a sample of 200rules that extracted incorrect mentions.
+Reason % mentions Incorrect Rule learned 39.0 Context mismatch 27.0 Match error 19.0 Annotation problem 15.0 Table 2: Distribution of reasons for false positives (incorrect argument extractions) by BInc at K=20.
+Reason % mentions Rule not learned 61.5 Match error 25.0 Discourse analysis needed 12.0 Argument is predicative 1.5 Table 3: Distribution of reasons for false negatives (missed argument mentions) by BInc at K=20.
+First, we note that 12% of the arguments cannotbe extracted by rules alone, due to necessary discourse analysis.
+Thus, a recall upper bound for en tailment rules is 88%.
+Many missed extractions aredue to rules that were not learned (61.5%).
+How ever, 25% of the mentions were missed because of incorrect syntactic matching of correctly learned rules.
+By assuming correct matches in these cases we isolate the recall of the rule-set (along with the seeds), which yields 39% recall.

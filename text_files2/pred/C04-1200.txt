@@ -1,0 +1,43 @@
+Then the sentence sentiment classifier calculates the polarity of all sentiment-bearing words individually.
+Section 2.1 describes the word sentiment classifier and Section 2.2 describes the sentence sentiment classifier.
+2.1 Word Sentiment Classifier.
+To start the seed lists we selected verbs (23 positive and 21 negative) and adjectives (15 positive and 19 negative), adding nouns later.
+Using these expanded lists, we extracted an additional cycle of words from WordNet, to obtain finally 5880 positive adjectives, 6233 negative adjectives, 2840 positive verbs, and 3239 negative verbs.
+where c is a sentiment category (positive or negative), w is the unseen word, and synn are the WordNet synonyms of w. To compute Equation (1), we tried two different models: (2) )|()(maxarg )|()(maxarg )|()(maxarg)|(maxarg 1 ))(,( ...3 2 1 ?
+Equation (3) shows the second model for a word sentiment classifier.
+== = To compute the probability P(w|c) of word w given a sentiment class c, we count the occurrence of w?s synonyms in the list of c. The intuition is that the more synonyms occuring in c, the more likely the word belongs.
+abysmal : NEGATIVE [+ : 0.3811][- : 0.6188] adequate : POSITIVE [+ : 0.9999][- : 0.0484e-11] afraid : NEGATIVE [+ : 0.0212e-04][- : 0.9999] ailing : NEGATIVE [+ : 0.0467e-8][- : 0.9999] amusing : POSITIVE [+ : 0.9999][- : 0.0593e-07] answerable : POSITIVE [+ : 0.8655][- : 0.1344] apprehensible: POSITIVE [+ : 0.9999][- : 0.0227e-07] averse : NEGATIVE [+ : 0.0454e-05][- : 0.9999] blame : NEGATIVE [+ : 0.2530][- : 0.7469] Table 2: Sample output of word sentiment classifier.
+2.2 Sentence Sentiment Classifier.
+A more sophisticated approach would employ a parser to identify syntactic relationships between each Holder and all dependent expressions of sentiment.
+2 words Window4: window2 to the end of sentence Table 3: Four variations of region size.
+)|(argmax ,)|(10)|( j 1 1)( 2.2.4 Examples The following are two example outputs.
+TOPIC : term limit HOLDER : First Congress OPINION REGION: soundly/RB defeated/VBD two/CD subsequent/JJ term-limit/JJ proposals./NN SENTIMENT_POLARITY: negative
+The first experiment examines the two word sentiment classifier models and the second the three sentence sentiment classifier models.
+3.1 Word Sentiment Classifier.
+We started with a basic English word list for foreign students preparing for the TOEFL test and intersected it with an adjective list containing 19748 English adjectives and a verb list of 8011 verbs to obtain common adjectives and verbs.
+From this we randomly selected 462 adjectives and 502 verbs for human classification.
+Human1 and human2 each classified 462 adjectives, and human2 and human3 502 verbs.
+3.1.1 Human?Human Agreement Adjectives Verbs Human1 : Human2 Human1 : Human3 Strict 76.19% 62.35% Lenient 88.96% 85.06% Table 4: Inter-human classification agreement.
+3.1.2 Human?Machine Agreement Table 5 shows results, using Equation (2) of Section 2.1.1, compared against a baseline that randomly assigns a sentiment category to each word (averaged over 10 iterations).
+Of the test data, the algorithm classified 93.07% of adjectives and 83.27% of verbs as either positive and negative.
+In Table 5, the seed list included just a few manually selected seed words (23 positive and 21 negative verbs and 15 and 19 adjectives, repectively).
+After collecting the annotated data, we added half of it (231 adjectives and 251 verbs) to the training set, retaining the other half for the test.
+Adjective (Train: 231 Test : 231) Verb (Train: 251 Test : 251) Lenient agreement Lenient agreement H1:M H2:M recall H1:M H3:M recall 75.66% 77.88% 97.84% 81.20% 79.06% 93.23% Table 6: Results including manual data.
+3.2 Sentence Sentiment Classifier.
+3.2.1 Data 100 sentences were selected from the DUC 2001 corpus with the topics ?illegal alien?, ?term limits?, ?gun control?, and ?NAFTA?.
+3.2.2 Test on Human Annotated Data We experimented on Section 2.2.3?s 3 models of sentiment classifiers, using the 4 different window definitions and 4 variations of word-level classifiers (the two word sentiment equations introduced in Section 2.1.1, first with and then without normalization, to compare performance).
+Since Model 0 considers not probabilities of words but only their polarities, the two word- level classifier equations yield the same results.
+Consequently, Model 0 has 8 combinations and Models 1 and 2 have 16 each.
+The models are numbered as follows: m0 through m4 represent 4 sentence classifier models, Table 5.
+Adjective (test: 231 adjectives) Verb (test : 251 verbs) Lenient agreement Lenient agreement H1:M H2:M recall H1:M H3:M recall Random selection (average of 10 iterations) 59.35% 57.81% 100% 59.02% 56.59% 100% Basic method 68.37% 68.60% 93.07% 75.84% 72.72% 83.27% p1/p2 and p3/p4 represent the word classifier models in Equation (2) and Equation (3) with normalization and without normalization respectively.
+0.3 0.4 0.5 0.6 0.7 0.8 0.9 m0p1 m0p3 m1p1 m1p2 m1p3 m1p4 m2p1 m2p2 m2p3 m2p4 ac cu ra cy Window 1 Window 2 Window 3 Window 4 0.3 0.4 0.5 0.6 0.7 0.8 0.9 m0p1 m0p3 m1p1 m1p2 m1p3 m1p4 m2p1 m2p2 m2p3 m2p4 ac cu rac y Window 1 Window 2 Window 3 Window 4 Human 1 : Machine Human 2 : Machine Figure 2: Results with manually annotated Holder.
+0.3 0.4 0.5 0.6 0.7 0.8 0.9 m0p1 m0p3 m1p1 m1p2 m1p3 m1p4 m2p1 m2p2 m2p3 m2p4 ac cu rac y Window 1 Window 2 Window 3 Window 4 0.3 0.4 0.5 0.6 0.7 0.8 0.9 m0p1 m0p3 m1p1 m1p2 m1p3 m1p4 m2p1 m2p2 m2p3 m2p4 ac cu rac y Window 1 Window 2 Window 3 Window 4 Human 1 : Machine Human 2 : Machine Figure 3: Results with automatic Holder detection.
+Since human1 classified 33 sentences positive and 33 negative, random classification gives 33 out of 66 sentences.
+Similarly, since human2 classified 29 positive and 34 negative, random classification gives 34 out of 63 when the system blindly marks all sentences as negative and 29 out of 63 when it marks all as positive.
+The system?s best model performed at 81% accuracy with the manually provided holder and at 67% accuracy with automatic holder detection.
+If such combinations occur adjacently, we can use bigrams or trigrams in the seed word list.
+For manually tagged holder and topic, Model 0 has the highest single performance, though Model 1 averages best.
+Table 7 compares the average results with automatic holder identification to manually annotated holders in 40 different models.
+Around 7 more sentences (around 11%) were misclassified by the automatic detection method.
+positive negative total Human1 5.394 1.667 7.060 Human2 4.984 1.714 6.698 Table 7: Average difference between manual and automatic holder detection.
+In previous research, we built a sentence subjectivity classifier.

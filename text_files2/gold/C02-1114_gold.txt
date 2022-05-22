@@ -1,0 +1,10 @@
+for category membership and output a ranked list Algorithms of this type were used by Riloff and Shepherd (1997) and Roark and Charniak (1998), reporting accuracies of 17% and 35% respectively.
+The accuracy achieved in this experiment is sometimes as high as 78% and is there fore comparable to the results reported in this paper.
+The graph used in the experiments described has 99,454 nodes (nouns) and 587,475 links.
+There were roughly 400,000 different types tagged as nouns in the corpus, so the graph model represents about one quarter of these nouns, including most of the more common ones.
+(It has been pointed out that many polysemous words may occur in several classes, making the task easier because for many words there are several classes which our algorithm would give credit for.)With these conditions, our algorithm re trieves only 36 incorrect terms out of a total of 200, giving an accuracy of 82%.
+Our results are an order of magnitude better than those reported by Riloff and Shepherd (1997) and Roark and Charniak (1998), whoreport average accuracies of 17% and 35% re spectively.
+The experiments in (Riloff and Shepherd, 1997) were performed on the 500,000 word MUC-4 corpus, and those of (Roark and Charniak, 1998) were performedusing MUC-4 and the Wall Street Journal cor pus (some 30 million words).
+Our model was built using the British National Corpus (100 million words).
+The LSI similarity thesaurus obtained an accuracy of 31%, much less than the graph model?s 82%.
+Breadth of cover age does not in itself solve this problem: general lexical resources such as WordNet can provide too many senses many of which are rarely used in particular domains or corpora (Gale et al, 1992).The graph model presented in this paper suggests a new method for recognising relevant polysemy.

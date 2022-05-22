@@ -1,0 +1,18 @@
+Our use of the term similarity measure encompasses measures which should strictly bereferred to as distance, divergence or dissimilar ity measures.
+The cosine measure (Salton and McGill, 1983) returns the cosine of the angle between two vectors.
+The Jensen-Shannon (JS) divergence measure (Rao, 1983) and the ?-skew divergence measure (Lee, 1999) are based on the Kullback-Leibler (KL) divergence measure.
+Another is the ?-skew diver gence measure, which uses the p distribution tosmooth the q distribution.
+The confusion probability (Sugawara et al, 1985) is an estimate of the probability that one word can be substituted for another.
+The data from which sets of nearest neighbours are derived is direct-object data for 2000 nouns extracted from the BNC using a robust accurate statistical parser (RASP) (Briscoe and Carroll, 2002).
+For reasons of computational efficiency,we limit ourselves to 2000 nouns and directobject relation data.
+The complete set of 2000 nouns (WScomp) is the union of two sets WShigh and WSlow for which nouns were selected on the basis of frequency: WShigh contains the 1000 most frequently occurring nouns (frequency &gt; 500), and WSlow contains the nouns ranked 3001-4000 (frequency ? 100).
+From this data, we computedthe similarity between every pair of nouns according to each distributional similarity mea sure.
+The overlap score indicates the extent to which sets share members and the extent to whichthey are in the same order.
+Any deviation from 0.5 of greater than 0.0234 is significant at the 1% level.
+The harmonic mean of precision and re call prefers words that have both high precision and high recall.
+we ex tracted all of the possible hyponym-hypernym pairs (20, 415 pairs in total) from our list of 2000 nouns (using WordNet 1.6).
+There may be other concepts in the hypernym chain between dog and animal e.g. carnivore and mammal.values in 71% of cases and correlated in the pre dicted direction with relative frequency in 70% of cases.
+They ex tract co-occurrence data for 111 phrasal verbs (e.g. rip off ) and their simplex constituents(e.g. rip) from the BNC using RASP and cal culate the value of simlin between each phrasal verb and its simplex constituent.
+The test simplexscore is used to rank the phrasal verbs according to their similarity with their simplexconstituent.
+Measure rs P (rs) under H0 simlin 0.0525 0.2946 precision -0.160 0.0475 recall 0.219 0.0110 harmonic mean 0.011 0.4562 
+Thus, we hypothesised that a distributional measure which tends to select more generalterms as neighbours of the phrasal verb (e.g. re call) would do better than measures that tend to select more specific terms (e.g. precision) or measures that tend to select terms of a similar specificity (e.g simlin or the harmonic mean of precision and recall).

@@ -1,0 +1,136 @@
+means that a nominal head (NOM-HEAD is a set that contains part-of-speech tags that may represent a nominal head) may not appear anywhere to the left (NOT *-1).
+This &quot; anywhere &quot; to the left or right may be restricted by BARRIERs, which restrict the area of the test.
+Basically, the barrier can be used to limit the test only to the current clause (by using clause boundary markers and &quot; stop words &quot;) or to a constituent (by using &quot; stop categories &quot;) instead of the whole sentence.
+In addition, another test may be added relative to the unrestricted context position using keyword LINK.
+For example, the following rule discards the syntactic function' CI-OBJ (indirect object): The rule holds if the closest finite verb to the left is unambiguously (C) a finite verb (VFIN), and there is no ditransitive verb or participle (subcategorisation SV00) between the verb and the indirect object.
+If, in addition, the verb does not take indirect objects, i.e. there is no SVO0 in the same verb (LINK NOT 0 SV00), the CI-OBJ reading will be discarded.
+In essence, the same formalism is used in the syntactic analysis in Jarvinen (1994) and Anttila (1995).
+After the morphological disambiguation, all legitimate surface-syntactic labels are added to the set of morphological readings.
+Then, the syntactic rules discard contextually illegitimate alternatives or select legitimate ones.
+The syntactic tagset of the Constraint Grammar provides an underspecific dependency description.
+For example, labels for functional heads (such as CSUBJ, COBJ, CI-OBJ) mark the word which is a head of a noun phrase having that function in the clause, but the parent is not indicated.
+In addition, the representation is shallow, which means that, e.g., objects of infinitives and participles receive the same type of label as objects of finite verbs.
+On the other hand, the non-finite verb forms functioning as objects receive only verbal labels.
+When using the grammar formalism described above, a considerable amount of syntactic ambiguity can not be resolved reliably and is therefore left pending in the parse.
+As a consequence, the output is not optimal in many applications.
+For example, it is not possible to reliably pick head-modifier pairs from the parser output or collect arguments of verbs, which was one of the tasks we originally were interested in.
+To solve the problems, we developed a more powerful rule formalism which utilises an explicit dependency representation.
+The basic Constraint Gram'The convention in the Constraint Grammar is that the tags for syntactic functions begin with the 0-sign. mar idea of introducing the information in a piecemeal fashion is retained, but the integration of different pieces of information is more efficient in the new system.
+3 Dependency grammars in a nutshell Our notation follows the classical model of dependency theory (Heringer, 1993) introduced by Lucien Tesniere (1959) and later advocated by Igor Mel'auk (1987).
+In Tesniere's and Mel'auk's dependency notation every element of the dependency tree has a unique head.
+The verb serves as the head of a clause and the top element of the sentence is thus the main verb of the main clause.
+In some other theories, e.g.
+Hudson (1991), several heads are allowed.
+Projectivity (or adjacency4) was not an issue for Tesniere (1959, ch.
+10), because he thought that the linear order of the words does not belong to the syntactic level of representation which comprises the structural order only.
+Some early formalisations, c.f.
+(Hays, 1964), have brought the strict projectivity (context-free) requirement into the dependency framework.
+This kind of restriction is present in many dependency-based parsing systems (McCord, 1990; Sleator and Ternperley, 1991; Eisner, 1996).
+But obviously any recognition grammar should deal with non-projective phenomena to the extent they occur in natural languages as, for example, in the analysis shown in Figure 2.
+Our system has no in-built restrictions concerning projectivity, though the formalism allows us to state when crossing links are not permitted.
+We maintain that one is generally also interested in the linear order of elements, and therefore it is presented in the tree diagrams.
+But, for some purposes, presenting all arguments in a canonical order might be more adequate.
+This, however, is a matter of output formatting, for which the system makes several options available.
+The verbs (as well as other elements) have a valency that describes the number and type of the modifiers they may have.
+In valency theory, usually, complements (obligatory) and adjuncts (optional) are distinguished.
+Our notation makes a difference between valency (rule-based) and subcategorisation (lexical): the valency tells which arguments are expected; the subcategorisation tells which combinations are legitimate.
+The valency merely provides a possibility to have an argument.
+Thus, a verb having three valency slots may have e.g. subcategorisation SVOO or SVOC.
+The former denotes: Subject, Verb, indirect Object and Object, and the latter: Subject, Verb, Object and Object Complement.
+The default is a nominal type of complement, but there might also be additional information concerning the range of possible complements, e.g., the verb say may have an object (SVO), which may also be realised as a to-infinitive clause, WH-clause, that-clause or quote structure.
+The adjuncts are not usually marked in the verbs because most of the verbs may have e.g. spatiotemporal arguments.
+Instead, adverbial complements and adjuncts that are typical of particular verbs are indicated.
+For instance, the verb decide has the tag <P/on> which means that the prepositional phrase on is typically attached to it.
+The distinction between the complements and the adjuncts is vague in the implementation; neither the complements nor the adjuncts are obligatory.
+Usually, both the dependent element and its head are implicitly (and ambiguously) present in the Constraint Grammar type of rule.
+Here, we make this dependency relation explicit.
+This is done by declaring the heads and the dependents (complement or modifier) in the context tests.
+For example, the subject label (OSOBJ) is chosen and marked as a dependent of the immediately following auxiliary (AUXMOD) in the following rule: SELECT (@SUBJ) IF (IC AUXMOD HEAD); To get the full benefit of the parser, it is also useful to name the valency slot in the rule.
+This has two effects: (1) the valency slot is unique, i.e. no more than one subject is linked to a finite verb', and (2) we can explicitly state in rules which kind of valency slots we expect to be filled.
+The rule thus is of the form:
+IF (IC AUXMOD HEAD = subject); The rule above works well in an unambiguous context but there is still need to specify more tolerant rules for ambiguous contexts.
+The rule differs from the previous rule in that it leaves the other readings of the noun intact and only adds a (possible) subject dependency, while both the previous rules disambiguated the noun reading also.
+But especially in the rule above, the contextual test is far from being sufficient to select the subject reading reliably.
+Instead, it leaves open a possibility to attach a dependency from another syntactic function, i.e. the dependency relations remain ambiguous.
+The grammar tries to be careful not to introduce false dependencies but for an obvious reason this is not always possible.
+If several syntactic functions of a word have dependency relations, they form a dependency forest.
+Therefore, when the syntactic function is not rashly disambiguated, the correct reading may survive even after illegitimate linking, as the global pruning (Section 5) later extracts dependency links that form consistent trees.
+Links formed between syntactic labels constitute partial trees, usually around verbal nuclei.
+But a new mechanism is needed to make full use of the structural information provided by multiple rules.
+Once a link is formed between labels, it can be used by the other rules.
+For example, when a head of an object phrase (OM) is found and indexed to a verb, the noun phrase to the right (if any) is probably an object complement (CPCOMPL-0).
+It should have the same head as the existing object if the verb has the proper subcategorisation tag (SVOC).
+The following rule establishes a dependency relation of a verb and its object complement, if the object already exists.
+The rule says that a dependency relation (o-compl) should be added but the syntactic functions should not be disambiguated (INDEX).
+The object complement OPCOMPL-0 is linked to the verb readings having the subcategorisation SVOC.
+The relation of the object complement and its head is such that the noun phrase to the left of the object complement is an object (CM) that has established a dependency relation (object) to the verb.
+Naturally, the dependency relations may also be followed downwards (DOWN).
+But it is also possible to declare the last item in a chain of the links (e.g. the verb chain would have been wanted) using the keywords TOP and BOTTOM.
+We pursue the following strategy for linking and disambiguation. in the new dependency grammar.
+In practice, these rules are most likely to cause errors, apart from their linguistic interpretation often being rather obscure.
+Moreover, there is no longer any need to remove these readings explicitly by rules, because the global pruning removes readings which have not obtained any &quot;extra evidence&quot;.
+Roughly, one could say that the REMOVE rules of the Constraint Grammar are replaced by the INDEX rules.
+The overall result is that the rules in the new framework are much more careful than those of ENGCG.
+As already noted, the dependency grammar has a big advantage over ENGCG in dealing with ambiguity.
+Because the dependencies are supposed to form a tree, we can heuristically prune readings that are not likely to appear in such a tree.
+We have the following hypotheses: (1) the dependency forest is quite sparse and a whole parse tree can not always be found; (2) pruning should favour large (sub)trees; (3) unlinked readings of a word can be removed when there is a linked reading present among the alternatives; (4) unambiguous subtrees are more likely to be correct than ambiguous ones; and (5) pruning need not force the words to be unambiguous.
+Instead, we can apply the rules iteratively, and usually some of the rules apply when the ambiguity is reduced.
+Pruning is then applied again, and so on.
+Furthermore, the pruning mechanism does not contain any language specific statistics, but works on a topological basis only.
+Some of the most heuristic rules may be applied only after pruning.
+This has two advantages: very heuristic links would confuse the pruning mechanism, and words that would not otherwise have a head, may still get one.
+In this section, we present a set of rules, and show how those rules can parse the sentence &quot; Joan said whatever John likes to decide suits her &quot;.
+The toy grammar containing 8 rules is presented in Figure 3.
+The rules are extracted from the real grammar, and they are then simplified; some tests are omitted and some tests are made simpler.
+The grammar is applied to the input sentence in Figure 4, where the tags are almost equivalent to those used by the English Constraint Grammar, and the final result equals Figure 2, where only the dependencies between the words and certain tags are printed.
+Some comments concerning the rules in the toy grammar (Figure 3) are in order: The rule states: the first noun phrase head label to the right is a subject (OSOBJ), link subj exists and is followed up to the finite verb (0+F) in a verb chain (v-ch), which is then followed up to the main verb.
+Then object or complement links are followed downwards (BOTTOM), to the last verbal reading (here decide).
+If then a verb with subcategorisation for objects is encountered, an object link from the WH-pronoun is formed.
+This kind of rule that starts from word A, follows links up to word B and then down to word C, introduces a non-projective dependency link if word B is between words A and C. Note that the conditions TOP and BOTTOM follow the chain of named link, if any, to the upper or lower end of a chain of a multiple (zero or more) links with the same name.
+Therefore TOP v-ch: @MA INV always ends with the main verb in the verb chain, whether this be a single finite verb like likes or a chain like would have been liked.
+6.
+The WH-clause itself may function as a subject, object, etc.
+Therefore, there is a set of rules for each function.
+The &quot; WH-clause as subject &quot; rule looks for a finite verb to the right.
+No intervening subject labels and clause boundaries are allowed.
+* Rules 1-5 are applied in the first round.
+After that, the pruning operation disambiguates finite verbs, and rule 6 will apply.
+Pruning will be applied once again.
+The sentence is thus disambiguated both morphologically and morphosyntactically, and a syntactic phosyntactic alternatives, e.g. whatever is ambiguous in 10 ways.
+The subcategorisation/valency information is not printed here. reading from each word belongs to a subtree of which the root is said or suits.
+7.
+The syntactic relationship between the verbs is established by a rule stating that the rightmost main verb is the (clause) object of a main verb to the left, which allows such objects.
+8.
+Finally, there is a single main verb, which is indexed to the root (<s>) (in position 00).
+The evaluation was done using small excerpts of data, not used in the development of the system.
+All text samples were excerpted from three different genres in the Bank of English (Jarvinen, 1994) data: American National Public Radio (broadcast), British Books data (literature), and The Independent (newspaper).
+Figure 5 lists the samples, their sizes, and the average and maximum sentence lengths.
+The measure is in words excluding punctuation. size avg. max. total In addition, Figure 5 shows the total processing time required for the syntactic analysis of the samples.
+The syntactic analysis has been done in a normal PC with the Linux operating system.
+The PC has a Pentium 90 MHz processor and 16 MB of memory.
+The speed roughly corresponds to 200 words in second.
+The time does not include morphological analysis and disambiguation6. broadcast literature newspaper One obvious point of reference is the ENGCG syntax, which shares a level of similar representation with an almost identical tagset to the new system.
+In addition, both systems use the front parts of the ENGCG system for processing the input.
+These include the tokeniser, lexical analyser and morphological disambiguator.
+Figure 6 shows the results of the comparison of the ENGCG syntax and the morphosyntactic level of the dependency grammar.
+Because both systems leave some amount of the ambiguity pending, two figures are given: the success rate, which is the percentage of correct morphosyntactic labels present in the output, and the ambiguity rate, which is the percentage of words containing more than one label.
+The ENGCG results compare to those reported elsewhere (Jirvinen, 1994; Tapanainen and Jarvinen, 1994).
+The DG success rate is similar or maybe even slightly better than in ENGCG.
+More importantly, the ambiguity rate is only about a quarter of that in the ENGCG output.
+The overall result should be considered good in the sense that the output contains information about the syntactic functions (see Figure 4) not only part-of-speech tags.
+The major improvement over ENGCG is the level of explicit dependency representation, which makes it possible to excerpt modifiers of certain elements, such as arguments of verbs.
+This section evaluates the success of the level of dependencies.
+One of the crude measures to evaluate dependencies is to count how many times the correct head is found.
+The results are listed in Fig( received. correct links, ) ure 7.
+Precision is and rereceived links call ( ). received correct links, The difference between ‘ desired lnks precision and recalli is due to the fact that the parser does not force a head on every word.
+Trying out some very heuristic methods to assign heads would raise recall but lower precision.
+A similar measure is used in (Eisner, 1996) except that every word has a head, i.e. the precision equals recall, reported as 79.2%.
+We evaluated our parser against the selected dependencies in the test samples.
+The samples being rather small, only the most common dependencies are evaluated: subject, object and predicative.
+These dependencies are usually resolved more reliably than, say, appositions, prepositional attachments etc.
+The results of the test samples are listed in Figure 8.
+It seems the parser leaves some amount of the words unlinked (e.g. 10-15% of subjects) but what it has recognised is generally correct (precision 95-98% for subjects).
+Dekang Lin (1996) has earlier used this kind of evaluation, where precision and recall were for subjects 87% and 78%, and for complements (including objects) 84% and 72 %, respectively.
+The results are not strictly comparable because the syntactic description is somewhat different.
+We are using Atro Voutilainen's (1995) improved part-of-speech disambiguation grammar which runs in the CG-2 parser.
+Voutilainen and Juha Heikkild created the original ENGCG lexicon.

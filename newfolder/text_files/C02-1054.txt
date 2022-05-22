@@ -1,0 +1,115 @@
+In this section, we investigate the cause of this in efficiency and propose a solution.
+All experiments are conducted for training data of 569,994 vectors.
+The total size of the original news articles was 2 MB and the number of NEs was 39,022.
+According to the definition of +-) , a classifier has to process support vectors for each  . Table 1 shows  s for different word classes.
+According to this table, classification of one word requires  ?s dot products with 228,306 support vectors in 33 classifiers.
+Therefore, the classifiers are very slow.
+We have never seen such large  s in SVM literature on pattern recogni tion.
+The reason for the large  s is word features.
+Inother domains such as character recognition, dimen 3http://cl.aist-nara.ac.jp/?taku-ku/software/TinySVM sion ` is usually fixed.
+However, in the NE task, ` increases monotonically with respect to the size of the training data.
+Since SVMs learn combinations of features,  tends to be very large.
+This tendency will hold for other tasks of natural language pro cessing, too.
+Here, we focus on the quadratic kernel BG * I#!?G ?
+that yielded the best score in the above experiments.
+Suppose ?* G[Z\#^]_ G[Z `a] hasonly ?
+(=15) non-zero elements.
+The dot prod uct of  and 7  * 5? Z\#^]_ ?  Z `] is given by ? fi ? 1) G[Z?? Z?? . Hence, I#!??D?7  ? *?#!W? fi 0 ? 1) G?Z?? Z???]!? fi 0 ? 1) G?Z?? Z???] ?  We can rewrite +-) as follows.fi 0 ? 1) _?  Z??]?G[Z???]?!m? ? Z???]?G[Z???]fi.? 0 ? 1) fi 0 ? 1 ?? ???rZ??? B@]?G[Z??]?G?Z?B@]_ where ? ?/ ?1) 3 ? ??Z??/ ?1) 3 5? Z??]_ ? ?Z??]?* ? / ?1) 3 ??p8Z??]??% ?P?rZ?? B@]?* ? ?/ ?1) 3  ?  Z?? Z?B@]_ For binary vectors, it can be simplified as +-) .*??0 ??,?9??l? 1) _?C?  Z???]0 ?-?,????%??9?1) ? ?Z?? B@]  where ? ? Z???]?* ?  Z???]!m? ? Z???]Y* ? 0  ???5??l? 1) 3   ???9Z??? B@]?* ? 0  ?,???_? ?l? 1 ?????
+1) 3   Now, +?) can be given by summing up ? ?
+Z???]
+for every non-zero element G?Z??
+] and ? ?
+Z?? B@] for every non-zero pair G?Z??
+]?G[Z?B@] . Accordingly, we only need to add #W!???!??j?R?# z%?
+(=121) con stants to get +-) . Therefore, we can expect thismethod to be much faster than a na??ve implementa tion that computes tens of thousands of dot products at run time.
+We call this method ?XQK?
+(eXpand the Quadratic Kernel).
+Table 1 compares TinySVM and XQK in terms of CPU time taken to apply 33 classifiers to process the training data.
+Classes are sorted by  . Small numbers in parentheses indicate the initializationtime for reading support vectors 7   and allocat ing memory.
+XQK requires a longer initialization time in order to prepare ? ?
+and ???
+For instance,TinySVM took 11,490.26 seconds (3.2 hours) in to tal for applying OTHER?s classifier to all vectors in the training data.
+Its initialization phase took 2.13 seconds and all vectors in the training data were classified in 11,488.13 ( *=#9#%X?%Q??9????x?#p? ) seconds.
+On the other hand, XQK took 225.28 secondsin total and its initialization phase took 174.17 sec onds.
+Therefore, 569,994 vectors were classified in51.11 seconds.
+The initialization time can be disre garded because we can reuse the above coefficents.
+Consequently, XQK is 224.8 (=11,488.13/51.11) times faster than TinySVM for OTHER.
+TinySVM took 6 hours to process all the word classes, whereas XQK took only 17 minutes.
+XQK is 102 times faster than SVM-Light 3.50 which took 1.2 days.
+XQK makes the classifiers faster, but mem ory requirement increases from ? ? / ?1) ?  to ? ? / ?1) ?  ?
+!fl# z%?r where ? (=15) is the num ber of non-zero elements in 7  . Therefore, removal.
+of useless features would be beneficial.
+Conven tional SVMs do not tell us how an individual feature works because weights are given not to features but to 4687  . However, the above weights ( ? ?
+and ???
+) clarify how a feature or a feature pair works.
+We can use this fact for feature selection after the training.
+We simplify ( ) by removing all features ? that satisfy ??
+} 8???
+Z??
+]?f???
+} ? ?????rZ??? B@]?f ??
+} ? ???P?rZ?B- ?]??
+K???
+The largest ? that does not change the number of misclassifications for the training data is found by using the binary searchfor each word class.
+We call this method ?XQKFS?
+(XQK with Feature Selection).
+This approximation slightly degraded GENERAL?s F-measure from 88.31% to 88.03%.Table 2 shows the reduction of features that ap pear in support vectors.
+Classes are sorted by the numbers of original features.
+For instance, OTHER has 56,220 features in its support vectors.
+Accoring to the binary search, its performance did notchange even when the number of features was reduced to 21,852 at ?*KQ?Qr?9?r?%?
+Table 1: Reduction of CPU time (in seconds) by XQK word class  TinySVM (init) XQK (init) speed up SVM-Light OTHER 64,970 11,488.13 (2.13) 51.11 (174.17) 224.8 29,986.52 ARTIFACT-MIDDLE 14,171 1,372.85 (0.51) 41.32 (14.98) 33.2 6,666.26 LOCATION-SINGLE 13,019 1,209.29 (0.47) 38.24 (11.41) 31.6 6,100.54 ORGANIZ..-MIDDLE 12,050 987.39 (0.44) 37.93 (11.70) 26.0 5,570.82 : : : : : : TOTAL 228,306 21,754.23 (9.83) 1,019.20 (281.28) 21.3 104,466.31 Table 2: Reduction of features by XQK-FS word class number of features number of non-zero weights seconds OTHER 56,220 ? 21,852 (38.9%) 1,512,827 ? 892,228 (59.0%) 42.31 ARTIFIFACT-MIDDLE 22,090 ? 4,410 (20.0%) 473,923 ? 164,632 (34.7%) 30.47 LOCATION-SINGLE 17,169 ? 3,382 (19.7%) 366,961 ? 123,808 (33.7%) 27.72 ORGANIZ..-MIDDLE 17,123 ? 9,959 (58.2%) 372,784 ? 263,695 (70.7%) 31.02 ORGANIZ..-END 15,214 ? 3,073 (20.2%) 324,514 ? 112,307 (34.6%) 26.87 : : : : TOTAL 307,721 ? 75,455 (24.5%) 6,669,664 ? 2,650,681 (39.7%) 763.10 The total number of features was reduced by 75%and that of weights was reduced by 60%.
+The ta ble also shows CPU time for classification by the selected features.
+XQK-FS is 28.5 (=21754.23/ 763.10) times faster than TinySVM.
+Although the reduction of features is significant, the reduction of CPU time is moderate, because most of the reducedfeatures are infrequent ones.
+However, simple re duction of infrequent features without consideringweights damages the system?s performance.
+For instance, when we removed 5,066 features that appeared four times or less in the training data, the modified classifier for ORGANIZATION-END misclassified 103 training examples, whereas the origi nal classifier misclassified only 19 examples.
+On theother hand, XQK-FS removed 12,141 features with out an increase in misclassifications for the training data.
+XQK can be easily extended to a more generalquadratic kernel BG? ?*??vl??!?v  G ?
+and to nonbinary sparse vectors.
+XQK-FS can be used to se lect useful features before training by other kernels.
+As mentioned above, we conducted an experiment for the cubic kernel ( F *??) by using all features.When we trained the cubic kernel classifiers by us ing only features selected by XQK-FS, TinySVM?s classification time was reduced by 40% because  was reduced by 38%.
+GENERAL?s F-measure was slightly improved from 87.04% to 87.10%.
+Onthe other hand, when we trained the cubic ker nel classifiers by using only features that appeared three times or more (without considering weights), TinySVM?s classification time was reduced by only 14% and the F-measure was slightly degraded to86.85%.
+Therefore, we expect XQK-FS to be use ful as a feature selection method for other kernels when such kernels give much better results than the quadratic kernel.
+Since training of 33 classifiers also takes a longtime, it is difficult to try various combinations of pa rameters and features.
+Here, we present a solution for this problem.
+In the training time, calculation of B???Dr   B??$Dr ?  B??D@  for various  ? s is dominant.
+Conventional systems save time by caching the results.
+By analyzing TinySVM?s classifier, we found that they can be calculated more efficiently.
+For sparse vectors, most SVM classifiers (e.g., SVM-Light) use a sparse dot product algorithm (Platt, 1999) that compares non-zero elements of  and those of 7  to get BED7  in +-) . However,  is common to all dot products in B?D7   BD 7/ . Therefore, we can implement a faster classifierthat calculates them concurrently.
+TinySVM?s clas sifier prepares a list fi2si Z??
+] that contains all 7  s whose ? -th coordinates are not zero.
+In addition, counters for ?D%7  p ?D%7 / are prepared because dot products of binary vectors are integers.
+Then, for each non-zero G[Z??
+] , the counters are incremented for all 7   fi2si Z???]
+By checking only members of fi2si Z??
+] for non-zero G[Z??
+] , the classifier is not bothered by fruitless cases: G?Z??
+]?*?Q ?8Z???]??*YQ orG[Z???]W?*?Q ? ?Z???]?*yQ . Therefore, TinySVM?s clas sifier is faster than other classifiers.
+This method is applicable to any kernels based on dot products.
+For the training phase, we can build fi2si ? Z???]
+that contains all   s whose ? -th coordinates are notzero.
+Then, B??D   B???D  can be efficiently calculated because ??
+is common.
+This im provement is effective especially when the cache is small and/or the training data is large.
+When we used a 200 MB cache, the improved system took only 13 hours for training by the CRL data, while TinySVM and SVM-Light took 30 hours and 46hours respectively for the same cache size.
+Al though we have examined other SVM toolkits, we could not find any system that uses this approach in the training phase.
+The above methods can also be applied to othertasks in natural language processing such as chunk ing and POS tagging because the quadratic kernels give good results.
+Utsuro et al (2001) report that a combination of two NE recognizers attained F = 84.07%, butwrong word boundary cases are excluded.
+Our system attained 85.04% and word boundaries are auto matically adjusted.
+Yamada (Yamada et al, 2001) also reports that F*??
+is best.
+Although his sys tem attained F = 83.7% for 5-fold cross-validation of the CRL data (Yamada and Matsumoto, 2001), our system attained 86.8%.
+Since we followedIsozaki?s implementation (Isozaki, 2001), our system is different from Yamada?s system in the fol lowing points: 1) adjustment of word boundaries, 2)ChaSen?s parameters for unknown words, 3) char acter types, 4) use of the Viterbi search.
+For efficient classification, Burges and Scho?lkopf (1997) propose an approximation method that uses ?reduced set vectors?
+instead of support vectors.
+Since the size of the reduced set vectors is smaller than  , classifiers become more efficient, but the computational cost to determine the vectors is verylarge.
+Osuna and Girosi (1999) propose two meth ods.
+The first method approximates +-) by support vector regression, but this method is applicable onlywhen S is large enough.
+The second method reformulates the training phase.
+Our approach is sim pler than these methods.
+Downs et al (Downs et al, 2001) try to reduce the number of support vectors by using linear dependence.
+We can also reduce the run-time complexity of a multi-class problem by cascading SVMs in the form of a binary tree (Schwenker, 2001) or a directacyclic graph (Platt et al, 2000).
+Yamada and Mat sumoto (2001) applied such a method to their NEsystem and reduced its CPU time by 39%.
+This ap proach can be combined with our SVM classifers.NE recognition can be regarded as a variablelength multi-class problem.
+For this kind of prob lem, probability-based kernels are studied for more theoretically well-founded methods (Jaakkola and Haussler, 1998; Tsuda et al, 2001; Shimodaira et al., 2001).

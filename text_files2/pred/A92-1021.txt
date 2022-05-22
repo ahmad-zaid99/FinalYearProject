@@ -1,0 +1,15 @@
+This very simple algorithm has an error rate of about 7.9% when trained on 90% of the tagged Brown Corpus' [Francis and Kueera 82], and tested on a separate 5% of the corpus.2 Training consists of compiling a list of the most common tag for each word in the training corpus.
+Patch templates are of the form: The initial tagger was trained on 90% of the corpus (the training corpus).
+5% was held back to be used for the patch acquisition procedure (the patch corpus) and 5% for testing.
+If the patch change the tag from verb to noun if one of the two preceding words is tagged as a determiner is applied, it corrects 98 of the 159 errors.
+First, tag the text using the basic lexical tagger.
+The tagger was tested on 5% of the Brown Corpus including sections from every genre.
+First, the test corpus was tagged by the simple lexical tagger.
+It is significant that with only 71 patches, an error rate of 5.1% was obtained'.
+Of the 71 patches, 66 resulted in a reduction in the number of errors in the test corpus, 3 resulted in no net change, and 2 resulted in a higher number of errors.
+91], an error rate of 3-4% on one domain, Wall Street Journal articles and 5.6% on another domain, texts on terrorism in Latin American countries, is quoted.
+[Church 88] reports an accuracy of &quot;95-99% correct, depending on the definition of correct&quot;.
+When trained and tested on the same samples used in our experiment, we found the error rate to be about 4.5%.
+[DeRose 88] quotes a 4% error rate; however, the sample used for testing was part of the training corpus.
+87] reports an accuracy of 96-97%.
+This procedure, which requires that a list of idioms be laboriously created by hand, contributes 3% toward the accuracy of their tagger, according to [DeRose 88].

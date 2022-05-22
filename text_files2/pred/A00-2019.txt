@@ -1,0 +1,28 @@
+For example, in the newspaper domain, concentrate is usually used as a noun, as in orange juice concentrate but in TOEFL essays it is a verb 91% of the time.
+The system computes mutual information comparing the proportion of observed occurrences of bigrams in the general corpus to the proportion expected based on the assumption of independence, as shown below: Here, P(AB) is the probability of the occurrence of the AB bigram, estimated from its frequency in the general corpus, and P(A) and P(B) are the probabilities of the first and second elements of the bigram, also estimated from the general corpus.
+The measures for bigrams and trigrams are similar to those given above except that the probability in the numerator is estimated from the wordspecific corpus and the probabilities in the denominator come from the general corpus.
+Specifically, it looks at the conditional probability of the part-of-speech tag given the major syntactic category (e.g., plural noun given noun) in both distributions, by computing the following value.
+For example, in the general corpus, about half of all noun tokens are plural, but in the training set for the noun knowledge, the plural knowledges occurs rarely, if at all.
+ALEK also uses another statistical technique for finding rare and possibly ungrammatical tag and function word bigrams by computing the x2 (chi square) statistic for the difference between the bigram proportions found in the word-specific and in the general corpus: = The x2 measure faces the same problem of overgenerating errors.
+If a test sentence contains a low probability bigram (as measured by the x2 test), the local context of the target is compared to all the templates of which it is a part.
+To illustrate this, consider the example of a knowledge and a knowledge of The conditional probability of of given a knowledge is high, as it accounts for almost all of the occurrences of a knowledge in the wordspecific corpus.
+Based on this high conditional probability, the system will use the template for a knowledge of to keep it from being marked as an error.
+Other function words and tags in the +1 position have much lower conditional probability, so for example, a knowledge is will not be treated as an exception to the error.
+TOEFL essays are graded on a 6 point scale, where 6 demonstrates &quot;clear competence&quot; in writing on rhetorical and syntactic levels and 1 demonstrates &quot;incompetence in writing&quot;.
+If low probability n-grams signal grammatical errors, then we would expect TOEFL essays that received lower scores to have more of these ngrams.
+To test this prediction, we randomly selected from the TOEFL pool 50 essays for each of the 6 score values from 1.0 to 6.0.
+Table 1 shows the proportions of bigrams and trigrams with mutual information less than —3.60.
+As predicted, there is a significant negative correlation between the score and the proportion of low probability bigrams (r,= -.94, n=6, p<.01, two-tailed) and trigrams (r,= -.84, n=6, p<.05, two-tailed).
+Candidate errors were those local context sequences that produced a mutual information value of less than —3.60 based on the general corpus; mutual information of less than —5.00 for the specific/general comparisons; or a x2 value greater than 12.82 with an effect size greater than 0.30.
+The size of the test set for each word ranged from 1,400 to 20,000 with a mean of 8,000 sentences.
+To evaluate the system, for each test word we randomly extracted 125 sentences that ALEK classified as containing no error (C-set) and 125 sentences which it labeled as containing an error (E-set).
+Table 3 lists the precision and recall for the 20 test words.
+The human judge marked as incorrect usage 91.2% of the sample from ALEK's E-set and 18.4% of the sample from its C-set.
+The E-set contained 8.3% of the pollution sentences and the C-set had the remaining 91.7%.
+With the human judgements as the gold standard, the estimated overall rate of incorrect usage is (.083 x .912 + .917 x .184) = .245.
+ALEK's estimated recall is the proportion of sentences in the E-set times its precision, divided by the overall estimated error rate (.083 x .912) / .245 = .310.
+Conclusion and pollution have precision in the low to middle 90's while individual's precision is 57%.
+Overall, ALEK's predictions are about 78% accurate.
+This system was tested on 79 sentences containing determiner and agreement errors, and 101 grammatical sentences.
+We calculate that their precision was 78% with 54% recall.
+We thank Susanne Wolff for evaluating the test sentences, and Robert Kantor, Ken Sheppard and 3 anonymous reviewers for their helpful suggestions.

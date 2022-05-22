@@ -1,0 +1,114 @@
+Our segmentation algorithm takes a list of tokenized sentences as input.
+A tokenizer (Grefenstette and Tapanainen, 1994) and a sentence boundary disambiguation algorithm (Palmer and Hearst, 1994; Reynar and Ratnaparkhi, 1997) or EAGLE (Reynar et al., 1997) may be used to convert a plain text document into the acceptable input format.
+Punctuation and uninformative words are removed from each sentence using a simple regular expression pattern matcher and a stopword list.
+A stemming algorithm (Porter, 1980) is then applied to the remaining tokens to obtain the word stems.
+A dictionary of word stem frequencies is constructed for each sentence.
+This is represented as a vector of frequency counts.
+Let fi,i denote the frequency of word j in sentence i.
+The similarity between a pair of sentences :1:, y For short text segments, the absolute value of sim(x, y) is unreliable.
+An additional occurrence of a common word (reflected in the numerator) causes a disproportionate increase in sim(x, y) unless the denominator (related to segment length) is large.
+Thus, in the context of text segmentation where a segment has typically < 100 informative tokens, one can only use the metric to estimate the order of similarity between sentences, e.g. a is more similar to b than c. Furthermore, language usage varies throughout a document.
+For instance, the introduction section of a document is less cohesive than a section which is about a particular topic.
+Consequently, it is inappropriate to directly compare the similarity values from different regions of the similarity matrix.
+In non-parametric statistical analysis, one compares the rank of data sets when the qualitative behaviour is similar but the absolute quantities are unreliable.
+We present a ranking scheme which is an adaptation of that described in (O'Neil and Denos, 1992).
+'The contrast of the image has been adjusted to highlight the image features.
+Each value in the similarity matrix is replaced by its rank in the local region.
+The rank is the number of neighbouring elements with a lower similarity value.
+Figure 2 shows an example of image ranking using a 3 x 3 rank mask with output range {0, 8).
+For segmentation, we used a 11 x 11 rank mask.
+The output is expressed as a ratio r (equation 2) to circumvent normalisation problems (consider the cases when the rank mask is not contained in the image).
+# of elements with a lower value To demonstrate the effect of image ranking, the process was applied to the matrix shown in figure 1 to produce figure 32.
+Notice the contrast has been improved significantly.
+Figure 4 illustrates the more subtle effects of our ranking scheme. r(x) is the rank (1 x 11 mask) of (x) which is a sine wave with decaying mean, amplitude and frequency (equation 3).
+The final process determines the location of the topic boundaries.
+The method is based on Reynar's maximisation algorithm (Reynar, 1998; Helfman, 1996; Church, 1993; Church and Helfman, 1993).
+A text segment is defined by two sentences i, j (inclusive).
+This is represented as a square region along the diagonal of the rank matrix.
+Let si,j denote the sum of the rank values in a segment and ai,j = (j -i +1)2 be the inside area.
+B = {b1, ...,197-4 is a list of in coherent text segments. sk and ak refers to the sum of rank and area of segment k in B.
+D is the inside density of B (see equation 4). ak To initialise the process, the entire document is placed in B as one coherent text segment.
+Each step of the process splits one of the segments in B.
+The split point is a potential boundary which maximises D. Figure 5 shows a working example.
+The number of segments to generate, in, is determined automatically.
+Den) is the inside density of n segments and SD(n) , Den) Den-1) is the gradient.
+For a document with b potential boundaries, b steps of divisive clustering generates {D(1), ...,D(b+1)} and {bD(2), oD(b+1)} (see figure 6 and 7).
+An unusually large reduction in 6D suggests the optiinal clustering has been obtained3 (see n = 10 in the threshold, p+c x to dD (c= 1.2 works well in practice) The running time of each step is dominated by the computation of sk.
+Given si,j is constant, our algorithm pre-computes all the values to improve speed performance.
+The procedure computes the values along diagonals, starting from the main diagonal and works towards the corner.
+The method has a complexity of order 171-5.n2.
+Let ri,j refer to the rank value in the rank matrix R and S to the sum of rank matrix.
+Given R of size n X 77,, S is computed in three steps (see equation 5).
+Figure 8 shows the result of applying this procedure to the rank matrix in figure 5.
+The definition of a topic segment ranges from complete stories (Allan et al., 1998) to summaries (Ponte and Croft, 1997).
+Given the quality of an algorithm is task dependent, the following experiments focus on the relative performance.
+Our evaluation strategy is a variant of that described in (Reynar, 1998, 71-73) and the TDT segmentation task (Allan et al., 1998).
+We assume a good algorithm is one that finds the most prominent topic boundaries.
+An artificial test corpus of 700 samples is used to assess the accuracy and speed performance of segmentation algorithms.
+A sample is a concatenation of ten text segments.
+A segment is the first n sentences of a randomly selected document from the Brown corpus'.
+A sample is characterised by the range of n. The corpus was generated by an automatic procedure5.
+Table 1 presents the corpus statistics. p(erroriref, hyp, k) = p(misslref, hyp, diff, k)p(diffl ref, k)+ (6) p(fairef, hyp, same, k)p(samelref, k) Speed performance is measured by the average number of CPU seconds required to process a test sample6.
+Segmentation accuracy is measured by the error metric (equation 6, fa false alarms) proposed in (Beeferman et al., 1999).
+Low error probability indicates high accuracy.
+Other performance measures include the popular precision and recall metric (PR) (Hearst, 1994), fuzzy PR (Reynar, 1998) and edit distance (Ponte and Croft, 1997).
+The problems associated with these metrics are discussed in (Beeferman et al., 1999).
+Five degenerate algorithms define the baseline for the experiments.
+B does not propose any boundaries.
+B reports all potential boundaries as real boundaries.
+B partitions the sample into regular segments.
+B(i.,?) randomly selects any number of boundaries as real boundaries.
+B(r,b) randomly selects b boundaries as real boundaries.
+The accuracy of the last two algorithms are computed analytically.
+We consider the status of in potential boundaries as a bit string (1 -4 topic boundary).
+The terms p(iniss) awl p(fa) in equation 6 corresponds to p(samelk) and p(difflk) = 1 -p(samelk).
+Equation 7, 8 and 9 gives the general form of p(samelk), B(r,?) and Berm, respectively'.
+Table 2 presents the experimental results.
+The values in row two and three, four and five are not actually the same.
+However, their differences are insignificant according to the Kolmogorov-Smirnov, or KS-test (Press et al., 1992).
+We compare three versions of the TextTiling algorithm (Hearst, 1994).
+H94(c,d) is Hearst's C implementation with default parameters.
+H94(e.7.) uses the recommended parameters k = 6, w = 20.
+H94(3,,,) is my implementation of the algorithm.
+Experimental result (table 3) shows H94(,,d) and H94(,,) are more accurate than H94(j,,,).
+We suspect this is due to the use of a different stopword list and stemming algorithm.
+Five versions of Reynar's optimisation algorithm (Reynar, 1998) were evaluated.
+R98 and R98(7-rn) are exact implementations of his maximisation and minimisation algorithm.
+R98(8,,08) is my version of the maximisation algorithm which uses the cosine coefficient instead of dot density for measuring similarity.
+It incorporates the optimisations described in section 3.4.
+R98(,,d0t) is the modularised version of R98 for experimenting with different similarity measures.
+R98(,,,,) uses a variant of Kozima's semantic similarity measure (Kozima, 1993) to compute block similarity.
+Word similarity is a function of word cooccurrence statistics in the given document.
+Words that belong to the same sentence are considered to be related.
+Given the co-occurrence frequencies f (wi, wi), the transition probability matrix t is computed by equation 10.
+Equation 11 defines our spread activation scheme. s denotes the word similarity matrix, x is the number of activation steps and norm(y) converts a matrix y into a transition matrix. x = 5 was used in the experiment.
+Experimental result (table 4) shows the cosine coefficient and our spread activation method improved segmentation accuracy.
+The speed optimisations significantly reduced the execution time.
+We compare three versions of Segmenter (Kan et at, 1998).
+K98(p) is the original Perl implementation of the algorithm (version 1.6).
+K98(i) is my implementation of the algorithm.
+K98(j,,i) is a version of K98(i) which uses a document specific chain breaking strategy.
+The distribution of link distances are used to identify unusually long links.
+The threshold is a function p + c x VT, of the mean p and variance We found c = 1 works well in practice.
+Table 5 summarises the experimental results.
+K98 performed performed significantly better than K98(J,).
+This is due to the use of a different part-of-speech tagger and shallow parser.
+The difference in speed is largely due to the programming languages and term clustering strategies.
+Our chain breaking strategy improved accuracy (compare K98(i) with K98(j,a))• Two versions of our algorithm were developed, C99 and C99(b).
+The former is an exact implementation of the algorithm described in this paper.
+The latter is given the expected number of topic segments for fair comparison with R98.
+Both algorithms used a 11 x 11 ranking mask.
+The first experiment focuses on the impact of our automatic termination strategy on C99(b) (table 6).
+C99(b) is marginally more accurate than C99.
+This indicates our automatic termination strategy is effective but not optimal.
+The minor reduction in speed performance is acceptable.
+The second experiment investigates the effect of different ranking mask size on the performance of C99 (table 7).
+Execution time increases with mask size.
+A 1 x 1 ranking mask reduces all the elements in the rank matrix to zero.
+Interestingly, the increase in ranking mask size beyond 3 x 3 has insignificant effect on segmentation accuracy.
+This suggests the use of extrema for clustering has a greater impact on accuracy than linearising the similarity scores (figure 4).
+Experimental result (table 8) shows our algorithm C99 is more accurate than existing algorithms.
+A two-fold increase in accuracy and seven-fold increase in speed was achieved (compare C99(b) with R98).
+If one disregards segmentation accuracy, H94 has the best algorithmic performance (linear).
+C99, K98 and R98 are all polynomial time algorithms.
+The significance of our results has been confirmed by both t-test and KS-test.

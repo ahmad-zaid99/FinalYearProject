@@ -1,0 +1,29 @@
+In a traditional HMM tagger, the probability of transitioning into a state representing tag ti is computed based on the previous two tags ti-1 and ti 2, and the probability of a word wi is conditioned only on the current tag ti.
+To model this relationship, we now estimate the probability of a word wi based on tags ti-1 and ti-+1.
+?= n i iiiiiiiii twtwtpttwtwwpTWp 1 111111 )..|()...|(),( by replacing the approximation: )|()..|( )|()...|( 1211 1111 ????
+= = iiiiiiii iiiii tttptwtwtp twptwtwwp with the approximation: )|()..|( )|()...|( 1211 111111 ????
+= = iiiiiiii iiiiiii tttptwtwtp tttwptwtwwp Given that we are using an increased context size during the estimation of lexical probabilities, thus fragmenting the data, we have found it desirable to smooth these estimates, for which we use a standard absolute discounting scheme (Ney, Essen and Knesser, 1994).
+4.1 Corpora and Lexicon Construction.
+Specifically, we allocated sections 00 18 for training, 19-21 for development, and 22-24 for testing.
+To avoid the problem of unknown words, each learner was provided with a lexicon constructed from tagged versions of the full Treebank.
+We did not begin with any estimates of the likelihoods of tags for words, but only the knowledge of what tags are possible for each word in the lexicon, i.e., something we could obtain from a manually-constructed dictionary.
+4.2 The Effect of Lexicon Construction on.
+Tagging Accuracy To our surprise, we found initial tag accuracies of all methods using the full lexicon extracted from the Penn Treebank to be significantly lower than previously reported.
+In the case of the HMM taggers, where we begin with uniform estimates of both the state transition probabilities and the lexical probabilities, the learner finds it difficult to distinguish between more and less probable tag assignments.
+We later discovered that previous implementations of UTBL involved limiting which possible part of speech assignments were placed into the lexicon1, which was not explicitly detailed in the published reports.
+We then simulated, in a similar fashion, the construction of higher quality lexicons by using relative frequencies of tags for each word from the tagged Treebank to limit allowable word-tag assignments.
+The best test set accuracies for the learners in the class of HMM taggers are 1 Eric Brill, Personal Communication 0.70 0.75 0.80 0.85 0.90 0.95 1.00 0 0.1 0.2 0.3 Threshold Ta g A cc u ra c y Merialdo Trigram Contextual Trigram Kupiec Trigram UTBL Figure 3: The effect of lexicon construction on unsupervised part-of-speech taggers 0.60 0.65 0.70 0.75 0.80 0.85 0.90 0.95 1.00 0 1 2 3 4 5 Iteration Ta g A cc u ra cy Contextual Trigram Kupiec Trigram Merialdo Trigram Figure 4: Test Accuracy of HMMs using Optimzed Lexicons plotted against the number of training iterations in Figure 4.
+Lexicons While placing informed limitations on the tags that can be included in a lexicon can dramatically improve results, it is dependent on some form of supervision ?
+In the interest of being as unsupervised as possible, we sought to find a way to cope with the noisy aspects of the unfiltered lexicon described in the previous section.
+We suspected that in order to better control the training of lexical probabilities, having a stable model of state transition probabilities would be of help.
+Unfiltered Lexicon Optimized Lexicon Merialdo HMM 71.9 93.9 Contextualized HMM 76.9 94.0 Kupiec HMM 77.1 95.9 UTBL 77.2 95.9 Contextualized HMM with Classes 77.2 95.9 Table 1: Tag Accuracy of Unsupervised POS Taggers 5.1 Using Unambiguous Tag Sequences To.
+Initialize Contextual Probabilities First, we used our unfiltered lexicon along with our tagged corpus to extract non-ambiguous tag sequences.
+Specifically, we looked for trigrams in which all words contained at most one possible part-of-speech tag.
+Second, we revised the training paradigm for HMMs, in which lexical and transition probabilities are typically estimated simultaneously.
+We decided to train the transition model probabilities first, keeping the lexical probabilities constant and uniform.
+We then use this model, keeping it fixed, to train the lexical probabilities, until they eventually converge on heldout data.
+As shown in Table 2, this method improved tagging accuracy of the Merialdo and contextual taggers over traditional simultaneous HMM training, reducing error by 0.4 in the case of Merialdo and 0.7 for the contextual HMM part-of-speech tagger.
+HMM Tagger Simultaneous Model Training Sequential Model Training Merialdo 93.9 94.3 Contextualized 94.0 94.7 Kupiec 95.9 95.9 Table 2: Effects of HMM Training on Tagger Accuracy In this paradigm, tagging accuracy of the Kupiec HMM did not change.
+As one more way to assess the potential benefit from using left and right context in an HMM tagger, we tested our tagging model in the supervised framework, using the same sections of the Treebank previously allocated for unsupervised training, development and testing.
+The best result for this tagger, at 97.24%, makes use of both lexical and tag features coming from the left and right sides of the target.
+As shown in Table 3, incorporating more context into an HMM when estimating lexical probabilities improved accuracy from 95.87% to 96.59%, relatively reducing error rate by 17.4%.

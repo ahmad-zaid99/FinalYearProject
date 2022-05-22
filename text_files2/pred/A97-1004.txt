@@ -1,0 +1,10 @@
+Potential sentence boundaries are identified by scanning the text for sequences of characters separated by whitespace (tokens) containing one of the symbols !, .
+We use information about the token containing the potential sentence boundary, as well as contextual information about the tokens immediately to the left and to the right.
+We call the token containing the symbol which marks a putative sentence boundary the Candidate.
+The highly portable system uses only the identity of the Candidate and its neighboring words, and a list of abbreviations induced from the training data.2 Specifically, the &quot;templates&quot; used are: The information this model would use for Example 1 would be: PreviousWord=ANLP, FollowingWord=chairmon, Prefix=Corp, Suffix=NULL, PrefixFeature=InducedAbbreviation.
+For each potential sentence boundary token (., ?, and !, we estimate a. joint, probability distribution p of the token and its surrounding context, both of which are denoted by c, occurring as an actual sentence boundary.
+Thus the probability of seeing an actual sentence boundary in the context c is given by p(yes, c).
+Therefore the parameter corresponding to this feature will hopefully boost the probability p(no, c) if the Prefix is Mr.
+The model also can be viewed under the Maximum Entropy framework, in which we choose a distribution p that maximizes the entropy H (p) where /:5(b, c) is the observed distribution of sentenceboundaries and contexts in the training data.
+We trained our system on 39441 sentences (898737 words) of Wall Street Journal text from sections 00 through 24 of the second release of the Penn Treebank3 (Marcus, Santorini, and Marcinkiewicz, 1993).
+As can seen from the table, performance degrades a.s the quantity of training data decreases, but even with only 500 example sentences performance is beter than the baselines of 64.00/0 if a. sentence boundary is guessed at every potential site and 78.4%, if only token-final instances of sentence-ending punctuation are assumed to be boundaries.

@@ -1,0 +1,7 @@
+This representation has the following salient features: Lexemes which are in the lexicon are in uppercase, those that are not are in lowercase.
+>Also, REALPRO does not map any sort of semantic labels to syntactic categories.
+The architecture of REALPRO is based on MeaningText Theory, which posits a sequence of correspondences between different levels of representation.
+In REALPRO, each transformation is handled by a separate module.
+Each module draws on one or several LKBs.
+The average runtime for this input is 0.31 seconds, which is comparable to the runtime reported above for the 20 word sentence.
+The current grammar does not have any rules with more than three nodes.

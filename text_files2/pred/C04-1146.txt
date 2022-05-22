@@ -1,0 +1,22 @@
+The co-occurrence types of a target word are the contexts, c, in which it occurs and these have associated frequencies which may be used to form probability estimates.
+The confusion probability (Sugawara et al, 1985) is an estimate of the probability that one word can be substituted for another.
+Words w1 and w2 are completely confusable if we are equally as likely to see w2 in a given context as we are to see w1 in that context.
+distjs(w2, w1) = 12 ( D ( p||p+q2 ) +D ( q||p+q2 )) where p = P (c|w1) and q = P (c|w2) ?-skew dist?
+The complete set of 2000 nouns (WScomp) is the union of two sets WShigh and WSlow for which nouns were selected on the basis of frequency: WShigh contains the 1000 most frequently occurring nouns (frequency > 500), and WSlow contains the nouns ranked 3001-4000 (frequency ?
+By excludingmid-frequency nouns, we obtain a clear sepa ration between high and low frequency nouns.The complete data-set consists of 1,596,798 cooccurrence tokens distributed over 331,079 co occurrence types.
+rm2(w ?, w) ?k i=1 i2 The overlap score indicates the extent to which sets share members and the extent to whichthey are in the same order.
+Table 2 shows the mean overlap score between every pair of the first seven measures in Table 1 calculated over WScomp.
+Although overlap between most pairs of measures is greater than expected if sets of 200 neighbours were generated randomly from WScomp (in this case, average overlap would be 0.08 and only the overlap between the pairs (?,P) and (cp,P) is not significantly greaterthan this at the 1% level), there are substantial differences between the neighbour sets gen erated by different measures.
+If Chigh = C(NScomp,NShigh) and Clow =C(NScomp,NSlow), then we compute the bias towards high frequency neighbours for word w us ing measure m as: biashighm(w) = Chigh Chigh+Clow The value of this normalised score lies in the range [0,1] where 1 indicates a neighbour set completely made up of high frequency words, 0 indicates a neighbour set completely made up oflow frequency words and 0.5 indicates a neighbour set with no biases towards high or low fre quency words.
+target nouns target nouns cm 0.90 0.87 js 0.94 0.70 ?
+0.98 0.90 cp 1.00 0.99 ja 0.99 0.21 ja+mi 0.95 0.14 lin 0.85 0.38 P 0.12 0.04 R 0.99 0.98 hm 0.92 0.28 Table 4: Mean value of biashigh according to measure and frequency of target noun.
+Any deviation from 0.5 of greater than 0.0234 is significant at the 1% level.
+The probability of this being the case increasesas the frequency of the potential neighbour increases and so, recall tends to select high fre quency words.
+The probability of this beingthe case is highest when the words are of sim ilar frequency and so, the harmonic mean will tend to select words of a similar frequency.
+Thus, if n1 and n2 are related and P(n2, n1) >R(n2, n1), we might expect that n2 is a hy ponym of n1 and vice versa.
+In order to test these hypotheses, we ex tracted all of the possible hyponym-hypernym pairs (20, 415 pairs in total) from our list of 2000 nouns (using WordNet 1.6).
+carnivore and mammal.values in 71% of cases and correlated in the pre dicted direction with relative frequency in 70% of cases.
+In its most general sense, a collocation is a habitual or lexicalised word combination.
+The value obtained (0.0525) is dis appointing since it is not statistically significant(the probability of this value under the null hy pothesis of ?no correlation?
+Measure rs P (rs) under H0 simlin 0.0525 0.2946 precision -0.160 0.0475 recall 0.219 0.0110 harmonic mean 0.011 0.4562 Table 5: Correlation with compositionality for different similarity measures rip up?
+The cor relation using the recall measure is significant at the 5% level; thus we can conclude that if the simplex verb has high recall retrieval of the phrasal verb?s co-occurrences, then the phrasal is likely to be compositional.

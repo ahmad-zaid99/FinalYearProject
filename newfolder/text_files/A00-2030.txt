@@ -1,0 +1,93 @@
+We evaluated the new approach to information extraction on two of the tasks of the Seventh Message Understanding Conference (MUC-7) and reported in (Marsh, 1998).
+The Template Element (TE) task identifies organizations, persons, locations, and some artifacts (rocket and airplane-related artifacts).
+For each organization in an article, one must identify all of its names as used in the article, its type (corporation, government, or other), and any significant description of it.
+For each person, one must find all of the person's names within the document, his/her type (civilian or military), and any significant descriptions (e.g., titles).
+For each location, one must also give its type (city, province, county, body of water, etc.).
+For the following example, the The Template Relations (TR) task involves identifying instances of three relations in the text: TR builds on TE in that TR reports binary relations between elements of TE.
+For the following example, the template relation in Figure 2 was to be generated: &quot;Donald M. Goldstein, a historian at the University of Pittsburgh who helped write...&quot;
+Almost all approaches to information extraction — even at the sentence level — are based on the divide-and-conquer strategy of reducing a complex problem to a set of simpler ones.
+Currently, the prevailing architecture for dividing sentential processing is a four-stage pipeline consisting of: Since we were interested in exploiting recent advances in parsing, replacing the syntactic analysis stage of the standard pipeline with a modern statistical parser was an obvious possibility.
+However, pipelined architectures suffer from a serious disadvantage: errors accumulate as they propagate through the pipeline.
+For example, an error made during part-of-speech-tagging may cause a future error in syntactic analysis, which may in turn cause a semantic interpretation failure.
+There is no opportunity for a later stage, such as parsing, to influence or correct an earlier stage such as part-of-speech tagging.
+An integrated model can limit the propagation of errors by making all decisions jointly.
+For this reason, we focused on designing an integrated model in which tagging, namefinding, parsing, and semantic interpretation decisions all have the opportunity to mutually influence each other.
+A second consideration influenced our decision toward an integrated model.
+We were already using a generative statistical model for part-of-speech tagging (Weischedel et al. 1993), and more recently, had begun using a generative statistical model for name finding (Bikel et al.
+1997).
+Finally, our newly constructed parser, like that of (Collins 1997), was based on a generative statistical model.
+Thus, each component of what would be the first three stages of our pipeline was based on the same general class of statistical model.
+Although each model differed in its detailed probability structure, we believed that the essential elements of all three models could be generalized in a single probability model.
+If the single generalized model could then be extended to semantic analysis, all necessary sentence level processing would be contained in that model.
+Because generative statistical models had already proven successful for each of the first three stages, we were optimistic that some of their properties — especially their ability to learn from large amounts of data, and their robustness when presented with unexpected inputs — would also benefit semantic analysis.
+Our integrated model represents syntax and semantics jointly using augmented parse trees.
+In these trees, the standard TREEBANK structures are augmented to convey semantic information, that is, entities and relations.
+An example of an augmented parse tree is shown in Figure 3.
+The five key facts in this example are: Here, each &quot;reportable&quot; name or description is identified by a &quot;-r&quot; suffix attached to its semantic label.
+For example, &quot;per-r&quot; identifies &quot;Nance&quot; as a named person, and &quot;per-desc-r&quot; identifies &quot;a paid consultant to ABC News&quot; as a person description.
+Other labels indicate relations among entities.
+For example, the coreference relation between &quot;Nance&quot; and &quot;a paid consultant to ABC News&quot; is indicated by &quot;per-desc-of.&quot; In this case, because the argument does not connect directly to the relation, the intervening nodes are labeled with semantics &quot;-ptr&quot; to indicate the connection.
+Further details are discussed in the section Tree Augmentation.
+To train our integrated model, we required a large corpus of augmented parse trees.
+Since it was known that the MUC-7 evaluation data would be drawn from a variety of newswire sources, and that the articles would focus on rocket launches, it was important that our training corpus be drawn from similar sources and that it cover similar events.
+Thus, we did not consider simply adding semantic labels to the existing Penn TREEBANK, which is drawn from a single source — the Wall Street Journal — and is impoverished in articles about rocket launches.
+Instead, we applied an information retrieval system to select a large number of articles from the desired sources, yielding a corpus rich in the desired types of events.
+The retrieved articles would then be annotated with augmented tree structures to serve as a training corpus.
+Initially, we tried to annotate the training corpus by hand marking, for each sentence, the entire augmented tree.
+It soon became painfully obvious that this task could not be performed in the available time.
+Our annotation staff found syntactic analysis particularly complex and slow going.
+By necessity, we adopted the strategy of hand marking only the semantics.
+Figure 4 shows an example of the semantic annotation, which was the only type of manual annotation we performed.
+To produce a corpus of augmented parse trees, we used the following multi-step training procedure which exploited the Penn TREEBANK Applying this procedure yielded a new version of the semantically annotated corpus, now annotated with complete augmented trees like that in Figure 3.
+In this section, we describe the algorithm that was used to automatically produce augmented trees, starting with a) human-generated semantic annotations and b) machinegenerated syntactic parse trees.
+For each sentence, combining these two sources involved five steps.
+These steps are given below:
+syntactic modifier of the other, the inserted node serves to indicate the relation as well as the argument.
+For example, in the phrase &quot;Lt. Cmdr.
+David Edwin Lewis,&quot; a node is inserted to indicate that &quot;Lt. Cmdr.&quot; is a descriptor for &quot;David Edwin Lewis.&quot; 5.
+Whenever a relation involves an entity that is not a direct descendant of that relation in the parse tree, semantic pointer labels are attached to all of the intermediate nodes.
+These labels serve to form a continuous chain between the relation and its argument.
+In our statistical model, trees are generated according to a process similar to that described in (Collins 1996, 1997).
+The detailed probability structure differs, however, in that it was designed to jointly perform part-of-speech tagging, name finding, syntactic parsing, and relation finding in a single process.
+For each constituent, the head is generated first, followed by the modifiers, which are generated from the head outward.
+Head words, along with their part-of-speech tags and features, are generated for each modifier as soon as the modifier is created.
+Word features are introduced primarily to help with unknown words, as in (Weischedel et al. 1993).
+We illustrate the generation process by walking through a few of the steps of the parse shown in Figure 3.
+At each step in the process, a choice is made from a statistical distribution, with the probability of each possible selection dependent on particular features of previously generated elements.
+We pick up the derivation just after the topmost S and its head word, said, have been produced.
+The next steps are to generate in order: In this case, there are none.
+8.
+Post-modifier constituents for the PER/NP.
+First a comma, then an SBAR structure, and then a second comma are each generated in turn.
+This generation process is continued until the entire tree has been produced.
+We now briefly summarize the probability structure of the model.
+The categories for head constituents, cl„ are predicted based solely on the category of the parent node, cp: Modifier constituent categories, cm, are predicted based on their parent node, cp, the head constituent of their parent node, chp, the previously generated modifier, c„,_1, and the head word of their parent, wp.
+Separate probabilities are maintained for left (pre) and right (post) modifiers: Part-of-speech tags, t,,, for modifiers are predicted based on the modifier, cm, the partof-speech tag of the head word, th, and the head word itself, wh: Head words, w„„ for modifiers are predicted based on the modifier, cm, the part-of-speech tag of the modifier word , t„„ the part-ofspeech tag of the head word , th, and the head word itself, wh: lAwmicm,tm,th,wh), e.g.
+Finally, word features, fm, for modifiers are predicted based on the modifier, cm, the partof-speech tag of the modifier word , t„„ the part-of-speech tag of the head word th, the head word itself, wh, and whether or not the modifier head word, w„„ is known or unknown.
+The probability of a complete tree is the product of the probabilities of generating each element in the tree.
+If we generalize the tree components (constituent labels, words, tags, etc.) and treat them all as simply elements, e, and treat all the conditioning factors as the history, h, we can write:
+Maximum likelihood estimates for the model probabilities can be obtained by observing frequencies in the training corpus.
+However, because these estimates are too sparse to be relied upon, we use interpolated estimates consisting of mixtures of successively lowerorder estimates (as in Placeway et al. 1993).
+For modifier constituents, the mixture components are: For part-of-speech tags, the mixture components are: Finally, for word features, the mixture components are:
+Given a sentence to be analyzed, the search program must find the most likely semantic and syntactic interpretation.
+More precisely, it must find the most likely augmented parse tree.
+Although mathematically the model predicts tree elements in a top-down fashion, we search the space bottom-up using a chartbased search.
+The search is kept tractable through a combination of CKY-style dynamic programming and pruning of low probability elements.
+Whenever two or more constituents are equivalent relative to all possible later parsing decisions, we apply dynamic programming, keeping only the most likely constituent in the chart.
+Two constituents are considered equivalent if: threshold of the highest scoring constituent are maintained; all others are pruned.
+For purposes of pruning, and only for purposes of pruning, the prior probability of each constituent category is multiplied by the generative probability of that constituent (Goodman, 1997).
+We can think of this prior probability as an estimate of the probability of generating a subtree with the constituent category, starting at the topmost node.
+Thus, the scores used in pruning can be considered as the product of: 1.
+The probability of generating a constituent of the specified category, starting at the topmost node.
+2.
+The probability of generating the structure beneath that constituent, having already generated a constituent of that category.
+Given a new sentence, the outcome of this search process is a tree structure that encodes both the syntactic and semantic structure of the sentence.
+The semantics — that is, the entities and relations — can then be directly extracted from these sentential trees.
+Our system for MUC-7 consisted of the sentential model described in this paper, coupled with a simple probability model for cross-sentence merging.
+The evaluation results are summarized in Table 1.
+In both Template Entity (TE) and Template Relation (TR), our system finished in second place among all entrants.
+Nearly all of the work was done by the sentential model; disabling the cross-sentence model entirely reduced our overall F-Score by only 2 points.
+Given multiple constituents that cover identical spans in the chart, only those constituents with probabilities within a While our focus throughout the project was on TE and TR, we became curious about how well the model did at part-of-speech tagging, syntactic parsing, and at name finding.
+We evaluated part-of-speech tagging and parsing accuracy on the Wall Street Journal using a now standard procedure (see Collins 97), and evaluated name finding accuracy on the MUC7 named entity test.
+The results are summarized in Table 2.
+While performance did not quite match the best previously reported results for any of these three tasks, we were pleased to observe that the scores were at or near state-of-the-art levels for all cases.

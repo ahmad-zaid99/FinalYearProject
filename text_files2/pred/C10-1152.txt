@@ -1,0 +1,44 @@
+We processed the dataset as follows: Article Pairing 65,133 articles from SimpleWikipedia3 and Wikipedia4 were paired by fol lowing the ?language link?
+Pre-processing including sentence boundary detection and tokenization with the Stanford 1http://simple.wikipedia.org 2http://en.wikipedia.org 3As of Aug 17th, 2009 4As of Aug 22nd, 2009 5http://download.wikimedia.org Parser package (Klein and Manning, 2003), and lemmatization with the TreeTagger (Schmid, 1994).
+We manually adjusted the similarity threshold to obtain a recallvalue as close as possible to 55.8% which was pre viously adopted by Nelken and Shieber (2006).
+Similarity Precision Recall TF*IDF 91.3% 55.4% Word Overlap 50.5% 55.1% MED 13.9% 54.7% Table 1: Monolingual Sentence Alignment The results in Tab.
+Both the average sentence length and average token length in Simple Wikipedia are shorter than those inWikipedia, which is in compliance with the pur pose of Simple Wikipedia.
+Len #Sen.Pairscomplex simple complex simple 25.01 20.87 5.06 4.89 108,016 Table 2: Statistics for the PWKP datasetIn order to account for sentence splitting, we al low 1 to n sentence alignment to map one complexsentence to several simple sentences.
+We first per form 1 to 1 mapping with sentence-level TF*IDF and then combine the pairs with the same complex sentence and adjacent simple sentences.
+SBAR 1 true 0.0016 ?which?
+SBAR 1 false 0.9984 ?which?
+SBAR 2 true 0.0835 ?which?
+SBAR 2 false 0.9165 Table 3: Segmentation Feature Table (SFT) Actually, we do not use the direct constituent of a word in the parse tree.
+The probability of a segmentation op eration is calculated as: P (seg|c) = ?
+w:c SFT (w|c) (1) where w is a word in the complex sentence c and SFT (w|c) is the probability of the word w in the Segmentation Feature Table (SFT); Fig.
+gov nsubj VP(VBD) True left 0.9000 gov nsubj VP(VBD) True right 0.0994 gov nsubj VP(VBD) False - 0.0006 Table 5: Copy Feature Table (CFT) For dependent NPs, we copy the whole NP phrase rather than only the head noun.7 In ourexample, we copy the whole NP phrase ?the an cient Roman calendar?
+The probability of a completion operation can be calculated as P (com|seg) = Y bw:s BDFT (bw|s) Y w:s Y dep:w CFT (dep).
+NP VP pt1 August was NPinsixththe NP NP PPpt2 VP started PP in 735BC ancient calendarthe RomanNP ancient calendarthe Roman month Figure 3: Completion 3.2 Dropping and Reordering.
+NP DT JJ NNP NN 1101 7.66E-4 NP DT JJ NNP NN 0001 1.26E-7 Table 6: Dropping Feature Table (DFT) 6With Stanford Parser, ?which?
+NP DT JJ NN 012 0.8303 NP DT JJ NN 210 0.0039 Table 7: Reordering Feature Table (RFT)The bits ?1?
+NP VP pt1 August was NPinsixththe NP NP PPpt2 VP started PP in 735BC ancient calendartheNP ancient calendarthe month Figure 4: Dropping & Reordering 3.3 Substitution.
+The substitution for a word can be another word or a multi-word expression(see Tab.
+The probability of a word substitu tion operation can be calculated as P (sub|w) = SubFT (Substitution|Origin).
+ancient ancient 0.963 ancient old 0.0183 ancient than transport 1.83E-102 old ancient 0.005 Table 8: Substitution Feature Table (SubFT) 3.3.2 Phrase SubstitutionPhrase substitution happens on the non terminal nodes and uses the same conditioningfeatures as word substitution.
+NP VP pt1 August was NPinsixththe NP NP PPpt2 VP started PP in 735BC old calendartheNP old calendarthe month Figure 5: Substitution As a result of all the simplification operations, we obtain the following two sentences: s1 = Str(pt1)=?August was the sixth month in the old calendar.?
+P (s|c) is equal to the inside probability of the root in theTraining Tree.
+Algorithm 2 EM Training (dataset)Initialize all probability tables using the uniform distribu tion; for several iterations do reset al cnt = 0; for each sentence pair < c, s > in dataset do tt = buildTrainingTree(< c, s >); calcInsideProb(tt); calcOutsideProb(tt); update cnt for each conditioning feature in each node of tt: cnt = cnt + node.insideProb ?
+node.outsideProb/root.insideProb; end for updateProbability(); end for root sp sp_res1 sp_res2 dp ro mp mp_res1 mp_res2 sub mp mp_res subsub dp ro mp_res root sp sp_res sp_res dp ro ro_res ro_res sub ro_res subsub dp ro ro_res sub_res sub_res sub_res Figure 6: Training Tree (Left) and Decoding Tree (Right) We illustrate the construction of the training tree with our running example.
+The training is a supervised learning 1357 process with the parse tree of c as input and the two strings s1 and s2 as the desired output.
+In our example, sp splits the parse tree into two parse trees pt1 and pt2 (Fig.
+sp res1 contains pt1 and s1.
+sp res2 contains pt2 and s2.
+Then dp, ro and mp are iteratively applied to each non-terminal node at each level of pt1 and pt2 from top to down.
+For DFT and RFT, the initial probability is 1N!
+SubFT is initialized as 1.0 for anysubstitution at the first iteration.
+After each itera tion, the updateProbability function recalculatesthese probabilities based on the cnt for each fea ture.
+Algorithm 3 calcInsideProb (TrainingTree tt) for each node from level = N to root of tt do if node is a sub node then node.insideProb = P (sub|node); else if node is a mp OR sp node then node.insideProb =Qchild child.insideProb;else node.insideProb =Pchild child.insideProb;end if end for Algorithm 4 calcOutsideProb (TrainingTree tt) for each node from root to level = N of tt do if node is the root then node.outsideProb = 1.0; else if node is a sp res OR mp res node then {COMMENT: father are the fathers of the current node, sibling are the children of father excluding the current node} node.outsideProb = P father father.outsideProb ?Qsibling sibling.insideProb;else if node is a mp node then node.outsideProb = father.outsideProb ?
+Due to space limitations, we cannot provide all the details of the decoder.We calculate the inside probability and out side probability for each node in the decoding tree.
+When we simplify a complex sentence, we start from the root and greedily select the branchwith the highest outside probability.
+Our evaluation dataset consists of 100 complex sentences and 131 parallel simple sentences from PWKP.
+tokenLen is the aver age length of tokens which may roughly reflect the lexical difficulty.
+TSM achieves an average token length which is the same as the Simple Wikipedia (SW).
+senLen is the average number of tokens inone sentence, which may roughly reflect the syn tactic complexity.
+9, 25 sentences generated by Moses are exactly identical to the com plex sentences, while the number for TSM is 2 which is closer to SW.
+In our case, TSM andCSS can be considered as having similar architec tures as both of them can do splitting, dropping 9http://www.statmt.org/moses/ 1359 TokLen SenLen #Sen BLEU NIST #Same Flesch Lix(Grade) OOV% PPL CW 4.95 27.81 100 0.50 6.89 100 49.1 53.0 (10) 52.9 384 SW 4.76 17.86 131 1.00 10.98 3 60.4 (PE) 44.1 (8) 50.7 179 Moses 4.81 26.08 100 0.55 7.47 25 54.8 48.1 (9) 52.0 363 C 4.98 18.02 103 0.28 5.37 1 56.2 45.9 (8) 51.7 481 CS 4.90 18.11 103 0.19 4.51 0 59.1 45.1 (8) 49.5 616 CSS 4.98 10.20 182 0.18 4.42 0 65.5 (PE) 38.3 (6) 53.4 581 TSM 4.76 13.57 180 0.38 6.21 2 67.4 (PE) 36.7 (5) 50.8 353 Table 9: Evaluation and substitution.
+OOVis the percentage of words that are not in the Ba sic English BE850 list.10 TSM is ranked as the second best system for this criterion.The perplexity (PPL) is a score of text probability measured by a language model and normal ized by the number of words in the text (Equ.

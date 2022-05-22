@@ -1,0 +1,51 @@
+Determiners pose a somewhat different problem from prepositions as, unlike them, their choice is more dependent on the wider discourse contextthan on individual lexical items.
+We use a corpus of grammat ically correct English to train a maximum entropyclassifier on examples of correct usage.
+The classifier can therefore learn to associate a given preposition or determiner to particular contexts, and re liably predict a class when presented with a novel instance of a context for one or the other.
+POS modified verb Lexical item modified ?drive?
+WordNet Category motion Subcat frame pp to POS of object noun Object lexical item ?London?
+Our feature vectors include 18 feature categories for determiners and 13 for prepositions; the main ones are illustrated in Table 1 and Table 2 respectively.
+170 Author Accuracy Baseline 26.94% Gamon et al 08 64.93% Chodorow et al 07 69.00% Our model 70.06% Table 3: Classifier performance on L1 prepositions 2006)).
+Semantic word type information is takenfrom WordNet lexicographer classes, 40 broad se mantic categories which all nouns and verbs in WordNet belong to 2 (e.g.
+We use a standard maximum entropy classifier 4 and donot omit any features, although we plan to experiment with different feature combinations to deter mine if, and how, this would impact the classifier?s performance.
+Our best result to date is 70.06% accuracy (test set size: 536,193).
+Proportion of training data Precision Recall of 27.83% (2,501,327) 74.28% 90.47% to 20.64% (1,855,304) 85.99% 81.73% in 17.68% (1,589,718) 60.15% 67.60% for 8.01% (720,369) 55.47% 43.78% on 6.54% (587,871) 58.52% 45.81% with 6.03% (541,696) 58.13% 46.33% at 4.72% (424,539) 57.44% 52.12% by 4.69% (421,430) 63.83% 56.51% from 3.86% (347,105) 59.20% 32.07% Table 4: L1 results - individual prepositions on).
+5.1.1 Further discussion To fully assess the model?s performance on the L1data, it is important to consider factors such as performance on individual prepositions, the relation ship between training dataset size and accuracy, and the kinds of errors made by the model.Table 4 shows the classifier?s performance on in dividual prepositions together with the size of their training datasets.
+At first glance, a clear correlationappears between the amount of data seen in training and precision and recall, as evidenced for ex ample by of or to, for which the classifier achievesa very high score.
+contexts may be more or less uniquely identifiable, or they mayhave more or fewer senses, leading to less confusion for the classifier.
+One simple way of verify ing the latter case is by looking at the number of senses assigned to the prepositions by a resource 171 Target prep Confused with at by for from in of on to with at xx 4.65% 10.82% 2.95% 36.83% 19.46% 9.17% 10.28% 5.85% by 6.54% xx 8.50% 2.58% 41.38% 19.44% 5.41% 10.04% 6.10% for 8.19% 3.93% xx 1.91% 25.67% 36.12% 5.60% 11.29% 7.28% from 6.19% 4.14% 6.72% xx 26.98% 26.74% 7.70% 16.45% 5.07% in 7.16% 9.28% 10.68% 3.01% xx 43.40% 10.92% 8.96% 6.59% of 3.95% 2.00% 18.81% 3.36% 40.21% xx 9.46% 14.77% 7.43% on 5.49% 3.85% 8.66% 2.29% 32.88% 27.92% xx 12.20% 6.71% to 9.77% 3.82% 11.49% 3.71% 24.86% 27.95% 9.43% xx 8.95% with 3.66% 4.43% 12.06% 2.24% 28.08% 26.63% 6.81% 16.10% xx Table 5: Confusion matrix for L1 data - prepositions such as the Oxford English Dictionary.
+in the lexical properties of the contexts.
+Conversely, the less frequent prepositions are less of ten suggested as the classifier?s choice.
+Table 6 gives some examples of instances where the classifier?s chosen preposition differs from thatfound in the original text.
+In most cases, the clas sifier?s suggestion is also grammatically correct, Classifier choice Correct phrase demands of the sector demands for.
+.Table 6: Examples of classifier errors on preposi tion L1 task Author Accuracy Baseline 59.83% Han et al 06 83.00% Gamon et al 08 86.07% Turner and Charniak 07 86.74% Our model 92.15% Table 7: Classifier performance - L1 determiners but the overall meaning of the phrases changes somewhat.
+We assume thatthe classifier has acquired a very strong link be tween the lexical item travel and the preposition tothat directs it towards this choice (cf.
+This suggests that individual lexical items play an important role in preposition choice along with other more general syntactic and semantic properties of the context.
+Recall a 9.61% (388,476) 70.52% 53.50% the 29.19% (1,180,435) 85.17% 91.51% null 61.20% (2,475,014) 98.63% 98.79% Table 8: L1 results - individual determiners 5.2 Determiners.
+We achieve accuracy of 92.15% on theL1 data (test set size: 305,264), as shown in Table 7.
+Our model outperforms their n-gram languagemodel approach by over 5%.
+We plan to experiment with smaller scale, more similar datasets to ascertain whether the issue is one of training size or of inherent difficulty in learning about the indefinite article?s occurrence.In looking at the confusion matrix for determin ers (Table 9), it is interesting to note that for theclassifier?s mistakes involving a or the, the erroneous choice is in the almost always the other de terminer rather than the null case.
+This suggests that the frequency effect is not so strong as to over Target det Confused with a the null a xx 92.92% 7.08% the 80.66% xx 19.34% null 14.51% 85.49% xx Table 9: Confusion matrix for L1 determiners ride any true linguistic information the model has acquired, otherwise the predominant choice wouldalways be the null case.
+6.1 Working with L2 text.
+In using NLP tools and techniques which have been developed with and for L1 language, a loss of performance on L2 data is to be expected.
+For the preposition task, we extract 2523 instances of preposition use from the CLC (1282 correct, 1241 incorrect) and ask the classifier to mark them 5 The CLC is a computerised database of contemporary written learner English (currently over 25m words).
+173 Instance type Accuracy Correct 66.7% Incorrect 70%Table 10: Accuracy on L2 data - prepositions.
+Ac curacy on incorrect instances refers to the classifier successfully identifying the preposition in the text as not appropriate for that context.
+However, ifwe look at the suggestions the model makes to re place the erroneous preposition, we find that theseare correct only 51.5% of the time, greatly reduc ing its usefulness.
+6.2.1 Further discussion A first analysis of the classifier?s decisions and itserrors points to various factors which could be im pairing its performance.
+For ex ample, in the sentence I?m Franch, responsable on the computer services, the classifier is not able to suggest a correct alternative to the erroneous on:since it does not recognise the adjective as a misspelling of responsible, it loses the information associated with this lexical feature, which could po tentially determine the preposition choice.
+Alternatively, we could modify the parser so as to skip cases where it requires several attempts before producing a parse, as these more challenging casescould be indicative of very poorly structured sentences in which misused prepositions are depen dent on more complex errors.A different kind of problem impacting our accu racy scores derives from those instances where theclassifier selects a preposition which can be cor rect in the given context, but is not the correct one in that particular case.
+In the example I received a beautiful present at my birthday, the classifier identifies the presence of the error, and suggests the grammatically and pragmatically appropriate correction for.
+Since we use their annotations as the benchmark against which to evaluate the model, this instance is counted as the classifier being wrong because it disagrees with the annotators.
+An overview of the classifier?s error patterns forthe data in this task shows that they are largely similar to those observed in the L1 data.
+This sug gests that the gap in performance between L1 and L2 is due more to the challenges posed by learner text than by inherent shortcomings in the model, and therefore that the key to better performance is likely to lie in overcoming these problems.
+On the former (set size 2000) accuracy is comparable to that on L1data: 92.2%.
+1200), however, accuracy is less than 10%.
+In this task,the lexical items play a crucial role in class assign ment.
+If the noun in question has not been seen in training, the classifier may be unable to make an informed choice.
+or ?postcards to penpals?.Also, the BNC was created with material from almost 20 years ago, and learners writing in contem porary English may use lexical items which are notvery frequently seen in the BNC.
+It may be therefore necessary to consider using alternative sources of training data to overcome this problem and improve the classifier?s performance.
+However, it is interesting to see whether human learners and classifiers display similar patterns of errors in preposition choice.This information has twofold value: as well as being of pedagogical assistance to instructors of En glish L2, were the classifier to display student-like error patterns, insights into ?error triggers?
+could be derived from the L2 pedagogical literature to improve the classifier.
+However, this confu sion is not very frequent in the model, a difference which could be explained either by the fact that, as noted above, performance on from is very low and so the classifier is unlikely to suggest it, or that in training the contexts seen for by are sufficiently distinctive that the classifier is not misled like the learners.
+This is perhaps not entirely unusual as both can occur with locative complements (one can go to a placeor be at a place) and this similarity could be con fusing the classifier.
+We can hypothesise that the classifier is less distracted by these cases because the effect of the lexical features is stronger.

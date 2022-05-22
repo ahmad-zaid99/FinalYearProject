@@ -1,0 +1,18 @@
+In Phase I, we compute each element?s top-k similar elements.
+In our experiments, we used k = 20.
+In our experiments, we set ?1 = 0.35.
+Input: A list of elements E to be clustered, a similarity database S from Phase I, thresh olds ?1 and ?2.
+A class is then defined as the maximal subhierarchy with probability less than a threshold (we used e-2).
+We used Minipar 1 (Lin 1994), a broad coverage English parser, to parse about 1GB (144M words) of newspaper text from the TREC collection (1988 AP Newswire, 1989-90 LA Times, and 1991 San Jose Mercury) at a speed of about 500 words/second on a PIII-750 with 512MB memory.
+We constructed two test sets: S13403 consisting of 13403 words (m = 250) and S3566 consisting of 3566 words (m = 3500).
+For S13403 there are 99 classes that contain three words or less and the largest class contains 3246 words.
+For S3566, 78 classes have three or less words and the largest class contains 1181 words.
+Test set S3566 has a higher score for all algorithms because it has a higher number of average features per word than S13403.
+For the K-means and Buckshot algorithms, we set the number of clusters to 250 and the maximum number of iterations to 8.
+We used a sample size of 2000 for Buckshot.
+For the Bisecting K-means algorithm, we applied the basic K-means algorithm twice (?= 2 in Section 2) with a maximum of 8 iterations per split.
+Our implementation of Chameleon was unable to complete clustering S13403 in reasonable time due to its time complexity.
+DATA SET TOTAL WORDS m Average # of Features TOTAL CLASSES S13403 13403 250 740.8 202 S3566 3566 3500 2218.3 150 DATA SET TOTAL WORDS M Avg.
+Features per Word 13403 250 740.8 3566 3500 2218.3 Table 2.
+ALGORITHM S13403 S3566 CBC 60.95 65.82 K-means (K=250) 56.70 62.48 Buckshot 56.26 63.15 Bisecting K-means 43.44 61.10 Chameleon n/a 60.82 Average-link 56.26 62.62 Complete-link 49.80 60.29 Single-link 20.00 31.74 ( ) ( ) c cwnc cprecision ?= CBC discovered 943 clusters.
+Five of the 943 clusters discovered by CBC from S13403 along with their features with top-15 highest mutual information and the WordNet classes that have the largest intersection with each cluster.

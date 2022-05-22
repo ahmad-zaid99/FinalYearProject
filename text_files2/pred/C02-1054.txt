@@ -1,0 +1,43 @@
+According to the definition of +-) , a classifier has to process support vectors for each  .
+According to this table, classification of one word requires  ?s dot products with 228,306 support vectors in 33 classifiers.
+Therefore, the classifiers are very slow.
+Table 1 compares TinySVM and XQK in terms of CPU time taken to apply 33 classifiers to process the training data.
+For instance,TinySVM took 11,490.26 seconds (3.2 hours) in to tal for applying OTHER?s classifier to all vectors in the training data.
+Its initialization phase took 2.13 seconds and all vectors in the training data were classified in 11,488.13 ( *=#9#%X?%Q??9????x?#p? )
+On the other hand, XQK took 225.28 secondsin total and its initialization phase took 174.17 sec onds.
+Therefore, 569,994 vectors were classified in51.11 seconds.
+TinySVM took 6 hours to process all the word classes, whereas XQK took only 17 minutes.
+XQK is 102 times faster than SVM-Light 3.50 which took 1.2 days.
+XQK makes the classifiers faster, but mem ory requirement increases from ?
+This approximation slightly degraded GENERAL?s F-measure from 88.31% to 88.03%.Table 2 shows the reduction of features that ap pear in support vectors.
+Table 1: Reduction of CPU time (in seconds) by XQK word class  TinySVM (init) XQK (init) speed up SVM-Light OTHER 64,970 11,488.13 (2.13) 51.11 (174.17) 224.8 29,986.52 ARTIFACT-MIDDLE 14,171 1,372.85 (0.51) 41.32 (14.98) 33.2 6,666.26 LOCATION-SINGLE 13,019 1,209.29 (0.47) 38.24 (11.41) 31.6 6,100.54 ORGANIZ..-MIDDLE 12,050 987.39 (0.44) 37.93 (11.70) 26.0 5,570.82 : : : : : : TOTAL 228,306 21,754.23 (9.83) 1,019.20 (281.28) 21.3 104,466.31 Table 2: Reduction of features by XQK-FS word class number of features number of non-zero weights seconds OTHER 56,220 ?
+21,852 (38.9%) 1,512,827 ?
+892,228 (59.0%) 42.31 ARTIFIFACT-MIDDLE 22,090 ?
+4,410 (20.0%) 473,923 ?
+164,632 (34.7%) 30.47 LOCATION-SINGLE 17,169 ?
+3,382 (19.7%) 366,961 ?
+123,808 (33.7%) 27.72 ORGANIZ..-MIDDLE 17,123 ?
+9,959 (58.2%) 372,784 ?
+263,695 (70.7%) 31.02 ORGANIZ..-END 15,214 ?
+3,073 (20.2%) 324,514 ?
+112,307 (34.6%) 26.87 : : : : TOTAL 307,721 ?
+75,455 (24.5%) 6,669,664 ?
+2,650,681 (39.7%) 763.10 The total number of features was reduced by 75%and that of weights was reduced by 60%.
+For instance, when we removed 5,066 features that appeared four times or less in the training data, the modified classifier for ORGANIZATION-END misclassified 103 training examples, whereas the origi nal classifier misclassified only 19 examples.
+by using all features.When we trained the cubic kernel classifiers by us ing only features selected by XQK-FS, TinySVM?s classification time was reduced by 40% because  was reduced by 38%.
+GENERAL?s F-measure was slightly improved from 87.04% to 87.10%.
+Onthe other hand, when we trained the cubic ker nel classifiers by using only features that appeared three times or more (without considering weights), TinySVM?s classification time was reduced by only 14% and the F-measure was slightly degraded to86.85%.
+Since training of 33 classifiers also takes a longtime, it is difficult to try various combinations of pa rameters and features.
+By analyzing TinySVM?s classifier, we found that they can be calculated more efficiently.
+For sparse vectors, most SVM classifiers (e.g., SVM-Light) use a sparse dot product algorithm (Platt, 1999) that compares non-zero elements of  and those of 7  to get BED7  in +-) .
+Therefore, we can implement a faster classifierthat calculates them concurrently.
+In addition, counters for ?D%7  p ?D%7 / are prepared because dot products of binary vectors are integers.
+, the classifier is not bothered by fruitless cases: G?Z??
+Therefore, TinySVM?s clas sifier is faster than other classifiers.
+When we used a 200 MB cache, the improved system took only 13 hours for training by the CRL data, while TinySVM and SVM-Light took 30 hours and 46hours respectively for the same cache size.
+Utsuro et al (2001) report that a combination of two NE recognizers attained F = 84.07%, butwrong word boundary cases are excluded.
+Our system attained 85.04% and word boundaries are auto matically adjusted.
+Although his sys tem attained F = 83.7% for 5-fold cross-validation of the CRL data (Yamada and Matsumoto, 2001), our system attained 86.8%.
+Since the size of the reduced set vectors is smaller than  , classifiers become more efficient, but the computational cost to determine the vectors is verylarge.
+Yamada and Mat sumoto (2001) applied such a method to their NEsystem and reduced its CPU time by 39%.
+For this kind of prob lem, probability-based kernels are studied for more theoretically well-founded methods (Jaakkola and Haussler, 1998; Tsuda et al, 2001; Shimodaira et al., 2001).

@@ -1,0 +1,17 @@
+With 850 Precision(l, r) we obtain a ?soft? version of the inclusion hypothesis presented in (Geffet and Dagan, 2005), which expects l to entail r if the ?important? features of l appear also in r. Similarly, the LEDIR algorithm (Bhagat et al, 2007) identifies the entailment direction between two binary templates, l and r, which participate in a relation learned by (the symmetric) DIRT, by measuring the proportion of instantiations of l that are covered by the instantiations of r. As far as we know, only (Shinyama et al, 2002)and (Pekar, 2006) learn rules between unary tem plates.
+We implemented the unary rule learning algo rithms described in Section 3 and the binary DIRT algorithm (Lin and Pantel, 2001).
+The rule-base learned by binary DIRT was taken as the input for deriving unary rules from binary rules.
+Thus, we follow common evaluation practice (Lin and Pantel, 2001; Geffet and Dagan, 2005) and test each learned rule-set by taking the top K rules for each seed template, whereK ranges from 0 to 100.WhenK=0, no rules are used and mentions are ex tracted only by direct matching of seed templates.
+BInc?s re call increases moderately compared to other unarylearning approaches, but it is still substantially bet ter than not using rules (a relative recall increase of 50% already at K=10).
+On the other hand, some correct rules were only learned by BInc, e.g. ?countersuit againstX?X sue? and ?X take wife ? X marry?.When only one argument is annotated for a specific event mention (28% of ACE predicate mentions, which account for 15% of all annotated arFigure 1: Average Precision, Recall and F1 at dif ferent top K rule cutoff points.
+Binary-DIRT We analyzed incorrect rules both for binary-DIRT and BInc by randomly sampling,for each algorithm, 200 rules that extracted incor rect mentions.
+Apart from incorrectly learned rules, incorrect template matching (e.g. due to parse errors) and context mismatch contribute together 46% of theerrors.
+The rule-set net effect on system precision is better estimated by removing these errors and fixing the annotation errors, which yields 72% precision.
+Binary DIRT Balanced Inclusion Correct 16 (70) 38 (91) Partial Template 27 (2665) 6 (81) Incorrect 157 (2584) 156 (787) Total 200 (5319) 200 (959) Table 1: Rule type distribution of a sample of 200rules that extracted incorrect mentions.
+Reason % mentions Incorrect Rule learned 39.0 Context mismatch 27.0 Match error 19.0 Annotation problem 15.0 Table 2: Distribution of reasons for false positives (incorrect argument extractions) by BInc at K=20.
+Reason % mentions Rule not learned 61.5 Match error 25.0 Discourse analysis needed 12.0 Argument is predicative 1.5 Table 3: Distribution of reasons for false negatives (missed argument mentions) by BInc at K=20.
+First, we note that 12% of the arguments cannotbe extracted by rules alone, due to necessary discourse analysis.
+Thus, a recall upper bound for en tailment rules is 88%.
+Many missed extractions aredue to rules that were not learned (61.5%).
+How ever, 25% of the mentions were missed because of incorrect syntactic matching of correctly learned rules.
+By assuming correct matches in these cases we isolate the recall of the rule-set (along with the seeds), which yields 39% recall.

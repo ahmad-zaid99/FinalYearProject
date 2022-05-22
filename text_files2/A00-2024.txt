@@ -1,0 +1,148 @@
+ing operations.
+We identified six operations that can be used alone or together to transform extracted sentences into sentences in human-written abstracts.
+The operations were identified based on manual and automatic comparison of human-written abstracts and the original articles.
+Examples include sentence reduction, sentence combination, syntactic transformation, and lexical paraphrasing.
+(2) Development of an automatic system to perform cut and paste operations.
+Two operations - sentence reduction and sentence combination - are most effective in transforming extracted sentences into summary sentences that are as concise and coherent as in human-written abstracts.
+We implemented a sentence reduction module that removes extraneous phrases from extracted sentences, and a sentence combination module that merges the extracted sentences or the reduced forms resulting from sentence reduction.
+Our sentence reduction model determines what to cut based on multiple sources of information, including syntactic knowledge, context, and statistics learned from corpus analysis.
+It improves the conciseness of extracted sentences, making them concise and on target.
+Our sentence combination module implements combination rules that were identified by observing examples written by human professionals.
+It improves the coherence of extracted sentences. sentences.
+The cut and paste technique we propose here is a new computational model which we based on analysis of human-written abstracts.
+To do this analysis, we developed an automatic system that can match a phrase in a human-written abstract to the corresponding phrase in the article, identifying its most likely location.
+This decomposition program allows us to analyze the construction of sentences in a human-written abstract.
+Its results have been used to train and test the sentence reduction and sentence combination module.
+In Section 2, we discuss the cut and paste technique in general, from both a professional and computational perspective.
+We also describe the six cut and paste operations.
+In Section 3, we describe the system architecture.
+The major components of the system, including sentence reduction, sentence combination, decomposition, and sentence selection, are described in Section 4.
+The evaluation results are shown in Section 5.
+Related work is discussed in Section 6.
+Finally, we conclude and discuss future work.
+Professionals take two opposite positions on whether a summary should be produced by cutting and pasting the original text.
+One school of scholars is opposed; &quot;(use) your own words... Do not keep too close to the words before you&quot;, states an early book on abstracting for American high school students (Thurber, 1924).
+Another study, however, shows that professional abstractors actually rely on cutting and pasting to produce summaries: &quot;Their professional role tells abstractors to avoid inventing anything.
+They follow the author as closely as possible and reintegrate the most important points of a document in a shorter text&quot; (Endres-Niggemeyer et al., 1998).
+Some studies are somewhere in between: &quot;summary language may or may not follow that of author's&quot; (Fidel, 1986).
+Other guidelines or books on abstracting (ANSI, 1997; Cremmins, 1982) do not discuss the issue.
+Our cut and paste based summarization is a computational model; we make no claim that humans use the same cut and paste operations.
+We manually analyzed 30 articles and their corresponding human-written summaries; the articles and their summaries come from different domains ( 15 general news reports, 5 from the medical domain, 10 from the legal domain) and the summaries were written by professionals from different organizations.
+We found that reusing article text for summarization is almost universal in the corpus we studied.
+We defined six operations that can be used alone, sequentially, or simultaneously to transform selected sentences from an article into the corresponding summary sentences in its human-written abstract:
+Remove extraneous phrases from a selected sentence, as in the following example 1: 'All the examples in this section were produced by human professionals Document sentence: When it arrives sometime next year in new TV sets, the V-chip will give parents a new and potentially revolutionary device to block out programs they don't want their children to see.
+Summary sentence: The V-chip will give parents a device to block out programs they don't want their children to see.
+The deleted material can be at any granularity: a word, a phrase, or a clause.
+Multiple components can be removed.
+Merge material from several sentences.
+It can be used together with sentence reduction, as illustrated in the following example, which also uses paraphrasing: Text Sentence 1: But it also raises serious questions about the privacy of such highly personal information wafting about the digital world.
+Text Sentence 2: The issue thus fits squarely into the broader debate about privacy and security on the internet, whether it involves protecting credit card number or keeping children from offensive information.
+Summary sentence: But it also raises the issue of privacy of such personal information and this issue hits the head on the nail in the broader debate about privacy and security on the internet.
+In both sentence reduction and combination, syntactic transformations may be involved.
+For example, the position of the subject in a sentence may be moved from the end to the front.
+Replace phrases with their paraphrases.
+For instance, the summaries substituted point out with note, and fits squarely into with a more picturesque description hits the head on the nail in the previous examples.
+(5) generalization or specification Replace phrases or clauses with more general or specific descriptions.
+Examples of generalization and specification include: Generalization: &quot;a proposed new law that would require Web publishers to obtain parental consent before collecting personal information from children&quot; &quot;legislation to protect children's privacy on-line&quot; Specification: &quot;the White House's top drug official&quot; -4 &quot;Gen. Barry R. McCaffrey, the White House's top drug official&quot;
+Change the order of extracted sentences.
+For instance, place an ending sentence in an article at the beginning of an abstract.
+In human-written abstracts, there are, of course, sentences that are not based on cut and paste, but completely written from scratch.
+We used our decomposition program to automatically analyze 300 human-written abstracts, and found that 19% of sentences in the abstracts were written from scratch.
+There are also other cut and paste operations not listed here due to their infrequent occurrence.
+The architecture of our cut and paste based text summarization system is shown in Figure 1.
+Input to the system is a single document from any domain.
+In the first stage, extraction, key sentences in the article are identified, as in most current summarizers.
+In the second stage, cut and paste based generation, a sentence reduction module and a sentence combination module implement the operations we observed in human-written abstracts.
+The cut and paste based component receives as input not only the extracted key sentences, but also the original article.
+This component can be ported to other single-document summarizers to serve as the generation component, since most current summarizers extract key sentences - exactly what the extraction module in our system does.
+Other resources and tools in the summarization system include a corpus of articles and their humanwritten abstracts, the automatic decomposition program, a syntactic parser, a co-reference resolution system, the WordNet lexical database, and a largescale lexicon we combined from multiple resources.
+The components in dotted lines are existing tools or resources; all the others were developed by ourselves.
+The main focus of our work is on decomposition of summaries, sentence reduction, and sentence combination.
+We also describe the sentence extraction module, although it is not the main focus of our work.
+The decomposition program, see (Jing and McKeown, 1999) for details, is used to analyze the construction of sentences in human-written abstracts.
+The results from decomposition are used to build the training and testing corpora for sentence reduction and sentence combination.
+The decomposition program answers three questions about a sentence in a human-written abstract: (1) Is the sentence constructed by cutting and pasting phrases from the input article?
+(2) If so, what phrases in the sentence come from the original article?
+(3) Where in the article do these phrases come from?
+We used a Hidden Markov Model (Baum, 1972) solution to the decomposition problem.
+We first mathematically formulated the problem, reducing it to a problem of finding, for each word in a summary sentence, a document position that it most likely comes from.
+The position of a word in a document is uniquely identified by the position of the sentence where the word appears, and the position of the word within the sentence.
+Based on the observation of cut and paste practice by humans, we produced a set of general heuristic rules.
+Sample heuristic rules include: two adjacent words in a summary sentence are most likely to come from two adjacent words in the original document; adjacent words in a summary sentence are not very likely to come from sentences that are far apart in the original document.
+We use these heuristic rules to create a Hidden Markov Model.
+The Viterbi algorithm (Viterbi, 1967) is used to efficiently find the most likely document position for each word in the summary sentence.
+Figure 2 shows sample output of the program.
+For the given summary sentence, the program correctly identified that the sentence was combined from four sentences in the input article.
+It also divided the summary sentence into phrases and pinpointed the exact document origin of each phrase.
+A phrase in the summary sentence is annotated as (FNUM:SNUM actual-text), where FNUM is the sequential number of the phrase and SNUM is the number of the document sentence where the phrase comes from.
+SNUM = -1 means that the component does not come from the original document.
+The phrases in the document sentences are annotated as (FNUM a c tu a 1- text).
+The task of the sentence reduction module, described in detail in (Jing, 2000), is to remove extraneous phrases from extracted sentences.
+The goal of reduction is to &quot;reduce without major loss&quot;; that is, we want to remove as many extraneous phrases as possible from an extracted sentence so that it can be concise, but without detracting from the main idea that the sentence conveys.
+Ideally, we want to remove a phrase from an extracted sentence only if it is irrelavant to the main topic.
+Our reduction module makes decisions based on multiple sources of knowledge: Original sentence : When it arrives sometime next year in new TV sets, the V-chip will give parents a new and potentially revolutionary device to block out programs they don't want their children to see. by adding up the scores of its children nodes in the parse tree.
+This score indicates how important the phrase is to the main topic in discussion.
+The phrases we remove from an extracted sentence include clauses, prepositional phrases, gerunds, and to-infinitives.
+The result of sentence reduction is a shortened version of an extracted sentence 2.
+This shortened text can be used directly as a summary, or it can be fed to the sentence combination module to be merged with other sentences.
+Figure 3 shows two examples produced by the reduction program.
+The corresponding sentences in human-written abstracts are also provided for comparison.
+21t is actually also possible that the reduction program decides no phrase in a sentence should be removed, thus the result of reduction is the same as the input.
+To build the combination module, we first manually analyzed a corpus of combination examples produced by human professionals, automatically created by the decomposition program, and identified a list of combination operations.
+Table 1 shows the combination operations.
+To implement a combination operation, we need to do two things: decide when to use which combination operation, and implement the combining actions.
+To decide when to use which operation, we analyzed examples by humans and manually wrote a set of rules.
+Two simple rules are shown in Figure 4.
+Sample outputs using these two simple rules are shown in Figure 5.
+We are currently exploring using machine learning techniques to learn the combination rules from our corpus.
+The implementation of the combining actions involves joining two parse trees, substituting a subtree with another, or adding additional nodes.
+We implemented these actions using a formalism based on Tree Adjoining Grammar (Joshi, 1987).
+The extraction module is the front end of the summarization system and its role is to extract key sentences.
+Our method is primarily based on lexical relations.
+First, we link words in a sentence with other words in the article through repetitions, morphological relations, or one of the lexical relations encoded in WordNet, similar to step 2 in sentence reduction.
+An importance score is computed for each word in a sentence based on the number of lexical links it has with other words, the type of links, and the directions of the links.
+After assigning a score to each word in a sentence, we then compute a score for a sentence by adding up the scores for each word.
+This score is then normalIF: ((a person or an organization is mentioned the first time) and (the full name or the full description of the person or the organization exists somewhere in the original article but is missing in the summary)) THEN: replace the phrase with the full name plus the full description IF: ((two sentences are close to each other in the original article) and (their subjects refer to the same entity) and (at least one of the sentences is the reduced form resulting from sentence reduction)) THEN: merge the two sentences by removing the subject in the second sentence, and then combining it with the first sentence using connective &quot;and&quot;. ized over the number of words a sentence contains.
+The sentences with high scores are considered important.
+The extraction system selects sentences based on the importance computed as above, as well as other indicators, including sentence positions, cue phrases, and tf*idf scores.
+Our evaluation includes separate evaluations of each module and the final evaluations of the overall system.
+We evaluated the decomposition program by two experiments, described in (Jing and McKeown, 1999).
+In the first experiment, we selected 50 human-written abstracts, consisting of 305 sentences in total.
+A human subject then read the decomposition results of these sentences to judge whether they are correct.
+93.8% of the sentences were correctly decomposed.
+In the second experiment, we tested the system in a summary alignment task.
+We ran the decomposition program to identify the source document sentences that were used to construct the sentences in human-written abstracts.
+Human subjects were also asked to select the document sentences that are semantic-equivalent to the sentences in the abstracts.
+We compared the set of sentences identified by the program with the set of sentences selected by the majority of human subjects, which is used as the gold standard in the computation of precision and recall.
+The program achieved an average 81.5% precision, 78.5% recall, and 79.1% f-measure for 10 documents.
+The average performance of 14 human judges is 88.8% precision, 84.4% recall, and 85.7% f-measure.
+Recently, we have also tested the system on legal documents (the headnotes used by Westlaw company), and the program works well on those documents too.
+The evaluation of sentence reduction (see (Jing, 2000) for details) used a corpus of 500 sentences and their reduced forms in human-written abstracts.
+400 sentences were used to compute corpus probabilities and 100 sentences were used for testing.
+The results show that 81.3% of the reduction decisions made by the system agreed with those of humans.
+The humans reduced the length of the 500 sentences by 44.2% on average, and the system reduced the length of the 100 test sentences by 32.7%.
+The evaluation of sentence combination module is not as straightforward as that of decomposition or reduction since combination happens later in the pipeline and it depends on the output from prior The new measure is an echo of the original bad idea, blurred just enough to cloud prospects both for enforcement and for court review.
+Unlike the 1996 act, this one applies only to commercial Web sites - thus sidestepping conversation deemed &quot;indecent&quot; by somebody somewhere.
+The new version also replaces the vague &quot;indecency&quot; standard, to which the court objected, with the better-defined one of material ruled &quot;harmful to minors.&quot; Combined sentences: The new measure is an echo of the original bad idea.
+The new version applies only to commercial web sites and replaces the vague &quot;indecency&quot; standard with the better-defined one of material ruled &quot;harmful to minors.&quot; modules.
+To evaluate just the combination component, we assume that the system makes the same reduction decision as humans and the co-reference system has a perfect performance.
+This involves manual tagging of some examples to prepare for the evaluation; this preparation is in progress.
+The evaluation of sentence combination will focus on the accessment of combination rules.
+The overall system evaluation includes both intrinsic and extrinsic evaluation.
+In the intrinsic evaluation, we asked human subjects to compare the quality of extraction-based summaries and their revised versions produced by our sentence reduction and combination modules.
+We selected 20 documents; three different automatic summarizers were used to generate a summary for each document, producing 60 summaries in total.
+These summaries are all extraction-based.
+We then ran our sentence reduction and sentence combination system to revise the summaries, producing a revised version for each summary.
+We presented human subjects with the full documents, the extraction-based summaries, and their revised versions, and asked them to compare the extraction-based summaries and their revised versions.
+The human subjects were asked to score the conciseness of the summaries (extractionbased or revised) based on a scale from 0 to 10 the higher the score, the more concise a summary is.
+They were also asked to score the coherence of the summaries based on a scale from 0 to 10.
+On average, the extraction-based summaries have a score of 4.2 for conciseness, while the revised summaries have a score of 7.9 (an improvement of 88%).
+The average improvement for the three systems are 78%, 105%, and 88% respectively.
+The revised summaries are on average 41% shorter than the original extractionbased summaries.
+For summary coherence, the average score for the extraction-based summaries is 3.9, while the average score for the revised summaries is 6.1 (an improvement of 56%).
+The average improvement for the three systems are 69%, 57%, and 53% respectively.
+We are preparing a task-based evaluation, in which we will use the data from the Summarization Evaluation Conference (Mani et al., 1998) and compare how our revised summaries can influence humans' performance in tasks like text categorization and ad-hoc retrieval.
+We thank IBM for licensing us the ESG parser and the MITRE corporation for licensing us the coreference resolution system.
+This material is based upon work supported by the National Science Foundation under Grant No.
+IRI 96-19124 and MI 96-18797.
+Any opinions, findings, and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect the views of the National Science Foundation.

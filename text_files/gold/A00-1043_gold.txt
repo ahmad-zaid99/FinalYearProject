@@ -1,0 +1,20 @@
+The program achieved a success rate of 81.3%, meaning that 81.3% of reduction decisions made by the system agreed with those of humans.
+We collected 500 sentences and their corresponding reduced forms written by humans, and found that humans reduced the length of these 500 sentences by 44.2% on average.
+We first introduce the resources in the system and then describe the reduction algorithm.
+(1) The corpus.
+It provides lexical relations between words, including synonymy, antonymy, meronymy, entailment (e.g., eat &#8212;&gt; chew), or causation (e.g., kill --* die).
+These lexical links are used to identify the focus in the local context.
+The other source we rely on is the large-scale lexicon we described earlier.
+The information in the lexicon is used to mark the obligatory arguments of verb phrases.
+For example, for the verb &amp;quot;convince&amp;quot;, the lexicon has the following entry: This entry indicates that the verb &amp;quot;convince&amp;quot; can be followed by a noun phrase and a prepositional phrase starting with the preposition &amp;quot;of' (e.g., he convinced me of his innocence).
+To measure the importance of a phrase in the local context, the system relies on lexical links between words.
+The hypothesis is that the more connected a word is with other words in the local context, the more likely it is to be the focus of the local context.
+We link the words in the extracted sentence with words in its local context, if they are repetitions, morphologically related, or linked in WordNet through one of the lexical relations.
+The system then computes an importance score for each word in the extracted sentence, based on the number of links it has with other words and the types of links.
+The formula for computing the context importance score for a word w is as follows: Here, i represents the different types of lexical relations the system considered, including repetition, inflectional relation, derivational relation, and the lexical relations from WordNet.
+We assigned a weight to each type of lexical relation, represented by Li in the formula.
+Relations such as repetition or inflectional relation are considered more important and are assigned higher weights, while relations such as hypernym are considered less important and assigned lower weights.
+NU (w) in the formula represents the number of a particular type of lexical links the word w has with words in the local context.
+Besides computing the probability that a phrase is removed, we also compute two other types of probabilities: the probability that a phrase is reduced (i.e., the phrase is not removed as a whole, but some components in the phrase are removed), and the probability that a phrase is unchanged at all (i.e., neither removed nor reduced).
+In the last step of reduction when the system makes the final decision, the relevance of a phrase to the query is taken into account, together with syntactic, context, and corpus information.
+The difference between these studies on text simplification and our system is that a text simplification system usually does not remove anything from an original sentence, although it may change its structure or words, but our system removes extraneous phrases from the extracted sentences.

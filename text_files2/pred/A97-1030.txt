@@ -1,0 +1,18 @@
+The components of Victoria and Albert Museum and IBM and Bell Laboratories look identical; however, and is part of the name of the museum in the first example, but a conjunction joining two computer company names in the second.
+In this case, Nominator consults a small authority file which contains information on about 3000 special 'name words' and their relevant lexical features.
+Also listed are exception words, such as upper-case lexical items that are unlikely to be single-word proper names (e.g., Very, I or TV) and lower-case lexical items (e.g., and and van) that can be parts of proper names.
+But Robert Jordan, a partner at Steptoe & Johnson who took the lead in drafting the new district bar code, said the ABA's rules were viewed as &quot;too restrictive&quot; by lawyers here.
+... Before the text is processed by Nominator, it is analyzed into tokens — sentences, words, tags, and punctuation elements.
+Nominator forms a candidate name list by scanning the tokenized document and collecting sequences of capitalized tokens (or words) as well as some special lower-case tokens, such as conjunctions and prepositions.
+Because of standard English-language naming conventions, Mr. Jordan is grouped with Robert Jordan.
+The splitting process applies a set of heuristics based on patterns of capitalization, lexical features and the relative 'scope' of operators (see below) to name sequences containing these operators to determine whether or not they should be split into smaller names.
+From Nominator's point of view, all three operator types behave in similar ways and often interact when they co-occur in the same name sequence, as in New York's MOMA and the Victoria and Albert Museum in London.
+For example, in Victoria and Albert Museum, the conjunction is within the scope of the lexical head Museum because Museum is a noun that can take PP modification (Museum of Natural History) and hence pre-modification (Natural History Museum).
+Although the same relationship holds between the lexical head Laboratories and the conjunction and in IBM and Bell Laboratories, another heuristic takes precedence, one whose condition requires splitting a string if it contains an acronym immediately to the left or to the right of the ambiguous operator.
+To illustrate, New York's MOMA and the Victoria and Albert Museum in London is first evaluated for splitting on in.
+Victoria and Albert Museum in London remains intact.
+A linguist manually identified 2426 occurrences of proper names, which reduced to 1354 unique tokens.
+Of these, Nominator correctly identified the boundaries of 91% (1230/1354).
+The precision rate was 92% for the 1409 names Nominator identified (1230/1409).
+In terms of semantic disambiguation, Nominator failed to assign an entity type to 21% of the names it identified.
+The payoff of this choice is a very high precision rate — 99% — for the assignment of semantic type to those names that were disambiguated.

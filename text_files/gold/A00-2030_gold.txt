@@ -1,0 +1,5 @@
+Although mathematically the model predicts tree elements in a top-down fashion, we search the space bottom-up using a chartbased search.
+Our system for MUC-7 consisted of the sentential model described in this paper, coupled with a simple probability model for cross-sentence merging.
+In both Template Entity (TE) and Template Relation (TR), our system finished in second place among all entrants.
+Nearly all of the work was done by the sentential model; disabling the cross-sentence model entirely reduced our overall F-Score by only 2 points.
+We evaluated part-of-speech tagging and parsing accuracy on the Wall Street Journal using a now standard procedure (see Collins 97), and evaluated name finding accuracy on the MUC7 named entity test.

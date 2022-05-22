@@ -1,0 +1,155 @@
+3.1 Motivations.
+Most unsupervised rule learning algorithms focused on learning binary entailment rules.
+How ever, using binary rules for inference is not enough.
+First, a predicate that can have multiple arguments may still occur with only one of its arguments.For example, in ?The acquisition of TCA was successful?, ?TCA?
+is the only argument of ?acqui sition?.
+Second, some predicate expressions are unary by nature.
+For example, modifiers, such as ?the elected X?, or intransitive verbs.
+In addition, it appears more tractable to learn all variations for each argument of a predicate separately than to learn them for combinations of argument pairs.For these reasons, it seems that unary rule learn ing should be addressed in addition to binary rule learning.
+We are further motivated by the fact thatsome (mostly supervised) works in IE found learn ing unary templates useful for recognizing relevant named entities (Riloff, 1996; Sudo et al, 2003; Shinyama and Sekine, 2006), though they did notattempt to learn generic knowledge bases of entail ment rules.This paper investigates acquisition of unary entailment rules from regular non-comparable cor pora.
+We first describe the structure of unarytemplates and then explore two conceivable approaches for learning unary rules.
+The first ap proach directly assesses the relation between twogiven templates based on the similarity of their in stantiations in the corpus.
+The second approach,which was also mentioned in (Iftene and Balahur Dobrescu, 2007), derives unary rules from learned binary rules.
+3.2 Unary Template Structure.
+To learn unary rules we first need to define theirstructure.
+In this paper we work at the syntac tic representation level.
+Texts are represented by dependency parse trees (using the Minipar parser (Lin, 1998b)) and templates by parse sub-trees.
+Given a dependency parse tree, any sub-tree can be a candidate template, setting some of its nodesas variables (Sudo et al, 2003).
+However, the num ber of possible templates is exponential in the sizeof the sentence.
+In the binary rule learning litera ture, the main solution for exhaustively learning allrules between any pair of templates in a given corpus is to restrict the structure of templates.
+Typi cally, a template is restricted to be a path in a parse tree between two variable nodes (Lin and Pantel, 2001; Ibrahim et al, 2003).
+Following this approach, we chose the structure of unary templates to be paths as well, where oneend of the path is the template?s variable.
+How ever, paths with one variable have more expressive power than paths between two variables, since the combination of two unary paths may generate a binary template that is not a path.
+For example, the combination of ?X call indictable?
+and ?call Y indictable?
+is the template ?X call Y indictable?, which is not a path between X and Y . For every noun node v in a parsed sentence, we generate templates with v as a variable as follows: 1.
+Traverse the path from v towards the root of.
+the parse tree.
+Whenever a candidate pred icate is encountered (any noun, adjective or verb) the path from that node to v is taken as a template.
+We stop when the first verb orclause boundary (e.g. a relative clause) is encountered, which typically represent the syn tactic boundary of a specific predicate.
+851 2.
+To enable templates with control verbs and.
+light verbs, e.g. ?X help preventing?, ?Xmake noise?, whenever a verb is encountered we generate templates that are paths between v and the verb?s modifiers, either ob jects, prepositional complements or infinite or gerund verb forms (paths ending at stop words, e.g. pronouns, are not generated).
+3.
+To capture noun modifiers that act as predi-.
+cates, e.g. ?the losingX?, we extract template paths between v and each of its modifiers, nouns or adjectives, that are derived from a verb.
+We use the Catvar database to identify verb derivations (Habash and Dorr, 2003).
+As an example for the procedure, the templates extracted from the sentence ?The losing party played it safe?
+with ?party?
+as the variable are: ?losing X?, ?X play?
+and ?X play safe?.
+3.3 Direct Learning of Unary Rules.
+We applied the lexical similarity measures pre sented in Section 2 for unary rule learning.
+Each argument instantiation of template t in the corpus is taken as a feature f , and the pmi between t and f is used for the feature?s weight.
+We first adaptedDIRT for unary templates (unary-DIRT, apply ing Lin-similarity to the single feature vector), as well as its output filtering by LEDIR.
+The various Weeds measures were also applied 1 : symmetric arithmetic average, symmetric harmonic average, weighted arithmetic average and Precision.
+After initial analysis, we found that given a right hand side template r, symmetric measures such as Lin (in DIRT) generally tend to prefer (score higher) relations ?l, r?
+in which l and r are related but do not necessarily participate in an entailment or equivalence relation, e.g. the wrong rule ?kill X ? injure X?.
+On the other hand, directional measures such as Weeds Precision tend to prefer directional rules inwhich the entailing template is infrequent.
+If an in frequent template has common instantiations with another template, the coverage of its features istypically high, whether or not an entailment relation exists between the two templates.
+This behav ior generates high-score incorrect rules.
+Based on this analysis, we propose a new measure that balances the two behaviors, termed 1We applied the best performing parameter values pre sented in (Bhagat et al, 2007) and (Weeds and Weir, 2003).Balanced-Inclusion (BInc).
+BInc identifies entail ing templates based on a directional measure but penalizes infrequent templates using a symmetric measure: BInc(l, r) = ? Lin(l, r) ? Precision(l, r) 3.4 Deriving Unary Rules From Binary Rules.
+An alternative way to learn unary rules is to first learn binary entailment rules and then derive unary rules from them.
+We derive unary rules from a given binary rule-base in two steps.
+First, for each binary rule, we generate all possible unary rules that are part of that rule (each unary template is extracted following the same procedure describedin Section 3.2).
+For example, from ?X find solu tion to Y ? X solve Y ? we generate the unary rules ?X find?
+X solve?, ?X find solution?
+Xsolve?, ?solution to Y ? solve Y ? and ?find solu tion to Y ? solve Y ?.
+The score of each generated rule is set to be the score of the original binary rule.The same unary rule can be derived from different binary rules.
+For example, ?hire Y ? employ Y ? is derived both from ?X hire Y ? X em ploy Y ? and ?hire Y for Z ? employ Y for Z?, having a different score from each original binary rule.
+The second step of the algorithm aggregates the different scores yielded for each derived rule to produce the final rule score.
+Three aggregationfunctions were tested: sum (Derived-Sum), aver age (Derived-Avg) and maximum (Derived-Max).
+We want to evaluate learned unary and binary rule bases by their utility for NLP applications throughassessing the validity of inferences that are per formed in practice using the rule base.To perform such experiments, we need a test set of seed templates, which correspond to a set of target predicates, and a corpus annotated with allargument mentions of each predicate.
+The evaluation assesses the correctness of all argument ex tractions, which are obtained by matching in the corpus either the seed templates or templates that entail them according to the rule-base (the latter corresponds to rule-application).
+Following (Szpektor et al, 2008), we found the ACE 2005 event training set 2useful for this pur pose.
+This standard IE dataset includes 33 types of event predicates such as Injure, Sue and Divorce.
+2 http://projects.ldc.upenn.edu/ace/ 852All event mentions are annotated in the corpus, in cluding the instantiated arguments of the predicate.
+ACE guidelines specify for each event its possible arguments, each associated with a semantic role.
+For instance, some of the Injure event arguments are Agent, Victim and Time.To utilize the ACE dataset for evaluating entail ment rule applications, we manually represented each ACE event predicate by unary seed templates.
+For example, the seed templates for Injure are ?A injure?, ?injure V ? and ?injure in T ?.
+We mapped each event role annotation to the corresponding seed template variable, e.g. ?Agent?
+to A and ?Victim?
+to V in the above example.
+Templatesare matched using a syntactic matcher that han dles simple morpho-syntactic phenomena, as in (Szpektor and Dagan, 2007).
+A rule application is considered correct if the matched argument is annotated by the corresponding ACE role.
+For testing binary rule-bases, we automatically generated binary seed templates from any twounary seeds that share the same predicate.
+For ex ample, for Injure the binary seeds ?A injure V ?, ?A injure in T ? and ?injure V in T ? were automatically generated from the above unary seeds.
+We performed two adaptations to the ACE dataset to fit it better to our evaluation needs.
+First, our evaluation aims at assessing the correctness of inferring a specific target semantic meaning, which is denoted by a specific predicate, using rules.
+Thus, four events that correspond ambiguously tomultiple distinct predicates were ignored.
+For instance, the Transfer-Money event refers to both do nating and lending money, and thus annotations ofthis event cannot be mapped to a specific seed tem plate.
+We also omitted 3 events with less than 10mentions, and were left with 26 events (6380 argu ment mentions).
+Additionally, we regard all entailing mentions under the textual entailment definition as correct.
+However, event mentions are annotated as correct in ACE only if they explicitly describe the targetevent.
+For instance, a Divorce mention does entail a preceding marriage event but it does not ex plicitly describe it, and thus it is not annotated as a Marry event.
+To better utilize the ACE dataset, we considered for a target event the annotations of other events that entail it as being correct as well.We note that each argument was considered sep arately.
+For example, we marked a mention of a divorced person as entailing the marriage of that person, but did not consider the place and time of the divorce act to be those of the marriage .
+We implemented the unary rule learning algo rithms described in Section 3 and the binary DIRT algorithm (Lin and Pantel, 2001).
+We executed each method over the Reuters RCV1 corpus 3 , learning for each template r in the corpus the top100 rules in which r is entailed by another tem plate l, ?l? r?.
+All rules were learned in canonical form (Szpektor and Dagan, 2007).
+The rule-base learned by binary DIRT was taken as the input for deriving unary rules from binary rules.
+The performance of each acquired rule-base was measured for each ACE event.
+We measured the percentage of correct argument mentions extracted out of all correct argument mentions annotated for the event (recall) and out of all argument mentionsextracted for the event (precision).
+We also mea sured F1, their harmonic average, and report macro average Recall, Precision and F1 over the 26 event types.
+No threshold setting mechanism is suggested inthe literature for the scores of the different algo rithms, especially since rules for different right hand side templates have different score ranges.
+Thus, we follow common evaluation practice (Lin and Pantel, 2001; Geffet and Dagan, 2005) and test each learned rule-set by taking the top K rules for each seed template, whereK ranges from 0 to 100.WhenK=0, no rules are used and mentions are ex tracted only by direct matching of seed templates.
+Our rule application setting provides a rather simplistic IE system (for example, no named entity recognition or approximate template matching).
+It is thus useful for comparing different rule-bases,though the absolute extraction figures do not re flect the full potential of the rules.
+In Secion 5.2 we analyze the full-system?s errors to isolate the rules?
+contribution to overall system performance.
+5.1 Results.
+In this section we focus on the best performing variations of each algorithm type: binary DIRT, unary DIRT, unary Weeds Harmonic, BInc and Derived-Avg.
+We omitted the results of methods that were clearly inferior to others: (a) WeedsA, WeedsD and Weeds-Precision did not increase 3 http://about.reuters.com/researchandstandards/corpus/ 853Recall over not using rules because rules with in frequent templates scored highest and arithmetic averaging could not balance well these high scores; (b) out of the methods for deriving unary rules from binary rule-bases, Derived-Avg performed best; (c) filtering with (the directional) LEDIR did not improve the performance of unary DIRT.
+Figure 1 presents Recall, Precision and F1 of themethods for different cutoff points.
+First, we observe that even when matching only the seed tem plates (K=0), unary seeds outperform the binary seeds in terms of both Precision and Recall.
+This surprising behavior is consistent through all rulecutoff points: all unary learning algorithms per form better than binary DIRT in all parameters.
+The inferior behavior of binary DIRT is analyzed in Section 5.2.The graphs show that symmetric unary approaches substantially increase recall, but dramati cally decrease precision already at the top 10 rules.
+As a result, F1 only decreases for these methods.
+Lin similarity (DIRT) and Weeds-Harmonic show similar behaviors.
+They consistently outperform Derived-Avg.
+One reason for this is that incorrectunary rules may be derived even from correct bi nary rules.
+For example, from ?X gain seat on Y ? elect X to Y ? the incorrect unary rule ?X gain?
+electX?
+is also generated.
+This problem is less frequent when unary rules are directly scored based on their corpus statistics.
+The directional measure of BInc yields a more accurate rule-base, as can be seen by the much slower precision reduction rate compared to theother algorithms.
+As a result, it is the only algo rithm that improves over the F1 baseline of K=0,with the best cutoff point at K=20.
+BInc?s re call increases moderately compared to other unarylearning approaches, but it is still substantially bet ter than not using rules (a relative recall increase of 50% already at K=10).
+We found that many of the correct mentions missed by BInc but identified by other methods are due to occasional extractions of incorrect frequent rules, such as partial templates (see Section 5.2).
+This is reflected in the very low precision of the other methods.
+On the other hand, some correct rules were only learned by BInc, e.g. ?countersuit againstX?X sue? and ?X take wife ? X marry?.When only one argument is annotated for a specific event mention (28% of ACE predicate mentions, which account for 15% of all annotated arFigure 1: Average Precision, Recall and F1 at dif ferent top K rule cutoff points.
+guments), binary rules either miss that mention, orextract both the correct argument and another in correct one.
+To neutralize this bias, we also testedthe various methods only on event mentions an notated with two or more arguments and obtained similar results to those presented for all mentions.
+This further emphasizes the general advantage of using unary rules over binary rules.
+854 5.2 Analysis.
+Binary-DIRT We analyzed incorrect rules both for binary-DIRT and BInc by randomly sampling,for each algorithm, 200 rules that extracted incor rect mentions.
+We manually classified each rule ?l ? r? as either: (a) Correct - the rule is valid insome contexts of the event but extracted some in correct mentions; (b) Partial Template - l is only apart of a correct template that entails r. For exam ple, learning ?X decide?
+X meet?
+instead of ?X decide to meet ? X meet?; (e) Incorrect - other incorrect rules, e.g. ?charge X ? convict X?.Table 1 summarizes the analysis and demonstrates two problems of binary-DIRT.
+First, rela tive to BInc, it tends to learn incorrect rules for high frequency templates, and therefore extractedmany more incorrect mentions for the same num ber of incorrect rules.
+Second, a large percentage of incorrect mentions extracted are due to partial templates at the rule left-hand-side.
+Such rules are leaned because many binary templates have a more complex structure than paths between arguments.
+As explained in Section 3.2 the unary template structure we use is more expressive, enabling to learn the correct rules.
+For example, BInc learned?take Y into custody ? arrest Y ? while binary DIRT learned ?X take Y ? X arrest Y ?.
+System Level Analysis We manually analyzedthe reasons for false positives (incorrect extrac tions) and false negatives (missed extractions) of BInc, at its best performing cutoff point (K=20), by sampling 200 extractions of each type.
+From the false positives analysis (Table 2) we see that 39% of the errors are due to incorrect rules.
+The main reasons for learning such rules are those discussed in Section 3.3: (a) related templates that are not entailing; (b) infrequent templates.
+All learning methods suffer from these issues.
+As wasshown by our results, BInc provides a first step to wards reducing these problems.
+Yet, these issues require further research.
+Apart from incorrectly learned rules, incorrect template matching (e.g. due to parse errors) and context mismatch contribute together 46% of theerrors.
+Context mismatches occur when the entail ing template is matched in inappropriate contexts.
+For example, ?slam X ? attack X?
+should not be applied when X is a ball, only when it is a person.
+The rule-set net effect on system precision is better estimated by removing these errors and fixing the annotation errors, which yields 72% precision.
+Binary DIRT Balanced Inclusion Correct 16 (70) 38 (91) Partial Template 27 (2665) 6 (81) Incorrect 157 (2584) 156 (787) Total 200 (5319) 200 (959) Table 1: Rule type distribution of a sample of 200rules that extracted incorrect mentions.
+The corre sponding numbers of incorrect mentions extracted by the sampled rules is shown in parentheses.
+Reason % mentions Incorrect Rule learned 39.0 Context mismatch 27.0 Match error 19.0 Annotation problem 15.0 Table 2: Distribution of reasons for false positives (incorrect argument extractions) by BInc at K=20.
+Reason % mentions Rule not learned 61.5 Match error 25.0 Discourse analysis needed 12.0 Argument is predicative 1.5 Table 3: Distribution of reasons for false negatives (missed argument mentions) by BInc at K=20.
+Table 3 presents the analysis of false negatives.
+First, we note that 12% of the arguments cannotbe extracted by rules alone, due to necessary discourse analysis.
+Thus, a recall upper bound for en tailment rules is 88%.
+Many missed extractions aredue to rules that were not learned (61.5%).
+How ever, 25% of the mentions were missed because of incorrect syntactic matching of correctly learned rules.
+By assuming correct matches in these cases we isolate the recall of the rule-set (along with the seeds), which yields 39% recall.

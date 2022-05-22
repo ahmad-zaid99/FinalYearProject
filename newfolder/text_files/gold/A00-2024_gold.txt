@@ -1,0 +1,19 @@
+We implemented a sentence reduction module that removes extraneous phrases from extracted sentences, and a sentence combination module that merges the extracted sentences or the reduced forms resulting from sentence reduction.
+We manually analyzed 30 articles and their corresponding human-written summaries; the articles and their summaries come from different domains ( 15 general news reports, 5 from the medical domain, 10 from the legal domain) and the summaries were written by professionals from different organizations.
+>We used our decomposition program to automatically analyze 300 human-written abstracts, and found that 19% of sentences in the abstracts were written from scratch.
+First, we link words in a sentence with other words in the article through repetitions, morphological relations, or one of the lexical relations encoded in WordNet, similar to step 2 in sentence reduction.
+An importance score is computed for each word in a sentence based on the number of lexical links it has with other words, the type of links, and the directions of the links.
+After assigning a score to each word in a sentence, we then compute a score for a sentence by adding up the scores for each word.
+In the first experiment, we selected 50 human-written abstracts, consisting of 305 sentences in total.
+93.8% of the sentences were correctly decomposed.
+The program achieved an average 81.5% precision, 78.5% recall, and 79.1% f-measure for 10 documents.
+The average performance of 14 human judges is 88.8% precision, 84.4% recall, and 85.7% f-measure.
+400 sentences were used to compute corpus probabilities and 100 sentences were used for testing.
+The results show that 81.3% of the reduction decisions made by the system agreed with those of humans.
+The humans reduced the length of the 500 sentences by 44.2% on average, and the system reduced the length of the 100 test sentences by 32.7%.
+We selected 20 documents; three different automatic summarizers were used to generate a summary for each document, producing 60 summaries in total.
+On average, the extraction-based summaries have a score of 4.2 for conciseness, while the revised summaries have a score of 7.9 (an improvement of 88%).
+The average improvement for the three systems are 78%, 105%, and 88% respectively.
+The revised summaries are on average 41% shorter than the original extractionbased summaries.
+For summary coherence, the average score for the extraction-based summaries is 3.9, while the average score for the revised summaries is 6.1 (an improvement of 56%).
+The average improvement for the three systems are 69%, 57%, and 53% respectively.

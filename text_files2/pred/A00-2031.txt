@@ -1,0 +1,19 @@
+A 'feature', in this context, is a boolean-valued function, generally over parse tree nodes and either node labels or lexical items.
+Due to sparse data, some of the features later in the list may need to be ignored; thus the probability of an unknown feature value would be estimated as where P refers to an empirically observed probability.
+Of course, if features 1 through i only co-occur a few times in the training, this value may not be reliable, so the empirical probability is usually smoothed: The values for Ai can then be determined according to the number of occurrences of features 1 through i together in the training.
+One way to think about equation 1 (and specifically, the notion that j will depend on the values of Ii fn) is as follows: We begin with the prior probability of f. If we have data indicating P(fIfi), we multiply in that likelihood, while dividing out the original prior.
+This is repeated for each piece of feature data we have; at each point, we are adjusting the probability we already have estimated.
+If knowledge about feature fi makes f more likely than with just fi_i, the term where fi is added will be greater than one and the running probability will be adjusted upward.
+This gives us the new probability shown in equation 3, which is exactly equivalent to equation 1 since everything except the last numerator cancels out of the equation.
+Smoothing is performed on this equation exactly as before: each term is interpolated between the empirical value and the prior estimated probability, according to a value of Ai that estimates confidence.
+As we said before, equation 3 represents, for each feature the probability of f based on fi and all its predecessors, divided by the probability of f based only on the predecessors.
+The unsmoothed version of the corresponding equation would be which, after cancelling of terms and smoothing, results in Note that strictly speaking the result is not a probability distribution.
+In this case, that means excluding those constituents that were already wrong in the parser output; the parser we used attains 89% labelled precision-recall, so roughly 11% of the constituents are excluded from the function tag accuracy evaluation.
+Even for the most common type of function tag (grammatical), this method performs with 87% accuracy.
+Even using the more difficult no-null accuracy measure, it has a 96% accuracy.
+This seems to reflect the fact that grammatical relations can often be guessed based on constituent labels, parts of speech, and highfrequency lexical items, largely avoiding sparsedata problems.
+Topicalisation can similarly be guessed largely on high-frequency information, and performed almost as well (93%).
+These are characterised by much more semantic information, and the relationships between lexical items are very important, making sparse data a real problem.
+With a tagging accuracy of about 87%, various information retrieval and knowledge base applications can reasonably expect to extract useful information.
+For comparison, we also give its performance when run directly on the original treebank parse; since the parser's accuracy is about 89%, working directly with the treebank means our statistics are over roughly 12% more constituents.
+Indeed, the statistics give the probability of an ADV tag in this conditioning environment as vanishingly small.

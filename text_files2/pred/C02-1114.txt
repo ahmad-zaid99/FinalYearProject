@@ -1,0 +1,15 @@
+The graph used in the experiments described has 99,454 nodes (nouns) and 587,475 links.
+One way to summarise the effect of this decision is that the algorithm adds words to clusters depending on type frequency rather than token frequency.
+In this section we give examples of lexical cat egories extracted by our method and evaluatethem against the corresponding classes in Word Net.
+While WordNet or any other lexical resource isnot a perfect arbiter, it is hoped that this exper iment procedure is both reliable and repeatable.
+)With these conditions, our algorithm re trieves only 36 incorrect terms out of a total of 200, giving an accuracy of 82%.
+Our results are an order of magnitude better than those reported by Riloff and Shepherd (1997) and Roark and Charniak (1998), whoreport average accuracies of 17% and 35% re spectively.
+The experiments in (Riloff and Shepherd, 1997) were performed on the 500,000 word MUC-4 corpus, and those of (Roark and Charniak, 1998) were performedusing MUC-4 and the Wall Street Journal cor pus (some 30 million words).
+Our results clearly indicate that a large PoS-tagged corpusmay be much better for automatic lexical ac quisition than a small fully-parsed corpus.
+This claim could of course be tested by comparing techniques on the same corpus.To evaluate the advantage of using PoS infor mation, we compared the graph model with asimilarity thesaurus generated using Latent Se mantic Indexing (Manning and Schu?tze, 1999, Ch 15), a ?bag-of-words?
+The LSI similarity thesaurus obtained an accuracy of 31%, much less than the graph model?s 82%.
+So far we have presented a graph model built upon noun co-occurrence which performs much better than previously reported methods at the task of automatic lexical acquisition.
+This isan important task, because assembling and tuning lexicons for specific NLP systems is increas ingly necessary.
+Breadth of cover age does not in itself solve this problem: general lexical resources such as WordNet can provide too many senses many of which are rarely used in particular domains or corpora (Gale et al, 1992).The graph model presented in this paper suggests a new method for recognising relevant polysemy.
+Definition 2 (Bolloba?s, 1998, Ch 1 ?1) Let G = (V,E) be a graph, where V is the set of vertices (nodes) of G and E ?
+Thestandard method for this task is to use hand labelled data to train a learning algorithm, which will often pick out particular words as Bayesian classifiers which indicate one sense or the other.

@@ -1,0 +1,13 @@
+As the annotation scheme does not distinguish different bar levels or any similar intermediate categories, only a small set of node labels is needed (currently 16 tags, S, NP, AP ...).
+In order to avoid inconsistencies, the corpus is annotated in two stages: basic annotation and nfirtellte714.
+Most linguistic theories treat NPs as structures headed by a unique lexical item (noun).
+For the implementation, we used Tcl/Tk Version 4.1.
+The corpus is stored in a SQL database.
+We distinguish five degrees of automation: So far, about 1100 sentences of our corpus have been annotated.
+For a phrase Q with children of type T&#8222;..., Ta and grammatical functions G&#8222;...,GA., we use the lexical probabilities and the contextual (trigram) probabilities The lexical and contextual probabilities are determined separately for each type of phrase.
+During annotation, the highest rated grammatical function labels Gi are calculated using the Viterbi algorithm and assigned to the structure, i.e., we calculate argma.x11 PQ (Ti 1Z-1, Ti.-2) PQ (Gi ITi).
+The tagger rates 90% of all assignments as reliable and carries them out fully automatically.
+Accuracy for these cases is 97%.
+Accuracy of the unreliable 10% of assignments is 75%, i.e., the annotator has to alter the choice in 1 of 4 cases when asked for confirmation.
+Overall accuracy of the tagger is 95%.
+Owing to the partial automation, the average annotation efficiency improves by 25% (from around 4 minutes to 3 minutes per sentence).

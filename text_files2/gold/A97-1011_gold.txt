@@ -1,0 +1,9 @@
+The object complement OPCOMPL-0 is linked to the verb readings having the subcategorisation SVOC.
+The sentence is thus disambiguated both morphologically and morphosyntactically, and a syntactic phosyntactic alternatives, e.g. whatever is ambiguous in 10 ways.
+The PC has a Pentium 90 MHz processor and 16 MB of memory.
+The speed roughly corresponds to 200 words in second.
+In addition, both systems use the front parts of the ENGCG system for processing the input.
+These include the tokeniser, lexical analyser and morphological disambiguator.
+A similar measure is used in (Eisner, 1996) except that every word has a head, i.e. the precision equals recall, reported as 79.2%.
+It seems the parser leaves some amount of the words unlinked (e.g. 10-15% of subjects) but what it has recognised is generally correct (precision 95-98% for subjects).
+Dekang Lin (1996) has earlier used this kind of evaluation, where precision and recall were for subjects 87% and 78%, and for complements (including objects) 84% and 72 %, respectively.
